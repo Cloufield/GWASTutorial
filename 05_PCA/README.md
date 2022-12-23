@@ -186,6 +186,9 @@ You can now create scatterplots of the PCs using R or python.
 For plotting using python:
 [plot_PCA.ipynb](https://github.com/Cloufield/GWASTutorial/blob/main/05_PCA/plot_PCA.ipynb)
 
+<img width="473" alt="image" src="https://user-images.githubusercontent.com/40289485/209298567-d4871fd0-aaa4-4d90-a7db-bc6aa34ab011.png">
+Note : We only used 20% of all availble variants. This figure only very roughly shows the population structure in East Asia.
+ 
 Requrements:
 - python>3
 - numpy,pandas,seaborn,matplotlib
