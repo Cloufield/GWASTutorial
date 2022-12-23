@@ -9,9 +9,17 @@ Simply speaking, GRM (genetic relationship matrix) is first estimated and then P
 
 So before association analysis, we will learn how to run PCA analysis first.
 
+- [5.1 Preparation](#51-preparation)
+- [5.2 PCA steps](#52-pca-steps)
+- [5.3 Sample codes](#53-sample-codes)
+- [5.4 Plotting the PCs](#54-plotting-the-pcs)
+- [5.5 PCA-UMAP](#55-pca-umap)
+- [References](#references)
 ---------
 
-## 5.1 Preparation:  excluding SNPs in high-LD or HLA regions. 
+## 5.1 Preparation
+
+excluding SNPs in high-LD or HLA regions. 
 
 Please check https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD)
 - 0.1 simply copy the list of high-LD or HLA regions in Genome build version(.bed format) to a text file `high-ld.txt`.
@@ -77,7 +85,7 @@ Note: the reason why we want to exclude such high-LD or HLA regions is described
 - Price, A. L., Weale, M. E., Patterson, N., Myers, S. R., Need, A. C., Shianna, K. V., Ge, D., Rotter, J. I., Torres, E., Taylor, K. D., Goldstein, D. B., & Reich, D. (2008). Long-range LD can confound genome scans in admixed populations. American journal of human genetics, 83(1), 132–139. https://doi.org/10.1016/j.ajhg.2008.06.005 
 
 ---------
-## 5.2 PCA steps: 
+## 5.2 PCA steps
 
 - 1.Pruning (https://www.cog-genomics.org/plink/2.0/ld#indep)
 - 2.Removing relatives (usually 2-degree) (https://www.cog-genomics.org/plink/2.0/distance#king_cutoff)
@@ -85,7 +93,7 @@ Note: the reason why we want to exclude such high-LD or HLA regions is described
 - 4.Project to all samples (https://www.cog-genomics.org/plink/2.0/score#pca_project)
 
 ---------
-## 5.3 Sample codes:
+## 5.3 Sample codes
 ```
 plinkFile="" #please set this to your own path
 outPrefix="plink_results"
@@ -129,7 +137,7 @@ plink2 \
 ```
 After step 3, the 'allele-wts' modifier requests an additional one-line-per-allele .eigenvec.allele file with PCs expressed as allele weights instead of sample weights.
 
-After running, we get the `plink_results.eigenvec.allele` file, which will be used to project onto all samples along with a allele count `plink_results.acount` file.
+We will get the `plink_results.eigenvec.allele` file, which will be used to project onto all samples along with a allele count `plink_results.acount` file.
 ```
 $head plink_results.eigenvec.allele
 #CHROM	ID	REF	ALT	A1	PC1	PC2	PC3	PC4	PC5	PC6	PC7	PC8	PC9	PC10
@@ -170,19 +178,29 @@ head plink_results_projected.sscore
 0	HG00419	219504	219504	0.00526139	-0.0369818	-0.00974662	0.00855412	-0.0053907	-0.00102057	0.0063254	0.0140126	-0.00600854	0.00732882
 0	HG00421	219504	219504	0.00038356	-0.0319534	-0.00648054	0.00311739	-0.022044	0.0064945	-0.0105273	-0.0276718	-0.00973368	0.0208449
 0	HG00422	219504	219504	0.00437335	-0.0323416	-0.0111979	0.0106245	-0.0267334	0.00142919	-0.00487295	-0.0124099	-0.00467014	-0.0188086
+```
 
-## Plot the PCs
-Please check the following jupyter notebook for the codes to plot PCs.
+## 5.4 Plotting the PCs 
+You can now create scatterplots of the PCs using R or python.
 (under construction)
 
 Requrements:
 - python>3
 - numpy,pandas,seaborn,matplotlib
 
-## (optional) UMAP
-We can apply another non-linear dimension reduction algorithm called UMAP to the PCs to further identfy the local structures. (PCA-UMAP)
+## 5.5 PCA-UMAP
+(optional) 
+We can also apply another non-linear dimension reduction algorithm called UMAP to the PCs to further identfy the local structures. (PCA-UMAP)
 
-For more details, please check the following papers and urls:
+For more details, please check:
 - https://umap-learn.readthedocs.io/en/latest/index.html
-- McInnes, L., Healy, J., & Melville, J. (2018). Umap: Uniform manifold approximation and projection for dimension reduction. arXiv preprint arXiv:1802.03426. https://doi.org/10.48550/arXiv.1802.03426
-- Diaz-Papkovich, A., Anderson-Trocmé, L. & Gravel, S. A review of UMAP in population genetics. J Hum Genet 66, 85–91 (2021). https://doi.org/10.1038/s10038-020-00851-4 https://www.nature.com/articles/s10038-020-00851-4
+
+An example of PCA and PCA-UMAP for population genetics:
+- Sakaue, S., Hirata, J., Kanai, M., Suzuki, K., Akiyama, M., Lai Too, C., ... & Okada, Y. (2020). Dimensionality reduction reveals fine-scale structure in the Japanese population with consequences for polygenic risk prediction. Nature communications, 11(1), 1-11.
+
+# References
+- (PCA) Price, A., Patterson, N., Plenge, R. et al. Principal components analysis corrects for stratification in genome-wide association studies. Nat Genet 38, 904–909 (2006). https://doi.org/10.1038/ng1847 https://www.nature.com/articles/ng1847
+- (why removing high-LD regions) Price, A. L., Weale, M. E., Patterson, N., Myers, S. R., Need, A. C., Shianna, K. V., Ge, D., Rotter, J. I., Torres, E., Taylor, K. D., Goldstein, D. B., & Reich, D. (2008). Long-range LD can confound genome scans in admixed populations. American journal of human genetics, 83(1), 132–139. https://doi.org/10.1016/j.ajhg.2008.06.005 
+- (UMAP) McInnes, L., Healy, J., & Melville, J. (2018). Umap: Uniform manifold approximation and projection for dimension reduction. arXiv preprint arXiv:1802.03426.
+- (UMAP in population genetics) Diaz-Papkovich, A., Anderson-Trocmé, L. & Gravel, S. A review of UMAP in population genetics. J Hum Genet 66, 85–91 (2021). https://doi.org/10.1038/s10038-020-00851-4 https://www.nature.com/articles/s10038-020-00851-4
+- (king-cutoff) Manichaikul, A., Mychaleckyj, J. C., Rich, S. S., Daly, K., Sale, M., & Chen, W. M. (2010). Robust relationship inference in genome-wide association studies. Bioinformatics, 26(22), 2867-2873.
