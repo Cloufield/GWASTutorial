@@ -1,40 +1,24 @@
-# Anaconda
+# git
+https://git-scm.com/
 
-Conda is an open-source package and environment management system. 
+# github
+https://github.com/
 
-It is a very handy tool when you need to manage python packages.
+## create a new id
+https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home
 
-# Download
+## clone a directory
 
-https://www.anaconda.com/products/distribution
+`git clone https://github.com/kamatani-lab/kiso_enshu2_2021.git`
 
-For example, download the latest linux version:
+## update the current repo
+`git pull`
 
+# git setup
 ```
-wget https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
-```
-
-![image](https://user-images.githubusercontent.com/40289485/161550000-43448964-fdd6-4f76-bd63-51e108c4c0e7.png)
-
-
-# Install
-```
-# give it permission to execute
-chmod +x Anaconda3-2021.11-Linux-x86_64.sh 
-
-# install
-bash ./Anaconda3-2021.11-Linux-x86_64.sh
+$ git config --global user.name "myusername"
+$ git config --global user.email myusername@myemail.com
 ```
 
-Follow the instructions on :
-https://docs.anaconda.com/anaconda/install/linux/
-
-
-
-If everything goes well, then you can see the `(base)` before the prompt, which indicate the base environment:
-```
-(base) [heyunye@gc019 ~]$
-```
-
-For how to use conda, please check :
-https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html
+# How to create access token 
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
