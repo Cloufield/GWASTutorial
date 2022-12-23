@@ -1,6 +1,6 @@
 #!/bin/bash
 
-plinkFile="../1_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020" #!!!please set this to your own path
+plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020" #!!!please set this to your own path
 outPrefix="plink_results"
 threadnum=2
 

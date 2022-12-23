@@ -3,7 +3,7 @@
 export PATH=~/tools/bin:$PATH
 export OMP_NUM_THREADS=1
 
-genotypeFile="../1_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020"
+genotypeFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020"
 
 plink \
         --bfile ${genotypeFile} \
@@ -12,7 +12,10 @@ plink \
         --hardy \
         --het \
         --out plink_results
-
+plink2 \
+	--bfile ${genotypeFile} \
+        --freq \
+	--out plink_results
 
 plink \
         --bfile ${genotypeFile} \
@@ -27,4 +30,10 @@ plink \
         --bfile ${genotypeFile} \
         --extract plink_results.prune.in \
         --genome \
+        --out plink_results
+
+plink \
+	--bfile ${genotypeFile} \
+        --chr 22 \
+        --r2 \
         --out plink_results
