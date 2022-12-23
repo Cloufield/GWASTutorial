@@ -79,9 +79,7 @@ $ pwd
 This command prints the absolute path.
 ![image](https://user-images.githubusercontent.com/40289485/161308808-6a8c97a9-4c7d-46cf-9e67-c5876415866f.png)
 
-
-
-absolute path: path starting form root: `/Users/he/work/GWASTutorial/02_Linux_basics`
+absolute path: path starting form root: `/home/he/work/GWASTutorial/02_Linux_basics`
 
 relative path: path starting form current directory: `./GWASTutorial/02_Linux_basics`
 
