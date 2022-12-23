@@ -455,7 +455,6 @@ Combined with the `--extract` and `--keep` option, we can run:
 plink \
         --bfile ${genotypeFile} \
 	--extract plink_results.prune.in \
-	--keep first_1000.sample \
         --genome \
         --out plink_results
 ```
