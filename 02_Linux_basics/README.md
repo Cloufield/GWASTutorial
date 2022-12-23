@@ -7,28 +7,35 @@ This module is intended to provide a minumum introduction of the Linux system fo
 If you are a beginner with no background in programming, then it would be helpful if you could learn some basic commands first. 
 In this module, we will learn the most basic commands which enable you to handle genomic files in the terminal using command lines in linux system. 
 
-- [Linux introduction](#linux-system-introduction)
+- [Linux introduction](#0-linux-system-introduction)
+    - Linux kernel and distributions
+    - GUI and CUI
+    - `man`
+- [Overview and checking the manual pages](#11-overview-of-the-basic-commands-in-linux)
 - [Handling directories](#12-directories)
-- Manipulating files
-- Archiving and Compression
-- Editing files in terminal
-- checking files
-- Permissions
-- Other useful commands
-- Bash scripts
-- Git and Github
-- SSH
-- Symbolic link
-- Download files
+    - Absolute path and relative path
+- [Manipulating files](#13-manipulating-files)
+- [Archiving and Compression](#14-archive-and-compression)
+- [Checking files](#15-read-and-check-files)
+- [Editing files in terminal](#16-edit-files)
+- [Permissions](#17-permission)
+- [Other useful commands](#18-others)
+- [Bash scripts](#19-bash-scripts)
+- [Advanced text editing](#110-advanced-text-editing)
+- [Job scheduling system](#111-job-scheduling-system)
+- [Git and Github](#112-git-and-github)
+- [SSH](#113-ssh)
+- [Symbolic link](#114-symbolic-link)
+- [Downloading](#115-download)
 
-## Linux System Introduction
-## 1.0.1 What is Linux?
+## 0 Linux System Introduction
+### 0.1 What is Linux?
 ![image](https://user-images.githubusercontent.com/40289485/161374551-1ef3b509-b345-4be3-b45b-3f86c466aa5a.png)
 
-## 1.0.2 How do we interact with computers?
+### 0.2 How do we interact with computers?
 ![image](https://user-images.githubusercontent.com/40289485/161374590-fd4bfee0-e815-475b-8a73-e53d97447e74.png)
 
-## 1.0.3 A comparison between CUI and GUI
+### 0.3 A comparison between CUI and GUI
 ![image](https://user-images.githubusercontent.com/40289485/161374600-ff32fc6b-dafa-4535-a971-1122aa14f708.png)
 
 Check list
@@ -47,7 +54,7 @@ Here are some of the basic commands we are going to cover in this brief tutorial
 ### How to check the usage of a command using `man`: 
 check the manual of the command (e.g., `man chmod`) or `--help` option (e.g., `chmod --help`)
 ```
-$ man pwd man
+$ man pwd
 
 ```
 Then you will see the manual of `pwd` in your terminal.
@@ -125,10 +132,12 @@ README.md  sumstats.txt
 ```
 
 ## 1.3 Manipulating files
-The first set of commands are: `touch`, `mv` , `rm` and `cp`
+This set of commands includes: `touch`, `mv` , `rm` and `cp`
 
 ### `touch`:
 `touch` command is used to create a new empty file.
+
+For example, let's create a text file called `newfile.txt` in this directory.
 ```
 $ ls -l
 total 64048
@@ -147,43 +156,57 @@ total 64048
 ```
 
 ### `mv`: 
-move the files to another path , or rename the file
+(1) move the files to another path , or (2) rename the file
+
+The following command will create a new directoru called `new_directory`, and move `sumstats.txt` into that directory. Just like draggig a file in to a folder in window system.
 ```
+# make a new directory
 $ mkdir new_directory
 
+#move sumstats to the new directory
 $ mv sumstats.txt new_directory/
 
+# list the item in new_directory
 $ ls new_directory/
 sumstats.txt
 ```
-move it back to the current directory 
+
+Now, let's move it back to the current directory and rename it to `sumstats_new.txt `.
 ```
-#move sumstats to the new directory
 $ mv ./new_directory/sumstats.txt ./
 ```
-note `./` means current directory
+Note: `./` means the current directory
 You can also use `mv` to rename a file:
 ```
 #rename
 $mv sumstats.txt sumstats_new.txt 
 ```
+
 ### `rm`:
 remove files or diretories
 ```
+# remove a file
 $rm file
+
+#remove files in a directory (recursive mode)
 $rm -r directory/
 ```
 
 ### `cp` 
-copy files or diretories
+`cp` command is used to copy files or diretories.
 
 ```
+#cp files
 $cp file1 file2
+
+# copy directory
 $cp -r directory1/ directory2/
 ```
 
 ## 1.4 Archive and Compression
-Results for millions of variants are usually very large, sometimes >10GB, or consists of multiple files. To save space and make it easier to transfer, we need to archive and compress these files.
+Results for millions of variants are usually very large, sometimes >10GB, or consists of multiple files. 
+
+To save space and make it easier to transfer, we need to archive and compress these files.
 
 Archive: combine multiple files in one file
 
@@ -292,9 +315,11 @@ $ tail sumstats.txt
 
 ### `wc`
 word count:
+
 lines,words,characters
+
 ```
-[heyunye@gc012 01_linux_basics]$ wc sumstats.txt 
+$ wc sumstats.txt 
   445933  5797129 32790417 sumstats.txt
 ```
 
@@ -410,7 +435,9 @@ chmod +x hello.sh
 "Hello, world2" 
 ```
 
-## 1.10 advanced text editing (optional)
+## 1.10 advanced text editing 
+
+(optional)
 (awk, sed, cut, sort, join, uniq)
 
 ## 1.11 Job scheduling system

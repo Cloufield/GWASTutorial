@@ -6,10 +6,10 @@ In this module, we will learn the basics of genotype data QC using PLINK, which 
 ### Table of Contents
 - [4.1 Preparation](#41-preparation)
 	- [PLINK 1.9 & 2 installation](#411-plink-192-installation)
-	- [Simulated data download](#412-simulated-data-download)
+	- [Download genotype data](#412-download-genotype-data)
 - [4.2 PLINK tutorial](#42-plink-tutorial)
 	- [Calculate missing rate and call rate](#421-missing-rate-and-call-rate)
-	- [Calculate Allele Frequency](#422-allele-frequency)
+	- [Calculate allele frequency](#422-allele-frequency)
 	- [Calculate inbreeding F coefficient ](#423-inbreeding-f-coefficient)
 	- [Hardy-Weinberg equilibrium exact test](#424-hardy-weinberg-equilibrium-exact-test)
 	- [Applying filters](#425-applying-filters)
@@ -24,8 +24,11 @@ In this module, we will learn the basics of genotype data QC using PLINK, which 
 
 ## 4.1 Preparation
 ### 4.1.1 PLINK 1.9&2 installation
-### Make directories and add to envrionment path
-First, we will simply create directories to keep the tools we need to use.
+
+To get prepared for genotype QC, we will need to make directories, download softwares and add the sofwares to your environment path.
+
+First, we will simply create some directories to keep the tools we need to use.
+
 ```bash
 cd ~
 mkdir tools
@@ -35,21 +38,27 @@ mkdir plink
 mkdir plink2
 ```
 
-You can download each tool into its corresponding directories. The `bin` directory here is for keeping all the symbolic links to the executable files of each tool. 
+You can download each tool into its corresponding directories. 
 
-In this way, it is much easier to manage the path and tools.
+The `bin` directory here is for keeping all the symbolic links to the executable files of each tool. 
+
+In this way, it is much easier to mangnage and organize the paths and tools.
+
 <img width="937" alt="image" src="https://user-images.githubusercontent.com/40289485/160745597-c6f4204a-d786-4af1-9041-f1531cbbe584.png">
 
 ### Download PLINK1.9 and PLINK2 and then unzip
 Next, go to the plink webpage to download the software. We will need both PLINK1.9 and PLINK2.
+
 Download PLINK1.9 and PLINK2 from the following webpage to the corresponding directories:
 https://www.cog-genomics.org/plink/
 https://www.cog-genomics.org/plink/2.0/
 
 Note: If you are using mac or windows, then please download the mac or windows version. 
-In this tutorial we use a linux system, so we will shoe the codes for the linux version. 
+
+In this tutorial we will use a linux system. 
 
 Find the suitable version, right click and copy the link address.
+
 ```bash
 cd plink2
 wget https://s3.amazonaws.com/plink2-assets/plink2_linux_x86_64_20211011.zip
@@ -58,13 +67,16 @@ unzip plink2_linux_x86_64_20211011.zip
 Then do the same for PLINK1.9
 
 ### Create symbolic links
+
 After donwloading and unzipping, we will create symbolic links for the plink binany files, and then move the link to `~/tools/bin/`.
 ```bash
 cd ~
 ln -s ~/tools/plink2/plink2 ~/tools/bin/plink2
 ln -s ~/tools/plink/plink ~/tools/bin/plink
 ```
+
 Then add `~/tools/bin/` to the environment path.
+
 ```bash
 export PATH=$PATH:~/tools/bin/
 ```
@@ -122,7 +134,7 @@ Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
 Well done. We have installed plink1.9 and plink2.
 
 
-### 4.1.2 simulated data download
+### 4.1.2 Download genotype data
 Next we need to download the sample genotype data
 
 Run the download.sh in 01_Dataset
