@@ -182,7 +182,9 @@ head plink_results_projected.sscore
 
 ## 5.4 Plotting the PCs 
 You can now create scatterplots of the PCs using R or python.
-(under construction)
+
+For plotting using python:
+[plot_PCA.ipynb](https://github.com/Cloufield/GWASTutorial/blob/main/05_PCA/plot_PCA.ipynb)
 
 Requrements:
 - python>3
