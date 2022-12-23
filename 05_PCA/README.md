@@ -100,7 +100,7 @@ plink2 \
 	--indep-pairwise 500 50 0.2 \
         --out ${outPrefix}
 
-# remove related samples using knig-cuttoff
+# remove related samples using king-cuttoff
 plink2 \
         --bfile ${plinkFile} \
 	--extract ${outPrefix}.prune.in \
