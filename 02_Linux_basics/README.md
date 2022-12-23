@@ -390,7 +390,7 @@ If you have a lot of commands to run, or if you want to automate some complex ma
 
 A simple example of bash scripts:
 
-use vim create `hello.sh`
+use vim to create `hello.sh`
 
 ```
 #!/bin/bash
@@ -414,7 +414,6 @@ chmod +x hello.sh
 (awk, sed, cut, sort, join, uniq)
 
 ## 1.11 Job scheduling system
-See module 02.
 (If needed) Try to use job scheduling system to run a simple script (slurm on lab server)
 sbatch , scancel 
 sq, sjobs, shosts
@@ -467,7 +466,7 @@ ls -lha
 lrwxr-xr-x  1 he  staff    27B Aug 30 11:30 plink -> /home/he/tools/plink/plink
 ```
 
-## 1.15 Download files in linux
+## 1.15 Download
 We can use `wget [option] [url]` command to download files to local machine.
 
 `-O` option specify the file name you want to change for the downloaded file. 
