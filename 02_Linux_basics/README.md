@@ -270,7 +270,7 @@ CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
 1	913	50	2	1	1	ADD	10000	1.07852	0.0493585	1.53144	0.12566	.
 1	1356	77	2	1	1	ADD	10000	0.947521	0.0339805	-1.5864	0.112649	.
 
-[heyunye@gc018 01_linux_basics]$ head -n 1 sumstats.txt 
+$ head -n 1 sumstats.txt 
 CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
 ```
 
@@ -459,12 +459,12 @@ You can use `ln -s pathA pathB` to create such a link.
 
 Example:
 ```
-ln -s /home/he/tools/plink/plink /Users/he/tools/bin
+ln -s /home/he/tools/plink/plink /home/he/tools/bin
 
 cd /home/he/tools/bin
 ls -lha
 ...
-lrwxr-xr-x  1 he  staff    27B Aug 30 11:30 plink -> /Users/he/tools/plink/plink
+lrwxr-xr-x  1 he  staff    27B Aug 30 11:30 plink -> /home/he/tools/plink/plink
 ```
 
 ## 1.15 Download files in linux
