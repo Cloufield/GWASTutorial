@@ -129,7 +129,7 @@ Run the download.sh in 01_Dataset
 
 ```
 cd ../01_Dataset
-./download.sh
+./download_sampledata.sh
 ```
 ```
 -rw-r-----   1 he  staff   135M Dec 23 11:45 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
