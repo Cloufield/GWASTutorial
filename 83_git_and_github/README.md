@@ -9,7 +9,7 @@ https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F
 
 ## clone a directory
 
-`git clone https://github.com/kamatani-lab/kiso_enshu2_2021.git`
+`git clone`
 
 ## update the current repo
 `git pull`
