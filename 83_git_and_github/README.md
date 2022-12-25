@@ -22,3 +22,7 @@ $ git config --global user.email myusername@myemail.com
 
 # How to create access token 
 https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
+Resources:
+- https://training.github.com/
+- https://learngitbranching.js.org/
