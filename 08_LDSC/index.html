@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="HE Yunye">
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>LDSC - GWASTutorial</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="..">GWASTutorial</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../index.md" class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../02_Linux_basics/" class="nav-link">Linux</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pre-GWAS <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01_Dataset/" class="dropdown-item">Sample Dataset</a>
+</li>
+                                    
+<li>
+    <a href="../03_Data_formats/" class="dropdown-item">Data Formats</a>
+</li>
+                                    
+<li>
+    <a href="../04_Data_QC/" class="dropdown-item">Data QC</a>
+</li>
+                                    
+<li>
+    <a href="../05_PCA/" class="dropdown-item">PCA</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">GWAS <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../06_Association_tests/" class="dropdown-item">Association tests</a>
+</li>
+                                    
+<li>
+    <a href="../plot_data/" class="dropdown-item">Visualization</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Post-GWAS <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../07_Annotation/" class="dropdown-item">Annotation</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">LDSC</a>
+</li>
+                                    
+<li>
+    <a href="../09_Gene_based_analysis/" class="dropdown-item">Gene/Gene-set tests</a>
+</li>
+                                    
+<li>
+    <a href="../10_PRS/" class="dropdown-item">PRS</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Others <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../80_anaconda/" class="dropdown-item">Anaconda</a>
+</li>
+                                    
+<li>
+    <a href="../81_jupyter_notebook/" class="dropdown-item">Jupyter notebook</a>
+</li>
+                                    
+<li>
+    <a href="../82_windows_linux_subsystem/" class="dropdown-item">WLS</a>
+</li>
+                                    
+<li>
+    <a href="../83_git_and_github/" class="dropdown-item">Git and github</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href="../07_Annotation/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../09_Gene_based_analysis/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/Cloufield/GWASTutorial" class="nav-link"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#ld-score-regression" class="nav-link">LD score regression</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#table-of-contents" class="nav-link">Table of Contents</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#introduction" class="nav-link">Introduction</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#install-ldsc" class="nav-link">Install LDSC</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#data-preparation" class="nav-link">Data Preparation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#ld-score-regression_1" class="nav-link">LD score regression</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#cross-trait-ld-score-regression" class="nav-link">Cross-trait LD score regression</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#partitioned-ld-regression" class="nav-link">Partitioned LD regression</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#celltype-specificity-ld-regression" class="nav-link">Celltype specificity LD regression</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#reference" class="nav-link">Reference</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="ld-score-regression">LD score regression</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#install-ldsc">Install LDSC</a></li>
+<li><a href="#data-preparation">Data Preparation</a></li>
+<li><a href="#ld-score-regression">LD score regression</a></li>
+<li><a href="#cross-trait-ld-score-regression">Cross-trait LD score regression</a></li>
+<li><a href="#partitioned-ld-regression">Partitioned LD regression</a></li>
+<li><a href="#celltype-specificity-ld-regression">Celltype specificity LD regression</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>LDSC is one of the most commonly used command line tool to estimate hertability, genetic correlation and cell/tissue type specificity from GWAS summary statistics. </p>
+<p>LD: Linkage disequilibrium</p>
+<p>For details of LD score regression, please refer to :
+Bulik-Sullivan, Brendan K., et al. "LD Score regression distinguishes confounding from polygenicity in genome-wide association studies." Nature genetics 47.3 (2015): 291-295.</p>
+<h2 id="install-ldsc">Install LDSC</h2>
+<p>LDSC can be downloaded from github (GPL-3.0 license):
+<a href="https://github.com/bulik/ldsc">https://github.com/bulik/ldsc</a></p>
+<pre><code># change to your directory for tools
+cd ~/tools
+
+# clone the ldsc github repository
+git clone https://github.com/bulik/ldsc.git
+
+# create a virtual environment for ldsc (python2)
+cd ldsc
+conda env create --file environment.yml  
+</code></pre>
+<h2 id="data-preparation">Data Preparation</h2>
+<p>In this tutoial, we will use sample summary statistics for HDLC and LDLC from Jenger. 
+- Kanai, Masahiro, et al. "Genetic analysis of quantitative traits in the Japanese population links cell types to complex human diseases." Nature genetics 50.3 (2018): 390-400.</p>
+<p>Download sample summary statistics : </p>
+<pre><code class="language-Bash"># HDL-c and LDL-c in Biobank Japan
+wget -O BBJ_LDLC.txt.gz http://jenger.riken.jp/61analysisresult_qtl_download/
+wget -O BBJ_HDLC.txt.gz http://jenger.riken.jp/47analysisresult_qtl_download/
+</code></pre>
+<p>Download reference files:</p>
+<pre><code># snplist
+
+# EAS ld score files
+
+# weight
+
+# EAS frequency
+
+# Cell type ld score files
+
+</code></pre>
+<p>Munge sumstats</p>
+<pre><code>snplist=~/tools/ldsc/resource/w_hm3.snplist
+munge_sumstats.py \
+    --sumstats BBJ_HDLC.txt.gz \
+    --merge-alleles $snplist \
+    --a1 ALT \
+    --a2 REF \
+    --out BBJ_HDLC
+munge_sumstats.py \
+        --sumstats BBJ_LDLC.txt.gz \
+    --a1 ALT \
+        --a2 REF \
+        --merge-alleles $snplist \
+        --out BBJ_LDLC
+</code></pre>
+<h2 id="ld-score-regression_1">LD score regression</h2>
+<p>Estimation of heritbility and confuding factors (cryptic relateness and population stratification) </p>
+<p>-Bulik-Sullivan, Brendan K., et al. "LD Score regression distinguishes confounding from polygenicity in genome-wide association studies." Nature genetics 47.3 (2015): 291-295.</p>
+<pre><code>ldsc.py \
+  --h2 BBJ_HDLC.sumstats.gz \
+  --ref-ld-chr ~/tools/ldsc/resource/eas_ldscores/ \
+  --w-ld-chr ~/tools/ldsc/resource/eas_ldscores/ \
+  --out BBJ_HDLC
+
+ldsc.py \
+  --h2 BBJ_LDLC.sumstats.gz \
+  --ref-ld-chr ~/tools/ldsc/resource/eas_ldscores/ \
+  --w-ld-chr ~/tools/ldsc/resource/eas_ldscores/ \
+  --out BBJ_LDLC
+
+</code></pre>
+<h2 id="cross-trait-ld-score-regression">Cross-trait LD score regression</h2>
+<p>Estimation of genetic correlation</p>
+<p>-Bulik-Sullivan, Brendan, et al. "An atlas of genetic correlations across human diseases and traits." Nature genetics 47.11 (2015): 1236-1241.</p>
+<pre><code>ldsc.py \
+  --rg BBJ_HDLC.sumstats.gz,BBJ_LDLC.sumstats.gz \
+  --ref-ld-chr ~/tools/ldsc/resource/eas_ldscores/ \
+  --w-ld-chr ~/tools/ldsc/resource/eas_ldscores/ \
+  --out BBJ_HDLC_LDLC
+
+</code></pre>
+<h2 id="partitioned-ld-regression">Partitioned LD regression</h2>
+<p>-Finucane, Hilary K., et al. "Partitioning heritability by functional annotation using genome-wide association summary statistics." Nature genetics 47.11 (2015): 1228-1235.</p>
+<pre><code>ldsc.py \
+  --h2 BBJ_HDLC.sumstats.gz \
+  --overlap-annot \
+  --ref-ld-chr ~/tools/ldsc/resource/1000G_Phase3_EAS_baseline_v1_2_ldscores/baseline. \
+  --frqfile-chr ~/tools/ldsc/resource/1000G_Phase3_EAS_plinkfiles/1000G.EAS.QC. \
+  --w-ld-chr ~/tools/ldsc/resource/1000G_Phase3_EAS_weights_hm3_no_MHC/weights.EAS.hm3_noMHC. \
+  --out BBJ_HDLC_baseline
+
+</code></pre>
+<h2 id="celltype-specificity-ld-regression">Celltype specificity LD regression</h2>
+<p>LDSC-SEG
+-Finucane, Hilary K., et al. "Heritability enrichment of specifically expressed genes identifies disease-relevant tissues and cell types." Nature genetics 50.4 (2018): 621-629.</p>
+<pre><code>ldsc.py \
+  --h2-cts BBJ_HDLC.sumstats.gz \
+  --ref-ld-chr-cts ~/tools/ldsc/resource/Cahoy_EAS_1000Gv3_ldscores/Cahoy.EAS.ldcts \
+  --ref-ld-chr ~/tools/ldsc/resource/1000G_Phase3_EAS_baseline_v1_2_ldscores/baseline. \
+  --w-ld-chr ~/tools/ldsc/resource/1000G_Phase3_EAS_weights_hm3_no_MHC/weights.EAS.hm3_noMHC. \
+  --out BBJ_HDLC_baseline_cts
+</code></pre>
+<h2 id="reference">Reference</h2>
+<p>-Bulik-Sullivan, Brendan K., et al. "LD Score regression distinguishes confounding from polygenicity in genome-wide association studies." Nature genetics 47.3 (2015): 291-295.
+-Bulik-Sullivan, Brendan, et al. "An atlas of genetic correlations across human diseases and traits." Nature genetics 47.11 (2015): 1236-1241.
+-Finucane, Hilary K., et al. "Partitioning heritability by functional annotation using genome-wide association summary statistics." Nature genetics 47.11 (2015): 1228-1235.
+-Finucane, Hilary K., et al. "Heritability enrichment of specifically expressed genes identifies disease-relevant tissues and cell types." Nature genetics 50.4 (2018): 621-629.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>GWASTutorial is licensed under the MIT license</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

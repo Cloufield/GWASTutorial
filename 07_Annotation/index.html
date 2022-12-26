@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="HE Yunye">
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Annotation - GWASTutorial</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="..">GWASTutorial</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../index.md" class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../02_Linux_basics/" class="nav-link">Linux</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pre-GWAS <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01_Dataset/" class="dropdown-item">Sample Dataset</a>
+</li>
+                                    
+<li>
+    <a href="../03_Data_formats/" class="dropdown-item">Data Formats</a>
+</li>
+                                    
+<li>
+    <a href="../04_Data_QC/" class="dropdown-item">Data QC</a>
+</li>
+                                    
+<li>
+    <a href="../05_PCA/" class="dropdown-item">PCA</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">GWAS <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../06_Association_tests/" class="dropdown-item">Association tests</a>
+</li>
+                                    
+<li>
+    <a href="../plot_data/" class="dropdown-item">Visualization</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Post-GWAS <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Annotation</a>
+</li>
+                                    
+<li>
+    <a href="../08_LDSC/" class="dropdown-item">LDSC</a>
+</li>
+                                    
+<li>
+    <a href="../09_Gene_based_analysis/" class="dropdown-item">Gene/Gene-set tests</a>
+</li>
+                                    
+<li>
+    <a href="../10_PRS/" class="dropdown-item">PRS</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Others <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../80_anaconda/" class="dropdown-item">Anaconda</a>
+</li>
+                                    
+<li>
+    <a href="../81_jupyter_notebook/" class="dropdown-item">Jupyter notebook</a>
+</li>
+                                    
+<li>
+    <a href="../82_windows_linux_subsystem/" class="dropdown-item">WLS</a>
+</li>
+                                    
+<li>
+    <a href="../83_git_and_github/" class="dropdown-item">Git and github</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href="../plot_data/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../08_LDSC/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/Cloufield/GWASTutorial" class="nav-link"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#variant-annotation" class="nav-link">Variant Annotation</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#table-of-contents" class="nav-link">Table of Contents</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#annovar" class="nav-link">ANNOVAR</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#vep" class="nav-link">VEP</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="variant-annotation">Variant Annotation</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#annovar">ANNOVAR</a></li>
+<li><a href="#vep">VEP</a></li>
+</ul>
+<h2 id="annovar">ANNOVAR</h2>
+<h3 id="install">Install</h3>
+<p>Download ANNOVAR from:
+https://annovar.openbioinformatics.org/en/latest/</p>
+<p>Download refernece file:</p>
+<pre><code>
+</code></pre>
+<p>Format input file</p>
+<pre><code>awk 'NR&gt;1 &amp;&amp; NR&lt;100000 {print $1,$2,$2,$4,$5}' ../06_Association_tests/1kgeas.B1.glm.logistic.hybrid &gt; annovar_input.txt
+
+</code></pre>
+<p>Annotate</p>
+<pre><code>input=annovar_input.txt
+humandb=/home/he/tools/annovar/annovar/humandb
+table_annovar.pl ${input} ${humandb} -buildver hg19 -out myannotation -remove -protocol refGene -operation g -nastring . -polish
+</code></pre>
+<pre><code>1 13273 13273 G C
+1 14599 14599 T A
+1 14604 14604 A G
+1 14930 14930 A G
+1 69897 69897 T C
+1 86331 86331 A G
+1 91581 91581 G A
+1 122872 122872 T G
+1 135163 135163 C T
+1 233473 233473 C G
+</code></pre>
+<pre><code>Chr Start   End Ref Alt Func.refGene    Gene.refGene    GeneDetail.refGene  ExonicFunc.refGene  AAChange.refGene
+1   13273   13273   G   C   ncRNA_exonic    DDX11L1;LOC102725121    .   .   .
+1   14599   14599   T   A   ncRNA_exonic    WASH7P  .   .   .
+1   14604   14604   A   G   ncRNA_exonic    WASH7P  .   .   .
+1   14930   14930   A   G   ncRNA_intronic  WASH7P  .   .   .
+1   69897   69897   T   C   exonic  OR4F5   .   synonymous SNV  OR4F5:NM_001005484:exon1:c.T807C:p.S269S
+1   86331   86331   A   G   intergenic  OR4F5;LOC729737 dist=16323;dist=48442   .   .
+1   91581   91581   G   A   intergenic  OR4F5;LOC729737 dist=21573;dist=43192   .   .
+1   122872  122872  T   G   intergenic  OR4F5;LOC729737 dist=52864;dist=11901   .   .
+1   135163  135163  C   T   ncRNA_exonic    LOC729737   .   .   .
+</code></pre>
+<h2 id="vep">VEP</h2>
+<h3 id="install_1">Install</h3>
+<pre><code>git clone https://github.com/Ensembl/ensembl-vep.git
+cd ensembl-vep
+perl INSTALL.pl
+</code></pre>
+<pre><code>Hello! This installer is configured to install v108 of the Ensembl API for use by the VEP.
+It will not affect any existing installations of the Ensembl API that you may have.
+
+It will also download and install cache files from Ensembl's FTP server.
+
+Checking for installed versions of the Ensembl API...done
+
+Setting up directories
+Destination directory ./Bio already exists.
+Do you want to overwrite it (if updating VEP this is probably OK) (y/n)? y
+ - fetching BioPerl
+ - unpacking ./Bio/tmp/release-1-6-924.zip
+ - moving files
+
+Downloading required Ensembl API files
+ - fetching ensembl
+ - unpacking ./Bio/tmp/ensembl.zip
+ - moving files
+ - getting version information
+ - fetching ensembl-variation
+ - unpacking ./Bio/tmp/ensembl-variation.zip
+ - moving files
+ - getting version information
+ - fetching ensembl-funcgen
+ - unpacking ./Bio/tmp/ensembl-funcgen.zip
+ - moving files
+ - getting version information
+ - fetching ensembl-io
+ - unpacking ./Bio/tmp/ensembl-io.zip
+ - moving files
+ - getting version information
+
+Testing VEP installation
+ - OK!
+
+The VEP can either connect to remote or local databases, or use local cache files.
+Using local cache files is the fastest and most efficient way to run the VEP
+Cache files will be stored in /home/he/.vep
+Do you want to install any cache files (y/n)? y
+
+The following species/files are available; which do you want (specify multiple separated by spaces or 0 for all): 
+1 : acanthochromis_polyacanthus_vep_108_ASM210954v1.tar.gz (69 MB)
+2 : accipiter_nisus_vep_108_Accipiter_nisus_ver1.0.tar.gz (55 MB)
+...
+466 : homo_sapiens_merged_vep_108_GRCh37.tar.gz (16 GB)
+467 : homo_sapiens_merged_vep_108_GRCh38.tar.gz (26 GB)
+468 : homo_sapiens_refseq_vep_108_GRCh37.tar.gz (13 GB)
+469 : homo_sapiens_refseq_vep_108_GRCh38.tar.gz (22 GB)
+470 : homo_sapiens_vep_108_GRCh37.tar.gz (14 GB)
+471 : homo_sapiens_vep_108_GRCh38.tar.gz (22 GB)
+
+  Total: 221 GB for all 471 files
+
+? 470
+ - downloading https://ftp.ensembl.org/pub/release-108/variation/indexed_vep_cache/homo_sapiens_vep_108_GRCh37.tar.gz
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>GWASTutorial is licensed under the MIT license</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

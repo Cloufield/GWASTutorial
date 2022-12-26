@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="HE Yunye">
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Data Formats - GWASTutorial</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="..">GWASTutorial</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../index.md" class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../02_Linux_basics/" class="nav-link">Linux</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pre-GWAS <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01_Dataset/" class="dropdown-item">Sample Dataset</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Data Formats</a>
+</li>
+                                    
+<li>
+    <a href="../04_Data_QC/" class="dropdown-item">Data QC</a>
+</li>
+                                    
+<li>
+    <a href="../05_PCA/" class="dropdown-item">PCA</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">GWAS <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../06_Association_tests/" class="dropdown-item">Association tests</a>
+</li>
+                                    
+<li>
+    <a href="../plot_data/" class="dropdown-item">Visualization</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Post-GWAS <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../07_Annotation/" class="dropdown-item">Annotation</a>
+</li>
+                                    
+<li>
+    <a href="../08_LDSC/" class="dropdown-item">LDSC</a>
+</li>
+                                    
+<li>
+    <a href="../09_Gene_based_analysis/" class="dropdown-item">Gene/Gene-set tests</a>
+</li>
+                                    
+<li>
+    <a href="../10_PRS/" class="dropdown-item">PRS</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Others <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../80_anaconda/" class="dropdown-item">Anaconda</a>
+</li>
+                                    
+<li>
+    <a href="../81_jupyter_notebook/" class="dropdown-item">Jupyter notebook</a>
+</li>
+                                    
+<li>
+    <a href="../82_windows_linux_subsystem/" class="dropdown-item">WLS</a>
+</li>
+                                    
+<li>
+    <a href="../83_git_and_github/" class="dropdown-item">Git and github</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href="../01_Dataset/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../04_Data_QC/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/Cloufield/GWASTutorial" class="nav-link"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#data-format" class="nav-link">Data format</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#table-of-contents" class="nav-link">Table of Contents</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#data-formats-for-general-purposes" class="nav-link">Data formats for general purposes</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#plain-text" class="nav-link">plain text</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#data-formats-in-bioinformatics" class="nav-link">Data formats in bioinformatics</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#sequence" class="nav-link">Sequence</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#alingment" class="nav-link">Alingment</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#variant-and-genotype" class="nav-link">Variant and genotype</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#imputation-dosage" class="nav-link">Imputation dosage</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="data-format">Data format</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#data-formats-for-general-purpose">Data formats for general purpose</a><ul>
+<li>txt</li>
+<li>tsv</li>
+<li>csv</li>
+</ul>
+</li>
+<li><a href="#data-formats-in-bioinformatics">Data formats in bioinformatics</a><ul>
+<li><a href="#sequence">Sequence</a></li>
+<li><a href="#alingment">Alignment</a></li>
+<li><a href="#variant-and-genotype">Variant and genotype</a></li>
+<li><a href="#imputation-dosage">Imputation dosage</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="data-formats-for-general-purposes">Data formats for general purposes</h1>
+<h2 id="plain-text">plain text</h2>
+<h3 id="txt">txt</h3>
+<p>Simple text file</p>
+<h3 id="tsv">tsv</h3>
+<p>Tab-separated values
+Tabular data format </p>
+<h3 id="csv">csv</h3>
+<p>Comma-separated values
+Tabular data format </p>
+<h1 id="data-formats-in-bioinformatics">Data formats in bioinformatics</h1>
+<h2 id="sequence">Sequence</h2>
+<h3 id="fasta">fasta</h3>
+<h3 id="fastq">fastq</h3>
+<h2 id="alingment">Alingment</h2>
+<h3 id="sambam">SAM/BAM</h3>
+<h2 id="variant-and-genotype">Variant and genotype</h2>
+<h3 id="vcf-vcfgz-vcfgztbi">vcf / vcf.gz / vcf.gz.tbi</h3>
+<h3 id="ped-map">ped / map</h3>
+<h3 id="bed-fam-bim">bed / fam /bim</h3>
+<h2 id="imputation-dosage">Imputation dosage</h2>
+<h3 id="bgen-bgi">bgen / bgi</h3></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>GWASTutorial is licensed under the MIT license</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
