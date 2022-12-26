@@ -4,26 +4,26 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+        <meta name="description" content="None">
         <meta name="author" content="HE Yunye">
         
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Association tests - GWASTutorial</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>GWASTutorial</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
-    <body>
+    <body class="homepage">
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="..">GWASTutorial</a>
+                <a class="navbar-brand" href=".">GWASTutorial</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -33,43 +33,43 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem">
-                                <a href=".." class="nav-link">Home</a>
+                            <li class="navitem active">
+                                <a href="." class="nav-link">Home</a>
                             </li>
                             <li class="navitem">
-                                <a href="../02_Linux_basics/" class="nav-link">Linux</a>
+                                <a href="02_Linux_basics/" class="nav-link">Linux</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pre-GWAS <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../01_Dataset/" class="dropdown-item">Sample Dataset</a>
+    <a href="01_Dataset/" class="dropdown-item">Sample Dataset</a>
 </li>
                                     
 <li>
-    <a href="../03_Data_formats/" class="dropdown-item">Data Formats</a>
+    <a href="03_Data_formats/" class="dropdown-item">Data Formats</a>
 </li>
                                     
 <li>
-    <a href="../04_Data_QC/" class="dropdown-item">Data QC</a>
+    <a href="04_Data_QC/" class="dropdown-item">Data QC</a>
 </li>
                                     
 <li>
-    <a href="../05_PCA/" class="dropdown-item">PCA</a>
+    <a href="05_PCA/" class="dropdown-item">PCA</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">GWAS <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">Association tests</a>
+    <a href="06_Association_tests/" class="dropdown-item">Association tests</a>
 </li>
                                     
 <li>
-    <a href="../plot_data/" class="dropdown-item">Visualization</a>
+    <a href="plot_data/" class="dropdown-item">Visualization</a>
 </li>
                                 </ul>
                             </li>
@@ -78,19 +78,19 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../07_Annotation/" class="dropdown-item">Annotation</a>
+    <a href="07_Annotation/" class="dropdown-item">Annotation</a>
 </li>
                                     
 <li>
-    <a href="../08_LDSC/" class="dropdown-item">LDSC</a>
+    <a href="08_LDSC/" class="dropdown-item">LDSC</a>
 </li>
                                     
 <li>
-    <a href="../09_Gene_based_analysis/" class="dropdown-item">Gene/Gene-set tests</a>
+    <a href="09_Gene_based_analysis/" class="dropdown-item">Gene/Gene-set tests</a>
 </li>
                                     
 <li>
-    <a href="../10_PRS/" class="dropdown-item">PRS</a>
+    <a href="10_PRS/" class="dropdown-item">PRS</a>
 </li>
                                 </ul>
                             </li>
@@ -99,19 +99,19 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../80_anaconda/" class="dropdown-item">Anaconda</a>
+    <a href="80_anaconda/" class="dropdown-item">Anaconda</a>
 </li>
                                     
 <li>
-    <a href="../81_jupyter_notebook/" class="dropdown-item">Jupyter notebook</a>
+    <a href="81_jupyter_notebook/" class="dropdown-item">Jupyter notebook</a>
 </li>
                                     
 <li>
-    <a href="../82_windows_linux_subsystem/" class="dropdown-item">WLS</a>
+    <a href="82_windows_linux_subsystem/" class="dropdown-item">WLS</a>
 </li>
                                     
 <li>
-    <a href="../83_git_and_github/" class="dropdown-item">Git and github</a>
+    <a href="83_git_and_github/" class="dropdown-item">Git and github</a>
 </li>
                                 </ul>
                             </li>
@@ -119,12 +119,12 @@
 
                     <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a rel="prev" href="../05_PCA/" class="nav-link">
+                                <a rel="prev" class="nav-link disabled">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../plot_data/" class="nav-link">
+                                <a rel="next" href="02_Linux_basics/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -148,12 +148,17 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#gwastutorial-under-construction" class="nav-link">GWASTutorial (under construction)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-</div>
+<h1 id="gwastutorial-under-construction">GWASTutorial (under construction)</h1></div>
             </div>
         </div>
 
@@ -163,10 +168,10 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "..",
+            var base_url = ".",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
+        <script src="js/base.js" defer></script>
 
         <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -211,3 +216,8 @@
 
     </body>
 </html>
+
+<!--
+MkDocs version : 1.4.2
+Build Date UTC : 2022-12-26 01:44:39.250826+00:00
+-->
