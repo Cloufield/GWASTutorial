@@ -1,0 +1,34 @@
+site_name: GWASTutorial
+site_author: HE Yunye
+repo_name: 'GitHub'
+repo_url: https://github.com/Cloufield/GWASTutorial
+edit_uri: ""
+copyright: "GWASTutorial is licensed under the MIT license"
+theme:
+  name: mkdocs
+  nav_style: dark
+
+nav:
+    - Home: index.md
+    - Linux : 02_Linux_basics.md
+    - "Pre-GWAS" :
+       - "Sample Dataset" : 01_Dataset.md
+       - "Data Formats" : 03_Data_formats.md
+       - "Data QC" : 04_Data_QC.md
+       - "PCA" : 05_PCA.md
+    - "GWAS" : 
+       - "Association tests": 06_Association_tests.md
+       - "Visualization": plot_data.ipynb
+    - "Post-GWAS" :
+       - "Annotation" : 07_Annotation.md
+       - "LDSC" : 08_LDSC.md
+       - "Gene/Gene-set tests" : 09_Gene_based_analysis.md
+       - "PRS" : 10_PRS.md
+    - Others :
+       - "Anaconda" : 80_anaconda.md
+       - "Jupyter notebook" : 81_jupyter_notebook.md
+       - "WLS" : 82_windows_linux_subsystem.md
+       - "Git and github" : 83_git_and_github.md
+
+plugins:
+  - mkdocs-jupyter
