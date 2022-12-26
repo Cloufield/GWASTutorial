@@ -28,10 +28,10 @@ And you will get the following files:
 ```
 
 ## Phenotype Simulation
-Pehontypes were simply simulated using GCTA.
+Pehontypes were simply simulated using GCTA with the 1KG EAS dataset (without thinning).
 ```Bash
 gcta64  \
-  --bfile 1KGEAS.auto.norm_nodup_split_maf005 \ 
+  --bfile 1KG.EAS.auto.snp.norm.nodup.split.maf005 \ 
   --simu-cc 200 304 \
   --simu-causal-loci causal_10.snplist  \
   --simu-hsq 0.8  \
