@@ -56,15 +56,16 @@ Just like clicking and dragging files in Windows or MacOS, in Linux, we usually 
 ![image](https://user-images.githubusercontent.com/40289485/161308638-18a0efbf-92df-4795-87be-72080db316c6.png)
 
 Here are some of the basic commands we are going to cover in this brief tutorial:
+
 |Function group| Commands| Description|
 |-|-|-|
-| Directories| `pwd`, `ls`, `mkdir`, `rmdir`| Commands for checking, creating and removing directories|
-| Files|`touch`,`cp`,`mv`,`rm` | Commands for creating, copying, moving and removing files|
+| Directories | `pwd`, `ls`, `mkdir`, `rmdir`| Commands for checking, creating and removing directories|
+| Files |`touch`,`cp`,`mv`,`rm` | Commands for creating, copying, moving and removing files|
 | Checking files| `cat`,`zcat`,`head`,`tail`,`less`,`more`,`wc`| Commands for inspecting files|
-| Archiving and compression| `tar`,`gzip`,`gunzip`,`zip`,`unzip`| Commands for (Un)archiving and (De)compressing files|
-| Manipulating text| `sort`,`uniq`,`cut`,`join`,`tr`|Commands for manipulating (tabular) text files|
+| Archiving and compression| `tar`,`gzip`,`gunzip`,`zip`,`unzip`| Commands for Archiving and Compressing files|
+| Manipulating text| `sort`,`uniq`,`cut`,`join`,`tr`|Commands for manipulating text files|
 | Modifying permission| `chmod`,`chown`, `chgrp`| Commands for changing the permissions of files and directories|
-| Links| `ln`| Commands for creating symbolic and hard links|
+| Links| `ln` | Commands for creating symbolic and hard links|
 | Pipe, redirect and others| pipe, `>`,`>>`,`*`,`.`,`..` | A group of miscellaneous commands |
 | Advance text editing| `awk`, `sed` | Commands for more complicated text manipulation and editing |
 
