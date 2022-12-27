@@ -131,9 +131,32 @@ Reference : https://samtools.github.io/hts-specs/VCFv4.2.pdf
 
 ### ped / map 
 .ped (PLINK/MERLIN/Haploview text pedigree + genotype table)
+
 Original standard text format for sample pedigree information and genotype calls.Contains no header line, and one line per sample with 2V+6 fields where V is the number of variants. The first six fields are the same as those in a .fam file. The seventh and eighth fields are allele calls for the first variant in the .map file ('0' = no call); the 9th and 10th are allele calls for the second variant; and so on.
 
+```
+# check the first 16 rows and 16 columns of the ped file
+cut -d " " -f 1-16 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.ped | head
+0 HG00403 0 0 0 -9 G G T T A A G A C C
+0 HG00404 0 0 0 -9 G G T T A A G A T C
+0 HG00406 0 0 0 -9 G G T T A A G A T C
+0 HG00407 0 0 0 -9 G G T T A A A A C C
+0 HG00409 0 0 0 -9 G G T T A A G A C C
+0 HG00410 0 0 0 -9 G G T T A A G A C C
+0 HG00419 0 0 0 -9 G G T T A A A A T C
+0 HG00421 0 0 0 -9 G G T T A A G A C C
+0 HG00422 0 0 0 -9 G G T T A A G A C C
+0 HG00428 0 0 0 -9 G G T T A A G A C C
+0 HG00436 0 0 0 -9 G G A T G A A A C C
+0 HG00437 0 0 0 -9 C G T T A A G A C C
+0 HG00442 0 0 0 -9 G G T T A A G A C C
+0 HG00443 0 0 0 -9 G G T T A A G A C C
+0 HG00445 0 0 0 -9 G G T T A A G A C C
+0 HG00446 0 0 0 -9 C G T T A A G A T C
+```
+
 .map (PLINK text fileset variant information file)
+
 Variant information file accompanying a .ped text pedigree + genotype table. A text file with no header line, and one line per variant with the following 3-4 fields:
 
 - Chromosome code. PLINK 1.9 also permits contig names here, but most older programs do not.
@@ -141,9 +164,80 @@ Variant information file accompanying a .ped text pedigree + genotype table. A t
 - Position in morgans or centimorgans (optional; also safe to use dummy value of '0')
 - Base-pair coordinate
 
+```
+head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.map
+1       1:13273:G:C     0       13273
+1       1:14599:T:A     0       14599
+1       1:14604:A:G     0       14604
+1       1:14930:A:G     0       14930
+1       1:69897:T:C     0       69897
+1       1:86331:A:G     0       86331
+1       1:91581:G:A     0       91581
+1       1:122872:T:G    0       122872
+1       1:135163:C:T    0       135163
+1       1:233473:C:G    0       233473
+```
+
 Reference: [https://www.cog-genomics.org/plink/1.9/formats](https://www.cog-genomics.org/plink/1.9/formats)
 ### bed / fam /bim
-binary implementation of ped and map
+bed/fam/bim formats are the binary implementation of ped/map formats.
+bed/bim/fam files contain the same information as ped/map but are much smaller in size.
+
+```
+-rw-r----- 1 yunye yunye 135M Dec 23 11:45 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
+-rw-r----- 1 yunye yunye  36M Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
+-rw-r----- 1 yunye yunye 9.4K Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
+-rw-r--r-- 1 yunye yunye  32M Dec 27 17:51 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.map
+-rw-r--r-- 1 yunye yunye 2.2G Dec 27 17:51 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.ped
+```
+
+fam
+```
+head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
+0 HG00403 0 0 0 -9
+0 HG00404 0 0 0 -9
+0 HG00406 0 0 0 -9
+0 HG00407 0 0 0 -9
+0 HG00409 0 0 0 -9
+0 HG00410 0 0 0 -9
+0 HG00419 0 0 0 -9
+0 HG00421 0 0 0 -9
+0 HG00422 0 0 0 -9
+0 HG00428 0 0 0 -9
+```
+
+bim
+```
+head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
+1       1:13273:G:C     0       13273   C       G
+1       1:14599:T:A     0       14599   A       T
+1       1:14604:A:G     0       14604   G       A
+1       1:14930:A:G     0       14930   G       A
+1       1:69897:T:C     0       69897   C       T
+1       1:86331:A:G     0       86331   G       A
+1       1:91581:G:A     0       91581   A       G
+1       1:122872:T:G    0       122872  G       T
+1       1:135163:C:T    0       135163  T       C
+1       1:233473:C:G    0       233473  G       C
+```
+
+bed : 
+"Primary representation of genotype calls at biallelic variants
+The first three bytes should be 0x6c, 0x1b, and 0x01 in that order.
+The rest of the file is a sequence of V blocks of N/4 (rounded up) bytes each, where V is the number of variants and N is the number of samples. The first block corresponds to the first marker in the .bim file, etc."
+```
+hexdump -C 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed | head
+00000000  6c 1b 01 ff ff bf bf ff  ff ff ef fb ff ff ff fe  |l...............|
+00000010  ff ff ff ff fb ff bb ff  ff fb af ff ff fe fb ff  |................|
+00000020  ff ff ff fe ff ff ff ff  ff bf ff ff ef ff ff ef  |................|
+00000030  bb ff ff ff ff ff ff ff  fa ff ff ff ff ff ff ff  |................|
+00000040  ff ff ff fb ff ff ff ff  ff ff ff ff ff ff ff ef  |................|
+00000050  ff ff ff fb fe ef fe ff  ff ff ff eb ff ff fe fe  |................|
+00000060  ff ff fe ff bf ff fa fb  fb eb be ff ff 3b ff be  |.............;..|
+00000070  fe be bf ef fe ff ef ee  ff ff bf ea fe bf fe ff  |................|
+00000080  bf ff ff ef ff ff ff ff  ff fa ff ff eb ff ff ff  |................|
+00000090  ff ff fb fe af ff bf ff  ff ff ff ff ff ff ff ff  |................|
+```
 
 Reference: [https://www.cog-genomics.org/plink/1.9/formats](https://www.cog-genomics.org/plink/1.9/formats)
 ## Imputation dosage
