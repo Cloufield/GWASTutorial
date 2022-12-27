@@ -65,7 +65,7 @@ Here are some of the basic commands we are going to cover in this brief tutorial
 | Manipulating text| `sort`,`uniq`,`cut`,`join`,`tr`|Commands for manipulating (tabular) text files|
 | Modifying permission| `chmod`,`chown`, `chgrp`| Commands for changing the permissions of files and directories|
 | Links| `ln`| Commands for creating symbolic and hard links|
-| Pipe, redirect and others|`\|`,`>`,`>>`,`*`,`.`,`..` | A group of miscellaneous commands |
+| Pipe, redirect and others| pipe, `>`,`>>`,`*`,`.`,`..` | A group of miscellaneous commands |
 | Advance text editing| `awk`, `sed` | Commands for more complicated text manipulation and editing |
 
 
