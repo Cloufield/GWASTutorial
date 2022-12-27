@@ -39,4 +39,26 @@ If everything goes well, then you can see the `(base)` before the prompt, which 
 For how to use conda, please check :
 https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html
 
+Examples:
+```
+# install a specific version of python package
+conda install pandas==1.5.2
 
+#create a new python 3.9 virtual environment with the name "mypython39"
+conda create -n mypython39 python=3.9
+
+#use environment.yml to create a virtual environment
+conda env create --file environment.yml
+
+# activate a virtual environment called ldsc
+conda activate ldsc
+
+# change back to base environment
+conda deactivate
+
+# list all packages in your current environment 
+conda list
+
+# list all your current environments 
+conda env list
+```
