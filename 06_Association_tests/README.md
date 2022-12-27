@@ -114,7 +114,30 @@ Lest check the first lines of the output:
 1	135163	1:135163:C:T	C	T	T	ADD	503	0.676666	0.242611	-1.60989	0.107422	.
 ```
 
+# Significant loci
+
+Please check [Visualization using gwaslab](https://cloufield.github.io/GWASTutorial/Visualization/)
+
+Loci reach suggestive significance (P value threshold: 5e-6)
+```
+SNPID	CHR	POS	EA	NEA	SE	Z	P	OR	N	STATUS
+1:217437563:C:T	1	217437563	C	T	0.151157	-5.22793	1.714210e-07	0.453736	503	9999999
+2:55574452:G:C	2	55574452	C	G	0.160948	-5.98392	2.178320e-09	0.381707	503	9999999
+3:176524872:C:T	3	176524872	T	C	0.248418	4.92774	8.318440e-07	3.401240	503	9999999
+3:193128900:G:A	3	193128900	A	G	0.153788	4.70811	2.500290e-06	2.062770	503	9999999
+6:29919659:T:C	6	29919659	T	C	0.155457	-5.89341	3.782970e-09	0.400048	503	9999999
+9:36660672:A:G	9	36660672	G	A	0.160275	5.63422	1.758540e-08	2.467060	503	9999999
+11:56249438:A:G	11	56249438	G	A	0.188891	-4.77836	1.767350e-06	0.405518	503	9999999
+```
+
 # Visualization
 To visualize the result, we will create manhattan plot, QQ plot and regional plot.
 
 Please check [Visualization using gwaslab](https://cloufield.github.io/GWASTutorial/Visualization/)
+
+## Mahanttan plot and Quantile-Quantile plot
+![image](https://user-images.githubusercontent.com/40289485/209681591-dc691764-7346-4936-80b4-528bc425a61e.png)
+
+## Regional plot
+![image](https://user-images.githubusercontent.com/40289485/209681608-3973c546-ad52-4d77-a3a1-a1c60a7a0a97.png)
+
