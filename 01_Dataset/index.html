@@ -151,16 +151,22 @@
             
             <li class="nav-item" data-level="1"><a href="#sample-dataset" class="nav-link">Sample Dataset</a>
               <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#genotype-data-processing" class="nav-link">Genotype Data Processing</a>
+            <li class="nav-item" data-level="2"><a href="#genotype-data-processing" class="nav-link">Genotype Data Processing</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#download" class="nav-link">Download</a>
+            <li class="nav-item" data-level="2"><a href="#download" class="nav-link">Download</a>
               <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#phenotype-simulation" class="nav-link">Phenotype Simulation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#reference" class="nav-link">Reference</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -170,9 +176,8 @@
 
 <h1 id="sample-dataset">Sample Dataset</h1>
 <p>504 EAS individuals from 1000 Genome Project Phase 3 v5
-- Url: <a href="http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/">http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/</a>
-- Citation: 1000 Genomes Project Consortium. (2015). A global reference for human genetic variation. Nature, 526(7571), 68.</p>
-<h1 id="genotype-data-processing">Genotype Data Processing</h1>
+- Url: <a href="http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/">http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/</a></p>
+<h2 id="genotype-data-processing">Genotype Data Processing</h2>
 <ul>
 <li>Selected only autosomal variants</li>
 <li>Split muktiallelic varaints</li>
@@ -183,7 +188,7 @@
 <li>Randomly selected 20% of SNPs (<code>plink --thin 0.2</code>)</li>
 <li>Converted to plink bed format and merged to a single file  </li>
 </ul>
-<h1 id="download">Download</h1>
+<h2 id="download">Download</h2>
 <p>Simply run <code>download_sampledata.sh</code> and the dataset will be downloaded and decompressed.</p>
 <pre><code>./download_sampledata.sh
 </code></pre>
@@ -191,7 +196,23 @@
 <pre><code>1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
-</code></pre></div>
+</code></pre>
+<h2 id="phenotype-simulation">Phenotype Simulation</h2>
+<p>Pehontypes were simply simulated using GCTA with the 1KG EAS dataset (without thinning).</p>
+<pre><code class="language-Bash">gcta64  \
+  --bfile 1KG.EAS.auto.snp.norm.nodup.split.maf005 \ 
+  --simu-cc 200 304 \
+  --simu-causal-loci causal_10.snplist  \
+  --simu-hsq 0.8  \
+  --simu-k 0.4 \
+  --simu-rep 1 \
+  --out 1kgeas_binary
+</code></pre>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>1000 Genomes Project Consortium. (2015). A global reference for human genetic variation. Nature, 526(7571), 68.</li>
+<li>Yang, J., Lee, S. H., Goddard, M. E., &amp; Visscher, P. M. (2011). GCTA: a tool for genome-wide complex trait analysis. The American Journal of Human Genetics, 88(1), 76-82.</li>
+</ul></div>
             </div>
         </div>
 

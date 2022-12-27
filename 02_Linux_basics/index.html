@@ -274,16 +274,67 @@ In this module, we will learn the most basic commands which enable you to handle
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161374551-1ef3b509-b345-4be3-b45b-3f86c466aa5a.png" /></p>
 <h3 id="02-how-do-we-interact-with-computers">0.2 How do we interact with computers?</h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161374590-fd4bfee0-e815-475b-8a73-e53d97447e74.png" /></p>
-<h3 id="03-a-comparison-between-cui-and-gui">0.3 A comparison between CUI and GUI</h3>
-<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161374600-ff32fc6b-dafa-4535-a971-1122aa14f708.png" /></p>
+<h3 id="03-a-general-comparison-between-cui-and-gui">0.3 A general comparison between CUI and GUI</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>GUI</th>
+<th>CUI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interaction</td>
+<td>Graphics</td>
+<td>Command line</td>
+</tr>
+<tr>
+<td>Precision</td>
+<td>LOW</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>LOW</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td>Memory required</td>
+<td>HIGH</td>
+<td>LOW</td>
+</tr>
+<tr>
+<td>Ease of operation</td>
+<td>Easier</td>
+<td>DIFFICULT</td>
+</tr>
+<tr>
+<td>Flexibility</td>
+<td>MORE flexible</td>
+<td>LESS flexible</td>
+</tr>
+</tbody>
+</table>
+<p>-&gt; CUI is better for large-scale data analysis </p>
 <p>Check list
 - [ ] what is CUI and GUI?
 - [ ] why do we use Linux over other systems? </p>
 <h2 id="11-overview-of-the-basic-commands-in-linux">1.1 Overview of the basic commands in Linux</h2>
 <p>Just like clicking and dragging files in Windows or MacOS, in Linux, we usually handle files by typing commands in the terminal.
 <img alt="image" src="https://user-images.githubusercontent.com/40289485/161308638-18a0efbf-92df-4795-87be-72080db316c6.png" /></p>
-<p>Here are some of the basic commands we are going to cover in this brief tutorial:</p>
-<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161367661-8e3fe5f4-4aa9-4955-b18f-195bece425c6.png" /></p>
+<p>Here are some of the basic commands we are going to cover in this brief tutorial:
+|Function group| Commands| Description|
+|-|-|-|
+| Directories| <code>pwd</code>, <code>ls</code>, <code>mkdir</code>, <code>rmdir</code>| Commands for checking, creating and removing directories|
+| Files|<code>touch</code>,<code>cp</code>,<code>mv</code>,<code>rm</code> | Commands for creating, copying, moving and removing files|
+| Checking files| <code>cat</code>,<code>zcat</code>,<code>head</code>,<code>tail</code>,<code>less</code>,<code>more</code>,<code>wc</code>| Commands for inspecting files|
+| Archiving and compression| <code>tar</code>,<code>gzip</code>,<code>gunzip</code>,<code>zip</code>,<code>unzip</code>| Commands for (Un)archiving and (De)compressing files|
+| Manipulating text| <code>sort</code>,<code>uniq</code>,<code>cut</code>,<code>join</code>,<code>tr</code>|Commands for manipulating (tabular) text files|
+| Modifying permission| <code>chmod</code>,<code>chown</code>, <code>chgrp</code>| Commands for changing the permissions of files and directories|
+| Links| <code>ln</code>| Commands for creating symbolic and hard links|
+| Pipe, redirect and others|<code>\|</code>,<code>&gt;</code>,<code>&gt;&gt;</code>,<code>*</code>,<code>.</code>,<code>..</code> | A group of miscellaneous commands |
+| Advance text editing| <code>awk</code>, <code>sed</code> | Commands for more complicated text manipulation and editing |</p>
 <h3 id="how-to-check-the-usage-of-a-command-using-man">How to check the usage of a command using <code>man</code>:</h3>
 <p>check the manual of the command (e.g., <code>man chmod</code>) or <code>--help</code> option (e.g., <code>chmod --help</code>)</p>
 <pre><code>$ man pwd
@@ -500,7 +551,6 @@ CHROM   POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
 <p>a handy text editor in command line: vim</p>
 <pre><code>vim a_new_file.txt
 </code></pre>
-<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161375546-83e4b7e1-c370-4f48-bb3a-b6d4b7abfbb3.png" /></p>
 <p>press <code>i</code> to enter insert mode, and then you can edit the file as you want.
 When finished, just pres <code>Esc</code> to escape insert mode, and then press <code>shift + :</code> , then <code>wq</code> to quit and also save the file.</p>
 <p>Vim is hard to learn for beginners, but when you get familiar with it, it will be a mighty and convient tool.
@@ -509,9 +559,93 @@ For more detailed tutorials on Vim, you can check: https://github.com/iggredible
 <p>The permissions of a file or directory are represented as a 10-character string (1+3+3+3) :</p>
 <p>For example, this represents a directory(the initial d) which is readable, writable and executable for the owner(the first 3: rwx), users in the same group(the 3 characters in the middle: rwx) and others (last 3 characters: rwx).</p>
 <p><code>drwxrwxrwx</code></p>
-<p>Command for checking the permissions: <code>ls -l</code></p>
-<p>Change: chmod, chown, chgrp
-<img alt="image" src="https://user-images.githubusercontent.com/40289485/160773766-98c3a6f8-e3ee-4d98-abc0-4840b45e5573.png" /></p>
+<p>-&gt; <code>d (directory or file) rwx (permissions for owner) rwx (permissions for users in the same group) rwx (permissions for other users)</code></p>
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>r</code></td>
+<td>readable</td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td>writable</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>executable</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>directory</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>file</td>
+</tr>
+</tbody>
+</table>
+<p>Command for checking the permissions of files in the current directory: <code>ls -l</code></p>
+<p>Command for changing permissions: <code>chmod</code>, <code>chown</code>, <code>chgrp</code></p>
+<p>Syntax:</p>
+<pre><code>chmod [3-digit Binary notation] [path]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Number notation</th>
+<th>Permission</th>
+<th>3-digit Binary notation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td><code>rwx</code></td>
+<td>111</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>rw-</code></td>
+<td>110</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>r-x</code></td>
+<td>101</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>r--</code></td>
+<td>100</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>-wx</code></td>
+<td>011</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>-w-</code></td>
+<td>010</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>--x</code></td>
+<td>001</td>
+</tr>
+<tr>
+<td>0</td>
+<td><code>---</code></td>
+<td>000</td>
+</tr>
+</tbody>
+</table>
 <p>Example:</p>
 <pre><code># there is a readme file in the directory, and its permissions are -rw-r----- 
 $ ls -lh
