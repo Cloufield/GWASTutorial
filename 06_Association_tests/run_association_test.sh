@@ -17,6 +17,8 @@ plink2 \
 	--pheno ${phenotypeFile} \
 	--pheno-name ${colName} \
 	--maf 0.01 \
-	--glm hide-covar allow-no-covars \
+	--covar ${covariateFile} \
+	--covar-col-nums ${covariateCols} \
+	--glm hide-covar firth \
 	--threads ${threadnum} \
 	--out 1kgeas

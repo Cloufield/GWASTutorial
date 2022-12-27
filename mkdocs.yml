@@ -18,7 +18,7 @@ nav:
        - "PCA" : 05_PCA.md
     - "GWAS" : 
        - "Association tests": 06_Association_tests.md
-       - "Visualization": plot_data.ipynb
+       - "Visualization": Visualization.ipynb
     - "Post-GWAS" :
        - "Annotation" : 07_Annotation.md
        - "LDSC" : 08_LDSC.md
