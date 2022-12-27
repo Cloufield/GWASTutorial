@@ -35,8 +35,17 @@ In this module, we will learn the most basic commands which enable you to handle
 ### 0.2 How do we interact with computers?
 ![image](https://user-images.githubusercontent.com/40289485/161374590-fd4bfee0-e815-475b-8a73-e53d97447e74.png)
 
-### 0.3 A comparison between CUI and GUI
-![image](https://user-images.githubusercontent.com/40289485/161374600-ff32fc6b-dafa-4535-a971-1122aa14f708.png)
+### 0.3 A general comparison between CUI and GUI
+||GUI|CUI|
+|-|-|-|
+|Interaction|Graphics|Command line|
+|Precision|LOW|HIGH|
+|Speed|LOW|HIGH|
+|Memory required|HIGH|LOW|
+|Ease of operation|Easier|DIFFICULT|
+|Flexibility|MORE flexible|LESS flexible|
+
+-> CUI is better for large-scale data analysis 
 
 Check list
 - [ ] what is CUI and GUI?
@@ -47,8 +56,17 @@ Just like clicking and dragging files in Windows or MacOS, in Linux, we usually 
 ![image](https://user-images.githubusercontent.com/40289485/161308638-18a0efbf-92df-4795-87be-72080db316c6.png)
 
 Here are some of the basic commands we are going to cover in this brief tutorial:
-
-![image](https://user-images.githubusercontent.com/40289485/161367661-8e3fe5f4-4aa9-4955-b18f-195bece425c6.png)
+|Function group| Commands| Description|
+|-|-|-|
+| Directories| `pwd`, `ls`, `mkdir`, `rmdir`| Commands for checking, creating and removing directories|
+| Files|`touch`,`cp`,`mv`,`rm` | Commands for creating, copying, moving and removing files|
+| Checking files| `cat`,`zcat`,`head`,`tail`,`less`,`more`,`wc`| Commands for inspecting files|
+| Archiving and compression| `tar`,`gzip`,`gunzip`,`zip`,`unzip`| Commands for (Un)archiving and (De)compressing files|
+| Manipulating text| `sort`,`uniq`,`cut`,`join`,`tr`|Commands for manipulating (tabular) text files|
+| Modifying permission| `chmod`,`chown`, `chgrp`| Commands for changing the permissions of files and directories|
+| Links| `ln`| Commands for creating symbolic and hard links|
+| Pipe, redirect and others|`\|`,`>`,`>>`,`*`,`.`,`..` | A group of miscellaneous commands |
+| Advance text editing| `awk`, `sed` | Commands for more complicated text manipulation and editing |
 
 
 ### How to check the usage of a command using `man`: 
@@ -330,9 +348,6 @@ a handy text editor in command line: vim
 vim a_new_file.txt
 ```
 
-![image](https://user-images.githubusercontent.com/40289485/161375546-83e4b7e1-c370-4f48-bb3a-b6d4b7abfbb3.png)
-
-
 press `i` to enter insert mode, and then you can edit the file as you want.
 When finished, just pres `Esc` to escape insert mode, and then press `shift + :` , then `wq` to quit and also save the file.
 
@@ -346,11 +361,35 @@ For example, this represents a directory(the initial d) which is readable, writa
 
 `drwxrwxrwx`
 
+-> `d (directory or file) rwx (permissions for owner) rwx (permissions for users in the same group) rwx (permissions for other users)`
 
-Command for checking the permissions: `ls -l`
+|Notation|Description|
+|-|-|
+|`r`|readable|
+|`w`|writable|
+|`x`|executable|
+|`d`|directory|
+|`-`|file|
 
-Change: chmod, chown, chgrp
-![image](https://user-images.githubusercontent.com/40289485/160773766-98c3a6f8-e3ee-4d98-abc0-4840b45e5573.png)
+Command for checking the permissions of files in the current directory: `ls -l`
+
+Command for changing permissions: `chmod`, `chown`, `chgrp`
+
+Syntax:
+```
+chmod [3-digit Binary notation] [path]
+```
+
+|Number notation|Permission|3-digit Binary notation|
+|-|-|-|
+|7|`rwx`|111|
+|6|`rw-`|110|
+|5|`r-x`|101|
+|4|`r--`|100|
+|3|`-wx`|011|
+|2|`-w-`|010|
+|1|`--x`|001|
+|0|`---`|000|
 
 Example:
 ```
