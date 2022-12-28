@@ -1,7 +1,7 @@
 # Association test
 
 ## File preparation
-To perform association analysis, usually we need the following files:
+To perform genome-wide association study (GWAS), usually we need the following files:
 
 - **Genotype file** (or dosage file) : usually in PLINK format, VCF format, or BGEN format.
 - **Phenotype file** : plain text file.
@@ -10,7 +10,7 @@ To perform association analysis, usually we need the following files:
 For example,
 
 ```
-# phenotype file for a simulated binary trait
+# Phenotype file for a simulated binary trait; B1 is the phenotype name; 1 means control, 2 means case.
 head 1kgeas_binary.txt 
 FID IID B1
 0 HG00403 2 
@@ -23,7 +23,7 @@ FID IID B1
 0 HG00421 2 
 0 HG00422 1
 
-# the covariates file (only top PCs)
+# Covariate file (only top PCs calculated in the previous PCA section)
 #FID	IID	ALLELE_CT	NAMED_ALLELE_DOSAGE_SUM	PC1_AVG	PC2_AVG	PC3_AVG	PC4_AVG	PC5_AVG	PC6_AVG	PC7_AVG	PC8_AVG	PC9_AVG	PC10_AVG
 0	HG00403	224016	224016	0.000246109	0.0292717	-0.0127437	-0.0135105	0.0301317	0.0196699	0.0232392	-0.0205941	-0.00416543	0.0121819
 0	HG00404	224016	224016	-0.000716664	0.032043	-0.00573731	-0.0189504	0.0277385	-0.0154478	-0.0136551	-0.00147269	0.00510851	0.0268694
@@ -36,11 +36,33 @@ FID IID B1
 0	HG00422	224016	224016	0.00440288	0.0335901	-0.0125043	0.0135621	-0.0228428	0.00492741	0.00445856	-0.00911147	-0.00312742	-0.00784459
 ```
 
-## Testing
+## Genetic models
+
+To test the association between a phenotype and genotypes, we also need to group the genotypes based on genetic models.
+
+There are three basic genetic models:
+- Additive model (ADD)
+- Dominant model (DOM)
+- Recessive model (REC)
+
+For example, suppose we have a biallelic SNP whose reference allele is A and alternative allele is G.
+
+There are three possible genotypes for this SNP: AA, AG, and GG.
+
+The table shows how we group different genotypes under each genetic model.
+
+|Genetic models|AA|AG|GG|
+|-|-|-|-|
+|Additive model|0|1|2|
+|Dominant model|0|1|1|
+|Recessive model|0|0|1|
+
+
+## Association testing
 
 Please check https://www.cog-genomics.org/plink/2.0/assoc for more details.
 
-We will perform a logistic regression with firth correction for a simulated binary trait using 1KG East Asian individuals.
+We will perform a logistic regression with firth correction for a simulated binary trait under additive model using the 1KG East Asian individuals.
 
 Sample code:
 
@@ -114,11 +136,25 @@ Lest check the first lines of the output:
 1	135163	1:135163:C:T	C	T	T	ADD	503	0.676666	0.242611	-1.60989	0.107422	.
 ```
 
-# Significant loci
+## Genomic control 
+
+Genomic control (GC) is a basic method for controlling for the confunding factors like population stratification.
+  
+We will calculate genomic control factor (lambda GC) to evaluate the inflation. The genomic control factor is calculated by dividing the **median of observed Chi square statistics** by the **median of Chi square distribution with degree of 1** (which is approximately 0.455).
+
+$$ \lambda_{GC} = {median(\chi^{2}_{observed}) \over median(\chi^{2}_1)} $$
+
+Then, we can used the genomic control factor to correct observed Chi suqare statistics.
+
+$$ \chi^{2}_{corrected} = {\chi^{2}_{observed} \over \lambda_{GC}} $$
+
+Reference: Devlin, B., & Roeder, K. (1999). Genomic control for association studies. Biometrics, 55(4), 997-1004.
+
+## Significant loci
 
 Please check [Visualization using gwaslab](https://cloufield.github.io/GWASTutorial/Visualization/)
 
-Loci reach suggestive significance (P value threshold: 5e-6)
+Loci that reached suggestive significance threhold (P value < 5e-6) :
 ```
 SNPID	CHR	POS	EA	NEA	SE	Z	P	OR	N	STATUS
 1:217437563:C:T	1	217437563	C	T	0.151157	-5.22793	1.714210e-07	0.453736	503	9999999
@@ -131,7 +167,8 @@ SNPID	CHR	POS	EA	NEA	SE	Z	P	OR	N	STATUS
 ```
 
 # Visualization
-To visualize the result, we will create manhattan plot, QQ plot and regional plot.
+
+To visualize the results, we will create manhattan plot, QQ plot and regional plot.
 
 Please check [Visualization using gwaslab](https://cloufield.github.io/GWASTutorial/Visualization/)
 
@@ -139,5 +176,10 @@ Please check [Visualization using gwaslab](https://cloufield.github.io/GWASTutor
 ![image](https://user-images.githubusercontent.com/40289485/209681591-dc691764-7346-4936-80b4-528bc425a61e.png)
 
 ## Regional plot
+
+The regional plot for the loci of 2:55574452:G:C. 
+
+Please check [Visualization using gwaslab](https://cloufield.github.io/GWASTutorial/Visualization/)
+
 ![image](https://user-images.githubusercontent.com/40289485/209681608-3973c546-ad52-4d77-a3a1-a1c60a7a0a97.png)
 
