@@ -149,25 +149,25 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#5principle-conponent-analysis" class="nav-link">5.Principle conponent analysis</a>
+            <li class="nav-item" data-level="1"><a href="#principle-conponent-analysis-pca" class="nav-link">Principle conponent analysis (PCA)</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#51-preparation" class="nav-link">5.1 Preparation</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#52-pca-steps" class="nav-link">5.2 PCA steps</a>
+            <li class="nav-item" data-level="2"><a href="#preparation" class="nav-link">Preparation</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#53-sample-codes" class="nav-link">5.3 Sample codes</a>
+            <li class="nav-item" data-level="2"><a href="#pca-steps" class="nav-link">PCA steps</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#54-plotting-the-pcs" class="nav-link">5.4 Plotting the PCs</a>
+            <li class="nav-item" data-level="2"><a href="#sample-codes" class="nav-link">Sample codes</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#55-pca-umap" class="nav-link">5.5 PCA-UMAP</a>
+            <li class="nav-item" data-level="2"><a href="#plotting-the-pcs" class="nav-link">Plotting the PCs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pca-umap" class="nav-link">PCA-UMAP</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -183,7 +183,7 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="5principle-conponent-analysis">5.Principle conponent analysis</h1>
+<h1 id="principle-conponent-analysis-pca">Principle conponent analysis (PCA)</h1>
 <p>PCA is by far the most commonly used dimension reduction approach used in population genetics which could identify the diffenrence in ancestry among the sample individuals.
 For GWAS we also need to include top PCs to adjust for the population stratification.</p>
 <p>Please read the following paper on how we apply PCA to genetic data:
@@ -191,18 +191,20 @@ Price, A., Patterson, N., Plenge, R. et al. Principal components analysis correc
 <p>Simply speaking, GRM (genetic relationship matrix) is first estimated and then PCA is applied to this matrix to generate PCs for each individual.</p>
 <p>So before association analysis, we will learn how to run PCA analysis first.</p>
 <ul>
-<li><a href="#51-preparation">5.1 Preparation</a></li>
-<li><a href="#52-pca-steps">5.2 PCA steps</a></li>
-<li><a href="#53-sample-codes">5.3 Sample codes</a></li>
-<li><a href="#54-plotting-the-pcs">5.4 Plotting the PCs</a></li>
-<li><a href="#55-pca-umap">5.5 PCA-UMAP</a></li>
+<li><a href="#preparation">Preparation</a></li>
+<li><a href="#pca-steps">PCA steps</a></li>
+<li><a href="#sample-codes">Sample codes</a></li>
+<li><a href="#plotting-the-pcs">Plotting the PCs</a></li>
+<li><a href="#pca-umap">PCA-UMAP</a></li>
 <li><a href="#references">References</a></li>
 </ul>
-<hr />
-<h2 id="51-preparation">5.1 Preparation</h2>
-<p>excluding SNPs in high-LD or HLA regions. </p>
-<p>Please check https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD)
-- 0.1 simply copy the list of high-LD or HLA regions in Genome build version(.bed format) to a text file <code>high-ld.txt</code>.</p>
+<h2 id="preparation">Preparation</h2>
+<h3 id="exclude-snps-in-high-ld-or-hla-regions">Exclude SNPs in high-LD or HLA regions</h3>
+<p>For PCA, we first exclude SNPs in high-LD or HLA regions from the genotype data. </p>
+<p>Note: the reason why we want to exclude such high-LD or HLA regions is described in:
+- Price, A. L., Weale, M. E., Patterson, N., Myers, S. R., Need, A. C., Shianna, K. V., Ge, D., Rotter, J. I., Torres, E., Taylor, K. D., Goldstein, D. B., &amp; Reich, D. (2008). Long-range LD can confound genome scans in admixed populations. American journal of human genetics, 83(1), 132–139. https://doi.org/10.1016/j.ajhg.2008.06.005 </p>
+<h3 id="download-bed-like-files-for-high-ld-or-hla-regions">Download BED-like files for high-LD or HLA regions</h3>
+<p>You can simply copy the list of high-LD or HLA regions in Genome build version(.bed format) to a text file <code>high-ld.txt</code>. For details, please check https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD).</p>
 <pre><code>$cat high-ld-hg19.txt 
 1   48000000    52000000    highld
 2   86000000    100500000   highld
@@ -229,9 +231,8 @@ Price, A., Patterson, N., Plenge, R. et al. Principal components analysis correc
 12  109500000   112000000   highld
 20  32000000    34500000    highld
 </code></pre>
-<ul>
-<li>0.2 use <code>high-ld.txt</code> to extract all SNPs which are located in the regions described in the file using the code as follows:</li>
-</ul>
+<h3 id="create-a-list-for-snps-in-high-ld-or-hla-regions">Create a list for SNPs in high-LD or HLA regions</h3>
+<p>Next, use <code>high-ld.txt</code> to extract all SNPs which are located in the regions described in the file using the code as follows:</p>
 <pre><code>plink --file ${plinkFile} --make-set high-ld.txt --write-set --out hild
 </code></pre>
 <p>For example:</p>
@@ -256,13 +257,9 @@ highld
 1:48009994:C:T
 1:48009997:C:A
 </code></pre>
-<ul>
-<li>0.3 exclude these SNPs using <code>--exclude hild.set</code> when pruning.</li>
-</ul>
-<p>Note: the reason why we want to exclude such high-LD or HLA regions is described in:
-- Price, A. L., Weale, M. E., Patterson, N., Myers, S. R., Need, A. C., Shianna, K. V., Ge, D., Rotter, J. I., Torres, E., Taylor, K. D., Goldstein, D. B., &amp; Reich, D. (2008). Long-range LD can confound genome scans in admixed populations. American journal of human genetics, 83(1), 132–139. https://doi.org/10.1016/j.ajhg.2008.06.005 </p>
+<p>For downstream analysis, we can exclude these SNPs using <code>--exclude hild.set</code>.</p>
 <hr />
-<h2 id="52-pca-steps">5.2 PCA steps</h2>
+<h2 id="pca-steps">PCA steps</h2>
 <ul>
 <li>1.Pruning (https://www.cog-genomics.org/plink/2.0/ld#indep)</li>
 <li>2.Removing relatives (usually 2-degree) (https://www.cog-genomics.org/plink/2.0/distance#king_cutoff)</li>
@@ -270,13 +267,13 @@ highld
 <li>4.Project to all samples (https://www.cog-genomics.org/plink/2.0/score#pca_project)</li>
 </ul>
 <hr />
-<h2 id="53-sample-codes">5.3 Sample codes</h2>
+<h2 id="sample-codes">Sample codes</h2>
 <pre><code>plinkFile=&quot;&quot; #please set this to your own path
 outPrefix=&quot;plink_results&quot;
 threadnum=2
 hildset = hild.set 
 
-# pruning
+# LD-pruning, excluding high-LD and HLA regions
 plink2 \
         --bfile ${plinkFile} \
     --threads ${threadnum} \
@@ -284,7 +281,7 @@ plink2 \
     --indep-pairwise 500 50 0.2 \
         --out ${outPrefix}
 
-# remove related samples using king-cuttoff
+# Remove related samples using king-cuttoff
 plink2 \
         --bfile ${plinkFile} \
     --extract ${outPrefix}.prune.in \
@@ -292,7 +289,7 @@ plink2 \
     --threads ${threadnum} \
         --out ${outPrefix}
 
-# pca after pruning and removing related samples
+# PCA after pruning and removing related samples
 plink2 \
         --bfile ${plinkFile} \
         --keep ${outPrefix}.king.cutoff.in.id \
@@ -302,7 +299,7 @@ plink2 \
         --pca approx allele-wts \
         --out ${outPrefix}
 
-# projection (related and unrelated samples)
+# Projection (related and unrelated samples)
 plink2 \
         --bfile ${plinkFile} \
     --threads ${threadnum} \
@@ -352,7 +349,7 @@ Eventually, we will get the PCA results for all samples.</p>
 0   HG00421 219504  219504  0.00038356  -0.0319534  -0.00648054 0.00311739  -0.022044   0.0064945   -0.0105273  -0.0276718  -0.00973368 0.0208449
 0   HG00422 219504  219504  0.00437335  -0.0323416  -0.0111979  0.0106245   -0.0267334  0.00142919  -0.00487295 -0.0124099  -0.00467014 -0.0188086
 </code></pre>
-<h2 id="54-plotting-the-pcs">5.4 Plotting the PCs</h2>
+<h2 id="plotting-the-pcs">Plotting the PCs</h2>
 <p>You can now create scatterplots of the PCs using R or python.</p>
 <p>For plotting using python:
 <a href="https://github.com/Cloufield/GWASTutorial/blob/main/05_PCA/plot_PCA.ipynb">plot_PCA.ipynb</a></p>
@@ -361,7 +358,7 @@ Note : We only used 20% of all availble variants. This figure only very roughly 
 <p>Requrements:
 - python&gt;3
 - numpy,pandas,seaborn,matplotlib</p>
-<h2 id="55-pca-umap">5.5 PCA-UMAP</h2>
+<h2 id="pca-umap">PCA-UMAP</h2>
 <p>(optional) 
 We can also apply another non-linear dimension reduction algorithm called UMAP to the PCs to further identfy the local structures. (PCA-UMAP)</p>
 <p>For more details, please check:

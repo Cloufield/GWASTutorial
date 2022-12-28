@@ -156,23 +156,23 @@
             
             <li class="nav-item" data-level="1"><a href="#using-jupyter-notebook-on-remote-server" class="nav-link">Using Jupyter notebook on remote server</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#1-create-a-jupyter-notebook-configuration-file-if-there-is-no-such-file" class="nav-link">1. Create a jupyter notebook configuration file if there is no such file</a>
+            <li class="nav-item" data-level="2"><a href="#create-the-configuration-file" class="nav-link">Create the configuration file</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#2-add-the-port-information" class="nav-link">2. Add the port information</a>
+            <li class="nav-item" data-level="2"><a href="#add-the-port-information" class="nav-link">Add the port information</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#3-run-jupyter-notebook-server-on-remote-host" class="nav-link">3. Run jupyter notebook server on remote host</a>
+            <li class="nav-item" data-level="2"><a href="#run-jupyter-notebook-server-on-remote-host" class="nav-link">Run jupyter notebook server on remote host</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#4-use-ssh-tunnel-to-connect-to-the-remote-server-from-your-local-machine" class="nav-link">4. Use ssh tunnel to connect to the remote server from your local machine</a>
+            <li class="nav-item" data-level="2"><a href="#use-ssh-tunnel-to-connect-to-the-remote-server-from-your-local-machine" class="nav-link">Use ssh tunnel to connect to the remote server from your local machine</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#5use-jupyter-notebook-in-your-browser" class="nav-link">5.Use jupyter notebook in your browser</a>
+            <li class="nav-item" data-level="2"><a href="#use-jupyter-notebook-in-your-browser" class="nav-link">Use jupyter notebook in your browser</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -189,7 +189,14 @@
 </code></pre>
 <h1 id="using-jupyter-notebook-on-remote-server">Using Jupyter notebook on remote server</h1>
 <p><img width="1417" alt="image" src="https://user-images.githubusercontent.com/40289485/161498444-da572340-5ffb-42be-b7c9-02f06c12097b.png"></p>
-<h2 id="1-create-a-jupyter-notebook-configuration-file-if-there-is-no-such-file">1. Create a jupyter notebook configuration file if there is no such file</h2>
+<p>Steps:
+- <a href="#create-the-configuration-file">Create the configuration file</a>
+- <a href="#add-the-port-information">Add the port information</a>
+- <a href="#run-jupyter-notebook-server-on-remote-host">Run jupyter notebook server on remote host</a>
+- <a href="#use-ssh-tunnel-to-connect-to-the-remote-server-from-your-local-machine">Use ssh tunnel to connect to the remote server from your local machine</a>
+- <a href="#use-jupyter-notebook-in-your-browser">Use jupyter notebook in your browser</a></p>
+<h2 id="create-the-configuration-file">Create the configuration file</h2>
+<p>Create a jupyter notebook configuration file if there is no such file</p>
 <pre><code>jupyter notebook --generate-config
 </code></pre>
 <p>The file is usually stored at:</p>
@@ -205,7 +212,7 @@
 
 ## This is an application.
 </code></pre>
-<h2 id="2-add-the-port-information">2. Add the port information</h2>
+<h2 id="add-the-port-information">Add the port information</h2>
 <p>Simply add <code>c.NotebookApp.port =8889</code> to the configuration file and then save.
 Note: you can change the port you want to use.</p>
 <pre><code># Configuration file for jupyter-notebook.
@@ -219,15 +226,15 @@ c.NotebookApp.port = 8889
 ## This is an application.
 
 </code></pre>
-<h2 id="3-run-jupyter-notebook-server-on-remote-host">3. Run jupyter notebook server on remote host</h2>
+<h2 id="run-jupyter-notebook-server-on-remote-host">Run jupyter notebook server on remote host</h2>
 <p>On host side, set up the jupyter notebook server:</p>
 <pre><code>jupyter notebook
 </code></pre>
-<h2 id="4-use-ssh-tunnel-to-connect-to-the-remote-server-from-your-local-machine">4. Use ssh tunnel to connect to the remote server from your local machine</h2>
+<h2 id="use-ssh-tunnel-to-connect-to-the-remote-server-from-your-local-machine">Use ssh tunnel to connect to the remote server from your local machine</h2>
 <p>On your local machine, use ssh tunnel to connect to the jupyter notebook server: </p>
 <pre><code>ssh -N -f -L localhost:8889:localhost:8889 username@your_remote_host_name
 </code></pre>
-<h2 id="5use-jupyter-notebook-in-your-browser">5.Use jupyter notebook in your browser</h2>
+<h2 id="use-jupyter-notebook-in-your-browser">Use jupyter notebook in your browser</h2>
 <p>Then you can access juptyer notebook on your local browser using the link generated by jupyter notebook server.
 <code>http://127.0.0.1:8889/?token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code></p></div>
             </div>
