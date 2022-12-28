@@ -426,9 +426,11 @@ head plink_results.afreq
 1   1:135163:C:T    C   T   0.0922619   1008
 </code></pre>
 <p>We need pay attention to the concepts here.</p>
-<p>In PLINK1.9, the concept here is minor (A1) and major(A2) allele, while in PLINK2 it is reference(REF) and altervative(ALT) allele.
-- <strong>Major / Minor</strong>: Major allele and minor allele are defined as the allele with highest and lower(or second highest for multiallelic variants) allele in a given population, respectively. So major allele and minor allele for a SNP might be different in two independent populations. The range for MAF(minor allele frequencies) is [0,0.5].
-- <strong>Ref / Alt</strong>: Reference(REF) and altervative(ALT) alleles are simply determined by the allele on a reference genome. If we use the same reference genome, the reference(REF) and altervative(ALT) allele will be the same acorss populations. Reference allele could be major or minor in different populations. The range for alternative allele frequency is [0,1], since it could be major or minor allele in a given population.</p>
+<p>In PLINK1.9, the concept here is minor (A1) and major(A2) allele, while in PLINK2 it is reference(REF) and altervative(ALT) allele.</p>
+<ul>
+<li><strong>Major / Minor</strong>: Major allele and minor allele are defined as the allele with highest and lower(or second highest for multiallelic variants) allele in a given population, respectively. So major allele and minor allele for a SNP might be different in two independent populations. The range for MAF(minor allele frequencies) is [0,0.5].</li>
+<li><strong>Ref / Alt</strong>: Reference(REF) and altervative(ALT) alleles are simply determined by the allele on a reference genome. If we use the same reference genome, the reference(REF) and altervative(ALT) allele will be the same acorss populations. Reference allele could be major or minor in different populations. The range for alternative allele frequency is [0,1], since it could be major or minor allele in a given population.</li>
+</ul>
 <h3 id="inbreeding-f-coefficient">Inbreeding F coefficient</h3>
 <p>Next we can check the heterozygosity F of samples (https://www.cog-genomics.org/plink/1.9/basic_stats#ibc) : </p>
 <p><code>-het</code> option will computes observed and expected autosomal homozygous genotype counts for each sample. Usually, we need to exclude individuals with high or low heterozygosity coefficient, which suggests that the sample might be contaminated. </p>
