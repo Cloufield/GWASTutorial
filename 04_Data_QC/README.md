@@ -207,6 +207,9 @@ First, we can calculate some basic statistics of our simulated data:
 
 The first thing we want to know is the missing rate of our data. Usually we need to check the missing rate of samples and snps to decide a threshold to exclude low-quality samples and snps. (https://www.cog-genomics.org/plink/1.9/basic_stats#missing)
 
+- **Sample missing rate**: the proportion of missing values for an individual across all SNPSs.
+- **SNP missing rate**: the proportion of missing values for a SNP across all samples.
+
 The input is PLINK bed/bim/fam file. Usually they have the same prefix, and we just need to pass the prefix to `--bfile` option.
 
 ### PLink syntax:
@@ -245,17 +248,21 @@ head plink_results.imiss
    0   HG00422          Y        0  1122299        0
 ```
 
+For the meaning of headers, please refer to [PLINK documents](https://www.cog-genomics.org/plink/1.9/formats).
+
 ### Allele Frequency
 
 One of the most important statistics of SNPs is their frequencies in a certain population. A number of downstream analysis is based on investigating differences in allele frequencies.
 
-Usually, variants can be categorized into 3 groups based on their minor allele frequency:
+Usually, variants can be categorized into 3 groups based on their Minor Allel Frequency (MAF):
 
-1. Common variants : MAF>=0.05
-2. Low-frequency variants : 0.01<=MAF<0.05
-3. Rare variants : MAF<0.01
+1. **Common variants** : MAF>=0.05
+2. **Low-frequency variants** : 0.01<=MAF<0.05
+3. **Rare variants** : MAF<0.01
 
-Using PLINK1.9 we can easily calculate the MAF (Minor Allel Frequency) of variants in the input data.
+For different downstream analyses, we might use different set of variants. For example, for PCA, we might use only common variants. For gene-based tests, we might use only rare variants.
+
+Using PLINK1.9 we can easily calculate the MAF of variants in the input data.
 
 ```bash
 plink \
@@ -275,11 +282,6 @@ plink2 \
 ```bash
 # results from plink1.9
 head plink_results.frq
-```
-
-Output:
-
-```
  CHR              SNP   A1   A2          MAF  NCHROBS
    1      1:13273:G:C    C    G       0.0625     1008
    1      1:14599:T:A    A    T      0.08929     1008
@@ -295,9 +297,6 @@ Output:
 ```bash
 # results from plink2
 head plink_results.afreq
-```
-
-```
 #CHROM	ID	REF	ALT	ALT_FREQS	OBS_CT
 1	1:13273:G:C	G	C	0.0625	1008
 1	1:14599:T:A	T	A	0.0892857	1008
@@ -312,14 +311,16 @@ head plink_results.afreq
 We need pay attention to the concepts here.
 
 In PLINK1.9, the concept here is minor (A1) and major(A2) allele, while in PLINK2 it is reference(REF) and altervative(ALT) allele.
-### Major / Minor
-Major allele and minor allele are defined as the allele with highest and lower(or second highest for multiallelic variants) allele in a given population, respectively. So major allele and minor allele for a SNP might be different in two independent populations. The range for MAF(minor allele frequencies) is [0,0.5].
-### Ref / Alt
-Reference(REF) and altervative allele simply refers to the allele on a reference genome. If we use the same reference genome, the reference(REF) and altervative(ALT) allele will be the same acorss populations. Reference allele could be major or minor in different populations. The range for alternative allele frequency is [0,1], since it could be major or minor allele in a given population.
+- **Major / Minor**: Major allele and minor allele are defined as the allele with highest and lower(or second highest for multiallelic variants) allele in a given population, respectively. So major allele and minor allele for a SNP might be different in two independent populations. The range for MAF(minor allele frequencies) is [0,0.5].
+- **Ref / Alt**: Reference(REF) and altervative(ALT) alleles are simply determined by the allele on a reference genome. If we use the same reference genome, the reference(REF) and altervative(ALT) allele will be the same acorss populations. Reference allele could be major or minor in different populations. The range for alternative allele frequency is [0,1], since it could be major or minor allele in a given population.
 
 
 ### Inbreeding F coefficient 
+
 Next we can check the heterozygosity F of samples (https://www.cog-genomics.org/plink/1.9/basic_stats#ibc) : 
+
+`-het` option will computes observed and expected autosomal homozygous genotype counts for each sample. Usually, we need to exclude individuals with high or low heterozygosity coefficient, which suggests that the sample might be contaminated. 
+
 
 ```bash
 plink \
@@ -327,13 +328,11 @@ plink \
 	--het \
 	--out plink_results
 ```
+
+Check the output:
+
 ```bash
 head plink_results.het
-```
-
-Output:
-
-```
  FID       IID       O(HOM)       E(HOM)        N(NM)            F
    0   HG00403       747270    7.488e+05      1122299    -0.004114
    0   HG00404       748955    7.488e+05      1122299    0.0003974
@@ -345,10 +344,14 @@ Output:
    0   HG00421       757199    7.488e+05      1122299      0.02247
    0   HG00422       752725    7.488e+05      1122299      0.01049
 ```
-
+A commonly used method is to exclude samples with heterzygosity F deviating more than 3 standard dividation(SD) from the mean F.
 
 ### Hardy-Weinberg equilibrium exact test
+
 For SNP QC, besides checking the missing rate, we also need to check if the SNP is in hardy-weinberg equilibrium:
+
+`--hardy` will perform Hardy-Weinberg equilibrium exact test for each variant. Variants with low P value usually suggest genotyping errors, or indicate evolutionary selection for these variants.
+
 The following command can calculate the Hardy-Weinberg equilibrium exact test statistics for all SNPs. (https://www.cog-genomics.org/plink/1.9/basic_stats#hardy)
 ```bash
 plink \
@@ -358,11 +361,6 @@ plink \
 ```
 ```bash
 head plink_results.hwe
-```
-
-Output:
-
-```
  CHR              SNP     TEST   A1   A2                 GENO   O(HET)   E(HET)            P 
    1      1:13273:G:C  ALL(NP)    C    G             1/61/442    0.121   0.1172       0.7113
    1      1:14599:T:A  ALL(NP)    A    T             1/88/415   0.1746   0.1626       0.1625
@@ -375,10 +373,10 @@ Output:
    1     1:135163:C:T  ALL(NP)    T    C             1/91/412   0.1806   0.1675       0.1066
 ```
 
-
-
 ### Applying filters
-Previously we just calculate the basic statistics using PLINK. But when we want to actually analyze the data, we want to exclude some bad quallity sample or snps.
+
+Previously we just calculate the basic statistics using PLINK. But when performing certain analyses, we just want to exclude the bad quallity samples or SNPs instead of calculating the statistics for all samples and SNPs.
+
 In this case we can apply the following filters (for example):
 
 `--maf 0.01` : exlcude snps with maf<0.01
@@ -390,7 +388,9 @@ In this case we can apply the following filters (for example):
 `--hwe 5e-6` : filters out all variants which have Hardy-Weinberg equilibrium exact test p-value below the provided threshold. NOTE: With case/control data, cases and missing phenotypes are normally ignored. (see https://www.cog-genomics.org/plink/1.9/filter#hwe)
 
 ### Pruning
-Since there are ofter strong LD among SNPs, for some analysis we don't need all SNPs.
+
+There are ofter strong Linkage disequilibrium(LD) among SNPs, for some analysis we don't need all SNPs and we need to remove the redundant SNPs to avoid bias in genetic estimations. For example, for relatedness estimation, we will use only LD-pruned SNP set. 
+
 We can use `--indep-pairwise 50 5 0.2` to filter out those are in strong LD and keep only the independent SNPS.
 Please check https://www.cog-genomics.org/plink/1.9/ld#indep for the meaning of each parameter.
 Combined with the filters we just introduced, we can run:
@@ -408,13 +408,9 @@ plink \
 This command generates two outputs :  `plink_results.prune.in` and `plink_results.prune.out`
 `plink_results.prune.in` is the independent set of SNPs we will use in the following analysis.
 Let's take a look at this file. Basically it just contains one SNP id per line.
+
 ```bash
 head plink_results.prune.in
-```
-
-Output:
-
-```
 1:13273:G:C
 1:14599:T:A
 1:69897:T:C
@@ -428,18 +424,13 @@ Output:
 ```
 
 ### Sample & snp filtering (extract/exclude/keep/remove)
-Some time we don't need all the samples or snps included the original input file. 
+Some time we will use only a subset of samples or snps included the original dataset. 
 In this case, we can use `--extract` or `--exclude` to select or exclude SNPs from analysis, `--keep` or `--remove` to select or exclude samples.
 
 For  `--keep` or `--remove` , the input is the filename of a sample FID and IID file.
 For `--extract` or `--exclude` , the input is the filename of a snplist file.
 ```bash
 head plink_results.prune.in
-```
-
-Output:
-
-```
 1:13273:G:C
 1:14599:T:A
 1:69897:T:C
