@@ -1,29 +1,28 @@
-# 04 Plink basics
+# Plink basics
 
 In this module, we will learn the basics of genotype data QC using PLINK, which is one of the most commonly used software in complex trait genomics.
 
-
-### Table of Contents
-- [4.1 Preparation](#41-preparation)
-	- [PLINK 1.9 & 2 installation](#411-plink-192-installation)
-	- [Download genotype data](#412-download-genotype-data)
-- [4.2 PLINK tutorial](#42-plink-tutorial)
-	- [Calculate missing rate and call rate](#421-missing-rate-and-call-rate)
-	- [Calculate allele frequency](#422-allele-frequency)
-	- [Calculate inbreeding F coefficient ](#423-inbreeding-f-coefficient)
-	- [Hardy-Weinberg equilibrium exact test](#424-hardy-weinberg-equilibrium-exact-test)
-	- [Applying filters](#425-applying-filters)
-	- [LD-Pruning](#426-pruning)
-	- [Sample & SNP filtering (extract/exclude/keep/remove)](#427-sample--snp-filtering-extractexcludekeepremove)
-	- [LD calculation](#429-ld-calculation)
-	- [Estimate IBD / PI_HAT](#428-ibd--pi_hat)
-	- [Data management (make-bed/recode)](#4210-data-management-make-bedrecode)
+## Table of Contents
+- [Preparation](#preparation)
+	- [PLINK 1.9 & 2 installation](#plink-192-installation)
+	- [Download genotype data](#download-genotype-data)
+- [PLINK tutorial](#plink-tutorial)
+	- [Calculate missing rate and call rate](#missing-rate-call-rate)
+	- [Calculate allele frequency](#allele-frequency)
+	- [Calculate inbreeding F coefficient ](#inbreeding-f-coefficient)
+	- [Hardy-Weinberg equilibrium exact test](#hardy-weinberg-equilibrium-exact-test)
+	- [Applying filters](#applying-filters)
+	- [LD-Pruning](#pruning)
+	- [Sample & SNP filtering (extract/exclude/keep/remove)](#sample--snp-filtering-extractexcludekeepremove)
+	- [LD calculation](#ld-calculation)
+	- [Estimate IBD / PI_HAT](#ibd--pi_hat)
+	- [Data management (make-bed/recode)](#data-management-make-bedrecode)
 - [Exercise](#exercise)
 - [Additional resources](#additional-resources)
 - [Reference](#reference)
 
-## 4.1 Preparation
-### 4.1.1 PLINK 1.9&2 installation
+## Preparation
+### PLINK 1.9&2 installation
 
 To get prepared for genotype QC, we will need to make directories, download softwares and add the sofwares to your environment path.
 
@@ -134,30 +133,29 @@ Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
 Well done. We have installed plink1.9 and plink2.
 
 
-### 4.1.2 Download genotype data
-Next we need to download the sample genotype data
+### Download genotype data
 
-Run the download.sh in 01_Dataset
+Next we need to download the sample genotype data.
+
+Run the download.sh in 01_Dataset.
 
 ```
 cd ../01_Dataset
 ./download_sampledata.sh
 ```
+
+And you will get the following three files:
+
 ```
 -rw-r-----   1 he  staff   135M Dec 23 11:45 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
 -rw-r-----   1 he  staff    36M Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
 -rw-r-----   1 he  staff   9.4K Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
 ```
 
-check bim
+Check the bim file:
 
 ```bash
 head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
-```
-
-Output:
-
-```
 1	1:13273:G:C	0	13273	C	G
 1	1:14599:T:A	0	14599	A	T
 1	1:14604:A:G	0	14604	G	A
@@ -170,14 +168,9 @@ Output:
 1	1:233473:C:G	0	233473	G	C
 ```
 
-check fam
+Check the fam file:
 ```bash
 head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
-```
-
-Output:
-
-```
 0 HG00403 0 0 0 -9
 0 HG00404 0 0 0 -9
 0 HG00406 0 0 0 -9
@@ -190,27 +183,28 @@ Output:
 0 HG00428 0 0 0 -9
 ```
 
-## 4.2 PLINK tutorial
-Detailed description can be found on plink's website: 
+## PLINK tutorial
 
-https://www.cog-genomics.org/plink/2.0/ and https://www.cog-genomics.org/plink/1.9/
+Detailed description can be found on plink's website: [PLINK1.9](https://www.cog-genomics.org/plink/1.9/) and [PLINK2](https://www.cog-genomics.org/plink/2.0/).
 
 The functions we will learn in this tutorial:
-1. Missing rate/ call rate
-2. Inbreeding F coefficient
-3. Hardy-Weinberg equilibrium exact test
-4. Allele Frequency
+1. Calculating missing rate (call rate)
+2. Calculating inbreeding F coefficient
+3. Conducting Hardy-Weinberg equilibrium exact test
+4. Calculating allele Frequency
 5. Applying filters
-6. Pruning
-7. Sample & snp filtering (extract/exclude/keep/remove)
-8. IBD / PI_HAT
-9. LD calculation
+6. Conducting LD-Pruning
+7. Conducting sample & snp filtering (extract/exclude/keep/remove)
+8. Estimating IBD / PI_HAT
+9. Calculating LD
 10. Data management (make-bed/recode)
 
 All sample codes and results for this module are available in `./04_data_QC`
 
 First, we can calculate some basic statistics of our simulated data:
-### 4.2.1 missing rate and call rate
+
+### Missing rate (call rate)
+
 The first thing we want to know is the missing rate of our data. Usually we need to check the missing rate of samples and snps to decide a threshold to exclude low-quality samples and snps. (https://www.cog-genomics.org/plink/1.9/basic_stats#missing)
 
 The input is PLINK bed/bim/fam file. Usually they have the same prefix, and we just need to pass the prefix to `--bfile` option.
@@ -218,7 +212,9 @@ The input is PLINK bed/bim/fam file. Usually they have the same prefix, and we j
 ### PLink syntax:
 ![image](https://user-images.githubusercontent.com/40289485/161413684-a128b87f-fb79-4b13-a7b5-acfa997c4421.png)
 
-Sample code to calculate missing rate
+To calculate the missing rate, we need the flag `--missing`, which tells PLINK to calculate the missing rate in the dataset specified by `--bfile`. 
+
+Sample code to calculated missing rate:
 
 ```bash
 cd ../04_Data_QC
@@ -233,14 +229,10 @@ Remeber to set the value for `${genotypeFile}`.
 
 This code will generate two files `plink_results.imiss` and `plink_results.lmiss`, which contain the missing rate information for samples and snps respectively.
 
-Take a look at the imiss file. The last column shows the missing rate for samples. Since we used simulated data this time, there are no missing samples or snps. So the missing rate is zero.
+Take a look at the imiss file. The last column shows the missing rate for samples. Since we used part of the 1000 Genome Project data this time, there are no missing samples or snps. So the missing rate is zero.
+
 ```bash
 head plink_results.imiss
-```
-
-Output:
-
-```
  FID       IID MISS_PHENO   N_MISS   N_GENO   F_MISS
    0   HG00403          Y        0  1122299        0
    0   HG00404          Y        0  1122299        0
@@ -253,11 +245,12 @@ Output:
    0   HG00422          Y        0  1122299        0
 ```
 
-### 4.2.2 Allele Frequency
+### Allele Frequency
 
-One of the most important statistics of SNPs are their frequencies in a certain population. A number of downstream analysis is based on investigating differences in the allele frequencies.
+One of the most important statistics of SNPs is their frequencies in a certain population. A number of downstream analysis is based on investigating differences in allele frequencies.
 
 Usually, variants can be categorized into 3 groups based on their minor allele frequency:
+
 1. Common variants : MAF>=0.05
 2. Low-frequency variants : 0.01<=MAF<0.05
 3. Rare variants : MAF<0.01
@@ -325,7 +318,7 @@ Major allele and minor allele are defined as the allele with highest and lower(o
 Reference(REF) and altervative allele simply refers to the allele on a reference genome. If we use the same reference genome, the reference(REF) and altervative(ALT) allele will be the same acorss populations. Reference allele could be major or minor in different populations. The range for alternative allele frequency is [0,1], since it could be major or minor allele in a given population.
 
 
-### 4.2.3 Inbreeding F coefficient 
+### Inbreeding F coefficient 
 Next we can check the heterozygosity F of samples (https://www.cog-genomics.org/plink/1.9/basic_stats#ibc) : 
 
 ```bash
@@ -354,7 +347,7 @@ Output:
 ```
 
 
-### 4.2.4 Hardy-Weinberg equilibrium exact test
+### Hardy-Weinberg equilibrium exact test
 For SNP QC, besides checking the missing rate, we also need to check if the SNP is in hardy-weinberg equilibrium:
 The following command can calculate the Hardy-Weinberg equilibrium exact test statistics for all SNPs. (https://www.cog-genomics.org/plink/1.9/basic_stats#hardy)
 ```bash
@@ -384,7 +377,7 @@ Output:
 
 
 
-### 4.2.5 Applying filters
+### Applying filters
 Previously we just calculate the basic statistics using PLINK. But when we want to actually analyze the data, we want to exclude some bad quallity sample or snps.
 In this case we can apply the following filters (for example):
 
@@ -396,7 +389,7 @@ In this case we can apply the following filters (for example):
 
 `--hwe 5e-6` : filters out all variants which have Hardy-Weinberg equilibrium exact test p-value below the provided threshold. NOTE: With case/control data, cases and missing phenotypes are normally ignored. (see https://www.cog-genomics.org/plink/1.9/filter#hwe)
 
-### 4.2.6 Pruning
+### Pruning
 Since there are ofter strong LD among SNPs, for some analysis we don't need all SNPs.
 We can use `--indep-pairwise 50 5 0.2` to filter out those are in strong LD and keep only the independent SNPS.
 Please check https://www.cog-genomics.org/plink/1.9/ld#indep for the meaning of each parameter.
@@ -434,7 +427,7 @@ Output:
 1:565433:C:T
 ```
 
-### 4.2.7 sample & snp filtering (extract/exclude/keep/remove)
+### Sample & snp filtering (extract/exclude/keep/remove)
 Some time we don't need all the samples or snps included the original input file. 
 In this case, we can use `--extract` or `--exclude` to select or exclude SNPs from analysis, `--keep` or `--remove` to select or exclude samples.
 
@@ -459,7 +452,7 @@ Output:
 1:565433:C:T
 ```
 
-### 4.2.8 IBD / PI_HAT
+### IBD / PI_HAT
 `--genome` invokes an IBS/IBD computation. Usually for this analysis, we need to prune our data first since the strong LD will cause bias in the results.
 (This step is extremelly computationally intensive, so we only calculate  IBD for the first 1000 samples)
 Combined with the `--extract` and `--keep` option, we can run:
@@ -490,7 +483,7 @@ Output:
    0  HG00403   0  HG00428 OT     0  0.9929  0.0000  0.0071  0.0071  -1  0.746851  0.3115  1.9674
 ```
 
-### 4.2.9 LD calculation
+### LD calculation
 We can use our data to calculate LD between a pair of SNPs.
 
 ![image](https://user-images.githubusercontent.com/40289485/161413586-d4f6e21e-f0c7-4c54-a703-bb060ec6913d.png)
@@ -524,7 +517,7 @@ Output:
     22     16143946   22:16143946:A:G     22     16155259   22:16155259:A:G     0.559165 
 ```
 
-### 4.2.10 data management (make-bed/recode)
+### Data management (make-bed/recode)
 By far the input data we use is in binary form, but sometimes we may want the text version.
 ![image](https://user-images.githubusercontent.com/40289485/161413659-a489b508-63c7-4166-9f5c-25a1a125109a.png)
 
