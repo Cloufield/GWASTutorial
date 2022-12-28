@@ -377,15 +377,12 @@ head plink_results.hwe
 
 Previously we just calculate the basic statistics using PLINK. But when performing certain analyses, we just want to exclude the bad quallity samples or SNPs instead of calculating the statistics for all samples and SNPs.
 
-In this case we can apply the following filters (for example):
+In this case we can apply the following filters for example:
 
-`--maf 0.01` : exlcude snps with maf<0.01
-
-`--geno 0.01` :filters out all variants with missing rates exceeding 0.01
-
-`--mind 0.02` :filters out all samples with missing rates exceeding 0.02
-
-`--hwe 5e-6` : filters out all variants which have Hardy-Weinberg equilibrium exact test p-value below the provided threshold. NOTE: With case/control data, cases and missing phenotypes are normally ignored. (see https://www.cog-genomics.org/plink/1.9/filter#hwe)
+- `--maf 0.01` : exlcude snps with maf<0.01
+- `--geno 0.01` :filters out all variants with missing rates exceeding 0.0
+- `--mind 0.02` :filters out all samples with missing rates exceeding 0.02
+- `--hwe 5e-6` : filters out all variants which have Hardy-Weinberg equilibrium exact test p-value below the provided threshold. NOTE: With case/control data, cases and missing phenotypes are normally ignored. (see https://www.cog-genomics.org/plink/1.9/filter#hwe)
 
 ### Pruning
 
@@ -423,7 +420,7 @@ head plink_results.prune.in
 1:565433:C:T
 ```
 
-### Sample & snp filtering (extract/exclude/keep/remove)
+### Sample & SNP filtering (extract/exclude/keep/remove)
 Some time we will use only a subset of samples or snps included the original dataset. 
 In this case, we can use `--extract` or `--exclude` to select or exclude SNPs from analysis, `--keep` or `--remove` to select or exclude samples.
 
@@ -444,9 +441,11 @@ head plink_results.prune.in
 ```
 
 ### IBD / PI_HAT
-`--genome` invokes an IBS/IBD computation. Usually for this analysis, we need to prune our data first since the strong LD will cause bias in the results.
-(This step is extremelly computationally intensive, so we only calculate  IBD for the first 1000 samples)
-Combined with the `--extract` and `--keep` option, we can run:
+`--genome` will estimate IBS/IBD. Usually for this analysis, we need to prune our data first since the strong LD will cause bias in the results.
+(This step is extremelly computationally intensive)
+
+Combined with the `--extract`, we can run:
+
 ```bash
 plink \
         --bfile ${genotypeFile} \
@@ -454,14 +453,10 @@ plink \
         --genome \
         --out plink_results
 ```
+
 PI_HAT is the IBD estimation. Please check https://www.cog-genomics.org/plink/1.9/ibd for more details.
 ```bash
 head plink_results.genome
-```
-
-Output:
-
-```
  FID1     IID1 FID2     IID2 RT    EZ      Z0      Z1      Z2  PI_HAT PHE       DST     PPC   RATIO
    0  HG00403   0  HG00404 OT     0  0.9800  0.0086  0.0114  0.0157  -1  0.749375  0.5531  2.0089
    0  HG00403   0  HG00406 OT     0  0.9751  0.0231  0.0018  0.0133  -1  0.748336  0.6309  2.0225
@@ -475,10 +470,10 @@ Output:
 ```
 
 ### LD calculation
-We can use our data to calculate LD between a pair of SNPs.
+
+We can also use our data to calculate LD between a pair of SNPs.
 
 ![image](https://user-images.githubusercontent.com/40289485/161413586-d4f6e21e-f0c7-4c54-a703-bb060ec6913d.png)
-
 
 `--chr` option allows us to include snps on a specific chromosome.
 To calculate LD r2 for SNPs on chr22 , we can run:
@@ -491,11 +486,6 @@ plink \
 ```
 ```bash
 head plink_results.ld
-```
-
-Output:
-
-```
  CHR_A         BP_A             SNP_A  CHR_B         BP_B             SNP_B           R2 
     22     16053659   22:16053659:A:C     22     16067500   22:16067500:T:C      0.64577 
     22     16053862   22:16053862:C:T     22     16054454   22:16054454:C:T     0.987505 
@@ -509,6 +499,7 @@ Output:
 ```
 
 ### Data management (make-bed/recode)
+
 By far the input data we use is in binary form, but sometimes we may want the text version.
 ![image](https://user-images.githubusercontent.com/40289485/161413659-a489b508-63c7-4166-9f5c-25a1a125109a.png)
 
@@ -529,6 +520,7 @@ plink \
         --recode \
         --out plink_1000_pruned
 ```
+
 
 ## Exercise
 - Follow this tutorial and type in the commands:
