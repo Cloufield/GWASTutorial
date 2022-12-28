@@ -159,7 +159,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#vep" class="nav-link">VEP</a>
+            <li class="nav-item" data-level="2"><a href="#vep-under-construction" class="nav-link">VEP (under construction)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -177,22 +177,21 @@
 <li><a href="#vep">VEP</a></li>
 </ul>
 <h2 id="annovar">ANNOVAR</h2>
+<p><a href="https://annovar.openbioinformatics.org/en/latest/">ANNOVAR</a> is a simple and efficient command line tool for variant annotation. </p>
+<p>In this tutorial, we will use ANNOVAR to annotate the variants in our summary statistics (hg19).</p>
 <h3 id="install">Install</h3>
-<p>Download ANNOVAR from:
-https://annovar.openbioinformatics.org/en/latest/</p>
-<p>Download refernece file:</p>
-<pre><code>
+<p>Download ANNOVAR from <a href="https://annovar.openbioinformatics.org/en/latest/user-guide/download/">here</a> (registration required; freely available to personal, academic and non-profit use only.)</p>
+<p>You will receive an eamil with the download link after registration. Download it and decompress:</p>
+<pre><code>tar -xvzf annovar.latest.tar.gz
 </code></pre>
-<p>Format input file</p>
+<p>For refGene annotation for hg19, we do not need to download additional files.</p>
+<h3 id="format-input-file">Format input file</h3>
+<p>The default input file for ANNOVAR is a 1-based coordinate file.</p>
+<p>We will only use the first 100000 variants as an example.</p>
 <pre><code>awk 'NR&gt;1 &amp;&amp; NR&lt;100000 {print $1,$2,$2,$4,$5}' ../06_Association_tests/1kgeas.B1.glm.logistic.hybrid &gt; annovar_input.txt
-
 </code></pre>
-<p>Annotate</p>
-<pre><code>input=annovar_input.txt
-humandb=/home/he/tools/annovar/annovar/humandb
-table_annovar.pl ${input} ${humandb} -buildver hg19 -out myannotation -remove -protocol refGene -operation g -nastring . -polish
-</code></pre>
-<pre><code>1 13273 13273 G C
+<pre><code>head annovar_input.txt 
+1 13273 13273 G C
 1 14599 14599 T A
 1 14604 14604 A G
 1 14930 14930 A G
@@ -202,6 +201,12 @@ table_annovar.pl ${input} ${humandb} -buildver hg19 -out myannotation -remove -p
 1 122872 122872 T G
 1 135163 135163 C T
 1 233473 233473 C G
+</code></pre>
+<h3 id="annotation">Annotation</h3>
+<p>Annotate the variants with its gene information.</p>
+<pre><code>input=annovar_input.txt
+humandb=/home/he/tools/annovar/annovar/humandb
+table_annovar.pl ${input} ${humandb} -buildver hg19 -out myannotation -remove -protocol refGene -operation g -nastring . -polish
 </code></pre>
 <pre><code>Chr Start   End Ref Alt Func.refGene    Gene.refGene    GeneDetail.refGene  ExonicFunc.refGene  AAChange.refGene
 1   13273   13273   G   C   ncRNA_exonic    DDX11L1;LOC102725121    .   .   .
@@ -214,7 +219,7 @@ table_annovar.pl ${input} ${humandb} -buildver hg19 -out myannotation -remove -p
 1   122872  122872  T   G   intergenic  OR4F5;LOC729737 dist=52864;dist=11901   .   .
 1   135163  135163  C   T   ncRNA_exonic    LOC729737   .   .   .
 </code></pre>
-<h2 id="vep">VEP</h2>
+<h2 id="vep-under-construction">VEP (under construction)</h2>
 <h3 id="install_1">Install</h3>
 <pre><code>git clone https://github.com/Ensembl/ensembl-vep.git
 cd ensembl-vep
