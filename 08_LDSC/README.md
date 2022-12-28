@@ -41,6 +41,10 @@ conda env create --file environment.yml
 In this tutoial, we will use sample summary statistics for HDLC and LDLC from Jenger. 
 - Kanai, Masahiro, et al. "Genetic analysis of quantitative traits in the Japanese population links cell types to complex human diseases." Nature genetics 50.3 (2018): 390-400.
 
+The Miami plot for the two traits:
+
+<img width="682" alt="image" src="https://user-images.githubusercontent.com/40289485/209749071-171c150a-19aa-41f0-b6e6-2ef5fa87370d.png">
+
 Download sample summary statistics : 
 ```Bash
 # HDL-c and LDL-c in Biobank Japan
