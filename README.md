@@ -8,7 +8,7 @@ Contents are categorized into the following groups. Additionally, for absolute b
 
 <img width="686" alt="image" src="https://user-images.githubusercontent.com/40289485/209779725-73b62b15-b044-46a4-98ae-ce5db06f93b3.png">
 
-## Table of Contents:
+# Table of Contents
 
 - [Linux command line basics (optional)](https://cloufield.github.io/GWASTutorial/02_Linux_basics/)
 - Pre-GWAS
@@ -23,3 +23,8 @@ Contents are categorized into the following groups. Additionally, for absolute b
     - [LD score regression (univariate, cross-trait and partitioned)](https://cloufield.github.io/GWASTutorial/08_LDSC/)
     - [Gene / Gene-set analysis](https://cloufield.github.io/GWASTutorial/09_Gene_based_analysis/)
     - [Polygenic risk scores](https://cloufield.github.io/GWASTutorial/10_PRS/)
+
+# Contact
+This repository is maintained by [Yunye He](https://github.com/Cloufield)
+
+<img width="686" alt="image" src="https://user-images.githubusercontent.com/40289485/209780549-54a24fdd-485b-4875-8f40-d6812eb644fe.png">
