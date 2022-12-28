@@ -149,13 +149,17 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#04-plink-basics" class="nav-link">04 Plink basics</a>
+            <li class="nav-item" data-level="1"><a href="#plink-basics" class="nav-link">Plink basics</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#41-preparation" class="nav-link">4.1 Preparation</a>
+            <li class="nav-item" data-level="2"><a href="#table-of-contents" class="nav-link">Table of Contents</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#42-plink-tutorial" class="nav-link">4.2 PLINK tutorial</a>
+            <li class="nav-item" data-level="2"><a href="#preparation" class="nav-link">Preparation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#plink-tutorial" class="nav-link">PLINK tutorial</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -178,34 +182,34 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="04-plink-basics">04 Plink basics</h1>
+<h1 id="plink-basics">Plink basics</h1>
 <p>In this module, we will learn the basics of genotype data QC using PLINK, which is one of the most commonly used software in complex trait genomics.</p>
-<h3 id="table-of-contents">Table of Contents</h3>
+<h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="#41-preparation">4.1 Preparation</a><ul>
-<li><a href="#411-plink-192-installation">PLINK 1.9 &amp; 2 installation</a></li>
-<li><a href="#412-download-genotype-data">Download genotype data</a></li>
+<li><a href="#preparation">Preparation</a><ul>
+<li><a href="#plink-192-installation">PLINK 1.9 &amp; 2 installation</a></li>
+<li><a href="#download-genotype-data">Download genotype data</a></li>
 </ul>
 </li>
-<li><a href="#42-plink-tutorial">4.2 PLINK tutorial</a><ul>
-<li><a href="#421-missing-rate-and-call-rate">Calculate missing rate and call rate</a></li>
-<li><a href="#422-allele-frequency">Calculate allele frequency</a></li>
-<li><a href="#423-inbreeding-f-coefficient">Calculate inbreeding F coefficient </a></li>
-<li><a href="#424-hardy-weinberg-equilibrium-exact-test">Hardy-Weinberg equilibrium exact test</a></li>
-<li><a href="#425-applying-filters">Applying filters</a></li>
-<li><a href="#426-pruning">LD-Pruning</a></li>
-<li><a href="#427-sample--snp-filtering-extractexcludekeepremove">Sample &amp; SNP filtering (extract/exclude/keep/remove)</a></li>
-<li><a href="#429-ld-calculation">LD calculation</a></li>
-<li><a href="#428-ibd--pi_hat">Estimate IBD / PI_HAT</a></li>
-<li><a href="#4210-data-management-make-bedrecode">Data management (make-bed/recode)</a></li>
+<li><a href="#plink-tutorial">PLINK tutorial</a><ul>
+<li><a href="#missing-rate-call-rate">Calculate missing rate and call rate</a></li>
+<li><a href="#allele-frequency">Calculate allele frequency</a></li>
+<li><a href="#inbreeding-f-coefficient">Calculate inbreeding F coefficient </a></li>
+<li><a href="#hardy-weinberg-equilibrium-exact-test">Hardy-Weinberg equilibrium exact test</a></li>
+<li><a href="#applying-filters">Applying filters</a></li>
+<li><a href="#pruning">LD-Pruning</a></li>
+<li><a href="#sample--snp-filtering-extractexcludekeepremove">Sample &amp; SNP filtering (extract/exclude/keep/remove)</a></li>
+<li><a href="#ld-calculation">LD calculation</a></li>
+<li><a href="#ibd--pi_hat">Estimate IBD / PI_HAT</a></li>
+<li><a href="#data-management-make-bedrecode">Data management (make-bed/recode)</a></li>
 </ul>
 </li>
 <li><a href="#exercise">Exercise</a></li>
 <li><a href="#additional-resources">Additional resources</a></li>
 <li><a href="#reference">Reference</a></li>
 </ul>
-<h2 id="41-preparation">4.1 Preparation</h2>
-<h3 id="411-plink-192-installation">4.1.1 PLINK 1.9&amp;2 installation</h3>
+<h2 id="preparation">Preparation</h2>
+<h3 id="plink-192-installation">PLINK 1.9&amp;2 installation</h3>
 <p>To get prepared for genotype QC, we will need to make directories, download softwares and add the sofwares to your environment path.</p>
 <p>First, we will simply create some directories to keep the tools we need to use.</p>
 <pre><code class="language-bash">cd ~
@@ -287,21 +291,20 @@ Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
 
 </code></pre>
 <p>Well done. We have installed plink1.9 and plink2.</p>
-<h3 id="412-download-genotype-data">4.1.2 Download genotype data</h3>
-<p>Next we need to download the sample genotype data</p>
-<p>Run the download.sh in 01_Dataset</p>
+<h3 id="download-genotype-data">Download genotype data</h3>
+<p>Next we need to download the sample genotype data.</p>
+<p>Run the download.sh in 01_Dataset.</p>
 <pre><code>cd ../01_Dataset
 ./download_sampledata.sh
 </code></pre>
+<p>And you will get the following three files:</p>
 <pre><code>-rw-r-----   1 he  staff   135M Dec 23 11:45 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
 -rw-r-----   1 he  staff    36M Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
 -rw-r-----   1 he  staff   9.4K Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
 </code></pre>
-<p>check bim</p>
+<p>Check the bim file:</p>
 <pre><code class="language-bash">head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
-</code></pre>
-<p>Output:</p>
-<pre><code>1   1:13273:G:C 0   13273   C   G
+1   1:13273:G:C 0   13273   C   G
 1   1:14599:T:A 0   14599   A   T
 1   1:14604:A:G 0   14604   G   A
 1   1:14930:A:G 0   14930   G   A
@@ -312,11 +315,9 @@ Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
 1   1:135163:C:T    0   135163  T   C
 1   1:233473:C:G    0   233473  G   C
 </code></pre>
-<p>check fam</p>
+<p>Check the fam file:</p>
 <pre><code class="language-bash">head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
-</code></pre>
-<p>Output:</p>
-<pre><code>0 HG00403 0 0 0 -9
+0 HG00403 0 0 0 -9
 0 HG00404 0 0 0 -9
 0 HG00406 0 0 0 -9
 0 HG00407 0 0 0 -9
@@ -327,28 +328,28 @@ Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
 0 HG00422 0 0 0 -9
 0 HG00428 0 0 0 -9
 </code></pre>
-<h2 id="42-plink-tutorial">4.2 PLINK tutorial</h2>
-<p>Detailed description can be found on plink's website: </p>
-<p>https://www.cog-genomics.org/plink/2.0/ and https://www.cog-genomics.org/plink/1.9/</p>
+<h2 id="plink-tutorial">PLINK tutorial</h2>
+<p>Detailed description can be found on plink's website: <a href="https://www.cog-genomics.org/plink/1.9/">PLINK1.9</a> and <a href="https://www.cog-genomics.org/plink/2.0/">PLINK2</a>.</p>
 <p>The functions we will learn in this tutorial:
-1. Missing rate/ call rate
-2. Inbreeding F coefficient
-3. Hardy-Weinberg equilibrium exact test
-4. Allele Frequency
+1. Calculating missing rate (call rate)
+2. Calculating inbreeding F coefficient
+3. Conducting Hardy-Weinberg equilibrium exact test
+4. Calculating allele Frequency
 5. Applying filters
-6. Pruning
-7. Sample &amp; snp filtering (extract/exclude/keep/remove)
-8. IBD / PI_HAT
-9. LD calculation
+6. Conducting LD-Pruning
+7. Conducting sample &amp; snp filtering (extract/exclude/keep/remove)
+8. Estimating IBD / PI_HAT
+9. Calculating LD
 10. Data management (make-bed/recode)</p>
 <p>All sample codes and results for this module are available in <code>./04_data_QC</code></p>
 <p>First, we can calculate some basic statistics of our simulated data:</p>
-<h3 id="421-missing-rate-and-call-rate">4.2.1 missing rate and call rate</h3>
+<h3 id="missing-rate-call-rate">Missing rate (call rate)</h3>
 <p>The first thing we want to know is the missing rate of our data. Usually we need to check the missing rate of samples and snps to decide a threshold to exclude low-quality samples and snps. (https://www.cog-genomics.org/plink/1.9/basic_stats#missing)</p>
 <p>The input is PLINK bed/bim/fam file. Usually they have the same prefix, and we just need to pass the prefix to <code>--bfile</code> option.</p>
 <h3 id="plink-syntax">PLink syntax:</h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161413684-a128b87f-fb79-4b13-a7b5-acfa997c4421.png" /></p>
-<p>Sample code to calculate missing rate</p>
+<p>To calculate the missing rate, we need the flag <code>--missing</code>, which tells PLINK to calculate the missing rate in the dataset specified by <code>--bfile</code>. </p>
+<p>Sample code to calculated missing rate:</p>
 <pre><code class="language-bash">cd ../04_Data_QC
 genotypeFile=&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot; #!!! Please add your own path here.  &quot;1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot; is the prefix of PLINK bed file. 
 
@@ -359,11 +360,9 @@ plink \
 </code></pre>
 <p>Remeber to set the value for <code>${genotypeFile}</code>.</p>
 <p>This code will generate two files <code>plink_results.imiss</code> and <code>plink_results.lmiss</code>, which contain the missing rate information for samples and snps respectively.</p>
-<p>Take a look at the imiss file. The last column shows the missing rate for samples. Since we used simulated data this time, there are no missing samples or snps. So the missing rate is zero.</p>
+<p>Take a look at the imiss file. The last column shows the missing rate for samples. Since we used part of the 1000 Genome Project data this time, there are no missing samples or snps. So the missing rate is zero.</p>
 <pre><code class="language-bash">head plink_results.imiss
-</code></pre>
-<p>Output:</p>
-<pre><code> FID       IID MISS_PHENO   N_MISS   N_GENO   F_MISS
+ FID       IID MISS_PHENO   N_MISS   N_GENO   F_MISS
    0   HG00403          Y        0  1122299        0
    0   HG00404          Y        0  1122299        0
    0   HG00406          Y        0  1122299        0
@@ -374,12 +373,14 @@ plink \
    0   HG00421          Y        0  1122299        0
    0   HG00422          Y        0  1122299        0
 </code></pre>
-<h3 id="422-allele-frequency">4.2.2 Allele Frequency</h3>
-<p>One of the most important statistics of SNPs are their frequencies in a certain population. A number of downstream analysis is based on investigating differences in the allele frequencies.</p>
-<p>Usually, variants can be categorized into 3 groups based on their minor allele frequency:
-1. Common variants : MAF&gt;=0.05
-2. Low-frequency variants : 0.01&lt;=MAF&lt;0.05
-3. Rare variants : MAF&lt;0.01</p>
+<h3 id="allele-frequency">Allele Frequency</h3>
+<p>One of the most important statistics of SNPs is their frequencies in a certain population. A number of downstream analysis is based on investigating differences in allele frequencies.</p>
+<p>Usually, variants can be categorized into 3 groups based on their minor allele frequency:</p>
+<ol>
+<li>Common variants : MAF&gt;=0.05</li>
+<li>Low-frequency variants : 0.01&lt;=MAF&lt;0.05</li>
+<li>Rare variants : MAF&lt;0.01</li>
+</ol>
 <p>Using PLINK1.9 we can easily calculate the MAF (Minor Allel Frequency) of variants in the input data.</p>
 <pre><code class="language-bash">plink \
     --bfile ${genotypeFile} \
@@ -427,7 +428,7 @@ head plink_results.afreq
 <p>Major allele and minor allele are defined as the allele with highest and lower(or second highest for multiallelic variants) allele in a given population, respectively. So major allele and minor allele for a SNP might be different in two independent populations. The range for MAF(minor allele frequencies) is [0,0.5].</p>
 <h3 id="ref-alt">Ref / Alt</h3>
 <p>Reference(REF) and altervative allele simply refers to the allele on a reference genome. If we use the same reference genome, the reference(REF) and altervative(ALT) allele will be the same acorss populations. Reference allele could be major or minor in different populations. The range for alternative allele frequency is [0,1], since it could be major or minor allele in a given population.</p>
-<h3 id="423-inbreeding-f-coefficient">4.2.3 Inbreeding F coefficient</h3>
+<h3 id="inbreeding-f-coefficient">Inbreeding F coefficient</h3>
 <p>Next we can check the heterozygosity F of samples (https://www.cog-genomics.org/plink/1.9/basic_stats#ibc) : </p>
 <pre><code class="language-bash">plink \
     --bfile ${genotypeFile} \
@@ -448,7 +449,7 @@ head plink_results.afreq
    0   HG00421       757199    7.488e+05      1122299      0.02247
    0   HG00422       752725    7.488e+05      1122299      0.01049
 </code></pre>
-<h3 id="424-hardy-weinberg-equilibrium-exact-test">4.2.4 Hardy-Weinberg equilibrium exact test</h3>
+<h3 id="hardy-weinberg-equilibrium-exact-test">Hardy-Weinberg equilibrium exact test</h3>
 <p>For SNP QC, besides checking the missing rate, we also need to check if the SNP is in hardy-weinberg equilibrium:
 The following command can calculate the Hardy-Weinberg equilibrium exact test statistics for all SNPs. (https://www.cog-genomics.org/plink/1.9/basic_stats#hardy)</p>
 <pre><code class="language-bash">plink \
@@ -470,14 +471,14 @@ The following command can calculate the Hardy-Weinberg equilibrium exact test st
    1     1:122872:T:G  ALL(NP)    G    T            1/259/244   0.5139   0.3838     8.04e-19
    1     1:135163:C:T  ALL(NP)    T    C             1/91/412   0.1806   0.1675       0.1066
 </code></pre>
-<h3 id="425-applying-filters">4.2.5 Applying filters</h3>
+<h3 id="applying-filters">Applying filters</h3>
 <p>Previously we just calculate the basic statistics using PLINK. But when we want to actually analyze the data, we want to exclude some bad quallity sample or snps.
 In this case we can apply the following filters (for example):</p>
 <p><code>--maf 0.01</code> : exlcude snps with maf&lt;0.01</p>
 <p><code>--geno 0.01</code> :filters out all variants with missing rates exceeding 0.01</p>
 <p><code>--mind 0.02</code> :filters out all samples with missing rates exceeding 0.02</p>
 <p><code>--hwe 5e-6</code> : filters out all variants which have Hardy-Weinberg equilibrium exact test p-value below the provided threshold. NOTE: With case/control data, cases and missing phenotypes are normally ignored. (see https://www.cog-genomics.org/plink/1.9/filter#hwe)</p>
-<h3 id="426-pruning">4.2.6 Pruning</h3>
+<h3 id="pruning">Pruning</h3>
 <p>Since there are ofter strong LD among SNPs, for some analysis we don't need all SNPs.
 We can use <code>--indep-pairwise 50 5 0.2</code> to filter out those are in strong LD and keep only the independent SNPS.
 Please check https://www.cog-genomics.org/plink/1.9/ld#indep for the meaning of each parameter.
@@ -508,7 +509,7 @@ Let's take a look at this file. Basically it just contains one SNP id per line.<
 1:559480:C:T
 1:565433:C:T
 </code></pre>
-<h3 id="427-sample-snp-filtering-extractexcludekeepremove">4.2.7 sample &amp; snp filtering (extract/exclude/keep/remove)</h3>
+<h3 id="sample-snp-filtering-extractexcludekeepremove">Sample &amp; snp filtering (extract/exclude/keep/remove)</h3>
 <p>Some time we don't need all the samples or snps included the original input file. 
 In this case, we can use <code>--extract</code> or <code>--exclude</code> to select or exclude SNPs from analysis, <code>--keep</code> or <code>--remove</code> to select or exclude samples.</p>
 <p>For  <code>--keep</code> or <code>--remove</code> , the input is the filename of a sample FID and IID file.
@@ -527,7 +528,7 @@ For <code>--extract</code> or <code>--exclude</code> , the input is the filename
 1:559480:C:T
 1:565433:C:T
 </code></pre>
-<h3 id="428-ibd-pi_hat">4.2.8 IBD / PI_HAT</h3>
+<h3 id="ibd-pi_hat">IBD / PI_HAT</h3>
 <p><code>--genome</code> invokes an IBS/IBD computation. Usually for this analysis, we need to prune our data first since the strong LD will cause bias in the results.
 (This step is extremelly computationally intensive, so we only calculate  IBD for the first 1000 samples)
 Combined with the <code>--extract</code> and <code>--keep</code> option, we can run:</p>
@@ -552,7 +553,7 @@ Combined with the <code>--extract</code> and <code>--keep</code> option, we can 
    0  HG00403   0  HG00422 OT     0  0.9832  0.0111  0.0056  0.0112  -1  0.748156  0.4208  1.9867
    0  HG00403   0  HG00428 OT     0  0.9929  0.0000  0.0071  0.0071  -1  0.746851  0.3115  1.9674
 </code></pre>
-<h3 id="429-ld-calculation">4.2.9 LD calculation</h3>
+<h3 id="ld-calculation">LD calculation</h3>
 <p>We can use our data to calculate LD between a pair of SNPs.</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161413586-d4f6e21e-f0c7-4c54-a703-bb060ec6913d.png" /></p>
 <p><code>--chr</code> option allows us to include snps on a specific chromosome.
@@ -577,7 +578,7 @@ To calculate LD r2 for SNPs on chr22 , we can run:</p>
     22     16069771   22:16069771:G:A     22     16123813   22:16123813:G:A     0.291935 
     22     16143946   22:16143946:A:G     22     16155259   22:16155259:A:G     0.559165 
 </code></pre>
-<h3 id="4210-data-management-make-bedrecode">4.2.10 data management (make-bed/recode)</h3>
+<h3 id="data-management-make-bedrecode">Data management (make-bed/recode)</h3>
 <p>By far the input data we use is in binary form, but sometimes we may want the text version.
 <img alt="image" src="https://user-images.githubusercontent.com/40289485/161413659-a489b508-63c7-4166-9f5c-25a1a125109a.png" /></p>
 <p>To convert the format we can run:</p>

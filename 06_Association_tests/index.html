@@ -155,15 +155,22 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#testing" class="nav-link">Testing</a>
+            <li class="nav-item" data-level="2"><a href="#genetic-models" class="nav-link">Genetic models</a>
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#association-testing" class="nav-link">Association testing</a>
+              <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#significant-loci" class="nav-link">Significant loci</a>
+            <li class="nav-item" data-level="2"><a href="#genomic-control" class="nav-link">Genomic control</a>
               <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#significant-loci" class="nav-link">Significant loci</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
             
@@ -186,14 +193,14 @@
 
 <h1 id="association-test">Association test</h1>
 <h2 id="file-preparation">File preparation</h2>
-<p>To perform association analysis, usually we need the following files:</p>
+<p>To perform genome-wide association study (GWAS), usually we need the following files:</p>
 <ul>
 <li><strong>Genotype file</strong> (or dosage file) : usually in PLINK format, VCF format, or BGEN format.</li>
 <li><strong>Phenotype file</strong> : plain text file.</li>
 <li><strong>Covariate file</strong> (optional): plain text file. Usually covaraites include age, sex, and top Pricipal Components. </li>
 </ul>
 <p>For example,</p>
-<pre><code># phenotype file for a simulated binary trait
+<pre><code># Phenotype file for a simulated binary trait; B1 is the phenotype name; 1 means control, 2 means case.
 head 1kgeas_binary.txt 
 FID IID B1
 0 HG00403 2 
@@ -206,7 +213,7 @@ FID IID B1
 0 HG00421 2 
 0 HG00422 1
 
-# the covariates file (only top PCs)
+# Covariate file (only top PCs calculated in the previous PCA section)
 #FID    IID ALLELE_CT   NAMED_ALLELE_DOSAGE_SUM PC1_AVG PC2_AVG PC3_AVG PC4_AVG PC5_AVG PC6_AVG PC7_AVG PC8_AVG PC9_AVG PC10_AVG
 0   HG00403 224016  224016  0.000246109 0.0292717   -0.0127437  -0.0135105  0.0301317   0.0196699   0.0232392   -0.0205941  -0.00416543 0.0121819
 0   HG00404 224016  224016  -0.000716664    0.032043    -0.00573731 -0.0189504  0.0277385   -0.0154478  -0.0136551  -0.00147269 0.00510851  0.0268694
@@ -218,9 +225,48 @@ FID IID B1
 0   HG00421 224016  224016  0.000987901 0.0336895   -0.00697814 0.00557199  -0.0210537  0.00700968  0.00319921  -0.0215999  0.00127686  0.0350116
 0   HG00422 224016  224016  0.00440288  0.0335901   -0.0125043  0.0135621   -0.0228428  0.00492741  0.00445856  -0.00911147 -0.00312742 -0.00784459
 </code></pre>
-<h2 id="testing">Testing</h2>
+<h2 id="genetic-models">Genetic models</h2>
+<p>To test the association between a phenotype and genotypes, we also need to group the genotypes based on genetic models.</p>
+<p>There are three basic genetic models:
+- Additive model (ADD)
+- Dominant model (DOM)
+- Recessive model (REC)</p>
+<p>For example, suppose we have a biallelic SNP whose reference allele is A and alternative allele is G.</p>
+<p>There are three possible genotypes for this SNP: AA, AG, and GG.</p>
+<p>The table shows how we group different genotypes under each genetic model.</p>
+<table>
+<thead>
+<tr>
+<th>Genetic models</th>
+<th>AA</th>
+<th>AG</th>
+<th>GG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Additive model</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Dominant model</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Recessive model</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="association-testing">Association testing</h2>
 <p>Please check https://www.cog-genomics.org/plink/2.0/assoc for more details.</p>
-<p>We will perform a logistic regression with firth correction for a simulated binary trait using 1KG East Asian individuals.</p>
+<p>We will perform a logistic regression with firth correction for a simulated binary trait under additive model using the 1KG East Asian individuals.</p>
 <p>Sample code:</p>
 <pre><code>genotypeFile=&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot;  #!please set this to your own path
 phenotypeFile=&quot;../01_Dataset/1kgeas_binary.txt&quot; #!please set this to your own path
@@ -285,9 +331,16 @@ End time: Tue Dec 27 23:04:40 2022
 1   122872  1:122872:T:G    T   G   G   ADD 503 1.04828 0.182036    0.259034    0.795609    .
 1   135163  1:135163:C:T    C   T   T   ADD 503 0.676666    0.242611    -1.60989    0.107422    .
 </code></pre>
-<h1 id="significant-loci">Significant loci</h1>
+<h2 id="genomic-control">Genomic control</h2>
+<p>Genomic control (GC) is a basic method for controlling for the confunding factors like population stratification.</p>
+<p>We will calculate genomic control factor (lambda GC) to evaluate the inflation. The genomic control factor is calculated by dividing the <strong>median of observed Chi square statistics</strong> by the <strong>median of Chi square distribution with degree of 1</strong> (which is approximately 0.455).</p>
+<p>$$ \lambda_{GC} = {median(\chi^{2}_{observed}) \over median(\chi^{2}_1)} $$</p>
+<p>Then, we can used the genomic control factor to correct observed Chi suqare statistics.</p>
+<p>$$ \chi^{2}<em>{corrected} = {\chi^{2}</em>{observed} \over \lambda_{GC}} $$</p>
+<p>Reference: Devlin, B., &amp; Roeder, K. (1999). Genomic control for association studies. Biometrics, 55(4), 997-1004.</p>
+<h2 id="significant-loci">Significant loci</h2>
 <p>Please check <a href="https://cloufield.github.io/GWASTutorial/Visualization/">Visualization using gwaslab</a></p>
-<p>Loci reach suggestive significance (P value threshold: 5e-6)</p>
+<p>Loci that reached suggestive significance threhold (P value &lt; 5e-6) :</p>
 <pre><code>SNPID   CHR POS EA  NEA SE  Z   P   OR  N   STATUS
 1:217437563:C:T 1   217437563   C   T   0.151157    -5.22793    1.714210e-07    0.453736    503 9999999
 2:55574452:G:C  2   55574452    C   G   0.160948    -5.98392    2.178320e-09    0.381707    503 9999999
@@ -298,11 +351,13 @@ End time: Tue Dec 27 23:04:40 2022
 11:56249438:A:G 11  56249438    G   A   0.188891    -4.77836    1.767350e-06    0.405518    503 9999999
 </code></pre>
 <h1 id="visualization">Visualization</h1>
-<p>To visualize the result, we will create manhattan plot, QQ plot and regional plot.</p>
+<p>To visualize the results, we will create manhattan plot, QQ plot and regional plot.</p>
 <p>Please check <a href="https://cloufield.github.io/GWASTutorial/Visualization/">Visualization using gwaslab</a></p>
 <h2 id="mahanttan-plot-and-quantile-quantile-plot">Mahanttan plot and Quantile-Quantile plot</h2>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/209681591-dc691764-7346-4936-80b4-528bc425a61e.png" /></p>
 <h2 id="regional-plot">Regional plot</h2>
+<p>The regional plot for the loci of 2:55574452:G:C. </p>
+<p>Please check <a href="https://cloufield.github.io/GWASTutorial/Visualization/">Visualization using gwaslab</a></p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/209681608-3973c546-ad52-4d77-a3a1-a1c60a7a0a97.png" /></p></div>
             </div>
         </div>
