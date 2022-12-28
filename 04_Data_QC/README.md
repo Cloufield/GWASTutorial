@@ -311,6 +311,7 @@ head plink_results.afreq
 We need pay attention to the concepts here.
 
 In PLINK1.9, the concept here is minor (A1) and major(A2) allele, while in PLINK2 it is reference(REF) and altervative(ALT) allele.
+
 - **Major / Minor**: Major allele and minor allele are defined as the allele with highest and lower(or second highest for multiallelic variants) allele in a given population, respectively. So major allele and minor allele for a SNP might be different in two independent populations. The range for MAF(minor allele frequencies) is [0,0.5].
 - **Ref / Alt**: Reference(REF) and altervative(ALT) alleles are simply determined by the allele on a reference genome. If we use the same reference genome, the reference(REF) and altervative(ALT) allele will be the same acorss populations. Reference allele could be major or minor in different populations. The range for alternative allele frequency is [0,1], since it could be major or minor allele in a given population.
 
