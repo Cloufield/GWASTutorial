@@ -4,9 +4,13 @@
 
 This is a repository aimming to provide a hands-on tutorial of genome-wide association study (GWAS). 
 
-Contents are categorized into the following groups.
+Contents are categorized into the following groups. Additionally, for absolute beginners, we also prepare a section on command lines in Linux.
 
-- [Linux command line basics](https://cloufield.github.io/GWASTutorial/02_Linux_basics/)
+<img width="686" alt="image" src="https://user-images.githubusercontent.com/40289485/209779725-73b62b15-b044-46a4-98ae-ce5db06f93b3.png">
+
+## Table of Contents:
+
+- [Linux command line basics (optional)](https://cloufield.github.io/GWASTutorial/02_Linux_basics/)
 - Pre-GWAS
     - [Data formats](https://cloufield.github.io/GWASTutorial/03_Data_formats/)
     - [Data QC](https://cloufield.github.io/GWASTutorial/04_Data_QC/)
