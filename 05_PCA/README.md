@@ -1,4 +1,4 @@
-# 5.Principle conponent analysis
+# Principle conponent analysis (PCA)
 PCA is by far the most commonly used dimension reduction approach used in population genetics which could identify the diffenrence in ancestry among the sample individuals.
 For GWAS we also need to include top PCs to adjust for the population stratification.
 
@@ -9,20 +9,27 @@ Simply speaking, GRM (genetic relationship matrix) is first estimated and then P
 
 So before association analysis, we will learn how to run PCA analysis first.
 
-- [5.1 Preparation](#51-preparation)
-- [5.2 PCA steps](#52-pca-steps)
-- [5.3 Sample codes](#53-sample-codes)
-- [5.4 Plotting the PCs](#54-plotting-the-pcs)
-- [5.5 PCA-UMAP](#55-pca-umap)
+- [Preparation](#preparation)
+- [PCA steps](#pca-steps)
+- [Sample codes](#sample-codes)
+- [Plotting the PCs](#plotting-the-pcs)
+- [PCA-UMAP](#pca-umap)
 - [References](#references)
----------
 
-## 5.1 Preparation
 
-excluding SNPs in high-LD or HLA regions. 
+## Preparation
 
-Please check https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD)
-- 0.1 simply copy the list of high-LD or HLA regions in Genome build version(.bed format) to a text file `high-ld.txt`.
+### Exclude SNPs in high-LD or HLA regions
+For PCA, we first exclude SNPs in high-LD or HLA regions from the genotype data. 
+
+Note: the reason why we want to exclude such high-LD or HLA regions is described in:
+- Price, A. L., Weale, M. E., Patterson, N., Myers, S. R., Need, A. C., Shianna, K. V., Ge, D., Rotter, J. I., Torres, E., Taylor, K. D., Goldstein, D. B., & Reich, D. (2008). Long-range LD can confound genome scans in admixed populations. American journal of human genetics, 83(1), 132–139. https://doi.org/10.1016/j.ajhg.2008.06.005 
+
+
+### Download BED-like files for high-LD or HLA regions
+
+You can simply copy the list of high-LD or HLA regions in Genome build version(.bed format) to a text file `high-ld.txt`. For details, please check https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD).
+
 ```
 $cat high-ld-hg19.txt 
 1	48000000	52000000	highld
@@ -50,11 +57,17 @@ $cat high-ld-hg19.txt
 12	109500000	112000000	highld
 20	32000000	34500000	highld
 ```
-- 0.2 use `high-ld.txt` to extract all SNPs which are located in the regions described in the file using the code as follows:
+
+### Create a list for SNPs in high-LD or HLA regions
+
+Next, use `high-ld.txt` to extract all SNPs which are located in the regions described in the file using the code as follows:
+
 ```
 plink --file ${plinkFile} --make-set high-ld.txt --write-set --out hild
 ```
+
 For example:
+
 ```
 plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020" #!please set this to your own path
 
@@ -79,13 +92,11 @@ highld
 1:48009994:C:T
 1:48009997:C:A
 ```
-- 0.3 exclude these SNPs using `--exclude hild.set` when pruning.
 
-Note: the reason why we want to exclude such high-LD or HLA regions is described in:
-- Price, A. L., Weale, M. E., Patterson, N., Myers, S. R., Need, A. C., Shianna, K. V., Ge, D., Rotter, J. I., Torres, E., Taylor, K. D., Goldstein, D. B., & Reich, D. (2008). Long-range LD can confound genome scans in admixed populations. American journal of human genetics, 83(1), 132–139. https://doi.org/10.1016/j.ajhg.2008.06.005 
+For downstream analysis, we can exclude these SNPs using `--exclude hild.set`.
 
 ---------
-## 5.2 PCA steps
+## PCA steps
 
 - 1.Pruning (https://www.cog-genomics.org/plink/2.0/ld#indep)
 - 2.Removing relatives (usually 2-degree) (https://www.cog-genomics.org/plink/2.0/distance#king_cutoff)
@@ -93,14 +104,14 @@ Note: the reason why we want to exclude such high-LD or HLA regions is described
 - 4.Project to all samples (https://www.cog-genomics.org/plink/2.0/score#pca_project)
 
 ---------
-## 5.3 Sample codes
+## Sample codes
 ```
 plinkFile="" #please set this to your own path
 outPrefix="plink_results"
 threadnum=2
 hildset = hild.set 
 
-# pruning
+# LD-pruning, excluding high-LD and HLA regions
 plink2 \
         --bfile ${plinkFile} \
 	--threads ${threadnum} \
@@ -108,7 +119,7 @@ plink2 \
 	--indep-pairwise 500 50 0.2 \
         --out ${outPrefix}
 
-# remove related samples using king-cuttoff
+# Remove related samples using king-cuttoff
 plink2 \
         --bfile ${plinkFile} \
 	--extract ${outPrefix}.prune.in \
@@ -116,7 +127,7 @@ plink2 \
 	--threads ${threadnum} \
         --out ${outPrefix}
 
-# pca after pruning and removing related samples
+# PCA after pruning and removing related samples
 plink2 \
         --bfile ${plinkFile} \
         --keep ${outPrefix}.king.cutoff.in.id \
@@ -126,7 +137,7 @@ plink2 \
         --pca approx allele-wts \
         --out ${outPrefix}
 
-# projection (related and unrelated samples)
+# Projection (related and unrelated samples)
 plink2 \
         --bfile ${plinkFile} \
 	--threads ${threadnum} \
@@ -135,9 +146,11 @@ plink2 \
         --score-col-nums 6-15 \
         --out ${outPrefix}_projected
 ```
+
 After step 3, the 'allele-wts' modifier requests an additional one-line-per-allele .eigenvec.allele file with PCs expressed as allele weights instead of sample weights.
 
 We will get the `plink_results.eigenvec.allele` file, which will be used to project onto all samples along with a allele count `plink_results.acount` file.
+
 ```
 $head plink_results.eigenvec.allele
 #CHROM	ID	REF	ALT	A1	PC1	PC2	PC3	PC4	PC5	PC6	PC7	PC8	PC9	PC10
@@ -166,6 +179,7 @@ $head plink_results.eigenvec.allele
 ```
 Please check https://www.cog-genomics.org/plink/2.0/score#pca_project for more details on projection.
 Eventually, we will get the PCA results for all samples.
+
 ```
 head plink_results_projected.sscore
 #FID	IID	ALLELE_CT	NAMED_ALLELE_DOSAGE_SUM	PC1_AVG	PC2_AVG	PC3_AVG	PC4_AVG	PC5_AVG	PC6_AVG	PC7_AVG	PC8_AVG	PC9_AVG	PC10_AVG
@@ -180,7 +194,7 @@ head plink_results_projected.sscore
 0	HG00422	219504	219504	0.00437335	-0.0323416	-0.0111979	0.0106245	-0.0267334	0.00142919	-0.00487295	-0.0124099	-0.00467014	-0.0188086
 ```
 
-## 5.4 Plotting the PCs 
+## Plotting the PCs 
 You can now create scatterplots of the PCs using R or python.
 
 For plotting using python:
@@ -193,7 +207,7 @@ Requrements:
 - python>3
 - numpy,pandas,seaborn,matplotlib
 
-## 5.5 PCA-UMAP
+## PCA-UMAP
 (optional) 
 We can also apply another non-linear dimension reduction algorithm called UMAP to the PCs to further identfy the local structures. (PCA-UMAP)
 
