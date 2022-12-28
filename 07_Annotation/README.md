@@ -5,32 +5,33 @@
 
 ## ANNOVAR
 
+[ANNOVAR](https://annovar.openbioinformatics.org/en/latest/) is a simple and efficient command line tool for variant annotation. 
+
+In this tutorial, we will use ANNOVAR to annotate the variants in our summary statistics (hg19).
+
 ### Install
 
-Download ANNOVAR from:
-https://annovar.openbioinformatics.org/en/latest/
+Download ANNOVAR from [here](https://annovar.openbioinformatics.org/en/latest/user-guide/download/) (registration required; freely available to personal, academic and non-profit use only.)
 
-Download refernece file:
-```
+You will receive an eamil with the download link after registration. Download it and decompress:
 
 ```
+tar -xvzf annovar.latest.tar.gz
+```
 
-Format input file
+For refGene annotation for hg19, we do not need to download additional files.
 
+### Format input file
+
+The default input file for ANNOVAR is a 1-based coordinate file.
+
+We will only use the first 100000 variants as an example.
 ```
 awk 'NR>1 && NR<100000 {print $1,$2,$2,$4,$5}' ../06_Association_tests/1kgeas.B1.glm.logistic.hybrid > annovar_input.txt
-
-```
-
-Annotate
-
-```
-input=annovar_input.txt
-humandb=/home/he/tools/annovar/annovar/humandb
-table_annovar.pl ${input} ${humandb} -buildver hg19 -out myannotation -remove -protocol refGene -operation g -nastring . -polish
 ```
 
 ```
+head annovar_input.txt 
 1 13273 13273 G C
 1 14599 14599 T A
 1 14604 14604 A G
@@ -41,6 +42,15 @@ table_annovar.pl ${input} ${humandb} -buildver hg19 -out myannotation -remove -p
 1 122872 122872 T G
 1 135163 135163 C T
 1 233473 233473 C G
+```
+
+### Annotation
+Annotate the variants with its gene information.
+
+```
+input=annovar_input.txt
+humandb=/home/he/tools/annovar/annovar/humandb
+table_annovar.pl ${input} ${humandb} -buildver hg19 -out myannotation -remove -protocol refGene -operation g -nastring . -polish
 ```
 
 ```
@@ -56,7 +66,7 @@ Chr	Start	End	Ref	Alt	Func.refGene	Gene.refGene	GeneDetail.refGene	ExonicFunc.re
 1	135163	135163	C	T	ncRNA_exonic	LOC729737	.	.	.
 ```
 
-## VEP 
+## VEP (under construction)
 
 ### Install
 
