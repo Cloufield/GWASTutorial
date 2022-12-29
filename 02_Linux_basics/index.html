@@ -495,13 +495,43 @@ $cp -r directory1/ directory2/
 <p>Archive: combine multiple files in one file</p>
 <p>Compress: make the file size smaller without losing infomation</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/160957877-9148b34a-93e8-40cc-9acc-7c5bb9435b71.png" /></p>
-<p>Commly used commands:
-| Extensions  | Create  | Extract  | Functions  | 
-|---|---|---|---|
-| file.gz  |   gzip |        gunzip |          compress|
-| files.tar                  |         tar -cvf|       tar -xvf|             archive|
-|  files.tar.gz or files.tgz |      tar -czvf|   tar -xvzf|  archive$compress|
-|  file.zip                  |            zip|       unzip | archive$compress|</p>
+<p>Commoly used commands for archiving and compression:\</p>
+<table>
+<thead>
+<tr>
+<th>Extensions</th>
+<th>Create</th>
+<th>Extract</th>
+<th>Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file.gz</td>
+<td><code>gzip</code></td>
+<td><code>gunzip</code></td>
+<td>compress</td>
+</tr>
+<tr>
+<td>files.tar</td>
+<td><code>tar -cvf</code></td>
+<td><code>tar -xvf</code></td>
+<td>archive</td>
+</tr>
+<tr>
+<td>files.tar.gz or files.tgz</td>
+<td><code>tar -czvf</code></td>
+<td><code>tar -xvzf</code></td>
+<td>archive and compress</td>
+</tr>
+<tr>
+<td>file.zip</td>
+<td><code>zip</code></td>
+<td><code>unzip</code></td>
+<td>archive and compress</td>
+</tr>
+</tbody>
+</table>
 <pre><code>$ ls -lh
 -rw-r--r--  1 he  staff    31M Dec 23 14:07 sumstats.txt
 
