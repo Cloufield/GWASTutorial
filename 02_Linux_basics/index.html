@@ -266,8 +266,10 @@ In this module, we will learn the most basic commands which enable you to handle
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161374551-1ef3b509-b345-4be3-b45b-3f86c466aa5a.png" /></p>
 <p>Reference: https://en.wikipedia.org/wiki/Linux</p>
 <h3 id="how-do-we-interact-with-computers">How do we interact with computers?</h3>
-<p>Graphical User Interface (GUI): allows users to interact with computers through graphical icons </p>
-<p>Character User Interface (CUI): allows users to interact with computers through command lines</p>
+<ul>
+<li><strong>Graphical User Interface (GUI)</strong>: allows users to interact with computers through graphical icons </li>
+<li><strong>Character User Interface (CUI)</strong>: allows users to interact with computers through command lines</li>
+</ul>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161374590-fd4bfee0-e815-475b-8a73-e53d97447e74.png" /></p>
 <h3 id="a-general-comparison-between-cui-and-gui">A general comparison between CUI and GUI</h3>
 <table>
@@ -311,10 +313,7 @@ In this module, we will learn the most basic commands which enable you to handle
 </tr>
 </tbody>
 </table>
-<p>-&gt; CUI is better for large-scale data analysis </p>
-<p>Check list
-- [ ] what is CUI and GUI?
-- [ ] why do we use Linux over other systems? </p>
+<p>-&gt; CUI is better for large-scale data analysis</p>
 <h1 id="overview-of-the-basic-commands-in-linux">Overview of the basic commands in Linux</h1>
 <p>Just like clicking and dragging files in Windows or MacOS, in Linux, we usually handle files by typing commands in the terminal.</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161308638-18a0efbf-92df-4795-87be-72080db316c6.png" /></p>
@@ -406,8 +405,10 @@ DESCRIPTION
 </code></pre>
 <p>This command prints the absolute path.
 <img alt="image" src="https://user-images.githubusercontent.com/40289485/161308808-6a8c97a9-4c7d-46cf-9e67-c5876415866f.png" /></p>
-<p>absolute path: path starting form root: <code>/home/he/work/GWASTutorial/02_Linux_basics</code></p>
-<p>relative path: path starting form current directory: <code>./GWASTutorial/02_Linux_basics</code></p>
+<ul>
+<li><strong>Absolute path</strong>: path starting form root: <code>/home/he/work/GWASTutorial/02_Linux_basics</code></li>
+<li><strong>Relative path</strong>: path starting form current directory: <code>./GWASTutorial/02_Linux_basics</code></li>
+</ul>
 <h3 id="cd"><code>cd</code></h3>
 <p><code>cd</code>: Change the current working directory </p>
 <pre><code class="language-Bash">$ cd 02_Linux_basics
@@ -416,10 +417,12 @@ $ pwd
 </code></pre>
 <h3 id="ls"><code>ls</code> :</h3>
 <p><code>ls</code> : List the files in the directory</p>
-<p>some options for <code>ls</code> :</p>
-<p><code>-l</code>: in a list-like format</p>
-<p><code>-h</code>: convert file size into a human readable format (KB,MB,GB...)</p>
-<p><code>-a</code>: list all files (including hidden files, namly those files a period at the beginning of the filename)</p>
+<p>Some frequently used options for <code>ls</code> :</p>
+<ul>
+<li><code>-l</code>: in a list-like format</li>
+<li><code>-h</code>: convert file size into a human readable format (KB,MB,GB...)</li>
+<li><code>-a</code>: list all files (including hidden files, namly those files a period at the beginning of the filename)</li>
+</ul>
 <pre><code class="language-Bash">$ ls
 README.md  sumstats.txt
 
@@ -430,8 +433,10 @@ drwxr-xr-x  17 he  staff   544B Dec 23 12:13 ..
 -rw-r--r--   1 he  staff    31M Dec 23 14:07 sumstats.txt
 </code></pre>
 <h3 id="mkdir-rmdir"><code>mkdir</code> &amp; <code>rmdir</code> :</h3>
-<p><code>mkdir</code> : Create a new empty directory</p>
-<p><code>rmdir</code>: Delete an empty directory</p>
+<ul>
+<li><code>mkdir</code> : Create a new empty directory</li>
+<li><code>rmdir</code>: Delete an empty directory</li>
+</ul>
 <pre><code class="language-Bash">$ mkdir new_directory
 $ ls
 new_directory  README.md  sumstats.txt
@@ -460,7 +465,11 @@ total 64048
 
 </code></pre>
 <h3 id="mv"><code>mv</code>:</h3>
-<p>(1) move the files to another path , or (2) rename the file</p>
+<p><code>mv</code> has two functions:</p>
+<ul>
+<li>(1) move files to another paths</li>
+<li>(2) rename files</li>
+</ul>
 <p>The following command will create a new directoru called <code>new_directory</code>, and move <code>sumstats.txt</code> into that directory. Just like draggig a file in to a folder in window system.</p>
 <pre><code class="language-Bash"># make a new directory
 $ mkdir new_directory
@@ -499,8 +508,10 @@ $cp -r directory1/ directory2/
 <h2 id="archive-and-compression">Archive and Compression</h2>
 <p>Results for millions of variants are usually very large, sometimes &gt;10GB, or consists of multiple files. </p>
 <p>To save space and make it easier to transfer, we need to archive and compress these files.</p>
-<p>Archive: combine multiple files in one file</p>
-<p>Compress: make the file size smaller without losing infomation</p>
+<ul>
+<li><strong>Archive</strong>: combine multiple files in a single file.</li>
+<li><strong>Compress</strong>: make the file size smaller without losing any infomation by convertying the file to binary forms.</li>
+</ul>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/160957877-9148b34a-93e8-40cc-9acc-7c5bb9435b71.png" /></p>
 <p>Commoly used commands for archiving and compression:</p>
 <table>
@@ -623,13 +634,16 @@ CHROM   POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
 </code></pre>
 <p>This means that <code>sumstats.txt</code> has 445933 lines, 5797129 words, and 32790417 characters. </p>
 <h2 id="edit-files">Edit files</h2>
-<p>Vim is a handy text editor in command line.</p>
+<p><strong>Vim</strong> is a handy text editor in command line.</p>
 <pre><code class="language-Bash">vim a_new_file.txt
 </code></pre>
 <p>Press <code>i</code> to enter insert mode, and then you can edit the file as you want.
 When finished, just pres <code>Esc</code> to escape insert mode, and then press <code>shift + :</code> , then <code>wq</code> to quit and also save the file.</p>
 <p>Vim is hard to learn for beginners, but when you get familiar with it, it will be a mighty and convenient tool.
 For more detailed tutorials on Vim, you can check: https://github.com/iggredible/Learn-Vim</p>
+<p>Other common command line text editor:
+- <a href="https://www.nano-editor.org/">nano</a>
+- <a href="https://www.gnu.org/software/emacs/">emacs</a></p>
 <h2 id="permission">Permission</h2>
 <p>The permissions of a file or directory are represented as a 10-character string (1+3+3+3) :</p>
 <p>For example, this represents a directory(the initial d) which is readable, writable and executable for the owner(the first 3: rwx), users in the same group(the 3 characters in the middle: rwx) and others (last 3 characters: rwx).</p>
@@ -806,8 +820,10 @@ sq, sjobs, shosts</p>
 <pre><code class="language-Bash">ssh-keygen -t rsa -b 4096
 </code></pre>
 <p>You will get two keys, a public one and a private one.</p>
-<p>public key  :  <code>~/.ssh/id_rsa.pub</code></p>
-<p>private key :  <code>~/.ssh/id_rsa</code>   ,please don't share this with others.       </p>
+<ul>
+<li>public key  :  <code>~/.ssh/id_rsa.pub</code></li>
+<li>private key :  <code>~/.ssh/id_rsa</code>   ,please don't share this with others.       </li>
+</ul>
 <p>What you need to do is just add you local public key to <code>~/.ssh/authorized_keys</code> on host server.</p>
 <h2 id="links">Links</h2>
 <p>symbolic link is like a shortcut on window system, which is a special type of file that points to another file.
