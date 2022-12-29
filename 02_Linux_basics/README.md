@@ -30,9 +30,19 @@ In this module, we will learn the most basic commands which enable you to handle
 
 # Linux System Introduction
 ### What is Linux?
+
+Linux: a family of open-source Unix-like operating systems based on the Linux kernel. 
+
 ![image](https://user-images.githubusercontent.com/40289485/161374551-1ef3b509-b345-4be3-b45b-3f86c466aa5a.png)
 
+Reference: https://en.wikipedia.org/wiki/Linux
+
 ### How do we interact with computers?
+
+Graphical User Interface (GUI): allows users to interact with computers through graphical icons 
+
+Character User Interface (CUI): allows users to interact with computers through command lines
+
 ![image](https://user-images.githubusercontent.com/40289485/161374590-fd4bfee0-e815-475b-8a73-e53d97447e74.png)
 
 ### A general comparison between CUI and GUI
@@ -52,10 +62,12 @@ Check list
 - [ ] why do we use Linux over other systems? 
 
 # Overview of the basic commands in Linux
+
 Just like clicking and dragging files in Windows or MacOS, in Linux, we usually handle files by typing commands in the terminal.
+
 ![image](https://user-images.githubusercontent.com/40289485/161308638-18a0efbf-92df-4795-87be-72080db316c6.png)
 
-Here are some of the basic commands we are going to cover in this brief tutorial:
+Here is a list of the basic commands we are going to cover in this brief tutorial:
 
 |Function group| Commands| Description|
 |-|-|-|
@@ -69,15 +81,20 @@ Here are some of the basic commands we are going to cover in this brief tutorial
 | Pipe, redirect and others| pipe, `>`,`>>`,`*`,`.`,`..` | A group of miscellaneous commands |
 | Advance text editing| `awk`, `sed` | Commands for more complicated text manipulation and editing |
 
-
 ### How to check the usage of a command using `man`: 
-check the manual of the command (e.g., `man chmod`) or `--help` option (e.g., `chmod --help`)
-```
+
+The first command we might want to learn is `man`, which shows the manual for a certain command. When you forget how to use a command, you can always use `man` to check.
+
+`man` : Check the manual of a command (e.g., `man chmod`) or `--help` option (e.g., `chmod --help`)
+
+For example, we want to check the usage of `pwd`:
+
+```Bash
 $ man pwd
 
 ```
 Then you will see the manual of `pwd` in your terminal.
-```
+```Bash
 
 PWD(1)                                              User Commands                                              PWD(1)
 
@@ -94,11 +111,14 @@ DESCRIPTION
 
 # Commands
 ## Directories
+
 The first set of commands are: `pwd` , `cd` , `ls`, `mkdir` and `rmdir`, which are related to directories (like the folders in a Windows system).
 
-### `pwd`: 
-print working directory, which means print the path of the current directory (working directory)
-```
+### `pwd`
+
+`pwd` : Print working directory, which means print the path of the current directory (working directory)
+
+```Bash
 $ pwd
 /home/he/work/GWASTutorial/02_Linux_basics
 ```
@@ -110,25 +130,26 @@ absolute path: path starting form root: `/home/he/work/GWASTutorial/02_Linux_bas
 relative path: path starting form current directory: `./GWASTutorial/02_Linux_basics`
 
 
-### `cd` : 
-changing current working directory 
-```
+### `cd` 
+`cd`: Change the current working directory 
+```Bash
 $ cd 02_Linux_basics
 $ pwd
 /home/he/work/GWASTutorial/02_Linux_basics
 ```
 
 ### `ls` : 
-list the files in the directory
+`ls` : List the files in the directory
 
-we can also add some options like: `ls -lha`
+some options for `ls` :
 
 `-l`: in a list-like format
 
 `-h`: convert file size into a human readable format (KB,MB,GB...)
 
 `-a`: list all files (including hidden files, namly those files a period at the beginning of the filename)
-```
+
+```Bash
 $ ls
 README.md  sumstats.txt
 
@@ -138,10 +159,14 @@ drwxr-xr-x  17 he  staff   544B Dec 23 12:13 ..
 -rw-r--r--   1 he  staff     0B Oct 17 11:24 README.md
 -rw-r--r--   1 he  staff    31M Dec 23 14:07 sumstats.txt
 ```
+
 ### `mkdir` & `rmdir` :
 
-create a new empty directory & delete an empty directory
-```
+`mkdir` : Create a new empty directory
+
+`rmdir`: Delete an empty directory
+
+```Bash
 $ mkdir new_directory
 $ ls
 new_directory  README.md  sumstats.txt
@@ -151,13 +176,15 @@ README.md  sumstats.txt
 ```
 
 ## Manipulating files
+
 This set of commands includes: `touch`, `mv` , `rm` and `cp`
 
 ### `touch`:
 `touch` command is used to create a new empty file.
 
 For example, let's create a text file called `newfile.txt` in this directory.
-```
+
+```Bash
 $ ls -l
 total 64048
 -rw-r--r--  1 he  staff         0 Oct 17 11:24 README.md
@@ -178,7 +205,7 @@ total 64048
 (1) move the files to another path , or (2) rename the file
 
 The following command will create a new directoru called `new_directory`, and move `sumstats.txt` into that directory. Just like draggig a file in to a folder in window system.
-```
+```Bash
 # make a new directory
 $ mkdir new_directory
 
@@ -191,19 +218,19 @@ sumstats.txt
 ```
 
 Now, let's move it back to the current directory and rename it to `sumstats_new.txt `.
-```
+```Bash
 $ mv ./new_directory/sumstats.txt ./
 ```
 Note: `./` means the current directory
 You can also use `mv` to rename a file:
-```
+```Bash
 #rename
 $mv sumstats.txt sumstats_new.txt 
 ```
 
 ### `rm`:
 remove files or diretories
-```
+```Bash
 # remove a file
 $rm file
 
@@ -212,9 +239,10 @@ $rm -r directory/
 ```
 
 ### `cp` 
+
 `cp` command is used to copy files or diretories.
 
-```
+```Bash
 #cp files
 $cp file1 file2
 
@@ -223,6 +251,7 @@ $cp -r directory1/ directory2/
 ```
 
 ## Archive and Compression
+
 Results for millions of variants are usually very large, sometimes >10GB, or consists of multiple files. 
 
 To save space and make it easier to transfer, we need to archive and compress these files.
@@ -243,7 +272,7 @@ Commoly used commands for archiving and compression:
 | `file.zip`                  |            `zip`|       `unzip` | archive and compress|
 
 
-```
+```Bash
 $ ls -lh
 -rw-r--r--  1 he  staff    31M Dec 23 14:07 sumstats.txt
 
@@ -261,7 +290,7 @@ We have a group of handy commands to check part of or the entire file, including
 
 ### `cat`
 print the file or concatenate the files
-```
+```Bash
 $ ls -lha > a_text_file.txt
 $ cat a_text_file.txt 
 total 32M
@@ -277,8 +306,10 @@ drwxr-x--- 29 he staff 4.0K Apr  1 22:20 ..
 By the way, `> a_text_file.txt` here means redirect the output to file ` a_text_file.txt`.
 
 ### `zcat` 
-zcat is similar to cat, but can only applied to compressed files.
-```
+
+`zcat` is similar to `cat`, but can only applied to compressed files.
+
+```Bash
 $ gzip a_text_file.txt 
 $ cat a_text_file.txt.gz                                                         TGba_text_file.txtя
 @ȱ»O𻀙v؂𧢩¼򀳠bq}󑢤\¤n٢ª򠀬n»ڡǭ
@@ -296,9 +327,12 @@ drwxr-x--- 29 he staff 4.0K Apr  1 22:20 ..
 ```
 
 ### `head`
-print the first 10 lines.
-`-n` change the lines using this option
-```
+
+`head`: Print the first 10 lines.
+
+`-n`: option to change the number of lines.
+
+```Bash
 $ head sumstats.txt 
 CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
 1	319	17	2	1	1	ADD	10000	1.04326	0.0495816	0.854176	0.393008	.
@@ -316,8 +350,10 @@ CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
 ```
 
 ### `tail`
-Similar to `head`, you can use `tail` ro check the last 10 lines.
-```
+
+Similar to `head`, you can use `tail` ro check the last 10 lines. `-n` works in the same way.
+
+```Bash
 $ tail sumstats.txt 
 22	99996057	9959945	2	1	1	ADD	10000	1.03234	0.0335547	0.948413	0.342919.
 22	99996465	9959971	2	1	1	ADD	10000	1.04755	0.0337187	1.37769	0.1683	.
@@ -332,29 +368,34 @@ $ tail sumstats.txt
 ```
 
 ### `wc`
-word count:
 
-lines,words,characters
+`wc`: short for word count, which count the lines, words, and characters in a file.
 
-```
+For example, 
+
+```Bash
 $ wc sumstats.txt 
   445933  5797129 32790417 sumstats.txt
 ```
+This means that `sumstats.txt` has 445933 lines, 5797129 words, and 32790417 characters. 
 
 
 ## Edit files
-a handy text editor in command line: vim
-```
+
+Vim is a handy text editor in command line.
+
+```Bash
 vim a_new_file.txt
 ```
 
-press `i` to enter insert mode, and then you can edit the file as you want.
+Press `i` to enter insert mode, and then you can edit the file as you want.
 When finished, just pres `Esc` to escape insert mode, and then press `shift + :` , then `wq` to quit and also save the file.
 
-Vim is hard to learn for beginners, but when you get familiar with it, it will be a mighty and convient tool.
+Vim is hard to learn for beginners, but when you get familiar with it, it will be a mighty and convenient tool.
 For more detailed tutorials on Vim, you can check: https://github.com/iggredible/Learn-Vim
 
 ## Permission
+
 The permissions of a file or directory are represented as a 10-character string (1+3+3+3) :
 
 For example, this represents a directory(the initial d) which is readable, writable and executable for the owner(the first 3: rwx), users in the same group(the 3 characters in the middle: rwx) and others (last 3 characters: rwx).
@@ -376,7 +417,7 @@ Command for checking the permissions of files in the current directory: `ls -l`
 Command for changing permissions: `chmod`, `chown`, `chgrp`
 
 Syntax:
-```
+```Bash
 chmod [3-digit Binary notation] [path]
 ```
 
@@ -392,7 +433,7 @@ chmod [3-digit Binary notation] [path]
 |0|`---`|000|
 
 Example:
-```
+```Bash
 # there is a readme file in the directory, and its permissions are -rw-r----- 
 $ ls -lh
 total 4.0K
@@ -414,61 +455,79 @@ Note: These commands are very important because we use genome data, which could 
 
 
 ## Others
-`|` , `>`, `>>`,`*`,`.`,`..`,`~`,`-`
+
+There are a group of very handy and flexible commands which will greatly improve your efficiency. These include `|` , `>`, `>>`,`*`,`.`,`..`,`~`,and `-`.
 
 ### `|`  (pipe)
 
-Pipe basically is used to pass the output of the previous command to the next command as input instead of printing is in terminal.
+Pipe basically is used to pass the output of the previous command to the next command as input, instead of printing is in terminal.
 Using pipe you can do very complicated manipulations of the files.
+
+```Bash
+cat sumstats.txt | sort | uniq | wc
 ```
-cat sumstats | sort | uniq | wc
-```
+This means (1) print sumstats, (2) sort the output, (3) then keep the unique lines and finally (4) count the lines and words.
+
 ### `>`
-redirect output to a new file (if the file already exist, it will be overwritten)
-```
-cat sumstats | sort | uniq | wc > count.txt
+
+`>` redirects output to a new file (if the file already exist, it will be overwritten)
+```Bash
+cat sumstats.txt | sort | uniq | wc > count.txt
 ```
 ### `>>`
-redirect output to a file by appending to the end of the file (if the file already exist, it will not be overwritten)
-```
-cat sumstats | sort | uniq | wc >> count.txt
+
+`>>` redirects output to a file by appending to the end of the file (if the file already exist, it will not be overwritten)
+
+```Bash
+cat sumstats.txt | sort | uniq | wc >> count.txt
 ```
 
 ### `*`
 `*` means all files.
 
 Note: `Be extremely careful when you use rm and *. It is disastrous when you mistakenly type `rm *``
+
 ### `.`
-`.` means current directory.
+
+`.` means the current directory.
+
 ### `..`
+
 `..` means the parent directory of the current directory.
+
 ### `~`
-`~` means your home directory
+
+`~` means your home directory.
 
 ### `-`
 
-`-` means the last directory you are working in
+`-` means the last directory you are working in.
  
 ## Bash scripts
+
 If you have a lot of commands to run, or if you want to automate some complex manipulations, bash scripts are a good way to address this issue.
+
+We can use vim to create a bash script called `hello.sh`
 
 A simple example of bash scripts:
 
-use vim to create `hello.sh`
-
-```
+```Bash
 #!/bin/bash
 echo "Hello, world1"
 echo "Hello, world2"
 ```
 
 `#!` is called shebang, which tells the system which interpreter to use to excute the shell script.
-use `chmod` to give it permission to run.
-```
+
+Then use `chmod` to give it permission to execute.
+
+```Bash
 chmod +x hello.sh 
 ```
 
-```
+Now we can run the srcipt by `./hello.sh`:
+
+```Bash
 ./hello.sh
 "Hello, world1" 
 "Hello, world2" 
@@ -491,9 +550,13 @@ Currently you just need to learn `git clone`, which simply downloads an existing
 
 `git clone https://github.com/Cloufield/GWASTutorial.git`
 
-reference: https://git-scm.com/doc
+You can also check [here](https://cloufield.github.io/GWASTutorial/83_git_and_github/) for more information.
+
+Git Reference: https://git-scm.com/doc
 
 Cheatsheet: https://training.github.com/downloads/github-git-cheat-sheet/
+
+
 ## SSH
 SSH stands for Secure Shell Protocol, which enables you to connect to remote server safely.
 
@@ -501,12 +564,12 @@ SSH stands for Secure Shell Protocol, which enables you to connect to remote ser
 
 
 login to romote server:
-```
+```Bash
 ssh <username>@<host>
 ```
 
 Before you login in, you need to generate keys for ssh connection:
-```
+```Bash
 ssh-keygen -t rsa -b 4096
 ```
 You will get two keys, a public one and a private one.
@@ -518,27 +581,31 @@ private key :  `~/.ssh/id_rsa`   ,please don't share this with others.
 What you need to do is just add you local public key to `~/.ssh/authorized_keys` on host server.
 
 ## Links  
+
 symbolic link is like a shortcut on window system, which is a special type of file that points to another file.
 It is very useful when you want to organize your tool box or working space.
 You can use `ln -s pathA pathB` to create such a link. 
 
 Example:
-```
+
+```Bash
 ln -s /home/he/tools/plink/plink /home/he/tools/bin
 
 cd /home/he/tools/bin
 ls -lha
-...
+...Bash
 lrwxr-xr-x  1 he  staff    27B Aug 30 11:30 plink -> /home/he/tools/plink/plink
 ```
 
 ## Download
+
 We can use `wget [option] [url]` command to download files to local machine.
 
 `-O` option specify the file name you want to change for the downloaded file. 
 
 Example:
-```
+
+```Bash
 # Download hg19 reference genome from UCSC
 wget https://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/hg19.fa.gz
 
