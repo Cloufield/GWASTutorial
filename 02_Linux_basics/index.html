@@ -262,8 +262,12 @@ In this module, we will learn the most basic commands which enable you to handle
 </ul>
 <h1 id="linux-system-introduction">Linux System Introduction</h1>
 <h3 id="what-is-linux">What is Linux?</h3>
+<p>Linux: a family of open-source Unix-like operating systems based on the Linux kernel. </p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161374551-1ef3b509-b345-4be3-b45b-3f86c466aa5a.png" /></p>
+<p>Reference: https://en.wikipedia.org/wiki/Linux</p>
 <h3 id="how-do-we-interact-with-computers">How do we interact with computers?</h3>
+<p>Graphical User Interface (GUI): allows users to interact with computers through graphical icons </p>
+<p>Character User Interface (CUI): allows users to interact with computers through command lines</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161374590-fd4bfee0-e815-475b-8a73-e53d97447e74.png" /></p>
 <h3 id="a-general-comparison-between-cui-and-gui">A general comparison between CUI and GUI</h3>
 <table>
@@ -312,9 +316,9 @@ In this module, we will learn the most basic commands which enable you to handle
 - [ ] what is CUI and GUI?
 - [ ] why do we use Linux over other systems? </p>
 <h1 id="overview-of-the-basic-commands-in-linux">Overview of the basic commands in Linux</h1>
-<p>Just like clicking and dragging files in Windows or MacOS, in Linux, we usually handle files by typing commands in the terminal.
-<img alt="image" src="https://user-images.githubusercontent.com/40289485/161308638-18a0efbf-92df-4795-87be-72080db316c6.png" /></p>
-<p>Here are some of the basic commands we are going to cover in this brief tutorial:</p>
+<p>Just like clicking and dragging files in Windows or MacOS, in Linux, we usually handle files by typing commands in the terminal.</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161308638-18a0efbf-92df-4795-87be-72080db316c6.png" /></p>
+<p>Here is a list of the basic commands we are going to cover in this brief tutorial:</p>
 <table>
 <thead>
 <tr>
@@ -372,12 +376,14 @@ In this module, we will learn the most basic commands which enable you to handle
 </tbody>
 </table>
 <h3 id="how-to-check-the-usage-of-a-command-using-man">How to check the usage of a command using <code>man</code>:</h3>
-<p>check the manual of the command (e.g., <code>man chmod</code>) or <code>--help</code> option (e.g., <code>chmod --help</code>)</p>
-<pre><code>$ man pwd
+<p>The first command we might want to learn is <code>man</code>, which shows the manual for a certain command. When you forget how to use a command, you can always use <code>man</code> to check.</p>
+<p><code>man</code> : Check the manual of a command (e.g., <code>man chmod</code>) or <code>--help</code> option (e.g., <code>chmod --help</code>)</p>
+<p>For example, we want to check the usage of <code>pwd</code>:</p>
+<pre><code class="language-Bash">$ man pwd
 
 </code></pre>
 <p>Then you will see the manual of <code>pwd</code> in your terminal.</p>
-<pre><code>
+<pre><code class="language-Bash">
 PWD(1)                                              User Commands                                              PWD(1)
 
 NAME
@@ -393,28 +399,28 @@ DESCRIPTION
 <h1 id="commands">Commands</h1>
 <h2 id="directories">Directories</h2>
 <p>The first set of commands are: <code>pwd</code> , <code>cd</code> , <code>ls</code>, <code>mkdir</code> and <code>rmdir</code>, which are related to directories (like the folders in a Windows system).</p>
-<h3 id="pwd"><code>pwd</code>:</h3>
-<p>print working directory, which means print the path of the current directory (working directory)</p>
-<pre><code>$ pwd
+<h3 id="pwd"><code>pwd</code></h3>
+<p><code>pwd</code> : Print working directory, which means print the path of the current directory (working directory)</p>
+<pre><code class="language-Bash">$ pwd
 /home/he/work/GWASTutorial/02_Linux_basics
 </code></pre>
 <p>This command prints the absolute path.
 <img alt="image" src="https://user-images.githubusercontent.com/40289485/161308808-6a8c97a9-4c7d-46cf-9e67-c5876415866f.png" /></p>
 <p>absolute path: path starting form root: <code>/home/he/work/GWASTutorial/02_Linux_basics</code></p>
 <p>relative path: path starting form current directory: <code>./GWASTutorial/02_Linux_basics</code></p>
-<h3 id="cd"><code>cd</code> :</h3>
-<p>changing current working directory </p>
-<pre><code>$ cd 02_Linux_basics
+<h3 id="cd"><code>cd</code></h3>
+<p><code>cd</code>: Change the current working directory </p>
+<pre><code class="language-Bash">$ cd 02_Linux_basics
 $ pwd
 /home/he/work/GWASTutorial/02_Linux_basics
 </code></pre>
 <h3 id="ls"><code>ls</code> :</h3>
-<p>list the files in the directory</p>
-<p>we can also add some options like: <code>ls -lha</code></p>
+<p><code>ls</code> : List the files in the directory</p>
+<p>some options for <code>ls</code> :</p>
 <p><code>-l</code>: in a list-like format</p>
 <p><code>-h</code>: convert file size into a human readable format (KB,MB,GB...)</p>
 <p><code>-a</code>: list all files (including hidden files, namly those files a period at the beginning of the filename)</p>
-<pre><code>$ ls
+<pre><code class="language-Bash">$ ls
 README.md  sumstats.txt
 
 $ ls -lha
@@ -424,8 +430,9 @@ drwxr-xr-x  17 he  staff   544B Dec 23 12:13 ..
 -rw-r--r--   1 he  staff    31M Dec 23 14:07 sumstats.txt
 </code></pre>
 <h3 id="mkdir-rmdir"><code>mkdir</code> &amp; <code>rmdir</code> :</h3>
-<p>create a new empty directory &amp; delete an empty directory</p>
-<pre><code>$ mkdir new_directory
+<p><code>mkdir</code> : Create a new empty directory</p>
+<p><code>rmdir</code>: Delete an empty directory</p>
+<pre><code class="language-Bash">$ mkdir new_directory
 $ ls
 new_directory  README.md  sumstats.txt
 $ rmdir new_directory/
@@ -437,7 +444,7 @@ README.md  sumstats.txt
 <h3 id="touch"><code>touch</code>:</h3>
 <p><code>touch</code> command is used to create a new empty file.</p>
 <p>For example, let's create a text file called <code>newfile.txt</code> in this directory.</p>
-<pre><code>$ ls -l
+<pre><code class="language-Bash">$ ls -l
 total 64048
 -rw-r--r--  1 he  staff         0 Oct 17 11:24 README.md
 -rw-r--r--  1 he  staff  32790417 Dec 23 14:07 sumstats.txt
@@ -455,7 +462,7 @@ total 64048
 <h3 id="mv"><code>mv</code>:</h3>
 <p>(1) move the files to another path , or (2) rename the file</p>
 <p>The following command will create a new directoru called <code>new_directory</code>, and move <code>sumstats.txt</code> into that directory. Just like draggig a file in to a folder in window system.</p>
-<pre><code># make a new directory
+<pre><code class="language-Bash"># make a new directory
 $ mkdir new_directory
 
 #move sumstats to the new directory
@@ -466,16 +473,16 @@ $ ls new_directory/
 sumstats.txt
 </code></pre>
 <p>Now, let's move it back to the current directory and rename it to <code>sumstats_new.txt</code>.</p>
-<pre><code>$ mv ./new_directory/sumstats.txt ./
+<pre><code class="language-Bash">$ mv ./new_directory/sumstats.txt ./
 </code></pre>
 <p>Note: <code>./</code> means the current directory
 You can also use <code>mv</code> to rename a file:</p>
-<pre><code>#rename
+<pre><code class="language-Bash">#rename
 $mv sumstats.txt sumstats_new.txt 
 </code></pre>
 <h3 id="rm"><code>rm</code>:</h3>
 <p>remove files or diretories</p>
-<pre><code># remove a file
+<pre><code class="language-Bash"># remove a file
 $rm file
 
 #remove files in a directory (recursive mode)
@@ -483,7 +490,7 @@ $rm -r directory/
 </code></pre>
 <h3 id="cp"><code>cp</code></h3>
 <p><code>cp</code> command is used to copy files or diretories.</p>
-<pre><code>#cp files
+<pre><code class="language-Bash">#cp files
 $cp file1 file2
 
 # copy directory
@@ -532,7 +539,7 @@ $cp -r directory1/ directory2/
 </tr>
 </tbody>
 </table>
-<pre><code>$ ls -lh
+<pre><code class="language-Bash">$ ls -lh
 -rw-r--r--  1 he  staff    31M Dec 23 14:07 sumstats.txt
 
 $ gzip sumstats.txt
@@ -547,7 +554,7 @@ $ ls -lh
 <p>We have a group of handy commands to check part of or the entire file, including <code>cat</code>, <code>zcat</code>, <code>less</code>, <code>head</code>, <code>tail</code>, <code>wc</code></p>
 <h3 id="cat"><code>cat</code></h3>
 <p>print the file or concatenate the files</p>
-<pre><code>$ ls -lha &gt; a_text_file.txt
+<pre><code class="language-Bash">$ ls -lha &gt; a_text_file.txt
 $ cat a_text_file.txt 
 total 32M
 drwxr-x---  2 he staff 4.0K Apr  2 00:37 .
@@ -560,8 +567,8 @@ drwxr-x--- 29 he staff 4.0K Apr  1 22:20 ..
 <p>!!! Be careful not to <code>cat</code> a text file with a huge number of lines. You can try to <code>cat sumstats.txt</code> and see what happends.</p>
 <p>By the way, <code>&gt; a_text_file.txt</code> here means redirect the output to file <code>a_text_file.txt</code>.</p>
 <h3 id="zcat"><code>zcat</code></h3>
-<p>zcat is similar to cat, but can only applied to compressed files.</p>
-<pre><code>$ gzip a_text_file.txt 
+<p><code>zcat</code> is similar to <code>cat</code>, but can only applied to compressed files.</p>
+<pre><code class="language-Bash">$ gzip a_text_file.txt 
 $ cat a_text_file.txt.gz                                                         TGba_text_file.txtя
 @ȱ»O𻀙v؂𧢩¼򀳠bq}󑢤\¤n٢ª򠀬n»ڡǭ
                           w5J_½𳘧P߉=ÿK
@@ -577,9 +584,9 @@ drwxr-x--- 29 he staff 4.0K Apr  1 22:20 ..
 -rw-r-----  1 he staff  32M Mar 30 18:17 sumstats.txt
 </code></pre>
 <h3 id="head"><code>head</code></h3>
-<p>print the first 10 lines.
-<code>-n</code> change the lines using this option</p>
-<pre><code>$ head sumstats.txt 
+<p><code>head</code>: Print the first 10 lines.</p>
+<p><code>-n</code>: option to change the number of lines.</p>
+<pre><code class="language-Bash">$ head sumstats.txt 
 CHROM   POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
 1   319 17  2   1   1   ADD 10000   1.04326 0.0495816   0.854176    0.393008    .
 1   319 22  1   2   2   ADD 10000   1.03347 0.0493972   0.666451    0.505123    .
@@ -595,8 +602,8 @@ $ head -n 1 sumstats.txt
 CHROM   POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
 </code></pre>
 <h3 id="tail"><code>tail</code></h3>
-<p>Similar to <code>head</code>, you can use <code>tail</code> ro check the last 10 lines.</p>
-<pre><code>$ tail sumstats.txt 
+<p>Similar to <code>head</code>, you can use <code>tail</code> ro check the last 10 lines. <code>-n</code> works in the same way.</p>
+<pre><code class="language-Bash">$ tail sumstats.txt 
 22  99996057    9959945 2   1   1   ADD 10000   1.03234 0.0335547   0.948413    0.342919.
 22  99996465    9959971 2   1   1   ADD 10000   1.04755 0.0337187   1.37769 0.1683  .
 22  99997041    9960013 2   1   1   ADD 10000   1.01942 0.0937548   0.205195    0.837419.
@@ -609,18 +616,19 @@ CHROM   POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
 22  99999382    9960164 2   1   1   ADD 10000   0.970509    0.033978    -0.881014   0.37831 .
 </code></pre>
 <h3 id="wc"><code>wc</code></h3>
-<p>word count:</p>
-<p>lines,words,characters</p>
-<pre><code>$ wc sumstats.txt 
+<p><code>wc</code>: short for word count, which count the lines, words, and characters in a file.</p>
+<p>For example, </p>
+<pre><code class="language-Bash">$ wc sumstats.txt 
   445933  5797129 32790417 sumstats.txt
 </code></pre>
+<p>This means that <code>sumstats.txt</code> has 445933 lines, 5797129 words, and 32790417 characters. </p>
 <h2 id="edit-files">Edit files</h2>
-<p>a handy text editor in command line: vim</p>
-<pre><code>vim a_new_file.txt
+<p>Vim is a handy text editor in command line.</p>
+<pre><code class="language-Bash">vim a_new_file.txt
 </code></pre>
-<p>press <code>i</code> to enter insert mode, and then you can edit the file as you want.
+<p>Press <code>i</code> to enter insert mode, and then you can edit the file as you want.
 When finished, just pres <code>Esc</code> to escape insert mode, and then press <code>shift + :</code> , then <code>wq</code> to quit and also save the file.</p>
-<p>Vim is hard to learn for beginners, but when you get familiar with it, it will be a mighty and convient tool.
+<p>Vim is hard to learn for beginners, but when you get familiar with it, it will be a mighty and convenient tool.
 For more detailed tutorials on Vim, you can check: https://github.com/iggredible/Learn-Vim</p>
 <h2 id="permission">Permission</h2>
 <p>The permissions of a file or directory are represented as a 10-character string (1+3+3+3) :</p>
@@ -660,7 +668,7 @@ For more detailed tutorials on Vim, you can check: https://github.com/iggredible
 <p>Command for checking the permissions of files in the current directory: <code>ls -l</code></p>
 <p>Command for changing permissions: <code>chmod</code>, <code>chown</code>, <code>chgrp</code></p>
 <p>Syntax:</p>
-<pre><code>chmod [3-digit Binary notation] [path]
+<pre><code class="language-Bash">chmod [3-digit Binary notation] [path]
 </code></pre>
 <table>
 <thead>
@@ -714,7 +722,7 @@ For more detailed tutorials on Vim, you can check: https://github.com/iggredible
 </tbody>
 </table>
 <p>Example:</p>
-<pre><code># there is a readme file in the directory, and its permissions are -rw-r----- 
+<pre><code class="language-Bash"># there is a readme file in the directory, and its permissions are -rw-r----- 
 $ ls -lh
 total 4.0K
 -rw-r----- 1 he staff 2.1K Feb 24 01:16 README.md
@@ -731,44 +739,46 @@ total 4.0K
 <p>Note: These commands are very important because we use genome data, which could raise severe ethical and privacy issues if there is data leak. </p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/160775846-a121f48e-5652-456f-8ced-7a3a82a8d995.png" /></p>
 <h2 id="others">Others</h2>
-<p><code>|</code> , <code>&gt;</code>, <code>&gt;&gt;</code>,<code>*</code>,<code>.</code>,<code>..</code>,<code>~</code>,<code>-</code></p>
+<p>There are a group of very handy and flexible commands which will greatly improve your efficiency. These include <code>|</code> , <code>&gt;</code>, <code>&gt;&gt;</code>,<code>*</code>,<code>.</code>,<code>..</code>,<code>~</code>,and <code>-</code>.</p>
 <h3 id="pipe"><code>|</code>  (pipe)</h3>
-<p>Pipe basically is used to pass the output of the previous command to the next command as input instead of printing is in terminal.
+<p>Pipe basically is used to pass the output of the previous command to the next command as input, instead of printing is in terminal.
 Using pipe you can do very complicated manipulations of the files.</p>
-<pre><code>cat sumstats | sort | uniq | wc
+<pre><code class="language-Bash">cat sumstats.txt | sort | uniq | wc
 </code></pre>
+<p>This means (1) print sumstats, (2) sort the output, (3) then keep the unique lines and finally (4) count the lines and words.</p>
 <h3 id="_1"><code>&gt;</code></h3>
-<p>redirect output to a new file (if the file already exist, it will be overwritten)</p>
-<pre><code>cat sumstats | sort | uniq | wc &gt; count.txt
+<p><code>&gt;</code> redirects output to a new file (if the file already exist, it will be overwritten)</p>
+<pre><code class="language-Bash">cat sumstats.txt | sort | uniq | wc &gt; count.txt
 </code></pre>
 <h3 id="_2"><code>&gt;&gt;</code></h3>
-<p>redirect output to a file by appending to the end of the file (if the file already exist, it will not be overwritten)</p>
-<pre><code>cat sumstats | sort | uniq | wc &gt;&gt; count.txt
+<p><code>&gt;&gt;</code> redirects output to a file by appending to the end of the file (if the file already exist, it will not be overwritten)</p>
+<pre><code class="language-Bash">cat sumstats.txt | sort | uniq | wc &gt;&gt; count.txt
 </code></pre>
 <h3 id="_3"><code>*</code></h3>
 <p><code>*</code> means all files.</p>
 <p>Note: <code>Be extremely careful when you use rm and *. It is disastrous when you mistakenly type</code>rm *``</p>
 <h3 id="_4"><code>.</code></h3>
-<p><code>.</code> means current directory.</p>
+<p><code>.</code> means the current directory.</p>
 <h3 id="_5"><code>..</code></h3>
 <p><code>..</code> means the parent directory of the current directory.</p>
 <h3 id="_6"><code>~</code></h3>
-<p><code>~</code> means your home directory</p>
+<p><code>~</code> means your home directory.</p>
 <h3 id="-"><code>-</code></h3>
-<p><code>-</code> means the last directory you are working in</p>
+<p><code>-</code> means the last directory you are working in.</p>
 <h2 id="bash-scripts">Bash scripts</h2>
 <p>If you have a lot of commands to run, or if you want to automate some complex manipulations, bash scripts are a good way to address this issue.</p>
+<p>We can use vim to create a bash script called <code>hello.sh</code></p>
 <p>A simple example of bash scripts:</p>
-<p>use vim to create <code>hello.sh</code></p>
-<pre><code>#!/bin/bash
+<pre><code class="language-Bash">#!/bin/bash
 echo &quot;Hello, world1&quot;
 echo &quot;Hello, world2&quot;
 </code></pre>
-<p><code>#!</code> is called shebang, which tells the system which interpreter to use to excute the shell script.
-use <code>chmod</code> to give it permission to run.</p>
-<pre><code>chmod +x hello.sh 
+<p><code>#!</code> is called shebang, which tells the system which interpreter to use to excute the shell script.</p>
+<p>Then use <code>chmod</code> to give it permission to execute.</p>
+<pre><code class="language-Bash">chmod +x hello.sh 
 </code></pre>
-<pre><code>./hello.sh
+<p>Now we can run the srcipt by <code>./hello.sh</code>:</p>
+<pre><code class="language-Bash">./hello.sh
 &quot;Hello, world1&quot; 
 &quot;Hello, world2&quot; 
 </code></pre>
@@ -783,16 +793,17 @@ sq, sjobs, shosts</p>
 <p>Git is a powerful version control software and github is a platform where you can share your codes.</p>
 <p>Currently you just need to learn <code>git clone</code>, which simply downloads an existing repository.</p>
 <p><code>git clone https://github.com/Cloufield/GWASTutorial.git</code></p>
-<p>reference: https://git-scm.com/doc</p>
+<p>You can also check <a href="https://cloufield.github.io/GWASTutorial/83_git_and_github/">here</a> for more information.</p>
+<p>Git Reference: https://git-scm.com/doc</p>
 <p>Cheatsheet: https://training.github.com/downloads/github-git-cheat-sheet/</p>
 <h2 id="ssh">SSH</h2>
 <p>SSH stands for Secure Shell Protocol, which enables you to connect to remote server safely.</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161377030-911a5bed-f58b-4d27-8ffa-0c6b553e5c62.png" /></p>
 <p>login to romote server:</p>
-<pre><code>ssh &lt;username&gt;@&lt;host&gt;
+<pre><code class="language-Bash">ssh &lt;username&gt;@&lt;host&gt;
 </code></pre>
 <p>Before you login in, you need to generate keys for ssh connection:</p>
-<pre><code>ssh-keygen -t rsa -b 4096
+<pre><code class="language-Bash">ssh-keygen -t rsa -b 4096
 </code></pre>
 <p>You will get two keys, a public one and a private one.</p>
 <p>public key  :  <code>~/.ssh/id_rsa.pub</code></p>
@@ -803,18 +814,18 @@ sq, sjobs, shosts</p>
 It is very useful when you want to organize your tool box or working space.
 You can use <code>ln -s pathA pathB</code> to create such a link. </p>
 <p>Example:</p>
-<pre><code>ln -s /home/he/tools/plink/plink /home/he/tools/bin
+<pre><code class="language-Bash">ln -s /home/he/tools/plink/plink /home/he/tools/bin
 
 cd /home/he/tools/bin
 ls -lha
-...
+...Bash
 lrwxr-xr-x  1 he  staff    27B Aug 30 11:30 plink -&gt; /home/he/tools/plink/plink
 </code></pre>
 <h2 id="download">Download</h2>
 <p>We can use <code>wget [option] [url]</code> command to download files to local machine.</p>
 <p><code>-O</code> option specify the file name you want to change for the downloaded file. </p>
 <p>Example:</p>
-<pre><code># Download hg19 reference genome from UCSC
+<pre><code class="language-Bash"># Download hg19 reference genome from UCSC
 wget https://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/hg19.fa.gz
 
 # Download hg19 reference genome from UCSC and rename it to  my_refgenome.fa.gz
