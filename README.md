@@ -10,19 +10,26 @@ Contents are categorized into the following groups. Additionally, for absolute b
 
 # Table of Contents
 
+## Command lines 
 - [Linux command line basics (optional)](https://cloufield.github.io/GWASTutorial/02_Linux_basics/)
-- Pre-GWAS
-    - [Data formats](https://cloufield.github.io/GWASTutorial/03_Data_formats/)
-    - [Data QC](https://cloufield.github.io/GWASTutorial/04_Data_QC/)
-    - [Principal component analysis (PCA)](https://cloufield.github.io/GWASTutorial/05_PCA/)
-- GWAS
-    - [Association tests](https://cloufield.github.io/GWASTutorial/06_Association_tests/)
-    - [Visualization](https://cloufield.github.io/GWASTutorial/Visualization/)
-- Post-GWAS
-    - [Variant Annotation](https://cloufield.github.io/GWASTutorial/07_Annotation/)
-    - [LD score regression (univariate, cross-trait and partitioned)](https://cloufield.github.io/GWASTutorial/08_LDSC/)
-    - [Gene / Gene-set analysis](https://cloufield.github.io/GWASTutorial/09_Gene_based_analysis/)
-    - [Polygenic risk scores](https://cloufield.github.io/GWASTutorial/10_PRS/)
+
+## Pre-GWAS
+
+- [Data formats](https://cloufield.github.io/GWASTutorial/03_Data_formats/)
+- [Data QC](https://cloufield.github.io/GWASTutorial/04_Data_QC/)
+- [Principal component analysis (PCA)](https://cloufield.github.io/GWASTutorial/05_PCA/)
+
+## GWAS
+
+- [Association tests](https://cloufield.github.io/GWASTutorial/06_Association_tests/)
+- [Visualization](https://cloufield.github.io/GWASTutorial/Visualization/)
+
+## Post-GWAS
+
+- [Variant Annotation](https://cloufield.github.io/GWASTutorial/07_Annotation/)
+- [LD score regression (univariate, cross-trait and partitioned)](https://cloufield.github.io/GWASTutorial/08_LDSC/)
+- [Gene / Gene-set analysis](https://cloufield.github.io/GWASTutorial/09_Gene_based_analysis/)
+- [Polygenic risk scores](https://cloufield.github.io/GWASTutorial/10_PRS/)
 
 # Contact
 This repository is maintained by [Yunye He](https://github.com/Cloufield)
