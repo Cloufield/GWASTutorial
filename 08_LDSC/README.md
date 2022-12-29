@@ -24,6 +24,9 @@ For details of LD score regression, please refer to :
 LDSC can be downloaded from github (GPL-3.0 license):
 [https://github.com/bulik/ldsc](https://github.com/bulik/ldsc)
 
+For ldsc, we need anaconda to create virtual environment. 
+If you haven't installed Anaconda, please check [how to install anaconda](https://cloufield.github.io/GWASTutorial/80_anaconda/).
+
 ```Bash
 # change to your directory for tools
 cd ~/tools
@@ -34,7 +37,11 @@ git clone https://github.com/bulik/ldsc.git
 # create a virtual environment for ldsc (python2)
 cd ldsc
 conda env create --file environment.yml  
+
+# activate ldsc environment
+conda activate ldsc
 ```
+
 
 ## Data Preparation 
 
@@ -45,29 +52,47 @@ The Miami plot for the two traits:
 
 <img width="682" alt="image" src="https://user-images.githubusercontent.com/40289485/209749071-171c150a-19aa-41f0-b6e6-2ef5fa87370d.png">
 
-Download sample summary statistics : 
+### Download sample summary statistics
+
 ```Bash
 # HDL-c and LDL-c in Biobank Japan
 wget -O BBJ_LDLC.txt.gz http://jenger.riken.jp/61analysisresult_qtl_download/
 wget -O BBJ_HDLC.txt.gz http://jenger.riken.jp/47analysisresult_qtl_download/
 ```
 
-Download reference files:
+### Download reference files
+
 ```Bash
+# change to your ldsc directory
+cd ~/tools/ldsc
+mkdir resource
+cd ./resource
+
 # snplist
+wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/w_hm3.snplist.bz2
 
 # EAS ld score files
+wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/eas_ldscores.tar.bz2
 
-# weight
+# EAS weight
+wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/1000G_Phase3_EAS_weights_hm3_no_MHC.tgz
 
 # EAS frequency
+wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/1000G_Phase3_EAS_plinkfiles.tgz
+
+# EAS baseline model
+wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/1000G_Phase3_EAS_baseline_v1.2_ldscores.tgz
 
 # Cell type ld score files
+wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/LDSC_SEG_ldscores/Cahoy_EAS_1000Gv3_ldscores.tar.gz
 
 ```
+You can then decompress the files and organize them.
 
+## Munge sumstats
 
-Munge sumstats
+Before the analysis, we need to format and clean the raw sumstats.
+
 ```Bash
 snplist=~/tools/ldsc/resource/w_hm3.snplist
 munge_sumstats.py \
@@ -250,7 +275,8 @@ Total time elapsed: 10.39s
 
 
 ## Partitioned LD regression
-- Finucane, Hilary K., et al. "Partitioning heritability by functional annotation using genome-wide association summary statistics." Nature genetics 47.11 (2015): 1228-1235.
+
+- Reference: Finucane, Hilary K., et al. "Partitioning heritability by functional annotation using genome-wide association summary statistics." Nature genetics 47.11 (2015): 1228-1235.
 
 ```Bash
 ldsc.py \
@@ -264,8 +290,10 @@ ldsc.py \
 ```
 
 ## Celltype specificity LD regression 
+
 LDSC-SEG
-- Finucane, Hilary K., et al. "Heritability enrichment of specifically expressed genes identifies disease-relevant tissues and cell types." Nature genetics 50.4 (2018): 621-629.
+
+- Reference: Finucane, Hilary K., et al. "Heritability enrichment of specifically expressed genes identifies disease-relevant tissues and cell types." Nature genetics 50.4 (2018): 621-629.
 
 ```Bash
 ldsc.py \
