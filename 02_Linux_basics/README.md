@@ -233,16 +233,14 @@ Compress: make the file size smaller without losing infomation
 
 ![image](https://user-images.githubusercontent.com/40289485/160957877-9148b34a-93e8-40cc-9acc-7c5bb9435b71.png)
 
-
-
-Commoly used commands for archiving and compression:\
+Commoly used commands for archiving and compression:
 
 | Extensions  | Create  | Extract  | Functions  | 
-|---|---|---|---|
-| file.gz  |   `gzip` |        `gunzip` |          compress|
-| files.tar                  |      `tar -cvf`|       `tar -xvf`|      archive|
-| files.tar.gz or files.tgz |      `tar -czvf`|   `tar -xvzf`|  archive and compress|
-| file.zip                  |            `zip`|       `unzip` | archive and compress|
+|-|-|-|-|
+| `file.gz`  |   `gzip` |        `gunzip` |          compress|
+| `files.tar`                  |      `tar -cvf`|       `tar -xvf`|      archive|
+| `files.tar.gz` or `files.tgz` |      `tar -czvf`|   `tar -xvzf`|  archive and compress|
+| `file.zip`                  |            `zip`|       `unzip` | archive and compress|
 
 
 ```
