@@ -77,19 +77,28 @@ munge_sumstats.py \
 	--a2 REF \
 	--out BBJ_HDLC
 munge_sumstats.py \
-        --sumstats BBJ_LDLC.txt.gz \
+  --sumstats BBJ_LDLC.txt.gz \
 	--a1 ALT \
-        --a2 REF \
-        --merge-alleles $snplist \
-        --out BBJ_LDLC
+  --a2 REF \
+  --merge-alleles $snplist \
+  --out BBJ_LDLC
 ```
 
+After munging, you will get two munged and formatted files:
+
+```
+BBJ_HDLC.sumstats.gz
+BBJ_LDLC.sumstats.gz
+```
+And these are the files we will use to run LD score regression.
 
 ## LD score regression
 
-Estimation of heritbility and confuding factors (cryptic relateness and population stratification) 
+Univariate LD score regression is utilized to estimate heritbility and confuding factors (cryptic relateness and population stratification) of a certain trait. 
 
-- Bulik-Sullivan, Brendan K., et al. "LD Score regression distinguishes confounding from polygenicity in genome-wide association studies." Nature genetics 47.3 (2015): 291-295.
+- Reference : Bulik-Sullivan, Brendan K., et al. "LD Score regression distinguishes confounding from polygenicity in genome-wide association studies." Nature genetics 47.3 (2015): 291-295.
+
+Using the munged sumstats, we can run:
 
 ```Bash
 ldsc.py \
@@ -106,12 +115,60 @@ ldsc.py \
 
 ```
 
+Lest's check the results for HDLC:
+
+```Bash
+cat BBJ_HDLC.log
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--h2 BBJ_HDLC.sumstats.gz \
+--ref-ld-chr /home/he/tools/ldsc/resource/eas_ldscores/ \
+--out BBJ_HDLC \
+--w-ld-chr /home/he/tools/ldsc/resource/eas_ldscores/ 
+
+Beginning analysis at Sat Dec 24 20:40:34 2022
+Reading summary statistics from BBJ_HDLC.sumstats.gz ...
+Read summary statistics for 1020377 SNPs.
+Reading reference panel LD Score from /home/he/tools/ldsc/resource/eas_ldscores/[1-22] ... (ldscore_fromlist)
+Read reference panel LD Scores for 1208050 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from /home/he/tools/ldsc/resource/eas_ldscores/[1-22] ... (ldscore_fromlist)
+Read regression weight LD Scores for 1208050 SNPs.
+After merging with reference panel LD, 1012040 SNPs remain.
+After merging with regression SNP LD, 1012040 SNPs remain.
+Using two-step estimator with cutoff at 30.
+Total Observed scale h2: 0.1583 (0.0281)
+Lambda GC: 1.1523
+Mean Chi^2: 1.2843
+Intercept: 1.0563 (0.0114)
+Ratio: 0.1981 (0.0402)
+Analysis finished at Sat Dec 24 20:40:41 2022
+Total time elapsed: 6.57s
+```
+
+We can see that from the log:
+
+- Observed scale h2 = 0.1583
+- lambda GC = 1.1523 
+- intercept = 1.0563
+- Ratio = 0.1981
+
+According to LDSC documents, Ratio measures the proportion of the inflation in the mean chi^2 that the LD Score regression intercept ascribes to causes other than polygenic heritability. The value of ratio should be close to zero, though in practice values of 10-20% are not uncommon.
+
+- Ratio = (intercept-1)/(mean(chi^2)-1)
 
 ## Cross-trait LD score regression
 
-Estimation of genetic correlation
+Cross-trait LD score regression is employed to estimate the genetic correlation between a pair of traits.
 
-- Bulik-Sullivan, Brendan, et al. "An atlas of genetic correlations across human diseases and traits." Nature genetics 47.11 (2015): 1236-1241.
+- Reference: Bulik-Sullivan, Brendan, et al. "An atlas of genetic correlations across human diseases and traits." Nature genetics 47.11 (2015): 1236-1241.
 
 ```Bash
 ldsc.py \
@@ -121,6 +178,76 @@ ldsc.py \
   --out BBJ_HDLC_LDLC
 
 ```
+Let's check the results:
+
+```
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--ref-ld-chr /home/he/tools/ldsc/resource/eas_ldscores/ \
+--out BBJ_HDLC_LDLC \
+--rg BBJ_HDLC.sumstats.gz,BBJ_LDLC.sumstats.gz \
+--w-ld-chr /home/he/tools/ldsc/resource/eas_ldscores/ 
+
+Beginning analysis at Thu Dec 29 21:02:37 2022
+Reading summary statistics from BBJ_HDLC.sumstats.gz ...
+Read summary statistics for 1020377 SNPs.
+Reading reference panel LD Score from /home/he/tools/ldsc/resource/eas_ldscores/[1-22] ... (ldscore_fromlist)
+Read reference panel LD Scores for 1208050 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from /home/he/tools/ldsc/resource/eas_ldscores/[1-22] ... (ldscore_fromlist)
+Read regression weight LD Scores for 1208050 SNPs.
+After merging with reference panel LD, 1012040 SNPs remain.
+After merging with regression SNP LD, 1012040 SNPs remain.
+Computing rg for phenotype 2/2
+Reading summary statistics from BBJ_LDLC.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1012040 SNPs remain.
+1012040 SNPs with valid alleles.
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1054 (0.0383)
+Lambda GC: 1.1523
+Mean Chi^2: 1.2843
+Intercept: 1.1234 (0.0607)
+Ratio: 0.4342 (0.2134)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0543 (0.0211)
+Lambda GC: 1.0833
+Mean Chi^2: 1.1465
+Intercept: 1.0583 (0.0335)
+Ratio: 0.398 (0.2286)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0121 (0.0106)
+Mean z1*z2: -0.001
+Intercept: -0.0198 (0.0121)
+
+Genetic Correlation
+-------------------
+Genetic Correlation: 0.1601 (0.1821)
+Z-score: 0.8794
+P: 0.3792
+
+
+Summary of Genetic Correlation Results
+p1                    p2      rg      se       z       p  h2_obs  h2_obs_se  h2_int  h2_int_se  gcov_int  gcov_int_se
+BBJ_HDLC.sumstats.gz  BBJ_LDLC.sumstats.gz  0.1601  0.1821  0.8794  0.3792  0.0543     0.0211  1.0583     0.0335   -0.0198       0.0121
+
+Analysis finished at Thu Dec 29 21:02:47 2022
+Total time elapsed: 10.39s
+```
+
 
 ## Partitioned LD regression
 - Finucane, Hilary K., et al. "Partitioning heritability by functional annotation using genome-wide association summary statistics." Nature genetics 47.11 (2015): 1228-1235.
