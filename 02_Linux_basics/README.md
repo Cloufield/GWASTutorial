@@ -39,9 +39,8 @@ Reference: https://en.wikipedia.org/wiki/Linux
 
 ### How do we interact with computers?
 
-Graphical User Interface (GUI): allows users to interact with computers through graphical icons 
-
-Character User Interface (CUI): allows users to interact with computers through command lines
+- **Graphical User Interface (GUI)**: allows users to interact with computers through graphical icons 
+- **Character User Interface (CUI)**: allows users to interact with computers through command lines
 
 ![image](https://user-images.githubusercontent.com/40289485/161374590-fd4bfee0-e815-475b-8a73-e53d97447e74.png)
 
@@ -55,11 +54,7 @@ Character User Interface (CUI): allows users to interact with computers through 
 |Ease of operation|Easier|DIFFICULT|
 |Flexibility|MORE flexible|LESS flexible|
 
--> CUI is better for large-scale data analysis 
-
-Check list
-- [ ] what is CUI and GUI?
-- [ ] why do we use Linux over other systems? 
+-> CUI is better for large-scale data analysis
 
 # Overview of the basic commands in Linux
 
@@ -125,9 +120,8 @@ $ pwd
 This command prints the absolute path.
 ![image](https://user-images.githubusercontent.com/40289485/161308808-6a8c97a9-4c7d-46cf-9e67-c5876415866f.png)
 
-absolute path: path starting form root: `/home/he/work/GWASTutorial/02_Linux_basics`
-
-relative path: path starting form current directory: `./GWASTutorial/02_Linux_basics`
+- **Absolute path**: path starting form root: `/home/he/work/GWASTutorial/02_Linux_basics`
+- **Relative path**: path starting form current directory: `./GWASTutorial/02_Linux_basics`
 
 
 ### `cd` 
@@ -141,13 +135,11 @@ $ pwd
 ### `ls` : 
 `ls` : List the files in the directory
 
-some options for `ls` :
+Some frequently used options for `ls` :
 
-`-l`: in a list-like format
-
-`-h`: convert file size into a human readable format (KB,MB,GB...)
-
-`-a`: list all files (including hidden files, namly those files a period at the beginning of the filename)
+- `-l`: in a list-like format
+- `-h`: convert file size into a human readable format (KB,MB,GB...)
+- `-a`: list all files (including hidden files, namly those files a period at the beginning of the filename)
 
 ```Bash
 $ ls
@@ -162,9 +154,8 @@ drwxr-xr-x  17 he  staff   544B Dec 23 12:13 ..
 
 ### `mkdir` & `rmdir` :
 
-`mkdir` : Create a new empty directory
-
-`rmdir`: Delete an empty directory
+- `mkdir` : Create a new empty directory
+- `rmdir`: Delete an empty directory
 
 ```Bash
 $ mkdir new_directory
@@ -202,7 +193,10 @@ total 64048
 ```
 
 ### `mv`: 
-(1) move the files to another path , or (2) rename the file
+`mv` has two functions:
+
+- (1) move files to another paths
+- (2) rename files
 
 The following command will create a new directoru called `new_directory`, and move `sumstats.txt` into that directory. Just like draggig a file in to a folder in window system.
 ```Bash
@@ -256,9 +250,8 @@ Results for millions of variants are usually very large, sometimes >10GB, or con
 
 To save space and make it easier to transfer, we need to archive and compress these files.
 
-Archive: combine multiple files in one file
-
-Compress: make the file size smaller without losing infomation
+- **Archive**: combine multiple files in a single file.
+- **Compress**: make the file size smaller without losing any infomation by convertying the file to binary forms.
 
 ![image](https://user-images.githubusercontent.com/40289485/160957877-9148b34a-93e8-40cc-9acc-7c5bb9435b71.png)
 
@@ -379,10 +372,9 @@ $ wc sumstats.txt
 ```
 This means that `sumstats.txt` has 445933 lines, 5797129 words, and 32790417 characters. 
 
-
 ## Edit files
 
-Vim is a handy text editor in command line.
+**Vim** is a handy text editor in command line.
 
 ```Bash
 vim a_new_file.txt
@@ -393,6 +385,10 @@ When finished, just pres `Esc` to escape insert mode, and then press `shift + :`
 
 Vim is hard to learn for beginners, but when you get familiar with it, it will be a mighty and convenient tool.
 For more detailed tutorials on Vim, you can check: https://github.com/iggredible/Learn-Vim
+
+Other common command line text editor:
+- [nano](https://www.nano-editor.org/)
+- [emacs](https://www.gnu.org/software/emacs/)
 
 ## Permission
 
@@ -574,9 +570,8 @@ ssh-keygen -t rsa -b 4096
 ```
 You will get two keys, a public one and a private one.
 
-public key  :  `~/.ssh/id_rsa.pub`
-
-private key :  `~/.ssh/id_rsa`   ,please don't share this with others.       
+- public key  :  `~/.ssh/id_rsa.pub`
+- private key :  `~/.ssh/id_rsa`   ,please don't share this with others.       
 
 What you need to do is just add you local public key to `~/.ssh/authorized_keys` on host server.
 
