@@ -1,4 +1,4 @@
-## Introduction
+# Introduction
 
 This module is intended to provide a minumum introduction of the Linux system for handling genomic data.  
 
@@ -7,35 +7,35 @@ This module is intended to provide a minumum introduction of the Linux system fo
 If you are a beginner with no background in programming, then it would be helpful if you could learn some basic commands first. 
 In this module, we will learn the most basic commands which enable you to handle genomic files in the terminal using command lines in linux system. 
 
-- [Linux introduction](#0-linux-system-introduction)
+- [Linux introduction](#linux-system-introduction)
     - Linux kernel and distributions
     - GUI and CUI
     - `man`
-- [Overview and checking the manual pages](#11-overview-of-the-basic-commands-in-linux)
-- [Handling directories](#12-directories)
+- [Overview and checking the manual pages](#overview-of-the-basic-commands-in-linux)
+- [Handling directories](#directories)
     - Absolute path and relative path
-- [Manipulating files](#13-manipulating-files)
-- [Archiving and Compression](#14-archive-and-compression)
-- [Checking files](#15-read-and-check-files)
-- [Editing files in terminal](#16-edit-files)
-- [Permissions](#17-permission)
-- [Other useful commands](#18-others)
-- [Bash scripts](#19-bash-scripts)
-- [Advanced text editing](#110-advanced-text-editing)
-- [Job scheduling system](#111-job-scheduling-system)
-- [Git and Github](#112-git-and-github)
-- [SSH](#113-ssh)
-- [Symbolic link](#114-symbolic-link)
-- [Downloading](#115-download)
+- [Manipulating files](#manipulating-files)
+- [Archiving and Compression](#archive-and-compression)
+- [Checking files](#read-and-check-files)
+- [Editing files in terminal](#edit-files)
+- [Permissions](#permission)
+- [Other useful commands](#others)
+- [Bash scripts](#bash-scripts)
+- [Advanced text editing](#advanced-text-editing)
+- [Job scheduling system](#job-scheduling-system)
+- [Git and Github](#git-and-github)
+- [SSH](#ssh)
+- [Symbolic link](#links)
+- [Downloading](#download)
 
-## 0 Linux System Introduction
-### 0.1 What is Linux?
+# Linux System Introduction
+### What is Linux?
 ![image](https://user-images.githubusercontent.com/40289485/161374551-1ef3b509-b345-4be3-b45b-3f86c466aa5a.png)
 
-### 0.2 How do we interact with computers?
+### How do we interact with computers?
 ![image](https://user-images.githubusercontent.com/40289485/161374590-fd4bfee0-e815-475b-8a73-e53d97447e74.png)
 
-### 0.3 A general comparison between CUI and GUI
+### A general comparison between CUI and GUI
 ||GUI|CUI|
 |-|-|-|
 |Interaction|Graphics|Command line|
@@ -51,7 +51,7 @@ Check list
 - [ ] what is CUI and GUI?
 - [ ] why do we use Linux over other systems? 
 
-## 1.1 Overview of the basic commands in Linux
+# Overview of the basic commands in Linux
 Just like clicking and dragging files in Windows or MacOS, in Linux, we usually handle files by typing commands in the terminal.
 ![image](https://user-images.githubusercontent.com/40289485/161308638-18a0efbf-92df-4795-87be-72080db316c6.png)
 
@@ -92,8 +92,8 @@ DESCRIPTION
 ....
 ```
 
-
-## 1.2 Directories
+# Commands
+## Directories
 The first set of commands are: `pwd` , `cd` , `ls`, `mkdir` and `rmdir`, which are related to directories (like the folders in a Windows system).
 
 ### `pwd`: 
@@ -150,7 +150,7 @@ $ ls
 README.md  sumstats.txt
 ```
 
-## 1.3 Manipulating files
+## Manipulating files
 This set of commands includes: `touch`, `mv` , `rm` and `cp`
 
 ### `touch`:
@@ -222,7 +222,7 @@ $cp file1 file2
 $cp -r directory1/ directory2/
 ```
 
-## 1.4 Archive and Compression
+## Archive and Compression
 Results for millions of variants are usually very large, sometimes >10GB, or consists of multiple files. 
 
 To save space and make it easier to transfer, we need to archive and compress these files.
@@ -257,7 +257,7 @@ $ ls -lh
 -rw-r--r--   1 he  staff    31M Dec 23 14:07 sumstats.txt
 ```
 
-## 1.5 Read and check files
+## Read and check files
 We have a group of handy commands to check part of or the entire file, including `cat`, `zcat`, `less`, `head`, `tail`, `wc`
 
 ### `cat`
@@ -343,7 +343,7 @@ $ wc sumstats.txt
 ```
 
 
-## 1.6 Edit files
+## Edit files
 a handy text editor in command line: vim
 ```
 vim a_new_file.txt
@@ -355,7 +355,7 @@ When finished, just pres `Esc` to escape insert mode, and then press `shift + :`
 Vim is hard to learn for beginners, but when you get familiar with it, it will be a mighty and convient tool.
 For more detailed tutorials on Vim, you can check: https://github.com/iggredible/Learn-Vim
 
-## 1.7 Permission
+## Permission
 The permissions of a file or directory are represented as a 10-character string (1+3+3+3) :
 
 For example, this represents a directory(the initial d) which is readable, writable and executable for the owner(the first 3: rwx), users in the same group(the 3 characters in the middle: rwx) and others (last 3 characters: rwx).
@@ -414,7 +414,7 @@ Note: These commands are very important because we use genome data, which could 
 
 
 
-## 1.8 others
+## Others
 `|` , `>`, `>>`,`*`,`.`,`..`,`~`,`-`
 
 ### `|`  (pipe)
@@ -450,7 +450,7 @@ Note: `Be extremely careful when you use rm and *. It is disastrous when you mis
 
 `-` means the last directory you are working in
  
-## 1.9 Bash scripts
+## Bash scripts
 If you have a lot of commands to run, or if you want to automate some complex manipulations, bash scripts are a good way to address this issue.
 
 A simple example of bash scripts:
@@ -475,17 +475,17 @@ chmod +x hello.sh
 "Hello, world2" 
 ```
 
-## 1.10 advanced text editing 
+## Advanced text editing 
 
 (optional)
 (awk, sed, cut, sort, join, uniq)
 
-## 1.11 Job scheduling system
+## Job scheduling system
 (If needed) Try to use job scheduling system to run a simple script (slurm on lab server)
 sbatch , scancel 
 sq, sjobs, shosts
 
-## 1.12 Git and Github
+## Git and Github
 Git is a powerful version control software and github is a platform where you can share your codes.
 
 Currently you just need to learn `git clone`, which simply downloads an existing repository.
@@ -495,7 +495,7 @@ Currently you just need to learn `git clone`, which simply downloads an existing
 reference: https://git-scm.com/doc
 
 Cheatsheet: https://training.github.com/downloads/github-git-cheat-sheet/
-## 1.13 SSH
+## SSH
 SSH stands for Secure Shell Protocol, which enables you to connect to remote server safely.
 
 ![image](https://user-images.githubusercontent.com/40289485/161377030-911a5bed-f58b-4d27-8ffa-0c6b553e5c62.png)
@@ -518,7 +518,7 @@ private key :  `~/.ssh/id_rsa`   ,please don't share this with others.
 
 What you need to do is just add you local public key to `~/.ssh/authorized_keys` on host server.
 
-## 1.14 Symbolic link  
+## Links  
 symbolic link is like a shortcut on window system, which is a special type of file that points to another file.
 It is very useful when you want to organize your tool box or working space.
 You can use `ln -s pathA pathB` to create such a link. 
@@ -533,7 +533,7 @@ ls -lha
 lrwxr-xr-x  1 he  staff    27B Aug 30 11:30 plink -> /home/he/tools/plink/plink
 ```
 
-## 1.15 Download
+## Download
 We can use `wget [option] [url]` command to download files to local machine.
 
 `-O` option specify the file name you want to change for the downloaded file. 
