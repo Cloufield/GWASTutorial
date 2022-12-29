@@ -151,25 +151,44 @@
             
             <li class="nav-item" data-level="1"><a href="#polygenic-risk-scores" class="nav-link">Polygenic risk scores</a>
               <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#table-of-contents" class="nav-link">Table of Contents</a>
+            <li class="nav-item" data-level="2"><a href="#table-of-contents" class="nav-link">Table of Contents</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#workflow" class="nav-link">Workflow</a>
-              <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#plink" class="nav-link">PLINK</a>
+            <li class="nav-item" data-level="1"><a href="#prs-analysis-workflow" class="nav-link">PRS Analysis Workflow</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#methods" class="nav-link">Methods</a>
               <ul class="nav flex-column">
               </ul>
             </li>
+              </ul>
+            </li>
             
-            <li class="nav-item" data-level="1"><a href="#prs-cs" class="nav-link">PRS-CS</a>
+            <li class="nav-item" data-level="1"><a href="#practice" class="nav-link">Practice</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#ct-plink" class="nav-link">C+T: PLINK</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#beta-shrinkage-prs-cs" class="nav-link">Beta shrinkage: PRS-CS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#download-prs-model-from-pgs-catalog" class="nav-link">Download PRS model from PGS Catalog</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#calculate-prs-using-plink" class="nav-link">Calculate PRS using PLINK</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#reference" class="nav-link">Reference</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -179,19 +198,60 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="polygenic-risk-scores">Polygenic risk scores</h1>
-<h1 id="table-of-contents">Table of Contents</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li>PLINK</li>
-<li>PRS-CS</li>
+<li><a href="#prs-analysis-workflow">PRS Analysis Workflow</a></li>
+<li><a href="">Practice</a><ul>
+<li><a href="#ct-plink">C+T: PLINK</a></li>
+<li><a href="#beta-shrinkage-prs-cs">Beta-shrinkage: PRS-CS</a></li>
+<li><a href="#download-prs-model-from-pgs-catalog">Download PRS model from PGS Catalog</a></li>
+<li><a href="#calculate-prs-using-plink">Calculate PRS using PLINK</a></li>
 </ul>
-<h1 id="workflow">Workflow</h1>
+</li>
+<li><a href="#reference">Reference</a></li>
+</ul>
+<h1 id="prs-analysis-workflow">PRS Analysis Workflow</h1>
+<ol>
+<li><strong>Developing PRS model</strong> using base data</li>
+<li>Performing <strong>validation</strong> to obtain best-fit parameters</li>
+<li><strong>Testing</strong> in an independent population</li>
+</ol>
+<h2 id="methods">Methods</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Description</th>
+<th>Methods</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P value thresholding</td>
+<td></td>
+<td>C+T, PRSice</td>
+</tr>
+<tr>
+<td>Beta shrinkage</td>
+<td></td>
+<td>LDpred, PRS-CS</td>
+</tr>
+</tbody>
+</table>
+<h1 id="practice">Practice</h1>
+<p>In this tutorial, we will first briefy introduce how to develop PRS model using the sample data and then demonstrate how we can download PRS models from PGS Catalog and apply to our sample genotype data. </p>
+<h2 id="ct-plink">C+T: PLINK</h2>
+<h2 id="beta-shrinkage-prs-cs">Beta shrinkage: PRS-CS</h2>
+<h2 id="download-prs-model-from-pgs-catalog">Download PRS model from PGS Catalog</h2>
+<p>URL: http://www.pgscatalog.org/</p>
+<h2 id="calculate-prs-using-plink">Calculate PRS using PLINK</h2>
+<h1 id="reference">Reference</h1>
 <ul>
-<li>Developing PRS model using base data</li>
-<li>Validation to obtain best-fit parameters</li>
-<li>Testing in an independent population</li>
-</ul>
-<h1 id="plink">PLINK</h1>
-<h1 id="prs-cs">PRS-CS</h1></div>
+<li>PLINK : Purcell, Shaun, et al. "PLINK: a tool set for whole-genome association and population-based linkage analyses." The American journal of human genetics 81.3 (2007): 559-575.</li>
+<li>PGS Catalog : Lambert, Samuel A., et al. "The Polygenic Score Catalog as an open database for reproducibility and systematic evaluation." Nature Genetics 53.4 (2021): 420-425.</li>
+<li>PRS-CS: Ge, Tian, et al. "Polygenic prediction via Bayesian regression and continuous shrinkage priors." Nature communications 10.1 (2019): 1-10.</li>
+<li>PRS Tutorial: Choi, Shing Wan, Timothy Shin-Heng Mak, and Paul F. O’Reilly. "Tutorial: a guide to performing polygenic risk score analyses." Nature protocols 15.9 (2020): 2759-2772.</li>
+</ul></div>
             </div>
         </div>
 
