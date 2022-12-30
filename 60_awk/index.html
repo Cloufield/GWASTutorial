@@ -8,7 +8,7 @@
         <meta name="author" content="HE Yunye">
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Jupyter notebook - GWASTutorial</title>
+        <title>awk - GWASTutorial</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -103,7 +103,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">Jupyter notebook</a>
+    <a href="../81_jupyter_notebook/" class="dropdown-item">Jupyter notebook</a>
 </li>
                                     
 <li>
@@ -115,7 +115,7 @@
 </li>
                                     
 <li>
-    <a href="../60_awk/" class="dropdown-item">awk</a>
+    <a href="./" class="dropdown-item active">awk</a>
 </li>
                                 </ul>
                             </li>
@@ -123,12 +123,12 @@
 
                     <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a rel="prev" href="../80_anaconda/" class="nav-link">
+                                <a rel="prev" href="../83_git_and_github/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../82_windows_linux_subsystem/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -153,30 +153,17 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#jupyter-notebook" class="nav-link">Jupyter notebook</a>
+            <li class="nav-item" data-level="1"><a href="#awk" class="nav-link">AWK</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#awk-introduction" class="nav-link">AWK Introduction</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#using-jupyter-notebook-on-remote-server" class="nav-link">Using Jupyter notebook on remote server</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#create-the-configuration-file" class="nav-link">Create the configuration file</a>
+            <li class="nav-item" data-level="2"><a href="#awk-syntax" class="nav-link">AWK syntax</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#add-the-port-information" class="nav-link">Add the port information</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#run-jupyter-notebook-server-on-remote-host" class="nav-link">Run jupyter notebook server on remote host</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#use-ssh-tunnel-to-connect-to-the-remote-server-from-your-local-machine" class="nav-link">Use ssh tunnel to connect to the remote server from your local machine</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#use-jupyter-notebook-in-your-browser" class="nav-link">Use jupyter notebook in your browser</a>
+            <li class="nav-item" data-level="2"><a href="#examples" class="nav-link">Examples</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -187,60 +174,79 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="jupyter-notebook">Jupyter notebook</h1>
-<p>Using conda to install jupyter notebook (Usually it is installed by default)</p>
-<pre><code>conda install jupyter
+<h1 id="awk">AWK</h1>
+<h2 id="awk-introduction">AWK Introduction</h2>
+<p>'awk' is one of the most powerful text processing tools for tabular text files.</p>
+<h2 id="awk-syntax">AWK syntax</h2>
+<pre><code>awk OPTION 'CONDITION {PROCESS}' FILENAME
 </code></pre>
-<h1 id="using-jupyter-notebook-on-remote-server">Using Jupyter notebook on remote server</h1>
-<p><img width="1417" alt="image" src="https://user-images.githubusercontent.com/40289485/161498444-da572340-5ffb-42be-b7c9-02f06c12097b.png"></p>
-<p>Steps:
-- <a href="#create-the-configuration-file">Create the configuration file</a>
-- <a href="#add-the-port-information">Add the port information</a>
-- <a href="#run-jupyter-notebook-server-on-remote-host">Run jupyter notebook server on remote host</a>
-- <a href="#use-ssh-tunnel-to-connect-to-the-remote-server-from-your-local-machine">Use ssh tunnel to connect to the remote server from your local machine</a>
-- <a href="#use-jupyter-notebook-in-your-browser">Use jupyter notebook in your browser</a></p>
-<h2 id="create-the-configuration-file">Create the configuration file</h2>
-<p>Create a jupyter notebook configuration file if there is no such file</p>
-<pre><code>jupyter notebook --generate-config
+<p>Some special variable in awk:</p>
+<ul>
+<li>$0 : all columns</li>
+<li>$n : column n. For example, $1 means the first column. $4 means column 4.</li>
+<li>NR : Row number.</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<p>Using the sample sumstats, we will demonstate some simple but useful one-liners.</p>
+<pre><code># sample sumstats
+head ../02_Linux_basics/sumstats.txt 
+CHROM   POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
+1   319 17  2   1   1   ADD 10000   1.04326 0.0495816   0.854176    0.393008    .
+1   319 22  1   2   2   ADD 10000   1.03347 0.0493972   0.666451    0.505123    .
+1   418 23  1   2   2   ADD 10000   1.02668 0.0498185   0.528492    0.597158    .
+1   537 30  1   2   2   ADD 10000   1.01341 0.0498496   0.267238    0.789286    .
+1   546 31  2   1   1   ADD 10000   1.02051 0.0336786   0.60284 0.546615    .
+1   575 33  2   1   1   ADD 10000   1.09795 0.0818305   1.14199 0.25346 .
+1   752 44  2   1   1   ADD 10000   1.02038 0.0494069   0.408395    0.682984    .
+1   913 50  2   1   1   ADD 10000   1.07852 0.0493585   1.53144 0.12566 .
+1   1356    77  2   1   1   ADD 10000   0.947521    0.0339805   -1.5864 0.112649    .
 </code></pre>
-<p>The file is usually stored at:</p>
-<pre><code>~/.jupyter/jupyter_notebook_config.py
-</code></pre>
-<p>What the first few lines of Configuration file look like:</p>
-<pre><code>head ~/.jupyter/jupyter_notebook_config.py
-# Configuration file for jupyter-notebook.
+<h3 id="example-1">Example 1</h3>
+<p>Select variants on chromosome 3 (keeping the headers):</p>
+<pre><code>awk 'NR==1 ||  $1==3 {print $0}' ../02_Linux_basics/sumstats.txt | head
 
-#------------------------------------------------------------------------------
-# Application(SingletonConfigurable) configuration
-#------------------------------------------------------------------------------
-
-## This is an application.
-</code></pre>
-<h2 id="add-the-port-information">Add the port information</h2>
-<p>Simply add <code>c.NotebookApp.port =8889</code> to the configuration file and then save.
-Note: you can change the port you want to use.</p>
-<pre><code># Configuration file for jupyter-notebook.
-
-c.NotebookApp.port = 8889
-
-#------------------------------------------------------------------------------
-# Application(SingletonConfigurable) configuration
-#------------------------------------------------------------------------------
-
-## This is an application.
+#CHROM  POS ID  REF ALT A1  FIRTH?  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
+3   61044   3:61044:T:C T   C   T   N   ADD 503 0.810526    0.288578    -0.727953   0.466643    .
+3   62226   3:62226:C:T C   T   C   N   ADD 503 0.939718    0.134814    -0.461196   0.644658    .
+3   62309   3:62309:T:G T   G   G   N   ADD 503 0.90072 0.299241    -0.34942    0.726774    .
+3   62614   3:62614:G:C G   C   G   N   ADD 503 0.939205    0.135404    -0.463216   0.64321 .
+3   62759   3:62759:A:C A   C   C   N   ADD 503 1.01424 0.137312    0.102945    0.918006    .
+3   65982   3:65982:G:A G   A   A   N   ADD 503 1.01851 0.286774    0.0639417   0.949017    .
+3   67279   3:67279:G:A G   A   A   N   ADD 503 0.925448    0.28266 -0.274102   0.784006    .
+3   68204   3:68204:G:C G   C   C   N   ADD 503 0.946799    0.138547    -0.394582   0.693152    .
+3   68426   3:68426:C:T C   T   T   N   ADD 503 0.936078    0.13846 -0.477083   0.633303    .
 
 </code></pre>
-<h2 id="run-jupyter-notebook-server-on-remote-host">Run jupyter notebook server on remote host</h2>
-<p>On host side, set up the jupyter notebook server:</p>
-<pre><code>jupyter notebook
+<p>The <code>NR</code> here means row number. The condition here <code>NR==1 || $1==3</code> means if it is the first row or the first column is equal to 3, conduct the process <code>print $0</code>, which mean print all columns. </p>
+<h3 id="example-2">Example 2</h3>
+<p>Select significant variants:</p>
+<pre><code>awk 'NR==1 ||  $13 &lt;5e-8 {print $0}' ../02_Linux_basics/sumstats.txt | head
+#CHROM  POS ID  REF ALT A1  FIRTH?  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
+2   55554956    2:55554956:C:A  C   A   A   N   ADD 503 0.385763    0.159528    -5.97095    2.35876e-09 .
+2   55555726    2:55555726:T:C  T   C   C   N   ADD 503 0.390696    0.15863 -5.92465    3.12972e-09 .
+2   55574452    2:55574452:G:C  G   C   C   N   ADD 503 0.38159 0.159864    -6.02642    1.67629e-09 .
+2   55578761    2:55578761:C:T  C   T   T   N   ADD 503 0.390696    0.15863 -5.92465    3.12972e-09 .
+2   55582635    2:55582635:T:C  T   C   C   N   ADD 503 0.390696    0.15863 -5.92465    3.12972e-09 .
+2   55585577    2:55585577:A:T  A   T   T   N   ADD 503 0.390696    0.15863 -5.92465    3.12972e-09 .
+2   55587807    2:55587807:G:T  G   T   T   N   ADD 503 0.389981    0.158203    -5.95222    2.64529e-09 .
+2   55598053    2:55598053:T:C  T   C   C   N   ADD 503 0.389981    0.158203    -5.95222    2.64529e-09 .
+2   55602809    2:55602809:G:A  G   A   G   N   ADD 503 0.389981    0.158203    -5.95222    2.64529e-09 .
+
 </code></pre>
-<h2 id="use-ssh-tunnel-to-connect-to-the-remote-server-from-your-local-machine">Use ssh tunnel to connect to the remote server from your local machine</h2>
-<p>On your local machine, use ssh tunnel to connect to the jupyter notebook server: </p>
-<pre><code>ssh -N -f -L localhost:8889:localhost:8889 username@your_remote_host_name
-</code></pre>
-<h2 id="use-jupyter-notebook-in-your-browser">Use jupyter notebook in your browser</h2>
-<p>Then you can access juptyer notebook on your local browser using the link generated by jupyter notebook server.
-<code>http://127.0.0.1:8889/?token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code></p></div>
+<h3 id="example-3">Example 3</h3>
+<p>Create a bed-like format for annotation:</p>
+<pre><code>awk 'NR&gt;1 {print $1,$2,$2,$4,$5}' ../02_Linux_basics/sumstats.txt | head
+1 13273 13273 G C
+1 14599 14599 T A
+1 14604 14604 A G
+1 14930 14930 A G
+1 69897 69897 T C
+1 86331 86331 A G
+1 91581 91581 G A
+1 122872 122872 T G
+1 135163 135163 C T
+1 233473 233473 C G
+</code></pre></div>
             </div>
         </div>
 
