@@ -29,6 +29,7 @@ nav:
        - "Jupyter notebook" : 81_jupyter_notebook.md
        - "WLS" : 82_windows_linux_subsystem.md
        - "Git and github" : 83_git_and_github.md
+       - "awk" : 60_awk.md
 
 plugins:
   - mkdocs-jupyter
