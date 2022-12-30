@@ -186,26 +186,28 @@
 
 <h1 id="gwastutorial-under-construction">GWASTutorial (under construction)</h1>
 <p><a href="https://hits.seeyoufarm.com"><img alt="Hits" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FCloufield%2FGWASTutorial&amp;count_bg=%2379C83D&amp;title_bg=%23555555&amp;icon=&amp;icon_color=%23E7E7E7&amp;title=Views&amp;edge_flat=false" /></a></p>
-<p>This is a repository aimming to provide a hands-on tutorial of genome-wide association study (GWAS). </p>
-<p>Contents are categorized into the following groups. Additionally, for absolute beginners, we also prepare a section on command lines in Linux.</p>
+<p>This is a repository aimming to provide a hands-on tutorial of common analysis in Complex Trait Genomics. </p>
+<p>This tutorial covers the minimum skills and knowledge to perform a typical genome-wide association study (GWAS).    </p>
+<p>The contents are categorized into the following groups. Additionally, for absolute beginners, we also prepare a section on command lines in Linux.</p>
 <p><img width="686" alt="image" src="https://user-images.githubusercontent.com/40289485/209779725-73b62b15-b044-46a4-98ae-ce5db06f93b3.png"></p>
 <h1 id="table-of-contents">Table of Contents</h1>
 <h2 id="command-lines">Command lines</h2>
 <ul>
-<li><a href="https://cloufield.github.io/GWASTutorial/02_Linux_basics/">Linux command line basics (optional)</a></li>
+<li><a href="https://cloufield.github.io/GWASTutorial/02_Linux_basics/">Linux command line basics (optional)</a> : For those who haven't used command line, we will first introduce the basics of Linux system and commonly used commands.</li>
 </ul>
 <h2 id="pre-gwas">Pre-GWAS</h2>
 <ul>
-<li><a href="https://cloufield.github.io/GWASTutorial/03_Data_formats/">Data formats</a></li>
-<li><a href="https://cloufield.github.io/GWASTutorial/04_Data_QC/">Data QC</a></li>
-<li><a href="https://cloufield.github.io/GWASTutorial/05_PCA/">Principal component analysis (PCA)</a></li>
+<li><a href="https://cloufield.github.io/GWASTutorial/03_Data_formats/">Data formats</a> : Before any analysis, the first thing is always to get familiar with your data. In this section, we will introduce some basic formats used to store sequence, genotype and dosage data.</li>
+<li><a href="https://cloufield.github.io/GWASTutorial/04_Data_QC/">Data QC</a> : Usually the raw genotype data is "dirty". This means that there are usually errors, invalid or missing values. In this section, we will learn how to perform quiality control for the raw genotype data using PLINK. </li>
+<li><a href="https://cloufield.github.io/GWASTutorial/05_PCA/">Principal component analysis (PCA)</a> : In this section, we will cover how to perform Principal Component Analysis (PCA) to analyze the population structure.  </li>
 </ul>
 <h2 id="gwas">GWAS</h2>
 <ul>
-<li><a href="https://cloufield.github.io/GWASTutorial/06_Association_tests/">Association tests</a></li>
-<li><a href="https://cloufield.github.io/GWASTutorial/Visualization/">Visualization</a></li>
+<li><a href="https://cloufield.github.io/GWASTutorial/06_Association_tests/">Association tests</a>: After QC, we will perform the very first association tests for a simulated binary trait (case-control trait) with a logistic regression model using PLINK.</li>
+<li><a href="https://cloufield.github.io/GWASTutorial/Visualization/">Visualization</a>: To visualize the summary statistics generated from association tests, we will use a python pakage called gwaslab to create mahattan plots, Quantitle-Quantile plots and Regional plots.</li>
 </ul>
 <h2 id="post-gwas">Post-GWAS</h2>
+<p>In these sections, we will briefly introduce the Post-GWAS analyese, which will dig deeper into the GWAS summary statistics.  </p>
 <ul>
 <li><a href="https://cloufield.github.io/GWASTutorial/07_Annotation/">Variant Annotation</a></li>
 <li><a href="https://cloufield.github.io/GWASTutorial/08_LDSC/">LD score regression (univariate, cross-trait and partitioned)</a></li>
@@ -213,8 +215,9 @@
 <li><a href="https://cloufield.github.io/GWASTutorial/10_PRS/">Polygenic risk scores</a></li>
 </ul>
 <h1 id="contact">Contact</h1>
-<p>This repository is maintained by <a href="https://github.com/Cloufield">Yunye He</a></p>
-<p><img width="686" alt="image" src="https://user-images.githubusercontent.com/40289485/209780549-54a24fdd-485b-4875-8f40-d6812eb644fe.png"></p></div>
+<p>This repository is maintained by <a href="https://github.com/Cloufield">Yunye He</a>. If you have any questions or suggestions, please feel free to contact <a href="gwaslab@gmail.com">gwaslab@gmail.com</a>.</p>
+<p><img width="686" alt="image" src="https://user-images.githubusercontent.com/40289485/209780549-54a24fdd-485b-4875-8f40-d6812eb644fe.png"></p>
+<p>A real "Manhattan plot"!</p></div>
             </div>
         </div>
 
@@ -275,5 +278,5 @@
 
 <!--
 MkDocs version : 1.4.2
-Build Date UTC : 2022-12-29 14:33:19.405220+00:00
+Build Date UTC : 2022-12-30 14:33:51.235307+00:00
 -->
