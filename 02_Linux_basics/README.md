@@ -531,8 +531,18 @@ Now we can run the srcipt by `./hello.sh`:
 
 ## Advanced text editing 
 
-(optional)
-(awk, sed, cut, sort, join, uniq)
+(optional: awk, sed, cut, sort, join, uniq)
+
+- `cut` : cutting out columns from files.
+- `sort`: sorting the lines of a file.
+- `uniq`: filter the duplicated lines in a file.
+- `join`: join two tabular files based on specified keys.
+
+Advanced commands:
+- `awk` : [https://cloufield.github.io/GWASTutorial/60_awk/](https://cloufield.github.io/GWASTutorial/60_awk/)
+- `sed` : [https://cloufield.github.io/GWASTutorial/61_sed/](https://cloufield.github.io/GWASTutorial/61_sed/)
+
+
 
 ## Job scheduling system
 (If needed) Try to use job scheduling system to run a simple script (slurm on lab server)
