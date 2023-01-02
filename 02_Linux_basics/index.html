@@ -115,11 +115,11 @@
 </li>
                                     
 <li>
-    <a href="../60_awk/" class="dropdown-item">awk</a>
+    <a href="../60_awk.md" class="dropdown-item">awk</a>
 </li>
                                     
 <li>
-    <a href="../61_sed/" class="dropdown-item">sed</a>
+    <a href="../61_sed.md" class="dropdown-item">sed</a>
 </li>
                                 </ul>
                             </li>
@@ -270,15 +270,18 @@ In this module, we will learn the most basic commands which enable you to handle
 </ul>
 <h1 id="linux-system-introduction">Linux System Introduction</h1>
 <h3 id="what-is-linux">What is Linux?</h3>
-<p>Linux: a family of open-source Unix-like operating systems based on the Linux kernel. </p>
-<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161374551-1ef3b509-b345-4be3-b45b-3f86c466aa5a.png" /></p>
+<ul>
+<li><strong>Linux</strong>: a family of open-source Unix-like operating systems based on the <strong>Linux kernel</strong>. </li>
+<li><strong>Linux distributions</strong>: an operating system made from a software collection that is based upon the Linux kernel.</li>
+</ul>
+<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/210223071-b9d3de64-a2ac-4785-95a5-6a30fdfd7ed4.png" /></p>
 <p>Reference: https://en.wikipedia.org/wiki/Linux</p>
 <h3 id="how-do-we-interact-with-computers">How do we interact with computers?</h3>
 <ul>
 <li><strong>Graphical User Interface (GUI)</strong>: allows users to interact with computers through graphical icons </li>
 <li><strong>Character User Interface (CUI)</strong>: allows users to interact with computers through command lines</li>
 </ul>
-<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161374590-fd4bfee0-e815-475b-8a73-e53d97447e74.png" /></p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/210223188-5b8fd313-5081-40ee-9c4c-d60c1115de8d.png" /></p>
 <h3 id="a-general-comparison-between-cui-and-gui">A general comparison between CUI and GUI</h3>
 <table>
 <thead>
@@ -321,7 +324,7 @@ In this module, we will learn the most basic commands which enable you to handle
 </tr>
 </tbody>
 </table>
-<p>-&gt; CUI is better for large-scale data analysis</p>
+<p>The reason why we want to use CUI for large-scale data analysis is that CUI is better in term of precision, memory usage and processing speed.</p>
 <h1 id="overview-of-the-basic-commands-in-linux">Overview of the basic commands in Linux</h1>
 <p>Just like clicking and dragging files in Windows or MacOS, in Linux, we usually handle files by typing commands in the terminal.</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161308638-18a0efbf-92df-4795-87be-72080db316c6.png" /></p>
@@ -411,11 +414,11 @@ DESCRIPTION
 <pre><code class="language-Bash">$ pwd
 /home/he/work/GWASTutorial/02_Linux_basics
 </code></pre>
-<p>This command prints the absolute path.
-<img alt="image" src="https://user-images.githubusercontent.com/40289485/161308808-6a8c97a9-4c7d-46cf-9e67-c5876415866f.png" /></p>
+<p>This command prints the absolute path.</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/210223719-890626d0-a502-4399-8ed3-e016338b51cb.png" /></p>
 <ul>
-<li><strong>Absolute path</strong>: path starting form root: <code>/home/he/work/GWASTutorial/02_Linux_basics</code></li>
-<li><strong>Relative path</strong>: path starting form current directory: <code>./GWASTutorial/02_Linux_basics</code></li>
+<li><strong>Absolute path</strong>: path starting form root (the orange path) : <code>/home/User3/GWASTutorial/02_Linux_basics/README.md</code></li>
+<li><strong>Relative path</strong>: path starting form current directory (the blue path): <code>./GWASTutorial/02_Linux_basics/README.md</code></li>
 </ul>
 <h3 id="cd"><code>cd</code></h3>
 <p><code>cd</code>: Change the current working directory </p>
@@ -643,11 +646,12 @@ CHROM   POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
 <p>This means that <code>sumstats.txt</code> has 445933 lines, 5797129 words, and 32790417 characters. </p>
 <h2 id="edit-files">Edit files</h2>
 <p><strong>Vim</strong> is a handy text editor in command line.</p>
-<pre><code class="language-Bash">vim a_new_file.txt
+<pre><code class="language-Bash">vim README.md
 </code></pre>
+<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/210224368-f29809e0-d72f-4a82-95ce-abfce59fa7d7.png" /></p>
 <p>Press <code>i</code> to enter insert mode, and then you can edit the file as you want.
 When finished, just pres <code>Esc</code> to escape insert mode, and then press <code>shift + :</code> , then <code>wq</code> to quit and also save the file.</p>
-<p>Vim is hard to learn for beginners, but when you get familiar with it, it will be a mighty and convenient tool.
+<p>Vim is a little bit hard to learn for beginners, but when you get familiar with it, it will be a mighty and convenient tool.
 For more detailed tutorials on Vim, you can check: https://github.com/iggredible/Learn-Vim</p>
 <p>Other common command line text editor:
 - <a href="https://www.nano-editor.org/">nano</a>
@@ -816,19 +820,22 @@ echo &quot;Hello, world2&quot;
 - <code>awk</code> : <a href="https://cloufield.github.io/GWASTutorial/60_awk/">https://cloufield.github.io/GWASTutorial/60_awk/</a>
 - <code>sed</code> : <a href="https://cloufield.github.io/GWASTutorial/61_sed/">https://cloufield.github.io/GWASTutorial/61_sed/</a></p>
 <h2 id="job-scheduling-system">Job scheduling system</h2>
-<p>(If needed) Try to use job scheduling system to run a simple script (slurm on lab server)
-sbatch , scancel 
-sq, sjobs, shosts</p>
+<p>(If needed) Try to use job scheduling system to run a simple script:</p>
+<p>Two of the most commonly used job scheduling systems:</p>
+<ul>
+<li><a href="https://slurm.schedmd.com/documentation.html">Slurm Workload Manager</a> : sbatch, scancel, sq, sjobs, shosts ...</li>
+<li><a href="https://en.wikipedia.org/wiki/Univa_Grid_Engine">Univa Grid Engine</a> : qsub, qdel, qstat ...</li>
+</ul>
 <h2 id="git-and-github">Git and Github</h2>
-<p>Git is a powerful version control software and github is a platform where you can share your codes.</p>
+<p><strong>Git</strong> is a powerful version control software and <strong>github</strong> is a platform where you can share your codes.</p>
 <p>Currently you just need to learn <code>git clone</code>, which simply downloads an existing repository.</p>
 <p><code>git clone https://github.com/Cloufield/GWASTutorial.git</code></p>
 <p>You can also check <a href="https://cloufield.github.io/GWASTutorial/83_git_and_github/">here</a> for more information.</p>
 <p>Git Reference: https://git-scm.com/doc</p>
 <p>Cheatsheet: https://training.github.com/downloads/github-git-cheat-sheet/</p>
 <h2 id="ssh">SSH</h2>
-<p>SSH stands for Secure Shell Protocol, which enables you to connect to remote server safely.</p>
-<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161377030-911a5bed-f58b-4d27-8ffa-0c6b553e5c62.png" /></p>
+<p><strong>SSH</strong> stands for <strong>Secure Shell Protocol</strong>, which enables you to connect to remote server safely.</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/210223930-1138fb9f-5230-415d-a595-3239113372c8.png" /></p>
 <p>login to romote server:</p>
 <pre><code class="language-Bash">ssh &lt;username&gt;@&lt;host&gt;
 </code></pre>
