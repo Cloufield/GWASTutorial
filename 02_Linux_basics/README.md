@@ -1,11 +1,17 @@
 # Introduction
 
-This module is intended to provide a minumum introduction of the Linux system for handling genomic data.  
+This section is intended to provide a minumum introduction of the Linux system for handling genomic data.  (If you are alreay familiar with Linux commands, it is completely ok to skip this section.)
 
-(If you are alreay familiar with Linux commands, it is completely ok to skip this module.)
+If you are a beginner with no background in programming, it would be helpful if you could learn some basic commands first before any analysis. 
+In this section, we will introduce the most basic commands which enable you to handle genomic files in the terminal using command lines in a linux system. 
 
-If you are a beginner with no background in programming, then it would be helpful if you could learn some basic commands first. 
-In this module, we will learn the most basic commands which enable you to handle genomic files in the terminal using command lines in linux system. 
+For **Mac** users, this tutorial will probably work with no problems. Just open your terminal and follow the tutorial.
+
+For **Windows** users, you can simply insall WSL to get a linux environment. Please check [here](https://cloufield.github.io/GWASTutorial/82_windows_linux_subsystem/) for how to install WSL.
+
+
+
+## Table of Contents
 
 - [Linux introduction](#linux-system-introduction)
     - Linux kernel and distributions
