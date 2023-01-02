@@ -34,7 +34,7 @@ head ../02_Linux_basics/sumstats.txt
 Replace the separator from `:` to `_`
 
 ```
-head 02_Linux_basics/sumstats.txt | sed "s/:/_/g"
+head 02_Linux_basics/sumstats.txt | sed 's/:/_/g'
 #CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
 1	13273	1_13273_G_C	G	C	C	ADD	503	0.7461490.282904	-1.03509	0.300628	.
 1	14599	1_14599_T_A	T	A	A	ADD	503	1.676930.240899	2.14598	0.0318742	.
@@ -53,7 +53,7 @@ head 02_Linux_basics/sumstats.txt | sed "s/:/_/g"
 `-d` for deletion
 
 ```
-head 02_Linux_basics/sumstats.txt | sed "1d"
+head 02_Linux_basics/sumstats.txt | sed '1d'
 1	13273	1:13273:G:C	G	C	C	ADD	503	0.7461490.282904	-1.03509	0.300628	.
 1	14599	1:14599:T:A	T	A	A	ADD	503	1.676930.240899	2.14598	0.0318742	.
 1	14604	1:14604:A:G	A	G	G	ADD	503	1.676930.240899	2.14598	0.0318742	.
