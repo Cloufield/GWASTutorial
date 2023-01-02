@@ -31,9 +31,11 @@ In this module, we will learn the most basic commands which enable you to handle
 # Linux System Introduction
 ### What is Linux?
 
-Linux: a family of open-source Unix-like operating systems based on the Linux kernel. 
+- **Linux**: a family of open-source Unix-like operating systems based on the **Linux kernel**. 
+- **Linux distributions**: an operating system made from a software collection that is based upon the Linux kernel.
 
-![image](https://user-images.githubusercontent.com/40289485/161374551-1ef3b509-b345-4be3-b45b-3f86c466aa5a.png)
+![image](https://user-images.githubusercontent.com/40289485/210223071-b9d3de64-a2ac-4785-95a5-6a30fdfd7ed4.png)
+
 
 Reference: https://en.wikipedia.org/wiki/Linux
 
@@ -42,9 +44,10 @@ Reference: https://en.wikipedia.org/wiki/Linux
 - **Graphical User Interface (GUI)**: allows users to interact with computers through graphical icons 
 - **Character User Interface (CUI)**: allows users to interact with computers through command lines
 
-![image](https://user-images.githubusercontent.com/40289485/161374590-fd4bfee0-e815-475b-8a73-e53d97447e74.png)
+![image](https://user-images.githubusercontent.com/40289485/210223188-5b8fd313-5081-40ee-9c4c-d60c1115de8d.png)
 
 ### A general comparison between CUI and GUI
+
 ||GUI|CUI|
 |-|-|-|
 |Interaction|Graphics|Command line|
@@ -54,7 +57,7 @@ Reference: https://en.wikipedia.org/wiki/Linux
 |Ease of operation|Easier|DIFFICULT|
 |Flexibility|MORE flexible|LESS flexible|
 
--> CUI is better for large-scale data analysis
+The reason why we want to use CUI for large-scale data analysis is that CUI is better in term of precision, memory usage and processing speed.
 
 # Overview of the basic commands in Linux
 
@@ -118,13 +121,16 @@ $ pwd
 /home/he/work/GWASTutorial/02_Linux_basics
 ```
 This command prints the absolute path.
-![image](https://user-images.githubusercontent.com/40289485/161308808-6a8c97a9-4c7d-46cf-9e67-c5876415866f.png)
 
-- **Absolute path**: path starting form root: `/home/he/work/GWASTutorial/02_Linux_basics`
-- **Relative path**: path starting form current directory: `./GWASTutorial/02_Linux_basics`
+![image](https://user-images.githubusercontent.com/40289485/210223719-890626d0-a502-4399-8ed3-e016338b51cb.png)
+
+
+- **Absolute path**: path starting form root (the orange path) : `/home/User3/GWASTutorial/02_Linux_basics/README.md`
+- **Relative path**: path starting form current directory (the blue path): `./GWASTutorial/02_Linux_basics/README.md`
 
 
 ### `cd` 
+
 `cd`: Change the current working directory 
 ```Bash
 $ cd 02_Linux_basics
@@ -133,6 +139,7 @@ $ pwd
 ```
 
 ### `ls` : 
+
 `ls` : List the files in the directory
 
 Some frequently used options for `ls` :
@@ -377,13 +384,15 @@ This means that `sumstats.txt` has 445933 lines, 5797129 words, and 32790417 cha
 **Vim** is a handy text editor in command line.
 
 ```Bash
-vim a_new_file.txt
+vim README.md
 ```
+
+![image](https://user-images.githubusercontent.com/40289485/210224368-f29809e0-d72f-4a82-95ce-abfce59fa7d7.png)
 
 Press `i` to enter insert mode, and then you can edit the file as you want.
 When finished, just pres `Esc` to escape insert mode, and then press `shift + :` , then `wq` to quit and also save the file.
 
-Vim is hard to learn for beginners, but when you get familiar with it, it will be a mighty and convenient tool.
+Vim is a little bit hard to learn for beginners, but when you get familiar with it, it will be a mighty and convenient tool.
 For more detailed tutorials on Vim, you can check: https://github.com/iggredible/Learn-Vim
 
 Other common command line text editor:
@@ -429,6 +438,7 @@ chmod [3-digit Binary notation] [path]
 |0|`---`|000|
 
 Example:
+
 ```Bash
 # there is a readme file in the directory, and its permissions are -rw-r----- 
 $ ls -lh
@@ -545,12 +555,17 @@ Advanced commands:
 
 
 ## Job scheduling system
-(If needed) Try to use job scheduling system to run a simple script (slurm on lab server)
-sbatch , scancel 
-sq, sjobs, shosts
+
+(If needed) Try to use job scheduling system to run a simple script:
+
+Two of the most commonly used job scheduling systems:
+
+- [Slurm Workload Manager](https://slurm.schedmd.com/documentation.html) : sbatch, scancel, sq, sjobs, shosts ...
+- [Univa Grid Engine](https://en.wikipedia.org/wiki/Univa_Grid_Engine) : qsub, qdel, qstat ...
 
 ## Git and Github
-Git is a powerful version control software and github is a platform where you can share your codes.
+
+**Git** is a powerful version control software and **github** is a platform where you can share your codes.
 
 Currently you just need to learn `git clone`, which simply downloads an existing repository.
 
@@ -564,17 +579,18 @@ Cheatsheet: https://training.github.com/downloads/github-git-cheat-sheet/
 
 
 ## SSH
-SSH stands for Secure Shell Protocol, which enables you to connect to remote server safely.
+**SSH** stands for **Secure Shell Protocol**, which enables you to connect to remote server safely.
 
-![image](https://user-images.githubusercontent.com/40289485/161377030-911a5bed-f58b-4d27-8ffa-0c6b553e5c62.png)
-
+![image](https://user-images.githubusercontent.com/40289485/210223930-1138fb9f-5230-415d-a595-3239113372c8.png)
 
 login to romote server:
+
 ```Bash
 ssh <username>@<host>
 ```
 
 Before you login in, you need to generate keys for ssh connection:
+
 ```Bash
 ssh-keygen -t rsa -b 4096
 ```
