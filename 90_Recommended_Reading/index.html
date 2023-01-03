@@ -8,7 +8,7 @@
         <meta name="author" content="HE Yunye">
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>sed - GWASTutorial</title>
+        <title>Recommended reading - GWASTutorial</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -99,7 +99,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../90_Recommended_Reading/" class="dropdown-item">Recommended reading</a>
+    <a href="./" class="dropdown-item active">Recommended reading</a>
 </li>
                                     
 <li>
@@ -123,7 +123,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">sed</a>
+    <a href="../61_sed/" class="dropdown-item">sed</a>
 </li>
                                 </ul>
                             </li>
@@ -131,12 +131,12 @@
 
                     <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a rel="prev" href="../60_awk/" class="nav-link">
+                                <a rel="prev" href="../10_PRS/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../80_anaconda/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -161,13 +161,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#sed" class="nav-link">sed</a>
+            <li class="nav-item" data-level="1"><a href="#recommended-reading" class="nav-link">Recommended reading</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#sed-syntax" class="nav-link">sed syntax</a>
+            <li class="nav-item" data-level="2"><a href="#text-books" class="nav-link">Text books</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#examples" class="nav-link">Examples</a>
+            <li class="nav-item" data-level="2"><a href="#reviews" class="nav-link">Reviews</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -178,56 +178,25 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="sed">sed</h1>
-<p><code>sed</code> is also one of the most commonly used test-editing command in Linux, which is short for <strong>s</strong>tream <strong>ed</strong>itor. <code>sed</code> command edits the text from standard input in a line-by-line approach. </p>
-<h2 id="sed-syntax">sed syntax</h2>
-<pre><code>sed [OPTIONS] PROCESS [FILENAME]
-</code></pre>
-<h2 id="examples">Examples</h2>
-<h3 id="sample-input">sample input</h3>
-<pre><code>head ../02_Linux_basics/sumstats.txt
-#CHROM  POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
-1   13273   1:13273:G:C G   C   C   ADD 503 0.7461490.282904    -1.03509    0.300628    .
-1   14599   1:14599:T:A T   A   A   ADD 503 1.676930.240899 2.14598 0.0318742   .
-1   14604   1:14604:A:G A   G   G   ADD 503 1.676930.240899 2.14598 0.0318742   .
-1   14930   1:14930:A:G A   G   G   ADD 503 1.643590.242872 2.04585 0.0407708   .
-1   69897   1:69897:T:C T   C   T   ADD 503 1.691420.200238 2.62471 0.00867216  .
-1   86331   1:86331:A:G A   G   G   ADD 503 1.418870.238055 1.46968 0.141649    .
-1   91581   1:91581:G:A G   A   A   ADD 503 0.9313040.123644    -0.575598   0.564887    .
-1   122872  1:122872:T:G    T   G   G   ADD 503 1.048280.182036 0.259034    0.795609    .
-1   135163  1:135163:C:T    C   T   T   ADD 503 0.6766660.242611    -1.60989    0.107422    .
-
-</code></pre>
-<h3 id="example-1-replacing-strings">Example 1: Replacing strings</h3>
-<p><code>s</code> for substitute
-<code>g</code> for global</p>
-<p>Replace the separator from <code>:</code> to <code>_</code></p>
-<pre><code>head 02_Linux_basics/sumstats.txt | sed 's/:/_/g'
-#CHROM  POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
-1   13273   1_13273_G_C G   C   C   ADD 503 0.7461490.282904    -1.03509    0.300628    .
-1   14599   1_14599_T_A T   A   A   ADD 503 1.676930.240899 2.14598 0.0318742   .
-1   14604   1_14604_A_G A   G   G   ADD 503 1.676930.240899 2.14598 0.0318742   .
-1   14930   1_14930_A_G A   G   G   ADD 503 1.643590.242872 2.04585 0.0407708   .
-1   69897   1_69897_T_C T   C   T   ADD 503 1.691420.200238 2.62471 0.00867216  .
-1   86331   1_86331_A_G A   G   G   ADD 503 1.418870.238055 1.46968 0.141649    .
-1   91581   1_91581_G_A G   A   A   ADD 503 0.9313040.123644    -0.575598   0.564887    .
-1   122872  1_122872_T_G    T   G   G   ADD 503 1.048280.182036 0.259034    0.795609    .
-1   135163  1_135163_C_T    C   T   T   ADD 503 0.6766660.242611    -1.60989    0.107422    .
-
-</code></pre>
-<h3 id="example-2-delete-headerthe-first-line">Example 2: Delete header(the first line)</h3>
-<p><code>-d</code> for deletion</p>
-<pre><code>head 02_Linux_basics/sumstats.txt | sed '1d'
-1   13273   1:13273:G:C G   C   C   ADD 503 0.7461490.282904    -1.03509    0.300628    .
-1   14599   1:14599:T:A T   A   A   ADD 503 1.676930.240899 2.14598 0.0318742   .
-1   14604   1:14604:A:G A   G   G   ADD 503 1.676930.240899 2.14598 0.0318742   .
-1   14930   1:14930:A:G A   G   G   ADD 503 1.643590.242872 2.04585 0.0407708   .
-1   69897   1:69897:T:C T   C   T   ADD 503 1.691420.200238 2.62471 0.00867216  .
-1   86331   1:86331:A:G A   G   G   ADD 503 1.418870.238055 1.46968 0.141649    .
-1   91581   1:91581:G:A G   A   A   ADD 503 0.9313040.123644    -0.575598   0.564887    .
-1   122872  1:122872:T:G    T   G   G   ADD 503 1.048280.182036 0.259034    0.795609    .
-1   135163  1:135163:C:T    C   T   T   ADD 503 0.6766660.242611    -1.60989    0.107422    .
-</code></pre></div>
+<h1 id="recommended-reading">Recommended reading</h1>
+<h2 id="text-books">Text books</h2>
+<ul>
+<li>Mills, M. C., Barban, N., &amp; Tropf, F. C. (2020). An introduction to statistical genetic data analysis. Mit Press.</li>
+</ul>
+<h2 id="reviews">Reviews</h2>
+<ul>
+<li>Hirschhorn, J. N., &amp; Daly, M. J. (2005). Genome-wide association studies for common diseases and complex traits. Nature reviews genetics, 6(2), 95-108.</li>
+<li>Balding, D. J. (2006). A tutorial on statistical methods for population association studies. Nature reviews genetics, 7(10), 781-791.</li>
+<li>McCarthy, M. I., Abecasis, G. R., Cardon, L. R., Goldstein, D. B., Little, J., Ioannidis, J., &amp; Hirschhorn, J. N. (2008). Genome-wide association studies for complex traits: consensus, uncertainty and challenges. Nature reviews genetics, 9(5), 356-369.</li>
+<li>Manolio, T. A., Collins, F. S., Cox, N. J., Goldstein, D. B., Hindorff, L. A., Hunter, D. J., … &amp; Visscher, P. M. (2009). Finding the missing heritability of complex diseases. Nature, 461 (7265), 747-753.</li>
+<li>Ioannidis, J., Thomas, G., &amp; Daly, M. J. (2009). Validating, augmenting and refining genome-wide association signals. Nature Reviews Genetics, 10(5), 318-329.</li>
+<li>Marchini, J., &amp; Howie, B. (2010). Genotype imputation for genome-wide association studies. Nature Reviews Genetics, 11(7), 499-511.</li>
+<li>Price, A. L., Zaitlen, N. A., Reich, D., &amp; Patterson, N. (2010). New approaches to population stratification in genome-wide association studies. Nature reviews genetics, 11(7), 459-463.</li>
+<li>Visscher, P. M., Wray, N. R., Zhang, Q., Sklar, P., McCarthy, M. I., Brown, M. A., &amp; Yang, J. (2017). 10 years of GWAS discovery: biology, function, and translation. The American Journal of Human Genetics, 101(1), 5-22.</li>
+<li>Pasaniuc, B., &amp; Price, A. L. (2017). Dissecting the genetics of complex traits using summary association statistics. Nature reviews genetics, 18(2), 117-127.</li>
+<li>Tam, V., Patel, N., Turcotte, M., Bossé, Y., Paré, G., &amp; Meyre, D. (2019). Benefits and limitations of genome-wide association studies. Nature Reviews Genetics, 20(8), 467-484.</li>
+<li>Uffelmann, E., Huang, Q. Q., Munung, N. S., De Vries, J., Okada, Y., Martin, A. R., … &amp; Posthuma, D. (2021). Genome-wide association studies. Nature Reviews Methods Primers, 1(1), 1-21.</li>
+</ul></div>
             </div>
         </div>
 
