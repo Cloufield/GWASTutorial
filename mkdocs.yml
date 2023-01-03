@@ -25,6 +25,7 @@ nav:
        - "Gene/Gene-set tests" : 09_Gene_based_analysis.md
        - "PRS" : 10_PRS.md
     - Others :
+       - "Recommended reading" : 90_Recommended_Reading.md
        - "Anaconda" : 80_anaconda.md
        - "Jupyter notebook" : 81_jupyter_notebook.md
        - "WLS" : 82_windows_linux_subsystem.md
