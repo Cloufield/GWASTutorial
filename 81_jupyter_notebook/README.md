@@ -8,6 +8,7 @@ conda install jupyter
 <img width="1417" alt="image" src="https://user-images.githubusercontent.com/40289485/161498444-da572340-5ffb-42be-b7c9-02f06c12097b.png">
 
 Steps:
+
 - [Create the configuration file](#create-the-configuration-file)
 - [Add the port information](#add-the-port-information)
 - [Run jupyter notebook server on remote host](#run-jupyter-notebook-server-on-remote-host)
