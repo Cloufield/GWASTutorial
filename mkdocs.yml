@@ -13,8 +13,8 @@ theme:
     code: Roboto Mono
     text: Roboto
   palette:
-    primary: blue
-    accent: blue
+    primary: indigo
+    accent: indigo
     
 nav:
     - Home: index.md
