@@ -142,11 +142,15 @@ Genomic control (GC) is a basic method for controlling for the confunding factor
   
 We will calculate genomic control factor (lambda GC) to evaluate the inflation. The genomic control factor is calculated by dividing the **median of observed Chi square statistics** by the **median of Chi square distribution with degree of 1** (which is approximately 0.455).
 
-$$ \lambda_{GC} = {median(\chi^{2}_{observed}) \over median(\chi^{2}_1)} $$
+$$ 
+\lambda_{GC} = {median(\chi^{2}_{observed}) \over median(\chi^{2}_1)} 
+$$
 
 Then, we can used the genomic control factor to correct observed Chi suqare statistics.
 
-$$ \chi^{2}_{corrected} = {\chi^{2}_{observed} \over \lambda_{GC}} $$
+$$ 
+\chi^{2}_{corrected} = {\chi^{2}_{observed} \over \lambda_{GC}} 
+$$
 
 Reference: Devlin, B., & Roeder, K. (1999). Genomic control for association studies. Biometrics, 55(4), 997-1004.
 

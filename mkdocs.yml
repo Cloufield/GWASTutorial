@@ -5,8 +5,9 @@ repo_url: https://github.com/Cloufield/GWASTutorial
 edit_uri: ""
 copyright: "GWASTutorial is licensed under the MIT license"
 theme:
-  name: mkdocs
-  nav_style: dark
+  name: material
+  features:
+    - navigation.tabs
 
 nav:
     - Home: index.md
