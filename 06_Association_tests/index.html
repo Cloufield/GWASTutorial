@@ -967,13 +967,13 @@ End time: Tue Dec 27 23:04:40 2022
 <h2 id="genomic-control">Genomic control</h2>
 <p>Genomic control (GC) is a basic method for controlling for the confunding factors like population stratification.</p>
 <p>We will calculate genomic control factor (lambda GC) to evaluate the inflation. The genomic control factor is calculated by dividing the <strong>median of observed Chi square statistics</strong> by the <strong>median of Chi square distribution with degree of 1</strong> (which is approximately 0.455).</p>
-<p>$$ 
+<div class="arithmatex">\[ 
 \lambda_{GC} = {median(\chi^{2}_{observed}) \over median(\chi^{2}_1)} 
-$$</p>
+\]</div>
 <p>Then, we can used the genomic control factor to correct observed Chi suqare statistics.</p>
-<p>$$ 
-\chi^{2}<em>{corrected} = {\chi^{2}</em>{observed} \over \lambda_{GC}} 
-$$</p>
+<div class="arithmatex">\[ 
+\chi^{2}_{corrected} = {\chi^{2}_{observed} \over \lambda_{GC}} 
+\]</div>
 <p>Reference: Devlin, B., &amp; Roeder, K. (1999). Genomic control for association studies. Biometrics, 55(4), 997-1004.</p>
 <h2 id="significant-loci">Significant loci</h2>
 <p>Please check <a href="https://cloufield.github.io/GWASTutorial/Visualization/">Visualization using gwaslab</a></p>
