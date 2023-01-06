@@ -10,19 +10,19 @@
         <meta name="author" content="HE Yunye">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>GWASTutorial</title>
+        <title>Job scheduler - GWASTutorial</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.975780f9.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.975780f9.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.2505c338.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.2505c338.min.css">
         
           
           
@@ -43,7 +43,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#gwastutorial-under-construction" class="md-skip">
+        <a href="#job-scheduling-system" class="md-skip">
           Skip to content
         </a>
       
@@ -84,7 +84,7 @@
 
 <header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="GWASTutorial" class="md-header__button md-logo" aria-label="GWASTutorial" data-md-component="logo">
+    <a href=".." title="GWASTutorial" class="md-header__button md-logo" aria-label="GWASTutorial" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Job scheduler
             
           </span>
         </div>
@@ -136,12 +136,10 @@
         
   
   
-    
-  
 
 
   <li class="md-tabs__item">
-    <a href="." class="md-tabs__link md-tabs__link--active">
+    <a href=".." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -150,13 +148,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="02_Linux_basics/" class="md-tabs__link">
+      <a href="../02_Linux_basics/" class="md-tabs__link md-tabs__link--active">
         Command Line
       </a>
     </li>
@@ -172,7 +172,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="01_Dataset/" class="md-tabs__link">
+      <a href="../01_Dataset/" class="md-tabs__link">
         Pre-GWAS
       </a>
     </li>
@@ -188,7 +188,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="06_Association_tests/" class="md-tabs__link">
+      <a href="../06_Association_tests/" class="md-tabs__link">
         GWAS
       </a>
     </li>
@@ -204,7 +204,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="07_Annotation/" class="md-tabs__link">
+      <a href="../07_Annotation/" class="md-tabs__link">
         Post-GWAS
       </a>
     </li>
@@ -220,7 +220,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="90_Recommended_Reading/" class="md-tabs__link">
+      <a href="../90_Recommended_Reading/" class="md-tabs__link">
         Others
       </a>
     </li>
@@ -254,7 +254,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="GWASTutorial" class="md-nav__button md-logo" aria-label="GWASTutorial" data-md-component="logo">
+    <a href=".." title="GWASTutorial" class="md-nav__button md-logo" aria-label="GWASTutorial" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -283,93 +283,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Home
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
         Home
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#contents" class="md-nav__link">
-    Contents
-  </a>
-  
-    <nav class="md-nav" aria-label="Contents">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#command-lines" class="md-nav__link">
-    Command lines
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pre-gwas" class="md-nav__link">
-    Pre-GWAS
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gwas" class="md-nav__link">
-    GWAS
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post-gwas" class="md-nav__link">
-    Post-GWAS
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contact" class="md-nav__link">
-    Contact
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -380,12 +298,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -408,7 +328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02_Linux_basics/" class="md-nav__link">
+      <a href="../02_Linux_basics/" class="md-nav__link">
         Linux Basics
       </a>
     </li>
@@ -422,7 +342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="82_windows_linux_subsystem/" class="md-nav__link">
+      <a href="../82_windows_linux_subsystem/" class="md-nav__link">
         Windows Linux Subsystem
       </a>
     </li>
@@ -436,7 +356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="83_git_and_github/" class="md-nav__link">
+      <a href="../83_git_and_github/" class="md-nav__link">
         Git and github
       </a>
     </li>
@@ -450,7 +370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="84_ssh/" class="md-nav__link">
+      <a href="../84_ssh/" class="md-nav__link">
         SSH
       </a>
     </li>
@@ -462,11 +382,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="85_job_scheduler/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Job scheduler
       </a>
+      
     </li>
   
 
@@ -478,7 +408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="60_awk/" class="md-nav__link">
+      <a href="../60_awk/" class="md-nav__link">
         Text editing - awk
       </a>
     </li>
@@ -492,7 +422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="61_sed/" class="md-nav__link">
+      <a href="../61_sed/" class="md-nav__link">
         Text editing - sed
       </a>
     </li>
@@ -540,7 +470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01_Dataset/" class="md-nav__link">
+      <a href="../01_Dataset/" class="md-nav__link">
         Sample Dataset
       </a>
     </li>
@@ -554,7 +484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03_Data_formats/" class="md-nav__link">
+      <a href="../03_Data_formats/" class="md-nav__link">
         Data Formats
       </a>
     </li>
@@ -568,7 +498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04_Data_QC/" class="md-nav__link">
+      <a href="../04_Data_QC/" class="md-nav__link">
         Data QC
       </a>
     </li>
@@ -582,7 +512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05_PCA/" class="md-nav__link">
+      <a href="../05_PCA/" class="md-nav__link">
         PCA
       </a>
     </li>
@@ -630,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06_Association_tests/" class="md-nav__link">
+      <a href="../06_Association_tests/" class="md-nav__link">
         Association tests
       </a>
     </li>
@@ -644,7 +574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Visualization/" class="md-nav__link">
+      <a href="../Visualization/" class="md-nav__link">
         Visualization
       </a>
     </li>
@@ -692,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07_Annotation/" class="md-nav__link">
+      <a href="../07_Annotation/" class="md-nav__link">
         Annotation
       </a>
     </li>
@@ -706,7 +636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08_LDSC/" class="md-nav__link">
+      <a href="../08_LDSC/" class="md-nav__link">
         LDSC
       </a>
     </li>
@@ -720,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09_Gene_based_analysis/" class="md-nav__link">
+      <a href="../09_Gene_based_analysis/" class="md-nav__link">
         Gene/Gene-set tests
       </a>
     </li>
@@ -734,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="10_PRS/" class="md-nav__link">
+      <a href="../10_PRS/" class="md-nav__link">
         PRS
       </a>
     </li>
@@ -782,7 +712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="90_Recommended_Reading/" class="md-nav__link">
+      <a href="../90_Recommended_Reading/" class="md-nav__link">
         Recommended reading
       </a>
     </li>
@@ -796,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="80_anaconda/" class="md-nav__link">
+      <a href="../80_anaconda/" class="md-nav__link">
         Anaconda
       </a>
     </li>
@@ -810,7 +740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="81_jupyter_notebook/" class="md-nav__link">
+      <a href="../81_jupyter_notebook/" class="md-nav__link">
         Jupyter notebook
       </a>
     </li>
@@ -844,62 +774,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#contents" class="md-nav__link">
-    Contents
-  </a>
-  
-    <nav class="md-nav" aria-label="Contents">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#command-lines" class="md-nav__link">
-    Command lines
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pre-gwas" class="md-nav__link">
-    Pre-GWAS
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gwas" class="md-nav__link">
-    GWAS
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post-gwas" class="md-nav__link">
-    Post-GWAS
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contact" class="md-nav__link">
-    Contact
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -913,40 +787,13 @@
                   
 
 
-<h1 id="gwastutorial-under-construction">GWASTutorial (under construction)</h1>
-<p><a href="https://hits.seeyoufarm.com"><img alt="Hits" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FCloufield%2FGWASTutorial&amp;count_bg=%2379C83D&amp;title_bg=%23555555&amp;icon=&amp;icon_color=%23E7E7E7&amp;title=Views&amp;edge_flat=false" /></a></p>
-<p>This is a repository aimming to provide a hands-on tutorial of common analysis in Complex Trait Genomics. </p>
-<p>This tutorial covers the minimum skills and knowledge to perform a typical genome-wide association study (GWAS).    </p>
-<p>The contents are categorized into the following groups. Additionally, for absolute beginners, we also prepare a section on command lines in Linux.</p>
-<p><img width="686" alt="image" src="https://user-images.githubusercontent.com/40289485/209779725-73b62b15-b044-46a4-98ae-ce5db06f93b3.png"></p>
-<h2 id="contents">Contents</h2>
-<h3 id="command-lines">Command lines</h3>
+<h1 id="job-scheduling-system">Job scheduling system</h1>
+<p>(If needed) Try to use job scheduling system to run a simple script:</p>
+<p>Two of the most commonly used job scheduling systems:</p>
 <ul>
-<li><a href="https://cloufield.github.io/GWASTutorial/02_Linux_basics/">Linux command line basics (optional)</a> : For those who haven't used command line, we will first introduce the basics of Linux system and commonly used commands.</li>
+<li><a href="https://slurm.schedmd.com/documentation.html">Slurm Workload Manager</a> : sbatch, scancel, sq, sjobs, shosts </li>
+<li><a href="https://en.wikipedia.org/wiki/Univa_Grid_Engine">Univa Grid Engine</a> : qsub, qdel, qstat </li>
 </ul>
-<h3 id="pre-gwas">Pre-GWAS</h3>
-<ul>
-<li><a href="https://cloufield.github.io/GWASTutorial/03_Data_formats/">Data formats</a> : Before any analysis, the first thing is always to get familiar with your data. In this section, we will introduce some basic formats used to store sequence, genotype and dosage data.</li>
-<li><a href="https://cloufield.github.io/GWASTutorial/04_Data_QC/">Data QC</a> : Usually the raw genotype data is "dirty". This means that there are usually errors, invalid or missing values. In this section, we will learn how to perform quiality control for the raw genotype data using PLINK. </li>
-<li><a href="https://cloufield.github.io/GWASTutorial/05_PCA/">Principal component analysis (PCA)</a> : In this section, we will cover how to perform Principal Component Analysis (PCA) to analyze the population structure.  </li>
-</ul>
-<h3 id="gwas">GWAS</h3>
-<ul>
-<li><a href="https://cloufield.github.io/GWASTutorial/06_Association_tests/">Association tests</a>: After QC, we will perform the very first association tests for a simulated binary trait (case-control trait) with a logistic regression model using PLINK.</li>
-<li><a href="https://cloufield.github.io/GWASTutorial/Visualization/">Visualization</a>: To visualize the summary statistics generated from association tests, we will use a python pakage called gwaslab to create mahattan plots, Quantitle-Quantile plots and Regional plots.</li>
-</ul>
-<h3 id="post-gwas">Post-GWAS</h3>
-<p>In these sections, we will briefly introduce the Post-GWAS analyese, which will dig deeper into the GWAS summary statistics.  </p>
-<ul>
-<li><a href="https://cloufield.github.io/GWASTutorial/07_Annotation/">Variant Annotation</a></li>
-<li><a href="https://cloufield.github.io/GWASTutorial/08_LDSC/">LD score regression (univariate, cross-trait and partitioned)</a></li>
-<li><a href="https://cloufield.github.io/GWASTutorial/09_Gene_based_analysis/">Gene / Gene-set analysis</a></li>
-<li><a href="https://cloufield.github.io/GWASTutorial/10_PRS/">Polygenic risk scores</a></li>
-</ul>
-<h2 id="contact">Contact</h2>
-<p>This repository is maintained by <a href="https://github.com/Cloufield">Yunye He</a>. If you have any questions or suggestions, please feel free to contact <a href="gwaslab@gmail.com">gwaslab@gmail.com</a>.</p>
-<p><img width="686" alt="image" src="https://user-images.githubusercontent.com/40289485/209780549-54a24fdd-485b-4875-8f40-d6812eb644fe.png"></p>
-<p>A real "Manhattan plot"!</p>
 
 
 
@@ -966,15 +813,30 @@
     
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
+        
+        <a href="../84_ssh/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SSH" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              SSH
+            </div>
+          </div>
+        </a>
+      
       
         
-        <a href="02_Linux_basics/" class="md-footer__link md-footer__link--next" aria-label="Next: Linux Basics" rel="next">
+        <a href="../60_awk/" class="md-footer__link md-footer__link--next" aria-label="Next: Text editing - awk" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Linux Basics
+              Text editing - awk
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1009,12 +871,12 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
-        <script src="javascripts/mathjax.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
