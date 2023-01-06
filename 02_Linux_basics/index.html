@@ -1137,8 +1137,14 @@
 <p>This section is intended to provide a minumum introduction of the Linux system for handling genomic data.  (If you are alreay familiar with Linux commands, it is completely ok to skip this section.)</p>
 <p>If you are a beginner with no background in programming, it would be helpful if you could learn some basic commands first before any analysis. 
 In this section, we will introduce the most basic commands which enable you to handle genomic files in the terminal using command lines in a linux system. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>For <strong>Mac</strong> users, this tutorial will probably work with no problems. Just open your terminal and follow the tutorial.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>For <strong>Windows</strong> users, you can simply insall WSL to get a linux environment. Please check <a href="https://cloufield.github.io/GWASTutorial/82_windows_linux_subsystem/">here</a> for how to install WSL.</p>
+</div>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
 <li><a href="#linux-system-introduction">Linux introduction</a><ul>
@@ -1220,7 +1226,10 @@ In this section, we will introduce the most basic commands which enable you to h
 </tr>
 </tbody>
 </table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>The reason why we want to use CUI for large-scale data analysis is that CUI is better in term of precision, memory usage and processing speed.</p>
+</div>
 <h2 id="overview-of-the-basic-commands-in-linux">Overview of the basic commands in Linux</h2>
 <p>Just like clicking and dragging files in Windows or MacOS, in Linux, we usually handle files by typing commands in the terminal.</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161308638-18a0efbf-92df-4795-87be-72080db316c6.png" /></p>
@@ -1489,8 +1498,11 @@ drwxr-x--- <span class="m">29</span> he staff <span class="m">4</span>.0K Apr  <
 -rw-r-----  <span class="m">1</span> he staff    <span class="m">0</span> Apr  <span class="m">2</span> <span class="m">00</span>:37 a_text_file.txt
 -rw-r-----  <span class="m">1</span> he staff <span class="m">5</span>.0K Apr  <span class="m">1</span> <span class="m">22</span>:20 README.md
 -rw-r-----  <span class="m">1</span> he staff  32M Mar <span class="m">30</span> <span class="m">18</span>:17 sumstats.txt
-</code></pre></div>
-!!! Be careful not to <code>cat</code> a text file with a huge number of lines. You can try to <code>cat sumstats.txt</code> and see what happends.</p>
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be careful not to <code>cat</code> a text file with a huge number of lines. You can try to <code>cat sumstats.txt</code> and see what happends.</p>
+</div>
 <p>By the way, <code>&gt; a_text_file.txt</code> here means redirect the output to file <code>a_text_file.txt</code>.</p>
 <h4 id="zcat"><code>zcat</code></h4>
 <p><code>zcat</code> is similar to <code>cat</code>, but can only applied to compressed files.</p>
