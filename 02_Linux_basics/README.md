@@ -21,6 +21,7 @@ For **Windows** users, you can simply insall WSL to get a linux environment. Ple
 - [Handling directories](#directories)
     - Absolute path and relative path
 - [Manipulating files](#manipulating-files)
+- [Symbolic link](#links)
 - [Archiving and Compression](#archive-and-compression)
 - [Checking files](#read-and-check-files)
 - [Editing files in terminal](#edit-files)
@@ -28,13 +29,10 @@ For **Windows** users, you can simply insall WSL to get a linux environment. Ple
 - [Other useful commands](#others)
 - [Bash scripts](#bash-scripts)
 - [Advanced text editing](#advanced-text-editing)
-- [Job scheduling system](#job-scheduling-system)
 - [Git and Github](#git-and-github)
-- [SSH](#ssh)
-- [Symbolic link](#links)
 - [Downloading](#download)
 
-# Linux System Introduction
+## Linux System Introduction
 ### What is Linux?
 
 - **Linux**: a family of open-source Unix-like operating systems based on the **Linux kernel**. 
@@ -65,7 +63,7 @@ Reference: https://en.wikipedia.org/wiki/Linux
 
 The reason why we want to use CUI for large-scale data analysis is that CUI is better in term of precision, memory usage and processing speed.
 
-# Overview of the basic commands in Linux
+## Overview of the basic commands in Linux
 
 Just like clicking and dragging files in Windows or MacOS, in Linux, we usually handle files by typing commands in the terminal.
 
@@ -113,12 +111,12 @@ DESCRIPTION
 ....
 ```
 
-# Commands
-## Directories
+## Commands
+### Directories
 
 The first set of commands are: `pwd` , `cd` , `ls`, `mkdir` and `rmdir`, which are related to directories (like the folders in a Windows system).
 
-### `pwd`
+#### `pwd`
 
 `pwd` : Print working directory, which means print the path of the current directory (working directory)
 
@@ -135,7 +133,7 @@ This command prints the absolute path.
 - **Relative path**: path starting form current directory (the blue path): `./GWASTutorial/02_Linux_basics/README.md`
 
 
-### `cd` 
+#### `cd` 
 
 `cd`: Change the current working directory 
 ```Bash
@@ -144,7 +142,7 @@ $ pwd
 /home/he/work/GWASTutorial/02_Linux_basics
 ```
 
-### `ls` : 
+#### `ls` : 
 
 `ls` : List the files in the directory
 
@@ -165,7 +163,7 @@ drwxr-xr-x  17 he  staff   544B Dec 23 12:13 ..
 -rw-r--r--   1 he  staff    31M Dec 23 14:07 sumstats.txt
 ```
 
-### `mkdir` & `rmdir` :
+#### `mkdir` & `rmdir` :
 
 - `mkdir` : Create a new empty directory
 - `rmdir`: Delete an empty directory
@@ -179,11 +177,11 @@ $ ls
 README.md  sumstats.txt
 ```
 
-## Manipulating files
+### Manipulating files
 
 This set of commands includes: `touch`, `mv` , `rm` and `cp`
 
-### `touch`:
+#### `touch`:
 `touch` command is used to create a new empty file.
 
 For example, let's create a text file called `newfile.txt` in this directory.
@@ -205,7 +203,7 @@ total 64048
 
 ```
 
-### `mv`: 
+#### `mv`: 
 `mv` has two functions:
 
 - (1) move files to another paths
@@ -235,7 +233,7 @@ You can also use `mv` to rename a file:
 $mv sumstats.txt sumstats_new.txt 
 ```
 
-### `rm`:
+#### `rm`:
 remove files or diretories
 ```Bash
 # remove a file
@@ -245,7 +243,7 @@ $rm file
 $rm -r directory/
 ```
 
-### `cp` 
+#### `cp` 
 
 `cp` command is used to copy files or diretories.
 
@@ -257,7 +255,24 @@ $cp file1 file2
 $cp -r directory1/ directory2/
 ```
 
-## Archive and Compression
+### Links  
+
+symbolic link is like a shortcut on window system, which is a special type of file that points to another file.
+It is very useful when you want to organize your tool box or working space.
+You can use `ln -s pathA pathB` to create such a link. 
+
+Example:
+
+```Bash
+ln -s /home/he/tools/plink/plink /home/he/tools/bin
+
+cd /home/he/tools/bin
+ls -lha
+...Bash
+lrwxr-xr-x  1 he  staff    27B Aug 30 11:30 plink -> /home/he/tools/plink/plink
+```
+
+### Archive and Compression
 
 Results for millions of variants are usually very large, sometimes >10GB, or consists of multiple files. 
 
@@ -291,10 +306,10 @@ $ ls -lh
 -rw-r--r--   1 he  staff    31M Dec 23 14:07 sumstats.txt
 ```
 
-## Read and check files
+### Read and check files
 We have a group of handy commands to check part of or the entire file, including `cat`, `zcat`, `less`, `head`, `tail`, `wc`
 
-### `cat`
+#### `cat`
 print the file or concatenate the files
 ```Bash
 $ ls -lha > a_text_file.txt
@@ -311,7 +326,7 @@ drwxr-x--- 29 he staff 4.0K Apr  1 22:20 ..
 
 By the way, `> a_text_file.txt` here means redirect the output to file ` a_text_file.txt`.
 
-### `zcat` 
+#### `zcat` 
 
 `zcat` is similar to `cat`, but can only applied to compressed files.
 
@@ -332,7 +347,7 @@ drwxr-x--- 29 he staff 4.0K Apr  1 22:20 ..
 -rw-r-----  1 he staff  32M Mar 30 18:17 sumstats.txt
 ```
 
-### `head`
+#### `head`
 
 `head`: Print the first 10 lines.
 
@@ -355,7 +370,7 @@ $ head -n 1 sumstats.txt
 CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
 ```
 
-### `tail`
+#### `tail`
 
 Similar to `head`, you can use `tail` ro check the last 10 lines. `-n` works in the same way.
 
@@ -373,7 +388,7 @@ $ tail sumstats.txt
 22	99999382	9960164	2	1	1	ADD	10000	0.970509	0.033978	-0.881014	0.37831	.
 ```
 
-### `wc`
+#### `wc`
 
 `wc`: short for word count, which count the lines, words, and characters in a file.
 
@@ -385,7 +400,7 @@ $ wc sumstats.txt
 ```
 This means that `sumstats.txt` has 445933 lines, 5797129 words, and 32790417 characters. 
 
-## Edit files
+### Edit files
 
 **Vim** is a handy text editor in command line.
 
@@ -405,7 +420,7 @@ Other common command line text editor:
 - [nano](https://www.nano-editor.org/)
 - [emacs](https://www.gnu.org/software/emacs/)
 
-## Permission
+### Permission
 
 The permissions of a file or directory are represented as a 10-character string (1+3+3+3) :
 
@@ -460,17 +475,17 @@ total 4.0K
 -rw-rw---- 1 he staff 2.1K Feb 24 01:16 README.md
 
 ```
-Note: These commands are very important because we use genome data, which could raise severe ethical and privacy issues if there is data leak. 
+!!! note 
+    These commands are very important because we use genome data, which could raise severe ethical and privacy issues if there is data leak. 
 
-![image](https://user-images.githubusercontent.com/40289485/160775846-a121f48e-5652-456f-8ced-7a3a82a8d995.png)
+!!! warning
+    Please always be cautious when handling human genomic data.
 
-
-
-## Others
+### Others
 
 There are a group of very handy and flexible commands which will greatly improve your efficiency. These include `|` , `>`, `>>`,`*`,`.`,`..`,`~`,and `-`.
 
-### `|`  (pipe)
+#### `|`  (pipe)
 
 Pipe basically is used to pass the output of the previous command to the next command as input, instead of printing is in terminal.
 Using pipe you can do very complicated manipulations of the files.
@@ -480,13 +495,13 @@ cat sumstats.txt | sort | uniq | wc
 ```
 This means (1) print sumstats, (2) sort the output, (3) then keep the unique lines and finally (4) count the lines and words.
 
-### `>`
+#### `>`
 
 `>` redirects output to a new file (if the file already exist, it will be overwritten)
 ```Bash
 cat sumstats.txt | sort | uniq | wc > count.txt
 ```
-### `>>`
+#### `>>`
 
 `>>` redirects output to a file by appending to the end of the file (if the file already exist, it will not be overwritten)
 
@@ -494,24 +509,24 @@ cat sumstats.txt | sort | uniq | wc > count.txt
 cat sumstats.txt | sort | uniq | wc >> count.txt
 ```
 
-### `*`
+#### `*`
 `*` means all files.
 
 Note: `Be extremely careful when you use rm and *. It is disastrous when you mistakenly type `rm *``
 
-### `.`
+#### `.`
 
 `.` means the current directory.
 
-### `..`
+#### `..`
 
 `..` means the parent directory of the current directory.
 
-### `~`
+#### `~`
 
 `~` means your home directory.
 
-### `-`
+#### `-`
 
 `-` means the last directory you are working in.
  
@@ -559,16 +574,6 @@ Advanced commands:
 - `sed` : [https://cloufield.github.io/GWASTutorial/61_sed/](https://cloufield.github.io/GWASTutorial/61_sed/)
 
 
-
-## Job scheduling system
-
-(If needed) Try to use job scheduling system to run a simple script:
-
-Two of the most commonly used job scheduling systems:
-
-- [Slurm Workload Manager](https://slurm.schedmd.com/documentation.html) : sbatch, scancel, sq, sjobs, shosts ...
-- [Univa Grid Engine](https://en.wikipedia.org/wiki/Univa_Grid_Engine) : qsub, qdel, qstat ...
-
 ## Git and Github
 
 **Git** is a powerful version control software and **github** is a platform where you can share your codes.
@@ -582,47 +587,6 @@ You can also check [here](https://cloufield.github.io/GWASTutorial/83_git_and_gi
 Git Reference: https://git-scm.com/doc
 
 Cheatsheet: https://training.github.com/downloads/github-git-cheat-sheet/
-
-
-## SSH
-**SSH** stands for **Secure Shell Protocol**, which enables you to connect to remote server safely.
-
-![image](https://user-images.githubusercontent.com/40289485/210223930-1138fb9f-5230-415d-a595-3239113372c8.png)
-
-login to romote server:
-
-```Bash
-ssh <username>@<host>
-```
-
-Before you login in, you need to generate keys for ssh connection:
-
-```Bash
-ssh-keygen -t rsa -b 4096
-```
-You will get two keys, a public one and a private one.
-
-- public key  :  `~/.ssh/id_rsa.pub`
-- private key :  `~/.ssh/id_rsa`   ,please don't share this with others.       
-
-What you need to do is just add you local public key to `~/.ssh/authorized_keys` on host server.
-
-## Links  
-
-symbolic link is like a shortcut on window system, which is a special type of file that points to another file.
-It is very useful when you want to organize your tool box or working space.
-You can use `ln -s pathA pathB` to create such a link. 
-
-Example:
-
-```Bash
-ln -s /home/he/tools/plink/plink /home/he/tools/bin
-
-cd /home/he/tools/bin
-ls -lha
-...Bash
-lrwxr-xr-x  1 he  staff    27B Aug 30 11:30 plink -> /home/he/tools/plink/plink
-```
 
 ## Download
 
