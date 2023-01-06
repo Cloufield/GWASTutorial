@@ -35,6 +35,7 @@ nav:
        - "Visualization": Visualization.ipynb
     - "Post-GWAS" :
        - "Annotation" : 07_Annotation.md
+       - "Heritability" : 13_heritability.md
        - "LDSC" : 08_LDSC.md
        - "Gene/Gene-set tests" : 09_Gene_based_analysis.md
        - "PRS" : 10_PRS.md

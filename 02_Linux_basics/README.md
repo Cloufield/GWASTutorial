@@ -5,11 +5,11 @@ This section is intended to provide a minumum introduction of the Linux system f
 If you are a beginner with no background in programming, it would be helpful if you could learn some basic commands first before any analysis. 
 In this section, we will introduce the most basic commands which enable you to handle genomic files in the terminal using command lines in a linux system. 
 
-!!! note
-    For **Mac** users, this tutorial will probably work with no problems. Just open your terminal and follow the tutorial.
+!!! note "For **Mac** users"
+    This tutorial will probably work with no problems. Just simply open your terminal and follow the tutorial.
 
-!!! note
-    For **Windows** users, you can simply insall WSL to get a linux environment. Please check [here](https://cloufield.github.io/GWASTutorial/82_windows_linux_subsystem/) for how to install WSL.
+!!! note "For **Windows** users"
+    You can simply insall WSL to get a linux environment. Please check [here](https://cloufield.github.io/GWASTutorial/82_windows_linux_subsystem/) for how to install WSL.
 
 
 
