@@ -1130,13 +1130,13 @@
 <h3 id="plink-192-installation">PLINK 1.9&amp;2 installation</h3>
 <p>To get prepared for genotype QC, we will need to make directories, download softwares and add the sofwares to your environment path.</p>
 <p>First, we will simply create some directories to keep the tools we need to use.</p>
-<pre><code class="language-bash">cd ~
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~
 mkdir tools
-cd tools
+<span class="nb">cd</span> tools
 mkdir bin
 mkdir plink
 mkdir plink2
-</code></pre>
+</code></pre></div>
 <p>You can download each tool into its corresponding directories. </p>
 <p>The <code>bin</code> directory here is for keeping all the symbolic links to the executable files of each tool. </p>
 <p>In this way, it is much easier to mangnage and organize the paths and tools.</p>
@@ -1149,30 +1149,30 @@ https://www.cog-genomics.org/plink/2.0/</p>
 <p>Note: If you are using mac or windows, then please download the mac or windows version. </p>
 <p>In this tutorial we will use a linux system. </p>
 <p>Find the suitable version, right click and copy the link address.</p>
-<pre><code class="language-bash">cd plink2
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span> plink2
 wget https://s3.amazonaws.com/plink2-assets/plink2_linux_x86_64_20211011.zip
 unzip plink2_linux_x86_64_20211011.zip
-</code></pre>
-<p>Then do the same for PLINK1.9</p>
+</code></pre></div>
+Then do the same for PLINK1.9</p>
 <h3 id="create-symbolic-links">Create symbolic links</h3>
-<p>After donwloading and unzipping, we will create symbolic links for the plink binany files, and then move the link to <code>~/tools/bin/</code>.</p>
-<pre><code class="language-bash">cd ~
+<p>After donwloading and unzipping, we will create symbolic links for the plink binany files, and then move the link to <code>~/tools/bin/</code>.
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~
 ln -s ~/tools/plink2/plink2 ~/tools/bin/plink2
 ln -s ~/tools/plink/plink ~/tools/bin/plink
-</code></pre>
+</code></pre></div></p>
 <p>Then add <code>~/tools/bin/</code> to the environment path.</p>
-<pre><code class="language-bash">export PATH=$PATH:~/tools/bin/
-</code></pre>
-<p>And then run </p>
-<pre><code>echo &quot;export PATH=$PATH:~/tools/bin/&quot; &gt;&gt; ~/.bashrc
-</code></pre>
-<p>This will add a new line at the end of <code>.bashrc</code>, which will be run every time you open a new bash shell.</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:~/tools/bin/
+</code></pre></div>
+And then run 
+<div class="highlight"><pre><span></span><code>echo &quot;export PATH=$PATH:~/tools/bin/&quot; &gt;&gt; ~/.bashrc
+</code></pre></div>
+This will add a new line at the end of <code>.bashrc</code>, which will be run every time you open a new bash shell.</p>
 <p>All done. Let's test if we installed PLINK successfully or not.</p>
-<pre><code class="language-bash">plink -h
+<div class="highlight"><pre><span></span><code>plink -h
 plink2 -h
-</code></pre>
+</code></pre></div>
 <h3 id="plink19">PLINK1.9</h3>
-<pre><code>plink -h
+<div class="highlight"><pre><span></span><code>plink -h
 PLINK v1.90b6.21 64-bit (19 Oct 2020)          www.cog-genomics.org/plink/1.9/
 (C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
 
@@ -1189,9 +1189,9 @@ Commands include --make-bed, --recode, --flip-scan, --merge-list,
 --meta-analysis, --epistasis, --fast-epistasis, and --score.
 
 &quot;plink --help | more&quot; describes all functions (warning: long).
-</code></pre>
+</code></pre></div>
 <h3 id="plink2">PLINK2</h3>
-<pre><code>plink2 -h
+<p><div class="highlight"><pre><span></span><code>plink2 -h
 PLINK v2.00a3LM 64-bit Intel (1 Jul 2021)      www.cog-genomics.org/plink/2.0/
 (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 
@@ -1206,46 +1206,45 @@ Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
 --zst-decompress.
 
 &quot;plink2 --help | more&quot; describes all functions.
-
-</code></pre>
-<p>Well done. We have installed plink1.9 and plink2.</p>
+</code></pre></div>
+Well done. We have installed plink1.9 and plink2.</p>
 <h3 id="download-genotype-data">Download genotype data</h3>
 <p>Next we need to download the sample genotype data.</p>
 <p>Run the download.sh in 01_Dataset.</p>
-<pre><code>cd ../01_Dataset
+<div class="highlight"><pre><span></span><code>cd ../01_Dataset
 ./download_sampledata.sh
-</code></pre>
+</code></pre></div>
 <p>And you will get the following three files:</p>
-<pre><code>-rw-r-----   1 he  staff   135M Dec 23 11:45 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
+<div class="highlight"><pre><span></span><code>-rw-r-----   1 he  staff   135M Dec 23 11:45 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
 -rw-r-----   1 he  staff    36M Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
 -rw-r-----   1 he  staff   9.4K Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
-</code></pre>
+</code></pre></div>
 <p>Check the bim file:</p>
-<pre><code class="language-bash">head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
-1   1:13273:G:C 0   13273   C   G
-1   1:14599:T:A 0   14599   A   T
-1   1:14604:A:G 0   14604   G   A
-1   1:14930:A:G 0   14930   G   A
-1   1:69897:T:C 0   69897   C   T
-1   1:86331:A:G 0   86331   G   A
-1   1:91581:G:A 0   91581   A   G
-1   1:122872:T:G    0   122872  G   T
-1   1:135163:C:T    0   135163  T   C
-1   1:233473:C:G    0   233473  G   C
-</code></pre>
-<p>Check the fam file:</p>
-<pre><code class="language-bash">head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
-0 HG00403 0 0 0 -9
-0 HG00404 0 0 0 -9
-0 HG00406 0 0 0 -9
-0 HG00407 0 0 0 -9
-0 HG00409 0 0 0 -9
-0 HG00410 0 0 0 -9
-0 HG00419 0 0 0 -9
-0 HG00421 0 0 0 -9
-0 HG00422 0 0 0 -9
-0 HG00428 0 0 0 -9
-</code></pre>
+<div class="highlight"><pre><span></span><code>head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
+<span class="m">1</span>   <span class="m">1</span>:13273:G:C <span class="m">0</span>   <span class="m">13273</span>   C   G
+<span class="m">1</span>   <span class="m">1</span>:14599:T:A <span class="m">0</span>   <span class="m">14599</span>   A   T
+<span class="m">1</span>   <span class="m">1</span>:14604:A:G <span class="m">0</span>   <span class="m">14604</span>   G   A
+<span class="m">1</span>   <span class="m">1</span>:14930:A:G <span class="m">0</span>   <span class="m">14930</span>   G   A
+<span class="m">1</span>   <span class="m">1</span>:69897:T:C <span class="m">0</span>   <span class="m">69897</span>   C   T
+<span class="m">1</span>   <span class="m">1</span>:86331:A:G <span class="m">0</span>   <span class="m">86331</span>   G   A
+<span class="m">1</span>   <span class="m">1</span>:91581:G:A <span class="m">0</span>   <span class="m">91581</span>   A   G
+<span class="m">1</span>   <span class="m">1</span>:122872:T:G    <span class="m">0</span>   <span class="m">122872</span>  G   T
+<span class="m">1</span>   <span class="m">1</span>:135163:C:T    <span class="m">0</span>   <span class="m">135163</span>  T   C
+<span class="m">1</span>   <span class="m">1</span>:233473:C:G    <span class="m">0</span>   <span class="m">233473</span>  G   C
+</code></pre></div>
+<p>Check the fam file:
+<div class="highlight"><pre><span></span><code>head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
+<span class="m">0</span> HG00403 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
+<span class="m">0</span> HG00404 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
+<span class="m">0</span> HG00406 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
+<span class="m">0</span> HG00407 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
+<span class="m">0</span> HG00409 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
+<span class="m">0</span> HG00410 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
+<span class="m">0</span> HG00419 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
+<span class="m">0</span> HG00421 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
+<span class="m">0</span> HG00422 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
+<span class="m">0</span> HG00428 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
+</code></pre></div></p>
 <h2 id="plink-tutorial">PLINK tutorial</h2>
 <p>Detailed description can be found on plink's website: <a href="https://www.cog-genomics.org/plink/1.9/">PLINK1.9</a> and <a href="https://www.cog-genomics.org/plink/2.0/">PLINK2</a>.</p>
 <p>The functions we will learn in this tutorial:
@@ -1272,29 +1271,29 @@ Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161413684-a128b87f-fb79-4b13-a7b5-acfa997c4421.png" /></p>
 <p>To calculate the missing rate, we need the flag <code>--missing</code>, which tells PLINK to calculate the missing rate in the dataset specified by <code>--bfile</code>. </p>
 <p>Sample code to calculated missing rate:</p>
-<pre><code class="language-bash">cd ../04_Data_QC
-genotypeFile=&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot; #!!! Please add your own path here.  &quot;1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot; is the prefix of PLINK bed file. 
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span> ../04_Data_QC
+<span class="nv">genotypeFile</span><span class="o">=</span><span class="s2">&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot;</span> <span class="c1">#!!! Please add your own path here.  &quot;1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot; is the prefix of PLINK bed file. </span>
 
-plink \
-    --bfile ${genotypeFile} \
-    --missing \
+plink <span class="se">\</span>
+    --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
+    --missing <span class="se">\</span>
     --out plink_results
-</code></pre>
-<p>Remeber to set the value for <code>${genotypeFile}</code>.</p>
+</code></pre></div>
+Remeber to set the value for <code>${genotypeFile}</code>.</p>
 <p>This code will generate two files <code>plink_results.imiss</code> and <code>plink_results.lmiss</code>, which contain the missing rate information for samples and snps respectively.</p>
 <p>Take a look at the imiss file. The last column shows the missing rate for samples. Since we used part of the 1000 Genome Project data this time, there are no missing samples or snps. So the missing rate is zero.</p>
-<pre><code class="language-bash">head plink_results.imiss
+<div class="highlight"><pre><span></span><code>head plink_results.imiss
  FID       IID MISS_PHENO   N_MISS   N_GENO   F_MISS
-   0   HG00403          Y        0  1122299        0
-   0   HG00404          Y        0  1122299        0
-   0   HG00406          Y        0  1122299        0
-   0   HG00407          Y        0  1122299        0
-   0   HG00409          Y        0  1122299        0
-   0   HG00410          Y        0  1122299        0
-   0   HG00419          Y        0  1122299        0
-   0   HG00421          Y        0  1122299        0
-   0   HG00422          Y        0  1122299        0
-</code></pre>
+   <span class="m">0</span>   HG00403          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
+   <span class="m">0</span>   HG00404          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
+   <span class="m">0</span>   HG00406          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
+   <span class="m">0</span>   HG00407          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
+   <span class="m">0</span>   HG00409          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
+   <span class="m">0</span>   HG00410          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
+   <span class="m">0</span>   HG00419          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
+   <span class="m">0</span>   HG00421          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
+   <span class="m">0</span>   HG00422          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
+</code></pre></div>
 <p>For the meaning of headers, please refer to <a href="https://www.cog-genomics.org/plink/1.9/formats">PLINK documents</a>.</p>
 <h3 id="allele-frequency">Allele Frequency</h3>
 <p>One of the most important statistics of SNPs is their frequencies in a certain population. A number of downstream analysis is based on investigating differences in allele frequencies.</p>
@@ -1306,44 +1305,44 @@ plink \
 </ol>
 <p>For different downstream analyses, we might use different set of variants. For example, for PCA, we might use only common variants. For gene-based tests, we might use only rare variants.</p>
 <p>Using PLINK1.9 we can easily calculate the MAF of variants in the input data.</p>
-<pre><code class="language-bash">plink \
-    --bfile ${genotypeFile} \
-    --freq \
+<div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
+    --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
+    --freq <span class="se">\</span>
     --out plink_results
-</code></pre>
-<p>Next we use plink2 to run the same options to check the difference between the results.</p>
-<pre><code class="language-bash">plink2 \
-        --bfile ${genotypeFile} \
-        --freq \
+</code></pre></div>
+<p>Next we use plink2 to run the same options to check the difference between the results.
+<div class="highlight"><pre><span></span><code>plink2 <span class="se">\</span>
+        --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
+        --freq <span class="se">\</span>
         --out plink_results
-</code></pre>
-<pre><code class="language-bash"># results from plink1.9
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># results from plink1.9</span>
 head plink_results.frq
  CHR              SNP   A1   A2          MAF  NCHROBS
-   1      1:13273:G:C    C    G       0.0625     1008
-   1      1:14599:T:A    A    T      0.08929     1008
-   1      1:14604:A:G    G    A      0.08929     1008
-   1      1:14930:A:G    G    A       0.4137     1008
-   1      1:69897:T:C    T    C        0.124     1008
-   1      1:86331:A:G    G    A       0.0873     1008
-   1      1:91581:G:A    A    G        0.498     1008
-   1     1:122872:T:G    G    T       0.2589     1008
-   1     1:135163:C:T    T    C      0.09226     1008
-</code></pre>
-<pre><code class="language-bash"># results from plink2
+   <span class="m">1</span>      <span class="m">1</span>:13273:G:C    C    G       <span class="m">0</span>.0625     <span class="m">1008</span>
+   <span class="m">1</span>      <span class="m">1</span>:14599:T:A    A    T      <span class="m">0</span>.08929     <span class="m">1008</span>
+   <span class="m">1</span>      <span class="m">1</span>:14604:A:G    G    A      <span class="m">0</span>.08929     <span class="m">1008</span>
+   <span class="m">1</span>      <span class="m">1</span>:14930:A:G    G    A       <span class="m">0</span>.4137     <span class="m">1008</span>
+   <span class="m">1</span>      <span class="m">1</span>:69897:T:C    T    C        <span class="m">0</span>.124     <span class="m">1008</span>
+   <span class="m">1</span>      <span class="m">1</span>:86331:A:G    G    A       <span class="m">0</span>.0873     <span class="m">1008</span>
+   <span class="m">1</span>      <span class="m">1</span>:91581:G:A    A    G        <span class="m">0</span>.498     <span class="m">1008</span>
+   <span class="m">1</span>     <span class="m">1</span>:122872:T:G    G    T       <span class="m">0</span>.2589     <span class="m">1008</span>
+   <span class="m">1</span>     <span class="m">1</span>:135163:C:T    T    C      <span class="m">0</span>.09226     <span class="m">1008</span>
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># results from plink2</span>
 head plink_results.afreq
-#CHROM  ID  REF ALT ALT_FREQS   OBS_CT
-1   1:13273:G:C G   C   0.0625  1008
-1   1:14599:T:A T   A   0.0892857   1008
-1   1:14604:A:G A   G   0.0892857   1008
-1   1:14930:A:G A   G   0.41369 1008
-1   1:69897:T:C T   C   0.875992    1008
-1   1:86331:A:G A   G   0.0873016   1008
-1   1:91581:G:A G   A   0.498016    1008
-1   1:122872:T:G    T   G   0.258929    1008
-1   1:135163:C:T    C   T   0.0922619   1008
-</code></pre>
-<p>We need pay attention to the concepts here.</p>
+<span class="c1">#CHROM  ID  REF ALT ALT_FREQS   OBS_CT</span>
+<span class="m">1</span>   <span class="m">1</span>:13273:G:C G   C   <span class="m">0</span>.0625  <span class="m">1008</span>
+<span class="m">1</span>   <span class="m">1</span>:14599:T:A T   A   <span class="m">0</span>.0892857   <span class="m">1008</span>
+<span class="m">1</span>   <span class="m">1</span>:14604:A:G A   G   <span class="m">0</span>.0892857   <span class="m">1008</span>
+<span class="m">1</span>   <span class="m">1</span>:14930:A:G A   G   <span class="m">0</span>.41369 <span class="m">1008</span>
+<span class="m">1</span>   <span class="m">1</span>:69897:T:C T   C   <span class="m">0</span>.875992    <span class="m">1008</span>
+<span class="m">1</span>   <span class="m">1</span>:86331:A:G A   G   <span class="m">0</span>.0873016   <span class="m">1008</span>
+<span class="m">1</span>   <span class="m">1</span>:91581:G:A G   A   <span class="m">0</span>.498016    <span class="m">1008</span>
+<span class="m">1</span>   <span class="m">1</span>:122872:T:G    T   G   <span class="m">0</span>.258929    <span class="m">1008</span>
+<span class="m">1</span>   <span class="m">1</span>:135163:C:T    C   T   <span class="m">0</span>.0922619   <span class="m">1008</span>
+</code></pre></div>
+We need pay attention to the concepts here.</p>
 <p>In PLINK1.9, the concept here is minor (A1) and major(A2) allele, while in PLINK2 it is reference(REF) and altervative(ALT) allele.</p>
 <ul>
 <li><strong>Major / Minor</strong>: Major allele and minor allele are defined as the allele with highest and lower(or second highest for multiallelic variants) allele in a given population, respectively. So major allele and minor allele for a SNP might be different in two independent populations. The range for MAF(minor allele frequencies) is [0,0.5].</li>
@@ -1352,46 +1351,46 @@ head plink_results.afreq
 <h3 id="inbreeding-f-coefficient">Inbreeding F coefficient</h3>
 <p>Next we can check the heterozygosity F of samples (https://www.cog-genomics.org/plink/1.9/basic_stats#ibc) : </p>
 <p><code>-het</code> option will computes observed and expected autosomal homozygous genotype counts for each sample. Usually, we need to exclude individuals with high or low heterozygosity coefficient, which suggests that the sample might be contaminated. </p>
-<pre><code class="language-bash">plink \
-    --bfile ${genotypeFile} \
-    --het \
+<div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
+    --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
+    --het <span class="se">\</span>
     --out plink_results
-</code></pre>
+</code></pre></div>
 <p>Check the output:</p>
-<pre><code class="language-bash">head plink_results.het
- FID       IID       O(HOM)       E(HOM)        N(NM)            F
-   0   HG00403       747270    7.488e+05      1122299    -0.004114
-   0   HG00404       748955    7.488e+05      1122299    0.0003974
-   0   HG00406       750093    7.488e+05      1122299     0.003444
-   0   HG00407       746566    7.488e+05      1122299    -0.005999
-   0   HG00409       751694    7.488e+05      1122299     0.007731
-   0   HG00410       745078    7.488e+05      1122299    -0.009983
-   0   HG00419       747996    7.488e+05      1122299     -0.00217
-   0   HG00421       757199    7.488e+05      1122299      0.02247
-   0   HG00422       752725    7.488e+05      1122299      0.01049
-</code></pre>
-<p>A commonly used method is to exclude samples with heterzygosity F deviating more than 3 standard dividation(SD) from the mean F.</p>
+<p><div class="highlight"><pre><span></span><code>head plink_results.het
+ FID       IID       O<span class="o">(</span>HOM<span class="o">)</span>       E<span class="o">(</span>HOM<span class="o">)</span>        N<span class="o">(</span>NM<span class="o">)</span>            F
+   <span class="m">0</span>   HG00403       <span class="m">747270</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>    -0.004114
+   <span class="m">0</span>   HG00404       <span class="m">748955</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>    <span class="m">0</span>.0003974
+   <span class="m">0</span>   HG00406       <span class="m">750093</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>     <span class="m">0</span>.003444
+   <span class="m">0</span>   HG00407       <span class="m">746566</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>    -0.005999
+   <span class="m">0</span>   HG00409       <span class="m">751694</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>     <span class="m">0</span>.007731
+   <span class="m">0</span>   HG00410       <span class="m">745078</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>    -0.009983
+   <span class="m">0</span>   HG00419       <span class="m">747996</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>     -0.00217
+   <span class="m">0</span>   HG00421       <span class="m">757199</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>      <span class="m">0</span>.02247
+   <span class="m">0</span>   HG00422       <span class="m">752725</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>      <span class="m">0</span>.01049
+</code></pre></div>
+A commonly used method is to exclude samples with heterzygosity F deviating more than 3 standard dividation(SD) from the mean F.</p>
 <h3 id="hardy-weinberg-equilibrium-exact-test">Hardy-Weinberg equilibrium exact test</h3>
 <p>For SNP QC, besides checking the missing rate, we also need to check if the SNP is in hardy-weinberg equilibrium:</p>
 <p><code>--hardy</code> will perform Hardy-Weinberg equilibrium exact test for each variant. Variants with low P value usually suggest genotyping errors, or indicate evolutionary selection for these variants.</p>
-<p>The following command can calculate the Hardy-Weinberg equilibrium exact test statistics for all SNPs. (https://www.cog-genomics.org/plink/1.9/basic_stats#hardy)</p>
-<pre><code class="language-bash">plink \
-    --bfile ${genotypeFile} \
-    --hardy \
+<p>The following command can calculate the Hardy-Weinberg equilibrium exact test statistics for all SNPs. (https://www.cog-genomics.org/plink/1.9/basic_stats#hardy)
+<div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
+    --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
+    --hardy <span class="se">\</span>
     --out plink_results
-</code></pre>
-<pre><code class="language-bash">head plink_results.hwe
- CHR              SNP     TEST   A1   A2                 GENO   O(HET)   E(HET)            P 
-   1      1:13273:G:C  ALL(NP)    C    G             1/61/442    0.121   0.1172       0.7113
-   1      1:14599:T:A  ALL(NP)    A    T             1/88/415   0.1746   0.1626       0.1625
-   1      1:14604:A:G  ALL(NP)    G    A             1/88/415   0.1746   0.1626       0.1625
-   1      1:14930:A:G  ALL(NP)    G    A             4/409/91   0.8115   0.4851    1.679e-61
-   1      1:69897:T:C  ALL(NP)    T    C            7/111/386   0.2202   0.2173            1
-   1      1:86331:A:G  ALL(NP)    G    A             0/88/416   0.1746   0.1594      0.02387
-   1      1:91581:G:A  ALL(NP)    A    G          137/228/139   0.4524      0.5      0.03271
-   1     1:122872:T:G  ALL(NP)    G    T            1/259/244   0.5139   0.3838     8.04e-19
-   1     1:135163:C:T  ALL(NP)    T    C             1/91/412   0.1806   0.1675       0.1066
-</code></pre>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>head plink_results.hwe
+ CHR              SNP     TEST   A1   A2                 GENO   O<span class="o">(</span>HET<span class="o">)</span>   E<span class="o">(</span>HET<span class="o">)</span>            P 
+   <span class="m">1</span>      <span class="m">1</span>:13273:G:C  ALL<span class="o">(</span>NP<span class="o">)</span>    C    G             <span class="m">1</span>/61/442    <span class="m">0</span>.121   <span class="m">0</span>.1172       <span class="m">0</span>.7113
+   <span class="m">1</span>      <span class="m">1</span>:14599:T:A  ALL<span class="o">(</span>NP<span class="o">)</span>    A    T             <span class="m">1</span>/88/415   <span class="m">0</span>.1746   <span class="m">0</span>.1626       <span class="m">0</span>.1625
+   <span class="m">1</span>      <span class="m">1</span>:14604:A:G  ALL<span class="o">(</span>NP<span class="o">)</span>    G    A             <span class="m">1</span>/88/415   <span class="m">0</span>.1746   <span class="m">0</span>.1626       <span class="m">0</span>.1625
+   <span class="m">1</span>      <span class="m">1</span>:14930:A:G  ALL<span class="o">(</span>NP<span class="o">)</span>    G    A             <span class="m">4</span>/409/91   <span class="m">0</span>.8115   <span class="m">0</span>.4851    <span class="m">1</span>.679e-61
+   <span class="m">1</span>      <span class="m">1</span>:69897:T:C  ALL<span class="o">(</span>NP<span class="o">)</span>    T    C            <span class="m">7</span>/111/386   <span class="m">0</span>.2202   <span class="m">0</span>.2173            <span class="m">1</span>
+   <span class="m">1</span>      <span class="m">1</span>:86331:A:G  ALL<span class="o">(</span>NP<span class="o">)</span>    G    A             <span class="m">0</span>/88/416   <span class="m">0</span>.1746   <span class="m">0</span>.1594      <span class="m">0</span>.02387
+   <span class="m">1</span>      <span class="m">1</span>:91581:G:A  ALL<span class="o">(</span>NP<span class="o">)</span>    A    G          <span class="m">137</span>/228/139   <span class="m">0</span>.4524      <span class="m">0</span>.5      <span class="m">0</span>.03271
+   <span class="m">1</span>     <span class="m">1</span>:122872:T:G  ALL<span class="o">(</span>NP<span class="o">)</span>    G    T            <span class="m">1</span>/259/244   <span class="m">0</span>.5139   <span class="m">0</span>.3838     <span class="m">8</span>.04e-19
+   <span class="m">1</span>     <span class="m">1</span>:135163:C:T  ALL<span class="o">(</span>NP<span class="o">)</span>    T    C             <span class="m">1</span>/91/412   <span class="m">0</span>.1806   <span class="m">0</span>.1675       <span class="m">0</span>.1066
+</code></pre></div></p>
 <h3 id="applying-filters">Applying filters</h3>
 <p>Previously we just calculate the basic statistics using PLINK. But when performing certain analyses, we just want to exclude the bad quallity samples or SNPs instead of calculating the statistics for all samples and SNPs.</p>
 <p>In this case we can apply the following filters for example:</p>
@@ -1406,110 +1405,110 @@ head plink_results.afreq
 <p>We can use <code>--indep-pairwise 50 5 0.2</code> to filter out those are in strong LD and keep only the independent SNPS.
 Please check https://www.cog-genomics.org/plink/1.9/ld#indep for the meaning of each parameter.
 Combined with the filters we just introduced, we can run:</p>
-<pre><code class="language-bash">plink \
-    --bfile ${genotypeFile} \
-    --maf 0.01 \
-    --geno 0.01 \
-    --mind 0.02 \
-    --hwe 5e-6 \
-    --indep-pairwise 50 5 0.2 \
+<p><div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
+    --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
+    --maf <span class="m">0</span>.01 <span class="se">\</span>
+    --geno <span class="m">0</span>.01 <span class="se">\</span>
+    --mind <span class="m">0</span>.02 <span class="se">\</span>
+    --hwe 5e-6 <span class="se">\</span>
+    --indep-pairwise <span class="m">50</span> <span class="m">5</span> <span class="m">0</span>.2 <span class="se">\</span>
     --out plink_results
-</code></pre>
-<p>This command generates two outputs :  <code>plink_results.prune.in</code> and <code>plink_results.prune.out</code>
+</code></pre></div>
+This command generates two outputs :  <code>plink_results.prune.in</code> and <code>plink_results.prune.out</code>
 <code>plink_results.prune.in</code> is the independent set of SNPs we will use in the following analysis.
 Let's take a look at this file. Basically it just contains one SNP id per line.</p>
-<pre><code class="language-bash">head plink_results.prune.in
-1:13273:G:C
-1:14599:T:A
-1:69897:T:C
-1:86331:A:G
-1:91581:G:A
-1:135163:C:T
-1:233473:C:G
-1:532929:T:C
-1:559480:C:T
-1:565433:C:T
-</code></pre>
+<div class="highlight"><pre><span></span><code>head plink_results.prune.in
+<span class="m">1</span>:13273:G:C
+<span class="m">1</span>:14599:T:A
+<span class="m">1</span>:69897:T:C
+<span class="m">1</span>:86331:A:G
+<span class="m">1</span>:91581:G:A
+<span class="m">1</span>:135163:C:T
+<span class="m">1</span>:233473:C:G
+<span class="m">1</span>:532929:T:C
+<span class="m">1</span>:559480:C:T
+<span class="m">1</span>:565433:C:T
+</code></pre></div>
 <h3 id="sample-snp-filtering-extractexcludekeepremove">Sample &amp; SNP filtering (extract/exclude/keep/remove)</h3>
 <p>Some time we will use only a subset of samples or snps included the original dataset. 
 In this case, we can use <code>--extract</code> or <code>--exclude</code> to select or exclude SNPs from analysis, <code>--keep</code> or <code>--remove</code> to select or exclude samples.</p>
 <p>For  <code>--keep</code> or <code>--remove</code> , the input is the filename of a sample FID and IID file.
-For <code>--extract</code> or <code>--exclude</code> , the input is the filename of a snplist file.</p>
-<pre><code class="language-bash">head plink_results.prune.in
-1:13273:G:C
-1:14599:T:A
-1:69897:T:C
-1:86331:A:G
-1:91581:G:A
-1:135163:C:T
-1:233473:C:G
-1:532929:T:C
-1:559480:C:T
-1:565433:C:T
-</code></pre>
+For <code>--extract</code> or <code>--exclude</code> , the input is the filename of a snplist file.
+<div class="highlight"><pre><span></span><code>head plink_results.prune.in
+<span class="m">1</span>:13273:G:C
+<span class="m">1</span>:14599:T:A
+<span class="m">1</span>:69897:T:C
+<span class="m">1</span>:86331:A:G
+<span class="m">1</span>:91581:G:A
+<span class="m">1</span>:135163:C:T
+<span class="m">1</span>:233473:C:G
+<span class="m">1</span>:532929:T:C
+<span class="m">1</span>:559480:C:T
+<span class="m">1</span>:565433:C:T
+</code></pre></div></p>
 <h3 id="ibd-pi_hat">IBD / PI_HAT</h3>
 <p><code>--genome</code> will estimate IBS/IBD. Usually for this analysis, we need to prune our data first since the strong LD will cause bias in the results.
 (This step is extremelly computationally intensive)</p>
 <p>Combined with the <code>--extract</code>, we can run:</p>
-<pre><code class="language-bash">plink \
-        --bfile ${genotypeFile} \
-    --extract plink_results.prune.in \
-        --genome \
+<div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
+        --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
+    --extract plink_results.prune.in <span class="se">\</span>
+        --genome <span class="se">\</span>
         --out plink_results
-</code></pre>
-<p>PI_HAT is the IBD estimation. Please check https://www.cog-genomics.org/plink/1.9/ibd for more details.</p>
-<pre><code class="language-bash">head plink_results.genome
+</code></pre></div>
+<p>PI_HAT is the IBD estimation. Please check https://www.cog-genomics.org/plink/1.9/ibd for more details.
+<div class="highlight"><pre><span></span><code>head plink_results.genome
  FID1     IID1 FID2     IID2 RT    EZ      Z0      Z1      Z2  PI_HAT PHE       DST     PPC   RATIO
-   0  HG00403   0  HG00404 OT     0  0.9800  0.0086  0.0114  0.0157  -1  0.749375  0.5531  2.0089
-   0  HG00403   0  HG00406 OT     0  0.9751  0.0231  0.0018  0.0133  -1  0.748336  0.6309  2.0225
-   0  HG00403   0  HG00407 OT     0  0.9801  0.0153  0.0046  0.0122  -1  0.748293  0.5045  2.0007
-   0  HG00403   0  HG00409 OT     0  0.9807  0.0193  0.0000  0.0097  -1  0.747215  0.6014  2.0173
-   0  HG00403   0  HG00410 OT     0  0.9744  0.0256  0.0000  0.0128  -1  0.748058  0.8621  2.0745
-   0  HG00403   0  HG00419 OT     0  0.9650  0.0350  0.0000  0.0175  -1  0.747146  0.8080  2.0595
-   0  HG00403   0  HG00421 OT     0  0.9842  0.0158  0.0000  0.0079  -1  0.746522  0.4557  1.9926
-   0  HG00403   0  HG00422 OT     0  0.9832  0.0111  0.0056  0.0112  -1  0.748156  0.4208  1.9867
-   0  HG00403   0  HG00428 OT     0  0.9929  0.0000  0.0071  0.0071  -1  0.746851  0.3115  1.9674
-</code></pre>
+   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00404 OT     <span class="m">0</span>  <span class="m">0</span>.9800  <span class="m">0</span>.0086  <span class="m">0</span>.0114  <span class="m">0</span>.0157  -1  <span class="m">0</span>.749375  <span class="m">0</span>.5531  <span class="m">2</span>.0089
+   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00406 OT     <span class="m">0</span>  <span class="m">0</span>.9751  <span class="m">0</span>.0231  <span class="m">0</span>.0018  <span class="m">0</span>.0133  -1  <span class="m">0</span>.748336  <span class="m">0</span>.6309  <span class="m">2</span>.0225
+   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00407 OT     <span class="m">0</span>  <span class="m">0</span>.9801  <span class="m">0</span>.0153  <span class="m">0</span>.0046  <span class="m">0</span>.0122  -1  <span class="m">0</span>.748293  <span class="m">0</span>.5045  <span class="m">2</span>.0007
+   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00409 OT     <span class="m">0</span>  <span class="m">0</span>.9807  <span class="m">0</span>.0193  <span class="m">0</span>.0000  <span class="m">0</span>.0097  -1  <span class="m">0</span>.747215  <span class="m">0</span>.6014  <span class="m">2</span>.0173
+   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00410 OT     <span class="m">0</span>  <span class="m">0</span>.9744  <span class="m">0</span>.0256  <span class="m">0</span>.0000  <span class="m">0</span>.0128  -1  <span class="m">0</span>.748058  <span class="m">0</span>.8621  <span class="m">2</span>.0745
+   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00419 OT     <span class="m">0</span>  <span class="m">0</span>.9650  <span class="m">0</span>.0350  <span class="m">0</span>.0000  <span class="m">0</span>.0175  -1  <span class="m">0</span>.747146  <span class="m">0</span>.8080  <span class="m">2</span>.0595
+   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00421 OT     <span class="m">0</span>  <span class="m">0</span>.9842  <span class="m">0</span>.0158  <span class="m">0</span>.0000  <span class="m">0</span>.0079  -1  <span class="m">0</span>.746522  <span class="m">0</span>.4557  <span class="m">1</span>.9926
+   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00422 OT     <span class="m">0</span>  <span class="m">0</span>.9832  <span class="m">0</span>.0111  <span class="m">0</span>.0056  <span class="m">0</span>.0112  -1  <span class="m">0</span>.748156  <span class="m">0</span>.4208  <span class="m">1</span>.9867
+   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00428 OT     <span class="m">0</span>  <span class="m">0</span>.9929  <span class="m">0</span>.0000  <span class="m">0</span>.0071  <span class="m">0</span>.0071  -1  <span class="m">0</span>.746851  <span class="m">0</span>.3115  <span class="m">1</span>.9674
+</code></pre></div></p>
 <h3 id="ld-calculation">LD calculation</h3>
 <p>We can also use our data to calculate LD between a pair of SNPs.</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161413586-d4f6e21e-f0c7-4c54-a703-bb060ec6913d.png" /></p>
 <p><code>--chr</code> option allows us to include snps on a specific chromosome.
-To calculate LD r2 for SNPs on chr22 , we can run:</p>
-<pre><code class="language-bash">plink \
-    --bfile ${genotypeFile} \
-        --chr 22 \
-        --r2 \
+To calculate LD r2 for SNPs on chr22 , we can run:
+<div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
+    --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
+        --chr <span class="m">22</span> <span class="se">\</span>
+        --r2 <span class="se">\</span>
         --out plink_results
-</code></pre>
-<pre><code class="language-bash">head plink_results.ld
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>head plink_results.ld
  CHR_A         BP_A             SNP_A  CHR_B         BP_B             SNP_B           R2 
-    22     16053659   22:16053659:A:C     22     16067500   22:16067500:T:C      0.64577 
-    22     16053862   22:16053862:C:T     22     16054454   22:16054454:C:T     0.987505 
-    22     16053862   22:16053862:C:T     22     16055122   22:16055122:G:T     0.601708 
-    22     16053863   22:16053863:G:A     22     16055070   22:16055070:G:A     0.931043 
-    22     16054454   22:16054454:C:T     22     16055122   22:16055122:G:T     0.594216 
-    22     16058767   22:16058767:A:G     22     16067462   22:16067462:C:T     0.266916 
-    22     16067462   22:16067462:C:T     22     16069771   22:16069771:G:A     0.382323 
-    22     16069771   22:16069771:G:A     22     16123813   22:16123813:G:A     0.291935 
-    22     16143946   22:16143946:A:G     22     16155259   22:16155259:A:G     0.559165 
-</code></pre>
+    <span class="m">22</span>     <span class="m">16053659</span>   <span class="m">22</span>:16053659:A:C     <span class="m">22</span>     <span class="m">16067500</span>   <span class="m">22</span>:16067500:T:C      <span class="m">0</span>.64577 
+    <span class="m">22</span>     <span class="m">16053862</span>   <span class="m">22</span>:16053862:C:T     <span class="m">22</span>     <span class="m">16054454</span>   <span class="m">22</span>:16054454:C:T     <span class="m">0</span>.987505 
+    <span class="m">22</span>     <span class="m">16053862</span>   <span class="m">22</span>:16053862:C:T     <span class="m">22</span>     <span class="m">16055122</span>   <span class="m">22</span>:16055122:G:T     <span class="m">0</span>.601708 
+    <span class="m">22</span>     <span class="m">16053863</span>   <span class="m">22</span>:16053863:G:A     <span class="m">22</span>     <span class="m">16055070</span>   <span class="m">22</span>:16055070:G:A     <span class="m">0</span>.931043 
+    <span class="m">22</span>     <span class="m">16054454</span>   <span class="m">22</span>:16054454:C:T     <span class="m">22</span>     <span class="m">16055122</span>   <span class="m">22</span>:16055122:G:T     <span class="m">0</span>.594216 
+    <span class="m">22</span>     <span class="m">16058767</span>   <span class="m">22</span>:16058767:A:G     <span class="m">22</span>     <span class="m">16067462</span>   <span class="m">22</span>:16067462:C:T     <span class="m">0</span>.266916 
+    <span class="m">22</span>     <span class="m">16067462</span>   <span class="m">22</span>:16067462:C:T     <span class="m">22</span>     <span class="m">16069771</span>   <span class="m">22</span>:16069771:G:A     <span class="m">0</span>.382323 
+    <span class="m">22</span>     <span class="m">16069771</span>   <span class="m">22</span>:16069771:G:A     <span class="m">22</span>     <span class="m">16123813</span>   <span class="m">22</span>:16123813:G:A     <span class="m">0</span>.291935 
+    <span class="m">22</span>     <span class="m">16143946</span>   <span class="m">22</span>:16143946:A:G     <span class="m">22</span>     <span class="m">16155259</span>   <span class="m">22</span>:16155259:A:G     <span class="m">0</span>.559165 
+</code></pre></div></p>
 <h3 id="data-management-make-bedrecode">Data management (make-bed/recode)</h3>
 <p>By far the input data we use is in binary form, but sometimes we may want the text version.
 <img alt="image" src="https://user-images.githubusercontent.com/40289485/161413659-a489b508-63c7-4166-9f5c-25a1a125109a.png" /></p>
 <p>To convert the format we can run:</p>
-<pre><code class="language-bash">#extract the 1000 samples with the pruned SNPs, and make a bed file.
-plink \
-    --bfile ${genotypeFile} \
-    --extract plink_results.prune.in \
-    --make-bed \
+<div class="highlight"><pre><span></span><code><span class="c1">#extract the 1000 samples with the pruned SNPs, and make a bed file.</span>
+plink <span class="se">\</span>
+    --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
+    --extract plink_results.prune.in <span class="se">\</span>
+    --make-bed <span class="se">\</span>
     --out plink_1000_pruned
 
-#convert the bed/bim/fam to ped/map
-plink \
-        --bfile plink_1000_pruned \
-        --recode \
+<span class="c1">#convert the bed/bim/fam to ped/map</span>
+plink <span class="se">\</span>
+        --bfile plink_1000_pruned <span class="se">\</span>
+        --recode <span class="se">\</span>
         --out plink_1000_pruned
-</code></pre>
+</code></pre></div>
 <h2 id="exercise">Exercise</h2>
 <ul>
 <li>Follow this tutorial and type in the commands:</li>

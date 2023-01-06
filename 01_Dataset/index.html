@@ -826,24 +826,24 @@
 </ul>
 <h2 id="download">Download</h2>
 <p>Simply run <code>download_sampledata.sh</code> and the dataset will be downloaded and decompressed.</p>
-<pre><code>./download_sampledata.sh
-</code></pre>
-<p>And you will get the following files:</p>
-<pre><code>1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
+<div class="highlight"><pre><span></span><code>./download_sampledata.sh
+</code></pre></div>
+<p>And you will get the following files:
+<div class="highlight"><pre><span></span><code>1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
-</code></pre>
+</code></pre></div></p>
 <h2 id="phenotype-simulation">Phenotype Simulation</h2>
-<p>Pehontypes were simply simulated using GCTA with the 1KG EAS dataset (without thinning).</p>
-<pre><code class="language-Bash">gcta64  \
-  --bfile 1KG.EAS.auto.snp.norm.nodup.split.maf005 \ 
-  --simu-cc 200 304 \
-  --simu-causal-loci causal_10.snplist  \
-  --simu-hsq 0.8  \
-  --simu-k 0.4 \
-  --simu-rep 1 \
+<p>Pehontypes were simply simulated using GCTA with the 1KG EAS dataset (without thinning).
+<div class="highlight"><pre><span></span><code>gcta64  <span class="se">\</span>
+  --bfile 1KG.EAS.auto.snp.norm.nodup.split.maf005 <span class="se">\ </span>
+  --simu-cc <span class="m">200</span> <span class="m">304</span> <span class="se">\</span>
+  --simu-causal-loci causal_10.snplist  <span class="se">\</span>
+  --simu-hsq <span class="m">0</span>.8  <span class="se">\</span>
+  --simu-k <span class="m">0</span>.4 <span class="se">\</span>
+  --simu-rep <span class="m">1</span> <span class="se">\</span>
   --out 1kgeas_binary
-</code></pre>
+</code></pre></div></p>
 <h2 id="reference">Reference</h2>
 <ul>
 <li>1000 Genomes Project Consortium. (2015). A global reference for human genetic variation. Nature, 526(7571), 68.</li>

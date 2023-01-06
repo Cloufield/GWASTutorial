@@ -833,7 +833,7 @@
 <li><strong>Covariate file</strong> (optional): plain text file. Usually covaraites include age, sex, and top Pricipal Components. </li>
 </ul>
 <p>For example,</p>
-<pre><code># Phenotype file for a simulated binary trait; B1 is the phenotype name; 1 means control, 2 means case.
+<div class="highlight"><pre><span></span><code># Phenotype file for a simulated binary trait; B1 is the phenotype name; 1 means control, 2 means case.
 head 1kgeas_binary.txt 
 FID IID B1
 0 HG00403 2 
@@ -857,7 +857,7 @@ FID IID B1
 0   HG00419 224016  224016  0.00580767  0.0369208   -0.00907507 0.00903163  -0.00649345 -0.000472359    -0.00327011 0.0160456   -0.005133   0.0141021
 0   HG00421 224016  224016  0.000987901 0.0336895   -0.00697814 0.00557199  -0.0210537  0.00700968  0.00319921  -0.0215999  0.00127686  0.0350116
 0   HG00422 224016  224016  0.00440288  0.0335901   -0.0125043  0.0135621   -0.0228428  0.00492741  0.00445856  -0.00911147 -0.00312742 -0.00784459
-</code></pre>
+</code></pre></div>
 <h2 id="genetic-models">Genetic models</h2>
 <p>To test the association between a phenotype and genotypes, we also need to group the genotypes based on genetic models.</p>
 <p>There are three basic genetic models:
@@ -901,7 +901,7 @@ FID IID B1
 <p>Please check https://www.cog-genomics.org/plink/2.0/assoc for more details.</p>
 <p>We will perform a logistic regression with firth correction for a simulated binary trait under additive model using the 1KG East Asian individuals.</p>
 <p>Sample code:</p>
-<pre><code>genotypeFile=&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot;  #!please set this to your own path
+<div class="highlight"><pre><span></span><code>genotypeFile=&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot;  #!please set this to your own path
 phenotypeFile=&quot;../01_Dataset/1kgeas_binary.txt&quot; #!please set this to your own path
 covariateFile=&quot;../05_PCA/plink_results_projected.sscore&quot;
 
@@ -919,9 +919,9 @@ plink2 \
     --glm hide-covar firth \
     --threads ${threadnum} \
     --out 1kgeas
-</code></pre>
+</code></pre></div>
 <p>You will see a similar log like:</p>
-<pre><code>PLINK v2.00a3LM 64-bit Intel (12 Dec 2020)     www.cog-genomics.org/plink/2.0/
+<div class="highlight"><pre><span></span><code>PLINK v2.00a3LM 64-bit Intel (12 Dec 2020)     www.cog-genomics.org/plink/2.0/
 (C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
 Logging to 1kgeas.log.
 Options in effect:
@@ -948,12 +948,12 @@ Calculating allele frequencies... done.
 0 variants removed due to allele frequency threshold(s)
 (--maf/--max-maf/--mac/--max-mac).
 1122299 variants remaining after main filters.
---glm Firth regression on phenotype 'B1': done.
+--glm Firth regression on phenotype &#39;B1&#39;: done.
 Results written to 1kgeas.B1.glm.firth .
 End time: Tue Dec 27 23:04:40 2022
-</code></pre>
-<p>Lest check the first lines of the output:</p>
-<pre><code>#CHROM  POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
+</code></pre></div>
+<p>Lest check the first lines of the output:
+<div class="highlight"><pre><span></span><code>#CHROM  POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
 1   13273   1:13273:G:C G   C   C   ADD 503 0.746149    0.282904    -1.03509    0.300628    .
 1   14599   1:14599:T:A T   A   A   ADD 503 1.67693 0.240899    2.14598 0.0318742.
 1   14604   1:14604:A:G A   G   G   ADD 503 1.67693 0.240899    2.14598 0.0318742.
@@ -963,7 +963,7 @@ End time: Tue Dec 27 23:04:40 2022
 1   91581   1:91581:G:A G   A   A   ADD 503 0.931304    0.123644    -0.5755980.564887   .
 1   122872  1:122872:T:G    T   G   G   ADD 503 1.04828 0.182036    0.259034    0.795609    .
 1   135163  1:135163:C:T    C   T   T   ADD 503 0.676666    0.242611    -1.60989    0.107422    .
-</code></pre>
+</code></pre></div></p>
 <h2 id="genomic-control">Genomic control</h2>
 <p>Genomic control (GC) is a basic method for controlling for the confunding factors like population stratification.</p>
 <p>We will calculate genomic control factor (lambda GC) to evaluate the inflation. The genomic control factor is calculated by dividing the <strong>median of observed Chi square statistics</strong> by the <strong>median of Chi square distribution with degree of 1</strong> (which is approximately 0.455).</p>
@@ -977,8 +977,8 @@ End time: Tue Dec 27 23:04:40 2022
 <p>Reference: Devlin, B., &amp; Roeder, K. (1999). Genomic control for association studies. Biometrics, 55(4), 997-1004.</p>
 <h2 id="significant-loci">Significant loci</h2>
 <p>Please check <a href="https://cloufield.github.io/GWASTutorial/Visualization/">Visualization using gwaslab</a></p>
-<p>Loci that reached suggestive significance threhold (P value &lt; 5e-6) :</p>
-<pre><code>SNPID   CHR POS EA  NEA SE  Z   P   OR  N   STATUS
+<p>Loci that reached suggestive significance threhold (P value &lt; 5e-6) :
+<div class="highlight"><pre><span></span><code>SNPID   CHR POS EA  NEA SE  Z   P   OR  N   STATUS
 1:217437563:C:T 1   217437563   C   T   0.151157    -5.22793    1.714210e-07    0.453736    503 9999999
 2:55574452:G:C  2   55574452    C   G   0.160948    -5.98392    2.178320e-09    0.381707    503 9999999
 3:176524872:C:T 3   176524872   T   C   0.248418    4.92774 8.318440e-07    3.401240    503 9999999
@@ -986,7 +986,7 @@ End time: Tue Dec 27 23:04:40 2022
 6:29919659:T:C  6   29919659    T   C   0.155457    -5.89341    3.782970e-09    0.400048    503 9999999
 9:36660672:A:G  9   36660672    G   A   0.160275    5.63422 1.758540e-08    2.467060    503 9999999
 11:56249438:A:G 11  56249438    G   A   0.188891    -4.77836    1.767350e-06    0.405518    503 9999999
-</code></pre>
+</code></pre></div></p>
 <h1 id="visualization">Visualization</h1>
 <p>To visualize the results, we will create manhattan plot, QQ plot and regional plot.</p>
 <p>Please check <a href="https://cloufield.github.io/GWASTutorial/Visualization/">Visualization using gwaslab</a></p>

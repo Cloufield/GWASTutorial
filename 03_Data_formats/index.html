@@ -804,14 +804,14 @@
 <h1 id="data-formats-for-general-purposes">Data formats for general purposes</h1>
 <h2 id="txt">txt</h2>
 <p>Simple text file</p>
-<pre><code>cat sample_text.txt 
+<p><div class="highlight"><pre><span></span><code>cat sample_text.txt 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut sem congue, tristique tortor et, ullamcorper elit. Nulla elementum, erat ac fringilla mattis, nisi tellus euismod dui, interdum laoreet orci velit vel leo. Vestibulum neque mi, pharetra in tempor id, malesuada at ipsum. Duis tellus enim, suscipit sit amet vestibulum in, ultricies vitae erat. Proin consequat id quam sed sodales. Ut a magna non tellus dictum aliquet vitae nec mi. Suspendisse potenti. Vestibulum mauris sem, viverra ac metus sed, scelerisque ornare arcu. Vivamus consequat, libero vitae aliquet tempor, lorem leo mattis arcu, et viverra erat ligula sit amet tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent ut massa ac tortor lobortis placerat. Pellentesque aliquam tortor augue, at rutrum magna molestie et. Etiam congue nulla in venenatis congue. Nunc ac felis pharetra, cursus leo et, finibus eros.
-</code></pre>
-<p>Random texts are generated using - https://www.lipsum.com/</p>
+</code></pre></div>
+Random texts are generated using - https://www.lipsum.com/</p>
 <h2 id="tsv">tsv</h2>
 <p>Tab-separated values
 Tabular data format </p>
-<pre><code>head sample_data.tsv
+<div class="highlight"><pre><span></span><code>head sample_data.tsv
 #CHROM  POS ID  REF ALT A1  FIRTH?  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
 1   13273   1:13273:G:C G   C   C   N   ADD 503 0.750168    0.280794    -1.02373    0.305961    .
 1   14599   1:14599:T:A T   A   A   N   ADD 503 1.80972 0.231595    2.56124 0.0104299   .
@@ -822,11 +822,11 @@ Tabular data format </p>
 1   91581   1:91581:G:A G   A   A   N   ADD 503 0.924422    0.122991    -0.638963   0.522847    .
 1   122872  1:122872:T:G    T   G   G   N   ADD 503 1.07113 0.180776    0.380121    0.703856    .
 1   135163  1:135163:C:T    C   T   T   N   ADD 503 0.711822    0.23908 -1.42182    0.155079    .
-</code></pre>
+</code></pre></div>
 <h2 id="csv">csv</h2>
 <p>Comma-separated values
-Tabular data format </p>
-<pre><code>head sample_data.csv 
+Tabular data format 
+<div class="highlight"><pre><span></span><code>head sample_data.csv 
 #CHROM,POS,ID,REF,ALT,A1,FIRTH?,TEST,OBS_CT,OR,LOG(OR)_SE,Z_STAT,P,ERRCODE
 1,13273,1:13273:G:C,G,C,C,N,ADD,503,0.750168,0.280794,-1.02373,0.305961,.
 1,14599,1:14599:T:A,T,A,A,N,ADD,503,1.80972,0.231595,2.56124,0.0104299,.
@@ -837,26 +837,26 @@ Tabular data format </p>
 1,91581,1:91581:G:A,G,A,A,N,ADD,503,0.924422,0.122991,-0.638963,0.522847,.
 1,122872,1:122872:T:G,T,G,G,N,ADD,503,1.07113,0.180776,0.380121,0.703856,.
 1,135163,1:135163:C:T,C,T,T,N,ADD,503,0.711822,0.23908,-1.42182,0.155079,.
-</code></pre>
+</code></pre></div></p>
 <h1 id="data-formats-in-bioinformatics">Data formats in bioinformatics</h1>
 <h2 id="sequence">Sequence</h2>
 <h3 id="fasta">fasta</h3>
-<p>text-based format for representing either nucleotide sequences or amino acid (protein) sequences</p>
-<pre><code>&gt;SEQ_ID
+<p>text-based format for representing either nucleotide sequences or amino acid (protein) sequences
+<div class="highlight"><pre><span></span><code>&gt;SEQ_ID
 GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
-</code></pre>
+</code></pre></div></p>
 <h3 id="fastq">fastq</h3>
-<p>text-based format for storing both a nucleotide sequence and its corresponding quality scores</p>
-<pre><code>@SEQ_ID
+<p>text-based format for storing both a nucleotide sequence and its corresponding quality scores
+<div class="highlight"><pre><span></span><code>@SEQ_ID
 GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
 +
-!''*((((***+))%%%++)(%%%%).1***-+*''))**55CCF&gt;&gt;&gt;&gt;&gt;&gt;CCCCCCC65
-</code></pre>
-<p>Reference: https://en.wikipedia.org/wiki/FASTQ_format</p>
+!&#39;&#39;*((((***+))%%%++)(%%%%).1***-+*&#39;&#39;))**55CCF&gt;&gt;&gt;&gt;&gt;&gt;CCCCCCC65
+</code></pre></div>
+Reference: https://en.wikipedia.org/wiki/FASTQ_format</p>
 <h2 id="alingment">Alingment</h2>
 <h3 id="sambam">SAM/BAM</h3>
-<p>Sequence Alignment/Map Format is a TAB-delimited text file format consisting of a header section, and an alignment section.</p>
-<pre><code>@HD VN:1.6 SO:coordinate
+<p>Sequence Alignment/Map Format is a TAB-delimited text file format consisting of a header section, and an alignment section.
+<div class="highlight"><pre><span></span><code>@HD VN:1.6 SO:coordinate
 @SQ SN:ref LN:45
 r001 99 ref 7 30 8M2I4M1D3M = 37 39 TTAGATAAAGGATACTG *
 r002 0 ref 9 30 3S6M1P1I4M * 0 0 AAAAGATAAGGATA *
@@ -864,12 +864,12 @@ r003 0 ref 9 30 5S6M * 0 0 GCCTAAGCTAA * SA:Z:ref,29,-,6H5M,17,0;
 r004 0 ref 16 30 6M14N5M * 0 0 ATAGCTTCAGC *
 r003 2064 ref 29 17 6H5M * 0 0 TAGGC * SA:Z:ref,9,+,5S6M,30,1;
 r001 147 ref 37 30 9M = 7 -39 CAGCGGCAT * NM:i:1
-</code></pre>
-<p>Reference : https://samtools.github.io/hts-specs/SAMv1.pdf</p>
+</code></pre></div>
+Reference : https://samtools.github.io/hts-specs/SAMv1.pdf</p>
 <h2 id="variant-and-genotype">Variant and genotype</h2>
 <h3 id="vcf-vcfgz-vcfgztbi">vcf / vcf.gz / vcf.gz.tbi</h3>
 <p>VCF is a text file format consisting of meta-information lines, a header line, and then data lines. Each data lien contains information about a variant in the genome (and the genotype information on samples for each variant). </p>
-<pre><code>##fileformat=VCFv4.2
+<p><div class="highlight"><pre><span></span><code>##fileformat=VCFv4.2
 ##fileDate=20090805
 ##source=myImputationProgramV3.1
 ##reference=file:///seq/references/1000GenomesPilot-NCBI36.fasta
@@ -893,12 +893,12 @@ r001 147 ref 37 30 9M = 7 -39 CAGCGGCAT * NM:i:1
 20 1110696 rs6040355 A G,T 67 PASS NS=2;DP=10;AF=0.333,0.667;AA=T;DB GT:GQ:DP:HQ 1|2:21:6:23,27 2|1:2:0:18,2 2/2:35:4
 20 1230237 . T . 47 PASS NS=3;DP=13;AA=T GT:GQ:DP:HQ 0|0:54:7:56,60 0|0:48:4:51,51 0/0:61:2
 20 1234567 microsat1 GTC G,GTCT 50 PASS NS=3;DP=9;AA=G GT:GQ:DP 0/1:35:4 0/2:17:2 1/1:40:3
-</code></pre>
-<p>Reference : https://samtools.github.io/hts-specs/VCFv4.2.pdf </p>
+</code></pre></div>
+Reference : https://samtools.github.io/hts-specs/VCFv4.2.pdf </p>
 <h3 id="ped-map">ped / map</h3>
 <p>.ped (PLINK/MERLIN/Haploview text pedigree + genotype table)</p>
 <p>Original standard text format for sample pedigree information and genotype calls.Contains no header line, and one line per sample with 2V+6 fields where V is the number of variants. The first six fields are the same as those in a .fam file. The seventh and eighth fields are allele calls for the first variant in the .map file ('0' = no call); the 9th and 10th are allele calls for the second variant; and so on.</p>
-<pre><code># check the first 16 rows and 16 columns of the ped file
+<div class="highlight"><pre><span></span><code># check the first 16 rows and 16 columns of the ped file
 cut -d &quot; &quot; -f 1-16 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.ped | head
 0 HG00403 0 0 0 -9 G G T T A A G A C C
 0 HG00404 0 0 0 -9 G G T T A A G A T C
@@ -916,7 +916,7 @@ cut -d &quot; &quot; -f 1-16 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.p
 0 HG00443 0 0 0 -9 G G T T A A G A C C
 0 HG00445 0 0 0 -9 G G T T A A G A C C
 0 HG00446 0 0 0 -9 C G T T A A G A T C
-</code></pre>
+</code></pre></div>
 <p>.map (PLINK text fileset variant information file)</p>
 <p>Variant information file accompanying a .ped text pedigree + genotype table. A text file with no header line, and one line per variant with the following 3-4 fields:</p>
 <ul>
@@ -925,7 +925,7 @@ cut -d &quot; &quot; -f 1-16 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.p
 <li>Position in morgans or centimorgans (optional; also safe to use dummy value of '0')</li>
 <li>Base-pair coordinate</li>
 </ul>
-<pre><code>head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.map
+<div class="highlight"><pre><span></span><code>head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.map
 1       1:13273:G:C     0       13273
 1       1:14599:T:A     0       14599
 1       1:14604:A:G     0       14604
@@ -936,19 +936,19 @@ cut -d &quot; &quot; -f 1-16 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.p
 1       1:122872:T:G    0       122872
 1       1:135163:C:T    0       135163
 1       1:233473:C:G    0       233473
-</code></pre>
+</code></pre></div>
 <p>Reference: <a href="https://www.cog-genomics.org/plink/1.9/formats">https://www.cog-genomics.org/plink/1.9/formats</a></p>
 <h3 id="bed-fam-bim">bed / fam /bim</h3>
 <p>bed/fam/bim formats are the binary implementation of ped/map formats.
 bed/bim/fam files contain the same information as ped/map but are much smaller in size.</p>
-<pre><code>-rw-r----- 1 yunye yunye 135M Dec 23 11:45 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
+<div class="highlight"><pre><span></span><code>-rw-r----- 1 yunye yunye 135M Dec 23 11:45 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
 -rw-r----- 1 yunye yunye  36M Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
 -rw-r----- 1 yunye yunye 9.4K Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
 -rw-r--r-- 1 yunye yunye  32M Dec 27 17:51 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.map
 -rw-r--r-- 1 yunye yunye 2.2G Dec 27 17:51 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.ped
-</code></pre>
-<p>fam</p>
-<pre><code>head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
+</code></pre></div>
+<p>fam
+<div class="highlight"><pre><span></span><code>head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
 0 HG00403 0 0 0 -9
 0 HG00404 0 0 0 -9
 0 HG00406 0 0 0 -9
@@ -959,9 +959,9 @@ bed/bim/fam files contain the same information as ped/map but are much smaller i
 0 HG00421 0 0 0 -9
 0 HG00422 0 0 0 -9
 0 HG00428 0 0 0 -9
-</code></pre>
-<p>bim</p>
-<pre><code>head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
+</code></pre></div></p>
+<p>bim
+<div class="highlight"><pre><span></span><code>head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
 1       1:13273:G:C     0       13273   C       G
 1       1:14599:T:A     0       14599   A       T
 1       1:14604:A:G     0       14604   G       A
@@ -972,12 +972,12 @@ bed/bim/fam files contain the same information as ped/map but are much smaller i
 1       1:122872:T:G    0       122872  G       T
 1       1:135163:C:T    0       135163  T       C
 1       1:233473:C:G    0       233473  G       C
-</code></pre>
+</code></pre></div></p>
 <p>bed : 
 "Primary representation of genotype calls at biallelic variants
 The first three bytes should be 0x6c, 0x1b, and 0x01 in that order.
-The rest of the file is a sequence of V blocks of N/4 (rounded up) bytes each, where V is the number of variants and N is the number of samples. The first block corresponds to the first marker in the .bim file, etc."</p>
-<pre><code>hexdump -C 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed | head
+The rest of the file is a sequence of V blocks of N/4 (rounded up) bytes each, where V is the number of variants and N is the number of samples. The first block corresponds to the first marker in the .bim file, etc."
+<div class="highlight"><pre><span></span><code>hexdump -C 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed | head
 00000000  6c 1b 01 ff ff bf bf ff  ff ff ef fb ff ff ff fe  |l...............|
 00000010  ff ff ff ff fb ff bb ff  ff fb af ff ff fe fb ff  |................|
 00000020  ff ff ff fe ff ff ff ff  ff bf ff ff ef ff ff ef  |................|
@@ -988,7 +988,7 @@ The rest of the file is a sequence of V blocks of N/4 (rounded up) bytes each, w
 00000070  fe be bf ef fe ff ef ee  ff ff bf ea fe bf fe ff  |................|
 00000080  bf ff ff ef ff ff ff ff  ff fa ff ff eb ff ff ff  |................|
 00000090  ff ff fb fe af ff bf ff  ff ff ff ff ff ff ff ff  |................|
-</code></pre>
+</code></pre></div></p>
 <p>Reference: <a href="https://www.cog-genomics.org/plink/1.9/formats">https://www.cog-genomics.org/plink/1.9/formats</a></p>
 <h2 id="imputation-dosage">Imputation dosage</h2>
 <h3 id="bgen-bgi">bgen / bgi</h3>

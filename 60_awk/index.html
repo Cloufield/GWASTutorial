@@ -854,8 +854,8 @@
 <h2 id="awk-introduction">AWK Introduction</h2>
 <p>'awk' is one of the most powerful text processing tools for tabular text files.</p>
 <h2 id="awk-syntax">AWK syntax</h2>
-<pre><code>awk OPTION 'CONDITION {PROCESS}' FILENAME
-</code></pre>
+<div class="highlight"><pre><span></span><code>awk OPTION &#39;CONDITION {PROCESS}&#39; FILENAME
+</code></pre></div>
 <p>Some special variable in awk:</p>
 <ul>
 <li>$0 : all columns</li>
@@ -864,7 +864,7 @@
 </ul>
 <h2 id="examples">Examples</h2>
 <p>Using the sample sumstats, we will demonstate some simple but useful one-liners.</p>
-<pre><code># sample sumstats
+<div class="highlight"><pre><span></span><code># sample sumstats
 head ../02_Linux_basics/sumstats.txt 
 #CHROM  POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
 1   13273   1:13273:G:C G   C   C   ADD 503 0.7461490.282904    -1.03509    0.300628    .
@@ -876,10 +876,10 @@ head ../02_Linux_basics/sumstats.txt
 1   91581   1:91581:G:A G   A   A   ADD 503 0.9313040.123644    -0.575598   0.564887    .
 1   122872  1:122872:T:G    T   G   G   ADD 503 1.048280.182036 0.259034    0.795609    .
 1   135163  1:135163:C:T    C   T   T   ADD 503 0.6766660.242611    -1.60989    0.107422    .
-</code></pre>
+</code></pre></div>
 <h3 id="example-1">Example 1</h3>
 <p>Select variants on chromosome 3 (keeping the headers):</p>
-<pre><code>awk 'NR==1 ||  $1==2 {print $0}' ../02_Linux_basics/sumstats.txt | head
+<div class="highlight"><pre><span></span><code>awk &#39;NR==1 ||  $1==2 {print $0}&#39; ../02_Linux_basics/sumstats.txt | head
 #CHROM  POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
 2   22398   2:22398:C:T C   T   T   ADD 503 1.287540.161017 1.56962 0.116503    .
 2   24839   2:24839:C:T C   T   T   ADD 503 1.318170.179754 1.53679 0.124344    .
@@ -890,12 +890,11 @@ head ../02_Linux_basics/sumstats.txt
 2   34503   2:34503:G:T G   T   T   ADD 503 1.323720.179789 1.55988 0.118789    .
 2   39340   2:39340:A:G A   G   G   ADD 503 1.3043  0.161184    1.64822 0.0993082   .
 2   55237   2:55237:T:C T   C   C   ADD 503 1.314860.161988 1.68983 0.0910614   .
-
-</code></pre>
+</code></pre></div>
 <p>The <code>NR</code> here means row number. The condition here <code>NR==1 || $1==3</code> means if it is the first row or the first column is equal to 3, conduct the process <code>print $0</code>, which mean print all columns. </p>
 <h3 id="example-2">Example 2</h3>
 <p>Select significant variants:</p>
-<pre><code>awk 'NR==1 ||  $13 &lt;5e-8 {print $0}' ../02_Linux_basics/sumstats.txt | head
+<div class="highlight"><pre><span></span><code>awk &#39;NR==1 ||  $13 &lt;5e-8 {print $0}&#39; ../02_Linux_basics/sumstats.txt | head
 #CHROM  POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
 1   13273   1:13273:G:C G   C   C   ADD 503 0.7461490.282904    -1.03509    0.300628    .
 1   14599   1:14599:T:A T   A   A   ADD 503 1.676930.240899 2.14598 0.0318742   .
@@ -906,11 +905,10 @@ head ../02_Linux_basics/sumstats.txt
 1   91581   1:91581:G:A G   A   A   ADD 503 0.9313040.123644    -0.575598   0.564887    .
 1   122872  1:122872:T:G    T   G   G   ADD 503 1.048280.182036 0.259034    0.795609    .
 1   135163  1:135163:C:T    C   T   T   ADD 503 0.6766660.242611    -1.60989    0.107422    .
-
-</code></pre>
+</code></pre></div>
 <h3 id="example-3">Example 3</h3>
 <p>Create a bed-like format for annotation:</p>
-<pre><code>awk 'NR&gt;1 {print $1,$2,$2,$4,$5}' ../02_Linux_basics/sumstats.txt | head
+<div class="highlight"><pre><span></span><code>awk &#39;NR&gt;1 {print $1,$2,$2,$4,$5}&#39; ../02_Linux_basics/sumstats.txt | head
 1 13273 13273 G C
 1 14599 14599 T A
 1 14604 14604 A G
@@ -921,7 +919,7 @@ head ../02_Linux_basics/sumstats.txt
 1 122872 122872 T G
 1 135163 135163 C T
 1 233473 233473 C G
-</code></pre>
+</code></pre></div>
 
 
 

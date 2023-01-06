@@ -895,18 +895,18 @@
 <h3 id="install-magma">Install MAGMA</h3>
 <p>Dowload MAGMA for your operating system from the following url:
 https://ctg.cncr.nl/software/magma</p>
-<p>For example:</p>
-<pre><code>cd ~/tools
+<p>For example:
+<div class="highlight"><pre><span></span><code>cd ~/tools
 mkdir MAGMA
 cd MAGMA
 wget https://ctg.cncr.nl/software/MAGMA/prog/magma_v1.10.zip
 unzip magma_v1.10.zip
-</code></pre>
-<p>Add magma to your environment path.</p>
-<p>Test if it is successfully installed.</p>
-<pre><code>$ magma --version
+</code></pre></div>
+Add magma to your environment path.</p>
+<p>Test if it is successfully installed.
+<div class="highlight"><pre><span></span><code>$ magma --version
 MAGMA version: v1.10 (linux)
-</code></pre>
+</code></pre></div></p>
 <h3 id="download-reference-files">Download reference files</h3>
 <p>We nedd the following reference files:
 - gene location files
@@ -915,35 +915,32 @@ MAGMA version: v1.10 (linux)
 <p>The gene location files and LD reference panel can be downloaded from magma website. -&gt; https://ctg.cncr.nl/software/magma
 The third one can be downloaded form MsigDB. -&gt; https://www.gsea-msigdb.org/gsea/msigdb/</p>
 <h3 id="format-input-files">Format input files</h3>
-<pre><code>zcat ../08_LDSC/BBJ_HDLC.txt.gz | awk 'NR&gt;1 &amp;&amp; $2==3 {print $1,$2,$3}' &gt; HDLC_chr3.magma.input.snp.chr.pos.txt
-zcat ../08_LDSC/BBJ_HDLC.txt.gz | awk 'NR&gt;1 &amp;&amp; $2==3 {print $1,10^(-$11)}' &gt;  HDLC_chr3.magma.input.p.txt
-
-</code></pre>
+<div class="highlight"><pre><span></span><code>zcat ../08_LDSC/BBJ_HDLC.txt.gz | awk &#39;NR&gt;1 &amp;&amp; $2==3 {print $1,$2,$3}&#39; &gt; HDLC_chr3.magma.input.snp.chr.pos.txt
+zcat ../08_LDSC/BBJ_HDLC.txt.gz | awk &#39;NR&gt;1 &amp;&amp; $2==3 {print $1,10^(-$11)}&#39; &gt;  HDLC_chr3.magma.input.p.txt
+</code></pre></div>
 <h3 id="annotate-snps">Annotate SNPs</h3>
-<pre><code>snploc=./HDLC_chr3.magma.input.snp.chr.pos.txt
+<div class="highlight"><pre><span></span><code>snploc=./HDLC_chr3.magma.input.snp.chr.pos.txt
 ncbi37=~/tools/magma/NCBI37/NCBI37.3.gene.loc
 magma --annotate \
       --snp-loc ${snploc} \
       --gene-loc ${ncbi37} \
       --out HDLC_chr3
-
-</code></pre>
+</code></pre></div>
 <h3 id="gene-based-analysis">Gene-based analysis</h3>
-<pre><code>ref=~/tools/magma/g1000_eas/g1000_eas
+<div class="highlight"><pre><span></span><code>ref=~/tools/magma/g1000_eas/g1000_eas
 magma \
     --bfile $ref \
     --pval ./HDLC_chr3.magma.input.p.txt N=70657 \
     --gene-annot HDLC_chr3.genes.annot \
     --out HDLC_chr3
-
-</code></pre>
+</code></pre></div>
 <h3 id="gene-set-level-analysis">Gene-set level analysis</h3>
-<pre><code>geneset=/home/he/tools/magma/MSigDB/msigdb_v2022.1.Hs_files_to_download_locally/msigdb_v2022.1.Hs_GMTs/msigdb.v2022.1.Hs.entrez.gmt
+<div class="highlight"><pre><span></span><code>geneset=/home/he/tools/magma/MSigDB/msigdb_v2022.1.Hs_files_to_download_locally/msigdb_v2022.1.Hs_GMTs/msigdb.v2022.1.Hs.entrez.gmt
 magma \
     --gene-results HDLC_chr3.genes.raw \
     --set-annot ${geneset} \
     --out HDLC_chr3
-</code></pre>
+</code></pre></div>
 <h1 id="reference">Reference</h1>
 <ul>
 <li>de Leeuw, Christiaan A., et al. "MAGMA: generalized gene-set analysis of GWAS data." PLoS computational biology 11.4 (2015): e1004219.</li>
