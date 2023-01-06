@@ -5,9 +5,11 @@ This section is intended to provide a minumum introduction of the Linux system f
 If you are a beginner with no background in programming, it would be helpful if you could learn some basic commands first before any analysis. 
 In this section, we will introduce the most basic commands which enable you to handle genomic files in the terminal using command lines in a linux system. 
 
-For **Mac** users, this tutorial will probably work with no problems. Just open your terminal and follow the tutorial.
+!!! note
+    For **Mac** users, this tutorial will probably work with no problems. Just open your terminal and follow the tutorial.
 
-For **Windows** users, you can simply insall WSL to get a linux environment. Please check [here](https://cloufield.github.io/GWASTutorial/82_windows_linux_subsystem/) for how to install WSL.
+!!! note
+    For **Windows** users, you can simply insall WSL to get a linux environment. Please check [here](https://cloufield.github.io/GWASTutorial/82_windows_linux_subsystem/) for how to install WSL.
 
 
 
@@ -61,7 +63,8 @@ Reference: https://en.wikipedia.org/wiki/Linux
 |Ease of operation|Easier|DIFFICULT|
 |Flexibility|MORE flexible|LESS flexible|
 
-The reason why we want to use CUI for large-scale data analysis is that CUI is better in term of precision, memory usage and processing speed.
+!!! tip
+    The reason why we want to use CUI for large-scale data analysis is that CUI is better in term of precision, memory usage and processing speed.
 
 ## Overview of the basic commands in Linux
 
@@ -234,7 +237,9 @@ $mv sumstats.txt sumstats_new.txt
 ```
 
 #### `rm`:
-remove files or diretories
+
+Remove files or diretories
+
 ```Bash
 # remove a file
 $rm file
@@ -242,6 +247,8 @@ $rm file
 #remove files in a directory (recursive mode)
 $rm -r directory/
 ```
+!!! warning "There is no trash can in Linux command-line interface !"
+    If you delete a file with `rm` , it will be very difficult to restore it. Please be careful wehn using `rm`. 
 
 #### `cp` 
 
@@ -257,8 +264,10 @@ $cp -r directory1/ directory2/
 
 ### Links  
 
-symbolic link is like a shortcut on window system, which is a special type of file that points to another file.
+Symbolic link is like a shortcut on window system, which is a special type of file that points to another file.
+
 It is very useful when you want to organize your tool box or working space.
+
 You can use `ln -s pathA pathB` to create such a link. 
 
 Example:
@@ -322,7 +331,8 @@ drwxr-x--- 29 he staff 4.0K Apr  1 22:20 ..
 -rw-r-----  1 he staff  32M Mar 30 18:17 sumstats.txt
 
 ```
-!!! Be careful not to `cat` a text file with a huge number of lines. You can try to `cat sumstats.txt` and see what happends.
+!!! warning
+    Be careful not to `cat` a text file with a huge number of lines. You can try to `cat sumstats.txt` and see what happends.
 
 By the way, `> a_text_file.txt` here means redirect the output to file ` a_text_file.txt`.
 

@@ -8,13 +8,12 @@ theme:
   name: material
   features:
     - navigation.tabs
-    - navigation.tabs.sticky
   font:
     code: Roboto Mono
     text: Roboto
   palette:
-    primary: indigo
-    accent: indigo
+    primary: blue
+    accent: blue
     
 nav:
     - Home: index.md
