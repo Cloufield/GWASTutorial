@@ -1403,13 +1403,17 @@ You can also use <code>mv</code> to rename a file:
 <span class="nv">$mv</span> sumstats.txt sumstats_new.txt 
 </code></pre></div></p>
 <h4 id="rm"><code>rm</code>:</h4>
-<p>remove files or diretories
+<p>Remove files or diretories</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># remove a file</span>
 <span class="nv">$rm</span> file
 
 <span class="c1">#remove files in a directory (recursive mode)</span>
 <span class="nv">$rm</span> -r directory/
-</code></pre></div></p>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">There is no trash can in Linux command-line interface !</p>
+<p>If you delete a file with <code>rm</code> , it will be very difficult to restore it. Please be careful wehn using <code>rm</code>. </p>
+</div>
 <h4 id="cp"><code>cp</code></h4>
 <p><code>cp</code> command is used to copy files or diretories.</p>
 <div class="highlight"><pre><span></span><code><span class="c1">#cp files</span>
@@ -1419,9 +1423,9 @@ You can also use <code>mv</code> to rename a file:
 <span class="nv">$cp</span> -r directory1/ directory2/
 </code></pre></div>
 <h3 id="links">Links</h3>
-<p>symbolic link is like a shortcut on window system, which is a special type of file that points to another file.
-It is very useful when you want to organize your tool box or working space.
-You can use <code>ln -s pathA pathB</code> to create such a link. </p>
+<p>Symbolic link is like a shortcut on window system, which is a special type of file that points to another file.</p>
+<p>It is very useful when you want to organize your tool box or working space.</p>
+<p>You can use <code>ln -s pathA pathB</code> to create such a link. </p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>ln -s /home/he/tools/plink/plink /home/he/tools/bin
 
