@@ -22,8 +22,10 @@ nav:
        - "Linux Basics" : 02_Linux_basics.md
        - "Windows Linux Subsystem" : 82_windows_linux_subsystem.md
        - "Git and github" : 83_git_and_github.md
-       - "awk" : 60_awk.md
-       - "sed" : 61_sed.md
+       - "SSH" : 84_ssh.md
+       - "Job scheduler" : 85_job_scheduler.md  
+       - "Text editing - awk" : 60_awk.md
+       - "Text editing - sed" : 61_sed.md
     - "Pre-GWAS" :
        - "Sample Dataset" : 01_Dataset.md
        - "Data Formats" : 03_Data_formats.md
