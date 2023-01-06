@@ -4,6 +4,7 @@ for dir in 13_heritability 85_job_scheduler 84_ssh 90_Recommended_Reading 01_Dat
 do
 cp ${dir}/README.md docs/${dir}.md
 done
+cp 05_PCA/plot_PCA.ipynb doc/plot_PCA.ipynb
 cp 06_Association_tests/Visualization.ipynb docs/Visualization.ipynb
 cp README.md docs/index.md
 mkdocs gh-deploy

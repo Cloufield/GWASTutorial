@@ -30,6 +30,7 @@ nav:
        - "Data Formats" : 03_Data_formats.md
        - "Data QC" : 04_Data_QC.md
        - "PCA" : 05_PCA.md
+       - "Plot PCA" : plot_PCA.ipynb
     - "GWAS" : 
        - "Association tests": 06_Association_tests.md
        - "Visualization": Visualization.ipynb
