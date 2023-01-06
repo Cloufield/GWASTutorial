@@ -5,7 +5,7 @@
 
 ## Genotype Data Processing
 - Selected only autosomal variants
-- Split muktiallelic varaints
+- Split multi-allelic varaints
 - Variants were normalized
 - Remove duplicated variants
 - Selected only SNP (ATCG)

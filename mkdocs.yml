@@ -8,10 +8,22 @@ theme:
   name: material
   features:
     - navigation.tabs
-
+    - navigation.tabs.sticky
+  font:
+    code: Roboto Mono
+    text: Roboto
+  palette:
+    primary: blue
+    accent: blue
+    
 nav:
     - Home: index.md
-    - Linux : 02_Linux_basics.md
+    - "Command Line" : 
+       - "Linux Basics" : 02_Linux_basics.md
+       - "Windows Linux Subsystem" : 82_windows_linux_subsystem.md
+       - "Git and github" : 83_git_and_github.md
+       - "awk" : 60_awk.md
+       - "sed" : 61_sed.md
     - "Pre-GWAS" :
        - "Sample Dataset" : 01_Dataset.md
        - "Data Formats" : 03_Data_formats.md
@@ -29,10 +41,20 @@ nav:
        - "Recommended reading" : 90_Recommended_Reading.md
        - "Anaconda" : 80_anaconda.md
        - "Jupyter notebook" : 81_jupyter_notebook.md
-       - "WLS" : 82_windows_linux_subsystem.md
-       - "Git and github" : 83_git_and_github.md
-       - "awk" : 60_awk.md
-       - "sed" : 61_sed.md
+
+markdown_extensions:
+  - toc:
+      toc_depth: 3
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 plugins:
   - mkdocs-jupyter
