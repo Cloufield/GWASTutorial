@@ -644,6 +644,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#visualization" class="md-nav__link">
+    Visualization
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mahanttan-plot" class="md-nav__link">
+    Mahanttan plot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantile-quantile-plot" class="md-nav__link">
+    Quantile-quantile plot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regional-plot" class="md-nav__link">
+    Regional plot
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -914,6 +948,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#visualization" class="md-nav__link">
+    Visualization
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mahanttan-plot" class="md-nav__link">
+    Mahanttan plot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantile-quantile-plot" class="md-nav__link">
+    Quantile-quantile plot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regional-plot" class="md-nav__link">
+    Regional plot
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1110,10 +1178,9 @@ End time: Tue Dec 27 23:04:40 2022
 9:36660672:A:G  9   36660672    G   A   0.160275    5.63422 1.758540e-08    2.467060    503 9999999
 11:56249438:A:G 11  56249438    G   A   0.188891    -4.77836    1.767350e-06    0.405518    503 9999999
 </code></pre></div></p>
-<h1 id="visualization">Visualization</h1>
+<h2 id="visualization">Visualization</h2>
 <p>To visualize the sumstats, we will create manhattan plot, QQ plot and regional plot.</p>
 <p>Please check for codes : <a href="https://cloufield.github.io/GWASTutorial/Visualization/">Visualization using gwaslab</a></p>
-<h2 id="mahanttan-plot-and-quantile-quantile-plot">Mahanttan plot and Quantile-Quantile plot</h2>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/209681591-dc691764-7346-4936-80b4-528bc425a61e.png" /></p>
 <h3 id="mahanttan-plot">Mahanttan plot</h3>
 <p>Mahanttan plot is the most classic visualization of GWAS summary statistics. It is a form of scatter plot. Each dot represents the test result for a variants. variants are sorted by its genome coordinates and are aligned along the X axis. Y axis shows the -log10(P value) for tests of variants in GWAS. </p>
@@ -1155,7 +1222,7 @@ End time: Tue Dec 27 23:04:40 2022
 <p class="admonition-title">Note</p>
 <p>The expected distribution of P value is an Uniform distribution from 0 to 1.</p>
 </div>
-<h2 id="regional-plot">Regional plot</h2>
+<h3 id="regional-plot">Regional plot</h3>
 <p>Mahanttan plot is very useful to check the overview of our sumstats. But is we want to check a specific genomic loci, we need a plot with finer resolution. This kind of plot is called regional plot. It is basically the Mahanttan plot of only a small region on genome, with points colored by its LD r2 with the lead variant in this region. </p>
 <p>The regional plot for the loci of 2:55574452:G:C. </p>
 <p>Please check <a href="https://cloufield.github.io/GWASTutorial/Visualization/">Visualization using gwaslab</a></p>
