@@ -191,13 +191,12 @@ SNPID	CHR	POS	EA	NEA	SE	Z	P	OR	N	STATUS
 11:56249438:A:G	11	56249438	G	A	0.188891	-4.77836	1.767350e-06	0.405518	503	9999999
 ```
 
-# Visualization
+## Visualization
 
 To visualize the sumstats, we will create manhattan plot, QQ plot and regional plot.
 
 Please check for codes : [Visualization using gwaslab](https://cloufield.github.io/GWASTutorial/Visualization/)
 
-## Mahanttan plot and Quantile-Quantile plot
 ![image](https://user-images.githubusercontent.com/40289485/209681591-dc691764-7346-4936-80b4-528bc425a61e.png)
 
 ### Mahanttan plot
@@ -245,7 +244,7 @@ Suppose we have `n` variants in our sumstats,
 !!! note 
     The expected distribution of P value is an Uniform distribution from 0 to 1.
 
-## Regional plot
+### Regional plot
 
 Mahanttan plot is very useful to check the overview of our sumstats. But is we want to check a specific genomic loci, we need a plot with finer resolution. This kind of plot is called regional plot. It is basically the Mahanttan plot of only a small region on genome, with points colored by its LD r2 with the lead variant in this region. 
 
