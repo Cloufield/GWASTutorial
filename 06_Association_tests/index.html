@@ -1004,7 +1004,25 @@ FID IID B1
 </table>
 <h2 id="association-testing">Association testing</h2>
 <p>Please check https://www.cog-genomics.org/plink/2.0/assoc for more details.</p>
+<p>For quantitative traits, we can employ a simple linear regression model to test associations:</p>
+<div class="arithmatex">\[ 
+y = G\beta_G + X\beta_X + e
+\]</div>
+<ul>
+<li><span class="arithmatex">\(G\)</span> is the genotype matrix.</li>
+<li><span class="arithmatex">\(\beta_G\)</span> is the effect sizes for variants.</li>
+<li><span class="arithmatex">\(X\)</span> and <span class="arithmatex">\(\beta_X\)</span> are covariates and their effects.</li>
+<li><span class="arithmatex">\(e\)</span> is the error term.</li>
+</ul>
+<p>For binary traits, we can utilize the logistic regression model to test associations:</p>
+<div class="arithmatex">\[ 
+logit(p) = G\beta_G + X\beta_X + e
+\]</div>
 <p>We will perform a logistic regression with firth correction for a simulated binary trait under additive model using the 1KG East Asian individuals.</p>
+<div class="admonition note">
+<p class="admonition-title">firth correction</p>
+<p>Adding a penalty term to the log-likelihood function when fitting the logistic model, which results in less bias. - Firth, David. "Bias reduction of maximum likelihood estimates." Biometrika 80.1 (1993): 27-38.</p>
+</div>
 <p>Sample code:</p>
 <div class="highlight"><pre><span></span><code>genotypeFile=&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot;  #!please set this to your own path
 phenotypeFile=&quot;../01_Dataset/1kgeas_binary.txt&quot; #!please set this to your own path
