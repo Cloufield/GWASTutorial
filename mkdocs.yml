@@ -25,6 +25,7 @@ nav:
        - "Job scheduler" : 85_job_scheduler.md  
        - "Text editing - awk" : 60_awk.md
        - "Text editing - sed" : 61_sed.md
+       - "Resources" : 69_resources.md
     - "Pre-GWAS" :
        - "Sample Dataset" : 01_Dataset.md
        - "Data Formats" : 03_Data_formats.md
