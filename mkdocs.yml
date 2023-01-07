@@ -16,7 +16,9 @@ theme:
     accent: blue
     
 nav:
-    - Home: index.md
+    - Home: 
+      - "Tutorial guide" : index.md
+      - "About" : 99_About.md
     - "Command Line" : 
        - "Linux Basics" : 02_Linux_basics.md
        - "Windows Linux Subsystem" : 82_windows_linux_subsystem.md
