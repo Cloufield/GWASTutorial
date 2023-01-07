@@ -62,7 +62,28 @@ The table shows how we group different genotypes under each genetic model.
 
 Please check https://www.cog-genomics.org/plink/2.0/assoc for more details.
 
+For quantitative traits, we can employ a simple linear regression model to test associations:
+
+$$ 
+y = G\beta_G + X\beta_X + e
+$$
+
+- $G$ is the genotype matrix.
+- $\beta_G$ is the effect sizes for variants.
+- $X$ and $\beta_X$ are covariates and their effects.
+- $e$ is the error term.
+
+
+For binary traits, we can utilize the logistic regression model to test associations:
+
+$$ 
+logit(p) = G\beta_G + X\beta_X + e
+$$
+
 We will perform a logistic regression with firth correction for a simulated binary trait under additive model using the 1KG East Asian individuals.
+
+!!! note "firth correction"
+    Adding a penalty term to the log-likelihood function when fitting the logistic model, which results in less bias. - Firth, David. "Bias reduction of maximum likelihood estimates." Biometrika 80.1 (1993): 27-38.
 
 Sample code:
 
