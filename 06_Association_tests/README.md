@@ -172,14 +172,61 @@ SNPID	CHR	POS	EA	NEA	SE	Z	P	OR	N	STATUS
 
 # Visualization
 
-To visualize the results, we will create manhattan plot, QQ plot and regional plot.
+To visualize the sumstats, we will create manhattan plot, QQ plot and regional plot.
 
-Please check [Visualization using gwaslab](https://cloufield.github.io/GWASTutorial/Visualization/)
+Please check for codes : [Visualization using gwaslab](https://cloufield.github.io/GWASTutorial/Visualization/)
 
 ## Mahanttan plot and Quantile-Quantile plot
 ![image](https://user-images.githubusercontent.com/40289485/209681591-dc691764-7346-4936-80b4-528bc425a61e.png)
 
+### Mahanttan plot
+
+Mahanttan plot is the most classic visualization of GWAS summary statistics. It is a form of scatter plot. Each dot represents the test result for a variants. variants are sorted by its genome coordinates and are aligned along the X axis. Y axis shows the -log10(P value) for tests of variants in GWAS. 
+
+!!! note
+    This kind of plot was named after Mahanttan in New York City since it resembles the Manhattan skyline.   
+
+<img width="686" alt="image" src="https://user-images.githubusercontent.com/40289485/209780549-54a24fdd-485b-4875-8f40-d6812eb644fe.png">
+
+Data we need from sumstats to create mahattan plot:
+
+- Chromosome 
+- Basepair position
+- P value or -log10(P)
+
+Steps to create mahattan plot:
+
+1. sort the variants by genome coordinates.
+2. map the genome coordinates of variants to the x axis.
+3. convert P value to -log10(P).
+4. create the scatter plot.
+
+### Quantile-quantile plot
+
+Quantile-quantile plot (as known as Q-Q plot), is commonly used to compare an observed distribution with its expected distribution. For a specific point (x,y) on Q-Q plot, its y coordinate corresponds to one of the quantiles of the observed distribution, while its x coordinate corresponds to the same quantile of the expected distribution.
+
+Quantile-quantile plot is used to check if there is any significant inflation in P value distribution, which usually indicates population stratification or cryptic relatedness. 
+
+Data we need from sumstats to create mahattan plot:
+
+- P value or -log10(P)
+
+Steps to create mahattan plot:
+
+Suppose we have `n` variants in our sumstats,
+
+1. convert the `n` P value to -log10(P).
+2. sort the -log10(P) values in asending order.
+3. get `n` numbers from `(0,1)` with equal intervals.
+4. convert the `n` numbers to -log10(P) and sort in asending order.
+4. create scatter plot using the sorted -log10(P) of sumstats as Y and sorted -log10(P) we generated as X.
+
+!!! note 
+    The expected distribution of P value is an Uniform distribution from 0 to 1.
+
 ## Regional plot
+
+Mahanttan plot is very useful to check the overview of our sumstats. But is we want to check a specific genomic loci, we need a plot with finer resolution. This kind of plot is called regional plot. It is basically the Mahanttan plot of only a small region on genome, with points colored by its LD r2 with the lead variant in this region. 
 
 The regional plot for the loci of 2:55574452:G:C. 
 
