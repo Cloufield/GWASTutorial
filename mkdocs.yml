@@ -35,8 +35,9 @@ nav:
        - "PCA" : 05_PCA.md
        - "Plot PCA" : plot_PCA.ipynb
     - "GWAS" : 
-       - "Association tests": 06_Association_tests.md
+       - "Association tests - PLINK": 06_Association_tests.md
        - "Visualization": Visualization.ipynb
+       - "Whole genome regression - REGENIE" : 32_whole_genome_regression.md
     - "Post-GWAS" :
        - "Annotation" : 07_Annotation.md
        - "Heritability" : 13_heritability.md
