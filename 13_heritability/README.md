@@ -1,4 +1,4 @@
-# Heritability (under construction)
+# Heritability
 
 Heritability is a term used in genetics to describe how much phenotypic variation can be explained by genetic variation.
 
@@ -34,17 +34,17 @@ $$
 ## Observed-scale heritability and liability-scaled heritability
 
 Issue for binary traits : 
+
 !!! quote "The scale issue for binary traits"
-    For quantitative traits the scale of measurement is the same as the scale on which heritability is expressed. 
     
-    For disease traits, the phenotypes (case-control status) are measured on the 0–1 scale, but heritability is most interpretable on a scale of liability.
-    
-    Reference: Lee, S. H., Wray, N. R., Goddard, M. E., & Visscher, P. M. (2011). Estimating missing heritability for disease from genome-wide association studies. The American Journal of Human Genetics, 88(3), 294-305.
+    - For quantitative traits the scale of measurement is the same as the scale on which heritability is expressed. 
+    - For disease traits, the phenotypes (case-control status) are measured on the 0–1 scale, but heritability is most interpretable on a scale of liability.
+    - Reference: Lee, S. H., Wray, N. R., Goddard, M. E., & Visscher, P. M. (2011). Estimating missing heritability for disease from genome-wide association studies. The American Journal of Human Genetics, 88(3), 294-305.
 
 Conversion formula (Equation 23 from Lee. 2011):
 
 $$
-h^2_{liability\\_scale} = h^2_{observed\\_scale} * {{K(1-K)}\over{Z^2}} *  {{K(1-K)}\over{P(1-P)}}
+h^2_{liability-scale} = h^2_{observed-scale} * {{K(1-K)}\over{Z^2}} *  {{K(1-K)}\over{P(1-P)}}
 $$
 
 - $K$ : Population disease prevalence.
