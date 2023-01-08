@@ -781,8 +781,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#liability-model-for-binary-traits" class="md-nav__link">
-    Liability model for binary traits
+  <a href="#liability-and-the-threshold-model" class="md-nav__link">
+    Liability and the Threshold model
   </a>
   
 </li>
@@ -968,8 +968,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#liability-model-for-binary-traits" class="md-nav__link">
-    Liability model for binary traits
+  <a href="#liability-and-the-threshold-model" class="md-nav__link">
+    Liability and the Threshold model
   </a>
   
 </li>
@@ -1005,7 +1005,7 @@ Var(P) = Var(G) + Var(E)
 <h2 id="broad-sense-heritability">Broad-sense Heritability</h2>
 <p>The <strong>broad-sense heritability</strong> <span class="arithmatex">\(H^2_{broad-sense}\)</span> is mathmatically defined as :</p>
 <div class="arithmatex">\[
-h^2_{broad-sense} = {Var(G)\over{Var(P)}}
+H^2_{broad-sense} = {Var(G)\over{Var(P)}}
 \]</div>
 <h2 id="narrow-sense-heritability">Narrow-sense Heritability</h2>
 <p><strong>genetic effects</strong> <span class="arithmatex">\(Var(G)\)</span> is composed of multiple effects including <strong>additive effects</strong> <span class="arithmatex">\(Var(A)\)</span>, dominant effects, recessive effects, epistatic effects and so forth.</p>
@@ -1013,8 +1013,25 @@ h^2_{broad-sense} = {Var(G)\over{Var(P)}}
 <div class="arithmatex">\[
 h^2_{narrow-sense} = {Var(A)\over{Var(P)}}
 \]</div>
-<h2 id="liability-model-for-binary-traits">Liability model for binary traits</h2>
+<h2 id="liability-and-the-threshold-model">Liability and the Threshold model</h2>
+<p><img width="1004" alt="image" src="https://user-images.githubusercontent.com/40289485/211184406-be57ac1b-8074-4098-bdff-2eb55dd91b30.png"></p>
 <h2 id="observed-scale-heritability-and-liability-scaled-heritability">Observed-scale heritability and liability-scaled heritability</h2>
+<p>Issue for binary traits : </p>
+<div class="admonition quote">
+<p class="admonition-title">The scale issue for binary traits</p>
+<p>For quantitative traits the scale of measurement is the same as the scale on which heritability is expressed. For disease traits, the phenotypes (case-control status) are measured on the 0–1 scale, but heritability is most interpretable on a scale of liability.
+- Reference: Lee, S. H., Wray, N. R., Goddard, M. E., &amp; Visscher, P. M. (2011). Estimating missing heritability for disease from genome-wide association studies. The American Journal of Human Genetics, 88(3), 294-305.</p>
+</div>
+<p>Conversion formula (Equation 23 from Lee. 2011):</p>
+<div class="arithmatex">\[
+h^2_{liability\\_scale} = h^2_{observed\\_scale} * {{K(1-K)}\over{Z^2}} *  {{K(1-K)}\over{P(1-P)}}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(K\)</span> : Population disease prevalence.</li>
+<li><span class="arithmatex">\(P\)</span> : Sample disease prevalence.</li>
+<li><span class="arithmatex">\(Z\)</span> : The height of the standard normal probability density function at threshold T. <code>scipy.stats.norm.pdf(T, loc=0, scale=1)</code>.</li>
+<li><span class="arithmatex">\(T\)</span> : The threshold. <code>scipy.stats.norm.ppf(1 - K, loc=0, scale=1)</code> or <code>scipy.stats.norm.isf(K)</code>.</li>
+</ul>
 
 
 
