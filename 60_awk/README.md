@@ -11,15 +11,15 @@ awk OPTION 'CONDITION {PROCESS}' FILENAME
 
 Some special variable in awk:
 
-- $0 : all columns
-- $n : column n. For example, $1 means the first column. $4 means column 4.
-- NR : Row number.
+- `$0` : all columns
+- `$n` : column n. For example, $1 means the first column. $4 means column 4.
+- `NR` : Row number.
 
 ## Examples
 
 Using the sample sumstats, we will demonstate some simple but useful one-liners.
 
-```
+```bash
 # sample sumstats
 head ../02_Linux_basics/sumstats.txt 
 #CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
@@ -36,10 +36,9 @@ head ../02_Linux_basics/sumstats.txt
 
 ### Example 1
 
-!!! example
-    Select variants on chromosome 3 (keeping the headers):
+!!! example "Select variants on chromosome 3 (keeping the headers)"
 
-    ```
+    ```bash
     awk 'NR==1 ||  $1==2 {print $0}' ../02_Linux_basics/sumstats.txt | head
     #CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
     2	22398	2:22398:C:T	C	T	T	ADD	503	1.287540.161017	1.56962	0.116503	.
@@ -57,37 +56,37 @@ The `NR` here means row number. The condition here `NR==1 || $1==3` means if it 
 
 ### Example 2
 
-Select significant variants:
-
-```
-awk 'NR==1 ||  $13 <5e-8 {print $0}' ../02_Linux_basics/sumstats.txt | head
-#CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
-1	13273	1:13273:G:C	G	C	C	ADD	503	0.7461490.282904	-1.03509	0.300628	.
-1	14599	1:14599:T:A	T	A	A	ADD	503	1.676930.240899	2.14598	0.0318742	.
-1	14604	1:14604:A:G	A	G	G	ADD	503	1.676930.240899	2.14598	0.0318742	.
-1	14930	1:14930:A:G	A	G	G	ADD	503	1.643590.242872	2.04585	0.0407708	.
-1	69897	1:69897:T:C	T	C	T	ADD	503	1.691420.200238	2.62471	0.00867216	.
-1	86331	1:86331:A:G	A	G	G	ADD	503	1.418870.238055	1.46968	0.141649	.
-1	91581	1:91581:G:A	G	A	A	ADD	503	0.9313040.123644	-0.575598	0.564887	.
-1	122872	1:122872:T:G	T	G	G	ADD	503	1.048280.182036	0.259034	0.795609	.
-1	135163	1:135163:C:T	C	T	T	ADD	503	0.6766660.242611	-1.60989	0.107422	.
-
-```
+!!! example "Select all genome-wide significant variants (p<5e-8)"
+    
+    ```bash
+    awk 'NR==1 ||  $13 <5e-8 {print $0}' ../02_Linux_basics/sumstats.txt | head
+    #CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
+    1	13273	1:13273:G:C	G	C	C	ADD	503	0.7461490.282904	-1.03509	0.300628	.
+    1	14599	1:14599:T:A	T	A	A	ADD	503	1.676930.240899	2.14598	0.0318742	.
+    1	14604	1:14604:A:G	A	G	G	ADD	503	1.676930.240899	2.14598	0.0318742	.
+    1	14930	1:14930:A:G	A	G	G	ADD	503	1.643590.242872	2.04585	0.0407708	.
+    1	69897	1:69897:T:C	T	C	T	ADD	503	1.691420.200238	2.62471	0.00867216	.
+    1	86331	1:86331:A:G	A	G	G	ADD	503	1.418870.238055	1.46968	0.141649	.
+    1	91581	1:91581:G:A	G	A	A	ADD	503	0.9313040.123644	-0.575598	0.564887	.
+    1	122872	1:122872:T:G	T	G	G	ADD	503	1.048280.182036	0.259034	0.795609	.
+    1	135163	1:135163:C:T	C	T	T	ADD	503	0.6766660.242611	-1.60989	0.107422	.
+    
+    ```
 
 ### Example 3
 
-Create a bed-like format for annotation:
-
-```
-awk 'NR>1 {print $1,$2,$2,$4,$5}' ../02_Linux_basics/sumstats.txt | head
-1 13273 13273 G C
-1 14599 14599 T A
-1 14604 14604 A G
-1 14930 14930 A G
-1 69897 69897 T C
-1 86331 86331 A G
-1 91581 91581 G A
-1 122872 122872 T G
-1 135163 135163 C T
-1 233473 233473 C G
-```
+!!! example "Create a bed-like format for annotation"
+    
+    ```
+    awk 'NR>1 {print $1,$2,$2,$4,$5}' ../02_Linux_basics/sumstats.txt | head
+    1 13273 13273 G C
+    1 14599 14599 T A
+    1 14604 14604 A G
+    1 14930 14930 A G
+    1 69897 69897 T C
+    1 86331 86331 A G
+    1 91581 91581 G A
+    1 122872 122872 T G
+    1 135163 135163 C T
+    1 233473 233473 C G
+    ```
