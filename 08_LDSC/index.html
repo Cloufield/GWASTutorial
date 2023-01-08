@@ -792,6 +792,33 @@
     Introduction
   </a>
   
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ld-linkage-disequilibrium" class="md-nav__link">
+    LD: Linkage disequilibrium
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ld-score" class="md-nav__link">
+    LD score
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ld-score-regression_1" class="md-nav__link">
+    LD score regression
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -836,7 +863,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ld-score-regression_1" class="md-nav__link">
+  <a href="#ld-score-regression_2" class="md-nav__link">
     LD score regression
   </a>
   
@@ -1027,6 +1054,33 @@
     Introduction
   </a>
   
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ld-linkage-disequilibrium" class="md-nav__link">
+    LD: Linkage disequilibrium
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ld-score" class="md-nav__link">
+    LD score
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ld-score-regression_1" class="md-nav__link">
+    LD score regression
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1071,7 +1125,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ld-score-regression_1" class="md-nav__link">
+  <a href="#ld-score-regression_2" class="md-nav__link">
     LD score regression
   </a>
   
@@ -1133,8 +1187,25 @@
 </ul>
 <h2 id="introduction">Introduction</h2>
 <p>LDSC is one of the most commonly used command line tool to estimate hertability, genetic correlation and cell/tissue type specificity from GWAS summary statistics. </p>
-<p>LD: Linkage disequilibrium</p>
-<p>For details of LD score regression, please refer to :
+<h3 id="ld-linkage-disequilibrium">LD: Linkage disequilibrium</h3>
+<p>Linkage disequilibrium (LD) :  non-random association of alleles at different loci in a given population. (<a href="https://en.wikipedia.org/wiki/Linkage_disequilibrium">Wiki</a>)</p>
+<h3 id="ld-score">LD score</h3>
+<p>LD score <span class="arithmatex">\(l_j\)</span> for a SNP <span class="arithmatex">\(j\)</span> is defined as the sum of <span class="arithmatex">\(r^2\)</span> for the SNP and other SNPs in a region. </p>
+<div class="arithmatex">\[
+l_j= \Sigma_k{r^2_{j,k}}
+\]</div>
+<h3 id="ld-score-regression_1">LD score regression</h3>
+<p>Key idea: A variant will have higher test statistics if it is in LD with causal variant, and the elevation is proportional to the LD ( <span class="arithmatex">\(r^2\)</span> ) with the causal variant.  </p>
+<div class="arithmatex">\[
+E[\chi^2|l_j] = {{Nh^2l_j}\over{M}} + Na + 1
+\]</div>
+<ul>
+<li><span class="arithmatex">\(N\)</span>: sample size.</li>
+<li><span class="arithmatex">\(M\)</span> : number of SNPs.</li>
+<li><span class="arithmatex">\(h^2\)</span> : observed-scale heritability</li>
+<li><span class="arithmatex">\(a\)</span> : the effect of confounding factors, including crytic relatedness and populatiuon stratification.</li>
+</ul>
+<p>For more details of LD score regression, please refer to :
 - Bulik-Sullivan, Brendan K., et al. "LD Score regression distinguishes confounding from polygenicity in genome-wide association studies." Nature genetics 47.3 (2015): 291-295.</p>
 <h2 id="install-ldsc">Install LDSC</h2>
 <p>LDSC can be downloaded from github (GPL-3.0 license):
@@ -1210,7 +1281,7 @@ munge_sumstats.py <span class="se">\</span>
 BBJ_LDLC.sumstats.gz
 </code></pre></div>
 And these are the files we will use to run LD score regression.</p>
-<h2 id="ld-score-regression_1">LD score regression</h2>
+<h2 id="ld-score-regression_2">LD score regression</h2>
 <p>Univariate LD score regression is utilized to estimate heritbility and confuding factors (cryptic relateness and population stratification) of a certain trait. </p>
 <ul>
 <li>Reference : Bulik-Sullivan, Brendan K., et al. "LD Score regression distinguishes confounding from polygenicity in genome-wide association studies." Nature genetics 47.3 (2015): 291-295.</li>
