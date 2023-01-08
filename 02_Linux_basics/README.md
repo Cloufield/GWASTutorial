@@ -182,6 +182,18 @@ drwxr-xr-x  17 he  staff   544B Dec 23 12:13 ..
 -rw-r--r--   1 he  staff    31M Dec 23 14:07 sumstats.txt
 ```
 
+!!! tip
+    You can use `tree` command to visualize the structure of a directory.
+    
+    ```
+    $ tree ./02_Linux_basics/
+    ./02_Linux_basics/
+    ├── README.md
+    └── sumstats.txt
+    
+    0 directories, 2 files
+    ```
+
 #### `mkdir` & `rmdir` :
 
 - `mkdir` : Create a new empty directory
