@@ -1,6 +1,6 @@
 # Heritability (under construction)
 
-Heritability is a a term used in genetics to describe how much phenotypic variation can be explained by genetic variation.
+Heritability is a term used in genetics to describe how much phenotypic variation can be explained by genetic variation.
 
 For any phenotype, its variation $Var(P)$ can be modeled as the combination of **genetic effects** $Var(G)$ and **environmental effects** $Var(E)$.
 
@@ -27,7 +27,7 @@ $$
 h^2_{narrow-sense} = {Var(A)\over{Var(P)}}
 $$
 
-## Liability and the Threshold model
+## Liability and Threshold model
 
 <img width="1004" alt="image" src="https://user-images.githubusercontent.com/40289485/211184406-be57ac1b-8074-4098-bdff-2eb55dd91b30.png">
 
@@ -35,8 +35,11 @@ $$
 
 Issue for binary traits : 
 !!! quote "The scale issue for binary traits"
-    For quantitative traits the scale of measurement is the same as the scale on which heritability is expressed. For disease traits, the phenotypes (case-control status) are measured on the 0–1 scale, but heritability is most interpretable on a scale of liability.
-    - Reference: Lee, S. H., Wray, N. R., Goddard, M. E., & Visscher, P. M. (2011). Estimating missing heritability for disease from genome-wide association studies. The American Journal of Human Genetics, 88(3), 294-305.
+    For quantitative traits the scale of measurement is the same as the scale on which heritability is expressed. 
+    
+    For disease traits, the phenotypes (case-control status) are measured on the 0–1 scale, but heritability is most interpretable on a scale of liability.
+    
+    Reference: Lee, S. H., Wray, N. R., Goddard, M. E., & Visscher, P. M. (2011). Estimating missing heritability for disease from genome-wide association studies. The American Journal of Human Genetics, 88(3), 294-305.
 
 Conversion formula (Equation 23 from Lee. 2011):
 
