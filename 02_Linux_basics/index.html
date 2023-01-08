@@ -1490,6 +1490,13 @@ This command prints the absolute path.</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To get the absolute path of a file, you can use <code>readlink -f [filename]</code>.</p>
+<div class="highlight"><pre><span></span><code>$ readlink -f README.md 
+/home/he/work/GWASTutorial/02_Linux_basics/README.md
+</code></pre></div>
+</div>
 <h4 id="cd"><code>cd</code></h4>
 <p><code>cd</code>: Change the current working directory 
 <div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> 02_Linux_basics
