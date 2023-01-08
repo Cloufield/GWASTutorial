@@ -41,6 +41,7 @@ FID IID B1
 To test the association between a phenotype and genotypes, we also need to group the genotypes based on genetic models.
 
 There are three basic genetic models:
+
 - Additive model (ADD)
 - Dominant model (DOM)
 - Recessive model (REC)
