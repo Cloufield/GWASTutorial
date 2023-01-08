@@ -144,6 +144,13 @@ This command prints the absolute path.
 |**Absolute path**|path starting from root (the orange path)|`/home/User3/GWASTutorial/02_Linux_basics/README.md`|
 |**Relative path**|ath starting from the current directory (the blue path)|`./GWASTutorial/02_Linux_basics/README.md`|
 
+!!! tip
+    To get the absolute path of a file, you can use `readlink -f [filename]`.
+    
+    ```
+    $ readlink -f README.md 
+    /home/he/work/GWASTutorial/02_Linux_basics/README.md
+    ```
 
 #### `cd` 
 
