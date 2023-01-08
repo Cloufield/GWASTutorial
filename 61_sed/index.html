@@ -997,51 +997,57 @@
 <h1 id="sed">sed</h1>
 <p><code>sed</code> is also one of the most commonly used test-editing command in Linux, which is short for <strong>s</strong>tream <strong>ed</strong>itor. <code>sed</code> command edits the text from standard input in a line-by-line approach. </p>
 <h2 id="sed-syntax">sed syntax</h2>
-<div class="highlight"><pre><span></span><code>sed [OPTIONS] PROCESS [FILENAME]
+<div class="highlight"><pre><span></span><code>sed <span class="o">[</span>OPTIONS<span class="o">]</span> PROCESS <span class="o">[</span>FILENAME<span class="o">]</span>
 </code></pre></div>
 <h2 id="examples">Examples</h2>
 <h3 id="sample-input">sample input</h3>
 <div class="highlight"><pre><span></span><code>head ../02_Linux_basics/sumstats.txt
-#CHROM  POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
-1   13273   1:13273:G:C G   C   C   ADD 503 0.7461490.282904    -1.03509    0.300628    .
-1   14599   1:14599:T:A T   A   A   ADD 503 1.676930.240899 2.14598 0.0318742   .
-1   14604   1:14604:A:G A   G   G   ADD 503 1.676930.240899 2.14598 0.0318742   .
-1   14930   1:14930:A:G A   G   G   ADD 503 1.643590.242872 2.04585 0.0407708   .
-1   69897   1:69897:T:C T   C   T   ADD 503 1.691420.200238 2.62471 0.00867216  .
-1   86331   1:86331:A:G A   G   G   ADD 503 1.418870.238055 1.46968 0.141649    .
-1   91581   1:91581:G:A G   A   A   ADD 503 0.9313040.123644    -0.575598   0.564887    .
-1   122872  1:122872:T:G    T   G   G   ADD 503 1.048280.182036 0.259034    0.795609    .
-1   135163  1:135163:C:T    C   T   T   ADD 503 0.6766660.242611    -1.60989    0.107422    .
+<span class="c1">#CHROM  POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE</span>
+<span class="m">1</span>   <span class="m">13273</span>   <span class="m">1</span>:13273:G:C G   C   C   ADD <span class="m">503</span> <span class="m">0</span>.7461490.282904    -1.03509    <span class="m">0</span>.300628    .
+<span class="m">1</span>   <span class="m">14599</span>   <span class="m">1</span>:14599:T:A T   A   A   ADD <span class="m">503</span> <span class="m">1</span>.676930.240899 <span class="m">2</span>.14598 <span class="m">0</span>.0318742   .
+<span class="m">1</span>   <span class="m">14604</span>   <span class="m">1</span>:14604:A:G A   G   G   ADD <span class="m">503</span> <span class="m">1</span>.676930.240899 <span class="m">2</span>.14598 <span class="m">0</span>.0318742   .
+<span class="m">1</span>   <span class="m">14930</span>   <span class="m">1</span>:14930:A:G A   G   G   ADD <span class="m">503</span> <span class="m">1</span>.643590.242872 <span class="m">2</span>.04585 <span class="m">0</span>.0407708   .
+<span class="m">1</span>   <span class="m">69897</span>   <span class="m">1</span>:69897:T:C T   C   T   ADD <span class="m">503</span> <span class="m">1</span>.691420.200238 <span class="m">2</span>.62471 <span class="m">0</span>.00867216  .
+<span class="m">1</span>   <span class="m">86331</span>   <span class="m">1</span>:86331:A:G A   G   G   ADD <span class="m">503</span> <span class="m">1</span>.418870.238055 <span class="m">1</span>.46968 <span class="m">0</span>.141649    .
+<span class="m">1</span>   <span class="m">91581</span>   <span class="m">1</span>:91581:G:A G   A   A   ADD <span class="m">503</span> <span class="m">0</span>.9313040.123644    -0.575598   <span class="m">0</span>.564887    .
+<span class="m">1</span>   <span class="m">122872</span>  <span class="m">1</span>:122872:T:G    T   G   G   ADD <span class="m">503</span> <span class="m">1</span>.048280.182036 <span class="m">0</span>.259034    <span class="m">0</span>.795609    .
+<span class="m">1</span>   <span class="m">135163</span>  <span class="m">1</span>:135163:C:T    C   T   T   ADD <span class="m">503</span> <span class="m">0</span>.6766660.242611    -1.60989    <span class="m">0</span>.107422    .
 </code></pre></div>
 <h3 id="example-1-replacing-strings">Example 1: Replacing strings</h3>
 <p><code>s</code> for substitute
 <code>g</code> for global</p>
-<p>Replace the separator from <code>:</code> to <code>_</code></p>
-<div class="highlight"><pre><span></span><code>head 02_Linux_basics/sumstats.txt | sed &#39;s/:/_/g&#39;
-#CHROM  POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
-1   13273   1_13273_G_C G   C   C   ADD 503 0.7461490.282904    -1.03509    0.300628    .
-1   14599   1_14599_T_A T   A   A   ADD 503 1.676930.240899 2.14598 0.0318742   .
-1   14604   1_14604_A_G A   G   G   ADD 503 1.676930.240899 2.14598 0.0318742   .
-1   14930   1_14930_A_G A   G   G   ADD 503 1.643590.242872 2.04585 0.0407708   .
-1   69897   1_69897_T_C T   C   T   ADD 503 1.691420.200238 2.62471 0.00867216  .
-1   86331   1_86331_A_G A   G   G   ADD 503 1.418870.238055 1.46968 0.141649    .
-1   91581   1_91581_G_A G   A   A   ADD 503 0.9313040.123644    -0.575598   0.564887    .
-1   122872  1_122872_T_G    T   G   G   ADD 503 1.048280.182036 0.259034    0.795609    .
-1   135163  1_135163_C_T    C   T   T   ADD 503 0.6766660.242611    -1.60989    0.107422    .
-</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Replacing strings</p>
+<p>"Replace the separator from <code>:</code> to <code>_</code>"
+<div class="highlight"><pre><span></span><code>head 02_Linux_basics/sumstats.txt <span class="p">|</span> sed <span class="s1">&#39;s/:/_/g&#39;</span>
+<span class="c1">#CHROM  POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE</span>
+<span class="m">1</span>   <span class="m">13273</span>   1_13273_G_C G   C   C   ADD <span class="m">503</span> <span class="m">0</span>.7461490.282904    -1.03509    <span class="m">0</span>.300628    .
+<span class="m">1</span>   <span class="m">14599</span>   1_14599_T_A T   A   A   ADD <span class="m">503</span> <span class="m">1</span>.676930.240899 <span class="m">2</span>.14598 <span class="m">0</span>.0318742   .
+<span class="m">1</span>   <span class="m">14604</span>   1_14604_A_G A   G   G   ADD <span class="m">503</span> <span class="m">1</span>.676930.240899 <span class="m">2</span>.14598 <span class="m">0</span>.0318742   .
+<span class="m">1</span>   <span class="m">14930</span>   1_14930_A_G A   G   G   ADD <span class="m">503</span> <span class="m">1</span>.643590.242872 <span class="m">2</span>.04585 <span class="m">0</span>.0407708   .
+<span class="m">1</span>   <span class="m">69897</span>   1_69897_T_C T   C   T   ADD <span class="m">503</span> <span class="m">1</span>.691420.200238 <span class="m">2</span>.62471 <span class="m">0</span>.00867216  .
+<span class="m">1</span>   <span class="m">86331</span>   1_86331_A_G A   G   G   ADD <span class="m">503</span> <span class="m">1</span>.418870.238055 <span class="m">1</span>.46968 <span class="m">0</span>.141649    .
+<span class="m">1</span>   <span class="m">91581</span>   1_91581_G_A G   A   A   ADD <span class="m">503</span> <span class="m">0</span>.9313040.123644    -0.575598   <span class="m">0</span>.564887    .
+<span class="m">1</span>   <span class="m">122872</span>  1_122872_T_G    T   G   G   ADD <span class="m">503</span> <span class="m">1</span>.048280.182036 <span class="m">0</span>.259034    <span class="m">0</span>.795609    .
+<span class="m">1</span>   <span class="m">135163</span>  1_135163_C_T    C   T   T   ADD <span class="m">503</span> <span class="m">0</span>.6766660.242611    -1.60989    <span class="m">0</span>.107422    .
+</code></pre></div></p>
+</div>
 <h3 id="example-2-delete-headerthe-first-line">Example 2: Delete header(the first line)</h3>
 <p><code>-d</code> for deletion</p>
-<div class="highlight"><pre><span></span><code>head 02_Linux_basics/sumstats.txt | sed &#39;1d&#39;
-1   13273   1:13273:G:C G   C   C   ADD 503 0.7461490.282904    -1.03509    0.300628    .
-1   14599   1:14599:T:A T   A   A   ADD 503 1.676930.240899 2.14598 0.0318742   .
-1   14604   1:14604:A:G A   G   G   ADD 503 1.676930.240899 2.14598 0.0318742   .
-1   14930   1:14930:A:G A   G   G   ADD 503 1.643590.242872 2.04585 0.0407708   .
-1   69897   1:69897:T:C T   C   T   ADD 503 1.691420.200238 2.62471 0.00867216  .
-1   86331   1:86331:A:G A   G   G   ADD 503 1.418870.238055 1.46968 0.141649    .
-1   91581   1:91581:G:A G   A   A   ADD 503 0.9313040.123644    -0.575598   0.564887    .
-1   122872  1:122872:T:G    T   G   G   ADD 503 1.048280.182036 0.259034    0.795609    .
-1   135163  1:135163:C:T    C   T   T   ADD 503 0.6766660.242611    -1.60989    0.107422    .
+<div class="admonition example">
+<p class="admonition-title">Delete header(the first line)</p>
+<div class="highlight"><pre><span></span><code>head 02_Linux_basics/sumstats.txt <span class="p">|</span> sed <span class="s1">&#39;1d&#39;</span>
+<span class="m">1</span>   <span class="m">13273</span>   <span class="m">1</span>:13273:G:C G   C   C   ADD <span class="m">503</span> <span class="m">0</span>.7461490.282904    -1.03509    <span class="m">0</span>.300628    .
+<span class="m">1</span>   <span class="m">14599</span>   <span class="m">1</span>:14599:T:A T   A   A   ADD <span class="m">503</span> <span class="m">1</span>.676930.240899 <span class="m">2</span>.14598 <span class="m">0</span>.0318742   .
+<span class="m">1</span>   <span class="m">14604</span>   <span class="m">1</span>:14604:A:G A   G   G   ADD <span class="m">503</span> <span class="m">1</span>.676930.240899 <span class="m">2</span>.14598 <span class="m">0</span>.0318742   .
+<span class="m">1</span>   <span class="m">14930</span>   <span class="m">1</span>:14930:A:G A   G   G   ADD <span class="m">503</span> <span class="m">1</span>.643590.242872 <span class="m">2</span>.04585 <span class="m">0</span>.0407708   .
+<span class="m">1</span>   <span class="m">69897</span>   <span class="m">1</span>:69897:T:C T   C   T   ADD <span class="m">503</span> <span class="m">1</span>.691420.200238 <span class="m">2</span>.62471 <span class="m">0</span>.00867216  .
+<span class="m">1</span>   <span class="m">86331</span>   <span class="m">1</span>:86331:A:G A   G   G   ADD <span class="m">503</span> <span class="m">1</span>.418870.238055 <span class="m">1</span>.46968 <span class="m">0</span>.141649    .
+<span class="m">1</span>   <span class="m">91581</span>   <span class="m">1</span>:91581:G:A G   A   A   ADD <span class="m">503</span> <span class="m">0</span>.9313040.123644    -0.575598   <span class="m">0</span>.564887    .
+<span class="m">1</span>   <span class="m">122872</span>  <span class="m">1</span>:122872:T:G    T   G   G   ADD <span class="m">503</span> <span class="m">1</span>.048280.182036 <span class="m">0</span>.259034    <span class="m">0</span>.795609    .
+<span class="m">1</span>   <span class="m">135163</span>  <span class="m">1</span>:135163:C:T    C   T   T   ADD <span class="m">503</span> <span class="m">0</span>.6766660.242611    -1.60989    <span class="m">0</span>.107422    .
 </code></pre></div>
+</div>
 
 
 
