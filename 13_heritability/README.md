@@ -13,7 +13,7 @@ $$
 The **broad-sense heritability** $H^2_{broad-sense}$ is mathmatically defined as :
 
 $$
-h^2_{broad-sense} = {Var(G)\over{Var(P)}}
+H^2_{broad-sense} = {Var(G)\over{Var(P)}}
 $$
 
 
@@ -27,8 +27,24 @@ $$
 h^2_{narrow-sense} = {Var(A)\over{Var(P)}}
 $$
 
-## Liability model for binary traits
+## Liability and the Threshold model
 
+<img width="1004" alt="image" src="https://user-images.githubusercontent.com/40289485/211184406-be57ac1b-8074-4098-bdff-2eb55dd91b30.png">
 
 ## Observed-scale heritability and liability-scaled heritability
 
+Issue for binary traits : 
+!!! quote "The scale issue for binary traits"
+    For quantitative traits the scale of measurement is the same as the scale on which heritability is expressed. For disease traits, the phenotypes (case-control status) are measured on the 0–1 scale, but heritability is most interpretable on a scale of liability.
+    - Reference: Lee, S. H., Wray, N. R., Goddard, M. E., & Visscher, P. M. (2011). Estimating missing heritability for disease from genome-wide association studies. The American Journal of Human Genetics, 88(3), 294-305.
+
+Conversion formula (Equation 23 from Lee. 2011):
+
+$$
+h^2_{liability\\_scale} = h^2_{observed\\_scale} * {{K(1-K)}\over{Z^2}} *  {{K(1-K)}\over{P(1-P)}}
+$$
+
+- $K$ : Population disease prevalence.
+- $P$ : Sample disease prevalence.
+- $Z$ : The height of the standard normal probability density function at threshold T. `scipy.stats.norm.pdf(T, loc=0, scale=1)`.
+- $T$ : The threshold. `scipy.stats.norm.ppf(1 - K, loc=0, scale=1)` or `scipy.stats.norm.isf(K)`.
