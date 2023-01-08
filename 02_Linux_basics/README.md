@@ -1,6 +1,6 @@
 # Introduction
 
-This section is intended to provide a minumum introduction of the Linux system for handling genomic data.  (If you are alreay familiar with Linux commands, it is completely ok to skip this section.)
+This section is intended to provide a minumum introduction of the command line in Linux system for handling genomic data.  (If you are alreay familiar with Linux commands, it is completely ok to skip this section.)
 
 If you are a beginner with no background in programming, it would be helpful if you could learn some basic commands first before any analysis. 
 In this section, we will introduce the most basic commands which enable you to handle genomic files in the terminal using command lines in a linux system. 
@@ -35,15 +35,18 @@ In this section, we will introduce the most basic commands which enable you to h
 - [Downloading](#download)
 
 ## Linux System Introduction
-### What is Linux?
 
-- **Linux**: a family of open-source Unix-like operating systems based on the **Linux kernel**. 
-- **Linux distributions**: an operating system made from a software collection that is based upon the Linux kernel.
+### What is Linux?
+|Term|Description|
+|-|-|
+|**Linux** |refers to a family of open-source Unix-like operating systems based on the **Linux kernel**.|
+|**Linux kernel** | a free and open-source Unix-like operating system kernel, which works on Memory management, Process management, Device drivers and System calls and security.|
+|**Linux distributions**| refer to operating systems made from a software collection that is based upon the Linux kernel.|
+
+Reference: https://en.wikipedia.org/wiki/Linux
 
 ![image](https://user-images.githubusercontent.com/40289485/210223071-b9d3de64-a2ac-4785-95a5-6a30fdfd7ed4.png)
 
-
-Reference: https://en.wikipedia.org/wiki/Linux
 
 ### How do we interact with computers?
 
@@ -131,6 +134,10 @@ This command prints the absolute path.
 
 ![image](https://user-images.githubusercontent.com/40289485/210223719-890626d0-a502-4399-8ed3-e016338b51cb.png)
 
+|Type|Description|Example|
+|-|-|-|
+|**Absolute path**|path starting form root (the orange path)|`/home/User3/GWASTutorial/02_Linux_basics/README.md`|
+|**Relative path**|ath starting form current directory (the blue path)|`./GWASTutorial/02_Linux_basics/README.md`|
 
 - **Absolute path**: path starting form root (the orange path) : `/home/User3/GWASTutorial/02_Linux_basics/README.md`
 - **Relative path**: path starting form current directory (the blue path): `./GWASTutorial/02_Linux_basics/README.md`
@@ -519,26 +526,19 @@ cat sumstats.txt | sort | uniq | wc > count.txt
 cat sumstats.txt | sort | uniq | wc >> count.txt
 ```
 
-#### `*`
-`*` means all files.
+Other useful commands include : 
 
-Note: `Be extremely careful when you use rm and *. It is disastrous when you mistakenly type `rm *``
+|Command|Description|Example Code| Example code meaning|
+|-|-|-|-|
+|`*` |zero or more characters; Useful when you want to manipulate multiple files|-|-|
+|`.` |the current directory|-|-|
+|`..`|the parent directory of the current directory.|`cd ..`|change to the parent directory of the current directory|
+|`~` |the home directory|`cd ~`|change to the curent user's home directory|
+|`-` |the last directory you are working in.|`cd -`|change to the last directory you are working in.|
 
-#### `.`
+!!! warnig
+    Be extremely careful when you use rm and *. It is disastrous when you mistakenly type `rm *`
 
-`.` means the current directory.
-
-#### `..`
-
-`..` means the parent directory of the current directory.
-
-#### `~`
-
-`~` means your home directory.
-
-#### `-`
-
-`-` means the last directory you are working in.
  
 ## Bash scripts
 
