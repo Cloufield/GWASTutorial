@@ -1065,6 +1065,8 @@ head ../02_Linux_basics/sumstats.txt
 1   135163  1:135163:C:T    C   T   T   ADD 503 0.6766660.242611    -1.60989    0.107422    .
 </code></pre></div>
 <h3 id="example-1">Example 1</h3>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
 <p>Select variants on chromosome 3 (keeping the headers):</p>
 <div class="highlight"><pre><span></span><code>awk &#39;NR==1 ||  $1==2 {print $0}&#39; ../02_Linux_basics/sumstats.txt | head
 #CHROM  POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
@@ -1078,6 +1080,7 @@ head ../02_Linux_basics/sumstats.txt
 2   39340   2:39340:A:G A   G   G   ADD 503 1.3043  0.161184    1.64822 0.0993082   .
 2   55237   2:55237:T:C T   C   C   ADD 503 1.314860.161988 1.68983 0.0910614   .
 </code></pre></div>
+</div>
 <p>The <code>NR</code> here means row number. The condition here <code>NR==1 || $1==3</code> means if it is the first row or the first column is equal to 3, conduct the process <code>print $0</code>, which mean print all columns. </p>
 <h3 id="example-2">Example 2</h3>
 <p>Select significant variants:</p>
