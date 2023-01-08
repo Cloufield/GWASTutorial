@@ -13,9 +13,32 @@
 
 LDSC is one of the most commonly used command line tool to estimate hertability, genetic correlation and cell/tissue type specificity from GWAS summary statistics. 
 
-LD: Linkage disequilibrium
+### LD: Linkage disequilibrium
 
-For details of LD score regression, please refer to :
+Linkage disequilibrium (LD) :  non-random association of alleles at different loci in a given population. ([Wiki](https://en.wikipedia.org/wiki/Linkage_disequilibrium))
+
+### LD score
+
+LD score $l_j$ for a SNP $j$ is defined as the sum of $r^2$ for the SNP and other SNPs in a region. 
+
+$$
+l_j= \Sigma_k{r^2_{j,k}}
+$$
+
+### LD score regression
+
+Key idea: A variant will have higher test statistics if it is in LD with causal variant, and the elevation is proportional to the LD ( $r^2$ ) with the causal variant.  
+
+$$
+E[\chi^2|l_j] = {{Nh^2l_j}\over{M}} + Na + 1
+$$
+
+- $N$: sample size.
+- $M$ : number of SNPs.
+- $h^2$ : observed-scale heritability
+- $a$ : the effect of confounding factors, including crytic relatedness and populatiuon stratification.
+
+For more details of LD score regression, please refer to :
 - Bulik-Sullivan, Brendan K., et al. "LD Score regression distinguishes confounding from polygenicity in genome-wide association studies." Nature genetics 47.3 (2015): 291-295.
 
 
