@@ -43,10 +43,15 @@ In this section, we will introduce the most basic commands which enable you to h
 |**Linux kernel** | a free and open-source Unix-like operating system kernel, which works on Memory management, Process management, Device drivers and System calls and security.|
 |**Linux distributions**| refer to operating systems made from a software collection that is based upon the Linux kernel.|
 
-Reference: https://en.wikipedia.org/wiki/Linux
-
 ![image](https://user-images.githubusercontent.com/40289485/210223071-b9d3de64-a2ac-4785-95a5-6a30fdfd7ed4.png)
 
+!!! example "Some of the most common linux distributions"
+    - Unbuntu : [https://ubuntu.com/](https://ubuntu.com/)
+    - CentOS : [https://www.centos.org/](https://www.centos.org/)
+    - Fedora : [https://getfedora.org/](https://getfedora.org/)
+    - Linux Mint : [https://linuxmint.com/](https://linuxmint.com/)
+
+Reference: https://en.wikipedia.org/wiki/Linux
 
 ### How do we interact with computers?
 
@@ -136,11 +141,8 @@ This command prints the absolute path.
 
 |Type|Description|Example|
 |-|-|-|
-|**Absolute path**|path starting form root (the orange path)|`/home/User3/GWASTutorial/02_Linux_basics/README.md`|
-|**Relative path**|ath starting form current directory (the blue path)|`./GWASTutorial/02_Linux_basics/README.md`|
-
-- **Absolute path**: path starting form root (the orange path) : `/home/User3/GWASTutorial/02_Linux_basics/README.md`
-- **Relative path**: path starting form current directory (the blue path): `./GWASTutorial/02_Linux_basics/README.md`
+|**Absolute path**|path starting from root (the orange path)|`/home/User3/GWASTutorial/02_Linux_basics/README.md`|
+|**Relative path**|ath starting from the current directory (the blue path)|`./GWASTutorial/02_Linux_basics/README.md`|
 
 
 #### `cd` 
