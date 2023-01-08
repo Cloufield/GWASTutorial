@@ -35,14 +35,15 @@ nav:
        - "PCA" : 05_PCA.md
        - "Plot PCA" : plot_PCA.ipynb
     - "GWAS" : 
-       - "Association tests - PLINK": 06_Association_tests.md
-       - "Visualization": Visualization.ipynb
-       - "Whole genome regression - REGENIE" : 32_whole_genome_regression.md
+       - "Association tests by PLINK": 06_Association_tests.md
+       - "Visualization by gwaslab": Visualization.ipynb
+       - "Linear mixed model (LMM)" : 33_linear_mixed_model.md
+       - "Whole genome regression by REGENIE" : 32_whole_genome_regression.md
     - "Post-GWAS" :
-       - "Annotation" : 07_Annotation.md
+       - "Annotation by ANNOVAR & VEP" : 07_Annotation.md
        - "Heritability" : 13_heritability.md
-       - "LDSC" : 08_LDSC.md
-       - "Gene/Gene-set tests" : 09_Gene_based_analysis.md
+       - "LD socre regression by LDSC" : 08_LDSC.md
+       - "Gene/Gene-set tests by MAGMA" : 09_Gene_based_analysis.md
        - "PRS" : 10_PRS.md
     - Others :
        - "Recommended reading" : 90_Recommended_Reading.md
