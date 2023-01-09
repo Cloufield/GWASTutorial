@@ -61,3 +61,12 @@ $$
 - $P$ : Sample disease prevalence.
 - $Z$ : The height of the standard normal probability density function at threshold T. `scipy.stats.norm.pdf(T, loc=0, scale=1)`.
 - $T$ : The threshold. `scipy.stats.norm.ppf(1 - K, loc=0, scale=1)` or `scipy.stats.norm.isf(K)`.
+
+
+## Further Reading 
+
+- (Blog by Neale Lab) http://www.nealelab.is/blog/2017/9/13/heritability-101-what-is-heritability
+- Manolio, T. A., Collins, F. S., Cox, N. J., Goldstein, D. B., Hindorff, L. A., Hunter, D. J., ... & Visscher, P. M. (2009). Finding the missing heritability of complex diseases. Nature, 461(7265), 747-753.
+- Visscher, P. M., Hill, W. G., & Wray, N. R. (2008). Heritability in the genomics era—concepts and misconceptions. Nature reviews genetics, 9(4), 255-266.
+- Yang, J., Zeng, J., Goddard, M. E., Wray, N. R., & Visscher, P. M. (2017). Concepts, estimation and interpretation of SNP-based heritability. Nature genetics, 49(9), 1304-1310.
+- Witte, J. S., Visscher, P. M., & Wray, N. R. (2014). The contribution of genetic variants to disease depends on the ruler. Nature Reviews Genetics, 15(11), 765-776.
