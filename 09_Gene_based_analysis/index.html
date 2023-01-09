@@ -1074,6 +1074,18 @@
 </ul>
 <h3 id="magma-introduction">MAGMA Introduction</h3>
 <p>MAGMA is one the most commonly used tools for gene-based and gene-set analysis. </p>
+<p>Gene-level test in MAGMA employs a multiple linear principal components regression, and F test to obtain P values for genes.</p>
+<p>The multiple linear principal components regression: </p>
+<div class="arithmatex">\[
+Y = \alpha_{0,g} + X_g \alpha_g + W \beta_g + \epsilon_g
+\]</div>
+<ul>
+<li><span class="arithmatex">\(X_g\)</span> : principal component matrix </li>
+<li><span class="arithmatex">\(\alpha_g\)</span> : genetic effects</li>
+<li><span class="arithmatex">\(W\)</span> : covariate matrix</li>
+<li><span class="arithmatex">\(\beta_g\)</span> : effects of covariates </li>
+</ul>
+<p><span class="arithmatex">\(X_g\)</span> is obtained by first projecting the variant matrix of a gene onto its PC, and removing PCs with samll eigenvalues.</p>
 <h3 id="install-magma">Install MAGMA</h3>
 <p>Dowload MAGMA for your operating system from the following url:
 https://ctg.cncr.nl/software/magma</p>
@@ -1108,6 +1120,10 @@ magma --annotate \
       --gene-loc ${ncbi37} \
       --out HDLC_chr3
 </code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Usually to capture the variants in the regulatory regions, we will add windows upstream and downstream of the genes with <code>--annotate window</code>. For example, <code>--annotate window=35,10</code> set a 35 kilobase pair(kb) upstream and 10kb downstream window.</p>
+</div>
 <h3 id="gene-based-analysis">Gene-based analysis</h3>
 <div class="highlight"><pre><span></span><code>ref=~/tools/magma/g1000_eas/g1000_eas
 magma \
@@ -1117,6 +1133,18 @@ magma \
     --out HDLC_chr3
 </code></pre></div>
 <h3 id="gene-set-level-analysis">Gene-set level analysis</h3>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>Competitive gene-set analysis tests whether the genes in a gene-set are more strongly associated with the phenotype of interest than other genes.</p>
+</div>
+<p>P values for each gene were converted to Z scores to perform gene-set level analysis.</p>
+<div class="arithmatex">\[
+Z = \beta_{0,S} + S_S \beta_S + \epsilon
+\]</div>
+<ul>
+<li><span class="arithmatex">\(S_S\)</span> : indicator (if the gene is in a specified gene set)</li>
+<li><span class="arithmatex">\(\beta_S\)</span> : difference in effects between genes in the specified set and genes ouside the set.</li>
+</ul>
 <div class="highlight"><pre><span></span><code>geneset=/home/he/tools/magma/MSigDB/msigdb_v2022.1.Hs_files_to_download_locally/msigdb_v2022.1.Hs_GMTs/msigdb.v2022.1.Hs.entrez.gmt
 magma \
     --gene-results HDLC_chr3.genes.raw \
