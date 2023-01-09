@@ -19,13 +19,17 @@ $$
 
 ## Narrow-sense Heritability
 
-**genetic effects** $Var(G)$ is composed of multiple effects including **additive effects** $Var(A)$, dominant effects, recessive effects, epistatic effects and so forth.
+**Genetic effects** $Var(G)$ is composed of multiple effects including **additive effects** $Var(A)$, dominant effects, recessive effects, epistatic effects and so forth.
 
 Narrrow-sense heritability is defined as: 
 
 $$
 h^2_{narrow-sense} = {Var(A)\over{Var(P)}}
 $$
+
+## SNP Heritability
+
+**SNP heritability** : the proportion of phenotypic variance explained by tested SNPs in GWAS
 
 ## Liability and Threshold model
 
