@@ -210,11 +210,32 @@ We can see that from the log:
 
 According to LDSC documents, Ratio measures the proportion of the inflation in the mean chi^2 that the LD Score regression intercept ascribes to causes other than polygenic heritability. The value of ratio should be close to zero, though in practice values of 10-20% are not uncommon.
 
-- Ratio = (intercept-1)/(mean(chi^2)-1)
+$$
+Ratio = {{intercept-1}\over{mean(\chi^2)-1}}
+$$
 
 ## Cross-trait LD score regression
 
 Cross-trait LD score regression is employed to estimate the genetic correlation between a pair of traits.
+
+Key idea: replace `\chi^2` in univariate LD score regression and the relationship (SNPs with high LD ) still holds.
+
+$$
+E[z_{1j}z_{2j}] = {{\sqrt{N_1N_2}\rho_g}\over{M}}l_j + {{\rho N_s}\over{\sqrt{N_1N_2}}}
+$$
+
+- $z_ij$ : z score of trait i for SNP j
+- $N_i$ : sample size of trait i
+- $\rho$ : phenotypic correlation
+- $\rho_g$ : genetic covariance 
+- $l_j$ : LD score
+- $M$ : number of SNPs
+
+Then we can get the genetic correlation by :
+
+$$
+r_g = {{\rho_g}\over{\sqrt{h_1^2h_2^2}}}
+$$
 
 - Reference: Bulik-Sullivan, Brendan, et al. "An atlas of genetic correlations across human diseases and traits." Nature genetics 47.11 (2015): 1236-1241.
 
@@ -299,6 +320,17 @@ Total time elapsed: 10.39s
 
 ## Partitioned LD regression
 
+Partitioned LD regression is utilized to evaluate the contribution of each functional group to the total SNP heriatbility.
+
+$$
+E[\chi^2] = N \sum\limits_C \tau_C l(j,C) + Na + 1
+$$
+
+- $C$ : functional categories
+- $l(j,C)$ : LD score for SNP j with respect to C. 
+- $\tau_C$ : per-SNP contribution of category C to heritability
+
+
 - Reference: Finucane, Hilary K., et al. "Partitioning heritability by functional annotation using genome-wide association summary statistics." Nature genetics 47.11 (2015): 1228-1235.
 
 ```Bash
@@ -314,7 +346,9 @@ ldsc.py \
 
 ## Celltype specificity LD regression 
 
-LDSC-SEG
+LDSC-SEG :  LD score regression applied to specifically expressed genes
+
+An extension of Partitioned LD regression. Categories are defined by tissue or cell-type specific genes.
 
 - Reference: Finucane, Hilary K., et al. "Heritability enrichment of specifically expressed genes identifies disease-relevant tissues and cell types." Nature genetics 50.4 (2018): 621-629.
 
