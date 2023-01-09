@@ -29,7 +29,13 @@ $$
 
 ## SNP Heritability
 
-**SNP heritability** : the proportion of phenotypic variance explained by tested SNPs in GWAS
+**SNP heritability $h^2_{SNP}$** : the proportion of phenotypic variance explained by tested SNPs in a GWAS.
+
+Common methods to estimate SNP heritability includes:
+
+- GCTA-GREML  (based on Genome-based  Restricted  Maximum  Likelihood)
+- LDSC (based on LD score regression)
+
 
 ## Liability and Threshold model
 
