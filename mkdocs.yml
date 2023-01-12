@@ -28,6 +28,8 @@ nav:
        - "Job scheduler" : 85_job_scheduler.md  
        - "Text editing - awk" : 60_awk.md
        - "Text editing - sed" : 61_sed.md
+       - "Anaconda" : 80_anaconda.md
+       - "Jupyter notebook" : 81_jupyter_notebook.md
        - "Resources" : 69_resources.md
     - "Pre-GWAS" :
        - "Sample Dataset" : 01_Dataset.md
@@ -50,8 +52,6 @@ nav:
        - "Recommended reading" : 90_Recommended_Reading.md
        - "Assignment - 1KG PCA" : 95_Assignment.md
        - "Assignment - Presentation" : 96_Assignment2.md
-       - "Anaconda" : 80_anaconda.md
-       - "Jupyter notebook" : 81_jupyter_notebook.md
 
 markdown_extensions:
   - toc:
