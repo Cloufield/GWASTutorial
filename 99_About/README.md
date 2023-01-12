@@ -5,7 +5,7 @@ This tutorial is provided by the [Laboratory of Complex Trait Genomics (Kamatani
  ![image](https://user-images.githubusercontent.com/40289485/211962816-5f367b28-f136-468f-8d41-0bffff54481f.png)
  
 ## Main Contributors
-
+- @kamatani-lab ： https://github.com/kamatani-lab
 - @koido : https://github.com/koido
 - @shimaomao26 : https://github.com/shimaomao26
 - @Cloufield : https://github.com/Cloufield
