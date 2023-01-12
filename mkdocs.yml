@@ -49,6 +49,7 @@ nav:
     - Others :
        - "Recommended reading" : 90_Recommended_Reading.md
        - "Assignment - 1KG PCA" : 95_Assignment.md
+       - "Assignment - Presentation" : 96_Assignment2.md
        - "Anaconda" : 80_anaconda.md
        - "Jupyter notebook" : 81_jupyter_notebook.md
 
