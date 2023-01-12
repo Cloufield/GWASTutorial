@@ -33,14 +33,10 @@ Download the files we need from 1000 Genomes Project FTP site:
 4. Strict mask
 
 !!! tip
-    Autosome VCF: chr1 - chr22 files:
-    http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/
-    Ancestry information file (in the same directory):
-    http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/integrated_call_samples_v3.20130502.ALL.panel
-    Reference genome sequence:
-    https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/
-    Strict mask:
-    https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/release/20130502/supporting/accessible_genome_masks/20141020.strict_mask.whole_genome.bed
+    - Autosome VCF: chr1 - chr22 files: [in this directory](http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/).
+    - Ancestry information file: [download here](http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/integrated_call_samples_v3.20130502.ALL.panel)
+    - Reference genome sequence: [in this directory](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/).
+    - Strict mask: [download here](https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/release/20130502/supporting/accessible_genome_masks/20141020.strict_mask.whole_genome.bed)
 
 !!! Note 
     If it takes too long or if you are using your local laptop, you can just download the files for chr1.
@@ -109,7 +105,7 @@ Since the variants are not normalized and also have many duplications, we need t
 
 ## 4. Using SNPs only in strict masks
 
-https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/accessible_genome_masks/
+Strict masks are [in this directory](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/accessible_genome_masks/).
 
 !!! quote "Strict mask"
     The overlapped region with this mask is “callable” (or credible variant calls).
