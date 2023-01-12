@@ -15,7 +15,7 @@
     
     
       
-        <title>SSH - GWASTutorial</title>
+        <title>Assignment - Presentation - GWASTutorial</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ssh" class="md-skip">
+        <a href="#the-final-presentation-for-ii" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SSH
+              Assignment - Presentation
             
           </span>
         </div>
@@ -158,15 +158,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../02_Linux_basics/" class="md-tabs__link md-tabs__link--active">
+      <a href="../02_Linux_basics/" class="md-tabs__link">
         Command Line
       </a>
     </li>
@@ -224,13 +222,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../90_Recommended_Reading/" class="md-tabs__link">
+      <a href="../90_Recommended_Reading/" class="md-tabs__link md-tabs__link--active">
         Others
       </a>
     </li>
@@ -349,14 +349,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
       
       
@@ -419,21 +417,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../84_ssh/" class="md-nav__link">
         SSH
       </a>
-      
     </li>
   
 
@@ -805,12 +793,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
       
       
       
@@ -859,11 +849,52 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../96_Assignment2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Assignment - Presentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Assignment - Presentation
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#outline" class="md-nav__link">
+    Outline
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -923,6 +954,21 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#outline" class="md-nav__link">
+    Outline
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -936,21 +982,42 @@
                   
 
 
-<h1 id="ssh">SSH</h1>
-<p><strong>SSH</strong> stands for <strong>Secure Shell Protocol</strong>, which enables you to connect to remote server safely.</p>
-<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/210223930-1138fb9f-5230-415d-a595-3239113372c8.png" /></p>
-<p>login to romote server:</p>
-<div class="highlight"><pre><span></span><code>ssh &lt;username&gt;@&lt;host&gt;
-</code></pre></div>
-<p>Before you login in, you need to generate keys for ssh connection:</p>
-<p><div class="highlight"><pre><span></span><code>ssh-keygen -t rsa -b <span class="m">4096</span>
-</code></pre></div>
-You will get two keys, a public one and a private one.</p>
+<h1 id="the-final-presentation-for-ii">The final presentation for 基礎演習II</h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <ul>
-<li>public key  :  <code>~/.ssh/id_rsa.pub</code></li>
-<li>private key :  <code>~/.ssh/id_rsa</code>   ,please don't share this with others.       </li>
+<li>Time limit: ~15 mins</li>
+<li>Number of slides: less than 10 slides</li>
 </ul>
-<p>What you need to do is just add you local public key to <code>~/.ssh/authorized_keys</code> on host server.</p>
+</div>
+<h2 id="outline">Outline</h2>
+<p>(Just an example, there is no need to strictly follow this.)</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Describe the general workflow of GWAS in 1 slide. (1 min)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Summarize QC steps in 1 slide (1 min)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Summarize PCA in 1 slide (1 min)<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> expalin aim and major steps</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Show your 1000 genome PCA results (~2 slides): (~4 min)<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> explain what tool and data you use.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> explain what kind of analysis you performed.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> show your results and explain the scatter plot.</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Association analysis (1-2 slides) : (2 min)<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> explain the variables in the regression and the header of your GWAS results.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> explain your manhattan plot and qq plot.</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Post GWAS analysis (~6 min)<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> explain what kind of post-GWAS analysis you perform.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> explain the aim for each post-GWAS analysis.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> explain the results of LDSC.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> explain the annotated results</li>
+</ul>
+</li>
+</ul>
 
 
 
@@ -976,7 +1043,7 @@ You will get two keys, a public one and a private one.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../83_git_and_github/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Git and github" rel="prev">
+        <a href="../95_Assignment/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Assignment - 1KG PCA" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -985,20 +1052,20 @@ You will get two keys, a public one and a private one.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Git and github
+              Assignment - 1KG PCA
             </div>
           </div>
         </a>
       
       
         
-        <a href="../85_job_scheduler/" class="md-footer__link md-footer__link--next" aria-label="Next: Job scheduler" rel="next">
+        <a href="../80_anaconda/" class="md-footer__link md-footer__link--next" aria-label="Next: Anaconda" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Job scheduler
+              Anaconda
             </div>
           </div>
           <div class="md-footer__button md-icon">
