@@ -138,9 +138,9 @@ Draw PC1 - PC2 plot and color each individual by ancestry information (from ALL.
     (If you are having trouble performing any of the steps, you can also refer to: https://www.biostars.org/p/335605/.)
 
 ## Checklist 
-- [ ] What does variant normalization mean and What are the two principles for variant normalization?
-- [ ] For chromosome 1, what is the proportion of commom variants(MAF >5%) / low-frequency-variants(1<=MAF <5%) / and rare variants(MAF <1%) ? If possible, please draw a figure showing the distribution of MAF. (plink --freq)
-- [ ] What pattern did you observe from the 1KG PCA plot? 
+- [x] What does variant normalization mean and What are the two principles for variant normalization?
+- [x] For chromosome 1, what is the proportion of commom variants(MAF >5%) / low-frequency-variants(1<=MAF <5%) / and rare variants(MAF <1%) ? If possible, please draw a figure showing the distribution of MAF. (plink --freq)
+- [x] What pattern did you observe from the 1KG PCA plot? 
 
 ## Reference
 
