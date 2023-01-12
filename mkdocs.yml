@@ -48,6 +48,7 @@ nav:
        - "PRS" : 10_PRS.md
     - Others :
        - "Recommended reading" : 90_Recommended_Reading.md
+       - "Assignment - 1KG PCA" : 95_Assignment.md
        - "Anaconda" : 80_anaconda.md
        - "Jupyter notebook" : 81_jupyter_notebook.md
 
