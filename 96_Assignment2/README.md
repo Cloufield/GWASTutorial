@@ -12,7 +12,7 @@
 - [x] Describe the general workflow of GWAS in 1 slide. (1 min)
 - [x] Summarize QC steps in 1 slide (1 min)
 - [x] Summarize PCA in 1 slide (1 min)
-    - [x] explain aims and major steps
+    - [x] explain the aims and major steps
 - [x] Show your 1000 genome PCA results (~2 slides): (~4 min)
     - [x] explain what tool and data you use.
     - [x] explain what kind of analysis you performed.
