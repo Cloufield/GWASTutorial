@@ -14,7 +14,9 @@
 ### MAGMA Introduction
 MAGMA is one the most commonly used tools for gene-based and gene-set analysis. 
 
-Gene-level test in MAGMA employs a multiple linear principal components regression, and F test to obtain P values for genes.
+**Gene-level analysis** in MAGMA uses two models:
+
+1. MAGMA employs a multiple linear principal components regression, and F test to obtain P values for genes.
 
 The multiple linear principal components regression: 
 
@@ -28,6 +30,30 @@ $$
 - $\beta_g$ : effects of covariates 
 
 $X_g$ is obtained by first projecting the variant matrix of a gene onto its PC, and removing PCs with samll eigenvalues.
+
+!!! note
+    The linear principal components regression model requires raw genotype data.
+
+2. SNP-wise models
+
+SNP-wise Mean: perform tests on mean SNP association
+
+!!! note
+    SNP-wise models use summary statistics and reference LD panel
+
+**Gene-set analysis**
+
+!!! quote
+    Competitive gene-set analysis tests whether the genes in a gene-set are more strongly associated with the phenotype of interest than other genes.
+
+P values for each gene were converted to Z scores to perform gene-set level analysis.
+
+$$
+Z = \beta_{0,S} + S_S \beta_S + \epsilon
+$$
+
+- $S_S$ : indicator (if the gene is in a specified gene set)
+- $\beta_S$ : difference in effects between genes in the specified set and genes ouside the set.
 
 ### Install MAGMA
 Dowload MAGMA for your operating system from the following url:
@@ -91,18 +117,6 @@ magma \
 
 ```
 ### Gene-set level analysis
-
-!!! quote
-    Competitive gene-set analysis tests whether the genes in a gene-set are more strongly associated with the phenotype of interest than other genes.
-
-P values for each gene were converted to Z scores to perform gene-set level analysis.
-
-$$
-Z = \beta_{0,S} + S_S \beta_S + \epsilon
-$$
-
-- $S_S$ : indicator (if the gene is in a specified gene set)
-- $\beta_S$ : difference in effects between genes in the specified set and genes ouside the set.
 
 ```
 geneset=/home/he/tools/magma/MSigDB/msigdb_v2022.1.Hs_files_to_download_locally/msigdb_v2022.1.Hs_GMTs/msigdb.v2022.1.Hs.entrez.gmt
