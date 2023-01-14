@@ -19,12 +19,17 @@
 |2005|Hirschhorn, J. N., & Daly, M. J. (2005). Genome-wide association studies for common diseases and complex traits. Nature reviews genetics, 6(2), 95-108.|Pubmed|
 |2006|Balding, D. J. (2006). A tutorial on statistical methods for population association studies. Nature reviews genetics, 7(10), 781-791.|Pubmed|
 |2008|McCarthy, M. I., Abecasis, G. R., Cardon, L. R., Goldstein, D. B., Little, J., Ioannidis, J., & Hirschhorn, J. N. (2008). Genome-wide association studies for complex traits: consensus, uncertainty and challenges. Nature reviews genetics, 9(5), 356-369.|Pubmed|
-|2010|Price, A. L., Zaitlen, N. A., Reich, D., & Patterson, N. (2010). New approaches to population stratification in genome-wide association studies. Nature reviews genetics, 11(7), 459-463.
-- |Pubmed|
+|2010|Price, A. L., Zaitlen, N. A., Reich, D., & Patterson, N. (2010). New approaches to population stratification in genome-wide association studies. Nature reviews genetics, 11(7), 459-463.|Pubmed|
 |2009|Ioannidis, J., Thomas, G., & Daly, M. J. (2009). Validating, augmenting and refining genome-wide association signals. Nature Reviews Genetics, 10(5), 318-329.|Pubmed|
 
 
 ## Topic-specific
+
+### LD 
+
+|Year| Reference | Link|
+|-|-|-|
+|2008|Slatkin, M. (2008). Linkage disequilibrium—understanding the evolutionary past and mapping the medical future. Nature Reviews Genetics, 9(6), 477-485.|Pubmed|
 
 ### Imuptation
 
