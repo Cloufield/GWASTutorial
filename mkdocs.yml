@@ -44,9 +44,10 @@ nav:
        - "Whole genome regression by REGENIE" : 32_whole_genome_regression.md
     - "Post-GWAS" :
        - "Annotation by ANNOVAR & VEP" : 07_Annotation.md
-       - "Heritability" : 13_heritability.md
+       - "Heritability Concepts" 13_heritability.md
        - "LD socre regression by LDSC" : 08_LDSC.md
        - "Gene/Gene-set tests by MAGMA" : 09_Gene_based_analysis.md
+       - "Fine-mapping by susieR" :  12_fine_mapping.md
        - "PRS" : 10_PRS.md
     - Others :
        - "Recommended reading" : 90_Recommended_Reading.md
