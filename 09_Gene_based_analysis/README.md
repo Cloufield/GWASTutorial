@@ -12,12 +12,14 @@
 - [Reference](#reference)
 
 ### MAGMA Introduction
+
 MAGMA is one the most commonly used tools for gene-based and gene-set analysis. 
 
 **Gene-level analysis** in MAGMA uses two models:
 
-1. MAGMA employs a multiple linear principal components regression, and F test to obtain P values for genes.
+**1.Multiple linear principal components regression**
 
+MAGMA employs a multiple linear principal components regression, and F test to obtain P values for genes.
 The multiple linear principal components regression: 
 
 $$
@@ -34,7 +36,7 @@ $X_g$ is obtained by first projecting the variant matrix of a gene onto its PC, 
 !!! note
     The linear principal components regression model requires raw genotype data.
 
-2. SNP-wise models
+**2.SNP-wise models**
 
 SNP-wise Mean: perform tests on mean SNP association
 
