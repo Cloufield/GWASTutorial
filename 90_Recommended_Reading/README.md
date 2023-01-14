@@ -1,6 +1,6 @@
 # Recommended reading
 
-## Text books
+## Textbooks
 
 |Year| Category | Reference|
 |-|-|-|
