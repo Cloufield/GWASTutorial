@@ -1116,7 +1116,10 @@
 </ul>
 <h3 id="magma-introduction">MAGMA Introduction</h3>
 <p>MAGMA is one the most commonly used tools for gene-based and gene-set analysis. </p>
-<p>Gene-level test in MAGMA employs a multiple linear principal components regression, and F test to obtain P values for genes.</p>
+<p><strong>Gene-level analysis</strong> in MAGMA uses two models:</p>
+<ol>
+<li>MAGMA employs a multiple linear principal components regression, and F test to obtain P values for genes.</li>
+</ol>
 <p>The multiple linear principal components regression: </p>
 <div class="arithmatex">\[
 Y = \alpha_{0,g} + X_g \alpha_g + W \beta_g + \epsilon_g
@@ -1128,6 +1131,31 @@ Y = \alpha_{0,g} + X_g \alpha_g + W \beta_g + \epsilon_g
 <li><span class="arithmatex">\(\beta_g\)</span> : effects of covariates </li>
 </ul>
 <p><span class="arithmatex">\(X_g\)</span> is obtained by first projecting the variant matrix of a gene onto its PC, and removing PCs with samll eigenvalues.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The linear principal components regression model requires raw genotype data.</p>
+</div>
+<ol>
+<li>SNP-wise models</li>
+</ol>
+<p>SNP-wise Mean: perform tests on mean SNP association</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SNP-wise models use summary statistics and reference LD panel</p>
+</div>
+<p><strong>Gene-set analysis</strong></p>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>Competitive gene-set analysis tests whether the genes in a gene-set are more strongly associated with the phenotype of interest than other genes.</p>
+</div>
+<p>P values for each gene were converted to Z scores to perform gene-set level analysis.</p>
+<div class="arithmatex">\[
+Z = \beta_{0,S} + S_S \beta_S + \epsilon
+\]</div>
+<ul>
+<li><span class="arithmatex">\(S_S\)</span> : indicator (if the gene is in a specified gene set)</li>
+<li><span class="arithmatex">\(\beta_S\)</span> : difference in effects between genes in the specified set and genes ouside the set.</li>
+</ul>
 <h3 id="install-magma">Install MAGMA</h3>
 <p>Dowload MAGMA for your operating system from the following url:
 https://ctg.cncr.nl/software/magma</p>
@@ -1175,18 +1203,6 @@ magma \
     --out HDLC_chr3
 </code></pre></div>
 <h3 id="gene-set-level-analysis">Gene-set level analysis</h3>
-<div class="admonition quote">
-<p class="admonition-title">Quote</p>
-<p>Competitive gene-set analysis tests whether the genes in a gene-set are more strongly associated with the phenotype of interest than other genes.</p>
-</div>
-<p>P values for each gene were converted to Z scores to perform gene-set level analysis.</p>
-<div class="arithmatex">\[
-Z = \beta_{0,S} + S_S \beta_S + \epsilon
-\]</div>
-<ul>
-<li><span class="arithmatex">\(S_S\)</span> : indicator (if the gene is in a specified gene set)</li>
-<li><span class="arithmatex">\(\beta_S\)</span> : difference in effects between genes in the specified set and genes ouside the set.</li>
-</ul>
 <div class="highlight"><pre><span></span><code>geneset=/home/he/tools/magma/MSigDB/msigdb_v2022.1.Hs_files_to_download_locally/msigdb_v2022.1.Hs_GMTs/msigdb.v2022.1.Hs.entrez.gmt
 magma \
     --gene-results HDLC_chr3.genes.raw \
