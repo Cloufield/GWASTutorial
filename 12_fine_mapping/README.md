@@ -2,7 +2,41 @@
 
 ## Introduction
 
-Susie : Sum of Single Effects” (SuSiE) model.
+Fine-mapping : Fine-mapping aims to identfiy the causal variant(s) within a locus for a disease, given the evidence of the significant association of the locus (or genomic region) in GWAS of a disease. 
+
+Fine-mapping using individual data is usually performed by fitting the multiple linear regression model:
+
+$$y = Xb + e$$
+
+- $b = (b_1, …, b_J)^T$ is a vector of genetic effects of variants.
+
+The aim of fine-mapping is to estimate the PIP (posterior inclusion probability), which indicates the evidence for SNP j having a non-zero effect (namely, causal) :
+
+$$ PIP_j:=Pr(b_j\neq0|X,y) $$
+
+!!! note "Commonly used tools for fine-mapping"
+    
+    - FINEMAP
+    - SUSIE / SUSIE-RSS
+    - CAVIAR
+    - PAINTOR
+    
+    You can check [here](https://cloufield.github.io/CTGCatalog/Tools_Fine_mapping_README/) for more information.
+
+In this tutorial, we will introduce SuSiE as an example. SuSiE stands for Sum of Single Effects” model.
+
+The key idea behind SuSiE is : 
+$$b = \sum_{l=1}^L b_l $$
+
+where each vector $b_l = (b_{l1}, …, b_{lJ})^T$ is a so-called `single effect` vector (a vector with only one non-zero element).  L is the upper bound of number of causal variants. And this model could be fitted using Iterative Bayesian Stepwise Selection (IBSS).
+
+For fine-mapping with summary statistics using Susie (SuSiE-RSS), IBSS was modified (IBSS-ss) to take sufficient statistics (which can be computed from other combinations of summary statistics) as input. SuSie will then approximate the sufficient statistics to run fine-mapping. 
+
+
+!!! quote 
+    For details of SuSiE and SuSiE-RSS, please check : Zou, Y., Carbonetto, P., Wang, G., & Stephens, M. (2022). Fine-mapping from summary data with the “Sum of Single Effects” model. PLoS Genetics, 18(7), e1010299. [Link](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1010299)
+
+
 
 ## File Preparation
 
