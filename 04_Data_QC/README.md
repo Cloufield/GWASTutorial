@@ -12,7 +12,7 @@ In this module, we will learn the basics of genotype data QC using PLINK, which 
 	- [Calculate inbreeding F coefficient ](#inbreeding-f-coefficient)
 	- [Hardy-Weinberg equilibrium exact test](#hardy-weinberg-equilibrium-exact-test)
 	- [Applying filters](#applying-filters)
-	- [LD-Pruning](#pruning)
+	- [LD-Pruning](#LD-pruning)
 	- [Sample & SNP filtering (extract/exclude/keep/remove)](#sample--snp-filtering-extractexcludekeepremove)
 	- [LD calculation](#ld-calculation)
 	- [Estimate IBD / PI_HAT](#ibd--pi_hat)
@@ -145,9 +145,10 @@ Well done. We have installed plink1.9 and plink2.
 
 ### Download genotype data
 
-Next we need to download the sample genotype data.
+Next we need to download the sample genotype data. The way to create the sample data is described [here].(https://cloufield.github.io/GWASTutorial/01_Dataset/)
+This dataset contains 504 EAS individuals from 1000 Genome Project Phase 3v5 with around 1 million variants.
 
-Run the download.sh in 01_Dataset.
+Simple run the download.sh in 01_Dataset to download this dataset (from Dropbox).
 
 !!! example "Download sample data"
 
@@ -156,7 +157,7 @@ Run the download.sh in 01_Dataset.
     ./download_sampledata.sh
     ```
     
-    And you will get the following three files:
+    And you will get the following three PLINK files:
     
     ```
     -rw-r-----   1 he  staff   135M Dec 23 11:45 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
@@ -417,7 +418,7 @@ In this case we can apply the following filters for example:
 - `--mind 0.02` :filters out all samples with missing rates exceeding 0.02
 - `--hwe 5e-6` : filters out all variants which have Hardy-Weinberg equilibrium exact test p-value below the provided threshold. NOTE: With case/control data, cases and missing phenotypes are normally ignored. (see https://www.cog-genomics.org/plink/1.9/filter#hwe)
 
-### Pruning
+### LD Pruning
 
 There are ofter strong Linkage disequilibrium(LD) among SNPs, for some analysis we don't need all SNPs and we need to remove the redundant SNPs to avoid bias in genetic estimations. For example, for relatedness estimation, we will use only LD-pruned SNP set. 
 
@@ -509,7 +510,7 @@ Combined with the `--extract`, we can run:
 
 We can also use our data to calculate LD between a pair of SNPs.
 
-!!! quote How we calculate LD r2
+!!! info How we calculate LD r2
     ![image](https://user-images.githubusercontent.com/40289485/161413586-d4f6e21e-f0c7-4c54-a703-bb060ec6913d.png)
 
 `--chr` option allows us to include snps on a specific chromosome.
@@ -543,7 +544,7 @@ To calculate LD r2 for SNPs on chr22 , we can run:
 
 By far the input data we use is in binary form, but sometimes we may want the text version.
 
-!!! quote Format conversion
+!!! info Format conversion
     ![image](https://user-images.githubusercontent.com/40289485/161413659-a489b508-63c7-4166-9f5c-25a1a125109a.png)
 
 To convert the formats, we can run:
