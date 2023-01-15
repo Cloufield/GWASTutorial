@@ -22,6 +22,7 @@ In this module, we will learn the basics of genotype data QC using PLINK, which 
 - [Reference](#reference)
 
 ## Preparation
+
 ### PLINK 1.9&2 installation
 
 To get prepared for genotype QC, we will need to make directories, download softwares and add the sofwares to your environment path.
@@ -49,87 +50,94 @@ In this way, it is much easier to mangnage and organize the paths and tools.
 Next, go to the plink webpage to download the software. We will need both PLINK1.9 and PLINK2.
 
 Download PLINK1.9 and PLINK2 from the following webpage to the corresponding directories:
-https://www.cog-genomics.org/plink/
-https://www.cog-genomics.org/plink/2.0/
 
-Note: If you are using mac or windows, then please download the mac or windows version. 
+- PLINK1.9 : [https://www.cog-genomics.org/plink/](https://www.cog-genomics.org/plink/)
+- PLINK2 : [https://www.cog-genomics.org/plink/2.0/](https://www.cog-genomics.org/plink/2.0/)
 
-In this tutorial we will use a linux system. 
+!!! note
+    If you are using mac or windows, then please download the mac or windows version. In this tutorial we will use a linux system and the linux version of PLINK. 
 
-Find the suitable version, right click and copy the link address.
+Find the suitable version in PLINK website, right click and copy the link address.
 
-```bash
-cd plink2
-wget https://s3.amazonaws.com/plink2-assets/plink2_linux_x86_64_20211011.zip
-unzip plink2_linux_x86_64_20211011.zip
-```
+!!! example "Download PLINK"
+    ```bash
+    cd plink2
+    wget https://s3.amazonaws.com/plink2-assets/plink2_linux_x86_64_20211011.zip
+    unzip plink2_linux_x86_64_20211011.zip
+    ```
 Then do the same for PLINK1.9
 
 ### Create symbolic links
 
 After donwloading and unzipping, we will create symbolic links for the plink binany files, and then move the link to `~/tools/bin/`.
-```bash
-cd ~
-ln -s ~/tools/plink2/plink2 ~/tools/bin/plink2
-ln -s ~/tools/plink/plink ~/tools/bin/plink
-```
+
+!!! example "Create symbolic links"
+    ```bash
+    cd ~
+    ln -s ~/tools/plink2/plink2 ~/tools/bin/plink2
+    ln -s ~/tools/plink/plink ~/tools/bin/plink
+    ```
+
+### Add paths to the environment path
 
 Then add `~/tools/bin/` to the environment path.
 
-```bash
-export PATH=$PATH:~/tools/bin/
-```
-And then run 
-```
-echo "export PATH=$PATH:~/tools/bin/" >> ~/.bashrc
-```
-This will add a new line at the end of `.bashrc`, which will be run every time you open a new bash shell.
+!!! example
+    
+    ```bash
+    export PATH=$PATH:~/tools/bin/
+    ```
+    This command will add the path to your current shell. 
+    
+    If you restart terminal, it will be lost. So you may need to add to the configuration file. Then run 
+    
+    ```
+    echo "export PATH=$PATH:~/tools/bin/" >> ~/.bashrc
+    ```
+    
+    This will add a new line at the end of `.bashrc`, which will be run every time you open a new bash shell.
 
 All done. Let's test if we installed PLINK successfully or not.
 
-```bash
-plink -h
-plink2 -h
-```
-### PLINK1.9
-```
-plink -h
-PLINK v1.90b6.21 64-bit (19 Oct 2020)          www.cog-genomics.org/plink/1.9/
-(C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
-
-  plink <input flag(s)...> [command flag(s)...] [other flag(s)...]
-  plink --help [flag name(s)...]
-
-Commands include --make-bed, --recode, --flip-scan, --merge-list,
---write-snplist, --list-duplicate-vars, --freqx, --missing, --test-mishap,
---hardy, --mendel, --ibc, --impute-sex, --indep-pairphase, --r2, --show-tags,
---blocks, --distance, --genome, --homozyg, --make-rel, --make-grm-gz,
---rel-cutoff, --cluster, --pca, --neighbour, --ibs-test, --regress-distance,
---model, --bd, --gxe, --logistic, --dosage, --lasso, --test-missing,
---make-perm-pheno, --tdt, --qfam, --annotate, --clump, --gene-report,
---meta-analysis, --epistasis, --fast-epistasis, and --score.
-
-"plink --help | more" describes all functions (warning: long).
-```
-### PLINK2
-```
-plink2 -h
-PLINK v2.00a3LM 64-bit Intel (1 Jul 2021)      www.cog-genomics.org/plink/2.0/
-(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
-
-  plink2 <input flag(s)...> [command flag(s)...] [other flag(s)...]
-  plink2 --help [flag name(s)...]
-
-Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
---sample-counts, --missing, --hardy, --het, --fst, --indep-pairwise, --ld,
---sample-diff, --make-king, --king-cutoff, --pmerge, --pgen-diff,
---write-samples, --write-snplist, --make-grm-list, --pca, --glm, --adjust-file,
---score, --variant-score, --genotyping-rate, --pgen-info, --validate, and
---zst-decompress.
-
-"plink2 --help | more" describes all functions.
-
-```
+!!! example Check if PLINK is installed successfully.
+    ```bash
+    plink -h
+    PLINK v1.90b6.21 64-bit (19 Oct 2020)          www.cog-genomics.org/plink/1.9/
+    (C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
+    
+      plink <input flag(s)...> [command flag(s)...] [other flag(s)...]
+      plink --help [flag name(s)...]
+    
+    Commands include --make-bed, --recode, --flip-scan, --merge-list,
+    --write-snplist, --list-duplicate-vars, --freqx, --missing, --test-mishap,
+    --hardy, --mendel, --ibc, --impute-sex, --indep-pairphase, --r2, --show-tags,
+    --blocks, --distance, --genome, --homozyg, --make-rel, --make-grm-gz,
+    --rel-cutoff, --cluster, --pca, --neighbour, --ibs-test, --regress-distance,
+    --model, --bd, --gxe, --logistic, --dosage, --lasso, --test-missing,
+    --make-perm-pheno, --tdt, --qfam, --annotate, --clump, --gene-report,
+    --meta-analysis, --epistasis, --fast-epistasis, and --score.
+    
+    "plink --help | more" describes all functions (warning: long).
+    ```
+    
+    ```bash
+    plink2 -h
+    PLINK v2.00a3LM 64-bit Intel (1 Jul 2021)      www.cog-genomics.org/plink/2.0/
+    (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+    
+      plink2 <input flag(s)...> [command flag(s)...] [other flag(s)...]
+      plink2 --help [flag name(s)...]
+    
+    Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
+    --sample-counts, --missing, --hardy, --het, --fst, --indep-pairwise, --ld,
+    --sample-diff, --make-king, --king-cutoff, --pmerge, --pgen-diff,
+    --write-samples, --write-snplist, --make-grm-list, --pca, --glm, --adjust-file,
+    --score, --variant-score, --genotyping-rate, --pgen-info, --validate, and
+    --zst-decompress.
+    
+    "plink2 --help | more" describes all functions.
+    ```
+    
 Well done. We have installed plink1.9 and plink2.
 
 
@@ -200,6 +208,16 @@ The functions we will learn in this tutorial:
 10. Data management (make-bed/recode)
 
 All sample codes and results for this module are available in `./04_data_QC`
+
+QC Step Summary
+|QC step|Option in PLINK|Commonly used threshold to exclude| Description|
+|-|-|-|-|
+|Sample missing rate| `--geno`,  `--missing` | missing rate > 0.01 ||
+|SNP missing rate| `--mind`, `--missing` | missing rate > 0.01 ||
+|Minor allele frequency| `--freq`, `--maf` |maf < 0.01||
+|Sample Relatedness| `--genome` |||
+|Hardy-Weinberg equilibrium| `--hwe`,`--hardy`|hwe < 5e-6||
+|Inbreeding F coefficient|`--het`|outside of 3 SD from the mean||
 
 First, we can calculate some basic statistics of our simulated data:
 
@@ -504,7 +522,6 @@ head plink_results.ld
 By far the input data we use is in binary form, but sometimes we may want the text version.
 ![image](https://user-images.githubusercontent.com/40289485/161413659-a489b508-63c7-4166-9f5c-25a1a125109a.png)
 
-
 To convert the format we can run:
 
 ```bash
@@ -524,14 +541,14 @@ plink \
 
 
 ## Exercise
-- Follow this tutorial and type in the commands:
-  - Calculate basic statistics for the simulated data.
-  - Learn the meaning of each QC step.
+- [x] Follow this tutorial and type in the commands:
+  - [x] Calculate basic statistics for the simulated data.
+  - [x] Learn the meaning of each QC step.
 
-- Visualize the results of QC (using Python or R)
-  - Draw the distribution of MAF.(histogram)
-  - Draw the distribution of het.(histogram)
-  - Try to briefly explain what you observe
+- [x] Visualize the results of QC (using Python or R)
+  - [x] Draw the distribution of MAF.(histogram)
+  - [x] Draw the distribution of het.(histogram)
+  - [x] Try to briefly explain what you observe
 
 ## Additional resources
 - Marees, A. T., de Kluiver, H., Stringer, S., Vorspan, F., Curis, E., Marie‐Claire, C., & Derks, E. M. (2018). A tutorial on conducting genome‐wide association studies: Quality control and statistical analysis. International journal of methods in psychiatric research, 27(2), e1608.
