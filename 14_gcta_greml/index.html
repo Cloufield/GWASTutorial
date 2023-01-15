@@ -1078,7 +1078,28 @@
 
 <h1 id="snp-heritability-estimation-by-gcta-greml">SNP-Heritability estimation by GCTA-GREML</h1>
 <h2 id="introduction">Introduction</h2>
-<p>GCTA:</p>
+<p>The basic model behind GCTA-GREML is the linear mixed model (LMM):</p>
+<div class="arithmatex">\[y = X\beta + Wu + e\]</div>
+<div class="arithmatex">\[ Var(y) = V = WW^{'}\delta^2_u + I \delta^2_e\]</div>
+<ul>
+<li><span class="arithmatex">\(X\)</span> :  covariate matrix</li>
+<li><span class="arithmatex">\(W\)</span> :  standardized genotype matrix</li>
+</ul>
+<p>GCTA defines <span class="arithmatex">\(A = WW^{'}/N\)</span> and <span class="arithmatex">\(\delta^2_g\)</span> as the variance explained by SNPs.</p>
+<p>So the oringinal model can be written as:</p>
+<div class="arithmatex">\[y = X\beta + g + e\]</div>
+<ul>
+<li><span class="arithmatex">\(g\)</span> : a vector of total genetic effects</li>
+</ul>
+<div class="arithmatex">\[ Var(y) = V = A\delta^2_g + I \delta^2_e\]</div>
+<ul>
+<li><span class="arithmatex">\(A\)</span> can be regarded as genetic relationship matrix (GRM)  </li>
+<li><span class="arithmatex">\(\delta^2_e\)</span> can be estimated by the restricted maximum likelihood (REML) method using all SNPs.</li>
+</ul>
+<div class="admonition quote gcta-greml">
+<p class="admonition-title">Quote</p>
+<p>For details, please check Yang, J., Lee, S. H., Goddard, M. E., &amp; Visscher, P. M. (2011). GCTA: a tool for genome-wide complex trait analysis. The American Journal of Human Genetics, 88(1), 76-82. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3014363/">link</a>.</p>
+</div>
 <h2 id="donwload">Donwload</h2>
 <p>Download the version of GCTA for your system from : https://yanglab.westlake.edu.cn/software/gcta/#Download</p>
 <div class="admonition example">

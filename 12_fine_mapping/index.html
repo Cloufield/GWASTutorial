@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fine-mapping-under-construction" class="md-skip">
+        <a href="#fine-mapping" class="md-skip">
           Skip to content
         </a>
       
@@ -1062,7 +1062,7 @@
                 
 
 
-<h1 id="fine-mapping-under-construction">Fine-mapping (under construction)</h1>
+<h1 id="fine-mapping">Fine-mapping</h1>
 <h2 id="introduction">Introduction</h2>
 <p>Fine-mapping : Fine-mapping aims to identfiy the causal variant(s) within a locus for a disease, given the evidence of the significant association of the locus (or genomic region) in GWAS of a disease. </p>
 <p>Fine-mapping using individual data is usually performed by fitting the multiple linear regression model:</p>
@@ -1083,9 +1083,9 @@
 <p>You can check <a href="https://cloufield.github.io/CTGCatalog/Tools_Fine_mapping_README/">here</a> for more information.</p>
 </div>
 <p>In this tutorial, we will introduce SuSiE as an example. SuSiE stands for Sum of Single Effects” model.</p>
-<p>The key idea behind SuSiE is : 
-$$b = \sum_{l=1}^L b_l $$</p>
-<p>where each vector <span class="arithmatex">\(b_l = (b_{l1}, …, b_{lJ})^T\)</span> is a so-called <code>single effect</code> vector (a vector with only one non-zero element).  L is the upper bound of number of causal variants. And this model could be fitted using Iterative Bayesian Stepwise Selection (IBSS).</p>
+<p>The key idea behind SuSiE is : </p>
+<div class="arithmatex">\[b = \sum_{l=1}^L b_l \]</div>
+<p>where each vector <span class="arithmatex">\(b_l = (b_{l1}, …, b_{lJ})^T\)</span> is a so-called <strong>single effect</strong> vector (a vector with only one non-zero element).  L is the upper bound of number of causal variants. And this model could be fitted using <strong>Iterative Bayesian Stepwise Selection (IBSS)</strong>.</p>
 <p>For fine-mapping with summary statistics using Susie (SuSiE-RSS), IBSS was modified (IBSS-ss) to take sufficient statistics (which can be computed from other combinations of summary statistics) as input. SuSie will then approximate the sufficient statistics to run fine-mapping. </p>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
