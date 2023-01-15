@@ -34,8 +34,8 @@ nav:
     - "Pre-GWAS" :
        - "Sample Dataset" : 01_Dataset.md
        - "Data Formats" : 03_Data_formats.md
-       - "Data QC" : 04_Data_QC.md
-       - "PCA" : 05_PCA.md
+       - "Genotype Data QC" : 04_Data_QC.md
+       - "Sample PCA" : 05_PCA.md
        - "Plot PCA" : plot_PCA.ipynb
     - "GWAS" : 
        - "Association tests by PLINK": 06_Association_tests.md
