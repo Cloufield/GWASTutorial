@@ -2,8 +2,30 @@
 
 ## Introduction
 
-GCTA:
+The basic model behind GCTA-GREML is the linear mixed model (LMM):
 
+$$y = X\beta + Wu + e$$
+
+$$ Var(y) = V = WW^{'}\delta^2_u + I \delta^2_e$$
+
+- $X$ :  covariate matrix
+- $W$ :  standardized genotype matrix
+
+GCTA defines $A = WW^{'}/N$ and $\delta^2_g$ as the variance explained by SNPs.
+
+So the oringinal model can be written as:
+
+$$y = X\beta + g + e$$
+
+- $g$ : a vector of total genetic effects
+
+$$ Var(y) = V = A\delta^2_g + I \delta^2_e$$
+
+- $A$ can be regarded as genetic relationship matrix (GRM)  
+- $\delta^2_e$ can be estimated by the restricted maximum likelihood (REML) method using all SNPs.
+
+!!! quote GCTA-GREML
+    For details, please check Yang, J., Lee, S. H., Goddard, M. E., & Visscher, P. M. (2011). GCTA: a tool for genome-wide complex trait analysis. The American Journal of Human Genetics, 88(1), 76-82. [link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3014363/).
 
 ## Donwload
 
