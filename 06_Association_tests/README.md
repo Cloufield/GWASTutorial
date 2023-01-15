@@ -215,12 +215,12 @@ Data we need from sumstats to create mahattan plot:
 - Basepair position
 - P value or -log10(P)
 
-Steps to create mahattan plot:
-
-1. sort the variants by genome coordinates.
-2. map the genome coordinates of variants to the x axis.
-3. convert P value to -log10(P).
-4. create the scatter plot.
+!!! tips "Steps to create Mahattan plot"
+    
+    1. sort the variants by genome coordinates.
+    2. map the genome coordinates of variants to the x axis.
+    3. convert P value to -log10(P).
+    4. create the scatter plot.
 
 ### Quantile-quantile plot
 
@@ -232,15 +232,15 @@ Data we need from sumstats to create mahattan plot:
 
 - P value or -log10(P)
 
-Steps to create mahattan plot:
-
-Suppose we have `n` variants in our sumstats,
-
-1. convert the `n` P value to -log10(P).
-2. sort the -log10(P) values in asending order.
-3. get `n` numbers from `(0,1)` with equal intervals.
-4. convert the `n` numbers to -log10(P) and sort in asending order.
-4. create scatter plot using the sorted -log10(P) of sumstats as Y and sorted -log10(P) we generated as X.
+!!! tips "Steps to create Q-Q plot"
+    
+    Suppose we have `n` variants in our sumstats,
+    
+    1. convert the `n` P value to -log10(P).
+    2. sort the -log10(P) values in asending order.
+    3. get `n` numbers from `(0,1)` with equal intervals.
+    4. convert the `n` numbers to -log10(P) and sort in asending order.
+    4. create scatter plot using the sorted -log10(P) of sumstats as Y and sorted -log10(P) we generated as X.
 
 !!! note 
     The expected distribution of P value is an Uniform distribution from 0 to 1.
