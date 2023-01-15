@@ -5,7 +5,7 @@
 
 This Github page aims to provide a hands-on tutorial of common analysis in Complex Trait Genomics. This tutorial is designed for the course `Fundamental Exercise II` provided by [Laboratory of Complex Trait Genomics](https://sites.google.com/edu.k.u-tokyo.ac.jp/kamatanilab/) at the University of Tokyo. For more information, please see [About](https://cloufield.github.io/GWASTutorial/99_About/).
 
-This tutorial covers the minimum skills and knowledge to perform a typical genome-wide association study (GWAS). The contents are categorized into the following groups. Additionally, for absolute beginners, we also prepare a section on command lines in Linux.
+This tutorial covers the minimum skills and knowledge required to perform a typical genome-wide association study (GWAS). The contents are categorized into the following groups. Additionally, for absolute beginners, we also prepare a section on command lines in Linux.
 
 <img width="686" alt="image" src="https://user-images.githubusercontent.com/40289485/209779725-73b62b15-b044-46a4-98ae-ce5db06f93b3.png">
 
@@ -23,7 +23,7 @@ This tutorial covers the minimum skills and knowledge to perform a typical genom
 ### GWAS
 
 - [Association tests](https://cloufield.github.io/GWASTutorial/06_Association_tests/): After QC, we will perform the very first association tests for a simulated binary trait (case-control trait) with a logistic regression model using PLINK.
-- [Visualization](https://cloufield.github.io/GWASTutorial/Visualization/): To visualize the summary statistics generated from association tests, we will use a python pakage called gwaslab to create mahattan plots, Quantitle-Quantile plots and Regional plots.
+- [Visualization](https://cloufield.github.io/GWASTutorial/Visualization/): To visualize the summary statistics generated from association tests, we will use a python pakage called gwaslab to create mManhattan plots, Quantitle-Quantile plots and Regional plots.
 
 ### Post-GWAS
 
@@ -34,5 +34,9 @@ In these sections, we will briefly introduce the Post-GWAS analyese, which will 
 - [SNP-Heritability estimation by GCTA-GREML](https://cloufield.github.io/GWASTutorial/14_gcta_greml/)
 - [LD score regression (univariate, cross-trait and partitioned) by LDSC](https://cloufield.github.io/GWASTutorial/08_LDSC/)
 - [Gene / Gene-set analysis by MAGMA](https://cloufield.github.io/GWASTutorial/09_Gene_based_analysis/)
-- [Fine-mapping BY SUSIE](https://cloufield.github.io/GWASTutorial/12_fine_mapping/)
+- [Fine-mapping by SUSIE](https://cloufield.github.io/GWASTutorial/12_fine_mapping/)
 - [Polygenic risk scores](https://cloufield.github.io/GWASTutorial/10_PRS/)
+
+### Others
+
+- [Recommended reading](https://cloufield.github.io/GWASTutorial/90_Recommended_Reading/)
