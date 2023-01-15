@@ -45,6 +45,7 @@ nav:
     - "Post-GWAS" :
        - "Annotation by ANNOVAR & VEP" : 07_Annotation.md
        - "Heritability Concepts" : 13_heritability.md
+       - "SNP-heritability estimation by GREML" : 14_gcta_greml.md
        - "LD socre regression by LDSC" : 08_LDSC.md
        - "Gene/Gene-set tests by MAGMA" : 09_Gene_based_analysis.md
        - "Fine-mapping by susieR" : 12_fine_mapping.md
