@@ -1354,17 +1354,20 @@
 <h3 id="plink-192-installation">PLINK 1.9&amp;2 installation</h3>
 <p>To get prepared for genotype QC, we will need to make directories, download softwares and add the sofwares to your environment path.</p>
 <p>First, we will simply create some directories to keep the tools we need to use.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~
+<div class="admonition example">
+<p class="admonition-title">Create directories</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~
 mkdir tools
 <span class="nb">cd</span> tools
 mkdir bin
 mkdir plink
 mkdir plink2
 </code></pre></div>
+<img width="937" alt="image" src="https://user-images.githubusercontent.com/40289485/160745597-c6f4204a-d786-4af1-9041-f1531cbbe584.png"></p>
+</div>
 <p>You can download each tool into its corresponding directories. </p>
 <p>The <code>bin</code> directory here is for keeping all the symbolic links to the executable files of each tool. </p>
-<p>In this way, it is much easier to mangnage and organize the paths and tools.</p>
-<p><img width="937" alt="image" src="https://user-images.githubusercontent.com/40289485/160745597-c6f4204a-d786-4af1-9041-f1531cbbe584.png"></p>
+<p>In this way, it is much easier to mangnage and organize the paths and tools. We will only add the <code>bin</code> directory here to the environment path.</p>
 <h3 id="download-plink19-and-plink2-and-then-unzip">Download PLINK1.9 and PLINK2 and then unzip</h3>
 <p>Next, go to the plink webpage to download the software. We will need both PLINK1.9 and PLINK2.</p>
 <p>Download PLINK1.9 and PLINK2 from the following webpage to the corresponding directories:</p>
@@ -1407,8 +1410,9 @@ This command will add the path to your current shell. </p>
 <p>This will add a new line at the end of <code>.bashrc</code>, which will be run every time you open a new bash shell.</p>
 </div>
 <p>All done. Let's test if we installed PLINK successfully or not.</p>
-<p>!!! example Check if PLINK is installed successfully.
-    <div class="highlight"><pre><span></span><code>plink -h
+<div class="admonition example">
+<p class="admonition-title">Check if PLINK is installed successfully.</p>
+<div class="highlight"><pre><span></span><code>plink -h
 PLINK v1.90b6.21 <span class="m">64</span>-bit <span class="o">(</span><span class="m">19</span> Oct <span class="m">2020</span><span class="o">)</span>          www.cog-genomics.org/plink/1.9/
 <span class="o">(</span>C<span class="o">)</span> <span class="m">2005</span>-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
 
@@ -1425,14 +1429,13 @@ Commands include --make-bed, --recode, --flip-scan, --merge-list,
 --meta-analysis, --epistasis, --fast-epistasis, and --score.
 
 <span class="s2">&quot;plink --help | more&quot;</span> describes all functions <span class="o">(</span>warning: long<span class="o">)</span>.
-</code></pre></div></p>
-<pre><code>```bash
-plink2 -h
-PLINK v2.00a3LM 64-bit Intel (1 Jul 2021)      www.cog-genomics.org/plink/2.0/
-(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>plink2 -h
+PLINK v2.00a3LM <span class="m">64</span>-bit Intel <span class="o">(</span><span class="m">1</span> Jul <span class="m">2021</span><span class="o">)</span>      www.cog-genomics.org/plink/2.0/
+<span class="o">(</span>C<span class="o">)</span> <span class="m">2005</span>-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 
-  plink2 &lt;input flag(s)...&gt; [command flag(s)...] [other flag(s)...]
-  plink2 --help [flag name(s)...]
+  plink2 &lt;input flag<span class="o">(</span>s<span class="o">)</span>...&gt; <span class="o">[</span><span class="nb">command</span> flag<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span> <span class="o">[</span>other flag<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span>
+  plink2 --help <span class="o">[</span>flag name<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span>
 
 Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
 --sample-counts, --missing, --hardy, --het, --fst, --indep-pairwise, --ld,
@@ -1441,14 +1444,16 @@ Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
 --score, --variant-score, --genotyping-rate, --pgen-info, --validate, and
 --zst-decompress.
 
-"plink2 --help | more" describes all functions.
-```
-</code></pre>
+<span class="s2">&quot;plink2 --help | more&quot;</span> describes all functions.
+</code></pre></div>
+</div>
 <p>Well done. We have installed plink1.9 and plink2.</p>
 <h3 id="download-genotype-data">Download genotype data</h3>
 <p>Next we need to download the sample genotype data.</p>
 <p>Run the download.sh in 01_Dataset.</p>
-<div class="highlight"><pre><span></span><code>cd ../01_Dataset
+<div class="admonition example">
+<p class="admonition-title">Download sample data</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ../01_Dataset
 ./download_sampledata.sh
 </code></pre></div>
 <p>And you will get the following three files:</p>
@@ -1482,6 +1487,7 @@ Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
 <span class="m">0</span> HG00422 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
 <span class="m">0</span> HG00428 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
 </code></pre></div></p>
+</div>
 <h2 id="plink-tutorial">PLINK tutorial</h2>
 <p>Detailed description can be found on plink's website: <a href="https://www.cog-genomics.org/plink/1.9/">PLINK1.9</a> and <a href="https://www.cog-genomics.org/plink/2.0/">PLINK2</a>.</p>
 <p>The functions we will learn in this tutorial:
