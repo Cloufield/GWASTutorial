@@ -724,8 +724,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#pruning" class="md-nav__link">
-    Pruning
+  <a href="#ld-pruning" class="md-nav__link">
+    LD Pruning
   </a>
   
 </li>
@@ -1264,8 +1264,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#pruning" class="md-nav__link">
-    Pruning
+  <a href="#ld-pruning" class="md-nav__link">
+    LD Pruning
   </a>
   
 </li>
@@ -1353,7 +1353,7 @@
 <li><a href="#inbreeding-f-coefficient">Calculate inbreeding F coefficient </a></li>
 <li><a href="#hardy-weinberg-equilibrium-exact-test">Hardy-Weinberg equilibrium exact test</a></li>
 <li><a href="#applying-filters">Applying filters</a></li>
-<li><a href="#pruning">LD-Pruning</a></li>
+<li><a href="#LD-pruning">LD-Pruning</a></li>
 <li><a href="#sample--snp-filtering-extractexcludekeepremove">Sample &amp; SNP filtering (extract/exclude/keep/remove)</a></li>
 <li><a href="#ld-calculation">LD calculation</a></li>
 <li><a href="#ibd--pi_hat">Estimate IBD / PI_HAT</a></li>
@@ -1463,14 +1463,15 @@ Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
 </div>
 <p>Well done. We have installed plink1.9 and plink2.</p>
 <h3 id="download-genotype-data">Download genotype data</h3>
-<p>Next we need to download the sample genotype data.</p>
-<p>Run the download.sh in 01_Dataset.</p>
+<p>Next we need to download the sample genotype data. The way to create the sample data is described [here].(https://cloufield.github.io/GWASTutorial/01_Dataset/)
+This dataset contains 504 EAS individuals from 1000 Genome Project Phase 3v5 with around 1 million variants.</p>
+<p>Simple run the download.sh in 01_Dataset to download this dataset (from Dropbox).</p>
 <div class="admonition example">
 <p class="admonition-title">Download sample data</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> ../01_Dataset
 ./download_sampledata.sh
 </code></pre></div>
-<p>And you will get the following three files:</p>
+<p>And you will get the following three PLINK files:</p>
 <div class="highlight"><pre><span></span><code>-rw-r-----   1 he  staff   135M Dec 23 11:45 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
 -rw-r-----   1 he  staff    36M Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
 -rw-r-----   1 he  staff   9.4K Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
@@ -1725,7 +1726,7 @@ head plink_results.afreq
 <li><code>--mind 0.02</code> :filters out all samples with missing rates exceeding 0.02</li>
 <li><code>--hwe 5e-6</code> : filters out all variants which have Hardy-Weinberg equilibrium exact test p-value below the provided threshold. NOTE: With case/control data, cases and missing phenotypes are normally ignored. (see https://www.cog-genomics.org/plink/1.9/filter#hwe)</li>
 </ul>
-<h3 id="pruning">Pruning</h3>
+<h3 id="ld-pruning">LD Pruning</h3>
 <p>There are ofter strong Linkage disequilibrium(LD) among SNPs, for some analysis we don't need all SNPs and we need to remove the redundant SNPs to avoid bias in genetic estimations. For example, for relatedness estimation, we will use only LD-pruned SNP set. </p>
 <p>We can use <code>--indep-pairwise 50 5 0.2</code> to filter out those are in strong LD and keep only the independent SNPS.
 Please check https://www.cog-genomics.org/plink/1.9/ld#indep for the meaning of each parameter.
@@ -1802,8 +1803,8 @@ For <code>--extract</code> or <code>--exclude</code> , the input is the filename
 </div>
 <h3 id="ld-calculation">LD calculation</h3>
 <p>We can also use our data to calculate LD between a pair of SNPs.</p>
-<div class="admonition quote how we calculate ld r2">
-<p class="admonition-title">Quote</p>
+<div class="admonition info how we calculate ld r2">
+<p class="admonition-title">Info</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161413586-d4f6e21e-f0c7-4c54-a703-bb060ec6913d.png" /></p>
 </div>
 <p><code>--chr</code> option allows us to include snps on a specific chromosome.
@@ -1831,8 +1832,8 @@ To calculate LD r2 for SNPs on chr22 , we can run:</p>
 </div>
 <h3 id="data-management-make-bedrecode">Data management (make-bed/recode)</h3>
 <p>By far the input data we use is in binary form, but sometimes we may want the text version.</p>
-<div class="admonition quote format conversion">
-<p class="admonition-title">Quote</p>
+<div class="admonition info format conversion">
+<p class="admonition-title">Info</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161413659-a489b508-63c7-4166-9f5c-25a1a125109a.png" /></p>
 </div>
 <p>To convert the formats, we can run:</p>
