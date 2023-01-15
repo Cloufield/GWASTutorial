@@ -15,7 +15,7 @@
     
     
       
-        <title>Data QC - GWASTutorial</title>
+        <title>Genotype Data QC - GWASTutorial</title>
       
     
     
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Data QC
+              Genotype Data QC
             
           </span>
         </div>
@@ -588,12 +588,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Data QC
+          Genotype Data QC
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Data QC
+        Genotype Data QC
       </a>
       
         
@@ -675,6 +675,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#qc-step-summary" class="md-nav__link">
+    QC Step Summary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#missing-rate-call-rate" class="md-nav__link">
     Missing rate (call rate)
   </a>
@@ -683,7 +690,7 @@
         
           <li class="md-nav__item">
   <a href="#plink-syntax" class="md-nav__link">
-    PLink syntax:
+    PLINK syntax
   </a>
   
 </li>
@@ -793,7 +800,7 @@
   
     <li class="md-nav__item">
       <a href="../05_PCA/" class="md-nav__link">
-        PCA
+        Sample PCA
       </a>
     </li>
   
@@ -1208,6 +1215,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#qc-step-summary" class="md-nav__link">
+    QC Step Summary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#missing-rate-call-rate" class="md-nav__link">
     Missing rate (call rate)
   </a>
@@ -1216,7 +1230,7 @@
         
           <li class="md-nav__item">
   <a href="#plink-syntax" class="md-nav__link">
-    PLink syntax:
+    PLINK syntax
   </a>
   
 </li>
@@ -1504,7 +1518,7 @@ Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
 <li>Data management (make-bed/recode)</li>
 </ol>
 <p>All sample codes and results for this module are available in <code>./04_data_QC</code></p>
-<p>QC Step Summary</p>
+<h3 id="qc-step-summary">QC Step Summary</h3>
 <table>
 <thead>
 <tr>
@@ -1561,8 +1575,11 @@ Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
 <li><strong>SNP missing rate</strong>: the proportion of missing values for a SNP across all samples.</li>
 </ul>
 <p>The input is PLINK bed/bim/fam file. Usually they have the same prefix, and we just need to pass the prefix to <code>--bfile</code> option.</p>
-<h3 id="plink-syntax">PLink syntax:</h3>
+<h3 id="plink-syntax">PLINK syntax</h3>
+<div class="admonition info">
+<p class="admonition-title">PLINK syntax</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161413684-a128b87f-fb79-4b13-a7b5-acfa997c4421.png" /></p>
+</div>
 <p>To calculate the missing rate, we need the flag <code>--missing</code>, which tells PLINK to calculate the missing rate in the dataset specified by <code>--bfile</code>. </p>
 <div class="admonition example">
 <p class="admonition-title">Calculate missing rate</p>
@@ -1892,13 +1909,13 @@ plink <span class="se">\</span>
       
       
         
-        <a href="../05_PCA/" class="md-footer__link md-footer__link--next" aria-label="Next: PCA" rel="next">
+        <a href="../05_PCA/" class="md-footer__link md-footer__link--next" aria-label="Next: Sample PCA" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              PCA
+              Sample PCA
             </div>
           </div>
           <div class="md-footer__button md-icon">
