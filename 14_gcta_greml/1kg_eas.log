@@ -1,0 +1,72 @@
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 12:27:28 JST on Sun Jan 15 2023.
+Hostname: Home-Desktop
+
+Accepted options:
+--grm 1kg_eas
+--pheno ../01_Dataset/1kgeas_binary.txt
+--prevalence 0.4
+--reml
+--out 1kg_eas
+
+Note: This is a multi-thread program. You could specify the number of threads by the --thread-num option to speed up the computation if there are multiple processors in your machine.
+
+Reading IDs of the GRM from [1kg_eas.grm.id].
+504 IDs are read from [1kg_eas.grm.id].
+Reading the GRM from [1kg_eas.grm.bin].
+GRM for 504 individuals are included from [1kg_eas.grm.bin].
+Reading phenotypes from [../01_Dataset/1kgeas_binary.txt].
+Non-missing phenotypes of 504 individuals are included from [../01_Dataset/1kgeas_binary.txt].
+Assuming a disease phenotype for a case-control study: 201 cases and 302 controls 
+503 individuals are in common in these files.
+
+Performing  REML analysis ... (Note: may take hours depending on sample size).
+503 observations, 1 fixed effect(s), and 2 variance component(s)(including residual variance).
+Calculating prior values of variance components by EM-REML ...
+Updated prior values: 0.119763 0.119895
+logL: 105.159
+Running AI-REML algorithm ...
+Iter.	logL	V(G)	V(e)	
+1	105.16	0.11203	0.12733	
+2	105.18	0.09760	0.14117	
+3	105.19	0.10105	0.13776	
+4	105.19	0.10034	0.13846	
+5	105.19	0.10050	0.13831	
+6	105.19	0.10046	0.13834	
+7	105.19	0.10047	0.13834	
+Log-likelihood ratio converged.
+
+Calculating the logLikelihood for the reduced model ...
+(variance component 1 is dropped from the model)
+Calculating prior values of variance components by EM-REML ...
+Updated prior values: 0.24040
+logL: 103.67975
+Running AI-REML algorithm ...
+Iter.	logL	V(e)	
+1	103.68	0.24040	
+Log-likelihood ratio converged.
+
+Summary result of REML analysis:
+Source	Variance	SE
+V(G)	0.100469	0.094051
+V(e)	0.138337	0.093889
+Vp	0.238806	0.015077
+V(G)/Vp	0.420715	0.392317
+The estimate of variance explained on the observed scale is transformed to that on the underlying liability scale:
+(Proportion of cases in the sample = 0.399602; User-specified disease prevalence = 0.400000)
+V(G)/Vp_L	0.676703	0.631026
+
+Sampling variance/covariance of the estimates of variance components:
+8.845626e-03	-8.716684e-03	
+-8.716684e-03	8.815073e-03	
+
+Summary result of REML analysis has been saved in the file [1kg_eas.hsq].
+
+Analysis finished at 12:27:28 JST on Sun Jan 15 2023
+Overall computational time: 0.09 sec.
