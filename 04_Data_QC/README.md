@@ -29,22 +29,23 @@ To get prepared for genotype QC, we will need to make directories, download soft
 
 First, we will simply create some directories to keep the tools we need to use.
 
-```bash
-cd ~
-mkdir tools
-cd tools
-mkdir bin
-mkdir plink
-mkdir plink2
-```
 
+!!! example "Create directories"
+    ```bash
+    cd ~
+    mkdir tools
+    cd tools
+    mkdir bin
+    mkdir plink
+    mkdir plink2
+    ```
+    <img width="937" alt="image" src="https://user-images.githubusercontent.com/40289485/160745597-c6f4204a-d786-4af1-9041-f1531cbbe584.png">
+    
 You can download each tool into its corresponding directories. 
 
 The `bin` directory here is for keeping all the symbolic links to the executable files of each tool. 
 
-In this way, it is much easier to mangnage and organize the paths and tools.
-
-<img width="937" alt="image" src="https://user-images.githubusercontent.com/40289485/160745597-c6f4204a-d786-4af1-9041-f1531cbbe584.png">
+In this way, it is much easier to mangnage and organize the paths and tools. We will only add the `bin` directory here to the environment path.
 
 ### Download PLINK1.9 and PLINK2 and then unzip
 Next, go to the plink webpage to download the software. We will need both PLINK1.9 and PLINK2.
@@ -99,7 +100,8 @@ Then add `~/tools/bin/` to the environment path.
 
 All done. Let's test if we installed PLINK successfully or not.
 
-!!! example Check if PLINK is installed successfully.
+!!! example "Check if PLINK is installed successfully."
+
     ```bash
     plink -h
     PLINK v1.90b6.21 64-bit (19 Oct 2020)          www.cog-genomics.org/plink/1.9/
@@ -147,49 +149,51 @@ Next we need to download the sample genotype data.
 
 Run the download.sh in 01_Dataset.
 
-```
-cd ../01_Dataset
-./download_sampledata.sh
-```
+!!! example "Download sample data"
 
-And you will get the following three files:
-
-```
--rw-r-----   1 he  staff   135M Dec 23 11:45 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
--rw-r-----   1 he  staff    36M Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
--rw-r-----   1 he  staff   9.4K Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
-```
-
-Check the bim file:
-
-```bash
-head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
-1	1:13273:G:C	0	13273	C	G
-1	1:14599:T:A	0	14599	A	T
-1	1:14604:A:G	0	14604	G	A
-1	1:14930:A:G	0	14930	G	A
-1	1:69897:T:C	0	69897	C	T
-1	1:86331:A:G	0	86331	G	A
-1	1:91581:G:A	0	91581	A	G
-1	1:122872:T:G	0	122872	G	T
-1	1:135163:C:T	0	135163	T	C
-1	1:233473:C:G	0	233473	G	C
-```
-
-Check the fam file:
-```bash
-head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
-0 HG00403 0 0 0 -9
-0 HG00404 0 0 0 -9
-0 HG00406 0 0 0 -9
-0 HG00407 0 0 0 -9
-0 HG00409 0 0 0 -9
-0 HG00410 0 0 0 -9
-0 HG00419 0 0 0 -9
-0 HG00421 0 0 0 -9
-0 HG00422 0 0 0 -9
-0 HG00428 0 0 0 -9
-```
+    ```bash
+    cd ../01_Dataset
+    ./download_sampledata.sh
+    ```
+    
+    And you will get the following three files:
+    
+    ```
+    -rw-r-----   1 he  staff   135M Dec 23 11:45 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
+    -rw-r-----   1 he  staff    36M Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
+    -rw-r-----   1 he  staff   9.4K Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
+    ```
+    
+    Check the bim file:
+    
+    ```bash
+    head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
+    1	1:13273:G:C	0	13273	C	G
+    1	1:14599:T:A	0	14599	A	T
+    1	1:14604:A:G	0	14604	G	A
+    1	1:14930:A:G	0	14930	G	A
+    1	1:69897:T:C	0	69897	C	T
+    1	1:86331:A:G	0	86331	G	A
+    1	1:91581:G:A	0	91581	A	G
+    1	1:122872:T:G	0	122872	G	T
+    1	1:135163:C:T	0	135163	T	C
+    1	1:233473:C:G	0	233473	G	C
+    ```
+    
+    Check the fam file:
+    ```bash
+    head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
+    0 HG00403 0 0 0 -9
+    0 HG00404 0 0 0 -9
+    0 HG00406 0 0 0 -9
+    0 HG00407 0 0 0 -9
+    0 HG00409 0 0 0 -9
+    0 HG00410 0 0 0 -9
+    0 HG00419 0 0 0 -9
+    0 HG00421 0 0 0 -9
+    0 HG00422 0 0 0 -9
+    0 HG00428 0 0 0 -9
+    ```
 
 ## PLINK tutorial
 
