@@ -29,7 +29,10 @@ This tutorial covers the minimum skills and knowledge to perform a typical genom
 
 In these sections, we will briefly introduce the Post-GWAS analyese, which will dig deeper into the GWAS summary statistics.  
 
-- [Variant Annotation](https://cloufield.github.io/GWASTutorial/07_Annotation/)
-- [LD score regression (univariate, cross-trait and partitioned)](https://cloufield.github.io/GWASTutorial/08_LDSC/)
-- [Gene / Gene-set analysis](https://cloufield.github.io/GWASTutorial/09_Gene_based_analysis/)
+- [Variant Annotation by ANNOVAR/VEP](https://cloufield.github.io/GWASTutorial/07_Annotation/)
+- [Heritability Concepts](https://cloufield.github.io/GWASTutorial/13_heritability/)
+- [SNP-Heritability estimation by GCTA-GREML](https://cloufield.github.io/GWASTutorial/14_gcta_greml/)
+- [LD score regression (univariate, cross-trait and partitioned) by LDSC](https://cloufield.github.io/GWASTutorial/08_LDSC/)
+- [Gene / Gene-set analysis by MAGMA](https://cloufield.github.io/GWASTutorial/09_Gene_based_analysis/)
+- [Fine-mapping BY SUSIE](https://cloufield.github.io/GWASTutorial/12_fine_mapping/)
 - [Polygenic risk scores](https://cloufield.github.io/GWASTutorial/10_PRS/)
