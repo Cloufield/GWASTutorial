@@ -10,19 +10,19 @@
         <meta name="author" content="HE Yunye">
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>GWASTutorial</title>
+        <title>SNP-heritability estimation by GREML - GWASTutorial</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.c382b1dc.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.cc9b2e1e.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -41,9 +41,9 @@
       
     
     
-      <link rel="stylesheet" href="/stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("/",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -66,6 +66,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#snp-heritability-estimation-by-gcta-greml" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -76,7 +81,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="GWASTutorial" class="md-header__button md-logo" aria-label="GWASTutorial" data-md-component="logo">
+    <a href=".." title="GWASTutorial" class="md-header__button md-logo" aria-label="GWASTutorial" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -95,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              SNP-heritability estimation by GREML
             
           </span>
         </div>
@@ -140,7 +145,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         Home
       </a>
     </li>
@@ -156,7 +161,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/02_Linux_basics/" class="md-tabs__link">
+      <a href="../02_Linux_basics/" class="md-tabs__link">
         Command Line
       </a>
     </li>
@@ -172,7 +177,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/01_Dataset/" class="md-tabs__link">
+      <a href="../01_Dataset/" class="md-tabs__link">
         Pre-GWAS
       </a>
     </li>
@@ -188,7 +193,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/06_Association_tests/" class="md-tabs__link">
+      <a href="../06_Association_tests/" class="md-tabs__link">
         GWAS
       </a>
     </li>
@@ -198,13 +203,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="/07_Annotation/" class="md-tabs__link">
+      <a href="../07_Annotation/" class="md-tabs__link md-tabs__link--active">
         Post-GWAS
       </a>
     </li>
@@ -220,7 +227,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/90_Recommended_Reading/" class="md-tabs__link">
+      <a href="../90_Recommended_Reading/" class="md-tabs__link">
         Others
       </a>
     </li>
@@ -248,7 +255,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="GWASTutorial" class="md-nav__button md-logo" aria-label="GWASTutorial" data-md-component="logo">
+    <a href=".." title="GWASTutorial" class="md-nav__button md-logo" aria-label="GWASTutorial" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -305,7 +312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         Tutorial guide
       </a>
     </li>
@@ -319,7 +326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/99_About/" class="md-nav__link">
+      <a href="../99_About/" class="md-nav__link">
         About
       </a>
     </li>
@@ -367,7 +374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/02_Linux_basics/" class="md-nav__link">
+      <a href="../02_Linux_basics/" class="md-nav__link">
         Linux Basics
       </a>
     </li>
@@ -381,7 +388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/82_windows_linux_subsystem/" class="md-nav__link">
+      <a href="../82_windows_linux_subsystem/" class="md-nav__link">
         Windows Linux Subsystem
       </a>
     </li>
@@ -395,7 +402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/83_git_and_github/" class="md-nav__link">
+      <a href="../83_git_and_github/" class="md-nav__link">
         Git and github
       </a>
     </li>
@@ -409,7 +416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/84_ssh/" class="md-nav__link">
+      <a href="../84_ssh/" class="md-nav__link">
         SSH
       </a>
     </li>
@@ -423,7 +430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/85_job_scheduler/" class="md-nav__link">
+      <a href="../85_job_scheduler/" class="md-nav__link">
         Job scheduler
       </a>
     </li>
@@ -437,7 +444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/60_awk/" class="md-nav__link">
+      <a href="../60_awk/" class="md-nav__link">
         Text editing - awk
       </a>
     </li>
@@ -451,7 +458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/61_sed/" class="md-nav__link">
+      <a href="../61_sed/" class="md-nav__link">
         Text editing - sed
       </a>
     </li>
@@ -465,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/80_anaconda/" class="md-nav__link">
+      <a href="../80_anaconda/" class="md-nav__link">
         Anaconda
       </a>
     </li>
@@ -479,7 +486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/81_jupyter_notebook/" class="md-nav__link">
+      <a href="../81_jupyter_notebook/" class="md-nav__link">
         Jupyter notebook
       </a>
     </li>
@@ -493,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/69_resources/" class="md-nav__link">
+      <a href="../69_resources/" class="md-nav__link">
         Resources
       </a>
     </li>
@@ -541,7 +548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01_Dataset/" class="md-nav__link">
+      <a href="../01_Dataset/" class="md-nav__link">
         Sample Dataset
       </a>
     </li>
@@ -555,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/03_Data_formats/" class="md-nav__link">
+      <a href="../03_Data_formats/" class="md-nav__link">
         Data Formats
       </a>
     </li>
@@ -569,7 +576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04_Data_QC/" class="md-nav__link">
+      <a href="../04_Data_QC/" class="md-nav__link">
         Data QC
       </a>
     </li>
@@ -583,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/05_PCA/" class="md-nav__link">
+      <a href="../05_PCA/" class="md-nav__link">
         PCA
       </a>
     </li>
@@ -597,7 +604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/plot_PCA/" class="md-nav__link">
+      <a href="../plot_PCA/" class="md-nav__link">
         Plotting PCA
       </a>
     </li>
@@ -645,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/06_Association_tests/" class="md-nav__link">
+      <a href="../06_Association_tests/" class="md-nav__link">
         Association tests by PLINK
       </a>
     </li>
@@ -659,7 +666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Visualization/" class="md-nav__link">
+      <a href="../Visualization/" class="md-nav__link">
         Visualization by gwaslab
       </a>
     </li>
@@ -673,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/33_linear_mixed_model/" class="md-nav__link">
+      <a href="../33_linear_mixed_model/" class="md-nav__link">
         Linear mixed model (LMM)
       </a>
     </li>
@@ -687,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/32_whole_genome_regression/" class="md-nav__link">
+      <a href="../32_whole_genome_regression/" class="md-nav__link">
         Whole genome regression by REGENIE
       </a>
     </li>
@@ -707,12 +714,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       
       
@@ -735,7 +744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/07_Annotation/" class="md-nav__link">
+      <a href="../07_Annotation/" class="md-nav__link">
         Annotation by ANNOVAR & VEP
       </a>
     </li>
@@ -749,7 +758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/13_heritability/" class="md-nav__link">
+      <a href="../13_heritability/" class="md-nav__link">
         Heritability Concepts
       </a>
     </li>
@@ -761,11 +770,87 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="/14_gcta_greml/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          SNP-heritability estimation by GREML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         SNP-heritability estimation by GREML
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#donwload" class="md-nav__link">
+    Donwload
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-grm" class="md-nav__link">
+    Make GRM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estimation" class="md-nav__link">
+    Estimation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    Results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -777,7 +862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/08_LDSC/" class="md-nav__link">
+      <a href="../08_LDSC/" class="md-nav__link">
         LD socre regression by LDSC
       </a>
     </li>
@@ -791,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/09_Gene_based_analysis/" class="md-nav__link">
+      <a href="../09_Gene_based_analysis/" class="md-nav__link">
         Gene/Gene-set tests by MAGMA
       </a>
     </li>
@@ -805,7 +890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/12_fine_mapping/" class="md-nav__link">
+      <a href="../12_fine_mapping/" class="md-nav__link">
         Fine-mapping by susieR
       </a>
     </li>
@@ -819,7 +904,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/10_PRS/" class="md-nav__link">
+      <a href="../10_PRS/" class="md-nav__link">
         PRS
       </a>
     </li>
@@ -867,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/90_Recommended_Reading/" class="md-nav__link">
+      <a href="../90_Recommended_Reading/" class="md-nav__link">
         Recommended reading
       </a>
     </li>
@@ -881,7 +966,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/95_Assignment/" class="md-nav__link">
+      <a href="../95_Assignment/" class="md-nav__link">
         Assignment - 1KG PCA
       </a>
     </li>
@@ -895,7 +980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/96_Assignment2/" class="md-nav__link">
+      <a href="../96_Assignment2/" class="md-nav__link">
         Assignment - Presentation
       </a>
     </li>
@@ -926,6 +1011,58 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#donwload" class="md-nav__link">
+    Donwload
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-grm" class="md-nav__link">
+    Make GRM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estimation" class="md-nav__link">
+    Estimation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    Results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -936,8 +1073,128 @@
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
 
+
+<h1 id="snp-heritability-estimation-by-gcta-greml">SNP-Heritability estimation by GCTA-GREML</h1>
+<h2 id="introduction">Introduction</h2>
+<p>GCTA:</p>
+<h2 id="donwload">Donwload</h2>
+<p>Download the version of GCTA for your system from : https://yanglab.westlake.edu.cn/software/gcta/#Download</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code>wget https://yanglab.westlake.edu.cn/software/gcta/bin/gcta-1.94.1-linux-kernel-3-x86_64.zip
+unzip gcta-1.94.1-linux-kernel-3-x86_64.zip
+<span class="nb">cd</span> gcta-1.94.1-linux-kernel-3-x86_64.zip
+
+./gcta-1.94.1
+*******************************************************************
+* Genome-wide Complex Trait Analysis <span class="o">(</span>GCTA<span class="o">)</span>
+* version v1.94.1 Linux
+* Built at Nov <span class="m">15</span> <span class="m">2022</span> <span class="m">21</span>:14:25, by GCC <span class="m">8</span>.5
+* <span class="o">(</span>C<span class="o">)</span> <span class="m">2010</span>-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang &lt;jian.yang@westlake.edu.cn&gt;
+*******************************************************************
+Analysis started at <span class="m">12</span>:22:19 JST on Sun Jan <span class="m">15</span> <span class="m">2023</span>.
+Hostname: Home-Desktop
+
+Error: no analysis has been launched by the option<span class="o">(</span>s<span class="o">)</span>
+Please see online documentation at https://yanglab.westlake.edu.cn/software/gcta/
+</code></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Add GCTA to your environment</p>
+</div>
+<h2 id="make-grm">Make GRM</h2>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nv">plinkFile</span><span class="o">=</span><span class="s2">&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot;</span>
+gcta <span class="se">\</span>
+  --bfile <span class="si">${</span><span class="nv">plinkFile</span><span class="si">}</span> <span class="se">\</span>
+  --autosome <span class="se">\</span>
+  --maf <span class="m">0</span>.01 <span class="se">\</span>
+  --make-grm <span class="se">\</span>
+  --out 1kg_eas
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang &lt;jian.yang@westlake.edu.cn&gt;
+*******************************************************************
+Analysis started at 12:24:19 JST on Sun Jan 15 2023.
+Hostname: Home-Desktop
+
+Options:
+
+--bfile ../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020
+--autosome
+--maf 0.01
+--make-grm
+--out 1kg_eas
+
+Note: GRM is computed using the SNPs on the autosomes.
+Reading PLINK FAM file from [../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam]...
+504 individuals to be included from FAM file.
+504 individuals to be included. 0 males, 0 females, 504 unknown.
+Reading PLINK BIM file from [../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim]...
+1122299 SNPs to be included from BIM file(s).
+Threshold to filter variants: MAF &gt; 0.010000.
+Computing the genetic relationship matrix (GRM) v2 ...
+Subset 1/1, no. subject 1-504
+  504 samples, 1122299 markers, 127260 GRM elements
+IDs for the GRM file have been saved in the file [1kg_eas.grm.id]
+Computing GRM...
+  100% finished in 8.2 sec
+1122299 SNPs have been processed.
+  Used 1122299 valid SNPs.
+The GRM computation is completed.
+Saving GRM...
+GRM has been saved in the file [1kg_eas.grm.bin]
+Number of SNPs in each pair of individuals has been saved in the file [1kg_eas.grm.N.bin]
+
+Analysis finished at 12:24:29 JST on Sun Jan 15 2023
+Overall computational time: 9.52 sec.
+</code></pre></div>
+<h2 id="estimation">Estimation</h2>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+
+#the grm we calculated in step1
+GRM=1kg_eas
+# phenotype file
+phenotypeFile=../01_Dataset/1kgeas_binary.txt
+# disease prevalence used for conversion to liability-scale heritability
+prevalence=0.4
+
+gcta \
+  --grm ${GRM} \
+  --pheno ${phenotypeFIile} \
+  --prevalence ${prevalence} \
+  --reml \
+  --out 1kg_eas
+</code></pre></div>
+<h2 id="results">Results</h2>
+<div class="highlight"><pre><span></span><code>head 1kg_eas.hsq
+
+Source  Variance        SE
+V<span class="o">(</span>G<span class="o">)</span>    <span class="m">0</span>.100469        <span class="m">0</span>.094051
+V<span class="o">(</span>e<span class="o">)</span>    <span class="m">0</span>.138337        <span class="m">0</span>.093889
+Vp      <span class="m">0</span>.238806        <span class="m">0</span>.015077
+V<span class="o">(</span>G<span class="o">)</span>/Vp <span class="m">0</span>.420715        <span class="m">0</span>.392317
+The estimate of variance explained on the observed scale is transformed to that on the underlying scale:
+<span class="o">(</span>Proportion of cases <span class="k">in</span> the <span class="nv">sample</span> <span class="o">=</span> <span class="m">0</span>.399602<span class="p">;</span> User-specified disease <span class="nv">prevalence</span> <span class="o">=</span> <span class="m">0</span>.400000<span class="o">)</span>
+V<span class="o">(</span>G<span class="o">)</span>/Vp_L       <span class="m">0</span>.676703        <span class="m">0</span>.631026
+logL    <span class="m">105</span>.187
+logL0   <span class="m">103</span>.680
+</code></pre></div>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>Yang, J., Lee, S. H., Goddard, M. E., &amp; Visscher, P. M. (2011). GCTA: a tool for genome-wide complex trait analysis. The American Journal of Human Genetics, 88(1), 76-82.</li>
+<li><a href="https://yanglab.westlake.edu.cn/software/gcta/#Overview">https://yanglab.westlake.edu.cn/software/gcta/#Overview</a></li>
+</ul>
+
+              
             </article>
           </div>
         </div>
@@ -950,6 +1207,41 @@
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../13_heritability/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Heritability Concepts" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Heritability Concepts
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../08_LDSC/" class="md-footer__link md-footer__link--next" aria-label="Next: LD socre regression by LDSC" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              LD socre regression by LDSC
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -975,12 +1267,12 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "/", "features": ["navigation.tabs", "navigation.top"], "search": "/assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../assets/javascripts/bundle.a6c66575.min.js"></script>
       
-        <script src="/javascripts/mathjax.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
@@ -988,7 +1280,7 @@
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="/javascripts/tablesort.js"></script>
+        <script src="../javascripts/tablesort.js"></script>
       
     
   </body>
