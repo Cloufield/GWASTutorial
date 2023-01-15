@@ -241,18 +241,17 @@ The input is PLINK bed/bim/fam file. Usually they have the same prefix, and we j
 
 To calculate the missing rate, we need the flag `--missing`, which tells PLINK to calculate the missing rate in the dataset specified by `--bfile`. 
 
-Sample code to calculated missing rate:
-
-```bash
-cd ../04_Data_QC
-genotypeFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020" #!!! Please add your own path here.  "1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020" is the prefix of PLINK bed file. 
-
-plink \
-	--bfile ${genotypeFile} \
-	--missing \
-	--out plink_results
-```
-Remeber to set the value for `${genotypeFile}`.
+!!! example "Calculate missing rate"
+    ```bash
+    cd ../04_Data_QC
+    genotypeFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020" #!!! Please add your own path here.  "1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020" is the prefix of PLINK bed file. 
+    
+    plink \
+    	--bfile ${genotypeFile} \
+    	--missing \
+    	--out plink_results
+    ```
+    Remeber to set the value for `${genotypeFile}`.
 
 This code will generate two files `plink_results.imiss` and `plink_results.lmiss`, which contain the missing rate information for samples and snps respectively.
 
@@ -288,50 +287,54 @@ For different downstream analyses, we might use different set of variants. For e
 
 Using PLINK1.9 we can easily calculate the MAF of variants in the input data.
 
-```bash
-plink \
-	--bfile ${genotypeFile} \
-	--freq \
-	--out plink_results
-```
+!!! example "Calculate the MAF of variants using PLINK1.9"
+    ```bash
+    plink \
+    	--bfile ${genotypeFile} \
+    	--freq \
+    	--out plink_results
+    ```
+    
+    ```bash
+    # results from plink1.9
+    head plink_results.frq
+     CHR              SNP   A1   A2          MAF  NCHROBS
+       1      1:13273:G:C    C    G       0.0625     1008
+       1      1:14599:T:A    A    T      0.08929     1008
+       1      1:14604:A:G    G    A      0.08929     1008
+       1      1:14930:A:G    G    A       0.4137     1008
+       1      1:69897:T:C    T    C        0.124     1008
+       1      1:86331:A:G    G    A       0.0873     1008
+       1      1:91581:G:A    A    G        0.498     1008
+       1     1:122872:T:G    G    T       0.2589     1008
+       1     1:135163:C:T    T    C      0.09226     1008
+    ```
 
 Next we use plink2 to run the same options to check the difference between the results.
-```bash
-plink2 \
-        --bfile ${genotypeFile} \
-        --freq \
-        --out plink_results
-```
 
-```bash
-# results from plink1.9
-head plink_results.frq
- CHR              SNP   A1   A2          MAF  NCHROBS
-   1      1:13273:G:C    C    G       0.0625     1008
-   1      1:14599:T:A    A    T      0.08929     1008
-   1      1:14604:A:G    G    A      0.08929     1008
-   1      1:14930:A:G    G    A       0.4137     1008
-   1      1:69897:T:C    T    C        0.124     1008
-   1      1:86331:A:G    G    A       0.0873     1008
-   1      1:91581:G:A    A    G        0.498     1008
-   1     1:122872:T:G    G    T       0.2589     1008
-   1     1:135163:C:T    T    C      0.09226     1008
-```
+!!! example "Calculate the MAF of variants using PLINK2"
+    ```bash
+    plink2 \
+            --bfile ${genotypeFile} \
+            --freq \
+            --out plink_results
+    ```
+    
+    ```bash
+    # results from plink2
+    head plink_results.afreq
+    #CHROM	ID	REF	ALT	ALT_FREQS	OBS_CT
+    1	1:13273:G:C	G	C	0.0625	1008
+    1	1:14599:T:A	T	A	0.0892857	1008
+    1	1:14604:A:G	A	G	0.0892857	1008
+    1	1:14930:A:G	A	G	0.41369	1008
+    1	1:69897:T:C	T	C	0.875992	1008
+    1	1:86331:A:G	A	G	0.0873016	1008
+    1	1:91581:G:A	G	A	0.498016	1008
+    1	1:122872:T:G	T	G	0.258929	1008
+    1	1:135163:C:T	C	T	0.0922619	1008
+    ```
 
-```bash
-# results from plink2
-head plink_results.afreq
-#CHROM	ID	REF	ALT	ALT_FREQS	OBS_CT
-1	1:13273:G:C	G	C	0.0625	1008
-1	1:14599:T:A	T	A	0.0892857	1008
-1	1:14604:A:G	A	G	0.0892857	1008
-1	1:14930:A:G	A	G	0.41369	1008
-1	1:69897:T:C	T	C	0.875992	1008
-1	1:86331:A:G	A	G	0.0873016	1008
-1	1:91581:G:A	G	A	0.498016	1008
-1	1:122872:T:G	T	G	0.258929	1008
-1	1:135163:C:T	C	T	0.0922619	1008
-```
 We need pay attention to the concepts here.
 
 In PLINK1.9, the concept here is minor (A1) and major(A2) allele, while in PLINK2 it is reference(REF) and altervative(ALT) allele.
@@ -346,29 +349,31 @@ Next we can check the heterozygosity F of samples (https://www.cog-genomics.org/
 
 `-het` option will computes observed and expected autosomal homozygous genotype counts for each sample. Usually, we need to exclude individuals with high or low heterozygosity coefficient, which suggests that the sample might be contaminated. 
 
+!!! example "Calculate inbreeding F coefficient"
 
-```bash
-plink \
-	--bfile ${genotypeFile} \
-	--het \
-	--out plink_results
-```
-
-Check the output:
-
-```bash
-head plink_results.het
- FID       IID       O(HOM)       E(HOM)        N(NM)            F
-   0   HG00403       747270    7.488e+05      1122299    -0.004114
-   0   HG00404       748955    7.488e+05      1122299    0.0003974
-   0   HG00406       750093    7.488e+05      1122299     0.003444
-   0   HG00407       746566    7.488e+05      1122299    -0.005999
-   0   HG00409       751694    7.488e+05      1122299     0.007731
-   0   HG00410       745078    7.488e+05      1122299    -0.009983
-   0   HG00419       747996    7.488e+05      1122299     -0.00217
-   0   HG00421       757199    7.488e+05      1122299      0.02247
-   0   HG00422       752725    7.488e+05      1122299      0.01049
-```
+    ```bash
+    plink \
+    	--bfile ${genotypeFile} \
+    	--het \
+    	--out plink_results
+    ```
+    
+    Check the output:
+    
+    ```bash
+    head plink_results.het
+     FID       IID       O(HOM)       E(HOM)        N(NM)            F
+       0   HG00403       747270    7.488e+05      1122299    -0.004114
+       0   HG00404       748955    7.488e+05      1122299    0.0003974
+       0   HG00406       750093    7.488e+05      1122299     0.003444
+       0   HG00407       746566    7.488e+05      1122299    -0.005999
+       0   HG00409       751694    7.488e+05      1122299     0.007731
+       0   HG00410       745078    7.488e+05      1122299    -0.009983
+       0   HG00419       747996    7.488e+05      1122299     -0.00217
+       0   HG00421       757199    7.488e+05      1122299      0.02247
+       0   HG00422       752725    7.488e+05      1122299      0.01049
+    ```
+    
 A commonly used method is to exclude samples with heterzygosity F deviating more than 3 standard dividation(SD) from the mean F.
 
 ### Hardy-Weinberg equilibrium exact test
@@ -378,25 +383,26 @@ For SNP QC, besides checking the missing rate, we also need to check if the SNP 
 `--hardy` will perform Hardy-Weinberg equilibrium exact test for each variant. Variants with low P value usually suggest genotyping errors, or indicate evolutionary selection for these variants.
 
 The following command can calculate the Hardy-Weinberg equilibrium exact test statistics for all SNPs. (https://www.cog-genomics.org/plink/1.9/basic_stats#hardy)
-```bash
-plink \
-	--bfile ${genotypeFile} \
-	--hardy \
-	--out plink_results
-```
-```bash
-head plink_results.hwe
- CHR              SNP     TEST   A1   A2                 GENO   O(HET)   E(HET)            P 
-   1      1:13273:G:C  ALL(NP)    C    G             1/61/442    0.121   0.1172       0.7113
-   1      1:14599:T:A  ALL(NP)    A    T             1/88/415   0.1746   0.1626       0.1625
-   1      1:14604:A:G  ALL(NP)    G    A             1/88/415   0.1746   0.1626       0.1625
-   1      1:14930:A:G  ALL(NP)    G    A             4/409/91   0.8115   0.4851    1.679e-61
-   1      1:69897:T:C  ALL(NP)    T    C            7/111/386   0.2202   0.2173            1
-   1      1:86331:A:G  ALL(NP)    G    A             0/88/416   0.1746   0.1594      0.02387
-   1      1:91581:G:A  ALL(NP)    A    G          137/228/139   0.4524      0.5      0.03271
-   1     1:122872:T:G  ALL(NP)    G    T            1/259/244   0.5139   0.3838     8.04e-19
-   1     1:135163:C:T  ALL(NP)    T    C             1/91/412   0.1806   0.1675       0.1066
-```
+!!! example "Calculate the Hardy-Weinberg equilibrium exact test statistics"
+    ```bash
+    plink \
+    	--bfile ${genotypeFile} \
+    	--hardy \
+    	--out plink_results
+    ```
+    ```bash
+    head plink_results.hwe
+     CHR              SNP     TEST   A1   A2                 GENO   O(HET)   E(HET)            P 
+       1      1:13273:G:C  ALL(NP)    C    G             1/61/442    0.121   0.1172       0.7113
+       1      1:14599:T:A  ALL(NP)    A    T             1/88/415   0.1746   0.1626       0.1625
+       1      1:14604:A:G  ALL(NP)    G    A             1/88/415   0.1746   0.1626       0.1625
+       1      1:14930:A:G  ALL(NP)    G    A             4/409/91   0.8115   0.4851    1.679e-61
+       1      1:69897:T:C  ALL(NP)    T    C            7/111/386   0.2202   0.2173            1
+       1      1:86331:A:G  ALL(NP)    G    A             0/88/416   0.1746   0.1594      0.02387
+       1      1:91581:G:A  ALL(NP)    A    G          137/228/139   0.4524      0.5      0.03271
+       1     1:122872:T:G  ALL(NP)    G    T            1/259/244   0.5139   0.3838     8.04e-19
+       1     1:135163:C:T  ALL(NP)    T    C             1/91/412   0.1806   0.1675       0.1066
+    ```
 
 ### Applying filters
 
@@ -417,33 +423,34 @@ We can use `--indep-pairwise 50 5 0.2` to filter out those are in strong LD and 
 Please check https://www.cog-genomics.org/plink/1.9/ld#indep for the meaning of each parameter.
 Combined with the filters we just introduced, we can run:
 
-```bash
-plink \
-	--bfile ${genotypeFile} \
-	--maf 0.01 \
-	--geno 0.01 \
-	--mind 0.02 \
-	--hwe 5e-6 \
-	--indep-pairwise 50 5 0.2 \
-	--out plink_results
-```
-This command generates two outputs :  `plink_results.prune.in` and `plink_results.prune.out`
-`plink_results.prune.in` is the independent set of SNPs we will use in the following analysis.
-Let's take a look at this file. Basically it just contains one SNP id per line.
-
-```bash
-head plink_results.prune.in
-1:13273:G:C
-1:14599:T:A
-1:69897:T:C
-1:86331:A:G
-1:91581:G:A
-1:135163:C:T
-1:233473:C:G
-1:532929:T:C
-1:559480:C:T
-1:565433:C:T
-```
+!!! example 
+    ```bash
+    plink \
+    	--bfile ${genotypeFile} \
+    	--maf 0.01 \
+    	--geno 0.01 \
+    	--mind 0.02 \
+    	--hwe 5e-6 \
+    	--indep-pairwise 50 5 0.2 \
+    	--out plink_results
+    ```
+    This command generates two outputs :  `plink_results.prune.in` and `plink_results.prune.out`
+    `plink_results.prune.in` is the independent set of SNPs we will use in the following analysis.
+    Let's take a look at this file. Basically it just contains one SNP id per line.
+    
+    ```bash
+    head plink_results.prune.in
+    1:13273:G:C
+    1:14599:T:A
+    1:69897:T:C
+    1:86331:A:G
+    1:91581:G:A
+    1:135163:C:T
+    1:233473:C:G
+    1:532929:T:C
+    1:559480:C:T
+    1:565433:C:T
+    ```
 
 ### Sample & SNP filtering (extract/exclude/keep/remove)
 Some time we will use only a subset of samples or snps included the original dataset. 
@@ -451,6 +458,7 @@ In this case, we can use `--extract` or `--exclude` to select or exclude SNPs fr
 
 For  `--keep` or `--remove` , the input is the filename of a sample FID and IID file.
 For `--extract` or `--exclude` , the input is the filename of a snplist file.
+
 ```bash
 head plink_results.prune.in
 1:13273:G:C
@@ -471,80 +479,89 @@ head plink_results.prune.in
 
 Combined with the `--extract`, we can run:
 
-```bash
-plink \
+!!! example "Estimate IBD" 
+    ```bash
+    plink \
         --bfile ${genotypeFile} \
-	--extract plink_results.prune.in \
+    	--extract plink_results.prune.in \
         --genome \
         --out plink_results
-```
-
-PI_HAT is the IBD estimation. Please check https://www.cog-genomics.org/plink/1.9/ibd for more details.
-```bash
-head plink_results.genome
- FID1     IID1 FID2     IID2 RT    EZ      Z0      Z1      Z2  PI_HAT PHE       DST     PPC   RATIO
-   0  HG00403   0  HG00404 OT     0  0.9800  0.0086  0.0114  0.0157  -1  0.749375  0.5531  2.0089
-   0  HG00403   0  HG00406 OT     0  0.9751  0.0231  0.0018  0.0133  -1  0.748336  0.6309  2.0225
-   0  HG00403   0  HG00407 OT     0  0.9801  0.0153  0.0046  0.0122  -1  0.748293  0.5045  2.0007
-   0  HG00403   0  HG00409 OT     0  0.9807  0.0193  0.0000  0.0097  -1  0.747215  0.6014  2.0173
-   0  HG00403   0  HG00410 OT     0  0.9744  0.0256  0.0000  0.0128  -1  0.748058  0.8621  2.0745
-   0  HG00403   0  HG00419 OT     0  0.9650  0.0350  0.0000  0.0175  -1  0.747146  0.8080  2.0595
-   0  HG00403   0  HG00421 OT     0  0.9842  0.0158  0.0000  0.0079  -1  0.746522  0.4557  1.9926
-   0  HG00403   0  HG00422 OT     0  0.9832  0.0111  0.0056  0.0112  -1  0.748156  0.4208  1.9867
-   0  HG00403   0  HG00428 OT     0  0.9929  0.0000  0.0071  0.0071  -1  0.746851  0.3115  1.9674
-```
+    ```
+    
+    PI_HAT is the IBD estimation. Please check https://www.cog-genomics.org/plink/1.9/ibd for more details.
+    ```bash
+    head plink_results.genome
+     FID1     IID1 FID2     IID2 RT    EZ      Z0      Z1      Z2  PI_HAT PHE       DST     PPC   RATIO
+       0  HG00403   0  HG00404 OT     0  0.9800  0.0086  0.0114  0.0157  -1  0.749375  0.5531  2.0089
+       0  HG00403   0  HG00406 OT     0  0.9751  0.0231  0.0018  0.0133  -1  0.748336  0.6309  2.0225
+       0  HG00403   0  HG00407 OT     0  0.9801  0.0153  0.0046  0.0122  -1  0.748293  0.5045  2.0007
+       0  HG00403   0  HG00409 OT     0  0.9807  0.0193  0.0000  0.0097  -1  0.747215  0.6014  2.0173
+       0  HG00403   0  HG00410 OT     0  0.9744  0.0256  0.0000  0.0128  -1  0.748058  0.8621  2.0745
+       0  HG00403   0  HG00419 OT     0  0.9650  0.0350  0.0000  0.0175  -1  0.747146  0.8080  2.0595
+       0  HG00403   0  HG00421 OT     0  0.9842  0.0158  0.0000  0.0079  -1  0.746522  0.4557  1.9926
+       0  HG00403   0  HG00422 OT     0  0.9832  0.0111  0.0056  0.0112  -1  0.748156  0.4208  1.9867
+       0  HG00403   0  HG00428 OT     0  0.9929  0.0000  0.0071  0.0071  -1  0.746851  0.3115  1.9674
+    ```
 
 ### LD calculation
 
 We can also use our data to calculate LD between a pair of SNPs.
 
-![image](https://user-images.githubusercontent.com/40289485/161413586-d4f6e21e-f0c7-4c54-a703-bb060ec6913d.png)
+!!! quote How we calculate LD r2
+    ![image](https://user-images.githubusercontent.com/40289485/161413586-d4f6e21e-f0c7-4c54-a703-bb060ec6913d.png)
 
 `--chr` option allows us to include snps on a specific chromosome.
 To calculate LD r2 for SNPs on chr22 , we can run:
-```bash
-plink \
-	--bfile ${genotypeFile} \
-        --chr 22 \
-        --r2 \
-        --out plink_results
-```
-```bash
-head plink_results.ld
- CHR_A         BP_A             SNP_A  CHR_B         BP_B             SNP_B           R2 
-    22     16053659   22:16053659:A:C     22     16067500   22:16067500:T:C      0.64577 
-    22     16053862   22:16053862:C:T     22     16054454   22:16054454:C:T     0.987505 
-    22     16053862   22:16053862:C:T     22     16055122   22:16055122:G:T     0.601708 
-    22     16053863   22:16053863:G:A     22     16055070   22:16055070:G:A     0.931043 
-    22     16054454   22:16054454:C:T     22     16055122   22:16055122:G:T     0.594216 
-    22     16058767   22:16058767:A:G     22     16067462   22:16067462:C:T     0.266916 
-    22     16067462   22:16067462:C:T     22     16069771   22:16069771:G:A     0.382323 
-    22     16069771   22:16069771:G:A     22     16123813   22:16123813:G:A     0.291935 
-    22     16143946   22:16143946:A:G     22     16155259   22:16155259:A:G     0.559165 
-```
+
+!!! example Calculate LD r2 for SNPs on chr22
+    
+    ```bash
+    plink \
+    	    --bfile ${genotypeFile} \
+            --chr 22 \
+            --r2 \
+            --out plink_results
+    ```
+    
+    ```bash
+    head plink_results.ld
+     CHR_A         BP_A             SNP_A  CHR_B         BP_B             SNP_B           R2 
+        22     16053659   22:16053659:A:C     22     16067500   22:16067500:T:C      0.64577 
+        22     16053862   22:16053862:C:T     22     16054454   22:16054454:C:T     0.987505 
+        22     16053862   22:16053862:C:T     22     16055122   22:16055122:G:T     0.601708 
+        22     16053863   22:16053863:G:A     22     16055070   22:16055070:G:A     0.931043 
+        22     16054454   22:16054454:C:T     22     16055122   22:16055122:G:T     0.594216 
+        22     16058767   22:16058767:A:G     22     16067462   22:16067462:C:T     0.266916 
+        22     16067462   22:16067462:C:T     22     16069771   22:16069771:G:A     0.382323 
+        22     16069771   22:16069771:G:A     22     16123813   22:16123813:G:A     0.291935 
+        22     16143946   22:16143946:A:G     22     16155259   22:16155259:A:G     0.559165 
+    ```
 
 ### Data management (make-bed/recode)
 
 By far the input data we use is in binary form, but sometimes we may want the text version.
-![image](https://user-images.githubusercontent.com/40289485/161413659-a489b508-63c7-4166-9f5c-25a1a125109a.png)
 
-To convert the format we can run:
+!!! quote Format conversion
+    ![image](https://user-images.githubusercontent.com/40289485/161413659-a489b508-63c7-4166-9f5c-25a1a125109a.png)
 
-```bash
-#extract the 1000 samples with the pruned SNPs, and make a bed file.
-plink \
-	--bfile ${genotypeFile} \
-	--extract plink_results.prune.in \
-	--make-bed \
-	--out plink_1000_pruned
+To convert the formats, we can run:
 
-#convert the bed/bim/fam to ped/map
-plink \
-        --bfile plink_1000_pruned \
-        --recode \
-        --out plink_1000_pruned
-```
-
+!!! example "Convert PLINK formats"
+    
+    ```bash
+    #extract the 1000 samples with the pruned SNPs, and make a bed file.
+    plink \
+    	--bfile ${genotypeFile} \
+    	--extract plink_results.prune.in \
+    	--make-bed \
+    	--out plink_1000_pruned
+    
+    #convert the bed/bim/fam to ped/map
+    plink \
+            --bfile plink_1000_pruned \
+            --recode \
+            --out plink_1000_pruned
+    ```
 
 ## Exercise
 - [x] Follow this tutorial and type in the commands:
