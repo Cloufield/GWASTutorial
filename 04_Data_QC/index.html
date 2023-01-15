@@ -1564,7 +1564,8 @@ Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
 <h3 id="plink-syntax">PLink syntax:</h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161413684-a128b87f-fb79-4b13-a7b5-acfa997c4421.png" /></p>
 <p>To calculate the missing rate, we need the flag <code>--missing</code>, which tells PLINK to calculate the missing rate in the dataset specified by <code>--bfile</code>. </p>
-<p>Sample code to calculated missing rate:</p>
+<div class="admonition example">
+<p class="admonition-title">Calculate missing rate</p>
 <p><div class="highlight"><pre><span></span><code><span class="nb">cd</span> ../04_Data_QC
 <span class="nv">genotypeFile</span><span class="o">=</span><span class="s2">&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot;</span> <span class="c1">#!!! Please add your own path here.  &quot;1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot; is the prefix of PLINK bed file. </span>
 
@@ -1574,6 +1575,7 @@ plink <span class="se">\</span>
     --out plink_results
 </code></pre></div>
 Remeber to set the value for <code>${genotypeFile}</code>.</p>
+</div>
 <p>This code will generate two files <code>plink_results.imiss</code> and <code>plink_results.lmiss</code>, which contain the missing rate information for samples and snps respectively.</p>
 <p>Take a look at the imiss file. The last column shows the missing rate for samples. Since we used part of the 1000 Genome Project data this time, there are no missing samples or snps. So the missing rate is zero.</p>
 <div class="highlight"><pre><span></span><code>head plink_results.imiss
@@ -1599,17 +1601,13 @@ Remeber to set the value for <code>${genotypeFile}</code>.</p>
 </ol>
 <p>For different downstream analyses, we might use different set of variants. For example, for PCA, we might use only common variants. For gene-based tests, we might use only rare variants.</p>
 <p>Using PLINK1.9 we can easily calculate the MAF of variants in the input data.</p>
+<div class="admonition example">
+<p class="admonition-title">Calculate the MAF of variants using PLINK1.9</p>
 <div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
     --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
     --freq <span class="se">\</span>
     --out plink_results
 </code></pre></div>
-<p>Next we use plink2 to run the same options to check the difference between the results.
-<div class="highlight"><pre><span></span><code>plink2 <span class="se">\</span>
-        --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
-        --freq <span class="se">\</span>
-        --out plink_results
-</code></pre></div></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># results from plink1.9</span>
 head plink_results.frq
  CHR              SNP   A1   A2          MAF  NCHROBS
@@ -1623,7 +1621,16 @@ head plink_results.frq
    <span class="m">1</span>     <span class="m">1</span>:122872:T:G    G    T       <span class="m">0</span>.2589     <span class="m">1008</span>
    <span class="m">1</span>     <span class="m">1</span>:135163:C:T    T    C      <span class="m">0</span>.09226     <span class="m">1008</span>
 </code></pre></div>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># results from plink2</span>
+</div>
+<p>Next we use plink2 to run the same options to check the difference between the results.</p>
+<div class="admonition example">
+<p class="admonition-title">Calculate the MAF of variants using PLINK2</p>
+<div class="highlight"><pre><span></span><code>plink2 <span class="se">\</span>
+        --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
+        --freq <span class="se">\</span>
+        --out plink_results
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># results from plink2</span>
 head plink_results.afreq
 <span class="c1">#CHROM  ID  REF ALT ALT_FREQS   OBS_CT</span>
 <span class="m">1</span>   <span class="m">1</span>:13273:G:C G   C   <span class="m">0</span>.0625  <span class="m">1008</span>
@@ -1636,7 +1643,8 @@ head plink_results.afreq
 <span class="m">1</span>   <span class="m">1</span>:122872:T:G    T   G   <span class="m">0</span>.258929    <span class="m">1008</span>
 <span class="m">1</span>   <span class="m">1</span>:135163:C:T    C   T   <span class="m">0</span>.0922619   <span class="m">1008</span>
 </code></pre></div>
-We need pay attention to the concepts here.</p>
+</div>
+<p>We need pay attention to the concepts here.</p>
 <p>In PLINK1.9, the concept here is minor (A1) and major(A2) allele, while in PLINK2 it is reference(REF) and altervative(ALT) allele.</p>
 <ul>
 <li><strong>Major / Minor</strong>: Major allele and minor allele are defined as the allele with highest and lower(or second highest for multiallelic variants) allele in a given population, respectively. So major allele and minor allele for a SNP might be different in two independent populations. The range for MAF(minor allele frequencies) is [0,0.5].</li>
@@ -1645,13 +1653,15 @@ We need pay attention to the concepts here.</p>
 <h3 id="inbreeding-f-coefficient">Inbreeding F coefficient</h3>
 <p>Next we can check the heterozygosity F of samples (https://www.cog-genomics.org/plink/1.9/basic_stats#ibc) : </p>
 <p><code>-het</code> option will computes observed and expected autosomal homozygous genotype counts for each sample. Usually, we need to exclude individuals with high or low heterozygosity coefficient, which suggests that the sample might be contaminated. </p>
+<div class="admonition example">
+<p class="admonition-title">Calculate inbreeding F coefficient</p>
 <div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
     --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
     --het <span class="se">\</span>
     --out plink_results
 </code></pre></div>
 <p>Check the output:</p>
-<p><div class="highlight"><pre><span></span><code>head plink_results.het
+<div class="highlight"><pre><span></span><code>head plink_results.het
  FID       IID       O<span class="o">(</span>HOM<span class="o">)</span>       E<span class="o">(</span>HOM<span class="o">)</span>        N<span class="o">(</span>NM<span class="o">)</span>            F
    <span class="m">0</span>   HG00403       <span class="m">747270</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>    -0.004114
    <span class="m">0</span>   HG00404       <span class="m">748955</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>    <span class="m">0</span>.0003974
@@ -1663,12 +1673,15 @@ We need pay attention to the concepts here.</p>
    <span class="m">0</span>   HG00421       <span class="m">757199</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>      <span class="m">0</span>.02247
    <span class="m">0</span>   HG00422       <span class="m">752725</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>      <span class="m">0</span>.01049
 </code></pre></div>
-A commonly used method is to exclude samples with heterzygosity F deviating more than 3 standard dividation(SD) from the mean F.</p>
+</div>
+<p>A commonly used method is to exclude samples with heterzygosity F deviating more than 3 standard dividation(SD) from the mean F.</p>
 <h3 id="hardy-weinberg-equilibrium-exact-test">Hardy-Weinberg equilibrium exact test</h3>
 <p>For SNP QC, besides checking the missing rate, we also need to check if the SNP is in hardy-weinberg equilibrium:</p>
 <p><code>--hardy</code> will perform Hardy-Weinberg equilibrium exact test for each variant. Variants with low P value usually suggest genotyping errors, or indicate evolutionary selection for these variants.</p>
-<p>The following command can calculate the Hardy-Weinberg equilibrium exact test statistics for all SNPs. (https://www.cog-genomics.org/plink/1.9/basic_stats#hardy)
-<div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
+<p>The following command can calculate the Hardy-Weinberg equilibrium exact test statistics for all SNPs. (https://www.cog-genomics.org/plink/1.9/basic_stats#hardy)</p>
+<div class="admonition example">
+<p class="admonition-title">Calculate the Hardy-Weinberg equilibrium exact test statistics</p>
+<p><div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
     --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
     --hardy <span class="se">\</span>
     --out plink_results
@@ -1685,6 +1698,7 @@ A commonly used method is to exclude samples with heterzygosity F deviating more
    <span class="m">1</span>     <span class="m">1</span>:122872:T:G  ALL<span class="o">(</span>NP<span class="o">)</span>    G    T            <span class="m">1</span>/259/244   <span class="m">0</span>.5139   <span class="m">0</span>.3838     <span class="m">8</span>.04e-19
    <span class="m">1</span>     <span class="m">1</span>:135163:C:T  ALL<span class="o">(</span>NP<span class="o">)</span>    T    C             <span class="m">1</span>/91/412   <span class="m">0</span>.1806   <span class="m">0</span>.1675       <span class="m">0</span>.1066
 </code></pre></div></p>
+</div>
 <h3 id="applying-filters">Applying filters</h3>
 <p>Previously we just calculate the basic statistics using PLINK. But when performing certain analyses, we just want to exclude the bad quallity samples or SNPs instead of calculating the statistics for all samples and SNPs.</p>
 <p>In this case we can apply the following filters for example:</p>
@@ -1699,6 +1713,8 @@ A commonly used method is to exclude samples with heterzygosity F deviating more
 <p>We can use <code>--indep-pairwise 50 5 0.2</code> to filter out those are in strong LD and keep only the independent SNPS.
 Please check https://www.cog-genomics.org/plink/1.9/ld#indep for the meaning of each parameter.
 Combined with the filters we just introduced, we can run:</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
 <p><div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
     --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
     --maf <span class="m">0</span>.01 <span class="se">\</span>
@@ -1723,11 +1739,12 @@ Let's take a look at this file. Basically it just contains one SNP id per line.<
 <span class="m">1</span>:559480:C:T
 <span class="m">1</span>:565433:C:T
 </code></pre></div>
+</div>
 <h3 id="sample-snp-filtering-extractexcludekeepremove">Sample &amp; SNP filtering (extract/exclude/keep/remove)</h3>
 <p>Some time we will use only a subset of samples or snps included the original dataset. 
 In this case, we can use <code>--extract</code> or <code>--exclude</code> to select or exclude SNPs from analysis, <code>--keep</code> or <code>--remove</code> to select or exclude samples.</p>
 <p>For  <code>--keep</code> or <code>--remove</code> , the input is the filename of a sample FID and IID file.
-For <code>--extract</code> or <code>--exclude</code> , the input is the filename of a snplist file.
+For <code>--extract</code> or <code>--exclude</code> , the input is the filename of a snplist file.</p>
 <div class="highlight"><pre><span></span><code>head plink_results.prune.in
 <span class="m">1</span>:13273:G:C
 <span class="m">1</span>:14599:T:A
@@ -1739,16 +1756,18 @@ For <code>--extract</code> or <code>--exclude</code> , the input is the filename
 <span class="m">1</span>:532929:T:C
 <span class="m">1</span>:559480:C:T
 <span class="m">1</span>:565433:C:T
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="ibd-pi_hat">IBD / PI_HAT</h3>
 <p><code>--genome</code> will estimate IBS/IBD. Usually for this analysis, we need to prune our data first since the strong LD will cause bias in the results.
 (This step is extremelly computationally intensive)</p>
 <p>Combined with the <code>--extract</code>, we can run:</p>
+<div class="admonition example">
+<p class="admonition-title">Estimate IBD</p>
 <div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
-        --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
+    --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
     --extract plink_results.prune.in <span class="se">\</span>
-        --genome <span class="se">\</span>
-        --out plink_results
+    --genome <span class="se">\</span>
+    --out plink_results
 </code></pre></div>
 <p>PI_HAT is the IBD estimation. Please check https://www.cog-genomics.org/plink/1.9/ibd for more details.
 <div class="highlight"><pre><span></span><code>head plink_results.genome
@@ -1763,13 +1782,19 @@ For <code>--extract</code> or <code>--exclude</code> , the input is the filename
    <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00422 OT     <span class="m">0</span>  <span class="m">0</span>.9832  <span class="m">0</span>.0111  <span class="m">0</span>.0056  <span class="m">0</span>.0112  -1  <span class="m">0</span>.748156  <span class="m">0</span>.4208  <span class="m">1</span>.9867
    <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00428 OT     <span class="m">0</span>  <span class="m">0</span>.9929  <span class="m">0</span>.0000  <span class="m">0</span>.0071  <span class="m">0</span>.0071  -1  <span class="m">0</span>.746851  <span class="m">0</span>.3115  <span class="m">1</span>.9674
 </code></pre></div></p>
+</div>
 <h3 id="ld-calculation">LD calculation</h3>
 <p>We can also use our data to calculate LD between a pair of SNPs.</p>
+<div class="admonition quote how we calculate ld r2">
+<p class="admonition-title">Quote</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161413586-d4f6e21e-f0c7-4c54-a703-bb060ec6913d.png" /></p>
+</div>
 <p><code>--chr</code> option allows us to include snps on a specific chromosome.
-To calculate LD r2 for SNPs on chr22 , we can run:
+To calculate LD r2 for SNPs on chr22 , we can run:</p>
+<div class="admonition example calculate ld r2 for snps on chr22">
+<p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
-    --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
+        --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
         --chr <span class="m">22</span> <span class="se">\</span>
         --r2 <span class="se">\</span>
         --out plink_results
@@ -1785,11 +1810,17 @@ To calculate LD r2 for SNPs on chr22 , we can run:
     <span class="m">22</span>     <span class="m">16067462</span>   <span class="m">22</span>:16067462:C:T     <span class="m">22</span>     <span class="m">16069771</span>   <span class="m">22</span>:16069771:G:A     <span class="m">0</span>.382323 
     <span class="m">22</span>     <span class="m">16069771</span>   <span class="m">22</span>:16069771:G:A     <span class="m">22</span>     <span class="m">16123813</span>   <span class="m">22</span>:16123813:G:A     <span class="m">0</span>.291935 
     <span class="m">22</span>     <span class="m">16143946</span>   <span class="m">22</span>:16143946:A:G     <span class="m">22</span>     <span class="m">16155259</span>   <span class="m">22</span>:16155259:A:G     <span class="m">0</span>.559165 
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <h3 id="data-management-make-bedrecode">Data management (make-bed/recode)</h3>
-<p>By far the input data we use is in binary form, but sometimes we may want the text version.
-<img alt="image" src="https://user-images.githubusercontent.com/40289485/161413659-a489b508-63c7-4166-9f5c-25a1a125109a.png" /></p>
-<p>To convert the format we can run:</p>
+<p>By far the input data we use is in binary form, but sometimes we may want the text version.</p>
+<div class="admonition quote format conversion">
+<p class="admonition-title">Quote</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/161413659-a489b508-63c7-4166-9f5c-25a1a125109a.png" /></p>
+</div>
+<p>To convert the formats, we can run:</p>
+<div class="admonition example">
+<p class="admonition-title">Convert PLINK formats</p>
 <div class="highlight"><pre><span></span><code><span class="c1">#extract the 1000 samples with the pruned SNPs, and make a bed file.</span>
 plink <span class="se">\</span>
     --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
@@ -1803,6 +1834,7 @@ plink <span class="se">\</span>
         --recode <span class="se">\</span>
         --out plink_1000_pruned
 </code></pre></div>
+</div>
 <h2 id="exercise">Exercise</h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Follow this tutorial and type in the commands:</li>
