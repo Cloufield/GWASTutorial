@@ -1490,27 +1490,69 @@ Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
 </div>
 <h2 id="plink-tutorial">PLINK tutorial</h2>
 <p>Detailed description can be found on plink's website: <a href="https://www.cog-genomics.org/plink/1.9/">PLINK1.9</a> and <a href="https://www.cog-genomics.org/plink/2.0/">PLINK2</a>.</p>
-<p>The functions we will learn in this tutorial:
-1. Calculating missing rate (call rate)
-2. Calculating inbreeding F coefficient
-3. Conducting Hardy-Weinberg equilibrium exact test
-4. Calculating allele Frequency
-5. Applying filters
-6. Conducting LD-Pruning
-7. Conducting sample &amp; snp filtering (extract/exclude/keep/remove)
-8. Estimating IBD / PI_HAT
-9. Calculating LD
-10. Data management (make-bed/recode)</p>
+<p>The functions we will learn in this tutorial:</p>
+<ol>
+<li>Calculating missing rate (call rate)</li>
+<li>Calculating inbreeding F coefficient</li>
+<li>Conducting Hardy-Weinberg equilibrium exact test</li>
+<li>Calculating allele Frequency</li>
+<li>Applying filters</li>
+<li>Conducting LD-Pruning</li>
+<li>Conducting sample &amp; snp filtering (extract/exclude/keep/remove)</li>
+<li>Estimating IBD / PI_HAT</li>
+<li>Calculating LD</li>
+<li>Data management (make-bed/recode)</li>
+</ol>
 <p>All sample codes and results for this module are available in <code>./04_data_QC</code></p>
-<p>QC Step Summary
-|QC step|Option in PLINK|Commonly used threshold to exclude| Description|
-|-|-|-|-|
-|Sample missing rate| <code>--geno</code>,  <code>--missing</code> | missing rate &gt; 0.01 ||
-|SNP missing rate| <code>--mind</code>, <code>--missing</code> | missing rate &gt; 0.01 ||
-|Minor allele frequency| <code>--freq</code>, <code>--maf</code> |maf &lt; 0.01||
-|Sample Relatedness| <code>--genome</code> |||
-|Hardy-Weinberg equilibrium| <code>--hwe</code>,<code>--hardy</code>|hwe &lt; 5e-6||
-|Inbreeding F coefficient|<code>--het</code>|outside of 3 SD from the mean||</p>
+<p>QC Step Summary</p>
+<table>
+<thead>
+<tr>
+<th>QC step</th>
+<th>Option in PLINK</th>
+<th>Commonly used threshold to exclude</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sample missing rate</td>
+<td><code>--geno</code>,  <code>--missing</code></td>
+<td>missing rate &gt; 0.01</td>
+<td></td>
+</tr>
+<tr>
+<td>SNP missing rate</td>
+<td><code>--mind</code>, <code>--missing</code></td>
+<td>missing rate &gt; 0.01</td>
+<td></td>
+</tr>
+<tr>
+<td>Minor allele frequency</td>
+<td><code>--freq</code>, <code>--maf</code></td>
+<td>maf &lt; 0.01</td>
+<td></td>
+</tr>
+<tr>
+<td>Sample Relatedness</td>
+<td><code>--genome</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hardy-Weinberg equilibrium</td>
+<td><code>--hwe</code>,<code>--hardy</code></td>
+<td>hwe &lt; 5e-6</td>
+<td></td>
+</tr>
+<tr>
+<td>Inbreeding F coefficient</td>
+<td><code>--het</code></td>
+<td>outside of 3 SD from the mean</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>First, we can calculate some basic statistics of our simulated data:</p>
 <h3 id="missing-rate-call-rate">Missing rate (call rate)</h3>
 <p>The first thing we want to know is the missing rate of our data. Usually we need to check the missing rate of samples and snps to decide a threshold to exclude low-quality samples and snps. (https://www.cog-genomics.org/plink/1.9/basic_stats#missing)</p>
