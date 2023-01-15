@@ -1330,13 +1330,15 @@ End time: Tue Dec 27 23:04:40 2022
 <li>Basepair position</li>
 <li>P value or -log10(P)</li>
 </ul>
-<p>Steps to create mahattan plot:</p>
+<div class="admonition tips">
+<p class="admonition-title">Steps to create Mahattan plot</p>
 <ol>
 <li>sort the variants by genome coordinates.</li>
 <li>map the genome coordinates of variants to the x axis.</li>
 <li>convert P value to -log10(P).</li>
 <li>create the scatter plot.</li>
 </ol>
+</div>
 <h3 id="quantile-quantile-plot">Quantile-quantile plot</h3>
 <p>Quantile-quantile plot (as known as Q-Q plot), is commonly used to compare an observed distribution with its expected distribution. For a specific point (x,y) on Q-Q plot, its y coordinate corresponds to one of the quantiles of the observed distribution, while its x coordinate corresponds to the same quantile of the expected distribution.</p>
 <p>Quantile-quantile plot is used to check if there is any significant inflation in P value distribution, which usually indicates population stratification or cryptic relatedness. </p>
@@ -1344,7 +1346,8 @@ End time: Tue Dec 27 23:04:40 2022
 <ul>
 <li>P value or -log10(P)</li>
 </ul>
-<p>Steps to create mahattan plot:</p>
+<div class="admonition tips">
+<p class="admonition-title">Steps to create Q-Q plot</p>
 <p>Suppose we have <code>n</code> variants in our sumstats,</p>
 <ol>
 <li>convert the <code>n</code> P value to -log10(P).</li>
@@ -1353,6 +1356,7 @@ End time: Tue Dec 27 23:04:40 2022
 <li>convert the <code>n</code> numbers to -log10(P) and sort in asending order.</li>
 <li>create scatter plot using the sorted -log10(P) of sumstats as Y and sorted -log10(P) we generated as X.</li>
 </ol>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The expected distribution of P value is an Uniform distribution from 0 to 1.</p>

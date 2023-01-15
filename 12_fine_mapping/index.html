@@ -1064,7 +1064,33 @@
 
 <h1 id="fine-mapping-under-construction">Fine-mapping (under construction)</h1>
 <h2 id="introduction">Introduction</h2>
-<p>Susie : Sum of Single Effects” (SuSiE) model.</p>
+<p>Fine-mapping : Fine-mapping aims to identfiy the causal variant(s) within a locus for a disease, given the evidence of the significant association of the locus (or genomic region) in GWAS of a disease. </p>
+<p>Fine-mapping using individual data is usually performed by fitting the multiple linear regression model:</p>
+<div class="arithmatex">\[y = Xb + e\]</div>
+<ul>
+<li><span class="arithmatex">\(b = (b_1, …, b_J)^T\)</span> is a vector of genetic effects of variants.</li>
+</ul>
+<p>The aim of fine-mapping is to estimate the PIP (posterior inclusion probability), which indicates the evidence for SNP j having a non-zero effect (namely, causal) :</p>
+<div class="arithmatex">\[ PIP_j:=Pr(b_j\neq0|X,y) \]</div>
+<div class="admonition note">
+<p class="admonition-title">Commonly used tools for fine-mapping</p>
+<ul>
+<li>FINEMAP</li>
+<li>SUSIE / SUSIE-RSS</li>
+<li>CAVIAR</li>
+<li>PAINTOR</li>
+</ul>
+<p>You can check <a href="https://cloufield.github.io/CTGCatalog/Tools_Fine_mapping_README/">here</a> for more information.</p>
+</div>
+<p>In this tutorial, we will introduce SuSiE as an example. SuSiE stands for Sum of Single Effects” model.</p>
+<p>The key idea behind SuSiE is : 
+$$b = \sum_{l=1}^L b_l $$</p>
+<p>where each vector <span class="arithmatex">\(b_l = (b_{l1}, …, b_{lJ})^T\)</span> is a so-called <code>single effect</code> vector (a vector with only one non-zero element).  L is the upper bound of number of causal variants. And this model could be fitted using Iterative Bayesian Stepwise Selection (IBSS).</p>
+<p>For fine-mapping with summary statistics using Susie (SuSiE-RSS), IBSS was modified (IBSS-ss) to take sufficient statistics (which can be computed from other combinations of summary statistics) as input. SuSie will then approximate the sufficient statistics to run fine-mapping. </p>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>For details of SuSiE and SuSiE-RSS, please check : Zou, Y., Carbonetto, P., Wang, G., &amp; Stephens, M. (2022). Fine-mapping from summary data with the “Sum of Single Effects” model. PLoS Genetics, 18(7), e1010299. <a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1010299">Link</a></p>
+</div>
 <h2 id="file-preparation">File Preparation</h2>
 <ul>
 <li>Sumstats for the loci</li>
