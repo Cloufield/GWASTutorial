@@ -26,12 +26,12 @@ $$ PIP_j:=Pr(b_j\neq0|X,y) $$
 In this tutorial, we will introduce SuSiE as an example. SuSiE stands for Sum of Single Effects” model.
 
 The key idea behind SuSiE is : 
+
 $$b = \sum_{l=1}^L b_l $$
 
-where each vector $b_l = (b_{l1}, …, b_{lJ})^T$ is a so-called `single effect` vector (a vector with only one non-zero element).  L is the upper bound of number of causal variants. And this model could be fitted using Iterative Bayesian Stepwise Selection (IBSS).
+where each vector $b_l = (b_{l1}, …, b_{lJ})^T$ is a so-called **single effect** vector (a vector with only one non-zero element).  L is the upper bound of number of causal variants. And this model could be fitted using **Iterative Bayesian Stepwise Selection (IBSS)**.
 
 For fine-mapping with summary statistics using Susie (SuSiE-RSS), IBSS was modified (IBSS-ss) to take sufficient statistics (which can be computed from other combinations of summary statistics) as input. SuSie will then approximate the sufficient statistics to run fine-mapping. 
-
 
 !!! quote 
     For details of SuSiE and SuSiE-RSS, please check : Zou, Y., Carbonetto, P., Wang, G., & Stephens, M. (2022). Fine-mapping from summary data with the “Sum of Single Effects” model. PLoS Genetics, 18(7), e1010299. [Link](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1010299)
