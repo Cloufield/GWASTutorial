@@ -214,7 +214,7 @@ The functions we will learn in this tutorial:
 
 All sample codes and results for this module are available in `./04_data_QC`
 
-QC Step Summary
+### QC Step Summary
 
 |QC step|Option in PLINK|Commonly used threshold to exclude| Description|
 |-|-|-|-|
@@ -236,8 +236,10 @@ The first thing we want to know is the missing rate of our data. Usually we need
 
 The input is PLINK bed/bim/fam file. Usually they have the same prefix, and we just need to pass the prefix to `--bfile` option.
 
-### PLink syntax:
-![image](https://user-images.githubusercontent.com/40289485/161413684-a128b87f-fb79-4b13-a7b5-acfa997c4421.png)
+### PLINK syntax
+
+!!! info "PLINK syntax"
+    ![image](https://user-images.githubusercontent.com/40289485/161413684-a128b87f-fb79-4b13-a7b5-acfa997c4421.png)
 
 To calculate the missing rate, we need the flag `--missing`, which tells PLINK to calculate the missing rate in the dataset specified by `--bfile`. 
 
