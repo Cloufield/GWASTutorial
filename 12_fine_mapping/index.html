@@ -869,8 +869,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fine-mapping-using-susier" class="md-nav__link">
-    Fine-mapping using SusieR
+  <a href="#fine-mapping-with-summary-statistics-using-susier" class="md-nav__link">
+    Fine-mapping with summary statistics using SusieR
   </a>
   
 </li>
@@ -1035,8 +1035,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fine-mapping-using-susier" class="md-nav__link">
-    Fine-mapping using SusieR
+  <a href="#fine-mapping-with-summary-statistics-using-susier" class="md-nav__link">
+    Fine-mapping with summary statistics using SusieR
   </a>
   
 </li>
@@ -1064,30 +1064,136 @@
 
 <h1 id="fine-mapping-under-construction">Fine-mapping (under construction)</h1>
 <h2 id="introduction">Introduction</h2>
+<p>Susie : Sum of Single Effects” (SuSiE) model.</p>
 <h2 id="file-preparation">File Preparation</h2>
+<ul>
+<li>Sumstats for the loci</li>
+<li>SNP list for calculating LD matrix</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Using python to check novel loci and extract the files.</p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">gwaslab</span> <span class="k">as</span> <span class="nn">gl</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">sumstats</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">Sumstats</span><span class="p">(</span><span class="s2">&quot;../06_Association_tests/1kgeas.B1.glm.firth&quot;</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;plink2&quot;</span><span class="p">)</span>
+<span class="o">...</span>
+
+<span class="n">sumstats</span><span class="o">.</span><span class="n">basic_check</span><span class="p">()</span>
+<span class="o">...</span>
+
+<span class="n">sumstats</span><span class="o">.</span><span class="n">get_lead</span><span class="p">()</span>
+
+<span class="n">Fri</span> <span class="n">Jan</span> <span class="mi">13</span> <span class="mi">23</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">43</span> <span class="mi">2023</span> <span class="n">Start</span> <span class="n">to</span> <span class="n">extract</span> <span class="n">lead</span> <span class="n">variants</span><span class="o">...</span>
+<span class="n">Fri</span> <span class="n">Jan</span> <span class="mi">13</span> <span class="mi">23</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">43</span> <span class="mi">2023</span>  <span class="o">-</span><span class="n">Processing</span> <span class="mi">1122285</span> <span class="n">variants</span><span class="o">...</span>
+<span class="n">Fri</span> <span class="n">Jan</span> <span class="mi">13</span> <span class="mi">23</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">43</span> <span class="mi">2023</span>  <span class="o">-</span><span class="n">Significance</span> <span class="n">threshold</span> <span class="p">:</span> <span class="mf">5e-08</span>
+<span class="n">Fri</span> <span class="n">Jan</span> <span class="mi">13</span> <span class="mi">23</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">43</span> <span class="mi">2023</span>  <span class="o">-</span><span class="n">Sliding</span> <span class="n">window</span> <span class="n">size</span><span class="p">:</span> <span class="mi">500</span>  <span class="n">kb</span>
+<span class="n">Fri</span> <span class="n">Jan</span> <span class="mi">13</span> <span class="mi">23</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">44</span> <span class="mi">2023</span>  <span class="o">-</span><span class="n">Found</span> <span class="mi">59</span> <span class="n">significant</span> <span class="n">variants</span> <span class="ow">in</span> <span class="n">total</span><span class="o">...</span>
+<span class="n">Fri</span> <span class="n">Jan</span> <span class="mi">13</span> <span class="mi">23</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">44</span> <span class="mi">2023</span>  <span class="o">-</span><span class="n">Identified</span> <span class="mi">3</span> <span class="n">lead</span> <span class="n">variants</span><span class="err">!</span>
+<span class="n">Fri</span> <span class="n">Jan</span> <span class="mi">13</span> <span class="mi">23</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">44</span> <span class="mi">2023</span> <span class="n">Finished</span> <span class="n">extracting</span> <span class="n">lead</span> <span class="n">variants</span> <span class="n">successfully</span><span class="err">!</span>
+
+<span class="n">SNPID</span> <span class="n">CHR</span> <span class="n">POS</span> <span class="n">EA</span>  <span class="n">NEA</span> <span class="n">SE</span>  <span class="n">Z</span> <span class="n">P</span> <span class="n">OR</span>  <span class="n">N</span> <span class="n">STATUS</span>
+<span class="mi">110723</span>  <span class="mi">2</span><span class="p">:</span><span class="mi">55574452</span><span class="p">:</span><span class="n">G</span><span class="p">:</span><span class="n">C</span>  <span class="mi">2</span> <span class="mi">55574452</span>  <span class="n">C</span> <span class="n">G</span> <span class="mf">0.160948</span>  <span class="o">-</span><span class="mf">5.98392</span>  <span class="mf">2.178320e-09</span>  <span class="mf">0.381707</span>  <span class="mi">503</span> <span class="mi">9960099</span>
+<span class="mi">424615</span>  <span class="mi">6</span><span class="p">:</span><span class="mi">29919659</span><span class="p">:</span><span class="n">T</span><span class="p">:</span><span class="n">C</span>  <span class="mi">6</span> <span class="mi">29919659</span>  <span class="n">T</span> <span class="n">C</span> <span class="mf">0.155457</span>  <span class="o">-</span><span class="mf">5.89341</span>  <span class="mf">3.782970e-09</span>  <span class="mf">0.400048</span>  <span class="mi">503</span> <span class="mi">9960099</span>
+<span class="mi">635128</span>  <span class="mi">9</span><span class="p">:</span><span class="mi">36660672</span><span class="p">:</span><span class="n">A</span><span class="p">:</span><span class="n">G</span>  <span class="mi">9</span> <span class="mi">36660672</span>  <span class="n">G</span> <span class="n">A</span> <span class="mf">0.160275</span>  <span class="mf">5.63422</span> <span class="mf">1.758540e-08</span>  <span class="mf">2.467060</span>  <span class="mi">503</span> <span class="mi">9960099</span>
+</code></pre></div>
+We will perform fine-mapping for the first significant loci whose lead variant is <code>2:55574452:G:C</code>.</p>
+<div class="highlight"><pre><span></span><code># filter in the variants in the this locus.
+
+locus = sumstats.filter_value(&#39;CHR==2 &amp; POS&gt;55074452 &amp; POS&lt;56074452&#39;)
+locus.fill_data(to_fill=[&quot;BETA&quot;])
+locus.data.to_csv(&quot;sig_locus.tsv&quot;,sep=&quot;\t&quot;,index=None)
+locus.data[&quot;SNPID&quot;].to_csv(&quot;sig_locus.snplist&quot;,sep=&quot;\t&quot;,index=None,header=None)
+</code></pre></div>
+<p>check in terminal:
+<div class="highlight"><pre><span></span><code>head sig_locus.tsv
+SNPID   CHR     POS     EA      NEA     BETA    SE      Z       P       OR      N       STATUS
+<span class="m">2</span>:54535206:C:T  <span class="m">2</span>       <span class="m">54535206</span>        T       C       <span class="m">0</span>.30028978      <span class="m">0</span>.142461        <span class="m">2</span>.10786 <span class="m">0</span>.0350429       <span class="m">1</span>.35025 <span class="m">503</span>     <span class="m">9960099</span>
+<span class="m">2</span>:54536167:C:G  <span class="m">2</span>       <span class="m">54536167</span>        G       C       <span class="m">0</span>.14885099      <span class="m">0</span>.246871        <span class="m">0</span>.602952        <span class="m">0</span>.546541        <span class="m">1</span>.1605  <span class="m">503</span>     <span class="m">9960099</span>
+<span class="m">2</span>:54539096:A:G  <span class="m">2</span>       <span class="m">54539096</span>        G       A       -0.0038474211   <span class="m">0</span>.288489        -0.0133355      <span class="m">0</span>.98936 <span class="m">0</span>.99616 <span class="m">503</span>     <span class="m">9960099</span>
+<span class="m">2</span>:54540264:G:A  <span class="m">2</span>       <span class="m">54540264</span>        A       G       -0.1536723      <span class="m">0</span>.165879        -0.926409       <span class="m">0</span>.354234        <span class="m">0</span>.857553        <span class="m">503</span>     <span class="m">9960099</span>
+<span class="m">2</span>:54540614:G:T  <span class="m">2</span>       <span class="m">54540614</span>        T       G       -0.1536723      <span class="m">0</span>.165879        -0.926409       <span class="m">0</span>.354234        <span class="m">0</span>.857553        <span class="m">503</span>     <span class="m">9960099</span>
+<span class="m">2</span>:54540621:A:G  <span class="m">2</span>       <span class="m">54540621</span>        G       A       -0.1536723      <span class="m">0</span>.165879        -0.926409       <span class="m">0</span>.354234        <span class="m">0</span>.857553        <span class="m">503</span>     <span class="m">9960099</span>
+<span class="m">2</span>:54540970:T:C  <span class="m">2</span>       <span class="m">54540970</span>        C       T       -0.049506452    <span class="m">0</span>.149053        -0.332144       <span class="m">0</span>.739781        <span class="m">0</span>.951699        <span class="m">503</span>     <span class="m">9960099</span>
+<span class="m">2</span>:54544229:T:C  <span class="m">2</span>       <span class="m">54544229</span>        C       T       -0.14338203     <span class="m">0</span>.151172        -0.948468       <span class="m">0</span>.342891        <span class="m">0</span>.866423        <span class="m">503</span>     <span class="m">9960099</span>
+<span class="m">2</span>:54545593:T:C  <span class="m">2</span>       <span class="m">54545593</span>        C       T       -0.1536723      <span class="m">0</span>.165879        -0.926409       <span class="m">0</span>.354234        <span class="m">0</span>.857553        <span class="m">503</span>     <span class="m">9960099</span>
+
+head  sig_locus.snplist
+<span class="m">2</span>:54535206:C:T
+<span class="m">2</span>:54536167:C:G
+<span class="m">2</span>:54539096:A:G
+<span class="m">2</span>:54540264:G:A
+<span class="m">2</span>:54540614:G:T
+<span class="m">2</span>:54540621:A:G
+<span class="m">2</span>:54540970:T:C
+<span class="m">2</span>:54544229:T:C
+<span class="m">2</span>:54545593:T:C
+<span class="m">2</span>:54546032:C:G
+</code></pre></div></p>
+</div>
 <h2 id="ld-matrix-calculation">LD Matrix Calculation</h2>
 <div class="admonition example calculate ld matrix using plink">
 <p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code>plinkFile=&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot;
+<p><div class="highlight"><pre><span></span><code>#!/bin/bash
 
+plinkFile=&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot;
+
+# LD r matrix
 plink \
   --bfile ${plinkFile} \
   --keep-allele-order \
   --r square \
   --extract sig_locus.snplist \
   --out sig_locus_mt
-</code></pre></div>
-<p>Take a look at the LD matrix (first 5 rows and columns)</p>
-<div class="highlight"><pre><span></span><code>head -5 sig_locus_mt.ld | cut -f 1-5
 
-1   -0.766746   0.850204    -0.173798   -0.359618
--0.766746   1   -0.646211   0.207611    0.483833
-0.850204    -0.646211   1   -0.134361   -0.306715
--0.173798   0.207611    -0.134361   1   -0.155776
--0.359618   0.483833    -0.306715   -0.155776   1
+# LD r2 matrix
+plink \
+  --bfile ${plinkFile} \
+  --keep-allele-order \
+  --r2 square \
+  --extract sig_locus.snplist \
+  --out sig_locus_mt_r2
 </code></pre></div>
+Take a look at the LD matrix (first 5 rows and columns)</p>
+<p><div class="highlight"><pre><span></span><code>head -5 sig_locus_mt.ld | cut -f 1-5
+1       -0.145634       0.252616        -0.0876317      -0.0876317
+-0.145634       1       -0.0916734      -0.159635       -0.159635
+0.252616        -0.0916734      1       0.452333        0.452333
+-0.0876317      -0.159635       0.452333        1       1
+-0.0876317      -0.159635       0.452333        1       1
+
+head -5 sig_locus_mt_r2.ld | cut -f 1-5
+1       0.0212091       0.0638148       0.00767931      0.00767931
+0.0212091       1       0.00840401      0.0254833       0.0254833
+0.0638148       0.00840401      1       0.204605        0.204605
+0.00767931      0.0254833       0.204605        1       1
+0.00767931      0.0254833       0.204605        1       1
+</code></pre></div>
+Heatmap of the LD matrix:</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/212523500-6ec7cfb9-eda6-4ee0-9dce-463772821ca2.png" /></p>
 </div>
-<h2 id="fine-mapping-using-susier">Fine-mapping using SusieR</h2>
+<h2 id="fine-mapping-with-summary-statistics-using-susier">Fine-mapping with summary statistics using SusieR</h2>
+<div class="admonition note susie in r">
+<p class="admonition-title">Note</p>
+<div class="highlight"><pre><span></span><code>install.packages(&quot;susieR&quot;)
+
+# Fine-mapping with summary statistics
+fitted_rss2 = susie_rss(bhat = sumstats$betahat, shat = sumstats$sebetahat, R = R, n = n, L = 10)
+</code></pre></div>
+<p><code>R</code> : a <code>p</code> x <code>p</code> LD r matrix.
+<code>N</code> : Sample size.
+<code>bhat</code> : Alternative summary data giving the estimated effects (a vector of length <code>p</code>). This, together with shat, may be provided instead of z.
+<code>shat</code> : Alternative summary data giving the standard errors of the estimated effects (a vector of length <code>p</code>). This, together with bhat, may be provided instead of z.
+<code>L</code> : Maximum number of non-zero effects in the susie regression model. (defaul : <code>L = 10</code>)</p>
+</div>
+<div class="admonition quote susier tutorial">
+<p class="admonition-title">Quote</p>
+<p>For deatils, please check <a href="https://stephenslab.github.io/susieR/articles/finemapping_summary_statistics.html">SusieR tutorial - Fine-mapping with susieR using summary statistics</a></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Use susieR in jupyter notebook (with Python):</p>
+<p>Please check : https://github.com/Cloufield/GWASTutorial/blob/main/12_fine_mapping/finemapping_susie.ipynb</p>
+</div>
 <h2 id="reference">Reference</h2>
 <ul>
 <li>Wang, G., Sarkar, A., Carbonetto, P. &amp; Stephens, M. (2020). A simple new approach to variable selection in regression, with application to genetic fine mapping. Journal of the Royal Statistical Society, Series B 82, 1273–1300. https://doi.org/10.1111/rssb.12388</li>
