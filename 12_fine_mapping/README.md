@@ -144,6 +144,8 @@ Susie : Sum of Single Effects” (SuSiE) model.
     
     Please check : https://github.com/Cloufield/GWASTutorial/blob/main/12_fine_mapping/finemapping_susie.ipynb
 
+![image](https://user-images.githubusercontent.com/40289485/212525667-5dae657b-f31d-4256-9025-2abcbbd8cb54.png)
+
 
 ## Reference
 
