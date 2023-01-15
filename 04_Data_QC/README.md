@@ -200,6 +200,7 @@ Run the download.sh in 01_Dataset.
 Detailed description can be found on plink's website: [PLINK1.9](https://www.cog-genomics.org/plink/1.9/) and [PLINK2](https://www.cog-genomics.org/plink/2.0/).
 
 The functions we will learn in this tutorial:
+
 1. Calculating missing rate (call rate)
 2. Calculating inbreeding F coefficient
 3. Conducting Hardy-Weinberg equilibrium exact test
@@ -214,6 +215,7 @@ The functions we will learn in this tutorial:
 All sample codes and results for this module are available in `./04_data_QC`
 
 QC Step Summary
+
 |QC step|Option in PLINK|Commonly used threshold to exclude| Description|
 |-|-|-|-|
 |Sample missing rate| `--geno`,  `--missing` | missing rate > 0.01 ||
