@@ -1,4 +1,4 @@
-# Fine-mapping (under construction)
+# Fine-mapping
 
 ## Introduction
 
