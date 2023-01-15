@@ -648,15 +648,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#plink19" class="md-nav__link">
-    PLINK1.9
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#plink2" class="md-nav__link">
-    PLINK2
+  <a href="#add-paths-to-the-environment-path" class="md-nav__link">
+    Add paths to the environment path
   </a>
   
 </li>
@@ -1188,15 +1181,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#plink19" class="md-nav__link">
-    PLINK1.9
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#plink2" class="md-nav__link">
-    PLINK2
+  <a href="#add-paths-to-the-environment-path" class="md-nav__link">
+    Add paths to the environment path
   </a>
   
 </li>
@@ -1381,41 +1367,53 @@ mkdir plink2
 <p><img width="937" alt="image" src="https://user-images.githubusercontent.com/40289485/160745597-c6f4204a-d786-4af1-9041-f1531cbbe584.png"></p>
 <h3 id="download-plink19-and-plink2-and-then-unzip">Download PLINK1.9 and PLINK2 and then unzip</h3>
 <p>Next, go to the plink webpage to download the software. We will need both PLINK1.9 and PLINK2.</p>
-<p>Download PLINK1.9 and PLINK2 from the following webpage to the corresponding directories:
-https://www.cog-genomics.org/plink/
-https://www.cog-genomics.org/plink/2.0/</p>
-<p>Note: If you are using mac or windows, then please download the mac or windows version. </p>
-<p>In this tutorial we will use a linux system. </p>
-<p>Find the suitable version, right click and copy the link address.</p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span> plink2
+<p>Download PLINK1.9 and PLINK2 from the following webpage to the corresponding directories:</p>
+<ul>
+<li>PLINK1.9 : <a href="https://www.cog-genomics.org/plink/">https://www.cog-genomics.org/plink/</a></li>
+<li>PLINK2 : <a href="https://www.cog-genomics.org/plink/2.0/">https://www.cog-genomics.org/plink/2.0/</a></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are using mac or windows, then please download the mac or windows version. In this tutorial we will use a linux system and the linux version of PLINK. </p>
+</div>
+<p>Find the suitable version in PLINK website, right click and copy the link address.</p>
+<div class="admonition example">
+<p class="admonition-title">Download PLINK</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> plink2
 wget https://s3.amazonaws.com/plink2-assets/plink2_linux_x86_64_20211011.zip
 unzip plink2_linux_x86_64_20211011.zip
 </code></pre></div>
-Then do the same for PLINK1.9</p>
+</div>
+<p>Then do the same for PLINK1.9</p>
 <h3 id="create-symbolic-links">Create symbolic links</h3>
-<p>After donwloading and unzipping, we will create symbolic links for the plink binany files, and then move the link to <code>~/tools/bin/</code>.
+<p>After donwloading and unzipping, we will create symbolic links for the plink binany files, and then move the link to <code>~/tools/bin/</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Create symbolic links</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~
 ln -s ~/tools/plink2/plink2 ~/tools/bin/plink2
 ln -s ~/tools/plink/plink ~/tools/bin/plink
-</code></pre></div></p>
+</code></pre></div>
+</div>
+<h3 id="add-paths-to-the-environment-path">Add paths to the environment path</h3>
 <p>Then add <code>~/tools/bin/</code> to the environment path.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
 <p><div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:~/tools/bin/
 </code></pre></div>
-And then run 
+This command will add the path to your current shell. </p>
+<p>If you restart terminal, it will be lost. So you may need to add to the configuration file. Then run </p>
 <div class="highlight"><pre><span></span><code>echo &quot;export PATH=$PATH:~/tools/bin/&quot; &gt;&gt; ~/.bashrc
 </code></pre></div>
-This will add a new line at the end of <code>.bashrc</code>, which will be run every time you open a new bash shell.</p>
+<p>This will add a new line at the end of <code>.bashrc</code>, which will be run every time you open a new bash shell.</p>
+</div>
 <p>All done. Let's test if we installed PLINK successfully or not.</p>
-<div class="highlight"><pre><span></span><code>plink -h
-plink2 -h
-</code></pre></div>
-<h3 id="plink19">PLINK1.9</h3>
-<div class="highlight"><pre><span></span><code>plink -h
-PLINK v1.90b6.21 64-bit (19 Oct 2020)          www.cog-genomics.org/plink/1.9/
-(C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
+<p>!!! example Check if PLINK is installed successfully.
+    <div class="highlight"><pre><span></span><code>plink -h
+PLINK v1.90b6.21 <span class="m">64</span>-bit <span class="o">(</span><span class="m">19</span> Oct <span class="m">2020</span><span class="o">)</span>          www.cog-genomics.org/plink/1.9/
+<span class="o">(</span>C<span class="o">)</span> <span class="m">2005</span>-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
 
-  plink &lt;input flag(s)...&gt; [command flag(s)...] [other flag(s)...]
-  plink --help [flag name(s)...]
+  plink &lt;input flag<span class="o">(</span>s<span class="o">)</span>...&gt; <span class="o">[</span><span class="nb">command</span> flag<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span> <span class="o">[</span>other flag<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span>
+  plink --help <span class="o">[</span>flag name<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span>
 
 Commands include --make-bed, --recode, --flip-scan, --merge-list,
 --write-snplist, --list-duplicate-vars, --freqx, --missing, --test-mishap,
@@ -1426,10 +1424,10 @@ Commands include --make-bed, --recode, --flip-scan, --merge-list,
 --make-perm-pheno, --tdt, --qfam, --annotate, --clump, --gene-report,
 --meta-analysis, --epistasis, --fast-epistasis, and --score.
 
-&quot;plink --help | more&quot; describes all functions (warning: long).
-</code></pre></div>
-<h3 id="plink2">PLINK2</h3>
-<p><div class="highlight"><pre><span></span><code>plink2 -h
+<span class="s2">&quot;plink --help | more&quot;</span> describes all functions <span class="o">(</span>warning: long<span class="o">)</span>.
+</code></pre></div></p>
+<pre><code>```bash
+plink2 -h
 PLINK v2.00a3LM 64-bit Intel (1 Jul 2021)      www.cog-genomics.org/plink/2.0/
 (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
 
@@ -1443,9 +1441,10 @@ Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
 --score, --variant-score, --genotyping-rate, --pgen-info, --validate, and
 --zst-decompress.
 
-&quot;plink2 --help | more&quot; describes all functions.
-</code></pre></div>
-Well done. We have installed plink1.9 and plink2.</p>
+"plink2 --help | more" describes all functions.
+```
+</code></pre>
+<p>Well done. We have installed plink1.9 and plink2.</p>
 <h3 id="download-genotype-data">Download genotype data</h3>
 <p>Next we need to download the sample genotype data.</p>
 <p>Run the download.sh in 01_Dataset.</p>
@@ -1497,6 +1496,15 @@ Well done. We have installed plink1.9 and plink2.</p>
 9. Calculating LD
 10. Data management (make-bed/recode)</p>
 <p>All sample codes and results for this module are available in <code>./04_data_QC</code></p>
+<p>QC Step Summary
+|QC step|Option in PLINK|Commonly used threshold to exclude| Description|
+|-|-|-|-|
+|Sample missing rate| <code>--geno</code>,  <code>--missing</code> | missing rate &gt; 0.01 ||
+|SNP missing rate| <code>--mind</code>, <code>--missing</code> | missing rate &gt; 0.01 ||
+|Minor allele frequency| <code>--freq</code>, <code>--maf</code> |maf &lt; 0.01||
+|Sample Relatedness| <code>--genome</code> |||
+|Hardy-Weinberg equilibrium| <code>--hwe</code>,<code>--hardy</code>|hwe &lt; 5e-6||
+|Inbreeding F coefficient|<code>--het</code>|outside of 3 SD from the mean||</p>
 <p>First, we can calculate some basic statistics of our simulated data:</p>
 <h3 id="missing-rate-call-rate">Missing rate (call rate)</h3>
 <p>The first thing we want to know is the missing rate of our data. Usually we need to check the missing rate of samples and snps to decide a threshold to exclude low-quality samples and snps. (https://www.cog-genomics.org/plink/1.9/basic_stats#missing)</p>
@@ -1748,18 +1756,18 @@ plink <span class="se">\</span>
         --out plink_1000_pruned
 </code></pre></div>
 <h2 id="exercise">Exercise</h2>
-<ul>
-<li>Follow this tutorial and type in the commands:</li>
-<li>Calculate basic statistics for the simulated data.</li>
-<li>
-<p>Learn the meaning of each QC step.</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Follow this tutorial and type in the commands:</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Calculate basic statistics for the simulated data.</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Learn the meaning of each QC step.</p>
 </li>
-<li>
-<p>Visualize the results of QC (using Python or R)</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Visualize the results of QC (using Python or R)</p>
 </li>
-<li>Draw the distribution of MAF.(histogram)</li>
-<li>Draw the distribution of het.(histogram)</li>
-<li>Try to briefly explain what you observe</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Draw the distribution of MAF.(histogram)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Draw the distribution of het.(histogram)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Try to briefly explain what you observe</li>
 </ul>
 <h2 id="additional-resources">Additional resources</h2>
 <ul>
