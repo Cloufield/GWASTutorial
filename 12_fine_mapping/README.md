@@ -33,6 +33,10 @@
     -0.359618	0.483833	-0.306715	-0.155776	1
     
     ```
+    
+Heatmap of the LD matrix:
+
+![image](https://user-images.githubusercontent.com/40289485/212523500-6ec7cfb9-eda6-4ee0-9dce-463772821ca2.png)
 
 ## Fine-mapping using SusieR
 
