@@ -78,6 +78,7 @@ For fine-mapping with summary statistics using Susie (SuSiE-RSS), IBSS was modif
     
     locus = sumstats.filter_value('CHR==2 & POS>55074452 & POS<56074452')
     locus.fill_data(to_fill=["BETA"])
+    locus.harmonize(basic_check=False, ref_seq="/Users/he/mydata/Reference/Genome/human_g1k_v37.fasta")
     locus.data.to_csv("sig_locus.tsv",sep="\t",index=None)
     locus.data["SNPID"].to_csv("sig_locus.snplist",sep="\t",index=None,header=None)
     ```
@@ -178,7 +179,8 @@ For fine-mapping with summary statistics using Susie (SuSiE-RSS), IBSS was modif
     
     Please check : https://github.com/Cloufield/GWASTutorial/blob/main/12_fine_mapping/finemapping_susie.ipynb
 
-![image](https://user-images.githubusercontent.com/40289485/212525667-5dae657b-f31d-4256-9025-2abcbbd8cb54.png)
+<img width="767" alt="image" src="https://user-images.githubusercontent.com/40289485/212594502-a5fab4a0-a1a1-40f5-a871-d20f5a349993.png">
+
 
 
 ## Reference
