@@ -1582,12 +1582,12 @@ This dataset contains 504 EAS individuals from 1000 Genome Project Phase 3v5 wit
 <li><strong>Sample missing rate</strong>: the proportion of missing values for an individual across all SNPs.</li>
 <li><strong>SNP missing rate</strong>: the proportion of missing values for a SNP across all samples.</li>
 </ul>
-<div class="admonition info missing rate and call rate">
-<p class="admonition-title">Info</p>
+<div class="admonition info">
+<p class="admonition-title">Missing rate and Call rate</p>
 <p>Suppose we have N samples and M SNPs for each sample.</p>
 <p>For sample <span class="arithmatex">\(j\)</span> :</p>
 <div class="arithmatex">\[MissingRate_{sample, j} = {{N_{missing SNPs for j}}\over{M}} = 1 - CallRate_{sample, j}\]</div>
-<p>For SNP <span class="arithmatex">\(u\)</span> :</p>
+<p>For SNP <span class="arithmatex">\(i\)</span> :</p>
 <div class="arithmatex">\[MissingRate_{SNP, i} = {{N_{missing samples at i}}\over{N}} = 1 - CallRate_{SNP, i}\]</div>
 </div>
 <p>The input is PLINK bed/bim/fam file. Usually, they have the same prefix, and we just need to pass the prefix to <code>--bfile</code> option.</p>
