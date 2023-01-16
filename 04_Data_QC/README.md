@@ -242,11 +242,11 @@ The first thing we want to know is the missing rate of our data. Usually, we nee
     
     For sample $j$ :
     
-    $$MissingRate_{sample, j} = {{N_{missing SNPs for j}}\over{M}} = 1 - CallRate_{sample, j}$$
+    $$Sample\ Missing\ Rate_{j} = {{N_{missing\ SNPs\ for\ j}}\over{M}} = 1 - Call\ Rate_{sample, j}$$
     
     For SNP $i$ :
     
-    $$MissingRate_{SNP, i} = {{N_{missing samples at i}}\over{N}} = 1 - CallRate_{SNP, i}$$
+    $$SNP\ Missing\ Rate_{i} = {{N_{missing\ samples\ at\ i}}\over{N}} = 1 - Call\ Rate_{SNP, i}$$
 
 The input is PLINK bed/bim/fam file. Usually, they have the same prefix, and we just need to pass the prefix to `--bfile` option.
 
@@ -380,6 +380,15 @@ In PLINK1.9, the concept here is minor (A1) and major(A2) allele, while in PLINK
 Next, we can check the heterozygosity F of samples (https://www.cog-genomics.org/plink/1.9/basic_stats#ibc) : 
 
 `-het` option will compute observed and expected autosomal homozygous genotype counts for each sample. Usually, we need to exclude individuals with high or low heterozygosity coefficients, which suggests that the sample might be contaminated. 
+
+!!! info "Inbreeding F coefficient calculation by PLINK"
+
+    $$F = {{O(HOM) - E(HOM)}\over{ M - E(HOM)}}$$
+    
+    - $E(HOM)$ :Expected Homozygous Genotype Count 
+    - $O(HOM)$ :Observed Homozygous Genotype Count 
+    - M : Number of SNPs
+
 
 !!! example "Calculate inbreeding F coefficient"
 
