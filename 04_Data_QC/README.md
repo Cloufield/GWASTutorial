@@ -236,6 +236,17 @@ The first thing we want to know is the missing rate of our data. Usually, we nee
 - **Sample missing rate**: the proportion of missing values for an individual across all SNPs.
 - **SNP missing rate**: the proportion of missing values for a SNP across all samples.
 
+!!! info missing rate and call rate
+    Suppose we have N samples and M SNPs for each sample.
+    
+    For sample $j$ :
+    
+    $$MissingRate_{sample, j} = {{N_{missing SNPs for j}}\over{M}} = 1 - CallRate_{sample, j}$$
+    
+    For SNP $u$ :
+    
+    $$MissingRate_{SNP, i} = {{N_{missing samples at i}}\over{N}} = 1 - CallRate_{SNP, i}$$
+
 The input is PLINK bed/bim/fam file. Usually, they have the same prefix, and we just need to pass the prefix to `--bfile` option.
 
 ### PLINK syntax
@@ -332,7 +343,7 @@ Using PLINK1.9 we can easily calculate the MAF of variants in the input data.
 
 Next, we use plink2 to run the same options to check the difference between the results.
 
-!!! example "Calculate the MAF of variants using PLINK2"
+!!! example "Calculate the alternative allele frequencies of variants using PLINK2"
     ```bash
     plink2 \
             --bfile ${genotypeFile} \
