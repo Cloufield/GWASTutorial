@@ -1586,9 +1586,9 @@ This dataset contains 504 EAS individuals from 1000 Genome Project Phase 3v5 wit
 <p class="admonition-title">Missing rate and Call rate</p>
 <p>Suppose we have N samples and M SNPs for each sample.</p>
 <p>For sample <span class="arithmatex">\(j\)</span> :</p>
-<div class="arithmatex">\[MissingRate_{sample, j} = {{N_{missing SNPs for j}}\over{M}} = 1 - CallRate_{sample, j}\]</div>
+<div class="arithmatex">\[Sample\ Missing\ Rate_{j} = {{N_{missing\ SNPs\ for\ j}}\over{M}} = 1 - Call\ Rate_{sample, j}\]</div>
 <p>For SNP <span class="arithmatex">\(i\)</span> :</p>
-<div class="arithmatex">\[MissingRate_{SNP, i} = {{N_{missing samples at i}}\over{N}} = 1 - CallRate_{SNP, i}\]</div>
+<div class="arithmatex">\[SNP\ Missing\ Rate_{i} = {{N_{missing\ samples\ at\ i}}\over{N}} = 1 - Call\ Rate_{SNP, i}\]</div>
 </div>
 <p>The input is PLINK bed/bim/fam file. Usually, they have the same prefix, and we just need to pass the prefix to <code>--bfile</code> option.</p>
 <h3 id="plink-syntax">PLINK syntax</h3>
@@ -1701,6 +1701,15 @@ head plink_results.afreq
 <h3 id="inbreeding-f-coefficient">Inbreeding F coefficient</h3>
 <p>Next, we can check the heterozygosity F of samples (https://www.cog-genomics.org/plink/1.9/basic_stats#ibc) : </p>
 <p><code>-het</code> option will compute observed and expected autosomal homozygous genotype counts for each sample. Usually, we need to exclude individuals with high or low heterozygosity coefficients, which suggests that the sample might be contaminated. </p>
+<div class="admonition info">
+<p class="admonition-title">Inbreeding F coefficient calculation by PLINK</p>
+<div class="arithmatex">\[F = {{O(HOM) - E(HOM)}\over{ M - E(HOM)}}\]</div>
+<ul>
+<li><span class="arithmatex">\(E(HOM)\)</span> :Expected Homozygous Genotype Count </li>
+<li><span class="arithmatex">\(O(HOM)\)</span> :Observed Homozygous Genotype Count </li>
+<li>M : Number of SNPs</li>
+</ul>
+</div>
 <div class="admonition example">
 <p class="admonition-title">Calculate inbreeding F coefficient</p>
 <div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
