@@ -392,11 +392,13 @@ The following command can calculate the Hardy-Weinberg equilibrium exact test st
     Suppose we have N unrelated samples (2N alleles).
     Under HWE, the **exact probability** of observing $n_{AB}$ sample with genotype AB in N samples is:
 
-    $$P(N_{AB} = n_{AB} | N, n_A) = {{2^{n_{AB}}}N!\over{n_{AA}!n_{AB}!n_{BB}!}} x {{n_A!n_B!}\over{n_A!n_B!}} $$
+    $$P(N_{AB} = n_{AB} | N, n_A) = {{2^{n_{AB}}}N!\over{n_{AA}!n_{AB}!n_{BB}!}} \times {{n_A!n_B!}\over{n_A!n_B!}} $$
     
     To compute the Hardy-Weinberg equilibrium exact test statistics, we will sum up the probabilities of all configurations with probability equal to or less than the observed configuration :
 
-    $$P_{HWE} = \sum_{n^{*}_AB} I[P(N_{AB} = n_{AB} | N, n_A) \geqq P(N_{AB} = n^{*}_{AB} | N, n_A)] x P(N_{AB} = n^{*}_{AB} | N, n_A)$$
+    $$P_{HWE} = \sum_{n^{*}_AB} I[P(N_{AB} = n_{AB} | N, n_A) \geqq P(N_{AB} = n^{*}_{AB} | N, n_A)] \times P(N_{AB} = n^{*}_{AB} | N, n_A)$$
+
+    $I(x)$ is the indicator function. If x is true, $I(x) = 1$; otherwise, $I(x) = 0$.
 
     Reference : Wigginton, J. E., Cutler, D. J., & Abecasis, G. R. (2005). A note on exact tests of Hardy-Weinberg equilibrium. The American Journal of Human Genetics, 76(5), 887-893. [Link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1199378/)
 
