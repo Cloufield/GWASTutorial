@@ -236,14 +236,15 @@ The first thing we want to know is the missing rate of our data. Usually, we nee
 - **Sample missing rate**: the proportion of missing values for an individual across all SNPs.
 - **SNP missing rate**: the proportion of missing values for a SNP across all samples.
 
-!!! info missing rate and call rate
+!!! info "Missing rate and Call rate"
+
     Suppose we have N samples and M SNPs for each sample.
     
     For sample $j$ :
     
     $$MissingRate_{sample, j} = {{N_{missing SNPs for j}}\over{M}} = 1 - CallRate_{sample, j}$$
     
-    For SNP $u$ :
+    For SNP $i$ :
     
     $$MissingRate_{SNP, i} = {{N_{missing samples at i}}\over{N}} = 1 - CallRate_{SNP, i}$$
 
