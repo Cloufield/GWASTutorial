@@ -1796,6 +1796,18 @@ For <code>--extract</code> or <code>--exclude</code> , the input is the filename
 <p><code>--genome</code> will estimate IBS/IBD. Usually, for this analysis, we need to prune our data first since the strong LD will cause bias in the results.
 (This step is computationally intensive)</p>
 <p>Combined with the <code>--extract</code>, we can run:</p>
+<div class="admonition info">
+<p class="admonition-title">How PLINK extimates IBD</p>
+<p>The prior probability of IBS sharing can be modeled as: </p>
+<div class="arithmatex">\[P(I=i) = \sum^{z=i}_{z=0}P(I=i|Z=z)P(Z=z)\]</div>
+<ul>
+<li>I: IBS state (I = 0, 1, or 2)</li>
+<li>Z: IBD state (Z = 0, 1, or 2)</li>
+<li><span class="arithmatex">\(P(I|Z)\)</span> is a function of allele frequency. PLINK will average over all SNPs to obtain the expected value for <span class="arithmatex">\(P(I|Z)\)</span>.</li>
+</ul>
+<p>So the proportion of alleles shared IBD (<span class="arithmatex">\(\hat{\pi}\)</span>) can be estimated by:</p>
+<div class="arithmatex">\[\hat{\pi} = {{P(Z=1)}\over{2}} + P(Z=2)\]</div>
+</div>
 <div class="admonition example">
 <p class="admonition-title">Estimate IBD</p>
 <div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
