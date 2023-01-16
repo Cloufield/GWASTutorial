@@ -1532,7 +1532,6 @@ This dataset contains 504 EAS individuals from 1000 Genome Project Phase 3v5 wit
 <th>QC step</th>
 <th>Option in PLINK</th>
 <th>Commonly used threshold to exclude</th>
-<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -1540,37 +1539,31 @@ This dataset contains 504 EAS individuals from 1000 Genome Project Phase 3v5 wit
 <td>Sample missing rate</td>
 <td><code>--geno</code>,  <code>--missing</code></td>
 <td>missing rate &gt; 0.01</td>
-<td></td>
 </tr>
 <tr>
 <td>SNP missing rate</td>
 <td><code>--mind</code>, <code>--missing</code></td>
 <td>missing rate &gt; 0.01</td>
-<td></td>
 </tr>
 <tr>
 <td>Minor allele frequency</td>
 <td><code>--freq</code>, <code>--maf</code></td>
 <td>maf &lt; 0.01</td>
-<td></td>
 </tr>
 <tr>
 <td>Sample Relatedness</td>
 <td><code>--genome</code></td>
-<td></td>
-<td></td>
+<td>pi_hat &gt; 0.2 to exclude second-degree relatives</td>
 </tr>
 <tr>
 <td>Hardy-Weinberg equilibrium</td>
 <td><code>--hwe</code>,<code>--hardy</code></td>
 <td>hwe &lt; 5e-6</td>
-<td></td>
 </tr>
 <tr>
 <td>Inbreeding F coefficient</td>
 <td><code>--het</code></td>
 <td>outside of 3 SD from the mean</td>
-<td></td>
 </tr>
 </tbody>
 </table>
