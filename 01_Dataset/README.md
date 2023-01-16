@@ -1,6 +1,7 @@
 # Sample Dataset
 
-504 EAS individuals from 1000 Genome Project Phase 3 v5
+504 EAS individuals from 1000 Genome Project Phase 3 version 5
+
 - Url: [http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/](http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/)
 
 ## Genotype Data Processing
@@ -15,6 +16,7 @@
 - Converted to plink bed format and merged to a single file  
 
 ## Download
+
 Simply run `download_sampledata.sh` and the dataset will be downloaded and decompressed.
 
 ```
@@ -39,6 +41,20 @@ gcta64  \
   --simu-k 0.4 \
   --simu-rep 1 \
   --out 1kgeas_binary
+```
+
+``` 
+$ cat causal_10.snplist
+3:176520196:C:T 3
+1:217437563:C:T 3
+9:36591968:T:G 3
+6:29898352:T:C 3
+2:55620927:G:A 3
+13:92117183:G:A 3
+14:78760515:T:C 3
+11:102442005:T:G 3
+11:56317673:T:A 3
+7:139979401:G:C 3
 ```
 
 ## Reference
