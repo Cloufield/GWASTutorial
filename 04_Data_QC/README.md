@@ -287,7 +287,8 @@ Usually, variants can be categorized into 3 groups based on their Minor Allel Fr
 2. **Low-frequency variants** : 0.01<=MAF<0.05
 3. **Rare variants** : MAF<0.01
 
-!!! info" How to calculate Minor Allele Frequency (MAF)"
+!!! info "How to calculate Minor Allele Frequency (MAF)"
+    
     Suppose the reference allele(REF) is A and the alternative allele(ALT) is B for a certain SNP. The posible genotypes are AA, AB and BB.  In a population of N samples (2N alleles), $N = N_{AA} + 2 \times N_{AB} + N_{BB}$ :
     
     $N_A = the number of A alleles = 2 \times N_(AA) + N_(AB)$
