@@ -179,7 +179,7 @@ For fine-mapping with summary statistics using Susie (SuSiE-RSS), IBSS was modif
     
     Please check : https://github.com/Cloufield/GWASTutorial/blob/main/12_fine_mapping/finemapping_susie.ipynb
 
-<img width="812" alt="image" src="https://user-images.githubusercontent.com/40289485/212594902-9349afdd-b52a-4a3b-8ace-c248189d8040.png">
+<img width="770" alt="image" src="https://user-images.githubusercontent.com/40289485/212628837-d20c0a59-9a6a-46a5-8c2d-a12fd427c794.png">
 
 
 ## Reference
