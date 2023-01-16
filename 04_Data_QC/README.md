@@ -387,6 +387,22 @@ For SNP QC, besides checking the missing rate, we also need to check if the SNP 
 `--hardy` will perform Hardy-Weinberg equilibrium exact test for each variant. Variants with low P value usually suggest genotyping errors, or indicate evolutionary selection for these variants.
 
 The following command can calculate the Hardy-Weinberg equilibrium exact test statistics for all SNPs. (https://www.cog-genomics.org/plink/1.9/basic_stats#hardy)
+
+!!! info
+    Suppose we have N unrelated samples (2N alleles).
+    Under HWE, the **exact probability** of observing $n_{AB}$ sample with genotype AB in N samples is:
+
+    $$P(N_{AB} = n_{AB} | N, n_A) = {{2^{n_{AB}}}N!\over{n_{AA}!n_{AB}!n_{BB}!}} x {{n_A!n_B!}\over{n_A!n_B!}} $$
+    
+    To compute the Hardy-Weinberg equilibrium exact test statistics, we will sum up the probabilities of all configurations with probability equal to or less than the observed configuration :
+
+    $$P_{HWE} = \sum_{n^{*}_AB} I[P(N_{AB} = n_{AB} | N, n_A) \geqq P(N_{AB} = n^{*}_{AB} | N, n_A)] x P(N_{AB} = n^{*}_{AB} | N, n_A)$$
+
+    Reference : Wigginton, J. E., Cutler, D. J., & Abecasis, G. R. (2005). A note on exact tests of Hardy-Weinberg equilibrium. The American Journal of Human Genetics, 76(5), 887-893. [Link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1199378/)
+
+
+
+
 !!! example "Calculate the Hardy-Weinberg equilibrium exact test statistics"
     ```bash
     plink \
