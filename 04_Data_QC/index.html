@@ -1628,13 +1628,13 @@ Remeber to set the value for <code>${genotypeFile}</code>.</p>
 <p class="admonition-title">How to calculate Minor Allele Frequency (MAF)</p>
 <p>Suppose the reference allele(REF) is A and the alternative allele(ALT) is B for a certain SNP. The posible genotypes are AA, AB and BB.  In a population of N samples (2N alleles), <span class="arithmatex">\(N = N_{AA} + 2 \times N_{AB} + N_{BB}\)</span> :</p>
 <ul>
-<li><span class="arithmatex">\(N_A = the number of A alleles = 2 \times N_(AA) + N_(AB)\)</span></li>
-<li><span class="arithmatex">\(N_B = the number of B alleles = 2 \times N_(BB) + N_(AB)\)</span></li>
+<li>the number of A alleles:  <span class="arithmatex">\(N_A = 2 \times N_{AA} + N_{AB}\)</span></li>
+<li>the number of B alleles:  <span class="arithmatex">\(N_B = 2 \times N_{BB} + N_{AB}\)</span></li>
 </ul>
 <p>So we can calculate the allele frequency:</p>
 <ul>
 <li>Reference Allele Frequency : <span class="arithmatex">\(AF_{REF}= {{N_A}\over{N_A + N_B}}\)</span></li>
-<li>Alternative Allele Frequency : <span class="arithmatex">\(AF_{ALT}= = {{N_B}\over{N_A + N_B}}\)</span></li>
+<li>Alternative Allele Frequency : <span class="arithmatex">\(AF_{ALT}= {{N_B}\over{N_A + N_B}}\)</span></li>
 </ul>
 <p>The MAF for this SNP in this specific population is defined as:</p>
 <p><span class="arithmatex">\(MAF = min( AF_{REF}, AF_{ALT} )\)</span></p>
