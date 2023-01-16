@@ -501,6 +501,21 @@ head plink_results.prune.in
 
 Combined with the `--extract`, we can run:
 
+!!! info "How PLINK extimates IBD"
+    
+    The prior probability of IBS sharing can be modeled as: 
+    
+    $$P(I=i) = \sum^{z=i}_{z=0}P(I=i|Z=z)P(Z=z)$$
+    
+    - I: IBS state (I = 0, 1, or 2)
+    - Z: IBD state (Z = 0, 1, or 2)
+    - $P(I|Z)$ is a function of allele frequency. PLINK will average over all SNPs to obtain the expected value for $P(I|Z)$.
+    
+    So the proportion of alleles shared IBD ($\hat{\pi}$) can be estimated by:
+    
+    $$\hat{\pi} = {{P(Z=1)}\over{2}} + P(Z=2)$$
+
+
 !!! example "Estimate IBD" 
     ```bash
     plink \
