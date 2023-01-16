@@ -7,9 +7,9 @@ In this module, we will learn the basics of genotype data QC using PLINK, which 
 	- [PLINK 1.9 & 2 installation](#plink-192-installation)
 	- [Download genotype data](#download-genotype-data)
 - [PLINK tutorial](#plink-tutorial)
-	- [Calculate missing rate and call rate](#missing-rate-call-rate)
+	- [Calculate the missing rate and call rate](#missing-rate-call-rate)
 	- [Calculate allele frequency](#allele-frequency)
-	- [Calculate inbreeding F coefficient ](#inbreeding-f-coefficient)
+	- [Calculate the inbreeding F coefficient ](#inbreeding-f-coefficient)
 	- [Hardy-Weinberg equilibrium exact test](#hardy-weinberg-equilibrium-exact-test)
 	- [Applying filters](#applying-filters)
 	- [LD-Pruning](#LD-pruning)
@@ -25,7 +25,7 @@ In this module, we will learn the basics of genotype data QC using PLINK, which 
 
 ### PLINK 1.9&2 installation
 
-To get prepared for genotype QC, we will need to make directories, download softwares and add the sofwares to your environment path.
+To get prepared for genotype QC, we will need to make directories, download software and add the software to your environment path.
 
 First, we will simply create some directories to keep the tools we need to use.
 
@@ -45,7 +45,7 @@ You can download each tool into its corresponding directories.
 
 The `bin` directory here is for keeping all the symbolic links to the executable files of each tool. 
 
-In this way, it is much easier to mangnage and organize the paths and tools. We will only add the `bin` directory here to the environment path.
+In this way, it is much easier to manage and organize the paths and tools. We will only add the `bin` directory here to the environment path.
 
 ### Download PLINK1.9 and PLINK2 and then unzip
 Next, go to the plink webpage to download the software. We will need both PLINK1.9 and PLINK2.
@@ -56,9 +56,9 @@ Download PLINK1.9 and PLINK2 from the following webpage to the corresponding dir
 - PLINK2 : [https://www.cog-genomics.org/plink/2.0/](https://www.cog-genomics.org/plink/2.0/)
 
 !!! note
-    If you are using mac or windows, then please download the mac or windows version. In this tutorial we will use a linux system and the linux version of PLINK. 
+    If you are using mac or windows, then please download the mac or windows version. In this tutorial, we will use a Linux system and the Linux version of PLINK. 
 
-Find the suitable version in PLINK website, right click and copy the link address.
+Find the suitable version in the PLINK website, right click and copy the link address.
 
 !!! example "Download PLINK"
     ```bash
@@ -70,7 +70,7 @@ Then do the same for PLINK1.9
 
 ### Create symbolic links
 
-After donwloading and unzipping, we will create symbolic links for the plink binany files, and then move the link to `~/tools/bin/`.
+After downloading and unzipping, we will create symbolic links for the plink binary files, and then move the link to `~/tools/bin/`.
 
 !!! example "Create symbolic links"
     ```bash
@@ -90,7 +90,7 @@ Then add `~/tools/bin/` to the environment path.
     ```
     This command will add the path to your current shell. 
     
-    If you restart terminal, it will be lost. So you may need to add to the configuration file. Then run 
+    If you restart the terminal, it will be lost. So you may need to add it to the configuration file. Then run 
     
     ```
     echo "export PATH=$PATH:~/tools/bin/" >> ~/.bashrc
@@ -145,10 +145,10 @@ Well done. We have installed plink1.9 and plink2.
 
 ### Download genotype data
 
-Next we need to download the sample genotype data. The way to create the sample data is described [here].(https://cloufield.github.io/GWASTutorial/01_Dataset/)
+Next, we need to download the sample genotype data. The way to create the sample data is described [here].(https://cloufield.github.io/GWASTutorial/01_Dataset/)
 This dataset contains 504 EAS individuals from 1000 Genome Project Phase 3v5 with around 1 million variants.
 
-Simple run the download.sh in 01_Dataset to download this dataset (from Dropbox).
+Simply run `download.sh` in 01_Dataset to download this dataset (from Dropbox).
 
 !!! example "Download sample data"
 
@@ -198,7 +198,7 @@ Simple run the download.sh in 01_Dataset to download this dataset (from Dropbox)
 
 ## PLINK tutorial
 
-Detailed description can be found on plink's website: [PLINK1.9](https://www.cog-genomics.org/plink/1.9/) and [PLINK2](https://www.cog-genomics.org/plink/2.0/).
+Detailed descriptions can be found on plink's website: [PLINK1.9](https://www.cog-genomics.org/plink/1.9/) and [PLINK2](https://www.cog-genomics.org/plink/2.0/).
 
 The functions we will learn in this tutorial:
 
@@ -208,7 +208,7 @@ The functions we will learn in this tutorial:
 4. Calculating allele Frequency
 5. Applying filters
 6. Conducting LD-Pruning
-7. Conducting sample & snp filtering (extract/exclude/keep/remove)
+7. Conducting sample & SNP filtering (extract/exclude/keep/remove)
 8. Estimating IBD / PI_HAT
 9. Calculating LD
 10. Data management (make-bed/recode)
@@ -217,25 +217,26 @@ All sample codes and results for this module are available in `./04_data_QC`
 
 ### QC Step Summary
 
-|QC step|Option in PLINK|Commonly used threshold to exclude| Description|
-|-|-|-|-|
-|Sample missing rate| `--geno`,  `--missing` | missing rate > 0.01 ||
-|SNP missing rate| `--mind`, `--missing` | missing rate > 0.01 ||
-|Minor allele frequency| `--freq`, `--maf` |maf < 0.01||
-|Sample Relatedness| `--genome` |||
-|Hardy-Weinberg equilibrium| `--hwe`,`--hardy`|hwe < 5e-6||
-|Inbreeding F coefficient|`--het`|outside of 3 SD from the mean||
+!!! info "QC Step Summary"
+    |QC step|Option in PLINK|Commonly used threshold to exclude| Description|
+    |-|-|-|-|
+    |Sample missing rate| `--geno`,  `--missing` | missing rate > 0.01 ||
+    |SNP missing rate| `--mind`, `--missing` | missing rate > 0.01 ||
+    |Minor allele frequency| `--freq`, `--maf` |maf < 0.01||
+    |Sample Relatedness| `--genome` |||
+    |Hardy-Weinberg equilibrium| `--hwe`,`--hardy`|hwe < 5e-6||
+    |Inbreeding F coefficient|`--het`|outside of 3 SD from the mean||
 
 First, we can calculate some basic statistics of our simulated data:
 
 ### Missing rate (call rate)
 
-The first thing we want to know is the missing rate of our data. Usually we need to check the missing rate of samples and snps to decide a threshold to exclude low-quality samples and snps. (https://www.cog-genomics.org/plink/1.9/basic_stats#missing)
+The first thing we want to know is the missing rate of our data. Usually, we need to check the missing rate of samples and SNPs to decide a threshold to exclude low-quality samples and SNPs. (https://www.cog-genomics.org/plink/1.9/basic_stats#missing)
 
-- **Sample missing rate**: the proportion of missing values for an individual across all SNPSs.
+- **Sample missing rate**: the proportion of missing values for an individual across all SNPs.
 - **SNP missing rate**: the proportion of missing values for a SNP across all samples.
 
-The input is PLINK bed/bim/fam file. Usually they have the same prefix, and we just need to pass the prefix to `--bfile` option.
+The input is PLINK bed/bim/fam file. Usually, they have the same prefix, and we just need to pass the prefix to `--bfile` option.
 
 ### PLINK syntax
 
@@ -256,9 +257,9 @@ To calculate the missing rate, we need the flag `--missing`, which tells PLINK t
     ```
     Remeber to set the value for `${genotypeFile}`.
 
-This code will generate two files `plink_results.imiss` and `plink_results.lmiss`, which contain the missing rate information for samples and snps respectively.
+This code will generate two files `plink_results.imiss` and `plink_results.lmiss`, which contain the missing rate information for samples and SNPs respectively.
 
-Take a look at the imiss file. The last column shows the missing rate for samples. Since we used part of the 1000 Genome Project data this time, there are no missing samples or snps. So the missing rate is zero.
+Take a look at the `.imiss` file. The last column shows the missing rate for samples. Since we used part of the 1000 Genome Project data this time, there are no missing samples or SNPs. So the missing rate is zero.
 
 ```bash
 head plink_results.imiss
@@ -278,7 +279,7 @@ For the meaning of headers, please refer to [PLINK documents](https://www.cog-ge
 
 ### Allele Frequency
 
-One of the most important statistics of SNPs is their frequencies in a certain population. A number of downstream analysis is based on investigating differences in allele frequencies.
+One of the most important statistics of SNPs is their frequency in a certain population. A number of downstream analysis is based on investigating differences in allele frequencies.
 
 Usually, variants can be categorized into 3 groups based on their Minor Allel Frequency (MAF):
 
@@ -286,7 +287,7 @@ Usually, variants can be categorized into 3 groups based on their Minor Allel Fr
 2. **Low-frequency variants** : 0.01<=MAF<0.05
 3. **Rare variants** : MAF<0.01
 
-For different downstream analyses, we might use different set of variants. For example, for PCA, we might use only common variants. For gene-based tests, we might use only rare variants.
+For different downstream analyses, we might use different sets of variants. For example, for PCA, we might use only common variants. For gene-based tests, we might use only rare variants.
 
 Using PLINK1.9 we can easily calculate the MAF of variants in the input data.
 
@@ -313,7 +314,7 @@ Using PLINK1.9 we can easily calculate the MAF of variants in the input data.
        1     1:135163:C:T    T    C      0.09226     1008
     ```
 
-Next we use plink2 to run the same options to check the difference between the results.
+Next, we use plink2 to run the same options to check the difference between the results.
 
 !!! example "Calculate the MAF of variants using PLINK2"
     ```bash
@@ -338,19 +339,19 @@ Next we use plink2 to run the same options to check the difference between the r
     1	1:135163:C:T	C	T	0.0922619	1008
     ```
 
-We need pay attention to the concepts here.
+We need to pay attention to the concepts here.
 
-In PLINK1.9, the concept here is minor (A1) and major(A2) allele, while in PLINK2 it is reference(REF) and altervative(ALT) allele.
+In PLINK1.9, the concept here is minor (A1) and major(A2) allele, while in PLINK2 it is the reference (REF) allele and the alternative (ALT) allele.
 
-- **Major / Minor**: Major allele and minor allele are defined as the allele with highest and lower(or second highest for multiallelic variants) allele in a given population, respectively. So major allele and minor allele for a SNP might be different in two independent populations. The range for MAF(minor allele frequencies) is [0,0.5].
-- **Ref / Alt**: Reference(REF) and altervative(ALT) alleles are simply determined by the allele on a reference genome. If we use the same reference genome, the reference(REF) and altervative(ALT) allele will be the same acorss populations. Reference allele could be major or minor in different populations. The range for alternative allele frequency is [0,1], since it could be major or minor allele in a given population.
+- **Major / Minor**: Major allele and minor allele are defined as the allele with the highest and lower(or the second highest for multiallelic variants) allele in a given population, respectively. So major and minor alleles for a certain SNP might be different in two independent populations. The range for MAF(minor allele frequencies) is [0,0.5].
+- **Ref / Alt**: The reference (REF) and alternative (ALT) alleles are simply determined by the allele on a reference genome. If we use the same reference genome, the reference(REF) and alternative(ALT) alleles will be the same across populations. The reference allele could be major or minor in different populations. The range for alternative allele frequency is [0,1], since it could be the major allele or the minor allele in a given population.
 
 
 ### Inbreeding F coefficient 
 
-Next we can check the heterozygosity F of samples (https://www.cog-genomics.org/plink/1.9/basic_stats#ibc) : 
+Next, we can check the heterozygosity F of samples (https://www.cog-genomics.org/plink/1.9/basic_stats#ibc) : 
 
-`-het` option will computes observed and expected autosomal homozygous genotype counts for each sample. Usually, we need to exclude individuals with high or low heterozygosity coefficient, which suggests that the sample might be contaminated. 
+`-het` option will compute observed and expected autosomal homozygous genotype counts for each sample. Usually, we need to exclude individuals with high or low heterozygosity coefficients, which suggests that the sample might be contaminated. 
 
 !!! example "Calculate inbreeding F coefficient"
 
@@ -377,11 +378,11 @@ Next we can check the heterozygosity F of samples (https://www.cog-genomics.org/
        0   HG00422       752725    7.488e+05      1122299      0.01049
     ```
     
-A commonly used method is to exclude samples with heterzygosity F deviating more than 3 standard dividation(SD) from the mean F.
+A commonly used method is to exclude samples with heterozygosity F deviating more than 3 standard deviation(SD) from the mean F.
 
 ### Hardy-Weinberg equilibrium exact test
 
-For SNP QC, besides checking the missing rate, we also need to check if the SNP is in hardy-weinberg equilibrium:
+For SNP QC, besides checking the missing rate, we also need to check if the SNP is in Hardy-Weinberg equilibrium:
 
 `--hardy` will perform Hardy-Weinberg equilibrium exact test for each variant. Variants with low P value usually suggest genotyping errors, or indicate evolutionary selection for these variants.
 
@@ -409,7 +410,7 @@ The following command can calculate the Hardy-Weinberg equilibrium exact test st
 
 ### Applying filters
 
-Previously we just calculate the basic statistics using PLINK. But when performing certain analyses, we just want to exclude the bad quallity samples or SNPs instead of calculating the statistics for all samples and SNPs.
+Previously we just calculate the basic statistics using PLINK. But when performing certain analyses, we just want to exclude the bad-quality samples or SNPs instead of calculating the statistics for all samples and SNPs.
 
 In this case we can apply the following filters for example:
 
@@ -420,9 +421,9 @@ In this case we can apply the following filters for example:
 
 ### LD Pruning
 
-There are ofter strong Linkage disequilibrium(LD) among SNPs, for some analysis we don't need all SNPs and we need to remove the redundant SNPs to avoid bias in genetic estimations. For example, for relatedness estimation, we will use only LD-pruned SNP set. 
+There are often strong Linkage disequilibrium(LD) among SNPs, for some analysis we don't need all SNPs and we need to remove the redundant SNPs to avoid bias in genetic estimations. For example, for relatedness estimation, we will use only LD-Pruned SNP set. 
 
-We can use `--indep-pairwise 50 5 0.2` to filter out those are in strong LD and keep only the independent SNPS.
+We can use `--indep-pairwise 50 5 0.2` to filter out those in strong LD and keep only the independent SNPs.
 Please check https://www.cog-genomics.org/plink/1.9/ld#indep for the meaning of each parameter.
 Combined with the filters we just introduced, we can run:
 
@@ -437,9 +438,9 @@ Combined with the filters we just introduced, we can run:
     	--indep-pairwise 50 5 0.2 \
     	--out plink_results
     ```
-    This command generates two outputs :  `plink_results.prune.in` and `plink_results.prune.out`
+    This command generates two outputs:  `plink_results.prune.in` and `plink_results.prune.out`
     `plink_results.prune.in` is the independent set of SNPs we will use in the following analysis.
-    Let's take a look at this file. Basically it just contains one SNP id per line.
+    Let's take a look at this file. Basically, it just contains one SNP id per line.
     
     ```bash
     head plink_results.prune.in
@@ -456,11 +457,11 @@ Combined with the filters we just introduced, we can run:
     ```
 
 ### Sample & SNP filtering (extract/exclude/keep/remove)
-Some time we will use only a subset of samples or snps included the original dataset. 
+Sometimes we will use only a subset of samples or SNPs included the original dataset. 
 In this case, we can use `--extract` or `--exclude` to select or exclude SNPs from analysis, `--keep` or `--remove` to select or exclude samples.
 
 For  `--keep` or `--remove` , the input is the filename of a sample FID and IID file.
-For `--extract` or `--exclude` , the input is the filename of a snplist file.
+For `--extract` or `--exclude` , the input is the filename of a SNP list file.
 
 ```bash
 head plink_results.prune.in
@@ -477,8 +478,8 @@ head plink_results.prune.in
 ```
 
 ### IBD / PI_HAT
-`--genome` will estimate IBS/IBD. Usually for this analysis, we need to prune our data first since the strong LD will cause bias in the results.
-(This step is extremelly computationally intensive)
+`--genome` will estimate IBS/IBD. Usually, for this analysis, we need to prune our data first since the strong LD will cause bias in the results.
+(This step is computationally intensive)
 
 Combined with the `--extract`, we can run:
 
@@ -513,7 +514,7 @@ We can also use our data to calculate LD between a pair of SNPs.
 !!! info How we calculate LD r2
     ![image](https://user-images.githubusercontent.com/40289485/161413586-d4f6e21e-f0c7-4c54-a703-bb060ec6913d.png)
 
-`--chr` option allows us to include snps on a specific chromosome.
+`--chr` option allows us to include SNPs on a specific chromosome.
 To calculate LD r2 for SNPs on chr22 , we can run:
 
 !!! example Calculate LD r2 for SNPs on chr22

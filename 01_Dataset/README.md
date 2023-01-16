@@ -4,8 +4,9 @@
 - Url: [http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/](http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/)
 
 ## Genotype Data Processing
+
 - Selected only autosomal variants
-- Split multi-allelic varaints
+- Split multi-allelic variants
 - Variants were normalized
 - Remove duplicated variants
 - Selected only SNP (ATCG)
@@ -28,7 +29,7 @@ And you will get the following files:
 ```
 
 ## Phenotype Simulation
-Pehontypes were simply simulated using GCTA with the 1KG EAS dataset (without thinning).
+Phenotypes were simply simulated using GCTA with the 1KG EAS dataset (without thinning).
 ```Bash
 gcta64  \
   --bfile 1KG.EAS.auto.snp.norm.nodup.split.maf005 \ 
