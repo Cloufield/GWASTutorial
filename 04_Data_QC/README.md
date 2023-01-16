@@ -218,14 +218,14 @@ All sample codes and results for this module are available in `./04_data_QC`
 ### QC Step Summary
 
 !!! info "QC Step Summary"
-    |QC step|Option in PLINK|Commonly used threshold to exclude| Description|
-    |-|-|-|-|
-    |Sample missing rate| `--geno`,  `--missing` | missing rate > 0.01 ||
-    |SNP missing rate| `--mind`, `--missing` | missing rate > 0.01 ||
-    |Minor allele frequency| `--freq`, `--maf` |maf < 0.01||
-    |Sample Relatedness| `--genome` |||
-    |Hardy-Weinberg equilibrium| `--hwe`,`--hardy`|hwe < 5e-6||
-    |Inbreeding F coefficient|`--het`|outside of 3 SD from the mean||
+    |QC step|Option in PLINK|Commonly used threshold to exclude|
+    |-|-|-|
+    |Sample missing rate| `--geno`,  `--missing` | missing rate > 0.01 |
+    |SNP missing rate| `--mind`, `--missing` | missing rate > 0.01 |
+    |Minor allele frequency| `--freq`, `--maf` |maf < 0.01|
+    |Sample Relatedness| `--genome` |pi_hat > 0.2 to exclude second-degree relatives|
+    |Hardy-Weinberg equilibrium| `--hwe`,`--hardy`|hwe < 5e-6|
+    |Inbreeding F coefficient|`--het`|outside of 3 SD from the mean|
 
 First, we can calculate some basic statistics of our simulated data:
 
