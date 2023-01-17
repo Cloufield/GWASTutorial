@@ -1,4 +1,7 @@
 # Data format
+
+This section lists some of the most commonly used formats in complex trait genomic analysis. 
+
 ## Table of Contents
 - [Data formats for general purpose](#data-formats-for-general-purpose)
     - [txt](#txt)
