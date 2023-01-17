@@ -21,9 +21,9 @@ This section lists some of the most commonly used formats in complex trait genom
         - bgen
         - pgen
 
-# Data formats for general purposes
+## Data formats for general purposes
 
-## txt
+### txt
 Simple text file
 
 !!! example "`.txt`"
@@ -33,7 +33,7 @@ Simple text file
     ```
     Random texts are generated using - https://www.lipsum.com/
 
-## tsv
+### tsv
 Tab-separated values
 Tabular data format 
 
@@ -53,7 +53,7 @@ Tabular data format
     1	135163	1:135163:C:T	C	T	T	N	ADD	503	0.711822	0.23908	-1.42182	0.155079	.
     ```
 
-## csv
+### csv
 Comma-separated values
 Tabular data format 
 
@@ -73,8 +73,7 @@ Tabular data format
     1,135163,1:135163:C:T,C,T,T,N,ADD,503,0.711822,0.23908,-1.42182,0.155079,.
     ```
     
-# Data formats in bioinformatics
-
+## Data formats in bioinformatics
 ## Sequence
 ### fasta
 text-based format for representing either nucleotide sequences or amino acid (protein) sequences
