@@ -430,9 +430,68 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          SSH
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         SSH
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#login-to-remote-server" class="md-nav__link">
+    Login to remote server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keys" class="md-nav__link">
+    Keys
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-transfer" class="md-nav__link">
+    File transfer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh-tunneling" class="md-nav__link">
+    SSH Tunneling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-ssh-options" class="md-nav__link">
+    other SSH options
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -951,6 +1010,49 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#login-to-remote-server" class="md-nav__link">
+    Login to remote server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keys" class="md-nav__link">
+    Keys
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-transfer" class="md-nav__link">
+    File transfer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh-tunneling" class="md-nav__link">
+    SSH Tunneling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-ssh-options" class="md-nav__link">
+    other SSH options
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -967,18 +1069,55 @@
 <h1 id="ssh">SSH</h1>
 <p><strong>SSH</strong> stands for <strong>Secure Shell Protocol</strong>, which enables you to connect to remote server safely.</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/210223930-1138fb9f-5230-415d-a595-3239113372c8.png" /></p>
-<p>login to romote server:</p>
+<h2 id="login-to-remote-server">Login to remote server</h2>
 <div class="highlight"><pre><span></span><code>ssh &lt;username&gt;@&lt;host&gt;
 </code></pre></div>
 <p>Before you login in, you need to generate keys for ssh connection:</p>
+<h2 id="keys">Keys</h2>
 <p><div class="highlight"><pre><span></span><code>ssh-keygen -t rsa -b <span class="m">4096</span>
 </code></pre></div>
 You will get two keys, a public one and a private one.</p>
 <ul>
 <li>public key  :  <code>~/.ssh/id_rsa.pub</code></li>
-<li>private key :  <code>~/.ssh/id_rsa</code>   ,please don't share this with others.       </li>
+<li>private key :  <code>~/.ssh/id_rsa</code></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Don't share your private key with others.    </p>
+</div>
 <p>What you need to do is just add you local public key to <code>~/.ssh/authorized_keys</code> on host server.</p>
+<h2 id="file-transfer">File transfer</h2>
+<p>Suppose you are using a local machine: </p>
+<p>Donwload files from remote host to local machine </p>
+<div class="highlight"><pre><span></span><code>scp &lt;username&gt;@&lt;host&gt;:remote_path local_path
+</code></pre></div>
+<p>Upload files from local machine to remote host</p>
+<div class="highlight"><pre><span></span><code>scp local_path &lt;username&gt;@&lt;host&gt;:remote_path
+</code></pre></div>
+<div class="admonition info copy directories">
+<p class="admonition-title">Info</p>
+<p><code>-r</code> : copy recursively. This option is needed when you want to transfer an entire directory. </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Copy the local work directory to remote home directory
+<div class="highlight"><pre><span></span><code>$ scp -r /home/gwaslab/work gwaslab@remote.com:/home/gwaslab 
+</code></pre></div></p>
+</div>
+<h2 id="ssh-tunneling">SSH Tunneling</h2>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>In this forwarding type, the SSH client listens on a given port and tunnels any connection to that port to the specified port on the remote SSH server, which then connects to a port on the destination machine. The destination machine can be the remote SSH server or any other machine. <a href="https://linuxize.com/post/how-to-setup-ssh-tunneling/">https://linuxize.com/post/how-to-setup-ssh-tunneling/</a></p>
+</div>
+<p><code>-L</code> : Local port forwarding</p>
+<div class="highlight"><pre><span></span><code>ssh -L [local_IP:]local_PORT:destination:destination_PORT &lt;username&gt;@&lt;host&gt;
+</code></pre></div>
+<h2 id="other-ssh-options">other SSH options</h2>
+<ul>
+<li><code>-f</code> : send to background.</li>
+<li><code>-p</code>:  port for connenction (default:22).</li>
+<li><code>-N</code> : not to execute any commands on the remote host. (so you will not open a remote shell but just forward ports.)</li>
+</ul>
 
 
 
