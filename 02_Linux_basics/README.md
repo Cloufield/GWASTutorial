@@ -1,6 +1,6 @@
 # Introduction
 
-This section is intended to provide a minumum introduction of the command line in Linux system for handling genomic data.  (If you are alreay familiar with Linux commands, it is completely ok to skip this section.)
+This section is intended to provide a minimum introduction of the command line in Linux system for handling genomic data.  (If you are alreay familiar with Linux commands, it is completely ok to skip this section.)
 
 If you are a beginner with no background in programming, it would be helpful if you could learn some basic commands first before any analysis. 
 In this section, we will introduce the most basic commands which enable you to handle genomic files in the terminal using command lines in a linux system. 
@@ -347,7 +347,9 @@ $ ls -lh
 We have a group of handy commands to check part of or the entire file, including `cat`, `zcat`, `less`, `head`, `tail`, `wc`
 
 #### `cat`
-print the file or concatenate the files
+
+`cat` command can print the contents of files or concatenate the files.
+
 ```Bash
 $ ls -lha > a_text_file.txt
 $ cat a_text_file.txt 
@@ -384,6 +386,10 @@ drwxr-x--- 29 he staff 4.0K Apr  1 22:20 ..
 -rw-r-----  1 he staff 5.0K Apr  1 22:20 README.md
 -rw-r-----  1 he staff  32M Mar 30 18:17 sumstats.txt
 ```
+
+!!! info "gzcat"
+    Use `gzcat` instead of `zcat` if your device is running MacOS. 
+
 
 #### `head`
 
@@ -454,9 +460,9 @@ When finished, just pres `Esc` to escape insert mode, and then press `shift + :`
 Vim is a little bit hard to learn for beginners, but when you get familiar with it, it will be a mighty and convenient tool.
 For more detailed tutorials on Vim, you can check: https://github.com/iggredible/Learn-Vim
 
-Other common command line text editor:
-- [nano](https://www.nano-editor.org/)
-- [emacs](https://www.gnu.org/software/emacs/)
+!!! info "Other common command line text editors"
+    - [nano](https://www.nano-editor.org/)
+    - [emacs](https://www.gnu.org/software/emacs/)
 
 ### Permission
 
@@ -559,7 +565,6 @@ Other useful commands include :
 
 !!! warnig
     Be extremely careful when you use rm and *. It is disastrous when you mistakenly type `rm *`
-
  
 ## Bash scripts
 
@@ -601,6 +606,7 @@ Now we can run the srcipt by `./hello.sh`:
 - `join`: join two tabular files based on specified keys.
 
 Advanced commands:
+
 - `awk` : [https://cloufield.github.io/GWASTutorial/60_awk/](https://cloufield.github.io/GWASTutorial/60_awk/)
 - `sed` : [https://cloufield.github.io/GWASTutorial/61_sed/](https://cloufield.github.io/GWASTutorial/61_sed/)
 
@@ -615,9 +621,10 @@ Currently you just need to learn `git clone`, which simply downloads an existing
 
 You can also check [here](https://cloufield.github.io/GWASTutorial/83_git_and_github/) for more information.
 
-Git Reference: https://git-scm.com/doc
+!!! quote
 
-Cheatsheet: https://training.github.com/downloads/github-git-cheat-sheet/
+    - Git Reference: [https://git-scm.com/doc](https://git-scm.com/doc)
+    - Cheatsheet: [https://training.github.com/downloads/github-git-cheat-sheet/](https://training.github.com/downloads/github-git-cheat-sheet/)
 
 ## Download
 
