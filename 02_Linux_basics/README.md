@@ -1,6 +1,6 @@
 # Introduction
 
-This section is intended to provide a minumum introduction of the command line in Linux system for handling genomic data.  (If you are alreay familiar with Linux commands, it is completely ok to skip this section.)
+This section is intended to provide a minimum introduction of the command line in Linux system for handling genomic data.  (If you are alreay familiar with Linux commands, it is completely ok to skip this section.)
 
 If you are a beginner with no background in programming, it would be helpful if you could learn some basic commands first before any analysis. 
 In this section, we will introduce the most basic commands which enable you to handle genomic files in the terminal using command lines in a linux system. 
