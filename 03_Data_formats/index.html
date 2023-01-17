@@ -1145,6 +1145,7 @@
 
 
 <h1 id="data-format">Data format</h1>
+<p>This section lists some of the most commonly used formats in complex trait genomic analysis. </p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
 <li><a href="#data-formats-for-general-purpose">Data formats for general purpose</a><ul>
@@ -1180,13 +1181,18 @@
 <h1 id="data-formats-for-general-purposes">Data formats for general purposes</h1>
 <h2 id="txt">txt</h2>
 <p>Simple text file</p>
+<div class="admonition example">
+<p class="admonition-title"><code>.txt</code></p>
 <p><div class="highlight"><pre><span></span><code>cat sample_text.txt 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut sem congue, tristique tortor et, ullamcorper elit. Nulla elementum, erat ac fringilla mattis, nisi tellus euismod dui, interdum laoreet orci velit vel leo. Vestibulum neque mi, pharetra in tempor id, malesuada at ipsum. Duis tellus enim, suscipit sit amet vestibulum in, ultricies vitae erat. Proin consequat id quam sed sodales. Ut a magna non tellus dictum aliquet vitae nec mi. Suspendisse potenti. Vestibulum mauris sem, viverra ac metus sed, scelerisque ornare arcu. Vivamus consequat, libero vitae aliquet tempor, lorem leo mattis arcu, et viverra erat ligula sit amet tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent ut massa ac tortor lobortis placerat. Pellentesque aliquam tortor augue, at rutrum magna molestie et. Etiam congue nulla in venenatis congue. Nunc ac felis pharetra, cursus leo et, finibus eros.
 </code></pre></div>
 Random texts are generated using - https://www.lipsum.com/</p>
+</div>
 <h2 id="tsv">tsv</h2>
 <p>Tab-separated values
 Tabular data format </p>
+<div class="admonition example">
+<p class="admonition-title"><code>.tsv</code></p>
 <div class="highlight"><pre><span></span><code>head sample_data.tsv
 #CHROM  POS ID  REF ALT A1  FIRTH?  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE
 1   13273   1:13273:G:C G   C   C   N   ADD 503 0.750168    0.280794    -1.02373    0.305961    .
@@ -1199,9 +1205,12 @@ Tabular data format </p>
 1   122872  1:122872:T:G    T   G   G   N   ADD 503 1.07113 0.180776    0.380121    0.703856    .
 1   135163  1:135163:C:T    C   T   T   N   ADD 503 0.711822    0.23908 -1.42182    0.155079    .
 </code></pre></div>
+</div>
 <h2 id="csv">csv</h2>
 <p>Comma-separated values
-Tabular data format 
+Tabular data format </p>
+<div class="admonition example">
+<p class="admonition-title"><code>.csv</code></p>
 <div class="highlight"><pre><span></span><code>head sample_data.csv 
 #CHROM,POS,ID,REF,ALT,A1,FIRTH?,TEST,OBS_CT,OR,LOG(OR)_SE,Z_STAT,P,ERRCODE
 1,13273,1:13273:G:C,G,C,C,N,ADD,503,0.750168,0.280794,-1.02373,0.305961,.
@@ -1213,26 +1222,35 @@ Tabular data format
 1,91581,1:91581:G:A,G,A,A,N,ADD,503,0.924422,0.122991,-0.638963,0.522847,.
 1,122872,1:122872:T:G,T,G,G,N,ADD,503,1.07113,0.180776,0.380121,0.703856,.
 1,135163,1:135163:C:T,C,T,T,N,ADD,503,0.711822,0.23908,-1.42182,0.155079,.
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <h1 id="data-formats-in-bioinformatics">Data formats in bioinformatics</h1>
 <h2 id="sequence">Sequence</h2>
 <h3 id="fasta">fasta</h3>
-<p>text-based format for representing either nucleotide sequences or amino acid (protein) sequences
+<p>text-based format for representing either nucleotide sequences or amino acid (protein) sequences</p>
+<div class="admonition example">
+<p class="admonition-title"><code>.fa</code> or <code>.fasta</code></p>
+</div>
 <div class="highlight"><pre><span></span><code>&gt;SEQ_ID
 GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="fastq">fastq</h3>
-<p>text-based format for storing both a nucleotide sequence and its corresponding quality scores
-<div class="highlight"><pre><span></span><code>@SEQ_ID
+<p>text-based format for storing both a nucleotide sequence and its corresponding quality scores</p>
+<div class="admonition example">
+<p class="admonition-title"><code>.fastq</code></p>
+<p><div class="highlight"><pre><span></span><code>@SEQ_ID
 GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
 +
 !&#39;&#39;*((((***+))%%%++)(%%%%).1***-+*&#39;&#39;))**55CCF&gt;&gt;&gt;&gt;&gt;&gt;CCCCCCC65
 </code></pre></div>
 Reference: https://en.wikipedia.org/wiki/FASTQ_format</p>
+</div>
 <h2 id="alingment">Alingment</h2>
 <h3 id="sambam">SAM/BAM</h3>
-<p>Sequence Alignment/Map Format is a TAB-delimited text file format consisting of a header section, and an alignment section.
-<div class="highlight"><pre><span></span><code>@HD VN:1.6 SO:coordinate
+<p>Sequence Alignment/Map Format is a TAB-delimited text file format consisting of a header section, and an alignment section.</p>
+<div class="admonition example">
+<p class="admonition-title"><code>.sam</code></p>
+<p><div class="highlight"><pre><span></span><code>@HD VN:1.6 SO:coordinate
 @SQ SN:ref LN:45
 r001 99 ref 7 30 8M2I4M1D3M = 37 39 TTAGATAAAGGATACTG *
 r002 0 ref 9 30 3S6M1P1I4M * 0 0 AAAAGATAAGGATA *
@@ -1242,9 +1260,12 @@ r003 2064 ref 29 17 6H5M * 0 0 TAGGC * SA:Z:ref,9,+,5S6M,30,1;
 r001 147 ref 37 30 9M = 7 -39 CAGCGGCAT * NM:i:1
 </code></pre></div>
 Reference : https://samtools.github.io/hts-specs/SAMv1.pdf</p>
+</div>
 <h2 id="variant-and-genotype">Variant and genotype</h2>
 <h3 id="vcf-vcfgz-vcfgztbi">vcf / vcf.gz / vcf.gz.tbi</h3>
 <p>VCF is a text file format consisting of meta-information lines, a header line, and then data lines. Each data lien contains information about a variant in the genome (and the genotype information on samples for each variant). </p>
+<div class="admonition example">
+<p class="admonition-title"><code>.vcf</code></p>
 <p><div class="highlight"><pre><span></span><code>##fileformat=VCFv4.2
 ##fileDate=20090805
 ##source=myImputationProgramV3.1
@@ -1271,9 +1292,12 @@ Reference : https://samtools.github.io/hts-specs/SAMv1.pdf</p>
 20 1234567 microsat1 GTC G,GTCT 50 PASS NS=3;DP=9;AA=G GT:GQ:DP 0/1:35:4 0/2:17:2 1/1:40:3
 </code></pre></div>
 Reference : https://samtools.github.io/hts-specs/VCFv4.2.pdf </p>
+</div>
 <h3 id="ped-map">ped / map</h3>
-<p>.ped (PLINK/MERLIN/Haploview text pedigree + genotype table)</p>
+<p><code>.ped</code> (PLINK/MERLIN/Haploview text pedigree + genotype table)</p>
 <p>Original standard text format for sample pedigree information and genotype calls.Contains no header line, and one line per sample with 2V+6 fields where V is the number of variants. The first six fields are the same as those in a .fam file. The seventh and eighth fields are allele calls for the first variant in the .map file ('0' = no call); the 9th and 10th are allele calls for the second variant; and so on.</p>
+<div class="admonition example">
+<p class="admonition-title"><code>.ped</code></p>
 <div class="highlight"><pre><span></span><code># check the first 16 rows and 16 columns of the ped file
 cut -d &quot; &quot; -f 1-16 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.ped | head
 0 HG00403 0 0 0 -9 G G T T A A G A C C
@@ -1293,7 +1317,8 @@ cut -d &quot; &quot; -f 1-16 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.p
 0 HG00445 0 0 0 -9 G G T T A A G A C C
 0 HG00446 0 0 0 -9 C G T T A A G A T C
 </code></pre></div>
-<p>.map (PLINK text fileset variant information file)</p>
+</div>
+<p><code>.map</code> (PLINK text fileset variant information file)</p>
 <p>Variant information file accompanying a .ped text pedigree + genotype table. A text file with no header line, and one line per variant with the following 3-4 fields:</p>
 <ul>
 <li>Chromosome code. PLINK 1.9 also permits contig names here, but most older programs do not.</li>
@@ -1301,6 +1326,8 @@ cut -d &quot; &quot; -f 1-16 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.p
 <li>Position in morgans or centimorgans (optional; also safe to use dummy value of '0')</li>
 <li>Base-pair coordinate</li>
 </ul>
+<div class="admonition example">
+<p class="admonition-title"><code>.map</code></p>
 <div class="highlight"><pre><span></span><code>head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.map
 1       1:13273:G:C     0       13273
 1       1:14599:T:A     0       14599
@@ -1313,6 +1340,7 @@ cut -d &quot; &quot; -f 1-16 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.p
 1       1:135163:C:T    0       135163
 1       1:233473:C:G    0       233473
 </code></pre></div>
+</div>
 <p>Reference: <a href="https://www.cog-genomics.org/plink/1.9/formats">https://www.cog-genomics.org/plink/1.9/formats</a></p>
 <h3 id="bed-fam-bim">bed / fam /bim</h3>
 <p>bed/fam/bim formats are the binary implementation of ped/map formats.
@@ -1323,7 +1351,8 @@ bed/bim/fam files contain the same information as ped/map but are much smaller i
 -rw-r--r-- 1 yunye yunye  32M Dec 27 17:51 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.map
 -rw-r--r-- 1 yunye yunye 2.2G Dec 27 17:51 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.ped
 </code></pre></div>
-<p>fam
+<div class="admonition example">
+<p class="admonition-title"><code>.fam</code></p>
 <div class="highlight"><pre><span></span><code>head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
 0 HG00403 0 0 0 -9
 0 HG00404 0 0 0 -9
@@ -1335,8 +1364,10 @@ bed/bim/fam files contain the same information as ped/map but are much smaller i
 0 HG00421 0 0 0 -9
 0 HG00422 0 0 0 -9
 0 HG00428 0 0 0 -9
-</code></pre></div></p>
-<p>bim
+</code></pre></div>
+</div>
+<div class="admonition example">
+<p class="admonition-title"><code>.bim</code></p>
 <div class="highlight"><pre><span></span><code>head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
 1       1:13273:G:C     0       13273   C       G
 1       1:14599:T:A     0       14599   A       T
@@ -1348,9 +1379,11 @@ bed/bim/fam files contain the same information as ped/map but are much smaller i
 1       1:122872:T:G    0       122872  G       T
 1       1:135163:C:T    0       135163  T       C
 1       1:233473:C:G    0       233473  G       C
-</code></pre></div></p>
-<p>bed : 
-"Primary representation of genotype calls at biallelic variants
+</code></pre></div>
+</div>
+<div class="admonition example">
+<p class="admonition-title"><code>.bed</code></p>
+<p>"Primary representation of genotype calls at biallelic variants
 The first three bytes should be 0x6c, 0x1b, and 0x01 in that order.
 The rest of the file is a sequence of V blocks of N/4 (rounded up) bytes each, where V is the number of variants and N is the number of samples. The first block corresponds to the first marker in the .bim file, etc."
 <div class="highlight"><pre><span></span><code>hexdump -C 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed | head
@@ -1365,12 +1398,15 @@ The rest of the file is a sequence of V blocks of N/4 (rounded up) bytes each, w
 00000080  bf ff ff ef ff ff ff ff  ff fa ff ff eb ff ff ff  |................|
 00000090  ff ff fb fe af ff bf ff  ff ff ff ff ff ff ff ff  |................|
 </code></pre></div></p>
+</div>
 <p>Reference: <a href="https://www.cog-genomics.org/plink/1.9/formats">https://www.cog-genomics.org/plink/1.9/formats</a></p>
 <h2 id="imputation-dosage">Imputation dosage</h2>
 <h3 id="bgen-bgi">bgen / bgi</h3>
 <p>Reference: <a href="https://www.well.ox.ac.uk/~gav/bgen_format/">https://www.well.ox.ac.uk/~gav/bgen_format/</a></p>
 <h3 id="pgenpsampvar">pgen,psam,pvar</h3>
 <p>Reference: <a href="https://www.cog-genomics.org/plink/2.0/formats#pgen">https://www.cog-genomics.org/plink/2.0/formats#pgen</a></p>
+<h2 id="summary">Summary</h2>
+<p><img width="746" alt="Screen Shot 2022-03-28 at 16 45 56" src="https://user-images.githubusercontent.com/40289485/160350838-63da9633-2c74-49dd-889e-03392735463f.png"></p>
 
 
 
