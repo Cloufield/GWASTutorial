@@ -9,6 +9,10 @@ theme:
   features:
     - navigation.tabs
     - navigation.top
+    - navigation.tracking
+    - navigation.expand
+    - navigation.path
+    
   font:
     code: Roboto Mono
     text: Roboto
@@ -20,17 +24,22 @@ nav:
     - Home: 
       - "Tutorial guide" : index.md
       - "About" : 99_About.md
-    - "Command Line" : 
-       - "Linux Basics" : 02_Linux_basics.md
-       - "Windows Linux Subsystem" : 82_windows_linux_subsystem.md
-       - "Git and github" : 83_git_and_github.md
-       - "SSH" : 84_ssh.md
-       - "Job scheduler" : 85_job_scheduler.md  
-       - "Text editing - awk" : 60_awk.md
-       - "Text editing - sed" : 61_sed.md
-       - "Anaconda" : 80_anaconda.md
-       - "Jupyter notebook" : 81_jupyter_notebook.md
-       - "Resources" : 69_resources.md
+    - "Command Line" :
+       - "Linux" : 
+          - "Linux Basics" : 02_Linux_basics.md
+          - "Windows Linux Subsystem" : 82_windows_linux_subsystem.md
+          - "SSH" : 84_ssh.md
+          - "Job scheduler" : 85_job_scheduler.md
+          - "Text editing - awk" : 60_awk.md
+          - "Text editing - sed" : 61_sed.md
+          - "Linux Resources" : 69_resources.md
+       - "Python":
+          - "Python Basics": 70_python_basics.md
+          - "Python Resources" : 71_python_resources.md
+          - "Anaconda" : 80_anaconda.md
+          - "Jupyter notebook" : 81_jupyter_notebook.md
+       - "Other tools" :
+          - "Git and github" : 83_git_and_github.md
     - "Pre-GWAS" :
        - "Sample Dataset" : 01_Dataset.md
        - "Data Formats" : 03_Data_formats.md
