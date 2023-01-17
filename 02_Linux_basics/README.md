@@ -132,7 +132,7 @@ For example, we want to check the usage of `pwd`:
 
     URL : [https://explainshell.com/](https://explainshell.com/)
 
-    https://user-images.githubusercontent.com/40289485/212846599-99b599e7-e3dc-4cae-8e8b-0a481ed94263.png
+    <img width="800" alt="image" src="https://user-images.githubusercontent.com/40289485/212846599-99b599e7-e3dc-4cae-8e8b-0a481ed94263.png">
 
 
 ## Commands
