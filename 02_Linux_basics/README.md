@@ -37,6 +37,7 @@ In this section, we will introduce the most basic commands which enable you to h
 ## Linux System Introduction
 
 ### What is Linux?
+
 |Term|Description|
 |-|-|
 |**Linux** |refers to a family of open-source Unix-like operating systems based on the **Linux kernel**.|
@@ -55,8 +56,8 @@ Reference: https://en.wikipedia.org/wiki/Linux
 
 ### How do we interact with computers?
 
-- **Graphical User Interface (GUI)**: allows users to interact with computers through graphical icons 
-- **Character User Interface (CUI)**: allows users to interact with computers through command lines
+- Graphical User Interface (GUI): allows users to interact with computers through graphical icons 
+- Character User Interface (CUI): allows users to interact with computers through command lines
 
 ![image](https://user-images.githubusercontent.com/40289485/210223188-5b8fd313-5081-40ee-9c4c-d60c1115de8d.png)
 
@@ -76,23 +77,25 @@ Reference: https://en.wikipedia.org/wiki/Linux
 
 ## Overview of the basic commands in Linux
 
-Just like clicking and dragging files in Windows or MacOS, in Linux, we usually handle files by typing commands in the terminal.
+Unlike clicking and dragging files in Windows or MacOS, in Linux, we usually handle files by typing commands in the terminal.
 
 ![image](https://user-images.githubusercontent.com/40289485/161308638-18a0efbf-92df-4795-87be-72080db316c6.png)
 
 Here is a list of the basic commands we are going to cover in this brief tutorial:
 
-|Function group| Commands| Description|
-|-|-|-|
-| Directories | `pwd`, `ls`, `mkdir`, `rmdir`| Commands for checking, creating and removing directories|
-| Files |`touch`,`cp`,`mv`,`rm` | Commands for creating, copying, moving and removing files|
-| Checking files| `cat`,`zcat`,`head`,`tail`,`less`,`more`,`wc`| Commands for inspecting files|
-| Archiving and compression| `tar`,`gzip`,`gunzip`,`zip`,`unzip`| Commands for Archiving and Compressing files|
-| Manipulating text| `sort`,`uniq`,`cut`,`join`,`tr`|Commands for manipulating text files|
-| Modifying permission| `chmod`,`chown`, `chgrp`| Commands for changing the permissions of files and directories|
-| Links| `ln` | Commands for creating symbolic and hard links|
-| Pipe, redirect and others| pipe, `>`,`>>`,`*`,`.`,`..` | A group of miscellaneous commands |
-| Advance text editing| `awk`, `sed` | Commands for more complicated text manipulation and editing |
+!!! info "Basic Linux commands"
+    
+    |Function group| Commands| Description|
+    |-|-|-|
+    | Directories | `pwd`, `ls`, `mkdir`, `rmdir`| Commands for checking, creating and removing directories|
+    | Files |`touch`,`cp`,`mv`,`rm` | Commands for creating, copying, moving and removing files|
+    | Checking files| `cat`,`zcat`,`head`,`tail`,`less`,`more`,`wc`| Commands for inspecting files|
+    | Archiving and compression| `tar`,`gzip`,`gunzip`,`zip`,`unzip`| Commands for Archiving and Compressing files|
+    | Manipulating text| `sort`,`uniq`,`cut`,`join`,`tr`|Commands for manipulating text files|
+    | Modifying permission| `chmod`,`chown`, `chgrp`| Commands for changing the permissions of files and directories|
+    | Links| `ln` | Commands for creating symbolic and hard links|
+    | Pipe, redirect and others| pipe, `>`,`>>`,`*`,`.`,`..` | A group of miscellaneous commands |
+    | Advance text editing| `awk`, `sed` | Commands for more complicated text manipulation and editing |
 
 ### How to check the usage of a command using `man`: 
 
@@ -102,25 +105,35 @@ The first command we might want to learn is `man`, which shows the manual for a 
 
 For example, we want to check the usage of `pwd`:
 
-```Bash
-$ man pwd
+!!! example "Use `man` to get the manual for commands"
+    ```Bash
+    $ man pwd
+    
+    ```
+    Then you will see the manual of `pwd` in your terminal.
+    ```Bash
+    
+    PWD(1)                                              User     Commands                                              PWD(1)
+    
+    NAME
+           pwd - print name of current/working directory
+    
+    SYNOPSIS
+           pwd [OPTION]...
+    
+    DESCRIPTION
+           Print the full filename of the current working directory.
+    ....
+    ```
 
-```
-Then you will see the manual of `pwd` in your terminal.
-```Bash
+!!! tip "Explain shell"
+    
+    Or you can use this wonderful website to get explanations for your commands.
 
-PWD(1)                                              User Commands                                              PWD(1)
+    URL : [https://explainshell.com/](https://explainshell.com/)
 
-NAME
-       pwd - print name of current/working directory
+    https://user-images.githubusercontent.com/40289485/212846599-99b599e7-e3dc-4cae-8e8b-0a481ed94263.png
 
-SYNOPSIS
-       pwd [OPTION]...
-
-DESCRIPTION
-       Print the full filename of the current working directory.
-....
-```
 
 ## Commands
 ### Directories

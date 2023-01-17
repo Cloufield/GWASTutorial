@@ -3,7 +3,7 @@
  ![image](https://user-images.githubusercontent.com/40289485/211962816-5f367b28-f136-468f-8d41-0bffff54481f.png) 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FCloufield%2FGWASTutorial&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Views&edge_flat=false)](https://hits.seeyoufarm.com)
 
-This Github page aims to provide a hands-on tutorial on common analysis in Complex Trait Genomics. This tutorial is designed for the course `Fundamental Exercise II` provided by [Laboratory of Complex Trait Genomics](https://sites.google.com/edu.k.u-tokyo.ac.jp/kamatanilab/) at the University of Tokyo. For more information, please see [About](https://cloufield.github.io/GWASTutorial/99_About/).
+This Github page aims to provide a hands-on tutorial on common analysis in Complex Trait Genomics. This tutorial is designed for the course `Fundamental Exercise II` provided by [The Laboratory of Complex Trait Genomics](https://sites.google.com/edu.k.u-tokyo.ac.jp/kamatanilab/) at the University of Tokyo. For more information, please see [About](https://cloufield.github.io/GWASTutorial/99_About/).
 
 This tutorial covers the minimum skills and knowledge required to perform a typical genome-wide association study (GWAS). The contents are categorized into the following groups. Additionally, for absolute beginners, we also prepared a section on command lines in Linux.
 
