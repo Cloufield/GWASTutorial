@@ -53,6 +53,7 @@ nav:
        - "Whole genome regression by REGENIE" : 32_whole_genome_regression.md
     - "Post-GWAS" :
        - "Annotation by ANNOVAR & VEP" : 07_Annotation.md
+       - "Winner's curse" : 15_winners_curse.md
        - "Heritability Concepts" : 13_heritability.md
        - "SNP-heritability estimation by GREML" : 14_gcta_greml.md
        - "LD socre regression by LDSC" : 08_LDSC.md
