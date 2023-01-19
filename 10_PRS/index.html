@@ -1192,6 +1192,31 @@
 <h2 id="download-prs-model-from-pgs-catalog">Download PRS model from PGS Catalog</h2>
 <p>URL: http://www.pgscatalog.org/</p>
 <h2 id="calculate-prs-using-plink">Calculate PRS using PLINK</h2>
+<h2 id="regressions">Regressions</h2>
+<h2 id="roc-and-auc">ROC and AUC</h2>
+<h2 id="c-index">C-index</h2>
+<h2 id="r2-and-pseudo-r2">R2 and pseudo-R2</h2>
+<div class="admonition info">
+<p class="admonition-title">Coefficient of determination</p>
+<p><span class="arithmatex">\(R^2\)</span> : coefficient of determination, which measures the amount of variance explained by the regression model.</p>
+<p>In linear regression:</p>
+<div class="arithmatex">\[ R_2 = 1 - {{RSS}\over{TSS}} \]</div>
+<ul>
+<li><span class="arithmatex">\(RSS\)</span> : sum of squares of residuals</li>
+<li><span class="arithmatex">\(TSS\)</span> : total sum of squares</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Pseudo-R2</p>
+<p>In logistic regression, </p>
+<p>One of the most commonly used Pseudo-R2 for PRS analysis is Nagelkerke's <span class="arithmatex">\(R^2\)</span></p>
+<div class="arithmatex">\[R_{Nagelkerke} = {{1 - ({{L_0}\over{L_M}})^{2/n}}\over{{1 - L_0^{2/n}}\]</div>
+<ul>
+<li><span class="arithmatex">\(L_0\)</span> : Likelihood of the null model</li>
+<li><span class="arithmatex">\(L_M\)</span> : Likelihood of the fitted model</li>
+</ul>
+</div>
+<h2 id="r2-on-liability-scale">R2 on liability scale</h2>
 <h1 id="reference">Reference</h1>
 <ul>
 <li>PLINK : Purcell, Shaun, et al. "PLINK: a tool set for whole-genome association and population-based linkage analyses." The American journal of human genetics 81.3 (2007): 559-575.</li>
