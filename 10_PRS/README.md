@@ -62,7 +62,7 @@ C-index : concordance index, which is a metric to evaluate the predictive perfor
     
     In linear regression:
 
-    $$ R_2 = 1 - {{RSS}\over{TSS}} $$
+    $$ R^2 = 1 - {{RSS}\over{TSS}} $$
 
     - $RSS$ : sum of squares of residuals
     - $TSS$ : total sum of squares
