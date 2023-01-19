@@ -23,10 +23,12 @@
 |P value thresholding| |C+T, PRSice|
 |Beta shrinkage| |LDpred, PRS-CS|
 
-In this tutorial, we will first briefy introduce how to develop PRS model using the sample data and then demonstrate how we can download PRS models from PGS Catalog and apply to our sample genotype data. 
+In this tutorial, we will first briefly introduce how to develop PRS model using the sample data and then demonstrate how we can download PRS models from PGS Catalog and apply to our sample genotype data. 
 
 ## C+T: PLINK
 
+
+## Parameter tuning
 
 ## Beta shrinkage: PRS-CS
 
@@ -70,7 +72,7 @@ C-index : concordance index, which is a metric to evaluate the predictive perfor
 
     One of the most commonly used Pseudo-R2 for PRS analysis is Nagelkerke's $R^2$
 
-    $$R_{Nagelkerke} = {{1 - ({{L_0}\over{L_M}})^{2/n}}\over{1 - L_0^{2/n}}}$$
+    $$R^2_{Nagelkerke} = {{1 - ({{L_0}\over{L_M}})^{2/n}}\over{1 - L_0^{2/n}}}$$
 
     - $L_0$ : Likelihood of the null model
     - $L_full$ : Likelihood of the full model
@@ -81,7 +83,7 @@ C-index : concordance index, which is a metric to evaluate the predictive perfor
 
     $R_2$ on the liability scale for ascertained case-control studies
     
-    $$ R_l = {{R_o^2 C}\over{1 + R_o^2 \theta C }} $$
+    $$ R^2_l = {{R_o^2 C}\over{1 + R_o^2 \theta C }} $$
 
     - $C$ and $\theta$ are correcting factors for ascertainment
     - $C = {{K(1-K)}\over{Z^2}}{{K(1-K)}\over{P(1-P)}}$ 
