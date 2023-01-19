@@ -81,7 +81,7 @@ C-index : concordance index, which is a metric to evaluate the predictive perfor
 
 !!! info "R2 on liability scale"
 
-    $R_2$ on the liability scale for ascertained case-control studies
+    $R^2$ on the liability scale for ascertained case-control studies
     
     $$ R^2_l = {{R_o^2 C}\over{1 + R_o^2 \theta C }} $$
 
