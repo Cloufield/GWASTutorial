@@ -10,7 +10,7 @@
     - [Calculate PRS using PLINK](#calculate-prs-using-plink)
 - [Reference](#reference)
 
-# PRS Analysis Workflow
+## PRS Analysis Workflow
 
 1. **Developing PRS model** using base data
 2. Performing **validation** to obtain best-fit parameters
@@ -22,8 +22,6 @@
 |-|-|-|
 |P value thresholding| |C+T, PRSice|
 |Beta shrinkage| |LDpred, PRS-CS|
-
-# Practice
 
 In this tutorial, we will first briefy introduce how to develop PRS model using the sample data and then demonstrate how we can download PRS models from PGS Catalog and apply to our sample genotype data. 
 
@@ -43,11 +41,19 @@ URL: http://www.pgscatalog.org/
 
 ## Regressions
 
-## ROC and AUC
 
-## C-index
+## Evaluation
 
-## R2 and pseudo-R2
+### ROC, AUC, and C-index
+
+C-index : concordance index, which is a metric to evaluate the predictive performance of models.
+
+!!! info  "C-index"
+
+    Reference: Harrell, F. E., Califf, R. M., Pryor, D. B., Lee, K. L., & Rosati, R. A. (1982). Evaluating the yield of medical tests. Jama, 247(18), 2543-2546.
+    Reference: Longato, E., Vettoretti, M., & Di Camillo, B. (2020). A practical perspective on the concordance index for the evaluation and selection of prognostic time-to-event models. Journal of Biomedical Informatics, 108, 103496.
+
+### R2 and pseudo-R2
 
 !!! info "Coefficient of determination"
     $R^2$ : coefficient of determination, which measures the amount of variance explained by the regression model.
@@ -67,16 +73,34 @@ URL: http://www.pgscatalog.org/
     $$R_{Nagelkerke} = {{1 - ({{L_0}\over{L_M}})^{2/n}}\over{1 - L_0^{2/n}}}$$
 
     - $L_0$ : Likelihood of the null model
-    - $L_M$ : Likelihood of the fitted model
+    - $L_full$ : Likelihood of the full model
 
-## R2 on liability scale
+### R2 on liability scale
+
+!!! info "R2 on liability scale"
+
+    $R_2$ on the liability scale for ascertained case-control studies
+    
+    $$ R_l = {{R_o^2 C}\over{1 + R_o^2 \theta C }} $$
+
+    - $C$ and $\theta$ are correcting factors for ascertainment
+    - $C = {{K(1-K)}\over{Z^2}}{{K(1-K)}\over{P(1-P)}}$ 
+    - $\theta = m {{P-K}\over{1-K}} ( m{{P-K}\over{1-K}} - t)$  
+
+    - $K$ : population disease prevalence
+    - $P$ : sample disease prevalence
+    - $t$: the threshold on the normal distribution truncating the proportion of disease prevalence K
+    - $m = z / K$ : mean liability for cases
+    - $z = f(t)$ : the value of probability density function of standard normal distribution at t 
+    
+    Reference : Lee, S. H., Goddard, M. E., Wray, N. R., & Visscher, P. M. (2012). A better coefficient of determination for genetic profile analysis. Genetic epidemiology, 36(3), 214-224.
 
 
-
-# Reference
+## Reference
 
 - PLINK : Purcell, Shaun, et al. "PLINK: a tool set for whole-genome association and population-based linkage analyses." The American journal of human genetics 81.3 (2007): 559-575.
 - PGS Catalog : Lambert, Samuel A., et al. "The Polygenic Score Catalog as an open database for reproducibility and systematic evaluation." Nature Genetics 53.4 (2021): 420-425.
 - PRS-CS: Ge, Tian, et al. "Polygenic prediction via Bayesian regression and continuous shrinkage priors." Nature communications 10.1 (2019): 1-10.
 - PRS Tutorial: Choi, Shing Wan, Timothy Shin-Heng Mak, and Paul F. O’Reilly. "Tutorial: a guide to performing polygenic risk score analyses." Nature protocols 15.9 (2020): 2759-2772.
+- Lee, S. H., Goddard, M. E., Wray, N. R., & Visscher, P. M. (2012). A better coefficient of determination for genetic profile analysis. Genetic epidemiology, 36(3), 214-224.
 
