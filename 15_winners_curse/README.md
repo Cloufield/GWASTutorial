@@ -5,7 +5,7 @@
 
 Winner's curse refers to the phenomenon that genetic effects are systematically overestimated by thresholding or selection process. 
 
-# WC correction
+## WC correction
 
 The expectation of effect sizes for the selected variants can be approximated by: 
 
