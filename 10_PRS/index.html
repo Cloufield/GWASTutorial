@@ -1056,33 +1056,6 @@
     Parameter tuning
   </a>
   
-    <nav class="md-nav" aria-label="Parameter tuning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cross-validation" class="md-nav__link">
-    Cross-validation
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#independent-population" class="md-nav__link">
-    Independent population
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pseudo-validation" class="md-nav__link">
-    Pseudo-validation
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1318,33 +1291,6 @@
     Parameter tuning
   </a>
   
-    <nav class="md-nav" aria-label="Parameter tuning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cross-validation" class="md-nav__link">
-    Cross-validation
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#independent-population" class="md-nav__link">
-    Independent population
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pseudo-validation" class="md-nav__link">
-    Pseudo-validation
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1463,18 +1409,18 @@
 <tr>
 <th>Category</th>
 <th>Description</th>
-<th>Methods</th>
+<th>Representative Methods</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>P value thresholding</td>
-<td></td>
+<td>P + T</td>
 <td>C+T, PRSice</td>
 </tr>
 <tr>
 <td>Beta shrinkage</td>
-<td></td>
+<td>genome-wide PRS model</td>
 <td>LDpred, PRS-CS</td>
 </tr>
 </tbody>
@@ -1486,9 +1432,11 @@
 <p class="admonition-title">Clumping</p>
 <p>Clumping: LD-pruning based on P value. It is a approach to select variants when there are multiple significant associations in high LD in the same region.</p>
 <p>The three important parameters for clumping in PLINK are:</p>
-<p>-clump-p1 0.0001       # Significance threshold for index SNPs
--clump-r2 0.50         # LD threshold for clumping
--clump-kb 250          # Physical distance threshold for clumping</p>
+<ul>
+<li>clump-p1 0.0001       # Significance threshold for index SNPs</li>
+<li>clump-r2 0.50         # LD threshold for clumping</li>
+<li>clump-kb 250          # Physical distance threshold for clumping</li>
+</ul>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Clumping using PLINK</p>
@@ -1520,12 +1468,16 @@ check only the header and the first "clump" of SNPs.</p>
 <div class="arithmatex">\[ \beta_j | \Phi_j \sim N(0,\phi\Phi_j) ,  \Phi_j \sim g \]</div>
 <p>Reference: Ge, T., Chen, C. Y., Ni, Y., Feng, Y. C. A., &amp; Smoller, J. W. (2019). Polygenic prediction via Bayesian regression and continuous shrinkage priors. Nature communications, 10(1), 1-10.</p>
 <h2 id="parameter-tuning">Parameter tuning</h2>
-<h3 id="cross-validation">Cross-validation</h3>
-<h3 id="independent-population">Independent population</h3>
-<h3 id="pseudo-validation">Pseudo-validation</h3>
+<p>|Method|Description|
+|-|-|-|
+|Cross-validation| 10-fold cross validation. This method usually requires large-scale genotype dataset.|
+|Independent population| Perform validation in an independent population of the same ancestry. |
+|Pseudo-validation|A few methods can estimate a single optimal shrinkage parameter using only the base GWAS summary statistics.|</p>
 <h2 id="download-prs-model-from-pgs-catalog">Download PRS model from PGS Catalog</h2>
 <p>URL: http://www.pgscatalog.org/</p>
 <h2 id="calculate-prs-using-plink">Calculate PRS using PLINK</h2>
+<div class="highlight"><pre><span></span><code>plink --score
+</code></pre></div>
 <h2 id="regressions-for-evaluation-of-prs">Regressions for evaluation of PRS</h2>
 <div class="arithmatex">\[Phenotype \sim PRS_{phenotype} + Covariates\]</div>
 <div class="arithmatex">\[logit(P) \sim PRS_{phenotype} + Covariates\]</div>
