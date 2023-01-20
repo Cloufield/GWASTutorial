@@ -1,15 +1,5 @@
 # Polygenic risk scores
 
-## Table of Contents
-
-- [PRS Analysis Workflow](#prs-analysis-workflow)
-- [Practice]()
-    - [C+T: PLINK](#ct-plink)
-    - [Beta-shrinkage: PRS-CS](#beta-shrinkage-prs-cs)
-    - [Download PRS model from PGS Catalog](#download-prs-model-from-pgs-catalog)
-    - [Calculate PRS using PLINK](#calculate-prs-using-plink)
-- [Reference](#reference)
-
 ## Definition
 
 To calculate the PRS for sample j, 
@@ -94,7 +84,9 @@ Reference: Ge, T., Chen, C. Y., Ni, Y., Feng, Y. C. A., & Smoller, J. W. (2019).
 |Independent population| Perform validation in an independent population of the same ancestry. |
 |Pseudo-validation|A few methods can estimate a single optimal shrinkage parameter using only the base GWAS summary statistics.|
 
-## Download PRS model from PGS Catalog
+## PGS Catalog
+
+Just like GWAS Catalog, you can now download published PRS  models from PGS catalog. 
 
 URL: http://www.pgscatalog.org/
 
