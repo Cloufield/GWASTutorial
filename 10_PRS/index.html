@@ -1020,6 +1020,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#definition" class="md-nav__link">
+    Definition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#prs-analysis-workflow" class="md-nav__link">
     PRS Analysis Workflow
   </a>
@@ -1041,16 +1048,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#parameter-tuning" class="md-nav__link">
-    Parameter tuning
+  <a href="#beta-shrinkage-prs-cs" class="md-nav__link">
+    Beta shrinkage: PRS-CS
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#beta-shrinkage-prs-cs" class="md-nav__link">
-    Beta shrinkage: PRS-CS
+  <a href="#parameter-tuning" class="md-nav__link">
+    Parameter tuning
   </a>
+  
+    <nav class="md-nav" aria-label="Parameter tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-validation" class="md-nav__link">
+    Cross-validation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#independent-population" class="md-nav__link">
+    Independent population
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pseudo-validation" class="md-nav__link">
+    Pseudo-validation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1069,8 +1103,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#regressions" class="md-nav__link">
-    Regressions
+  <a href="#regressions-for-evaluation-of-prs" class="md-nav__link">
+    Regressions for evaluation of PRS
   </a>
   
 </li>
@@ -1106,6 +1140,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meta-grs" class="md-nav__link">
+    Meta-GRS
+  </a>
   
 </li>
       
@@ -1241,6 +1282,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#definition" class="md-nav__link">
+    Definition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#prs-analysis-workflow" class="md-nav__link">
     PRS Analysis Workflow
   </a>
@@ -1262,16 +1310,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#parameter-tuning" class="md-nav__link">
-    Parameter tuning
+  <a href="#beta-shrinkage-prs-cs" class="md-nav__link">
+    Beta shrinkage: PRS-CS
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#beta-shrinkage-prs-cs" class="md-nav__link">
-    Beta shrinkage: PRS-CS
+  <a href="#parameter-tuning" class="md-nav__link">
+    Parameter tuning
   </a>
+  
+    <nav class="md-nav" aria-label="Parameter tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-validation" class="md-nav__link">
+    Cross-validation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#independent-population" class="md-nav__link">
+    Independent population
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pseudo-validation" class="md-nav__link">
+    Pseudo-validation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1290,8 +1365,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#regressions" class="md-nav__link">
-    Regressions
+  <a href="#regressions-for-evaluation-of-prs" class="md-nav__link">
+    Regressions for evaluation of PRS
   </a>
   
 </li>
@@ -1331,6 +1406,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#meta-grs" class="md-nav__link">
+    Meta-GRS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reference" class="md-nav__link">
     Reference
   </a>
@@ -1365,6 +1447,14 @@
 </li>
 <li><a href="#reference">Reference</a></li>
 </ul>
+<h2 id="definition">Definition</h2>
+<p>To calculate the PRS for sample j, </p>
+<div class="arithmatex">\[PRS_j = \sum_{i=0}^{i=M} x_{i,j} \beta_{i}\]</div>
+<ul>
+<li><span class="arithmatex">\(\beta_i\)</span> : effect size for variant i</li>
+<li><span class="arithmatex">\(x_i,j\)</span> : the effect allele count for sample j at variant i</li>
+<li><span class="arithmatex">\(M\)</span> : the number of variants</li>
+</ul>
 <h2 id="prs-analysis-workflow">PRS Analysis Workflow</h2>
 <ol>
 <li><strong>Developing PRS model</strong> using base data</li>
@@ -1395,21 +1485,36 @@
 </table>
 <p>In this tutorial, we will first briefly introduce how to develop PRS model using the sample data and then demonstrate how we can download PRS models from PGS Catalog and apply to our sample genotype data. </p>
 <h2 id="ct-plink">C+T: PLINK</h2>
-<h2 id="parameter-tuning">Parameter tuning</h2>
 <h2 id="beta-shrinkage-prs-cs">Beta shrinkage: PRS-CS</h2>
+<div class="arithmatex">\[ \beta_j | \Phi_j ~ N(0,\phi\Phi_j) , \Phi_j ~ g \]</div>
+<p>Reference: Ge, T., Chen, C. Y., Ni, Y., Feng, Y. C. A., &amp; Smoller, J. W. (2019). Polygenic prediction via Bayesian regression and continuous shrinkage priors. Nature communications, 10(1), 1-10.</p>
+<h2 id="parameter-tuning">Parameter tuning</h2>
+<h3 id="cross-validation">Cross-validation</h3>
+<h3 id="independent-population">Independent population</h3>
+<h3 id="pseudo-validation">Pseudo-validation</h3>
 <h2 id="download-prs-model-from-pgs-catalog">Download PRS model from PGS Catalog</h2>
 <p>URL: http://www.pgscatalog.org/</p>
 <h2 id="calculate-prs-using-plink">Calculate PRS using PLINK</h2>
-<h2 id="regressions">Regressions</h2>
+<h2 id="regressions-for-evaluation-of-prs">Regressions for evaluation of PRS</h2>
+<div class="arithmatex">\[Phenotype ~ PRS_{phenotype} + Covariates\]</div>
+<p>Covariates usually include sex, age and top 10 PCs.</p>
 <h2 id="evaluation">Evaluation</h2>
 <h3 id="roc-aic-auc-and-c-index">ROC, AIC, AUC, and C-index</h3>
+<p>ROC : receiver operating characteristic curve shows the performance of a classification model at all thresholds.</p>
+<ul>
+<li>"y" : True Positive rate. $ {{TP}\over{TP + FN}}$</li>
+<li>"x" : False Positive rate. $ {{FP}\over{FP + TN}}$</li>
+</ul>
+<p>AUC: area under the ROC Curve, a common measure for the performance of a classification model.</p>
 <p>Akaike Information Criterion (AIC): a measure for comparison of different statistical models.</p>
 <div class="arithmatex">\[AIC = 2k - 2ln(\hat{L})\]</div>
 <ul>
 <li><span class="arithmatex">\(k\)</span> : number of estimated parameters</li>
 <li><span class="arithmatex">\(\hat{L}\)</span> : maximum value of the model likelihood function</li>
 </ul>
-<p>C-index : concordance index, which is a metric to evaluate the predictive performance of models.</p>
+<p><strong>C-index</strong>: concordance index, which is a metric to evaluate the predictive performance of models and commonly used in survival analysis. It is a measure of the probability that the predicted scores <span class="arithmatex">\(M_i\)</span> and $ M_j$ by a model of two randomly selected individuals <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span>, have the reverse relative order as their true event times <span class="arithmatex">\(ti, tj\)</span>.</p>
+<div class="arithmatex">\[ C = P (M_j &gt; Mi | T_j &lt; T_i) \]</div>
+<p>Interpretation: Individuals with higher scores should have higher risk of the disease events</p>
 <div class="admonition info">
 <p class="admonition-title">C-index</p>
 <p>Reference: Harrell, F. E., Califf, R. M., Pryor, D. B., Lee, K. L., &amp; Rosati, R. A. (1982). Evaluating the yield of medical tests. Jama, 247(18), 2543-2546.
@@ -1489,6 +1594,7 @@ Reference: Longato, E., Vettoretti, M., &amp; Di Camillo, B. (2020). A practical
 <span class="n">R2</span> <span class="o">=</span> <span class="n">R2O</span><span class="o">*</span><span class="n">cv</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">R2O</span><span class="o">*</span><span class="n">theta</span><span class="o">*</span><span class="n">cv</span><span class="p">)</span>
 </code></pre></div>
 </div>
+<h2 id="meta-grs">Meta-GRS</h2>
 <h2 id="reference">Reference</h2>
 <ul>
 <li>PLINK : Purcell, Shaun, et al. "PLINK: a tool set for whole-genome association and population-based linkage analyses." The American journal of human genetics 81.3 (2007): 559-575.</li>
