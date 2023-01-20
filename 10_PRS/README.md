@@ -46,7 +46,14 @@ URL: http://www.pgscatalog.org/
 
 ## Evaluation
 
-### ROC, AUC, and C-index
+### ROC, AIC, AUC, and C-index
+
+Akaike Information Criterion (AIC): a measure for comparison of different statistical models.
+
+$$AIC = 2k - 2ln(\hat{L})$$
+
+- $k$ : number of estimated parameters
+- $\hat{L}$ : maximum value of the model likelihood function
 
 C-index : concordance index, which is a metric to evaluate the predictive performance of models.
 
@@ -67,7 +74,8 @@ C-index : concordance index, which is a metric to evaluate the predictive perfor
     - $RSS$ : sum of squares of residuals
     - $TSS$ : total sum of squares
 
-!!! info "Pseudo-R2"
+!!! info "Pseudo-R2 (Nagelkerke)" 
+
     In logistic regression, 
 
     One of the most commonly used Pseudo-R2 for PRS analysis is Nagelkerke's $R^2$
@@ -77,7 +85,7 @@ C-index : concordance index, which is a metric to evaluate the predictive perfor
     - $L_0$ : Likelihood of the null model
     - $L_full$ : Likelihood of the full model
 
-### R2 on liability scale
+### R2 on the liability scale (Lee)
 
 !!! info "R2 on liability scale"
 
@@ -97,6 +105,40 @@ C-index : concordance index, which is a metric to evaluate the predictive perfor
     
     Reference : Lee, S. H., Goddard, M. E., Wray, N. R., & Visscher, P. M. (2012). A better coefficient of determination for genetic profile analysis. Genetic epidemiology, 36(3), 214-224.
 
+    The authors also provided R codes for calculation (removed unrelated codes for simplicity)
+    '''R
+    # R2 on the liability scale using the transformation
+
+    nt = total number of the sample
+    ncase = number of cases
+    ncont = number of controls
+    thd = the threshold on the normal distribution which truncates the proportion of disease prevalence
+    K = population prevalence
+    P = proportion of cases in the case-control samples
+
+    #threshold
+    thd = -qnorm(K,0,1)
+    
+    #value of standard normal density function at thd
+    zv = dnorm(thd) 
+
+    #mean liability for case
+    mv = zv/K 
+    
+    #linear model
+    lmv = lm(y∼g) 
+    
+    #R20 : R2 on the observed scale
+    R2O = var(lmv$fitted.values)/(ncase/nt*ncont/nt)
+
+    # calculate correction factors
+    theta = mv*(P-K)/(1-K)*(mv*(P-K)/(1-K)-thd) 
+    cv = K*(1-K)/zv^2*K*(1-K)/(P*(1-P)) 
+    
+    # convert to R2 on the liability scale
+    R2 = R2O*cv/(1+R2O*theta*cv)
+    '''
+
 
 ## Reference
 
@@ -105,4 +147,3 @@ C-index : concordance index, which is a metric to evaluate the predictive perfor
 - PRS-CS: Ge, Tian, et al. "Polygenic prediction via Bayesian regression and continuous shrinkage priors." Nature communications 10.1 (2019): 1-10.
 - PRS Tutorial: Choi, Shing Wan, Timothy Shin-Heng Mak, and Paul F. O’Reilly. "Tutorial: a guide to performing polygenic risk score analyses." Nature protocols 15.9 (2020): 2759-2772.
 - Lee, S. H., Goddard, M. E., Wray, N. R., & Visscher, P. M. (2012). A better coefficient of determination for genetic profile analysis. Genetic epidemiology, 36(3), 214-224.
-
