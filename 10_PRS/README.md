@@ -10,6 +10,16 @@
     - [Calculate PRS using PLINK](#calculate-prs-using-plink)
 - [Reference](#reference)
 
+## Definition
+
+To calculate the PRS for sample j, 
+
+$$PRS_j = \sum_{i=0}^{i=M} x_{i,j} \beta_{i}$$
+
+- $\beta_i$ : effect size for variant $i$
+- $x_{i,j}$ : the effect allele count for sample $j$ at variant $i$
+- $M$ : the number of variants
+
 ## PRS Analysis Workflow
 
 1. **Developing PRS model** using base data
@@ -27,11 +37,19 @@ In this tutorial, we will first briefly introduce how to develop PRS model using
 
 ## C+T: PLINK
 
+## Beta shrinkage: PRS-CS
+
+$$ \beta_j | \Phi_j \sim N(0,\phi\Phi_j) ,  \Phi_j \sim g $$
+
+Reference: Ge, T., Chen, C. Y., Ni, Y., Feng, Y. C. A., & Smoller, J. W. (2019). Polygenic prediction via Bayesian regression and continuous shrinkage priors. Nature communications, 10(1), 1-10.
 
 ## Parameter tuning
 
-## Beta shrinkage: PRS-CS
+### Cross-validation
 
+### Independent population
+
+### Pseudo-validation
 
 ## Download PRS model from PGS Catalog
 
@@ -41,12 +59,24 @@ URL: http://www.pgscatalog.org/
 
 
 
-## Regressions
+## Regressions for evaluation of PRS
 
+$$Phenotype \sim PRS_{phenotype} + Covariates$$
+
+$$logit(P) \sim PRS_{phenotype} + Covariates$$
+
+Covariates usually include sex, age and top 10 PCs.
 
 ## Evaluation
 
 ### ROC, AIC, AUC, and C-index
+
+ROC : receiver operating characteristic curve shows the performance of a classification model at all thresholds.
+
+- "y" : True Positive rate. ${{TP}\over{TP + FN}}$
+- "x" : False Positive rate. ${{FP}\over{FP + TN}}$
+
+AUC: area under the ROC Curve, a common measure for the performance of a classification model.
 
 Akaike Information Criterion (AIC): a measure for comparison of different statistical models.
 
@@ -55,7 +85,12 @@ $$AIC = 2k - 2ln(\hat{L})$$
 - $k$ : number of estimated parameters
 - $\hat{L}$ : maximum value of the model likelihood function
 
-C-index : concordance index, which is a metric to evaluate the predictive performance of models.
+
+**C-index**: concordance index, which is a metric to evaluate the predictive performance of models and commonly used in survival analysis. It is a measure of the probability that the predicted scores $M_i$ and $ M_j$ by a model of two randomly selected individuals $i$ and $j$, have the reverse relative order as their true event times $T_i, T_j$.
+
+$$ C = Pr (M_j > M_i | T_j < T_i) $$
+
+Interpretation: Individuals with higher scores should have higher risk of the disease events
 
 !!! info  "C-index"
 
@@ -106,7 +141,8 @@ C-index : concordance index, which is a metric to evaluate the predictive perfor
     Reference : Lee, S. H., Goddard, M. E., Wray, N. R., & Visscher, P. M. (2012). A better coefficient of determination for genetic profile analysis. Genetic epidemiology, 36(3), 214-224.
 
     The authors also provided R codes for calculation (removed unrelated codes for simplicity)
-    '''R
+    
+    ```R
     # R2 on the liability scale using the transformation
 
     nt = total number of the sample
@@ -137,8 +173,9 @@ C-index : concordance index, which is a metric to evaluate the predictive perfor
     
     # convert to R2 on the liability scale
     R2 = R2O*cv/(1+R2O*theta*cv)
-    '''
+    ```
 
+## Meta-GRS
 
 ## Reference
 
