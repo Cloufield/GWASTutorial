@@ -35,9 +35,52 @@ $$PRS_j = \sum_{i=0}^{i=M} x_{i,j} \beta_{i}$$
 
 In this tutorial, we will first briefly introduce how to develop PRS model using the sample data and then demonstrate how we can download PRS models from PGS Catalog and apply to our sample genotype data. 
 
-## C+T: PLINK
+## C+T/P+T using PLINK
 
-## Beta shrinkage: PRS-CS
+P+T stands for Pruning + Thresholding, also known as Clumping and Thresholding(C+T), which is a very simple and straightforward approach to construct PRS model.
+ 
+!!! info "Clumping"
+
+    Clumping: LD-pruning based on P value. It is a approach to select variants when there are multiple significant associations in high LD in the same region.
+    
+    The three important parameters for clumping in PLINK are:
+
+    -clump-p1 0.0001       # Significance threshold for index SNPs
+    -clump-r2 0.50         # LD threshold for clumping
+    -clump-kb 250          # Physical distance threshold for clumping
+
+!!! example "Clumping using PLINK"
+
+    ```
+    #!/bin/bash
+    
+    plinkFile=../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020
+    sumStats=../06_Association_tests/1kgeas.B1.glm.firth
+    
+    plink \
+        --bfile ${plinkFile} \
+        --clump-p1 0.0001 \
+        --clump-r2 0.1 \
+        --clump-kb 250 \
+        --clump ${sumStats} \
+        --clump-snp-field ID \
+        --clump-field P \
+        --out 1kg_eas
+    ```
+    
+    log
+    ```
+    --clump: 40 clumps formed from 307 top variants.
+    ```
+    check only the header and the first "clump" of SNPs.
+    
+    ```
+    head -n 2 1kg_eas.clumped
+     CHR    F              SNP         BP        P    TOTAL   NSIG    S05    S01   S001  S0001    SP2
+       2    1   2:55574452:G:C   55574452   2.18e-09      111     16     15     20     17     43 2:55376609:T:G(1),2:55376892:T:G(1),2:55379420:A:G(1),2:55384226:A:G(    1),2:55397522:A:T(1),2:55405037:T:A(1),2:55405468:G:A(1),2:55410835:C:T(1),2:55424229:G:A(1),2:55426447:A:G(1),2:55452014:C:T(1),2:55460751:C:T(1),2:55461053:A:G(    1),2:55465633:T:G(1),2:55470115:C:T(1),2:55478226:A:G(1),2:55482911:C:T(1),2:55489629:T:C(1),2:55491330:G:A(1),2:55495251:C:T(1),2:55500234:A:G(1),2:55501125:C:T(    1),2:55513738:C:T(1),2:55521039:A:G(1),2:55554956:C:A(1),2:55555726:T:C(1),2:55557192:C:T(1),2:55560347:C:A(1),2:55563020:A:G(1),2:55578761:C:T(1),2:55582635:T:C(    1),2:55584526:T:C(1),2:55585577:A:T(1),2:55587807:G:T(1),2:55598053:T:C(1),2:55602809:G:A(1),2:55605264:A:G(1),2:55607830:C:T(1),2:55609851:C:T(1),2:55610999:C:T(    1),2:55611741:A:G(1),2:55611766:T:C(1),2:55612986:G:C(1),2:55617255:C:T(1),2:55618813:C:T(1),2:55619407:C:A(1),2:55619923:C:T(1),2:55620927:G:A(1),2:55621660:T:C(    1),2:55622431:A:C(1),2:55625464:C:T(1),2:55632329:T:C(1),2:55632724:T:C(1),2:55635477:C:T(1),2:55636351:T:C(1),2:55636755:T:C(1),2:55636795:A:C(1),2:55638697:T:C(    1),2:55642350:T:C(1),2:55643047:G:A(1),2:55643666:A:C(1),2:55650512:G:A(1),2:55650572:G:C(1),2:55650886:G:A(1),2:55650940:C:A(1),2:55653053:G:C(1),2:55653269:C:A(    1),2:55654354:A:G(1),2:55654847:A:G(1),2:55659155:A:G(1),2:55662423:T:C(1),2:55669642:G:C(1),2:55685127:A:G(1),2:55685669:G:C(1),2:55687290:G:C(1),2:55695696:A:G(    1),2:55696124:A:G(1),2:55709416:G:A(1),2:55720739:G:C(1),2:55724035:T:C(1)
+    ```
+
+## Beta shrinkage using PRS-CS
 
 $$ \beta_j | \Phi_j \sim N(0,\phi\Phi_j) ,  \Phi_j \sim g $$
 
