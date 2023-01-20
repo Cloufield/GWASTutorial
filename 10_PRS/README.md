@@ -90,6 +90,10 @@ Just like GWAS Catalog, you can now download published PRS  models from PGS cata
 
 URL: http://www.pgscatalog.org/
 
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/40289485/213737219-efe31848-ab72-4962-9045-2203a0733728.png">
+
+Reference: Lambert, S. A., Gil, L., Jupp, S., Ritchie, S. C., Xu, Y., Buniello, A., ... & Inouye, M. (2021). The Polygenic Score Catalog as an open database for reproducibility and systematic evaluation. Nature Genetics, 53(4), 420-425.
+
 ## Calculate PRS using PLINK
 
 ```
