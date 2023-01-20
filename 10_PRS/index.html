@@ -1109,6 +1109,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1323,6 +1330,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1442,31 +1456,38 @@ Reference: Longato, E., Vettoretti, M., &amp; Di Camillo, B. (2020). A practical
 <li><span class="arithmatex">\(z = f(t)\)</span> : the value of probability density function of standard normal distribution at t </li>
 </ul>
 <p>Reference : Lee, S. H., Goddard, M. E., Wray, N. R., &amp; Visscher, P. M. (2012). A better coefficient of determination for genetic profile analysis. Genetic epidemiology, 36(3), 214-224.</p>
-<p>The authors also provided R codes for calculation (removed unrelated codes for simplicity)
-'''R</p>
-<h1 id="r2-on-the-liability-scale-using-the-transformation">R2 on the liability scale using the transformation</h1>
-<p>nt = total number of the sample
-ncase = number of cases
-ncont = number of controls
-thd = the threshold on the normal distribution which truncates the proportion of disease prevalence
-K = population prevalence
-P = proportion of cases in the case-control samples</p>
-<h1 id="threshold">threshold</h1>
-<p>thd = -qnorm(K,0,1)</p>
-<h1 id="value-of-standard-normal-density-function-at-thd">value of standard normal density function at thd</h1>
-<p>zv = dnorm(thd) </p>
-<h1 id="mean-liability-for-case">mean liability for case</h1>
-<p>mv = zv/K </p>
-<h1 id="linear-model">linear model</h1>
-<p>lmv = lm(y∼g) </p>
-<h1 id="r20-r2-on-the-observed-scale">R20 : R2 on the observed scale</h1>
-<p>R2O = var(lmv$fitted.values)/(ncase/nt*ncont/nt)</p>
-<h1 id="calculate-correction-factors">calculate correction factors</h1>
-<p>theta = mv<em>(P-K)/(1-K)</em>(mv<em>(P-K)/(1-K)-thd) 
-cv = K</em>(1-K)/zv^2<em>K</em>(1-K)/(P*(1-P)) </p>
-<h1 id="convert-to-r2-on-the-liability-scale">convert to R2 on the liability scale</h1>
-<p>R2 = R2O<em>cv/(1+R2O</em>theta*cv)
-'''</p>
+<p>The authors also provided R codes for calculation (removed unrelated codes for simplicity)</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># R2 on the liability scale using the transformation</span>
+
+<span class="n">nt</span> <span class="o">=</span> <span class="n">total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">the</span> <span class="n">sample</span>
+<span class="n">ncase</span> <span class="o">=</span> <span class="n">number</span> <span class="n">of</span> <span class="n">cases</span>
+<span class="n">ncont</span> <span class="o">=</span> <span class="n">number</span> <span class="n">of</span> <span class="n">controls</span>
+<span class="n">thd</span> <span class="o">=</span> <span class="n">the</span> <span class="n">threshold</span> <span class="n">on</span> <span class="n">the</span> <span class="n">normal</span> <span class="n">distribution</span> <span class="n">which</span> <span class="n">truncates</span> <span class="n">the</span> <span class="n">proportion</span> <span class="n">of</span> <span class="n">disease</span> <span class="n">prevalence</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">population</span> <span class="n">prevalence</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">proportion</span> <span class="n">of</span> <span class="n">cases</span> <span class="n">in</span> <span class="n">the</span> <span class="n">case</span><span class="o">-</span><span class="n">control</span> <span class="n">samples</span>
+
+<span class="c1">#threshold</span>
+<span class="n">thd</span> <span class="o">=</span> <span class="o">-</span><span class="nf">qnorm</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+
+<span class="c1">#value of standard normal density function at thd</span>
+<span class="n">zv</span> <span class="o">=</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">thd</span><span class="p">)</span> 
+
+<span class="c1">#mean liability for case</span>
+<span class="n">mv</span> <span class="o">=</span> <span class="n">zv</span><span class="o">/</span><span class="n">K</span> 
+
+<span class="c1">#linear model</span>
+<span class="n">lmv</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">y</span>∼<span class="n">g</span><span class="p">)</span> 
+
+<span class="c1">#R20 : R2 on the observed scale</span>
+<span class="n">R2O</span> <span class="o">=</span> <span class="nf">var</span><span class="p">(</span><span class="n">lmv</span><span class="o">$</span><span class="n">fitted.values</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ncase</span><span class="o">/</span><span class="n">nt</span><span class="o">*</span><span class="n">ncont</span><span class="o">/</span><span class="n">nt</span><span class="p">)</span>
+
+<span class="c1"># calculate correction factors</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">mv</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">mv</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">-</span><span class="n">thd</span><span class="p">)</span> 
+<span class="n">cv</span> <span class="o">=</span> <span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="n">zv</span><span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">P</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">P</span><span class="p">))</span> 
+
+<span class="c1"># convert to R2 on the liability scale</span>
+<span class="n">R2</span> <span class="o">=</span> <span class="n">R2O</span><span class="o">*</span><span class="n">cv</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">R2O</span><span class="o">*</span><span class="n">theta</span><span class="o">*</span><span class="n">cv</span><span class="p">)</span>
+</code></pre></div>
 </div>
 <h2 id="reference">Reference</h2>
 <ul>
