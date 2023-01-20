@@ -28,10 +28,10 @@ $$PRS_j = \sum_{i=0}^{i=M} x_{i,j} \beta_{i}$$
 
 ## Methods
 
-|Category|Description| Methods |
+|Category|Description| Representative Methods |
 |-|-|-|
-|P value thresholding| |C+T, PRSice|
-|Beta shrinkage| |LDpred, PRS-CS|
+|P value thresholding| P + T |C+T, PRSice|
+|Beta shrinkage| genome-wide PRS model |LDpred, PRS-CS|
 
 In this tutorial, we will first briefly introduce how to develop PRS model using the sample data and then demonstrate how we can download PRS models from PGS Catalog and apply to our sample genotype data. 
 
@@ -45,9 +45,9 @@ P+T stands for Pruning + Thresholding, also known as Clumping and Thresholding(C
     
     The three important parameters for clumping in PLINK are:
 
-    -clump-p1 0.0001       # Significance threshold for index SNPs
-    -clump-r2 0.50         # LD threshold for clumping
-    -clump-kb 250          # Physical distance threshold for clumping
+    - clump-p1 0.0001       # Significance threshold for index SNPs
+    - clump-r2 0.50         # LD threshold for clumping
+    - clump-kb 250          # Physical distance threshold for clumping
 
 !!! example "Clumping using PLINK"
 
@@ -88,11 +88,11 @@ Reference: Ge, T., Chen, C. Y., Ni, Y., Feng, Y. C. A., & Smoller, J. W. (2019).
 
 ## Parameter tuning
 
-### Cross-validation
-
-### Independent population
-
-### Pseudo-validation
+|Method|Description|
+|-|-|-|
+|Cross-validation| 10-fold cross validation. This method usually requires large-scale genotype dataset.|
+|Independent population| Perform validation in an independent population of the same ancestry. |
+|Pseudo-validation|A few methods can estimate a single optimal shrinkage parameter using only the base GWAS summary statistics.|
 
 ## Download PRS model from PGS Catalog
 
@@ -100,7 +100,9 @@ URL: http://www.pgscatalog.org/
 
 ## Calculate PRS using PLINK
 
-
+```
+plink --score
+```
 
 ## Regressions for evaluation of PRS
 
