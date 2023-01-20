@@ -1451,8 +1451,8 @@
 <p>To calculate the PRS for sample j, </p>
 <div class="arithmatex">\[PRS_j = \sum_{i=0}^{i=M} x_{i,j} \beta_{i}\]</div>
 <ul>
-<li><span class="arithmatex">\(\beta_i\)</span> : effect size for variant i</li>
-<li><span class="arithmatex">\(x_i,j\)</span> : the effect allele count for sample j at variant i</li>
+<li><span class="arithmatex">\(\beta_i\)</span> : effect size for variant <span class="arithmatex">\(i\)</span></li>
+<li><span class="arithmatex">\(x_{i,j}\)</span> : the effect allele count for sample <span class="arithmatex">\(j\)</span> at variant <span class="arithmatex">\(i\)</span></li>
 <li><span class="arithmatex">\(M\)</span> : the number of variants</li>
 </ul>
 <h2 id="prs-analysis-workflow">PRS Analysis Workflow</h2>
@@ -1486,7 +1486,7 @@
 <p>In this tutorial, we will first briefly introduce how to develop PRS model using the sample data and then demonstrate how we can download PRS models from PGS Catalog and apply to our sample genotype data. </p>
 <h2 id="ct-plink">C+T: PLINK</h2>
 <h2 id="beta-shrinkage-prs-cs">Beta shrinkage: PRS-CS</h2>
-<div class="arithmatex">\[ \beta_j | \Phi_j ~ N(0,\phi\Phi_j) , \Phi_j ~ g \]</div>
+<div class="arithmatex">\[ \beta_j | \Phi_j \sim N(0,\phi\Phi_j) ,  \Phi_j \sim g \]</div>
 <p>Reference: Ge, T., Chen, C. Y., Ni, Y., Feng, Y. C. A., &amp; Smoller, J. W. (2019). Polygenic prediction via Bayesian regression and continuous shrinkage priors. Nature communications, 10(1), 1-10.</p>
 <h2 id="parameter-tuning">Parameter tuning</h2>
 <h3 id="cross-validation">Cross-validation</h3>
@@ -1496,14 +1496,15 @@
 <p>URL: http://www.pgscatalog.org/</p>
 <h2 id="calculate-prs-using-plink">Calculate PRS using PLINK</h2>
 <h2 id="regressions-for-evaluation-of-prs">Regressions for evaluation of PRS</h2>
-<div class="arithmatex">\[Phenotype ~ PRS_{phenotype} + Covariates\]</div>
+<div class="arithmatex">\[Phenotype \sim PRS_{phenotype} + Covariates\]</div>
+<div class="arithmatex">\[logit(P) \sim PRS_{phenotype} + Covariates\]</div>
 <p>Covariates usually include sex, age and top 10 PCs.</p>
 <h2 id="evaluation">Evaluation</h2>
 <h3 id="roc-aic-auc-and-c-index">ROC, AIC, AUC, and C-index</h3>
 <p>ROC : receiver operating characteristic curve shows the performance of a classification model at all thresholds.</p>
 <ul>
-<li>"y" : True Positive rate. $ {{TP}\over{TP + FN}}$</li>
-<li>"x" : False Positive rate. $ {{FP}\over{FP + TN}}$</li>
+<li>"y" : True Positive rate. <span class="arithmatex">\({{TP}\over{TP + FN}}\)</span></li>
+<li>"x" : False Positive rate. <span class="arithmatex">\({{FP}\over{FP + TN}}\)</span></li>
 </ul>
 <p>AUC: area under the ROC Curve, a common measure for the performance of a classification model.</p>
 <p>Akaike Information Criterion (AIC): a measure for comparison of different statistical models.</p>
@@ -1512,8 +1513,8 @@
 <li><span class="arithmatex">\(k\)</span> : number of estimated parameters</li>
 <li><span class="arithmatex">\(\hat{L}\)</span> : maximum value of the model likelihood function</li>
 </ul>
-<p><strong>C-index</strong>: concordance index, which is a metric to evaluate the predictive performance of models and commonly used in survival analysis. It is a measure of the probability that the predicted scores <span class="arithmatex">\(M_i\)</span> and $ M_j$ by a model of two randomly selected individuals <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span>, have the reverse relative order as their true event times <span class="arithmatex">\(ti, tj\)</span>.</p>
-<div class="arithmatex">\[ C = P (M_j &gt; Mi | T_j &lt; T_i) \]</div>
+<p><strong>C-index</strong>: concordance index, which is a metric to evaluate the predictive performance of models and commonly used in survival analysis. It is a measure of the probability that the predicted scores <span class="arithmatex">\(M_i\)</span> and $ M_j$ by a model of two randomly selected individuals <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span>, have the reverse relative order as their true event times <span class="arithmatex">\(T_i, T_j\)</span>.</p>
+<div class="arithmatex">\[ C = Pr (M_j &gt; M_i | T_j &lt; T_i) \]</div>
 <p>Interpretation: Individuals with higher scores should have higher risk of the disease events</p>
 <div class="admonition info">
 <p class="admonition-title">C-index</p>
