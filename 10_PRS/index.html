@@ -1084,8 +1084,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#roc-auc-and-c-index" class="md-nav__link">
-    ROC, AUC, and C-index
+  <a href="#roc-aic-auc-and-c-index" class="md-nav__link">
+    ROC, AIC, AUC, and C-index
   </a>
   
 </li>
@@ -1098,21 +1098,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#r2-on-liability-scale" class="md-nav__link">
-    R2 on liability scale
+  <a href="#r2-on-the-liability-scale-lee" class="md-nav__link">
+    R2 on the liability scale (Lee)
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
-    Reference
-  </a>
   
 </li>
       
@@ -1305,8 +1298,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#roc-auc-and-c-index" class="md-nav__link">
-    ROC, AUC, and C-index
+  <a href="#roc-aic-auc-and-c-index" class="md-nav__link">
+    ROC, AIC, AUC, and C-index
   </a>
   
 </li>
@@ -1319,21 +1312,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#r2-on-liability-scale" class="md-nav__link">
-    R2 on liability scale
+  <a href="#r2-on-the-liability-scale-lee" class="md-nav__link">
+    R2 on the liability scale (Lee)
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
-    Reference
-  </a>
   
 </li>
       
@@ -1402,7 +1388,13 @@
 <h2 id="calculate-prs-using-plink">Calculate PRS using PLINK</h2>
 <h2 id="regressions">Regressions</h2>
 <h2 id="evaluation">Evaluation</h2>
-<h3 id="roc-auc-and-c-index">ROC, AUC, and C-index</h3>
+<h3 id="roc-aic-auc-and-c-index">ROC, AIC, AUC, and C-index</h3>
+<p>Akaike Information Criterion (AIC): a measure for comparison of different statistical models.</p>
+<div class="arithmatex">\[AIC = 2k - 2ln(\hat{L})\]</div>
+<ul>
+<li><span class="arithmatex">\(k\)</span> : number of estimated parameters</li>
+<li><span class="arithmatex">\(\hat{L}\)</span> : maximum value of the model likelihood function</li>
+</ul>
 <p>C-index : concordance index, which is a metric to evaluate the predictive performance of models.</p>
 <div class="admonition info">
 <p class="admonition-title">C-index</p>
@@ -1421,7 +1413,7 @@ Reference: Longato, E., Vettoretti, M., &amp; Di Camillo, B. (2020). A practical
 </ul>
 </div>
 <div class="admonition info">
-<p class="admonition-title">Pseudo-R2</p>
+<p class="admonition-title">Pseudo-R2 (Nagelkerke)</p>
 <p>In logistic regression, </p>
 <p>One of the most commonly used Pseudo-R2 for PRS analysis is Nagelkerke's <span class="arithmatex">\(R^2\)</span></p>
 <div class="arithmatex">\[R^2_{Nagelkerke} = {{1 - ({{L_0}\over{L_M}})^{2/n}}\over{1 - L_0^{2/n}}}\]</div>
@@ -1430,7 +1422,7 @@ Reference: Longato, E., Vettoretti, M., &amp; Di Camillo, B. (2020). A practical
 <li><span class="arithmatex">\(L_full\)</span> : Likelihood of the full model</li>
 </ul>
 </div>
-<h3 id="r2-on-liability-scale">R2 on liability scale</h3>
+<h3 id="r2-on-the-liability-scale-lee">R2 on the liability scale (Lee)</h3>
 <div class="admonition info">
 <p class="admonition-title">R2 on liability scale</p>
 <p><span class="arithmatex">\(R^2\)</span> on the liability scale for ascertained case-control studies</p>
@@ -1450,6 +1442,31 @@ Reference: Longato, E., Vettoretti, M., &amp; Di Camillo, B. (2020). A practical
 <li><span class="arithmatex">\(z = f(t)\)</span> : the value of probability density function of standard normal distribution at t </li>
 </ul>
 <p>Reference : Lee, S. H., Goddard, M. E., Wray, N. R., &amp; Visscher, P. M. (2012). A better coefficient of determination for genetic profile analysis. Genetic epidemiology, 36(3), 214-224.</p>
+<p>The authors also provided R codes for calculation (removed unrelated codes for simplicity)
+'''R</p>
+<h1 id="r2-on-the-liability-scale-using-the-transformation">R2 on the liability scale using the transformation</h1>
+<p>nt = total number of the sample
+ncase = number of cases
+ncont = number of controls
+thd = the threshold on the normal distribution which truncates the proportion of disease prevalence
+K = population prevalence
+P = proportion of cases in the case-control samples</p>
+<h1 id="threshold">threshold</h1>
+<p>thd = -qnorm(K,0,1)</p>
+<h1 id="value-of-standard-normal-density-function-at-thd">value of standard normal density function at thd</h1>
+<p>zv = dnorm(thd) </p>
+<h1 id="mean-liability-for-case">mean liability for case</h1>
+<p>mv = zv/K </p>
+<h1 id="linear-model">linear model</h1>
+<p>lmv = lm(y∼g) </p>
+<h1 id="r20-r2-on-the-observed-scale">R20 : R2 on the observed scale</h1>
+<p>R2O = var(lmv$fitted.values)/(ncase/nt*ncont/nt)</p>
+<h1 id="calculate-correction-factors">calculate correction factors</h1>
+<p>theta = mv<em>(P-K)/(1-K)</em>(mv<em>(P-K)/(1-K)-thd) 
+cv = K</em>(1-K)/zv^2<em>K</em>(1-K)/(P*(1-P)) </p>
+<h1 id="convert-to-r2-on-the-liability-scale">convert to R2 on the liability scale</h1>
+<p>R2 = R2O<em>cv/(1+R2O</em>theta*cv)
+'''</p>
 </div>
 <h2 id="reference">Reference</h2>
 <ul>
