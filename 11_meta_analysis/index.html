@@ -1028,26 +1028,6 @@
     Heterogeneity test
   </a>
   
-    <nav class="md-nav" aria-label="Heterogeneity test">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cochrans-q-test" class="md-nav__link">
-    Cochran's Q test
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i2" class="md-nav__link">
-    \(I^2\)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1207,26 +1187,6 @@
     Heterogeneity test
   </a>
   
-    <nav class="md-nav" aria-label="Heterogeneity test">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cochrans-q-test" class="md-nav__link">
-    Cochran's Q test
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i2" class="md-nav__link">
-    \(I^2\)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1252,14 +1212,20 @@
 
 <h1 id="meta-analysis">Meta-analysis</h1>
 <h2 id="fixed-effect-ivw">Fixed effect IVW</h2>
-<div class="arithmatex">\[ \bar{\beta} = {{\sum_i{w_i \beta_i}}\over{\sum_i {w_i}}} \]</div>
+<div class="arithmatex">\[ \bar{\beta} = {{\sum_{i=1}^{k} {w_i \beta_i}}\over{\sum_{i=1}^{k} {w_i}}} \]</div>
+<ul>
+<li><span class="arithmatex">\(w_i = 1 / \delta^2_i\)</span></li>
+</ul>
 <h2 id="_1"></h2>
 <h2 id="heterogeneity-test">Heterogeneity test</h2>
-<h3 id="cochrans-q-test">Cochran's Q test</h3>
-<p><span class="arithmatex">\(w_i = 1 / \delta^2_i\)</span></p>
-<div class="arithmatex">\[ Q = \sum {w_i (\beta_i - \bar{\beta})^2} \]</div>
-<h3 id="i2"><span class="arithmatex">\(I^2\)</span></h3>
-<div class="arithmatex">\[ I^2 =  {{Q - df}\over{Q}}\times 100% \]</div>
+<div class="admonition info">
+<p class="admonition-title">Cochran's Q test</p>
+<div class="arithmatex">\[ Q = \sum_{i=1}^{k} {w_i (\beta_i - \bar{\beta})^2} \]</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title"><span class="arithmatex">\(I^2\)</span></p>
+<div class="arithmatex">\[ I^2 =  {{Q - df}\over{Q}}\times 100% =  {{Q - (k - 1)}\over{Q}}\times 100% \]</div>
+</div>
 <h2 id="mr-mega">MR-MEGA</h2>
 
               
