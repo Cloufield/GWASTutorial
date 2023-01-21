@@ -2,21 +2,22 @@
 
 ## Fixed effect IVW
 
-$$ \bar{\beta} = {{\sum_i{w_i \beta_i}}\over{\sum_i {w_i}}} $$
+$$ \bar{\beta} = {{\sum_{i=1}^{k} {w_i \beta_i}}\over{\sum_{i=1}^{k} {w_i}}} $$
+
+- $w_i = 1 / \delta^2_i$
+
 
 ## 
 
 ## Heterogeneity test
 
-### Cochran's Q test
+!!! info "Cochran's Q test"
 
-$w_i = 1 / \delta^2_i$
+    $$ Q = \sum_{i=1}^{k} {w_i (\beta_i - \bar{\beta})^2} $$
+    
+    
 
-$$ Q = \sum {w_i (\beta_i - \bar{\beta})^2} $$
-
-
-### $I^2$
-
-$$ I^2 =  {{Q - df}\over{Q}}\times 100% $$
+!!! info "$I^2$"
+    $$ I^2 =  {{Q - df}\over{Q}}\times 100% =  {{Q - (k - 1)}\over{Q}}\times 100% $$
 
 ## MR-MEGA
