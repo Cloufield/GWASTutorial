@@ -2,6 +2,8 @@
 
 ## Definition
 
+**Polygenic risk score(PRS)**, as known as **polygenic score (PGS)** or **genetic risk score (GRS)**, is a score that summarizes the effect sizes of genetic variants on a certain disease or trait (weighted sum of disease/trait-associated alleles).
+
 To calculate the PRS for sample j, 
 
 $$PRS_j = \sum_{i=0}^{i=M} x_{i,j} \beta_{i}$$
