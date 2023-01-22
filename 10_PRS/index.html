@@ -1602,6 +1602,9 @@ Inouye et al. first used this approach for generating a PRS model for CAD from m
 <p class="admonition-title">elastic net</p>
 <p>Elastic net is a common approach for variable selection when there are highly correlated variables (for example, PRS of correlated disease are often highly correlated.). When fitting linear or logistic models, L1 and L2 penalties are added (regularization). </p>
 <div class="arithmatex">\[ \hat{\beta} \equiv argmin({\parallel y- X \beta \parallel}^2 + \lambda_2{\parallel \beta \parallel}^2 + \lambda_1{\parallel \beta \parallel} ) \]</div>
+<p>After validation, PRS can be generated from distinct PRS for other genetically correlated diseases :  </p>
+<div class="arithmatex">\[PRS_{meta} = {w_1}PRS_{Trait1} + {w_2}PRS_{Trait2} + {w_3}PRS_{Trait3} + ... \]</div>
+<p>An example: Abraham, G., Malik, R., Yonova-Doing, E., Salim, A., Wang, T., Danesh, J., ... &amp; Dichgans, M. (2019). Genomic risk score offers predictive performance comparable to clinical risk factors for ischaemic stroke. Nature communications, 10(1), 1-10.</p>
 </div>
 <h2 id="reference">Reference</h2>
 <ul>
