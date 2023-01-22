@@ -79,7 +79,7 @@ Reference: Ge, T., Chen, C. Y., Ni, Y., Feng, Y. C. A., & Smoller, J. W. (2019).
 ## Parameter tuning
 
 |Method|Description|
-|-|-|-|
+|-|-|
 |Cross-validation| 10-fold cross validation. This method usually requires large-scale genotype dataset.|
 |Independent population| Perform validation in an independent population of the same ancestry. |
 |Pseudo-validation|A few methods can estimate a single optimal shrinkage parameter using only the base GWAS summary statistics.|
@@ -119,22 +119,23 @@ ROC : receiver operating characteristic curve shows the performance of a classif
 
 AUC: area under the ROC Curve, a common measure for the performance of a classification model.
 
-Akaike Information Criterion (AIC): a measure for comparison of different statistical models.
 
-$$AIC = 2k - 2ln(\hat{L})$$
+!!! info "AIC"
+    Akaike Information Criterion (AIC): a measure for comparison of different statistical models.
 
-- $k$ : number of estimated parameters
-- $\hat{L}$ : maximum value of the model likelihood function
+    $$AIC = 2k - 2ln(\hat{L})$$
 
+    - $k$ : number of estimated parameters
+    - $\hat{L}$ : maximum value of the model likelihood function
 
-**C-index**: concordance index, which is a metric to evaluate the predictive performance of models and commonly used in survival analysis. It is a measure of the probability that the predicted scores $M_i$ and $ M_j$ by a model of two randomly selected individuals $i$ and $j$, have the reverse relative order as their true event times $T_i, T_j$.
-
-$$ C = Pr (M_j > M_i | T_j < T_i) $$
-
-Interpretation: Individuals with higher scores should have higher risk of the disease events
 
 !!! info  "C-index"
+    **C-index**: concordance index, which is a metric to evaluate the predictive performance of models and commonly used in survival analysis. It is a measure of the probability that the predicted scores $M_i$ and $ M_j$ by a model of two randomly selected individuals $i$ and $j$, have the reverse relative order as their true event times $T_i, T_j$.
 
+    $$ C = Pr (M_j > M_i | T_j < T_i) $$
+
+    Interpretation: Individuals with higher scores should have higher risk of the disease events
+    
     Reference: Harrell, F. E., Califf, R. M., Pryor, D. B., Lee, K. L., & Rosati, R. A. (1982). Evaluating the yield of medical tests. Jama, 247(18), 2543-2546.
     Reference: Longato, E., Vettoretti, M., & Di Camillo, B. (2020). A practical perspective on the concordance index for the evaluation and selection of prognostic time-to-event models. Journal of Biomedical Informatics, 108, 103496.
 
@@ -216,12 +217,41 @@ Interpretation: Individuals with higher scores should have higher risk of the di
     R2 = R2O*cv/(1+R2O*theta*cv)
     ```
 
-## Meta-GRS
+## Bootstrap Confidence Interval Methods for R2
+
+## Meta-scoring methods for PRS
+
+It has been shown recently that the PRS models generated from multiple traits using a meta-scoring method potentially outperforms PRS models generated from a single trait.
+Inouye et al. first used this approach for generating a PRS model for CAD from multiple PRS models. 
+
+!!! note "Potential advantages of meta-score for PRS genetration"
+    
+    - increased marker coverage
+    - reduced genotyping or imputation uncertainty
+    - more accurate effect size estimates
+
+    Reference: Inouye, M., Abraham, G., Nelson, C. P., Wood, A. M., Sweeting, M. J., Dudbridge, F., ... & UK Biobank CardioMetabolic Consortium CHD Working Group. (2018). Genomic risk prediction of coronary artery disease in 480,000 adults: implications for primary prevention. Journal of the American College of Cardiology, 72(16), 1883-1893.
+
+!!! info "elastic net"
+    Elastic net is a common approach for variable selection when there are highly correlated variables (for example, PRS of correlated disease are often highly correlated.). When fitting linear or logistic models, L1 and L2 penalties are added (regularization). 
+
+    $$ \hat{\beta} \equiv argmin({\parallel y- X \beta \parallel}^2 + \lambda_2{\parallel \beta \parallel}^2 + \lambda_1{\parallel \beta \parallel} ) $$
+
+    After validation, PRS can be generated from distinct PRS for other genetically correlated diseases :  
+
+    $$PRS_{meta} = {w_1}PRS_{Trait1} + {w_2}PRS_{Trait2} + {w_3}PRS_{Trait3} + ... $$
+
+    An example: Abraham, G., Malik, R., Yonova-Doing, E., Salim, A., Wang, T., Danesh, J., ... & Dichgans, M. (2019). Genomic risk score offers predictive performance comparable to clinical risk factors for ischaemic stroke. Nature communications, 10(1), 1-10.
+
 
 ## Reference
 
-- PLINK : Purcell, Shaun, et al. "PLINK: a tool set for whole-genome association and population-based linkage analyses." The American journal of human genetics 81.3 (2007): 559-575.
-- PGS Catalog : Lambert, Samuel A., et al. "The Polygenic Score Catalog as an open database for reproducibility and systematic evaluation." Nature Genetics 53.4 (2021): 420-425.
-- PRS-CS: Ge, Tian, et al. "Polygenic prediction via Bayesian regression and continuous shrinkage priors." Nature communications 10.1 (2019): 1-10.
-- PRS Tutorial: Choi, Shing Wan, Timothy Shin-Heng Mak, and Paul F. O’Reilly. "Tutorial: a guide to performing polygenic risk score analyses." Nature protocols 15.9 (2020): 2759-2772.
-- Lee, S. H., Goddard, M. E., Wray, N. R., & Visscher, P. M. (2012). A better coefficient of determination for genetic profile analysis. Genetic epidemiology, 36(3), 214-224.
+- **PLINK** : Purcell, Shaun, et al. "PLINK: a tool set for whole-genome association and population-based linkage analyses." The American journal of human genetics 81.3 (2007): 559-575.
+- **PGS Catalog** : Lambert, Samuel A., et al. "The Polygenic Score Catalog as an open database for reproducibility and systematic evaluation." Nature Genetics 53.4 (2021): 420-425.
+- **PRS-CS** : Ge, Tian, et al. "Polygenic prediction via Bayesian regression and continuous shrinkage priors." Nature communications 10.1 (2019): 1-10.
+- **PRS Tutorial**: Choi, Shing Wan, Timothy Shin-Heng Mak, and Paul F. O’Reilly. "Tutorial: a guide to performing polygenic risk score analyses." Nature protocols 15.9 (2020): 2759-2772.
+- **R2 on liability scale**: Lee, S. H., Goddard, M. E., Wray, N. R., & Visscher, P. M. (2012). A better coefficient of determination for genetic profile analysis. Genetic epidemiology, 36(3), 214-224.
+- **metaGRS 1**: Inouye, M., Abraham, G., Nelson, C. P., Wood, A. M., Sweeting, M. J., Dudbridge, F., ... & UK Biobank CardioMetabolic Consortium CHD Working Group. (2018). Genomic risk prediction of coronary artery disease in 480,000 adults: implications for primary prevention. Journal of the American College of Cardiology, 72(16), 1883-1893.
+- **metaGRS 2**: Abraham, G., Malik, R., Yonova-Doing, E., Salim, A., Wang, T., Danesh, J., ... & Dichgans, M. (2019). Genomic risk score offers predictive performance comparable to clinical risk factors for ischaemic stroke. Nature communications, 10(1), 1-10.
+- **C-index 1**: Harrell, F. E., Califf, R. M., Pryor, D. B., Lee, K. L., & Rosati, R. A. (1982). Evaluating the yield of medical tests. Jama, 247(18), 2543-2546.
+- **C-index 2**: Longato, E., Vettoretti, M., & Di Camillo, B. (2020). A practical perspective on the concordance index for the evaluation and selection of prognostic time-to-event models. Journal of Biomedical Informatics, 108, 103496.
