@@ -1584,7 +1584,7 @@ Inouye et al. first used this approach for generating a PRS model for CAD from m
 <div class="admonition info">
 <p class="admonition-title">elastic net</p>
 <p>Elastic net is a common approach for variable selection when there are highly correlated variables (for example, PRS of correlated disease are often highly correlated.). When fitting linear or logistic models, L1 and L2 penalties are added (regularization). </p>
-<div class="arithmatex">\[ \hat{\beta} \equiv argmin({\parallel y- X \beta \parallel}^2 \lambda_2{\parallel \beta \parallel}^2 + \lambda_1{\parallel \beta \parallel} ) \]</div>
+<div class="arithmatex">\[ \hat{\beta} \equiv argmin({\parallel y- X \beta \parallel}^2 + \lambda_2{\parallel \beta \parallel}^2 + \lambda_1{\parallel \beta \parallel} ) \]</div>
 </div>
 <h2 id="reference">Reference</h2>
 <ul>
