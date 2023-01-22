@@ -1498,17 +1498,20 @@ check only the header and the first "clump" of SNPs.</p>
 <li>"x" : False Positive rate. <span class="arithmatex">\({{FP}\over{FP + TN}}\)</span></li>
 </ul>
 <p>AUC: area under the ROC Curve, a common measure for the performance of a classification model.</p>
+<div class="admonition info">
+<p class="admonition-title">AIC</p>
 <p>Akaike Information Criterion (AIC): a measure for comparison of different statistical models.</p>
 <div class="arithmatex">\[AIC = 2k - 2ln(\hat{L})\]</div>
 <ul>
 <li><span class="arithmatex">\(k\)</span> : number of estimated parameters</li>
 <li><span class="arithmatex">\(\hat{L}\)</span> : maximum value of the model likelihood function</li>
 </ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">C-index</p>
 <p><strong>C-index</strong>: concordance index, which is a metric to evaluate the predictive performance of models and commonly used in survival analysis. It is a measure of the probability that the predicted scores <span class="arithmatex">\(M_i\)</span> and $ M_j$ by a model of two randomly selected individuals <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span>, have the reverse relative order as their true event times <span class="arithmatex">\(T_i, T_j\)</span>.</p>
 <div class="arithmatex">\[ C = Pr (M_j &gt; M_i | T_j &lt; T_i) \]</div>
 <p>Interpretation: Individuals with higher scores should have higher risk of the disease events</p>
-<div class="admonition info">
-<p class="admonition-title">C-index</p>
 <p>Reference: Harrell, F. E., Califf, R. M., Pryor, D. B., Lee, K. L., &amp; Rosati, R. A. (1982). Evaluating the yield of medical tests. Jama, 247(18), 2543-2546.
 Reference: Longato, E., Vettoretti, M., &amp; Di Camillo, B. (2020). A practical perspective on the concordance index for the evaluation and selection of prognostic time-to-event models. Journal of Biomedical Informatics, 108, 103496.</p>
 </div>
