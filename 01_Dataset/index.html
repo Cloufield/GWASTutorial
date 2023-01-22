@@ -1237,14 +1237,14 @@
 </code></pre></div></p>
 <h2 id="phenotype-simulation">Phenotype Simulation</h2>
 <p>Phenotypes were simply simulated using GCTA with the 1KG EAS dataset (without thinning).
-<div class="highlight"><pre><span></span><code>gcta64  <span class="se">\</span>
-  --bfile 1KG.EAS.auto.snp.norm.nodup.split.maf005 <span class="se">\ </span>
-  --simu-cc <span class="m">200</span> <span class="m">304</span> <span class="se">\</span>
-  --simu-causal-loci causal_10.snplist  <span class="se">\</span>
-  --simu-hsq <span class="m">0</span>.8  <span class="se">\</span>
-  --simu-k <span class="m">0</span>.4 <span class="se">\</span>
-  --simu-rep <span class="m">1</span> <span class="se">\</span>
-  --out 1kgeas_binary
+<div class="highlight"><pre><span></span><code>gcta64<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>--bfile<span class="w"> </span>1KG.EAS.auto.snp.norm.nodup.split.maf005<span class="w"> </span><span class="se">\ </span>
+<span class="w">  </span>--simu-cc<span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">304</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--simu-causal-loci<span class="w"> </span>causal_10.snplist<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>--simu-hsq<span class="w"> </span><span class="m">0</span>.8<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>--simu-k<span class="w"> </span><span class="m">0</span>.4<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--simu-rep<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--out<span class="w"> </span>1kgeas_binary
 </code></pre></div></p>
 <div class="highlight"><pre><span></span><code>$ cat causal_10.snplist
 3:176520196:C:T 3

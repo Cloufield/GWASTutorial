@@ -1266,23 +1266,23 @@
 <p>Download the version of GCTA for your system from : https://yanglab.westlake.edu.cn/software/gcta/#Download</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code>wget https://yanglab.westlake.edu.cn/software/gcta/bin/gcta-1.94.1-linux-kernel-3-x86_64.zip
-unzip gcta-1.94.1-linux-kernel-3-x86_64.zip
-<span class="nb">cd</span> gcta-1.94.1-linux-kernel-3-x86_64.zip
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://yanglab.westlake.edu.cn/software/gcta/bin/gcta-1.94.1-linux-kernel-3-x86_64.zip
+unzip<span class="w"> </span>gcta-1.94.1-linux-kernel-3-x86_64.zip
+<span class="nb">cd</span><span class="w"> </span>gcta-1.94.1-linux-kernel-3-x86_64.zip
 
 ./gcta-1.94.1
 *******************************************************************
-* Genome-wide Complex Trait Analysis <span class="o">(</span>GCTA<span class="o">)</span>
-* version v1.94.1 Linux
-* Built at Nov <span class="m">15</span> <span class="m">2022</span> <span class="m">21</span>:14:25, by GCC <span class="m">8</span>.5
-* <span class="o">(</span>C<span class="o">)</span> <span class="m">2010</span>-present, Yang Lab, Westlake University
-* Please report bugs to Jian Yang &lt;jian.yang@westlake.edu.cn&gt;
+*<span class="w"> </span>Genome-wide<span class="w"> </span>Complex<span class="w"> </span>Trait<span class="w"> </span>Analysis<span class="w"> </span><span class="o">(</span>GCTA<span class="o">)</span>
+*<span class="w"> </span>version<span class="w"> </span>v1.94.1<span class="w"> </span>Linux
+*<span class="w"> </span>Built<span class="w"> </span>at<span class="w"> </span>Nov<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">2022</span><span class="w"> </span><span class="m">21</span>:14:25,<span class="w"> </span>by<span class="w"> </span>GCC<span class="w"> </span><span class="m">8</span>.5
+*<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2010</span>-present,<span class="w"> </span>Yang<span class="w"> </span>Lab,<span class="w"> </span>Westlake<span class="w"> </span>University
+*<span class="w"> </span>Please<span class="w"> </span>report<span class="w"> </span>bugs<span class="w"> </span>to<span class="w"> </span>Jian<span class="w"> </span>Yang<span class="w"> </span>&lt;jian.yang@westlake.edu.cn&gt;
 *******************************************************************
-Analysis started at <span class="m">12</span>:22:19 JST on Sun Jan <span class="m">15</span> <span class="m">2023</span>.
-Hostname: Home-Desktop
+Analysis<span class="w"> </span>started<span class="w"> </span>at<span class="w"> </span><span class="m">12</span>:22:19<span class="w"> </span>JST<span class="w"> </span>on<span class="w"> </span>Sun<span class="w"> </span>Jan<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">2023</span>.
+Hostname:<span class="w"> </span>Home-Desktop
 
-Error: no analysis has been launched by the option<span class="o">(</span>s<span class="o">)</span>
-Please see online documentation at https://yanglab.westlake.edu.cn/software/gcta/
+Error:<span class="w"> </span>no<span class="w"> </span>analysis<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>launched<span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>option<span class="o">(</span>s<span class="o">)</span>
+Please<span class="w"> </span>see<span class="w"> </span>online<span class="w"> </span>documentation<span class="w"> </span>at<span class="w"> </span>https://yanglab.westlake.edu.cn/software/gcta/
 </code></pre></div>
 </div>
 <div class="admonition tip">
@@ -1292,12 +1292,12 @@ Please see online documentation at https://yanglab.westlake.edu.cn/software/gcta
 <h2 id="make-grm">Make GRM</h2>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nv">plinkFile</span><span class="o">=</span><span class="s2">&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot;</span>
-gcta <span class="se">\</span>
-  --bfile <span class="si">${</span><span class="nv">plinkFile</span><span class="si">}</span> <span class="se">\</span>
-  --autosome <span class="se">\</span>
-  --maf <span class="m">0</span>.01 <span class="se">\</span>
-  --make-grm <span class="se">\</span>
-  --out 1kg_eas
+gcta<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--bfile<span class="w"> </span><span class="si">${</span><span class="nv">plinkFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--autosome<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--maf<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--make-grm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--out<span class="w"> </span>1kg_eas
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>*******************************************************************
 * Genome-wide Complex Trait Analysis (GCTA)
@@ -1358,18 +1358,18 @@ gcta \
   --out 1kg_eas
 </code></pre></div>
 <h2 id="results">Results</h2>
-<div class="highlight"><pre><span></span><code>head 1kg_eas.hsq
+<div class="highlight"><pre><span></span><code>head<span class="w"> </span>1kg_eas.hsq
 
-Source  Variance        SE
-V<span class="o">(</span>G<span class="o">)</span>    <span class="m">0</span>.100469        <span class="m">0</span>.094051
-V<span class="o">(</span>e<span class="o">)</span>    <span class="m">0</span>.138337        <span class="m">0</span>.093889
-Vp      <span class="m">0</span>.238806        <span class="m">0</span>.015077
-V<span class="o">(</span>G<span class="o">)</span>/Vp <span class="m">0</span>.420715        <span class="m">0</span>.392317
-The estimate of variance explained on the observed scale is transformed to that on the underlying scale:
-<span class="o">(</span>Proportion of cases <span class="k">in</span> the <span class="nv">sample</span> <span class="o">=</span> <span class="m">0</span>.399602<span class="p">;</span> User-specified disease <span class="nv">prevalence</span> <span class="o">=</span> <span class="m">0</span>.400000<span class="o">)</span>
-V<span class="o">(</span>G<span class="o">)</span>/Vp_L       <span class="m">0</span>.676703        <span class="m">0</span>.631026
-logL    <span class="m">105</span>.187
-logL0   <span class="m">103</span>.680
+Source<span class="w">  </span>Variance<span class="w">        </span>SE
+V<span class="o">(</span>G<span class="o">)</span><span class="w">    </span><span class="m">0</span>.100469<span class="w">        </span><span class="m">0</span>.094051
+V<span class="o">(</span>e<span class="o">)</span><span class="w">    </span><span class="m">0</span>.138337<span class="w">        </span><span class="m">0</span>.093889
+Vp<span class="w">      </span><span class="m">0</span>.238806<span class="w">        </span><span class="m">0</span>.015077
+V<span class="o">(</span>G<span class="o">)</span>/Vp<span class="w"> </span><span class="m">0</span>.420715<span class="w">        </span><span class="m">0</span>.392317
+The<span class="w"> </span>estimate<span class="w"> </span>of<span class="w"> </span>variance<span class="w"> </span>explained<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>observed<span class="w"> </span>scale<span class="w"> </span>is<span class="w"> </span>transformed<span class="w"> </span>to<span class="w"> </span>that<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>underlying<span class="w"> </span>scale:
+<span class="o">(</span>Proportion<span class="w"> </span>of<span class="w"> </span>cases<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span><span class="nv">sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.399602<span class="p">;</span><span class="w"> </span>User-specified<span class="w"> </span>disease<span class="w"> </span><span class="nv">prevalence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.400000<span class="o">)</span>
+V<span class="o">(</span>G<span class="o">)</span>/Vp_L<span class="w">       </span><span class="m">0</span>.676703<span class="w">        </span><span class="m">0</span>.631026
+logL<span class="w">    </span><span class="m">105</span>.187
+logL0<span class="w">   </span><span class="m">103</span>.680
 </code></pre></div>
 <h2 id="reference">Reference</h2>
 <ul>

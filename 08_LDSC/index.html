@@ -1427,17 +1427,17 @@ E[\chi^2|l_j] = {{Nh^2l_j}\over{M}} + Na + 1
 <p>For ldsc, we need anaconda to create virtual environment. 
 If you haven't installed Anaconda, please check <a href="https://cloufield.github.io/GWASTutorial/80_anaconda/">how to install anaconda</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># change to your directory for tools</span>
-<span class="nb">cd</span> ~/tools
+<span class="nb">cd</span><span class="w"> </span>~/tools
 
 <span class="c1"># clone the ldsc github repository</span>
-git clone https://github.com/bulik/ldsc.git
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/bulik/ldsc.git
 
 <span class="c1"># create a virtual environment for ldsc (python2)</span>
-<span class="nb">cd</span> ldsc
-conda env create --file environment.yml  
+<span class="nb">cd</span><span class="w"> </span>ldsc
+conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>--file<span class="w"> </span>environment.yml<span class="w">  </span>
 
 <span class="c1"># activate ldsc environment</span>
-conda activate ldsc
+conda<span class="w"> </span>activate<span class="w"> </span>ldsc
 </code></pre></div>
 <h2 id="data-preparation">Data Preparation</h2>
 <p>In this tutoial, we will use sample summary statistics for HDLC and LDLC from Jenger. 
@@ -1446,49 +1446,49 @@ conda activate ldsc
 <p><img width="682" alt="image" src="https://user-images.githubusercontent.com/40289485/209749071-171c150a-19aa-41f0-b6e6-2ef5fa87370d.png"></p>
 <h3 id="download-sample-summary-statistics">Download sample summary statistics</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># HDL-c and LDL-c in Biobank Japan</span>
-wget -O BBJ_LDLC.txt.gz http://jenger.riken.jp/61analysisresult_qtl_download/
-wget -O BBJ_HDLC.txt.gz http://jenger.riken.jp/47analysisresult_qtl_download/
+wget<span class="w"> </span>-O<span class="w"> </span>BBJ_LDLC.txt.gz<span class="w"> </span>http://jenger.riken.jp/61analysisresult_qtl_download/
+wget<span class="w"> </span>-O<span class="w"> </span>BBJ_HDLC.txt.gz<span class="w"> </span>http://jenger.riken.jp/47analysisresult_qtl_download/
 </code></pre></div>
 <h3 id="download-reference-files">Download reference files</h3>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># change to your ldsc directory</span>
-<span class="nb">cd</span> ~/tools/ldsc
-mkdir resource
-<span class="nb">cd</span> ./resource
+<span class="nb">cd</span><span class="w"> </span>~/tools/ldsc
+mkdir<span class="w"> </span>resource
+<span class="nb">cd</span><span class="w"> </span>./resource
 
 <span class="c1"># snplist</span>
-wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/w_hm3.snplist.bz2
+wget<span class="w"> </span>https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/w_hm3.snplist.bz2
 
 <span class="c1"># EAS ld score files</span>
-wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/eas_ldscores.tar.bz2
+wget<span class="w"> </span>https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/eas_ldscores.tar.bz2
 
 <span class="c1"># EAS weight</span>
-wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/1000G_Phase3_EAS_weights_hm3_no_MHC.tgz
+wget<span class="w"> </span>https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/1000G_Phase3_EAS_weights_hm3_no_MHC.tgz
 
 <span class="c1"># EAS frequency</span>
-wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/1000G_Phase3_EAS_plinkfiles.tgz
+wget<span class="w"> </span>https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/1000G_Phase3_EAS_plinkfiles.tgz
 
 <span class="c1"># EAS baseline model</span>
-wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/1000G_Phase3_EAS_baseline_v1.2_ldscores.tgz
+wget<span class="w"> </span>https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/1000G_Phase3_EAS_baseline_v1.2_ldscores.tgz
 
 <span class="c1"># Cell type ld score files</span>
-wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/LDSC_SEG_ldscores/Cahoy_EAS_1000Gv3_ldscores.tar.gz
+wget<span class="w"> </span>https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/LDSC_SEG_ldscores/Cahoy_EAS_1000Gv3_ldscores.tar.gz
 </code></pre></div>
 You can then decompress the files and organize them.</p>
 <h2 id="munge-sumstats">Munge sumstats</h2>
 <p>Before the analysis, we need to format and clean the raw sumstats.</p>
 <div class="highlight"><pre><span></span><code><span class="nv">snplist</span><span class="o">=</span>~/tools/ldsc/resource/w_hm3.snplist
-munge_sumstats.py <span class="se">\</span>
-    --sumstats BBJ_HDLC.txt.gz <span class="se">\</span>
-    --merge-alleles <span class="nv">$snplist</span> <span class="se">\</span>
-    --a1 ALT <span class="se">\</span>
-    --a2 REF <span class="se">\</span>
-    --out BBJ_HDLC
-munge_sumstats.py <span class="se">\</span>
-  --sumstats BBJ_LDLC.txt.gz <span class="se">\</span>
-    --a1 ALT <span class="se">\</span>
-  --a2 REF <span class="se">\</span>
-  --merge-alleles <span class="nv">$snplist</span> <span class="se">\</span>
-  --out BBJ_LDLC
+munge_sumstats.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--sumstats<span class="w"> </span>BBJ_HDLC.txt.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--merge-alleles<span class="w"> </span><span class="nv">$snplist</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--a1<span class="w"> </span>ALT<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--a2<span class="w"> </span>REF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--out<span class="w"> </span>BBJ_HDLC
+munge_sumstats.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--sumstats<span class="w"> </span>BBJ_LDLC.txt.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--a1<span class="w"> </span>ALT<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--a2<span class="w"> </span>REF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--merge-alleles<span class="w"> </span><span class="nv">$snplist</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--out<span class="w"> </span>BBJ_LDLC
 </code></pre></div>
 <p>After munging, you will get two munged and formatted files:</p>
 <p><div class="highlight"><pre><span></span><code>BBJ_HDLC.sumstats.gz
@@ -1501,52 +1501,52 @@ And these are the files we will use to run LD score regression.</p>
 <li>Reference : Bulik-Sullivan, Brendan K., et al. "LD Score regression distinguishes confounding from polygenicity in genome-wide association studies." Nature genetics 47.3 (2015): 291-295.</li>
 </ul>
 <p>Using the munged sumstats, we can run:</p>
-<div class="highlight"><pre><span></span><code>ldsc.py <span class="se">\</span>
-  --h2 BBJ_HDLC.sumstats.gz <span class="se">\</span>
-  --ref-ld-chr ~/tools/ldsc/resource/eas_ldscores/ <span class="se">\</span>
-  --w-ld-chr ~/tools/ldsc/resource/eas_ldscores/ <span class="se">\</span>
-  --out BBJ_HDLC
+<div class="highlight"><pre><span></span><code>ldsc.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--h2<span class="w"> </span>BBJ_HDLC.sumstats.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ref-ld-chr<span class="w"> </span>~/tools/ldsc/resource/eas_ldscores/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--w-ld-chr<span class="w"> </span>~/tools/ldsc/resource/eas_ldscores/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--out<span class="w"> </span>BBJ_HDLC
 
-ldsc.py <span class="se">\</span>
-  --h2 BBJ_LDLC.sumstats.gz <span class="se">\</span>
-  --ref-ld-chr ~/tools/ldsc/resource/eas_ldscores/ <span class="se">\</span>
-  --w-ld-chr ~/tools/ldsc/resource/eas_ldscores/ <span class="se">\</span>
-  --out BBJ_LDLC
+ldsc.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--h2<span class="w"> </span>BBJ_LDLC.sumstats.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ref-ld-chr<span class="w"> </span>~/tools/ldsc/resource/eas_ldscores/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--w-ld-chr<span class="w"> </span>~/tools/ldsc/resource/eas_ldscores/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--out<span class="w"> </span>BBJ_LDLC
 </code></pre></div>
 <p>Lest's check the results for HDLC:</p>
-<div class="highlight"><pre><span></span><code>cat BBJ_HDLC.log
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>BBJ_HDLC.log
 *********************************************************************
-* LD Score Regression <span class="o">(</span>LDSC<span class="o">)</span>
-* Version <span class="m">1</span>.0.1
-* <span class="o">(</span>C<span class="o">)</span> <span class="m">2014</span>-2019 Brendan Bulik-Sullivan and Hilary Finucane
-* Broad Institute of MIT and Harvard / MIT Department of Mathematics
-* GNU General Public License v3
+*<span class="w"> </span>LD<span class="w"> </span>Score<span class="w"> </span>Regression<span class="w"> </span><span class="o">(</span>LDSC<span class="o">)</span>
+*<span class="w"> </span>Version<span class="w"> </span><span class="m">1</span>.0.1
+*<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2014</span>-2019<span class="w"> </span>Brendan<span class="w"> </span>Bulik-Sullivan<span class="w"> </span>and<span class="w"> </span>Hilary<span class="w"> </span>Finucane
+*<span class="w"> </span>Broad<span class="w"> </span>Institute<span class="w"> </span>of<span class="w"> </span>MIT<span class="w"> </span>and<span class="w"> </span>Harvard<span class="w"> </span>/<span class="w"> </span>MIT<span class="w"> </span>Department<span class="w"> </span>of<span class="w"> </span>Mathematics
+*<span class="w"> </span>GNU<span class="w"> </span>General<span class="w"> </span>Public<span class="w"> </span>License<span class="w"> </span>v3
 *********************************************************************
-Call: 
-./ldsc.py <span class="se">\</span>
---h2 BBJ_HDLC.sumstats.gz <span class="se">\</span>
---ref-ld-chr /home/he/tools/ldsc/resource/eas_ldscores/ <span class="se">\</span>
---out BBJ_HDLC <span class="se">\</span>
---w-ld-chr /home/he/tools/ldsc/resource/eas_ldscores/ 
+Call:<span class="w"> </span>
+./ldsc.py<span class="w"> </span><span class="se">\</span>
+--h2<span class="w"> </span>BBJ_HDLC.sumstats.gz<span class="w"> </span><span class="se">\</span>
+--ref-ld-chr<span class="w"> </span>/home/he/tools/ldsc/resource/eas_ldscores/<span class="w"> </span><span class="se">\</span>
+--out<span class="w"> </span>BBJ_HDLC<span class="w"> </span><span class="se">\</span>
+--w-ld-chr<span class="w"> </span>/home/he/tools/ldsc/resource/eas_ldscores/<span class="w"> </span>
 
-Beginning analysis at Sat Dec <span class="m">24</span> <span class="m">20</span>:40:34 <span class="m">2022</span>
-Reading summary statistics from BBJ_HDLC.sumstats.gz ...
-Read summary statistics <span class="k">for</span> <span class="m">1020377</span> SNPs.
-Reading reference panel LD Score from /home/he/tools/ldsc/resource/eas_ldscores/<span class="o">[</span><span class="m">1</span>-22<span class="o">]</span> ... <span class="o">(</span>ldscore_fromlist<span class="o">)</span>
-Read reference panel LD Scores <span class="k">for</span> <span class="m">1208050</span> SNPs.
-Removing partitioned LD Scores with zero variance.
-Reading regression weight LD Score from /home/he/tools/ldsc/resource/eas_ldscores/<span class="o">[</span><span class="m">1</span>-22<span class="o">]</span> ... <span class="o">(</span>ldscore_fromlist<span class="o">)</span>
-Read regression weight LD Scores <span class="k">for</span> <span class="m">1208050</span> SNPs.
-After merging with reference panel LD, <span class="m">1012040</span> SNPs remain.
-After merging with regression SNP LD, <span class="m">1012040</span> SNPs remain.
-Using two-step estimator with cutoff at <span class="m">30</span>.
-Total Observed scale h2: <span class="m">0</span>.1583 <span class="o">(</span><span class="m">0</span>.0281<span class="o">)</span>
-Lambda GC: <span class="m">1</span>.1523
-Mean Chi^2: <span class="m">1</span>.2843
-Intercept: <span class="m">1</span>.0563 <span class="o">(</span><span class="m">0</span>.0114<span class="o">)</span>
-Ratio: <span class="m">0</span>.1981 <span class="o">(</span><span class="m">0</span>.0402<span class="o">)</span>
-Analysis finished at Sat Dec <span class="m">24</span> <span class="m">20</span>:40:41 <span class="m">2022</span>
-Total <span class="nb">time</span> elapsed: <span class="m">6</span>.57s
+Beginning<span class="w"> </span>analysis<span class="w"> </span>at<span class="w"> </span>Sat<span class="w"> </span>Dec<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">20</span>:40:34<span class="w"> </span><span class="m">2022</span>
+Reading<span class="w"> </span>summary<span class="w"> </span>statistics<span class="w"> </span>from<span class="w"> </span>BBJ_HDLC.sumstats.gz<span class="w"> </span>...
+Read<span class="w"> </span>summary<span class="w"> </span>statistics<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">1020377</span><span class="w"> </span>SNPs.
+Reading<span class="w"> </span>reference<span class="w"> </span>panel<span class="w"> </span>LD<span class="w"> </span>Score<span class="w"> </span>from<span class="w"> </span>/home/he/tools/ldsc/resource/eas_ldscores/<span class="o">[</span><span class="m">1</span>-22<span class="o">]</span><span class="w"> </span>...<span class="w"> </span><span class="o">(</span>ldscore_fromlist<span class="o">)</span>
+Read<span class="w"> </span>reference<span class="w"> </span>panel<span class="w"> </span>LD<span class="w"> </span>Scores<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">1208050</span><span class="w"> </span>SNPs.
+Removing<span class="w"> </span>partitioned<span class="w"> </span>LD<span class="w"> </span>Scores<span class="w"> </span>with<span class="w"> </span>zero<span class="w"> </span>variance.
+Reading<span class="w"> </span>regression<span class="w"> </span>weight<span class="w"> </span>LD<span class="w"> </span>Score<span class="w"> </span>from<span class="w"> </span>/home/he/tools/ldsc/resource/eas_ldscores/<span class="o">[</span><span class="m">1</span>-22<span class="o">]</span><span class="w"> </span>...<span class="w"> </span><span class="o">(</span>ldscore_fromlist<span class="o">)</span>
+Read<span class="w"> </span>regression<span class="w"> </span>weight<span class="w"> </span>LD<span class="w"> </span>Scores<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">1208050</span><span class="w"> </span>SNPs.
+After<span class="w"> </span>merging<span class="w"> </span>with<span class="w"> </span>reference<span class="w"> </span>panel<span class="w"> </span>LD,<span class="w"> </span><span class="m">1012040</span><span class="w"> </span>SNPs<span class="w"> </span>remain.
+After<span class="w"> </span>merging<span class="w"> </span>with<span class="w"> </span>regression<span class="w"> </span>SNP<span class="w"> </span>LD,<span class="w"> </span><span class="m">1012040</span><span class="w"> </span>SNPs<span class="w"> </span>remain.
+Using<span class="w"> </span>two-step<span class="w"> </span>estimator<span class="w"> </span>with<span class="w"> </span>cutoff<span class="w"> </span>at<span class="w"> </span><span class="m">30</span>.
+Total<span class="w"> </span>Observed<span class="w"> </span>scale<span class="w"> </span>h2:<span class="w"> </span><span class="m">0</span>.1583<span class="w"> </span><span class="o">(</span><span class="m">0</span>.0281<span class="o">)</span>
+Lambda<span class="w"> </span>GC:<span class="w"> </span><span class="m">1</span>.1523
+Mean<span class="w"> </span>Chi^2:<span class="w"> </span><span class="m">1</span>.2843
+Intercept:<span class="w"> </span><span class="m">1</span>.0563<span class="w"> </span><span class="o">(</span><span class="m">0</span>.0114<span class="o">)</span>
+Ratio:<span class="w"> </span><span class="m">0</span>.1981<span class="w"> </span><span class="o">(</span><span class="m">0</span>.0402<span class="o">)</span>
+Analysis<span class="w"> </span>finished<span class="w"> </span>at<span class="w"> </span>Sat<span class="w"> </span>Dec<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">20</span>:40:41<span class="w"> </span><span class="m">2022</span>
+Total<span class="w"> </span><span class="nb">time</span><span class="w"> </span>elapsed:<span class="w"> </span><span class="m">6</span>.57s
 </code></pre></div>
 <p>We can see that from the log:</p>
 <ul>
@@ -1580,11 +1580,11 @@ r_g = {{\rho_g}\over{\sqrt{h_1^2h_2^2}}}
 <ul>
 <li>Reference: Bulik-Sullivan, Brendan, et al. "An atlas of genetic correlations across human diseases and traits." Nature genetics 47.11 (2015): 1236-1241.</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>ldsc.py <span class="se">\</span>
-  --rg BBJ_HDLC.sumstats.gz,BBJ_LDLC.sumstats.gz <span class="se">\</span>
-  --ref-ld-chr ~/tools/ldsc/resource/eas_ldscores/ <span class="se">\</span>
-  --w-ld-chr ~/tools/ldsc/resource/eas_ldscores/ <span class="se">\</span>
-  --out BBJ_HDLC_LDLC
+<p><div class="highlight"><pre><span></span><code>ldsc.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--rg<span class="w"> </span>BBJ_HDLC.sumstats.gz,BBJ_LDLC.sumstats.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ref-ld-chr<span class="w"> </span>~/tools/ldsc/resource/eas_ldscores/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--w-ld-chr<span class="w"> </span>~/tools/ldsc/resource/eas_ldscores/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--out<span class="w"> </span>BBJ_HDLC_LDLC
 </code></pre></div>
 Let's check the results:</p>
 <div class="highlight"><pre><span></span><code>*********************************************************************
@@ -1668,13 +1668,13 @@ E[\chi^2] = N \sum\limits_C \tau_C l(j,C) + Na + 1
 <p>Reference: Finucane, Hilary K., et al. "Partitioning heritability by functional annotation using genome-wide association summary statistics." Nature genetics 47.11 (2015): 1228-1235.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code>ldsc.py <span class="se">\</span>
-  --h2 BBJ_HDLC.sumstats.gz <span class="se">\</span>
-  --overlap-annot <span class="se">\</span>
-  --ref-ld-chr ~/tools/ldsc/resource/1000G_Phase3_EAS_baseline_v1_2_ldscores/baseline. <span class="se">\</span>
-  --frqfile-chr ~/tools/ldsc/resource/1000G_Phase3_EAS_plinkfiles/1000G.EAS.QC. <span class="se">\</span>
-  --w-ld-chr ~/tools/ldsc/resource/1000G_Phase3_EAS_weights_hm3_no_MHC/weights.EAS.hm3_noMHC. <span class="se">\</span>
-  --out BBJ_HDLC_baseline
+<div class="highlight"><pre><span></span><code>ldsc.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--h2<span class="w"> </span>BBJ_HDLC.sumstats.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--overlap-annot<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ref-ld-chr<span class="w"> </span>~/tools/ldsc/resource/1000G_Phase3_EAS_baseline_v1_2_ldscores/baseline.<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--frqfile-chr<span class="w"> </span>~/tools/ldsc/resource/1000G_Phase3_EAS_plinkfiles/1000G.EAS.QC.<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--w-ld-chr<span class="w"> </span>~/tools/ldsc/resource/1000G_Phase3_EAS_weights_hm3_no_MHC/weights.EAS.hm3_noMHC.<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--out<span class="w"> </span>BBJ_HDLC_baseline
 </code></pre></div>
 <h2 id="celltype-specificity-ld-regression">Celltype specificity LD regression</h2>
 <p>LDSC-SEG :  LD score regression applied to specifically expressed genes</p>
@@ -1682,12 +1682,12 @@ E[\chi^2] = N \sum\limits_C \tau_C l(j,C) + Na + 1
 <ul>
 <li>Reference: Finucane, Hilary K., et al. "Heritability enrichment of specifically expressed genes identifies disease-relevant tissues and cell types." Nature genetics 50.4 (2018): 621-629.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>ldsc.py <span class="se">\</span>
-  --h2-cts BBJ_HDLC.sumstats.gz <span class="se">\</span>
-  --ref-ld-chr-cts ~/tools/ldsc/resource/Cahoy_EAS_1000Gv3_ldscores/Cahoy.EAS.ldcts <span class="se">\</span>
-  --ref-ld-chr ~/tools/ldsc/resource/1000G_Phase3_EAS_baseline_v1_2_ldscores/baseline. <span class="se">\</span>
-  --w-ld-chr ~/tools/ldsc/resource/1000G_Phase3_EAS_weights_hm3_no_MHC/weights.EAS.hm3_noMHC. <span class="se">\</span>
-  --out BBJ_HDLC_baseline_cts
+<div class="highlight"><pre><span></span><code>ldsc.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--h2-cts<span class="w"> </span>BBJ_HDLC.sumstats.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ref-ld-chr-cts<span class="w"> </span>~/tools/ldsc/resource/Cahoy_EAS_1000Gv3_ldscores/Cahoy.EAS.ldcts<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ref-ld-chr<span class="w"> </span>~/tools/ldsc/resource/1000G_Phase3_EAS_baseline_v1_2_ldscores/baseline.<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--w-ld-chr<span class="w"> </span>~/tools/ldsc/resource/1000G_Phase3_EAS_weights_hm3_no_MHC/weights.EAS.hm3_noMHC.<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--out<span class="w"> </span>BBJ_HDLC_baseline_cts
 </code></pre></div>
 <h2 id="reference">Reference</h2>
 <ul>

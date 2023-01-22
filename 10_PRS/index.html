@@ -1121,8 +1121,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#meta-grs" class="md-nav__link">
-    Meta-GRS
+  <a href="#meta-scoring-methods-for-prs" class="md-nav__link">
+    Meta-scoring methods for PRS
   </a>
   
 </li>
@@ -1349,8 +1349,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#meta-grs" class="md-nav__link">
-    Meta-GRS
+  <a href="#meta-scoring-methods-for-prs" class="md-nav__link">
+    Meta-scoring methods for PRS
   </a>
   
 </li>
@@ -1539,37 +1539,53 @@ Reference: Longato, E., Vettoretti, M., &amp; Di Camillo, B. (2020). A practical
 <p>The authors also provided R codes for calculation (removed unrelated codes for simplicity)</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># R2 on the liability scale using the transformation</span>
 
-<span class="n">nt</span> <span class="o">=</span> <span class="n">total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">the</span> <span class="n">sample</span>
-<span class="n">ncase</span> <span class="o">=</span> <span class="n">number</span> <span class="n">of</span> <span class="n">cases</span>
-<span class="n">ncont</span> <span class="o">=</span> <span class="n">number</span> <span class="n">of</span> <span class="n">controls</span>
-<span class="n">thd</span> <span class="o">=</span> <span class="n">the</span> <span class="n">threshold</span> <span class="n">on</span> <span class="n">the</span> <span class="n">normal</span> <span class="n">distribution</span> <span class="n">which</span> <span class="n">truncates</span> <span class="n">the</span> <span class="n">proportion</span> <span class="n">of</span> <span class="n">disease</span> <span class="n">prevalence</span>
-<span class="n">K</span> <span class="o">=</span> <span class="n">population</span> <span class="n">prevalence</span>
-<span class="n">P</span> <span class="o">=</span> <span class="n">proportion</span> <span class="n">of</span> <span class="n">cases</span> <span class="n">in</span> <span class="n">the</span> <span class="n">case</span><span class="o">-</span><span class="n">control</span> <span class="n">samples</span>
+<span class="n">nt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">sample</span>
+<span class="n">ncase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">cases</span>
+<span class="n">ncont</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">controls</span>
+<span class="n">thd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">threshold</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">normal</span><span class="w"> </span><span class="n">distribution</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">truncates</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">proportion</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">disease</span><span class="w"> </span><span class="n">prevalence</span>
+<span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">population</span><span class="w"> </span><span class="n">prevalence</span>
+<span class="n">P</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">proportion</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">cases</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">case</span><span class="o">-</span><span class="n">control</span><span class="w"> </span><span class="n">samples</span>
 
 <span class="c1">#threshold</span>
-<span class="n">thd</span> <span class="o">=</span> <span class="o">-</span><span class="nf">qnorm</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<span class="n">thd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="nf">qnorm</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
 
 <span class="c1">#value of standard normal density function at thd</span>
-<span class="n">zv</span> <span class="o">=</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">thd</span><span class="p">)</span> 
+<span class="n">zv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">dnorm</span><span class="p">(</span><span class="n">thd</span><span class="p">)</span><span class="w"> </span>
 
 <span class="c1">#mean liability for case</span>
-<span class="n">mv</span> <span class="o">=</span> <span class="n">zv</span><span class="o">/</span><span class="n">K</span> 
+<span class="n">mv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zv</span><span class="o">/</span><span class="n">K</span><span class="w"> </span>
 
 <span class="c1">#linear model</span>
-<span class="n">lmv</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">y</span>∼<span class="n">g</span><span class="p">)</span> 
+<span class="n">lmv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">y</span>∼<span class="n">g</span><span class="p">)</span><span class="w"> </span>
 
 <span class="c1">#R20 : R2 on the observed scale</span>
-<span class="n">R2O</span> <span class="o">=</span> <span class="nf">var</span><span class="p">(</span><span class="n">lmv</span><span class="o">$</span><span class="n">fitted.values</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ncase</span><span class="o">/</span><span class="n">nt</span><span class="o">*</span><span class="n">ncont</span><span class="o">/</span><span class="n">nt</span><span class="p">)</span>
+<span class="n">R2O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="n">lmv</span><span class="o">$</span><span class="n">fitted.values</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ncase</span><span class="o">/</span><span class="n">nt</span><span class="o">*</span><span class="n">ncont</span><span class="o">/</span><span class="n">nt</span><span class="p">)</span>
 
 <span class="c1"># calculate correction factors</span>
-<span class="n">theta</span> <span class="o">=</span> <span class="n">mv</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">mv</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">-</span><span class="n">thd</span><span class="p">)</span> 
-<span class="n">cv</span> <span class="o">=</span> <span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="n">zv</span><span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">P</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">P</span><span class="p">))</span> 
+<span class="n">theta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mv</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">mv</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">-</span><span class="n">thd</span><span class="p">)</span><span class="w"> </span>
+<span class="n">cv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="n">zv</span><span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">P</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">P</span><span class="p">))</span><span class="w"> </span>
 
 <span class="c1"># convert to R2 on the liability scale</span>
-<span class="n">R2</span> <span class="o">=</span> <span class="n">R2O</span><span class="o">*</span><span class="n">cv</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">R2O</span><span class="o">*</span><span class="n">theta</span><span class="o">*</span><span class="n">cv</span><span class="p">)</span>
+<span class="n">R2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R2O</span><span class="o">*</span><span class="n">cv</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">R2O</span><span class="o">*</span><span class="n">theta</span><span class="o">*</span><span class="n">cv</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<h2 id="meta-grs">Meta-GRS</h2>
+<h2 id="meta-scoring-methods-for-prs">Meta-scoring methods for PRS</h2>
+<p>It has been shown recently that the PRS models generated from multiple traits using a meta-scoring method potentially outperforms PRS models generated from a single trait.
+Inouye et al. first used this approach for generating a PRS model for CAD from multiple PRS models. </p>
+<div class="admonition potential advantages of meta-score for prs genetration">
+<p class="admonition-title">Potential</p>
+<ul>
+<li>increased marker coverage</li>
+<li>reduced genotyping or imputation uncertainty</li>
+<li>more accurate effect size estimates</li>
+</ul>
+<p>Reference: Inouye, M., Abraham, G., Nelson, C. P., Wood, A. M., Sweeting, M. J., Dudbridge, F., ... &amp; UK Biobank CardioMetabolic Consortium CHD Working Group. (2018). Genomic risk prediction of coronary artery disease in 480,000 adults: implications for primary prevention. Journal of the American College of Cardiology, 72(16), 1883-1893.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">elastic net</p>
+<p>Elastic net is a common approach for variable selection when there are highly correlated variables (for example, PRS of correlated disease are often highly correlated.). When fitting linear or logistic models, L1 and L2 penalties are added (regularization). </p>
+<div class="arithmatex">\[ \hat{\beta} \equiv argmin({\parallel y- X \beta \parallel}^2 \lambda_2{\parallel \beta \parallel}^2 + \lambda_1{\parallel \beta \parallel} ) \]</div>
+</div>
 <h2 id="reference">Reference</h2>
 <ul>
 <li>PLINK : Purcell, Shaun, et al. "PLINK: a tool set for whole-genome association and population-based linkage analyses." The American journal of human genetics 81.3 (2007): 559-575.</li>

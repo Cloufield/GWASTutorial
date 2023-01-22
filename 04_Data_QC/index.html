@@ -1532,12 +1532,12 @@
 <p>First, we will simply create some directories to keep the tools we need to use.</p>
 <div class="admonition example">
 <p class="admonition-title">Create directories</p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~
-mkdir tools
-<span class="nb">cd</span> tools
-mkdir bin
-mkdir plink
-mkdir plink2
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~
+mkdir<span class="w"> </span>tools
+<span class="nb">cd</span><span class="w"> </span>tools
+mkdir<span class="w"> </span>bin
+mkdir<span class="w"> </span>plink
+mkdir<span class="w"> </span>plink2
 </code></pre></div>
 <img width="937" alt="image" src="https://user-images.githubusercontent.com/40289485/160745597-c6f4204a-d786-4af1-9041-f1531cbbe584.png"></p>
 </div>
@@ -1558,9 +1558,9 @@ mkdir plink2
 <p>Find the suitable version in the PLINK website, right click and copy the link address.</p>
 <div class="admonition example">
 <p class="admonition-title">Download PLINK</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> plink2
-wget https://s3.amazonaws.com/plink2-assets/plink2_linux_x86_64_20211011.zip
-unzip plink2_linux_x86_64_20211011.zip
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>plink2
+wget<span class="w"> </span>https://s3.amazonaws.com/plink2-assets/plink2_linux_x86_64_20211011.zip
+unzip<span class="w"> </span>plink2_linux_x86_64_20211011.zip
 </code></pre></div>
 </div>
 <p>Then do the same for PLINK1.9</p>
@@ -1568,16 +1568,16 @@ unzip plink2_linux_x86_64_20211011.zip
 <p>After downloading and unzipping, we will create symbolic links for the plink binary files, and then move the link to <code>~/tools/bin/</code>.</p>
 <div class="admonition example">
 <p class="admonition-title">Create symbolic links</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~
-ln -s ~/tools/plink2/plink2 ~/tools/bin/plink2
-ln -s ~/tools/plink/plink ~/tools/bin/plink
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~
+ln<span class="w"> </span>-s<span class="w"> </span>~/tools/plink2/plink2<span class="w"> </span>~/tools/bin/plink2
+ln<span class="w"> </span>-s<span class="w"> </span>~/tools/plink/plink<span class="w"> </span>~/tools/bin/plink
 </code></pre></div>
 </div>
 <h3 id="add-paths-to-the-environment-path">Add paths to the environment path</h3>
 <p>Then add <code>~/tools/bin/</code> to the environment path.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:~/tools/bin/
+<p><div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:~/tools/bin/
 </code></pre></div>
 This command will add the path to your current shell. </p>
 <p>If you restart the terminal, it will be lost. So you may need to add it to the configuration file. Then run </p>
@@ -1588,39 +1588,39 @@ This command will add the path to your current shell. </p>
 <p>All done. Let's test if we installed PLINK successfully or not.</p>
 <div class="admonition example">
 <p class="admonition-title">Check if PLINK is installed successfully.</p>
-<div class="highlight"><pre><span></span><code>plink -h
-PLINK v1.90b6.21 <span class="m">64</span>-bit <span class="o">(</span><span class="m">19</span> Oct <span class="m">2020</span><span class="o">)</span>          www.cog-genomics.org/plink/1.9/
-<span class="o">(</span>C<span class="o">)</span> <span class="m">2005</span>-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
+<div class="highlight"><pre><span></span><code>plink<span class="w"> </span>-h
+PLINK<span class="w"> </span>v1.90b6.21<span class="w"> </span><span class="m">64</span>-bit<span class="w"> </span><span class="o">(</span><span class="m">19</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2020</span><span class="o">)</span><span class="w">          </span>www.cog-genomics.org/plink/1.9/
+<span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2005</span>-2020<span class="w"> </span>Shaun<span class="w"> </span>Purcell,<span class="w"> </span>Christopher<span class="w"> </span>Chang<span class="w">   </span>GNU<span class="w"> </span>General<span class="w"> </span>Public<span class="w"> </span>License<span class="w"> </span>v3
 
-  plink &lt;input flag<span class="o">(</span>s<span class="o">)</span>...&gt; <span class="o">[</span><span class="nb">command</span> flag<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span> <span class="o">[</span>other flag<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span>
-  plink --help <span class="o">[</span>flag name<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span>
+<span class="w">  </span>plink<span class="w"> </span>&lt;input<span class="w"> </span>flag<span class="o">(</span>s<span class="o">)</span>...&gt;<span class="w"> </span><span class="o">[</span><span class="nb">command</span><span class="w"> </span>flag<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span><span class="w"> </span><span class="o">[</span>other<span class="w"> </span>flag<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span>
+<span class="w">  </span>plink<span class="w"> </span>--help<span class="w"> </span><span class="o">[</span>flag<span class="w"> </span>name<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span>
 
-Commands include --make-bed, --recode, --flip-scan, --merge-list,
---write-snplist, --list-duplicate-vars, --freqx, --missing, --test-mishap,
---hardy, --mendel, --ibc, --impute-sex, --indep-pairphase, --r2, --show-tags,
---blocks, --distance, --genome, --homozyg, --make-rel, --make-grm-gz,
---rel-cutoff, --cluster, --pca, --neighbour, --ibs-test, --regress-distance,
---model, --bd, --gxe, --logistic, --dosage, --lasso, --test-missing,
---make-perm-pheno, --tdt, --qfam, --annotate, --clump, --gene-report,
---meta-analysis, --epistasis, --fast-epistasis, and --score.
+Commands<span class="w"> </span>include<span class="w"> </span>--make-bed,<span class="w"> </span>--recode,<span class="w"> </span>--flip-scan,<span class="w"> </span>--merge-list,
+--write-snplist,<span class="w"> </span>--list-duplicate-vars,<span class="w"> </span>--freqx,<span class="w"> </span>--missing,<span class="w"> </span>--test-mishap,
+--hardy,<span class="w"> </span>--mendel,<span class="w"> </span>--ibc,<span class="w"> </span>--impute-sex,<span class="w"> </span>--indep-pairphase,<span class="w"> </span>--r2,<span class="w"> </span>--show-tags,
+--blocks,<span class="w"> </span>--distance,<span class="w"> </span>--genome,<span class="w"> </span>--homozyg,<span class="w"> </span>--make-rel,<span class="w"> </span>--make-grm-gz,
+--rel-cutoff,<span class="w"> </span>--cluster,<span class="w"> </span>--pca,<span class="w"> </span>--neighbour,<span class="w"> </span>--ibs-test,<span class="w"> </span>--regress-distance,
+--model,<span class="w"> </span>--bd,<span class="w"> </span>--gxe,<span class="w"> </span>--logistic,<span class="w"> </span>--dosage,<span class="w"> </span>--lasso,<span class="w"> </span>--test-missing,
+--make-perm-pheno,<span class="w"> </span>--tdt,<span class="w"> </span>--qfam,<span class="w"> </span>--annotate,<span class="w"> </span>--clump,<span class="w"> </span>--gene-report,
+--meta-analysis,<span class="w"> </span>--epistasis,<span class="w"> </span>--fast-epistasis,<span class="w"> </span>and<span class="w"> </span>--score.
 
-<span class="s2">&quot;plink --help | more&quot;</span> describes all functions <span class="o">(</span>warning: long<span class="o">)</span>.
+<span class="s2">&quot;plink --help | more&quot;</span><span class="w"> </span>describes<span class="w"> </span>all<span class="w"> </span>functions<span class="w"> </span><span class="o">(</span>warning:<span class="w"> </span>long<span class="o">)</span>.
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>plink2 -h
-PLINK v2.00a3LM <span class="m">64</span>-bit Intel <span class="o">(</span><span class="m">1</span> Jul <span class="m">2021</span><span class="o">)</span>      www.cog-genomics.org/plink/2.0/
-<span class="o">(</span>C<span class="o">)</span> <span class="m">2005</span>-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+<div class="highlight"><pre><span></span><code>plink2<span class="w"> </span>-h
+PLINK<span class="w"> </span>v2.00a3LM<span class="w"> </span><span class="m">64</span>-bit<span class="w"> </span>Intel<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>Jul<span class="w"> </span><span class="m">2021</span><span class="o">)</span><span class="w">      </span>www.cog-genomics.org/plink/2.0/
+<span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2005</span>-2021<span class="w"> </span>Shaun<span class="w"> </span>Purcell,<span class="w"> </span>Christopher<span class="w"> </span>Chang<span class="w">   </span>GNU<span class="w"> </span>General<span class="w"> </span>Public<span class="w"> </span>License<span class="w"> </span>v3
 
-  plink2 &lt;input flag<span class="o">(</span>s<span class="o">)</span>...&gt; <span class="o">[</span><span class="nb">command</span> flag<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span> <span class="o">[</span>other flag<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span>
-  plink2 --help <span class="o">[</span>flag name<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span>
+<span class="w">  </span>plink2<span class="w"> </span>&lt;input<span class="w"> </span>flag<span class="o">(</span>s<span class="o">)</span>...&gt;<span class="w"> </span><span class="o">[</span><span class="nb">command</span><span class="w"> </span>flag<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span><span class="w"> </span><span class="o">[</span>other<span class="w"> </span>flag<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span>
+<span class="w">  </span>plink2<span class="w"> </span>--help<span class="w"> </span><span class="o">[</span>flag<span class="w"> </span>name<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span>
 
-Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
---sample-counts, --missing, --hardy, --het, --fst, --indep-pairwise, --ld,
---sample-diff, --make-king, --king-cutoff, --pmerge, --pgen-diff,
---write-samples, --write-snplist, --make-grm-list, --pca, --glm, --adjust-file,
---score, --variant-score, --genotyping-rate, --pgen-info, --validate, and
+Commands<span class="w"> </span>include<span class="w"> </span>--rm-dup<span class="w"> </span>list,<span class="w"> </span>--make-bpgen,<span class="w"> </span>--export,<span class="w"> </span>--freq,<span class="w"> </span>--geno-counts,
+--sample-counts,<span class="w"> </span>--missing,<span class="w"> </span>--hardy,<span class="w"> </span>--het,<span class="w"> </span>--fst,<span class="w"> </span>--indep-pairwise,<span class="w"> </span>--ld,
+--sample-diff,<span class="w"> </span>--make-king,<span class="w"> </span>--king-cutoff,<span class="w"> </span>--pmerge,<span class="w"> </span>--pgen-diff,
+--write-samples,<span class="w"> </span>--write-snplist,<span class="w"> </span>--make-grm-list,<span class="w"> </span>--pca,<span class="w"> </span>--glm,<span class="w"> </span>--adjust-file,
+--score,<span class="w"> </span>--variant-score,<span class="w"> </span>--genotyping-rate,<span class="w"> </span>--pgen-info,<span class="w"> </span>--validate,<span class="w"> </span>and
 --zst-decompress.
 
-<span class="s2">&quot;plink2 --help | more&quot;</span> describes all functions.
+<span class="s2">&quot;plink2 --help | more&quot;</span><span class="w"> </span>describes<span class="w"> </span>all<span class="w"> </span>functions.
 </code></pre></div>
 </div>
 <p>Well done. We have installed plink1.9 and plink2.</p>
@@ -1630,7 +1630,7 @@ This dataset contains 504 EAS individuals from 1000 Genome Project Phase 3v5 wit
 <p>Simply run <code>download.sh</code> in 01_Dataset to download this dataset (from Dropbox).</p>
 <div class="admonition example">
 <p class="admonition-title">Download sample data</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ../01_Dataset
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>../01_Dataset
 ./download_sampledata.sh
 </code></pre></div>
 <p>And you will get the following three PLINK files:</p>
@@ -1639,30 +1639,30 @@ This dataset contains 504 EAS individuals from 1000 Genome Project Phase 3v5 wit
 -rw-r-----   1 he  staff   9.4K Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
 </code></pre></div>
 <p>Check the bim file:</p>
-<div class="highlight"><pre><span></span><code>head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
-<span class="m">1</span>   <span class="m">1</span>:13273:G:C <span class="m">0</span>   <span class="m">13273</span>   C   G
-<span class="m">1</span>   <span class="m">1</span>:14599:T:A <span class="m">0</span>   <span class="m">14599</span>   A   T
-<span class="m">1</span>   <span class="m">1</span>:14604:A:G <span class="m">0</span>   <span class="m">14604</span>   G   A
-<span class="m">1</span>   <span class="m">1</span>:14930:A:G <span class="m">0</span>   <span class="m">14930</span>   G   A
-<span class="m">1</span>   <span class="m">1</span>:69897:T:C <span class="m">0</span>   <span class="m">69897</span>   C   T
-<span class="m">1</span>   <span class="m">1</span>:86331:A:G <span class="m">0</span>   <span class="m">86331</span>   G   A
-<span class="m">1</span>   <span class="m">1</span>:91581:G:A <span class="m">0</span>   <span class="m">91581</span>   A   G
-<span class="m">1</span>   <span class="m">1</span>:122872:T:G    <span class="m">0</span>   <span class="m">122872</span>  G   T
-<span class="m">1</span>   <span class="m">1</span>:135163:C:T    <span class="m">0</span>   <span class="m">135163</span>  T   C
-<span class="m">1</span>   <span class="m">1</span>:233473:C:G    <span class="m">0</span>   <span class="m">233473</span>  G   C
+<div class="highlight"><pre><span></span><code>head<span class="w"> </span>1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:13273:G:C<span class="w"> </span><span class="m">0</span><span class="w">   </span><span class="m">13273</span><span class="w">   </span>C<span class="w">   </span>G
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:14599:T:A<span class="w"> </span><span class="m">0</span><span class="w">   </span><span class="m">14599</span><span class="w">   </span>A<span class="w">   </span>T
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:14604:A:G<span class="w"> </span><span class="m">0</span><span class="w">   </span><span class="m">14604</span><span class="w">   </span>G<span class="w">   </span>A
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:14930:A:G<span class="w"> </span><span class="m">0</span><span class="w">   </span><span class="m">14930</span><span class="w">   </span>G<span class="w">   </span>A
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:69897:T:C<span class="w"> </span><span class="m">0</span><span class="w">   </span><span class="m">69897</span><span class="w">   </span>C<span class="w">   </span>T
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:86331:A:G<span class="w"> </span><span class="m">0</span><span class="w">   </span><span class="m">86331</span><span class="w">   </span>G<span class="w">   </span>A
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:91581:G:A<span class="w"> </span><span class="m">0</span><span class="w">   </span><span class="m">91581</span><span class="w">   </span>A<span class="w">   </span>G
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:122872:T:G<span class="w">    </span><span class="m">0</span><span class="w">   </span><span class="m">122872</span><span class="w">  </span>G<span class="w">   </span>T
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:135163:C:T<span class="w">    </span><span class="m">0</span><span class="w">   </span><span class="m">135163</span><span class="w">  </span>T<span class="w">   </span>C
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:233473:C:G<span class="w">    </span><span class="m">0</span><span class="w">   </span><span class="m">233473</span><span class="w">  </span>G<span class="w">   </span>C
 </code></pre></div>
 <p>Check the fam file:
-<div class="highlight"><pre><span></span><code>head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
-<span class="m">0</span> HG00403 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
-<span class="m">0</span> HG00404 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
-<span class="m">0</span> HG00406 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
-<span class="m">0</span> HG00407 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
-<span class="m">0</span> HG00409 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
-<span class="m">0</span> HG00410 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
-<span class="m">0</span> HG00419 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
-<span class="m">0</span> HG00421 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
-<span class="m">0</span> HG00422 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
-<span class="m">0</span> HG00428 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> -9
+<div class="highlight"><pre><span></span><code>head<span class="w"> </span>1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
+<span class="m">0</span><span class="w"> </span>HG00403<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-9
+<span class="m">0</span><span class="w"> </span>HG00404<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-9
+<span class="m">0</span><span class="w"> </span>HG00406<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-9
+<span class="m">0</span><span class="w"> </span>HG00407<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-9
+<span class="m">0</span><span class="w"> </span>HG00409<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-9
+<span class="m">0</span><span class="w"> </span>HG00410<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-9
+<span class="m">0</span><span class="w"> </span>HG00419<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-9
+<span class="m">0</span><span class="w"> </span>HG00421<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-9
+<span class="m">0</span><span class="w"> </span>HG00422<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-9
+<span class="m">0</span><span class="w"> </span>HG00428<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>-9
 </code></pre></div></p>
 </div>
 <h2 id="plink-tutorial">PLINK tutorial</h2>
@@ -1750,29 +1750,29 @@ This dataset contains 504 EAS individuals from 1000 Genome Project Phase 3v5 wit
 <p>To calculate the missing rate, we need the flag <code>--missing</code>, which tells PLINK to calculate the missing rate in the dataset specified by <code>--bfile</code>. </p>
 <div class="admonition example">
 <p class="admonition-title">Calculate missing rate</p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span> ../04_Data_QC
-<span class="nv">genotypeFile</span><span class="o">=</span><span class="s2">&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot;</span> <span class="c1">#!!! Please add your own path here.  &quot;1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot; is the prefix of PLINK bed file. </span>
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>../04_Data_QC
+<span class="nv">genotypeFile</span><span class="o">=</span><span class="s2">&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot;</span><span class="w"> </span><span class="c1">#!!! Please add your own path here.  &quot;1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot; is the prefix of PLINK bed file. </span>
 
-plink <span class="se">\</span>
-    --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
-    --missing <span class="se">\</span>
-    --out plink_results
+plink<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--bfile<span class="w"> </span><span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--missing<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--out<span class="w"> </span>plink_results
 </code></pre></div>
 Remeber to set the value for <code>${genotypeFile}</code>.</p>
 </div>
 <p>This code will generate two files <code>plink_results.imiss</code> and <code>plink_results.lmiss</code>, which contain the missing rate information for samples and SNPs respectively.</p>
 <p>Take a look at the <code>.imiss</code> file. The last column shows the missing rate for samples. Since we used part of the 1000 Genome Project data this time, there are no missing samples or SNPs. So the missing rate is zero.</p>
-<div class="highlight"><pre><span></span><code>head plink_results.imiss
- FID       IID MISS_PHENO   N_MISS   N_GENO   F_MISS
-   <span class="m">0</span>   HG00403          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
-   <span class="m">0</span>   HG00404          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
-   <span class="m">0</span>   HG00406          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
-   <span class="m">0</span>   HG00407          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
-   <span class="m">0</span>   HG00409          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
-   <span class="m">0</span>   HG00410          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
-   <span class="m">0</span>   HG00419          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
-   <span class="m">0</span>   HG00421          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
-   <span class="m">0</span>   HG00422          Y        <span class="m">0</span>  <span class="m">1122299</span>        <span class="m">0</span>
+<div class="highlight"><pre><span></span><code>head<span class="w"> </span>plink_results.imiss
+<span class="w"> </span>FID<span class="w">       </span>IID<span class="w"> </span>MISS_PHENO<span class="w">   </span>N_MISS<span class="w">   </span>N_GENO<span class="w">   </span>F_MISS
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00403<span class="w">          </span>Y<span class="w">        </span><span class="m">0</span><span class="w">  </span><span class="m">1122299</span><span class="w">        </span><span class="m">0</span>
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00404<span class="w">          </span>Y<span class="w">        </span><span class="m">0</span><span class="w">  </span><span class="m">1122299</span><span class="w">        </span><span class="m">0</span>
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00406<span class="w">          </span>Y<span class="w">        </span><span class="m">0</span><span class="w">  </span><span class="m">1122299</span><span class="w">        </span><span class="m">0</span>
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00407<span class="w">          </span>Y<span class="w">        </span><span class="m">0</span><span class="w">  </span><span class="m">1122299</span><span class="w">        </span><span class="m">0</span>
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00409<span class="w">          </span>Y<span class="w">        </span><span class="m">0</span><span class="w">  </span><span class="m">1122299</span><span class="w">        </span><span class="m">0</span>
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00410<span class="w">          </span>Y<span class="w">        </span><span class="m">0</span><span class="w">  </span><span class="m">1122299</span><span class="w">        </span><span class="m">0</span>
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00419<span class="w">          </span>Y<span class="w">        </span><span class="m">0</span><span class="w">  </span><span class="m">1122299</span><span class="w">        </span><span class="m">0</span>
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00421<span class="w">          </span>Y<span class="w">        </span><span class="m">0</span><span class="w">  </span><span class="m">1122299</span><span class="w">        </span><span class="m">0</span>
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00422<span class="w">          </span>Y<span class="w">        </span><span class="m">0</span><span class="w">  </span><span class="m">1122299</span><span class="w">        </span><span class="m">0</span>
 </code></pre></div>
 <p>For the meaning of headers, please refer to <a href="https://www.cog-genomics.org/plink/1.9/formats">PLINK documents</a>.</p>
 <h3 id="allele-frequency">Allele Frequency</h3>
@@ -1802,45 +1802,45 @@ Remeber to set the value for <code>${genotypeFile}</code>.</p>
 <p>Using PLINK1.9 we can easily calculate the MAF of variants in the input data.</p>
 <div class="admonition example">
 <p class="admonition-title">Calculate the MAF of variants using PLINK1.9</p>
-<div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
-    --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
-    --freq <span class="se">\</span>
-    --out plink_results
+<div class="highlight"><pre><span></span><code>plink<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--bfile<span class="w"> </span><span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--freq<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--out<span class="w"> </span>plink_results
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># results from plink1.9</span>
-head plink_results.frq
- CHR              SNP   A1   A2          MAF  NCHROBS
-   <span class="m">1</span>      <span class="m">1</span>:13273:G:C    C    G       <span class="m">0</span>.0625     <span class="m">1008</span>
-   <span class="m">1</span>      <span class="m">1</span>:14599:T:A    A    T      <span class="m">0</span>.08929     <span class="m">1008</span>
-   <span class="m">1</span>      <span class="m">1</span>:14604:A:G    G    A      <span class="m">0</span>.08929     <span class="m">1008</span>
-   <span class="m">1</span>      <span class="m">1</span>:14930:A:G    G    A       <span class="m">0</span>.4137     <span class="m">1008</span>
-   <span class="m">1</span>      <span class="m">1</span>:69897:T:C    T    C        <span class="m">0</span>.124     <span class="m">1008</span>
-   <span class="m">1</span>      <span class="m">1</span>:86331:A:G    G    A       <span class="m">0</span>.0873     <span class="m">1008</span>
-   <span class="m">1</span>      <span class="m">1</span>:91581:G:A    A    G        <span class="m">0</span>.498     <span class="m">1008</span>
-   <span class="m">1</span>     <span class="m">1</span>:122872:T:G    G    T       <span class="m">0</span>.2589     <span class="m">1008</span>
-   <span class="m">1</span>     <span class="m">1</span>:135163:C:T    T    C      <span class="m">0</span>.09226     <span class="m">1008</span>
+head<span class="w"> </span>plink_results.frq
+<span class="w"> </span>CHR<span class="w">              </span>SNP<span class="w">   </span>A1<span class="w">   </span>A2<span class="w">          </span>MAF<span class="w">  </span>NCHROBS
+<span class="w">   </span><span class="m">1</span><span class="w">      </span><span class="m">1</span>:13273:G:C<span class="w">    </span>C<span class="w">    </span>G<span class="w">       </span><span class="m">0</span>.0625<span class="w">     </span><span class="m">1008</span>
+<span class="w">   </span><span class="m">1</span><span class="w">      </span><span class="m">1</span>:14599:T:A<span class="w">    </span>A<span class="w">    </span>T<span class="w">      </span><span class="m">0</span>.08929<span class="w">     </span><span class="m">1008</span>
+<span class="w">   </span><span class="m">1</span><span class="w">      </span><span class="m">1</span>:14604:A:G<span class="w">    </span>G<span class="w">    </span>A<span class="w">      </span><span class="m">0</span>.08929<span class="w">     </span><span class="m">1008</span>
+<span class="w">   </span><span class="m">1</span><span class="w">      </span><span class="m">1</span>:14930:A:G<span class="w">    </span>G<span class="w">    </span>A<span class="w">       </span><span class="m">0</span>.4137<span class="w">     </span><span class="m">1008</span>
+<span class="w">   </span><span class="m">1</span><span class="w">      </span><span class="m">1</span>:69897:T:C<span class="w">    </span>T<span class="w">    </span>C<span class="w">        </span><span class="m">0</span>.124<span class="w">     </span><span class="m">1008</span>
+<span class="w">   </span><span class="m">1</span><span class="w">      </span><span class="m">1</span>:86331:A:G<span class="w">    </span>G<span class="w">    </span>A<span class="w">       </span><span class="m">0</span>.0873<span class="w">     </span><span class="m">1008</span>
+<span class="w">   </span><span class="m">1</span><span class="w">      </span><span class="m">1</span>:91581:G:A<span class="w">    </span>A<span class="w">    </span>G<span class="w">        </span><span class="m">0</span>.498<span class="w">     </span><span class="m">1008</span>
+<span class="w">   </span><span class="m">1</span><span class="w">     </span><span class="m">1</span>:122872:T:G<span class="w">    </span>G<span class="w">    </span>T<span class="w">       </span><span class="m">0</span>.2589<span class="w">     </span><span class="m">1008</span>
+<span class="w">   </span><span class="m">1</span><span class="w">     </span><span class="m">1</span>:135163:C:T<span class="w">    </span>T<span class="w">    </span>C<span class="w">      </span><span class="m">0</span>.09226<span class="w">     </span><span class="m">1008</span>
 </code></pre></div>
 </div>
 <p>Next, we use plink2 to run the same options to check the difference between the results.</p>
 <div class="admonition example">
 <p class="admonition-title">Calculate the alternative allele frequencies of variants using PLINK2</p>
-<div class="highlight"><pre><span></span><code>plink2 <span class="se">\</span>
-        --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
-        --freq <span class="se">\</span>
-        --out plink_results
+<div class="highlight"><pre><span></span><code>plink2<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--bfile<span class="w"> </span><span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--freq<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--out<span class="w"> </span>plink_results
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># results from plink2</span>
-head plink_results.afreq
+head<span class="w"> </span>plink_results.afreq
 <span class="c1">#CHROM  ID  REF ALT ALT_FREQS   OBS_CT</span>
-<span class="m">1</span>   <span class="m">1</span>:13273:G:C G   C   <span class="m">0</span>.0625  <span class="m">1008</span>
-<span class="m">1</span>   <span class="m">1</span>:14599:T:A T   A   <span class="m">0</span>.0892857   <span class="m">1008</span>
-<span class="m">1</span>   <span class="m">1</span>:14604:A:G A   G   <span class="m">0</span>.0892857   <span class="m">1008</span>
-<span class="m">1</span>   <span class="m">1</span>:14930:A:G A   G   <span class="m">0</span>.41369 <span class="m">1008</span>
-<span class="m">1</span>   <span class="m">1</span>:69897:T:C T   C   <span class="m">0</span>.875992    <span class="m">1008</span>
-<span class="m">1</span>   <span class="m">1</span>:86331:A:G A   G   <span class="m">0</span>.0873016   <span class="m">1008</span>
-<span class="m">1</span>   <span class="m">1</span>:91581:G:A G   A   <span class="m">0</span>.498016    <span class="m">1008</span>
-<span class="m">1</span>   <span class="m">1</span>:122872:T:G    T   G   <span class="m">0</span>.258929    <span class="m">1008</span>
-<span class="m">1</span>   <span class="m">1</span>:135163:C:T    C   T   <span class="m">0</span>.0922619   <span class="m">1008</span>
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:13273:G:C<span class="w"> </span>G<span class="w">   </span>C<span class="w">   </span><span class="m">0</span>.0625<span class="w">  </span><span class="m">1008</span>
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:14599:T:A<span class="w"> </span>T<span class="w">   </span>A<span class="w">   </span><span class="m">0</span>.0892857<span class="w">   </span><span class="m">1008</span>
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:14604:A:G<span class="w"> </span>A<span class="w">   </span>G<span class="w">   </span><span class="m">0</span>.0892857<span class="w">   </span><span class="m">1008</span>
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:14930:A:G<span class="w"> </span>A<span class="w">   </span>G<span class="w">   </span><span class="m">0</span>.41369<span class="w"> </span><span class="m">1008</span>
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:69897:T:C<span class="w"> </span>T<span class="w">   </span>C<span class="w">   </span><span class="m">0</span>.875992<span class="w">    </span><span class="m">1008</span>
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:86331:A:G<span class="w"> </span>A<span class="w">   </span>G<span class="w">   </span><span class="m">0</span>.0873016<span class="w">   </span><span class="m">1008</span>
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:91581:G:A<span class="w"> </span>G<span class="w">   </span>A<span class="w">   </span><span class="m">0</span>.498016<span class="w">    </span><span class="m">1008</span>
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:122872:T:G<span class="w">    </span>T<span class="w">   </span>G<span class="w">   </span><span class="m">0</span>.258929<span class="w">    </span><span class="m">1008</span>
+<span class="m">1</span><span class="w">   </span><span class="m">1</span>:135163:C:T<span class="w">    </span>C<span class="w">   </span>T<span class="w">   </span><span class="m">0</span>.0922619<span class="w">   </span><span class="m">1008</span>
 </code></pre></div>
 </div>
 <p>We need to pay attention to the concepts here.</p>
@@ -1863,23 +1863,23 @@ head plink_results.afreq
 </div>
 <div class="admonition example">
 <p class="admonition-title">Calculate inbreeding F coefficient</p>
-<div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
-    --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
-    --het <span class="se">\</span>
-    --out plink_results
+<div class="highlight"><pre><span></span><code>plink<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--bfile<span class="w"> </span><span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--het<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--out<span class="w"> </span>plink_results
 </code></pre></div>
 <p>Check the output:</p>
-<div class="highlight"><pre><span></span><code>head plink_results.het
- FID       IID       O<span class="o">(</span>HOM<span class="o">)</span>       E<span class="o">(</span>HOM<span class="o">)</span>        N<span class="o">(</span>NM<span class="o">)</span>            F
-   <span class="m">0</span>   HG00403       <span class="m">747270</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>    -0.004114
-   <span class="m">0</span>   HG00404       <span class="m">748955</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>    <span class="m">0</span>.0003974
-   <span class="m">0</span>   HG00406       <span class="m">750093</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>     <span class="m">0</span>.003444
-   <span class="m">0</span>   HG00407       <span class="m">746566</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>    -0.005999
-   <span class="m">0</span>   HG00409       <span class="m">751694</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>     <span class="m">0</span>.007731
-   <span class="m">0</span>   HG00410       <span class="m">745078</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>    -0.009983
-   <span class="m">0</span>   HG00419       <span class="m">747996</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>     -0.00217
-   <span class="m">0</span>   HG00421       <span class="m">757199</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>      <span class="m">0</span>.02247
-   <span class="m">0</span>   HG00422       <span class="m">752725</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>      <span class="m">0</span>.01049
+<div class="highlight"><pre><span></span><code>head<span class="w"> </span>plink_results.het
+<span class="w"> </span>FID<span class="w">       </span>IID<span class="w">       </span>O<span class="o">(</span>HOM<span class="o">)</span><span class="w">       </span>E<span class="o">(</span>HOM<span class="o">)</span><span class="w">        </span>N<span class="o">(</span>NM<span class="o">)</span><span class="w">            </span>F
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00403<span class="w">       </span><span class="m">747270</span><span class="w">    </span><span class="m">7</span>.488e+05<span class="w">      </span><span class="m">1122299</span><span class="w">    </span>-0.004114
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00404<span class="w">       </span><span class="m">748955</span><span class="w">    </span><span class="m">7</span>.488e+05<span class="w">      </span><span class="m">1122299</span><span class="w">    </span><span class="m">0</span>.0003974
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00406<span class="w">       </span><span class="m">750093</span><span class="w">    </span><span class="m">7</span>.488e+05<span class="w">      </span><span class="m">1122299</span><span class="w">     </span><span class="m">0</span>.003444
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00407<span class="w">       </span><span class="m">746566</span><span class="w">    </span><span class="m">7</span>.488e+05<span class="w">      </span><span class="m">1122299</span><span class="w">    </span>-0.005999
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00409<span class="w">       </span><span class="m">751694</span><span class="w">    </span><span class="m">7</span>.488e+05<span class="w">      </span><span class="m">1122299</span><span class="w">     </span><span class="m">0</span>.007731
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00410<span class="w">       </span><span class="m">745078</span><span class="w">    </span><span class="m">7</span>.488e+05<span class="w">      </span><span class="m">1122299</span><span class="w">    </span>-0.009983
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00419<span class="w">       </span><span class="m">747996</span><span class="w">    </span><span class="m">7</span>.488e+05<span class="w">      </span><span class="m">1122299</span><span class="w">     </span>-0.00217
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00421<span class="w">       </span><span class="m">757199</span><span class="w">    </span><span class="m">7</span>.488e+05<span class="w">      </span><span class="m">1122299</span><span class="w">      </span><span class="m">0</span>.02247
+<span class="w">   </span><span class="m">0</span><span class="w">   </span>HG00422<span class="w">       </span><span class="m">752725</span><span class="w">    </span><span class="m">7</span>.488e+05<span class="w">      </span><span class="m">1122299</span><span class="w">      </span><span class="m">0</span>.01049
 </code></pre></div>
 </div>
 <p>A commonly used method is to exclude samples with heterozygosity F deviating more than 3 standard deviation(SD) from the mean F.</p>
@@ -1899,22 +1899,22 @@ Under HWE, the <strong>exact probability</strong> of observing <span class="arit
 </div>
 <div class="admonition example">
 <p class="admonition-title">Calculate the Hardy-Weinberg equilibrium exact test statistics</p>
-<p><div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
-    --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
-    --hardy <span class="se">\</span>
-    --out plink_results
+<p><div class="highlight"><pre><span></span><code>plink<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--bfile<span class="w"> </span><span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--hardy<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--out<span class="w"> </span>plink_results
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>head plink_results.hwe
- CHR              SNP     TEST   A1   A2                 GENO   O<span class="o">(</span>HET<span class="o">)</span>   E<span class="o">(</span>HET<span class="o">)</span>            P 
-   <span class="m">1</span>      <span class="m">1</span>:13273:G:C  ALL<span class="o">(</span>NP<span class="o">)</span>    C    G             <span class="m">1</span>/61/442    <span class="m">0</span>.121   <span class="m">0</span>.1172       <span class="m">0</span>.7113
-   <span class="m">1</span>      <span class="m">1</span>:14599:T:A  ALL<span class="o">(</span>NP<span class="o">)</span>    A    T             <span class="m">1</span>/88/415   <span class="m">0</span>.1746   <span class="m">0</span>.1626       <span class="m">0</span>.1625
-   <span class="m">1</span>      <span class="m">1</span>:14604:A:G  ALL<span class="o">(</span>NP<span class="o">)</span>    G    A             <span class="m">1</span>/88/415   <span class="m">0</span>.1746   <span class="m">0</span>.1626       <span class="m">0</span>.1625
-   <span class="m">1</span>      <span class="m">1</span>:14930:A:G  ALL<span class="o">(</span>NP<span class="o">)</span>    G    A             <span class="m">4</span>/409/91   <span class="m">0</span>.8115   <span class="m">0</span>.4851    <span class="m">1</span>.679e-61
-   <span class="m">1</span>      <span class="m">1</span>:69897:T:C  ALL<span class="o">(</span>NP<span class="o">)</span>    T    C            <span class="m">7</span>/111/386   <span class="m">0</span>.2202   <span class="m">0</span>.2173            <span class="m">1</span>
-   <span class="m">1</span>      <span class="m">1</span>:86331:A:G  ALL<span class="o">(</span>NP<span class="o">)</span>    G    A             <span class="m">0</span>/88/416   <span class="m">0</span>.1746   <span class="m">0</span>.1594      <span class="m">0</span>.02387
-   <span class="m">1</span>      <span class="m">1</span>:91581:G:A  ALL<span class="o">(</span>NP<span class="o">)</span>    A    G          <span class="m">137</span>/228/139   <span class="m">0</span>.4524      <span class="m">0</span>.5      <span class="m">0</span>.03271
-   <span class="m">1</span>     <span class="m">1</span>:122872:T:G  ALL<span class="o">(</span>NP<span class="o">)</span>    G    T            <span class="m">1</span>/259/244   <span class="m">0</span>.5139   <span class="m">0</span>.3838     <span class="m">8</span>.04e-19
-   <span class="m">1</span>     <span class="m">1</span>:135163:C:T  ALL<span class="o">(</span>NP<span class="o">)</span>    T    C             <span class="m">1</span>/91/412   <span class="m">0</span>.1806   <span class="m">0</span>.1675       <span class="m">0</span>.1066
+<div class="highlight"><pre><span></span><code>head<span class="w"> </span>plink_results.hwe
+<span class="w"> </span>CHR<span class="w">              </span>SNP<span class="w">     </span>TEST<span class="w">   </span>A1<span class="w">   </span>A2<span class="w">                 </span>GENO<span class="w">   </span>O<span class="o">(</span>HET<span class="o">)</span><span class="w">   </span>E<span class="o">(</span>HET<span class="o">)</span><span class="w">            </span>P<span class="w"> </span>
+<span class="w">   </span><span class="m">1</span><span class="w">      </span><span class="m">1</span>:13273:G:C<span class="w">  </span>ALL<span class="o">(</span>NP<span class="o">)</span><span class="w">    </span>C<span class="w">    </span>G<span class="w">             </span><span class="m">1</span>/61/442<span class="w">    </span><span class="m">0</span>.121<span class="w">   </span><span class="m">0</span>.1172<span class="w">       </span><span class="m">0</span>.7113
+<span class="w">   </span><span class="m">1</span><span class="w">      </span><span class="m">1</span>:14599:T:A<span class="w">  </span>ALL<span class="o">(</span>NP<span class="o">)</span><span class="w">    </span>A<span class="w">    </span>T<span class="w">             </span><span class="m">1</span>/88/415<span class="w">   </span><span class="m">0</span>.1746<span class="w">   </span><span class="m">0</span>.1626<span class="w">       </span><span class="m">0</span>.1625
+<span class="w">   </span><span class="m">1</span><span class="w">      </span><span class="m">1</span>:14604:A:G<span class="w">  </span>ALL<span class="o">(</span>NP<span class="o">)</span><span class="w">    </span>G<span class="w">    </span>A<span class="w">             </span><span class="m">1</span>/88/415<span class="w">   </span><span class="m">0</span>.1746<span class="w">   </span><span class="m">0</span>.1626<span class="w">       </span><span class="m">0</span>.1625
+<span class="w">   </span><span class="m">1</span><span class="w">      </span><span class="m">1</span>:14930:A:G<span class="w">  </span>ALL<span class="o">(</span>NP<span class="o">)</span><span class="w">    </span>G<span class="w">    </span>A<span class="w">             </span><span class="m">4</span>/409/91<span class="w">   </span><span class="m">0</span>.8115<span class="w">   </span><span class="m">0</span>.4851<span class="w">    </span><span class="m">1</span>.679e-61
+<span class="w">   </span><span class="m">1</span><span class="w">      </span><span class="m">1</span>:69897:T:C<span class="w">  </span>ALL<span class="o">(</span>NP<span class="o">)</span><span class="w">    </span>T<span class="w">    </span>C<span class="w">            </span><span class="m">7</span>/111/386<span class="w">   </span><span class="m">0</span>.2202<span class="w">   </span><span class="m">0</span>.2173<span class="w">            </span><span class="m">1</span>
+<span class="w">   </span><span class="m">1</span><span class="w">      </span><span class="m">1</span>:86331:A:G<span class="w">  </span>ALL<span class="o">(</span>NP<span class="o">)</span><span class="w">    </span>G<span class="w">    </span>A<span class="w">             </span><span class="m">0</span>/88/416<span class="w">   </span><span class="m">0</span>.1746<span class="w">   </span><span class="m">0</span>.1594<span class="w">      </span><span class="m">0</span>.02387
+<span class="w">   </span><span class="m">1</span><span class="w">      </span><span class="m">1</span>:91581:G:A<span class="w">  </span>ALL<span class="o">(</span>NP<span class="o">)</span><span class="w">    </span>A<span class="w">    </span>G<span class="w">          </span><span class="m">137</span>/228/139<span class="w">   </span><span class="m">0</span>.4524<span class="w">      </span><span class="m">0</span>.5<span class="w">      </span><span class="m">0</span>.03271
+<span class="w">   </span><span class="m">1</span><span class="w">     </span><span class="m">1</span>:122872:T:G<span class="w">  </span>ALL<span class="o">(</span>NP<span class="o">)</span><span class="w">    </span>G<span class="w">    </span>T<span class="w">            </span><span class="m">1</span>/259/244<span class="w">   </span><span class="m">0</span>.5139<span class="w">   </span><span class="m">0</span>.3838<span class="w">     </span><span class="m">8</span>.04e-19
+<span class="w">   </span><span class="m">1</span><span class="w">     </span><span class="m">1</span>:135163:C:T<span class="w">  </span>ALL<span class="o">(</span>NP<span class="o">)</span><span class="w">    </span>T<span class="w">    </span>C<span class="w">             </span><span class="m">1</span>/91/412<span class="w">   </span><span class="m">0</span>.1806<span class="w">   </span><span class="m">0</span>.1675<span class="w">       </span><span class="m">0</span>.1066
 </code></pre></div></p>
 </div>
 <h3 id="applying-filters">Applying filters</h3>
@@ -1933,19 +1933,19 @@ Please check https://www.cog-genomics.org/plink/1.9/ld#indep for the meaning of 
 Combined with the filters we just introduced, we can run:</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p><div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
-    --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
-    --maf <span class="m">0</span>.01 <span class="se">\</span>
-    --geno <span class="m">0</span>.01 <span class="se">\</span>
-    --mind <span class="m">0</span>.02 <span class="se">\</span>
-    --hwe 5e-6 <span class="se">\</span>
-    --indep-pairwise <span class="m">50</span> <span class="m">5</span> <span class="m">0</span>.2 <span class="se">\</span>
-    --out plink_results
+<p><div class="highlight"><pre><span></span><code>plink<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--bfile<span class="w"> </span><span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--maf<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--geno<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--mind<span class="w"> </span><span class="m">0</span>.02<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--hwe<span class="w"> </span>5e-6<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--indep-pairwise<span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">0</span>.2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--out<span class="w"> </span>plink_results
 </code></pre></div>
 This command generates two outputs:  <code>plink_results.prune.in</code> and <code>plink_results.prune.out</code>
 <code>plink_results.prune.in</code> is the independent set of SNPs we will use in the following analysis.
 Let's take a look at this file. Basically, it just contains one SNP id per line.</p>
-<div class="highlight"><pre><span></span><code>head plink_results.prune.in
+<div class="highlight"><pre><span></span><code>head<span class="w"> </span>plink_results.prune.in
 <span class="m">1</span>:13273:G:C
 <span class="m">1</span>:14599:T:A
 <span class="m">1</span>:69897:T:C
@@ -1963,7 +1963,7 @@ Let's take a look at this file. Basically, it just contains one SNP id per line.
 In this case, we can use <code>--extract</code> or <code>--exclude</code> to select or exclude SNPs from analysis, <code>--keep</code> or <code>--remove</code> to select or exclude samples.</p>
 <p>For  <code>--keep</code> or <code>--remove</code> , the input is the filename of a sample FID and IID file.
 For <code>--extract</code> or <code>--exclude</code> , the input is the filename of a SNP list file.</p>
-<div class="highlight"><pre><span></span><code>head plink_results.prune.in
+<div class="highlight"><pre><span></span><code>head<span class="w"> </span>plink_results.prune.in
 <span class="m">1</span>:13273:G:C
 <span class="m">1</span>:14599:T:A
 <span class="m">1</span>:69897:T:C
@@ -1993,24 +1993,24 @@ For <code>--extract</code> or <code>--exclude</code> , the input is the filename
 </div>
 <div class="admonition example">
 <p class="admonition-title">Estimate IBD</p>
-<div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
-    --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
-    --extract plink_results.prune.in <span class="se">\</span>
-    --genome <span class="se">\</span>
-    --out plink_results
+<div class="highlight"><pre><span></span><code>plink<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--bfile<span class="w"> </span><span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--extract<span class="w"> </span>plink_results.prune.in<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--genome<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--out<span class="w"> </span>plink_results
 </code></pre></div>
 <p>PI_HAT is the IBD estimation. Please check https://www.cog-genomics.org/plink/1.9/ibd for more details.
-<div class="highlight"><pre><span></span><code>head plink_results.genome
- FID1     IID1 FID2     IID2 RT    EZ      Z0      Z1      Z2  PI_HAT PHE       DST     PPC   RATIO
-   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00404 OT     <span class="m">0</span>  <span class="m">0</span>.9800  <span class="m">0</span>.0086  <span class="m">0</span>.0114  <span class="m">0</span>.0157  -1  <span class="m">0</span>.749375  <span class="m">0</span>.5531  <span class="m">2</span>.0089
-   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00406 OT     <span class="m">0</span>  <span class="m">0</span>.9751  <span class="m">0</span>.0231  <span class="m">0</span>.0018  <span class="m">0</span>.0133  -1  <span class="m">0</span>.748336  <span class="m">0</span>.6309  <span class="m">2</span>.0225
-   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00407 OT     <span class="m">0</span>  <span class="m">0</span>.9801  <span class="m">0</span>.0153  <span class="m">0</span>.0046  <span class="m">0</span>.0122  -1  <span class="m">0</span>.748293  <span class="m">0</span>.5045  <span class="m">2</span>.0007
-   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00409 OT     <span class="m">0</span>  <span class="m">0</span>.9807  <span class="m">0</span>.0193  <span class="m">0</span>.0000  <span class="m">0</span>.0097  -1  <span class="m">0</span>.747215  <span class="m">0</span>.6014  <span class="m">2</span>.0173
-   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00410 OT     <span class="m">0</span>  <span class="m">0</span>.9744  <span class="m">0</span>.0256  <span class="m">0</span>.0000  <span class="m">0</span>.0128  -1  <span class="m">0</span>.748058  <span class="m">0</span>.8621  <span class="m">2</span>.0745
-   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00419 OT     <span class="m">0</span>  <span class="m">0</span>.9650  <span class="m">0</span>.0350  <span class="m">0</span>.0000  <span class="m">0</span>.0175  -1  <span class="m">0</span>.747146  <span class="m">0</span>.8080  <span class="m">2</span>.0595
-   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00421 OT     <span class="m">0</span>  <span class="m">0</span>.9842  <span class="m">0</span>.0158  <span class="m">0</span>.0000  <span class="m">0</span>.0079  -1  <span class="m">0</span>.746522  <span class="m">0</span>.4557  <span class="m">1</span>.9926
-   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00422 OT     <span class="m">0</span>  <span class="m">0</span>.9832  <span class="m">0</span>.0111  <span class="m">0</span>.0056  <span class="m">0</span>.0112  -1  <span class="m">0</span>.748156  <span class="m">0</span>.4208  <span class="m">1</span>.9867
-   <span class="m">0</span>  HG00403   <span class="m">0</span>  HG00428 OT     <span class="m">0</span>  <span class="m">0</span>.9929  <span class="m">0</span>.0000  <span class="m">0</span>.0071  <span class="m">0</span>.0071  -1  <span class="m">0</span>.746851  <span class="m">0</span>.3115  <span class="m">1</span>.9674
+<div class="highlight"><pre><span></span><code>head<span class="w"> </span>plink_results.genome
+<span class="w"> </span>FID1<span class="w">     </span>IID1<span class="w"> </span>FID2<span class="w">     </span>IID2<span class="w"> </span>RT<span class="w">    </span>EZ<span class="w">      </span>Z0<span class="w">      </span>Z1<span class="w">      </span>Z2<span class="w">  </span>PI_HAT<span class="w"> </span>PHE<span class="w">       </span>DST<span class="w">     </span>PPC<span class="w">   </span>RATIO
+<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00403<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00404<span class="w"> </span>OT<span class="w">     </span><span class="m">0</span><span class="w">  </span><span class="m">0</span>.9800<span class="w">  </span><span class="m">0</span>.0086<span class="w">  </span><span class="m">0</span>.0114<span class="w">  </span><span class="m">0</span>.0157<span class="w">  </span>-1<span class="w">  </span><span class="m">0</span>.749375<span class="w">  </span><span class="m">0</span>.5531<span class="w">  </span><span class="m">2</span>.0089
+<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00403<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00406<span class="w"> </span>OT<span class="w">     </span><span class="m">0</span><span class="w">  </span><span class="m">0</span>.9751<span class="w">  </span><span class="m">0</span>.0231<span class="w">  </span><span class="m">0</span>.0018<span class="w">  </span><span class="m">0</span>.0133<span class="w">  </span>-1<span class="w">  </span><span class="m">0</span>.748336<span class="w">  </span><span class="m">0</span>.6309<span class="w">  </span><span class="m">2</span>.0225
+<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00403<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00407<span class="w"> </span>OT<span class="w">     </span><span class="m">0</span><span class="w">  </span><span class="m">0</span>.9801<span class="w">  </span><span class="m">0</span>.0153<span class="w">  </span><span class="m">0</span>.0046<span class="w">  </span><span class="m">0</span>.0122<span class="w">  </span>-1<span class="w">  </span><span class="m">0</span>.748293<span class="w">  </span><span class="m">0</span>.5045<span class="w">  </span><span class="m">2</span>.0007
+<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00403<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00409<span class="w"> </span>OT<span class="w">     </span><span class="m">0</span><span class="w">  </span><span class="m">0</span>.9807<span class="w">  </span><span class="m">0</span>.0193<span class="w">  </span><span class="m">0</span>.0000<span class="w">  </span><span class="m">0</span>.0097<span class="w">  </span>-1<span class="w">  </span><span class="m">0</span>.747215<span class="w">  </span><span class="m">0</span>.6014<span class="w">  </span><span class="m">2</span>.0173
+<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00403<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00410<span class="w"> </span>OT<span class="w">     </span><span class="m">0</span><span class="w">  </span><span class="m">0</span>.9744<span class="w">  </span><span class="m">0</span>.0256<span class="w">  </span><span class="m">0</span>.0000<span class="w">  </span><span class="m">0</span>.0128<span class="w">  </span>-1<span class="w">  </span><span class="m">0</span>.748058<span class="w">  </span><span class="m">0</span>.8621<span class="w">  </span><span class="m">2</span>.0745
+<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00403<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00419<span class="w"> </span>OT<span class="w">     </span><span class="m">0</span><span class="w">  </span><span class="m">0</span>.9650<span class="w">  </span><span class="m">0</span>.0350<span class="w">  </span><span class="m">0</span>.0000<span class="w">  </span><span class="m">0</span>.0175<span class="w">  </span>-1<span class="w">  </span><span class="m">0</span>.747146<span class="w">  </span><span class="m">0</span>.8080<span class="w">  </span><span class="m">2</span>.0595
+<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00403<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00421<span class="w"> </span>OT<span class="w">     </span><span class="m">0</span><span class="w">  </span><span class="m">0</span>.9842<span class="w">  </span><span class="m">0</span>.0158<span class="w">  </span><span class="m">0</span>.0000<span class="w">  </span><span class="m">0</span>.0079<span class="w">  </span>-1<span class="w">  </span><span class="m">0</span>.746522<span class="w">  </span><span class="m">0</span>.4557<span class="w">  </span><span class="m">1</span>.9926
+<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00403<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00422<span class="w"> </span>OT<span class="w">     </span><span class="m">0</span><span class="w">  </span><span class="m">0</span>.9832<span class="w">  </span><span class="m">0</span>.0111<span class="w">  </span><span class="m">0</span>.0056<span class="w">  </span><span class="m">0</span>.0112<span class="w">  </span>-1<span class="w">  </span><span class="m">0</span>.748156<span class="w">  </span><span class="m">0</span>.4208<span class="w">  </span><span class="m">1</span>.9867
+<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00403<span class="w">   </span><span class="m">0</span><span class="w">  </span>HG00428<span class="w"> </span>OT<span class="w">     </span><span class="m">0</span><span class="w">  </span><span class="m">0</span>.9929<span class="w">  </span><span class="m">0</span>.0000<span class="w">  </span><span class="m">0</span>.0071<span class="w">  </span><span class="m">0</span>.0071<span class="w">  </span>-1<span class="w">  </span><span class="m">0</span>.746851<span class="w">  </span><span class="m">0</span>.3115<span class="w">  </span><span class="m">1</span>.9674
 </code></pre></div></p>
 </div>
 <h3 id="ld-calculation">LD calculation</h3>
@@ -2023,23 +2023,23 @@ For <code>--extract</code> or <code>--exclude</code> , the input is the filename
 To calculate LD r2 for SNPs on chr22 , we can run:</p>
 <div class="admonition example calculate ld r2 for snps on chr22">
 <p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code>plink <span class="se">\</span>
-        --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
-        --chr <span class="m">22</span> <span class="se">\</span>
-        --r2 <span class="se">\</span>
-        --out plink_results
+<div class="highlight"><pre><span></span><code>plink<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--bfile<span class="w"> </span><span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--chr<span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--r2<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--out<span class="w"> </span>plink_results
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>head plink_results.ld
- CHR_A         BP_A             SNP_A  CHR_B         BP_B             SNP_B           R2 
-    <span class="m">22</span>     <span class="m">16053659</span>   <span class="m">22</span>:16053659:A:C     <span class="m">22</span>     <span class="m">16067500</span>   <span class="m">22</span>:16067500:T:C      <span class="m">0</span>.64577 
-    <span class="m">22</span>     <span class="m">16053862</span>   <span class="m">22</span>:16053862:C:T     <span class="m">22</span>     <span class="m">16054454</span>   <span class="m">22</span>:16054454:C:T     <span class="m">0</span>.987505 
-    <span class="m">22</span>     <span class="m">16053862</span>   <span class="m">22</span>:16053862:C:T     <span class="m">22</span>     <span class="m">16055122</span>   <span class="m">22</span>:16055122:G:T     <span class="m">0</span>.601708 
-    <span class="m">22</span>     <span class="m">16053863</span>   <span class="m">22</span>:16053863:G:A     <span class="m">22</span>     <span class="m">16055070</span>   <span class="m">22</span>:16055070:G:A     <span class="m">0</span>.931043 
-    <span class="m">22</span>     <span class="m">16054454</span>   <span class="m">22</span>:16054454:C:T     <span class="m">22</span>     <span class="m">16055122</span>   <span class="m">22</span>:16055122:G:T     <span class="m">0</span>.594216 
-    <span class="m">22</span>     <span class="m">16058767</span>   <span class="m">22</span>:16058767:A:G     <span class="m">22</span>     <span class="m">16067462</span>   <span class="m">22</span>:16067462:C:T     <span class="m">0</span>.266916 
-    <span class="m">22</span>     <span class="m">16067462</span>   <span class="m">22</span>:16067462:C:T     <span class="m">22</span>     <span class="m">16069771</span>   <span class="m">22</span>:16069771:G:A     <span class="m">0</span>.382323 
-    <span class="m">22</span>     <span class="m">16069771</span>   <span class="m">22</span>:16069771:G:A     <span class="m">22</span>     <span class="m">16123813</span>   <span class="m">22</span>:16123813:G:A     <span class="m">0</span>.291935 
-    <span class="m">22</span>     <span class="m">16143946</span>   <span class="m">22</span>:16143946:A:G     <span class="m">22</span>     <span class="m">16155259</span>   <span class="m">22</span>:16155259:A:G     <span class="m">0</span>.559165 
+<div class="highlight"><pre><span></span><code>head<span class="w"> </span>plink_results.ld
+<span class="w"> </span>CHR_A<span class="w">         </span>BP_A<span class="w">             </span>SNP_A<span class="w">  </span>CHR_B<span class="w">         </span>BP_B<span class="w">             </span>SNP_B<span class="w">           </span>R2<span class="w"> </span>
+<span class="w">    </span><span class="m">22</span><span class="w">     </span><span class="m">16053659</span><span class="w">   </span><span class="m">22</span>:16053659:A:C<span class="w">     </span><span class="m">22</span><span class="w">     </span><span class="m">16067500</span><span class="w">   </span><span class="m">22</span>:16067500:T:C<span class="w">      </span><span class="m">0</span>.64577<span class="w"> </span>
+<span class="w">    </span><span class="m">22</span><span class="w">     </span><span class="m">16053862</span><span class="w">   </span><span class="m">22</span>:16053862:C:T<span class="w">     </span><span class="m">22</span><span class="w">     </span><span class="m">16054454</span><span class="w">   </span><span class="m">22</span>:16054454:C:T<span class="w">     </span><span class="m">0</span>.987505<span class="w"> </span>
+<span class="w">    </span><span class="m">22</span><span class="w">     </span><span class="m">16053862</span><span class="w">   </span><span class="m">22</span>:16053862:C:T<span class="w">     </span><span class="m">22</span><span class="w">     </span><span class="m">16055122</span><span class="w">   </span><span class="m">22</span>:16055122:G:T<span class="w">     </span><span class="m">0</span>.601708<span class="w"> </span>
+<span class="w">    </span><span class="m">22</span><span class="w">     </span><span class="m">16053863</span><span class="w">   </span><span class="m">22</span>:16053863:G:A<span class="w">     </span><span class="m">22</span><span class="w">     </span><span class="m">16055070</span><span class="w">   </span><span class="m">22</span>:16055070:G:A<span class="w">     </span><span class="m">0</span>.931043<span class="w"> </span>
+<span class="w">    </span><span class="m">22</span><span class="w">     </span><span class="m">16054454</span><span class="w">   </span><span class="m">22</span>:16054454:C:T<span class="w">     </span><span class="m">22</span><span class="w">     </span><span class="m">16055122</span><span class="w">   </span><span class="m">22</span>:16055122:G:T<span class="w">     </span><span class="m">0</span>.594216<span class="w"> </span>
+<span class="w">    </span><span class="m">22</span><span class="w">     </span><span class="m">16058767</span><span class="w">   </span><span class="m">22</span>:16058767:A:G<span class="w">     </span><span class="m">22</span><span class="w">     </span><span class="m">16067462</span><span class="w">   </span><span class="m">22</span>:16067462:C:T<span class="w">     </span><span class="m">0</span>.266916<span class="w"> </span>
+<span class="w">    </span><span class="m">22</span><span class="w">     </span><span class="m">16067462</span><span class="w">   </span><span class="m">22</span>:16067462:C:T<span class="w">     </span><span class="m">22</span><span class="w">     </span><span class="m">16069771</span><span class="w">   </span><span class="m">22</span>:16069771:G:A<span class="w">     </span><span class="m">0</span>.382323<span class="w"> </span>
+<span class="w">    </span><span class="m">22</span><span class="w">     </span><span class="m">16069771</span><span class="w">   </span><span class="m">22</span>:16069771:G:A<span class="w">     </span><span class="m">22</span><span class="w">     </span><span class="m">16123813</span><span class="w">   </span><span class="m">22</span>:16123813:G:A<span class="w">     </span><span class="m">0</span>.291935<span class="w"> </span>
+<span class="w">    </span><span class="m">22</span><span class="w">     </span><span class="m">16143946</span><span class="w">   </span><span class="m">22</span>:16143946:A:G<span class="w">     </span><span class="m">22</span><span class="w">     </span><span class="m">16155259</span><span class="w">   </span><span class="m">22</span>:16155259:A:G<span class="w">     </span><span class="m">0</span>.559165<span class="w"> </span>
 </code></pre></div>
 </div>
 <h3 id="data-management-make-bedrecode">Data management (make-bed/recode)</h3>
@@ -2052,17 +2052,17 @@ To calculate LD r2 for SNPs on chr22 , we can run:</p>
 <div class="admonition example">
 <p class="admonition-title">Convert PLINK formats</p>
 <div class="highlight"><pre><span></span><code><span class="c1">#extract the 1000 samples with the pruned SNPs, and make a bed file.</span>
-plink <span class="se">\</span>
-    --bfile <span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span> <span class="se">\</span>
-    --extract plink_results.prune.in <span class="se">\</span>
-    --make-bed <span class="se">\</span>
-    --out plink_1000_pruned
+plink<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--bfile<span class="w"> </span><span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--extract<span class="w"> </span>plink_results.prune.in<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--make-bed<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--out<span class="w"> </span>plink_1000_pruned
 
 <span class="c1">#convert the bed/bim/fam to ped/map</span>
-plink <span class="se">\</span>
-        --bfile plink_1000_pruned <span class="se">\</span>
-        --recode <span class="se">\</span>
-        --out plink_1000_pruned
+plink<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--bfile<span class="w"> </span>plink_1000_pruned<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--recode<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--out<span class="w"> </span>plink_1000_pruned
 </code></pre></div>
 </div>
 <h2 id="exercise">Exercise</h2>
