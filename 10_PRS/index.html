@@ -1456,11 +1456,28 @@ check only the header and the first "clump" of SNPs.</p>
 <div class="arithmatex">\[ \beta_j | \Phi_j \sim N(0,\phi\Phi_j) ,  \Phi_j \sim g \]</div>
 <p>Reference: Ge, T., Chen, C. Y., Ni, Y., Feng, Y. C. A., &amp; Smoller, J. W. (2019). Polygenic prediction via Bayesian regression and continuous shrinkage priors. Nature communications, 10(1), 1-10.</p>
 <h2 id="parameter-tuning">Parameter tuning</h2>
-<p>|Method|Description|
-|-|-|-|
-|Cross-validation| 10-fold cross validation. This method usually requires large-scale genotype dataset.|
-|Independent population| Perform validation in an independent population of the same ancestry. |
-|Pseudo-validation|A few methods can estimate a single optimal shrinkage parameter using only the base GWAS summary statistics.|</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cross-validation</td>
+<td>10-fold cross validation. This method usually requires large-scale genotype dataset.</td>
+</tr>
+<tr>
+<td>Independent population</td>
+<td>Perform validation in an independent population of the same ancestry.</td>
+</tr>
+<tr>
+<td>Pseudo-validation</td>
+<td>A few methods can estimate a single optimal shrinkage parameter using only the base GWAS summary statistics.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="pgs-catalog">PGS Catalog</h2>
 <p>Just like GWAS Catalog, you can now download published PRS  models from PGS catalog. </p>
 <p>URL: http://www.pgscatalog.org/</p>
@@ -1572,8 +1589,8 @@ Reference: Longato, E., Vettoretti, M., &amp; Di Camillo, B. (2020). A practical
 <h2 id="meta-scoring-methods-for-prs">Meta-scoring methods for PRS</h2>
 <p>It has been shown recently that the PRS models generated from multiple traits using a meta-scoring method potentially outperforms PRS models generated from a single trait.
 Inouye et al. first used this approach for generating a PRS model for CAD from multiple PRS models. </p>
-<div class="admonition potential advantages of meta-score for prs genetration">
-<p class="admonition-title">Potential</p>
+<div class="admonition note">
+<p class="admonition-title">Potential advantages of meta-score for PRS genetration</p>
 <ul>
 <li>increased marker coverage</li>
 <li>reduced genotyping or imputation uncertainty</li>
