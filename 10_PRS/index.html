@@ -1609,6 +1609,14 @@ Reference: Longato, E., Vettoretti, M., &amp; Di Camillo, B. (2020). A practical
 </code></pre></div>
 </div>
 <h2 id="bootstrap-confidence-interval-methods-for-r2">Bootstrap Confidence Interval Methods for R2</h2>
+<p>Bootstrap is a commonly used resampling method to generate a sampling distribution from the known sample dataset. It repeatedly takes random samples with replacement from the known sample dataset.</p>
+<p>Steps:</p>
+<ul>
+<li>Sample with replacement B times. (B should be large.)</li>
+<li>Estimate the parameter using the bootstrp sample. </li>
+<li>Obtain the approximate distribution of the parameter.</li>
+</ul>
+<p>The percentile bootstrap interval is then defined as the interval between <span class="arithmatex">\(100 \% \times \alpha /2\)</span> and <span class="arithmatex">\(100 \% \times (1 - \alpha /2)\)</span> percentiles of the parameters estimated by bootstrapping. We can use this method to estimate the  bootstrap interval for <span class="arithmatex">\(R^2\)</span>.</p>
 <h2 id="meta-scoring-methods-for-prs">Meta-scoring methods for PRS</h2>
 <p>It has been shown recently that the PRS models generated from multiple traits using a meta-scoring method potentially outperforms PRS models generated from a single trait.
 Inouye et al. first used this approach for generating a PRS model for CAD from multiple PRS models. </p>
