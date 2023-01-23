@@ -7,6 +7,8 @@ This Github page aims to provide a hands-on tutorial on common analysis in Compl
 
 This tutorial covers the minimum skills and knowledge required to perform a typical genome-wide association study (GWAS). The contents are categorized into the following groups. Additionally, for absolute beginners, we also prepared a section on command lines in Linux.
 
+If you have any questions or suggestions, please feel free to let us know in the [Issue section of this repository](https://github.com/Cloufield/GWASTutorial/issues).
+
 <img width="686" alt="image" src="https://user-images.githubusercontent.com/40289485/209779725-73b62b15-b044-46a4-98ae-ce5db06f93b3.png">
 
 ## Contents
