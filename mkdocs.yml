@@ -60,7 +60,8 @@ nav:
        - "Gene/Gene-set tests by MAGMA" : 09_Gene_based_analysis.md
        - "Fine-mapping by susieR" : 12_fine_mapping.md
        - "Meta-analysis" : 11_meta_analysis.md
-       - "PRS" : 10_PRS.md
+       - "Polygenic Risk Score" : 10_PRS.md
+       - "Mendelian randomization": 16_mendelian_randomization.md
     - Others :
        - "Recommended reading" : 90_Recommended_Reading.md
        - "Assignment - 1KG PCA" : 95_Assignment.md
