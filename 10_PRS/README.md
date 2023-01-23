@@ -29,7 +29,7 @@ In this tutorial, we will first briefly introduce how to develop PRS model using
 
 ## C+T/P+T using PLINK
 
-P+T stands for Pruning + Thresholding, also known as Clumping and Thresholding(C+T), which is a very simple and straightforward approach to construct PRS model.
+P+T stands for Pruning + Thresholding, also known as Clumping and Thresholding(C+T), which is a very simple and straightforward approach to constructing PRS models.
  
 !!! info "Clumping"
 
@@ -132,7 +132,7 @@ AUC: area under the ROC Curve, a common measure for the performance of a classif
 
 
 !!! info  "C-index"
-    **C-index**: concordance index, which is a metric to evaluate the predictive performance of models and commonly used in survival analysis. It is a measure of the probability that the predicted scores $M_i$ and $ M_j$ by a model of two randomly selected individuals $i$ and $j$, have the reverse relative order as their true event times $T_i, T_j$.
+    **C-index**: concordance index, which is a metric to evaluate the predictive performance of models and is commonly used in survival analysis. It is a measure of the probability that the predicted scores $M_i$ and $ M_j$ by a model of two randomly selected individuals $i$ and $j$, have the reverse relative order as their true event times $T_i, T_j$.
 
     $$ C = Pr (M_j > M_i | T_j < T_i) $$
 
@@ -226,7 +226,7 @@ AUC: area under the ROC Curve, a common measure for the performance of a classif
 It has been shown recently that the PRS models generated from multiple traits using a meta-scoring method potentially outperforms PRS models generated from a single trait.
 Inouye et al. first used this approach for generating a PRS model for CAD from multiple PRS models. 
 
-!!! note "Potential advantages of meta-score for PRS genetration"
+!!! note "Potential advantages of meta-score for PRS generation"
     
     - increased marker coverage
     - reduced genotyping or imputation uncertainty
@@ -235,7 +235,7 @@ Inouye et al. first used this approach for generating a PRS model for CAD from m
     Reference: Inouye, M., Abraham, G., Nelson, C. P., Wood, A. M., Sweeting, M. J., Dudbridge, F., ... & UK Biobank CardioMetabolic Consortium CHD Working Group. (2018). Genomic risk prediction of coronary artery disease in 480,000 adults: implications for primary prevention. Journal of the American College of Cardiology, 72(16), 1883-1893.
 
 !!! info "elastic net"
-    Elastic net is a common approach for variable selection when there are highly correlated variables (for example, PRS of correlated disease are often highly correlated.). When fitting linear or logistic models, L1 and L2 penalties are added (regularization). 
+    Elastic net is a common approach for variable selection when there are highly correlated variables (for example, PRS of correlated diseases are often highly correlated.). When fitting linear or logistic models, L1 and L2 penalties are added (regularization). 
 
     $$ \hat{\beta} \equiv argmin({\parallel y- X \beta \parallel}^2 + \lambda_2{\parallel \beta \parallel}^2 + \lambda_1{\parallel \beta \parallel} ) $$
 
