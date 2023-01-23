@@ -229,7 +229,7 @@ Steps:
 - Estimate the parameter using the bootstrp sample. 
 - Obtain the approximate distribution of the parameter.
 
-The percentile bootstrap interval is then defined as the interval between $100 \% \times \alpha /2$ and $100 \% \times (1 - \alpha /2)$ percentiles of the parameters estimated by bootstrapping. We can use this method to estimate the  bootstrap interval for $R^2$.
+The percentile bootstrap interval is then defined as the interval between $100 \times \alpha /2$ and $100 \times (1 - \alpha /2)$ percentiles of the parameters estimated by bootstrapping. We can use this method to estimate the  bootstrap interval for $R^2$.
 
 ## Meta-scoring methods for PRS
 
