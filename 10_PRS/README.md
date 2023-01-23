@@ -221,6 +221,16 @@ AUC: area under the ROC Curve, a common measure for the performance of a classif
 
 ## Bootstrap Confidence Interval Methods for R2
 
+Bootstrap is a commonly used resampling method to generate a sampling distribution from the known sample dataset. It repeatedly takes random samples with replacement from the known sample dataset.
+
+Steps:
+
+- Sample with replacement B times. (B should be large.)
+- Estimate the parameter using the bootstrp sample. 
+- Obtain the approximate distribution of the parameter.
+
+The percentile bootstrap interval is then defined as the interval between $100 \% \times \alpha /2$ and $100 \% \times (1 - \alpha /2)$ percentiles of the parameters estimated by bootstrapping. We can use this method to estimate the  bootstrap interval for $R^2$.
+
 ## Meta-scoring methods for PRS
 
 It has been shown recently that the PRS models generated from multiple traits using a meta-scoring method potentially outperforms PRS models generated from a single trait.
