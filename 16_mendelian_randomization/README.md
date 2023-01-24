@@ -6,15 +6,35 @@
 
 ## Assumptions
 !!! danger "Key Assumptions"
-	
-	- **The relevance assumption**: instrumental variables are associated with the exposure.
-	- **The independence assumption**: there are no confounders of the instrumental variables and the outcome.
-	- **The exclusion restriction assumption**: instrumental variables do not affect the outcome except through the exposure.
-
+    |Assumptions|Description|
+    |-|-|
+    |**Relevance**|Instrumental variables are strongly associated with the exposure.|
+    |**Exclusion restriction**|Instrumental variables do not affect the outcome except through the exposure.|
+    |**Independence**| There are no confounders of the instrumental variables and the outcome.|
+    |Monotonicity| Variants affect the exposure in the same direction for all individuals|
+    |No assortative mating|Assortative mating might cause bias in MR|
 
 ## Two-stage least-squares (2SLS)
 
+$$ X = \mu_1 + \beta_{IV} IV + \epsilon_1  $$
+
+$$ Y = \mu_2 + \beta_{2SLS} \hat{X} + \epsilon_2 $$
+
 ## Two-sample MR
+
+$$ \hat{\beta_{X,Y}} = {{hat{\beta_{IV,Y}}\over{{hat{\beta_{IV,X}}} $$
+
+## Practice
+
+### R package TwoSampleMR
+
+
+```
+library(remotes)
+install_github("MRCIEU/TwoSampleMR")
+```
+
+Reuqires R>= 4.1
 
 ### Loading package
 ```
