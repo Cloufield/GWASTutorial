@@ -4,6 +4,8 @@ for dir in 16_mendelian_randomization 11_meta_analysis 15_winners_curse 71_pytho
 do
 cp ${dir}/README.md docs/${dir}.md
 done
+cp 17_colocalization/Co-localization.md docs/17_colocalization.md
+cp 18_Conditioning_analysis/Conditioning_analysis.md  docs/18_Conditioning_analysis.md
 cp 05_PCA/plot_PCA.ipynb docs/plot_PCA.ipynb
 cp 06_Association_tests/Visualization.ipynb docs/Visualization.ipynb
 cp README.md docs/index.md
