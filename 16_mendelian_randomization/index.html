@@ -1255,6 +1255,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#single-snp" class="md-nav__link">
+    Single SNP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#forest-plot" class="md-nav__link">
     Forest plot
   </a>
@@ -1586,6 +1593,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#single-snp" class="md-nav__link">
+    Single SNP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#forest-plot" class="md-nav__link">
     Forest plot
   </a>
@@ -1713,7 +1727,7 @@ exposures &lt;- format_data(exposures,  type = &quot;exposure&quot;,  snps = NUL
 <h3 id="outcome">outcome</h3>
 <div class="highlight"><pre><span></span><code>outcome &lt;-fread(&quot;./outcome_sumstats.txt&quot;)
 
-outcome &lt;- format_data(outcome,  type = &quot;exposure&quot;,  snps = NULL,  header = TRUE,
+outcome &lt;- format_data(outcome,  type = &quot;outcome&quot;,  snps = NULL,  header = TRUE,
                   snp_col = &quot;SNP&quot;,beta_col = &quot;beta&quot;,se_col = &quot;se&quot;,effect_allele_col = &quot;effect_allele&quot;,
                   other_allele_col = &quot;non_effect_allele&quot;, pval_col = &quot;p.value&quot;,phenotype_col=&quot;phenotype&quot;,
                   samplesize_col = &quot;N&quot;,chr_col = &quot;chr&quot;,pos_col = &quot;pos&quot;)
@@ -1733,10 +1747,29 @@ outcome &lt;- format_data(outcome,  type = &quot;exposure&quot;,  snps = NULL,  
 <div class="highlight"><pre><span></span><code>mr_pleiotropy_test(harmonized_data)
 </code></pre></div>
 <h3 id="single-snp-mr-and-leave-one-out-mr">Single SNP MR and leave-one-out MR</h3>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
 <h2 id="visualization">Visualization</h2>
 <h3 id="scatter-plot">Scatter plot</h3>
+<div class="highlight"><pre><span></span><code>res &lt;- mr(harmonized_data)
+p1 &lt;- mr_scatter_plot(res, harmonized_data)
+p1[[1]]
+</code></pre></div>
+<h3 id="single-snp">Single SNP</h3>
+<div class="highlight"><pre><span></span><code>res_single &lt;- mr_singlesnp(harmonized_data)
+p2 &lt;- mr_forest_plot(res_single)
+p2[[1]]
+</code></pre></div>
 <h3 id="forest-plot">Forest plot</h3>
+<div class="highlight"><pre><span></span><code>res_loo &lt;- mr_leaveoneout(harmonized_data)
+p3 &lt;- mr_leaveoneout_plot(res_loo)
+p3[[1]]
+</code></pre></div>
 <h3 id="funnel-plot">Funnel plot</h3>
+<div class="highlight"><pre><span></span><code>res_single &lt;- mr_singlesnp(harmonized_data)
+p4 &lt;- mr_funnel_plot(res_single)
+p4[[1]]
+</code></pre></div>
 <h2 id="bi-directional-mr">Bi-directional MR</h2>
 <h2 id="reference">Reference</h2>
 <ul>
