@@ -1543,6 +1543,11 @@
 <h1 id="mendelian-randomization">Mendelian randomization</h1>
 <h2 id="mendelian-randomization-introduction">Mendelian randomization introduction</h2>
 <h2 id="instrumental-variables-iv">Instrumental Variables (IV)</h2>
+<p>Instrumental variable (IV) can be defined as a variable  that is correlated with the exposure X and uncorrelated with the error $ \epsilon $ in the following regression: </p>
+<div class="arithmatex">\[ Y = X\beta + \epsilon \]</div>
+<ul>
+<li><span class="arithmatex">\(Y\)</span> is the outcome</li>
+</ul>
 <h2 id="assumptions">Assumptions</h2>
 <div class="admonition danger">
 <p class="admonition-title">Key Assumptions</p>
@@ -1581,7 +1586,7 @@
 <div class="arithmatex">\[ X = \mu_1 + \beta_{IV} IV + \epsilon_1  \]</div>
 <div class="arithmatex">\[ Y = \mu_2 + \beta_{2SLS} \hat{X} + \epsilon_2 \]</div>
 <h2 id="two-sample-mr">Two-sample MR</h2>
-<div class="arithmatex">\[ \hat{\beta_{X,Y}} = {{hat{\beta_{IV,Y}}\over{{hat{\beta_{IV,X}}} \]</div>
+<div class="arithmatex">\[ \hat{\beta_{X,Y}} = {{\hat{\beta_{IV,Y}}}\over{\hat{\beta_{IV,X}}}} \]</div>
 <h2 id="practice">Practice</h2>
 <h3 id="r-package-twosamplemr">R package TwoSampleMR</h3>
 <div class="highlight"><pre><span></span><code>library(remotes)
