@@ -4,6 +4,12 @@
 
 ## Instrumental Variables (IV)
 
+Instrumental variable (IV) can be defined as a variable  that is correlated with the exposure X and uncorrelated with the error $ \epsilon $ in the following regression: 
+
+$$ Y = X\beta + \epsilon $$
+
+- $Y$ is the outcome
+
 ## Assumptions
 !!! danger "Key Assumptions"
     |Assumptions|Description|
@@ -22,7 +28,7 @@ $$ Y = \mu_2 + \beta_{2SLS} \hat{X} + \epsilon_2 $$
 
 ## Two-sample MR
 
-$$ \hat{\beta_{X,Y}} = {{hat{\beta_{IV,Y}}\over{{hat{\beta_{IV,X}}} $$
+$$ \hat{\beta_{X,Y}} = {{\hat{\beta_{IV,Y}}}\over{\hat{\beta_{IV,X}}}} $$
 
 ## Practice
 
