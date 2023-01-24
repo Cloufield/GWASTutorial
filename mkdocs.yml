@@ -38,6 +38,9 @@ nav:
           - "Python Resources" : 71_python_resources.md
           - "Anaconda" : 80_anaconda.md
           - "Jupyter notebook" : 81_jupyter_notebook.md
+       - "R" : 
+          - "R Basics": 75_R_basics.md
+          - "R Resources" : 76_R_resources.md
        - "Other tools" :
           - "Git and github" : 83_git_and_github.md
     - "Pre-GWAS" :
