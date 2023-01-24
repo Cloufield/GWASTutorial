@@ -1070,8 +1070,22 @@
     Two-sample MR
   </a>
   
-    <nav class="md-nav" aria-label="Two-sample MR">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice" class="md-nav__link">
+    Practice
+  </a>
+  
+    <nav class="md-nav" aria-label="Practice">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#r-package-twosamplemr" class="md-nav__link">
+    R package TwoSampleMR
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#loading-package" class="md-nav__link">
@@ -1359,8 +1373,22 @@
     Two-sample MR
   </a>
   
-    <nav class="md-nav" aria-label="Two-sample MR">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice" class="md-nav__link">
+    Practice
+  </a>
+  
+    <nav class="md-nav" aria-label="Practice">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#r-package-twosamplemr" class="md-nav__link">
+    R package TwoSampleMR
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#loading-package" class="md-nav__link">
@@ -1518,14 +1546,48 @@
 <h2 id="assumptions">Assumptions</h2>
 <div class="admonition danger">
 <p class="admonition-title">Key Assumptions</p>
-<ul>
-<li><strong>The relevance assumption</strong>: instrumental variables are associated with the exposure.</li>
-<li><strong>The independence assumption</strong>: there are no confounders of the instrumental variables and the outcome.</li>
-<li><strong>The exclusion restriction assumption</strong>: instrumental variables do not affect the outcome except through the exposure.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Assumptions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Relevance</strong></td>
+<td>Instrumental variables are strongly associated with the exposure.</td>
+</tr>
+<tr>
+<td><strong>Exclusion restriction</strong></td>
+<td>Instrumental variables do not affect the outcome except through the exposure.</td>
+</tr>
+<tr>
+<td><strong>Independence</strong></td>
+<td>There are no confounders of the instrumental variables and the outcome.</td>
+</tr>
+<tr>
+<td>Monotonicity</td>
+<td>Variants affect the exposure in the same direction for all individuals</td>
+</tr>
+<tr>
+<td>No assortative mating</td>
+<td>Assortative mating might cause bias in MR</td>
+</tr>
+</tbody>
+</table>
 </div>
 <h2 id="two-stage-least-squares-2sls">Two-stage least-squares (2SLS)</h2>
+<div class="arithmatex">\[ X = \mu_1 + \beta_{IV} IV + \epsilon_1  \]</div>
+<div class="arithmatex">\[ Y = \mu_2 + \beta_{2SLS} \hat{X} + \epsilon_2 \]</div>
 <h2 id="two-sample-mr">Two-sample MR</h2>
+<div class="arithmatex">\[ \hat{\beta_{X,Y}} = {{hat{\beta_{IV,Y}}\over{{hat{\beta_{IV,X}}} \]</div>
+<h2 id="practice">Practice</h2>
+<h3 id="r-package-twosamplemr">R package TwoSampleMR</h3>
+<div class="highlight"><pre><span></span><code>library(remotes)
+install_github(&quot;MRCIEU/TwoSampleMR&quot;)
+</code></pre></div>
+<p>Reuqires R&gt;= 4.1</p>
 <h3 id="loading-package">Loading package</h3>
 <div class="highlight"><pre><span></span><code>library(TwoSampleMR)
 </code></pre></div>
