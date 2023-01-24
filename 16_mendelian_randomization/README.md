@@ -83,7 +83,7 @@ clumped_exposures <- clump_data(exposures,  clump_r2 = 0.01,  pop = "EAS")
 ```
 outcome <-fread("./outcome_sumstats.txt")
 
-outcome <- format_data(outcome,  type = "exposure",  snps = NULL,  header = TRUE,
+outcome <- format_data(outcome,  type = "outcome",  snps = NULL,  header = TRUE,
                   snp_col = "SNP",beta_col = "beta",se_col = "se",effect_allele_col = "effect_allele",
                   other_allele_col = "non_effect_allele", pval_col = "p.value",phenotype_col="phenotype",
                   samplesize_col = "N",chr_col = "chr",pos_col = "pos")
@@ -119,15 +119,42 @@ mr_pleiotropy_test(harmonized_data)
 ```
 
 ### Single SNP MR and leave-one-out MR
+```
 
+```
 
 ## Visualization
 
 ### Scatter plot
 
+```
+res <- mr(harmonized_data)
+p1 <- mr_scatter_plot(res, harmonized_data)
+p1[[1]]
+```
+
+### Single SNP 
+```
+res_single <- mr_singlesnp(harmonized_data)
+p2 <- mr_forest_plot(res_single)
+p2[[1]]
+```
+
 ### Forest plot
 
+```
+res_loo <- mr_leaveoneout(harmonized_data)
+p3 <- mr_leaveoneout_plot(res_loo)
+p3[[1]]
+```
+
 ### Funnel plot
+
+```
+res_single <- mr_singlesnp(harmonized_data)
+p4 <- mr_funnel_plot(res_single)
+p4[[1]]
+```
 
 ## Bi-directional MR
 
