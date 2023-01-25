@@ -158,6 +158,16 @@ Lest check the first lines of the output:
 1	135163	1:135163:C:T	C	T	T	ADD	503	0.676666	0.242611	-1.60989	0.107422	.
 ```
 
+Usually other options are added to enhance the sumstats:
+
+* --keep xxx/kiso2021/for_plink2/unrelated.sample.id	# Because the standard linear regression does not account for the relatedness, the kinship-pruned samples in last steps are suggested.
+* --mach-r2-filter 0.7 2.0	# It allows to use only the variants passed an (MaCH)Rsq filter. NOTE: when pgen file is used, the upper boundary should be 2.
+* --glm **cols=+a1freq,+machr2** firth-fallback **omit-ref**	# The `cols=` requests the following columns in the sumstats: here are allele1 frequency and (MaCH)Rsq, `firth-fallback` will test the common variants without firth correction, which could improve the speed, `omit-ref` will force the ALT==A1==effect allele, otherwise the minor allele would be tested (see the above result, which ALT may not equal A1).
+* --covar-variance-standardize	# To normalize the covariates which may at a huge scale, like AGE**AGE.
+* --covar-name AGE SEX PC1-PC20	# Instead of setting the index of columns, directly specify the column name.
+
+
+
 ## Genomic control 
 
 Genomic control (GC) is a basic method for controlling for the confunding factors like population stratification.
@@ -173,6 +183,8 @@ Then, we can used the genomic control factor to correct observed Chi suqare stat
 $$ 
 \chi^{2}_{corrected} = {\chi^{2}_{observed} \over \lambda_{GC}} 
 $$
+
+Genomic inflation is based on the idea that most of the variants are not associated, thus no deviation between the observed and expected Chi square distribution. However, if the trait is highly polygenic, this assumtion may be violeted.
 
 Reference: Devlin, B., & Roeder, K. (1999). Genomic control for association studies. Biometrics, 55(4), 997-1004.
 
@@ -247,7 +259,9 @@ Data we need from sumstats to create mahattan plot:
 
 ### Regional plot
 
-Mahanttan plot is very useful to check the overview of our sumstats. But is we want to check a specific genomic loci, we need a plot with finer resolution. This kind of plot is called regional plot. It is basically the Mahanttan plot of only a small region on genome, with points colored by its LD r2 with the lead variant in this region. 
+Mahanttan plot is very useful to check the overview of our sumstats. But is we want to check a specific genomic loci, we need a plot with finer resolution. This kind of plot is called regional plot. It is basically the Mahanttan plot of only a small region on genome, with points colored by its LD r2 with the lead variant in this region.
+
+Such a plot is especially helpful to understand the signal and loci, e.g., LD structure, independent signals, genes.
 
 The regional plot for the loci of 2:55574452:G:C. 
 
