@@ -289,6 +289,9 @@ p1 <- mr_scatter_plot(res, harmonized_data)
 p1[[1]]
 ```
 
+![image](https://user-images.githubusercontent.com/40289485/214480227-396f816f-e1e6-49a1-9f3e-2e43a9d03abf.png)
+
+
 ### Single SNP 
 ```
 res_single <- mr_singlesnp(harmonized_data)
@@ -296,13 +299,18 @@ p2 <- mr_forest_plot(res_single)
 p2[[1]]
 ```
 
-### Forest plot
+![image](https://user-images.githubusercontent.com/40289485/214480253-6de266cf-2737-4d4f-b7fb-e889fea3ea4e.png)
+
+### Leave-one-out
 
 ```
 res_loo <- mr_leaveoneout(harmonized_data)
 p3 <- mr_leaveoneout_plot(res_loo)
 p3[[1]]
 ```
+
+![image](https://user-images.githubusercontent.com/40289485/214480292-5bc318a3-1d74-4f09-8b07-b8a3cc62d2e0.png)
+
 
 ### Funnel plot
 
@@ -311,6 +319,9 @@ res_single <- mr_singlesnp(harmonized_data)
 p4 <- mr_funnel_plot(res_single)
 p4[[1]]
 ```
+
+![image](https://user-images.githubusercontent.com/40289485/214480351-86288d44-52fb-416a-bdf4-2a4f4804e744.png)
+
 
 ## MR Steiger directionality test
 
