@@ -267,6 +267,8 @@ Reference: [https://www.well.ox.ac.uk/~gav/bgen_format/](https://www.well.ox.ac.
 ### pgen,psam,pvar
 Reference: [https://www.cog-genomics.org/plink/2.0/formats#pgen](https://www.cog-genomics.org/plink/2.0/formats#pgen)
 
+NOTE: `pgen` only saved the dosage for each individual (a scalar ranged from 0 to 2). It could not been converted back to the genotype probability (a vector of length 3) or allele probability (a matrix of dimension 2 x 2) saved in `bgen`.
+
 ## Summary
 
 <img width="746" alt="Screen Shot 2022-03-28 at 16 45 56" src="https://user-images.githubusercontent.com/40289485/160350838-63da9633-2c74-49dd-889e-03392735463f.png">
