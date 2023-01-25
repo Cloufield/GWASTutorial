@@ -11,7 +11,7 @@
 
 ## Introduction
 
-LDSC is one of the most commonly used command line tool to estimate hertability, genetic correlation and cell/tissue type specificity from GWAS summary statistics. 
+LDSC is one of the most commonly used command line tool to estimate inflation, hertability, genetic correlation and cell/tissue type specificity from GWAS summary statistics. 
 
 ### LD: Linkage disequilibrium
 
@@ -27,7 +27,7 @@ $$
 
 ### LD score regression
 
-Key idea: A variant will have higher test statistics if it is in LD with causal variant, and the elevation is proportional to the LD ( $r^2$ ) with the causal variant.  
+Key idea: A variant will have higher test statistics if it is in LD with causal variant, and the elevation is proportional to the correlation ( $r^2$ ) with the causal variant.  
 
 $$
 E[\chi^2|l_j] = {{Nh^2l_j}\over{M}} + Na + 1
@@ -47,7 +47,7 @@ For more details of LD score regression, please refer to :
 LDSC can be downloaded from github (GPL-3.0 license):
 [https://github.com/bulik/ldsc](https://github.com/bulik/ldsc)
 
-For ldsc, we need anaconda to create virtual environment. 
+For ldsc, we need anaconda to create virtual environment (for python2). 
 If you haven't installed Anaconda, please check [how to install anaconda](https://cloufield.github.io/GWASTutorial/80_anaconda/).
 
 ```Bash
@@ -115,6 +115,9 @@ You can then decompress the files and organize them.
 ## Munge sumstats
 
 Before the analysis, we need to format and clean the raw sumstats.
+
+!!! note
+Rsid is used here. If the sumstats only contained id like CHR:POS:REF:ALT, annotate it first.
 
 ```Bash
 snplist=~/tools/ldsc/resource/w_hm3.snplist
