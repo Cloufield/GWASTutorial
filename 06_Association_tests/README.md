@@ -184,7 +184,7 @@ $$
 \chi^{2}_{corrected} = {\chi^{2}_{observed} \over \lambda_{GC}} 
 $$
 
-Genomic inflation is based on the idea that most of the variants are not associated, thus no deviation between the observed and expected Chi square distribution. However, if the trait is highly polygenic, this assumtion may be violeted.
+Genomic inflation is based on the idea that most of the variants are not associated, thus no deviation between the observed and expected Chi square distribution, except the spikes at the end. However, if the trait is highly polygenic, this assumtion may be violeted.
 
 Reference: Devlin, B., & Roeder, K. (1999). Genomic control for association studies. Biometrics, 55(4), 997-1004.
 
