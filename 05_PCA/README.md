@@ -134,7 +134,7 @@ plink2 \
 	--extract ${outPrefix}.prune.in \
 	--freq counts \
 	--threads ${threadnum} \
-        --pca approx allele-wts \
+        --pca approx allele-wts 10 \
         --out ${outPrefix}
 
 # Projection (related and unrelated samples)
@@ -147,9 +147,13 @@ plink2 \
         --out ${outPrefix}_projected
 ```
 
-After step 3, the 'allele-wts' modifier requests an additional one-line-per-allele .eigenvec.allele file with PCs expressed as allele weights instead of sample weights.
+After step 3, the 'allele-wts 10' modifier requests an additional one-line-per-allele .eigenvec.allele file with first 10 PCs expressed as allele weights instead of sample weights.
 
 We will get the `plink_results.eigenvec.allele` file, which will be used to project onto all samples along with a allele count `plink_results.acount` file.
+
+In the projection, `score ${outPrefix}.eigenvec.allele 2 5` sets the `ID` and `A1`, `score-col-nums 6-15` sets the first 10 PCs to be projected.
+
+Please check https://www.cog-genomics.org/plink/2.0/score#pca_project for more details on projection.
 
 ```
 $head plink_results.eigenvec.allele
@@ -177,7 +181,7 @@ $head plink_results.eigenvec.allele
 1	1:233473:C:G	C	G	156	1004
 
 ```
-Please check https://www.cog-genomics.org/plink/2.0/score#pca_project for more details on projection.
+
 Eventually, we will get the PCA results for all samples.
 
 ```
