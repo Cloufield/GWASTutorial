@@ -66,7 +66,8 @@ nav:
        - "Polygenic Risk Score" : 10_PRS.md
        - "Mendelian randomization": 16_mendelian_randomization.md
        - "Conditional analysis" : 18_Conditioning_analysis.md
-       - "Colocalization" : 17_colocalization.md
+       - "Colocalization" : 
+          - "Colocalization" : 17_colocalization.md
     - Others :
        - "Recommended reading" : 90_Recommended_Reading.md
        - "Assignment - 1KG PCA" : 95_Assignment.md
