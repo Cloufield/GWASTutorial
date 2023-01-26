@@ -22,8 +22,8 @@ So before association analysis, we will learn how to run PCA analysis first.
 ### Exclude SNPs in high-LD or HLA regions
 For PCA, we first exclude SNPs in high-LD or HLA regions from the genotype data. 
 
-Note: the reason why we want to exclude such high-LD or HLA regions is described in:
-- Price, A. L., Weale, M. E., Patterson, N., Myers, S. R., Need, A. C., Shianna, K. V., Ge, D., Rotter, J. I., Torres, E., Taylor, K. D., Goldstein, D. B., & Reich, D. (2008). Long-range LD can confound genome scans in admixed populations. American journal of human genetics, 83(1), 132–139. https://doi.org/10.1016/j.ajhg.2008.06.005 
+!!! note "The reason why we want to exclude such high-LD or HLA regions"
+    - Price, A. L., Weale, M. E., Patterson, N., Myers, S. R., Need, A. C., Shianna, K. V., Ge, D., Rotter, J. I., Torres, E., Taylor, K. D., Goldstein, D. B., & Reich, D. (2008). Long-range LD can confound genome scans in admixed populations. American journal of human genetics, 83(1), 132–139. https://doi.org/10.1016/j.ajhg.2008.06.005 
 
 
 ### Download BED-like files for high-LD or HLA regions
