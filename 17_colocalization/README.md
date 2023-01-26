@@ -37,9 +37,9 @@ $H_3$: both traits are associated, but with different causal variants
 
 $H_4$: both traits are associated and share a single causal variant
 
-PP.H4.abf is the posterior probability that two traits share a same causal variant.
+`PP.H4.abf` is the posterior probability that two traits share a same causal variant.
 
-Then based on the coloc signal, a 95% credible set could be constructed (as a same causal variant does not necessarily mean a specific variant).
+Then based on `H4` is true, a 95% credible set could be constructed (as a shared causal variant does not necessarily mean a specific variant).
 ```R
 o <- order(my.res$results$SNP.PP.H4,decreasing=TRUE)
 cs <- cumsum(my.res$results$SNP.PP.H4[o])
@@ -56,8 +56,9 @@ References:
 When the single-causal variant assumption is violeted, several ways could be used to relieve it.
 
 1. Assuming multiple causal variants in [SuSiE-Coloc pipeline](https://chr1swallace.github.io/coloc/articles/a06_SuSiE.html).
+   In this pipeline, putative causal variants are fine-mapped, then each signal is passed to the coloc engine.
    
 2. Conditioning analysis using [GCTA-COJO-Coloc pipeline](https://www.biorxiv.org/content/10.1101/2022.08.08.503158v1.abstract).
-   
+   In this pipeline, signals are segregated, then passed to the coloc engine.
 
 
