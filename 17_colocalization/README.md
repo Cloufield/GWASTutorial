@@ -8,8 +8,7 @@ Co-localization
 and tests for whether they share the same causal variant.
 
 !!! note
-
-Actually such a assumption is different from fine-mapping. In fine-mapping, the aim is to find the putative causal variants, which is determined at birth. In colocalization, the aim is to find the "signal overlapping" to support the causality inference, like eQTL --> A trait. It is possible that the causal variants are different in two traits.
+    Actually such a assumption is different from fine-mapping. In fine-mapping, the aim is to find the putative causal variants, which is determined at birth. In colocalization, the aim is to find the "signal overlapping" to support the causality inference, like eQTL --> A trait. It is possible that the causal variants are different in two traits.
 
 Datasets used:
 
