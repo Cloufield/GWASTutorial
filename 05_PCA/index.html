@@ -1431,8 +1431,12 @@ Price, A., Patterson, N., Plenge, R. et al. Principal components analysis correc
 <h2 id="preparation">Preparation</h2>
 <h3 id="exclude-snps-in-high-ld-or-hla-regions">Exclude SNPs in high-LD or HLA regions</h3>
 <p>For PCA, we first exclude SNPs in high-LD or HLA regions from the genotype data. </p>
-<p>Note: the reason why we want to exclude such high-LD or HLA regions is described in:
-- Price, A. L., Weale, M. E., Patterson, N., Myers, S. R., Need, A. C., Shianna, K. V., Ge, D., Rotter, J. I., Torres, E., Taylor, K. D., Goldstein, D. B., &amp; Reich, D. (2008). Long-range LD can confound genome scans in admixed populations. American journal of human genetics, 83(1), 132–139. https://doi.org/10.1016/j.ajhg.2008.06.005 </p>
+<div class="admonition note">
+<p class="admonition-title">The reason why we want to exclude such high-LD or HLA regions</p>
+<ul>
+<li>Price, A. L., Weale, M. E., Patterson, N., Myers, S. R., Need, A. C., Shianna, K. V., Ge, D., Rotter, J. I., Torres, E., Taylor, K. D., Goldstein, D. B., &amp; Reich, D. (2008). Long-range LD can confound genome scans in admixed populations. American journal of human genetics, 83(1), 132–139. https://doi.org/10.1016/j.ajhg.2008.06.005 </li>
+</ul>
+</div>
 <h3 id="download-bed-like-files-for-high-ld-or-hla-regions">Download BED-like files for high-LD or HLA regions</h3>
 <p>You can simply copy the list of high-LD or HLA regions in Genome build version(.bed format) to a text file <code>high-ld.txt</code>. For details, please check https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD).</p>
 <div class="highlight"><pre><span></span><code>$cat high-ld-hg19.txt 
