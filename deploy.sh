@@ -4,7 +4,10 @@ for dir in 17_colocalization 18_Conditioning_analysis 76_R_resources 75_R_basics
 do
 cp ${dir}/README.md docs/${dir}.md
 done
-#cp "17_colocalization/coloc(R)-tutorial.ipynb" "docs/coloc(R)-tutorial.ipynb" 
+
+cp 10_PRS/prs_evaluation.ipynb docs/prs_evaluation.ipynb
+cp 12_fine_mapping/finemapping_susie.ipynb docs/finemapping_susie.ipynb
+cp 16_mendelian_randomization/TwoSampleMR.ipynb docs/TwoSampleMR.ipynb
 cp 05_PCA/plot_PCA.ipynb docs/plot_PCA.ipynb
 cp 06_Association_tests/Visualization.ipynb docs/Visualization.ipynb
 cp README.md docs/index.md
