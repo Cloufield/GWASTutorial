@@ -1,11 +1,11 @@
 # Principle conponent analysis (PCA)
-PCA is by far the most commonly used dimension reduction approach used in population genetics which could identify the diffenrence in ancestry among the sample individuals.
-For GWAS we also need to include top PCs to adjust for the population stratification.
+
+PCA aims to find the orthogonal directions of maximum variance and project the data onto a new subspace with equal or fewer dimensions than the original one. Simply speaking, GRM (genetic relationship matrix; covariance matrix) is first estimated and then PCA is applied to this matrix to generate eigenvectors and eigenvalues. Finally, the $k$ eigenvectors with the largest eigenvalues are used to transform the genotypes to a new feature subspace.
+
+PCA is by far the most commonly used dimension reduction approach used in population genetics which could identify the diffenrence in ancestry among the sample individuals. The population outliers could be excluded from the main cluster. For GWAS we also need to include top PCs to adjust for the population stratification.
 
 Please read the following paper on how we apply PCA to genetic data:
 Price, A., Patterson, N., Plenge, R. et al. Principal components analysis corrects for stratification in genome-wide association studies. Nat Genet 38, 904–909 (2006). https://doi.org/10.1038/ng1847 https://www.nature.com/articles/ng1847
-
-Simply speaking, GRM (genetic relationship matrix) is first estimated and then PCA is applied to this matrix to generate PCs for each individual.
 
 So before association analysis, we will learn how to run PCA analysis first.
 
@@ -147,11 +147,11 @@ plink2 \
         --out ${outPrefix}_projected
 ```
 
-After step 3, the 'allele-wts 10' modifier requests an additional one-line-per-allele .eigenvec.allele file with first 10 PCs expressed as allele weights instead of sample weights.
+After step 3, the `allele-wts 10` modifier requests an additional one-line-per-allele `.eigenvec.allele` file with first `10 PCs` expressed as allele weights instead of sample weights.
 
 We will get the `plink_results.eigenvec.allele` file, which will be used to project onto all samples along with a allele count `plink_results.acount` file.
 
-In the projection, `score ${outPrefix}.eigenvec.allele 2 5` sets the `ID` and `A1`, `score-col-nums 6-15` sets the first 10 PCs to be projected.
+In the projection, `score ${outPrefix}.eigenvec.allele 2 5` sets the `ID` (2nd column) and `A1` (5th column), `score-col-nums 6-15` sets the first 10 PCs to be projected.
 
 Please check https://www.cog-genomics.org/plink/2.0/score#pca_project for more details on projection.
 
