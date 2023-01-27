@@ -11,8 +11,6 @@ In this section, we will introduce the most basic commands which enable you to h
 !!! note "For **Windows** users"
     You can simply insall WSL to get a linux environment. Please check [here](https://cloufield.github.io/GWASTutorial/82_windows_linux_subsystem/) for how to install WSL.
 
-
-
 ## Table of Contents
 
 - [Linux introduction](#linux-system-introduction)
@@ -59,7 +57,8 @@ Reference: https://en.wikipedia.org/wiki/Linux
 - Graphical User Interface (GUI): allows users to interact with computers through graphical icons 
 - Character User Interface (CUI): allows users to interact with computers through command lines
 
-![image](https://user-images.githubusercontent.com/40289485/210223188-5b8fd313-5081-40ee-9c4c-d60c1115de8d.png)
+!!! example "GUI and CUI"
+    ![image](https://user-images.githubusercontent.com/40289485/210223188-5b8fd313-5081-40ee-9c4c-d60c1115de8d.png)
 
 ### A general comparison between CUI and GUI
 
@@ -158,7 +157,7 @@ This command prints the absolute path.
 |**Absolute path**|path starting from root (the orange path)|`/home/User3/GWASTutorial/02_Linux_basics/README.md`|
 |**Relative path**|ath starting from the current directory (the blue path)|`./GWASTutorial/02_Linux_basics/README.md`|
 
-!!! tip
+!!! tip "Tip: use `readlink` to obtain the absolute path of a file"
     To get the absolute path of a file, you can use `readlink -f [filename]`.
     
     ```
@@ -196,7 +195,8 @@ drwxr-xr-x  17 he  staff   544B Dec 23 12:13 ..
 -rw-r--r--   1 he  staff    31M Dec 23 14:07 sumstats.txt
 ```
 
-!!! tip
+!!! tip "Tip: use `tree` to visualize the structure of a directory"
+    
     You can use `tree` command to visualize the structure of a directory.
     
     ```
@@ -323,16 +323,17 @@ ls -lha
 lrwxr-xr-x  1 he  staff    27B Aug 30 11:30 plink -> /home/he/tools/plink/plink
 ```
 
-### Archive and Compression
+### Archiving and Compression
 
 Results for millions of variants are usually very large, sometimes >10GB, or consists of multiple files. 
 
 To save space and make it easier to transfer, we need to archive and compress these files.
 
-- **Archive**: combine multiple files in a single file.
-- **Compress**: make the file size smaller without losing any infomation by convertying the file to binary forms.
+- **Archiving**: combine multiple files in a single file.
+- **Compression**: make the file size smaller without losing any infomation by convertying the file to binary forms.
 
-![image](https://user-images.githubusercontent.com/40289485/160957877-9148b34a-93e8-40cc-9acc-7c5bb9435b71.png)
+!!! example "Archiving and Compression"
+    ![image](https://user-images.githubusercontent.com/40289485/160957877-9148b34a-93e8-40cc-9acc-7c5bb9435b71.png)
 
 Commoly used commands for archiving and compression:
 
@@ -465,8 +466,8 @@ This means that `sumstats.txt` has 445933 lines, 5797129 words, and 32790417 cha
 ```Bash
 vim README.md
 ```
-
-![image](https://user-images.githubusercontent.com/40289485/210224368-f29809e0-d72f-4a82-95ce-abfce59fa7d7.png)
+!!! example "Vim - text editor"
+    ![image](https://user-images.githubusercontent.com/40289485/210224368-f29809e0-d72f-4a82-95ce-abfce59fa7d7.png)
 
 Press `i` to enter insert mode, and then you can edit the file as you want.
 When finished, just pres `Esc` to escape insert mode, and then press `shift + :` , then `wq` to quit and also save the file.
@@ -623,7 +624,6 @@ Advanced commands:
 
 - `awk` : [https://cloufield.github.io/GWASTutorial/60_awk/](https://cloufield.github.io/GWASTutorial/60_awk/)
 - `sed` : [https://cloufield.github.io/GWASTutorial/61_sed/](https://cloufield.github.io/GWASTutorial/61_sed/)
-
 
 ## Git and Github
 
