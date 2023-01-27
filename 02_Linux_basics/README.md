@@ -150,7 +150,8 @@ $ pwd
 ```
 This command prints the absolute path.
 
-![image](https://user-images.githubusercontent.com/40289485/210223719-890626d0-a502-4399-8ed3-e016338b51cb.png)
+!!! example "An example of Linux file system and file paths"
+    ![image](https://user-images.githubusercontent.com/40289485/210223719-890626d0-a502-4399-8ed3-e016338b51cb.png)
 
 |Type|Description|Example|
 |-|-|-|
