@@ -50,7 +50,7 @@ References:
 >[Coloc: a package for colocalisation analyses](https://chr1swallace.github.io/coloc/articles/a01_intro.html)
 
 
-# Coloc assuming multiple causal variants
+# Coloc assuming multiple causal variants or multiple signals
 
 When the single-causal variant assumption is violeted, several ways could be used to relieve it.
 
@@ -60,4 +60,11 @@ When the single-causal variant assumption is violeted, several ways could be use
 2. Conditioning analysis using [GCTA-COJO-Coloc pipeline](https://www.biorxiv.org/content/10.1101/2022.08.08.503158v1.abstract).
    In this pipeline, signals are segregated, then passed to the coloc engine.
 
+
+# Other pipelines
+
+Many other strategies and pipelines are available for colocalization and prioritize the variants/genes/traits. For example:
+* [HyPrColoc](https://www.nature.com/articles/s41467-020-20885-8)
+* [OpenTargets](https://www.nature.com/articles/s41588-021-00945-5)
+* 
 
