@@ -38,15 +38,15 @@ echo "pT0.3 0 0.3" >> range_list
 echo "pT0.4 0 0.4" >> range_list
 echo "pT0.5 0 0.5" >> range_list
 
-plink \
+plink2 \
     --bfile ${plinkFile} \
-    --score ${sumStats} 1 2 3 header \
+    --score ${sumStats} 1 2 3 header cols+=denom,scoresums\
     --q-score-range range_list SNP.pvalue \
     --extract 1kgeas.valid.snp \
     --out 1kgeas
 
 # First, we need to perform prunning
-plink \
+plink2 \
     --bfile ${plinkFile} \
     --indep-pairwise 200 50 0.25 \
     --out 1kgeas

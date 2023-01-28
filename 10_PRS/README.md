@@ -153,9 +153,9 @@ The options we use:
     and then calculate the scores using the p-value ranges:
     
     ```
-    plink \
+    plink2 \
     --bfile ${plinkFile} \
-    --score ${sumStats} 1 2 3 header \
+    --score ${sumStats} 1 2 3 header cols+=denom,scoresums \
     --q-score-range range_list SNP.pvalue \
     --extract 1kgeas.valid.snp \
     --out 1kgeas
@@ -163,13 +163,29 @@ The options we use:
 
     You will get the following files:
     ```
-    1kgeas.pT0.001.profile
-    1kgeas.pT0.05.profile
-    1kgeas.pT0.1.profile
-    1kgeas.pT0.2.profile
-    1kgeas.pT0.3.profile
-    1kgeas.pT0.4.profile
-    1kgeas.pT0.5.profile
+    1kgeas.pT0.001.sscore
+    1kgeas.pT0.05.sscore
+    1kgeas.pT0.1.sscore
+    1kgeas.pT0.2.sscore
+    1kgeas.pT0.3.sscore
+    1kgeas.pT0.4.sscore
+    1kgeas.pT0.5.sscore
+    ```
+
+    Take a look at the files:
+    
+    ```
+    head 1kgeas.pT0.1.sscore
+        #FID    IID     ALLELE_CT       NAMED_ALLELE_DOSAGE_SUM SCORE1_AVG      SCORE1_SUM
+    0       HG00403 43228   14559   -6.10599e-05    -2.6395
+    0       HG00404 43228   14700   2.53449e-05     1.09561
+    0       HG00406 43228   14702   1.08678e-05     0.469793
+    0       HG00407 43228   14668   -0.000132824    -5.74171
+    0       HG00409 43228   14713   1.0477e-05      0.452899
+    0       HG00410 43228   14749   -0.000140386    -6.0686
+    0       HG00419 43228   14687   -5.25762e-05    -2.27277
+    0       HG00421 43228   14755   -8.9396e-05     -3.86441
+    0       HG00422 43228   14733   3.94514e-06     0.170541
     ```
 
 ## Meta-scoring methods for PRS
