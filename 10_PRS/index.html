@@ -1696,8 +1696,69 @@ check only the header and the first "clump" of SNPs.</p>
 <p><img width="800" alt="image" src="https://user-images.githubusercontent.com/40289485/213737219-efe31848-ab72-4962-9045-2203a0733728.png"></p>
 <p>Reference: Lambert, S. A., Gil, L., Jupp, S., Ritchie, S. C., Xu, Y., Buniello, A., ... &amp; Inouye, M. (2021). The Polygenic Score Catalog as an open database for reproducibility and systematic evaluation. Nature Genetics, 53(4), 420-425.</p>
 <h2 id="calculate-prs-using-plink">Calculate PRS using PLINK</h2>
-<div class="highlight"><pre><span></span><code>plink --score
+<div class="highlight"><pre><span></span><code>plink --score &lt;score_filename&gt; [variant ID col.] [allele col.] [score col.] [&#39;header&#39;]
 </code></pre></div>
+<ul>
+<li><code>&lt;score_filename&gt;</code>: the score file</li>
+<li><code>[variant ID col.]</code>: the column number for variant IDs</li>
+<li><code>[allele col.]</code>: the column number for effect alleles</li>
+<li><code>[score col.]</code>: the column number for betas</li>
+<li><code>['header']</code>: skip the first header line</li>
+</ul>
+<p>Please check <a href="https://www.cog-genomics.org/plink/1.9/score">here</a> for detailed documents on <code>plink --score</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code># genotype data
+plinkFile=../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020
+# summary statistics for scoring
+sumStats=./t2d_plink_reduced.txt
+# SNPs after clumpping
+awk &#39;NR!=1{print $3}&#39; 1kgeas.clumped &gt;  1kgeas.valid.snp
+
+plink \
+    --bfile ${plinkFile} \
+    --score ${sumStats} 1 2 3 header \
+    --extract 1kgeas.valid.snp \
+    --out 1kgeas
+</code></pre></div>
+</div>
+<p>For thresholding using P values,  we can create a range file and a p-value file.</p>
+<p>The options we use:
+<div class="highlight"><pre><span></span><code>--q-score-range &lt;range file&gt; &lt;data file&gt; [variant ID col.] [data col.] [&#39;header&#39;]
+</code></pre></div></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code># SNP - P value file for thresholding
+awk &#39;{print $1,$4}&#39; ${sumStats} &gt; SNP.pvalue
+
+# create a range file with 3 columns: range label, p-value lower bound, p-value upper bound
+head range_list
+pT0.001 0 0.001
+pT0.05 0 0.05
+pT0.1 0 0.1
+pT0.2 0 0.2
+pT0.3 0 0.3
+pT0.4 0 0.4
+pT0.5 0 0.5
+</code></pre></div>
+<p>and then calculate the scores using the p-value ranges:</p>
+<div class="highlight"><pre><span></span><code>plink \
+--bfile ${plinkFile} \
+--score ${sumStats} 1 2 3 header \
+--q-score-range range_list SNP.pvalue \
+--extract 1kgeas.valid.snp \
+--out 1kgeas
+</code></pre></div>
+<p>You will get the following files:
+<div class="highlight"><pre><span></span><code>1kgeas.pT0.001.profile
+1kgeas.pT0.05.profile
+1kgeas.pT0.1.profile
+1kgeas.pT0.2.profile
+1kgeas.pT0.3.profile
+1kgeas.pT0.4.profile
+1kgeas.pT0.5.profile
+</code></pre></div></p>
+</div>
 <h2 id="meta-scoring-methods-for-prs">Meta-scoring methods for PRS</h2>
 <p>It has been shown recently that the PRS models generated from multiple traits using a meta-scoring method potentially outperforms PRS models generated from a single trait.
 Inouye et al. first used this approach for generating a PRS model for CAD from multiple PRS models. </p>
