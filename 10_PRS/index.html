@@ -1216,54 +1216,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#regressions-for-evaluation-of-prs" class="md-nav__link">
-    Regressions for evaluation of PRS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#evaluation" class="md-nav__link">
-    Evaluation
-  </a>
-  
-    <nav class="md-nav" aria-label="Evaluation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#roc-aic-auc-and-c-index" class="md-nav__link">
-    ROC, AIC, AUC, and C-index
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#r2-and-pseudo-r2" class="md-nav__link">
-    R2 and pseudo-R2
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#r2-on-the-liability-scale-lee" class="md-nav__link">
-    R2 on the liability scale (Lee)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bootstrap-confidence-interval-methods-for-r2" class="md-nav__link">
-    Bootstrap Confidence Interval Methods for R2
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#meta-scoring-methods-for-prs" class="md-nav__link">
     Meta-scoring methods for PRS
   </a>
@@ -1281,6 +1233,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRS_evaluation/" class="md-nav__link">
+        PRS evaluation
+      </a>
     </li>
   
 
@@ -1594,54 +1560,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#regressions-for-evaluation-of-prs" class="md-nav__link">
-    Regressions for evaluation of PRS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#evaluation" class="md-nav__link">
-    Evaluation
-  </a>
-  
-    <nav class="md-nav" aria-label="Evaluation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#roc-aic-auc-and-c-index" class="md-nav__link">
-    ROC, AIC, AUC, and C-index
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#r2-and-pseudo-r2" class="md-nav__link">
-    R2 and pseudo-R2
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#r2-on-the-liability-scale-lee" class="md-nav__link">
-    R2 on the liability scale (Lee)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bootstrap-confidence-interval-methods-for-r2" class="md-nav__link">
-    Bootstrap Confidence Interval Methods for R2
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#meta-scoring-methods-for-prs" class="md-nav__link">
     Meta-scoring methods for PRS
   </a>
@@ -1683,7 +1601,7 @@
 <ol>
 <li><strong>Developing PRS model</strong> using base data</li>
 <li>Performing <strong>validation</strong> to obtain best-fit parameters</li>
-<li><strong>Testing</strong> in an independent population</li>
+<li><strong>Evaluation</strong> in an independent population</li>
 </ol>
 <h2 id="methods">Methods</h2>
 <table>
@@ -1780,118 +1698,6 @@ check only the header and the first "clump" of SNPs.</p>
 <h2 id="calculate-prs-using-plink">Calculate PRS using PLINK</h2>
 <div class="highlight"><pre><span></span><code>plink --score
 </code></pre></div>
-<h2 id="regressions-for-evaluation-of-prs">Regressions for evaluation of PRS</h2>
-<div class="arithmatex">\[Phenotype \sim PRS_{phenotype} + Covariates\]</div>
-<div class="arithmatex">\[logit(P) \sim PRS_{phenotype} + Covariates\]</div>
-<p>Covariates usually include sex, age and top 10 PCs.</p>
-<h2 id="evaluation">Evaluation</h2>
-<h3 id="roc-aic-auc-and-c-index">ROC, AIC, AUC, and C-index</h3>
-<p>ROC : receiver operating characteristic curve shows the performance of a classification model at all thresholds.</p>
-<ul>
-<li>"y" : True Positive rate. <span class="arithmatex">\({{TP}\over{TP + FN}}\)</span></li>
-<li>"x" : False Positive rate. <span class="arithmatex">\({{FP}\over{FP + TN}}\)</span></li>
-</ul>
-<p>AUC: area under the ROC Curve, a common measure for the performance of a classification model.</p>
-<div class="admonition info">
-<p class="admonition-title">AIC</p>
-<p>Akaike Information Criterion (AIC): a measure for comparison of different statistical models.</p>
-<div class="arithmatex">\[AIC = 2k - 2ln(\hat{L})\]</div>
-<ul>
-<li><span class="arithmatex">\(k\)</span> : number of estimated parameters</li>
-<li><span class="arithmatex">\(\hat{L}\)</span> : maximum value of the model likelihood function</li>
-</ul>
-</div>
-<div class="admonition info">
-<p class="admonition-title">C-index</p>
-<p><strong>C-index</strong>: concordance index, which is a metric to evaluate the predictive performance of models and is commonly used in survival analysis. It is a measure of the probability that the predicted scores <span class="arithmatex">\(M_i\)</span> and $ M_j$ by a model of two randomly selected individuals <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span>, have the reverse relative order as their true event times <span class="arithmatex">\(T_i, T_j\)</span>.</p>
-<div class="arithmatex">\[ C = Pr (M_j &gt; M_i | T_j &lt; T_i) \]</div>
-<p>Interpretation: Individuals with higher scores should have higher risk of the disease events</p>
-<p>Reference: Harrell, F. E., Califf, R. M., Pryor, D. B., Lee, K. L., &amp; Rosati, R. A. (1982). Evaluating the yield of medical tests. Jama, 247(18), 2543-2546.
-Reference: Longato, E., Vettoretti, M., &amp; Di Camillo, B. (2020). A practical perspective on the concordance index for the evaluation and selection of prognostic time-to-event models. Journal of Biomedical Informatics, 108, 103496.</p>
-</div>
-<h3 id="r2-and-pseudo-r2">R2 and pseudo-R2</h3>
-<div class="admonition info">
-<p class="admonition-title">Coefficient of determination</p>
-<p><span class="arithmatex">\(R^2\)</span> : coefficient of determination, which measures the amount of variance explained by the regression model.</p>
-<p>In linear regression:</p>
-<div class="arithmatex">\[ R^2 = 1 - {{RSS}\over{TSS}} \]</div>
-<ul>
-<li><span class="arithmatex">\(RSS\)</span> : sum of squares of residuals</li>
-<li><span class="arithmatex">\(TSS\)</span> : total sum of squares</li>
-</ul>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Pseudo-R2 (Nagelkerke)</p>
-<p>In logistic regression, </p>
-<p>One of the most commonly used Pseudo-R2 for PRS analysis is Nagelkerke's <span class="arithmatex">\(R^2\)</span></p>
-<div class="arithmatex">\[R^2_{Nagelkerke} = {{1 - ({{L_0}\over{L_M}})^{2/n}}\over{1 - L_0^{2/n}}}\]</div>
-<ul>
-<li><span class="arithmatex">\(L_0\)</span> : Likelihood of the null model</li>
-<li><span class="arithmatex">\(L_full\)</span> : Likelihood of the full model</li>
-</ul>
-</div>
-<h3 id="r2-on-the-liability-scale-lee">R2 on the liability scale (Lee)</h3>
-<div class="admonition info">
-<p class="admonition-title">R2 on liability scale</p>
-<p><span class="arithmatex">\(R^2\)</span> on the liability scale for ascertained case-control studies</p>
-<div class="arithmatex">\[ R^2_l = {{R_o^2 C}\over{1 + R_o^2 \theta C }} \]</div>
-<ul>
-<li><span class="arithmatex">\(C\)</span> and <span class="arithmatex">\(\theta\)</span> are correcting factors for ascertainment</li>
-<li><span class="arithmatex">\(C = {{K(1-K)}\over{Z^2}}{{K(1-K)}\over{P(1-P)}}\)</span> </li>
-<li>
-<p><span class="arithmatex">\(\theta = m {{P-K}\over{1-K}} ( m{{P-K}\over{1-K}} - t)\)</span>  </p>
-</li>
-<li>
-<p><span class="arithmatex">\(K\)</span> : population disease prevalence</p>
-</li>
-<li><span class="arithmatex">\(P\)</span> : sample disease prevalence</li>
-<li><span class="arithmatex">\(t\)</span>: the threshold on the normal distribution truncating the proportion of disease prevalence K</li>
-<li><span class="arithmatex">\(m = z / K\)</span> : mean liability for cases</li>
-<li><span class="arithmatex">\(z = f(t)\)</span> : the value of probability density function of standard normal distribution at t </li>
-</ul>
-<p>Reference : Lee, S. H., Goddard, M. E., Wray, N. R., &amp; Visscher, P. M. (2012). A better coefficient of determination for genetic profile analysis. Genetic epidemiology, 36(3), 214-224.</p>
-<p>The authors also provided R codes for calculation (removed unrelated codes for simplicity)</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># R2 on the liability scale using the transformation</span>
-
-<span class="n">nt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">sample</span>
-<span class="n">ncase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">cases</span>
-<span class="n">ncont</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">controls</span>
-<span class="n">thd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">threshold</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">normal</span><span class="w"> </span><span class="n">distribution</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">truncates</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">proportion</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">disease</span><span class="w"> </span><span class="n">prevalence</span>
-<span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">population</span><span class="w"> </span><span class="n">prevalence</span>
-<span class="n">P</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">proportion</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">cases</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">case</span><span class="o">-</span><span class="n">control</span><span class="w"> </span><span class="n">samples</span>
-
-<span class="c1">#threshold</span>
-<span class="n">thd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="nf">qnorm</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
-
-<span class="c1">#value of standard normal density function at thd</span>
-<span class="n">zv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">dnorm</span><span class="p">(</span><span class="n">thd</span><span class="p">)</span><span class="w"> </span>
-
-<span class="c1">#mean liability for case</span>
-<span class="n">mv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zv</span><span class="o">/</span><span class="n">K</span><span class="w"> </span>
-
-<span class="c1">#linear model</span>
-<span class="n">lmv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">y</span>∼<span class="n">g</span><span class="p">)</span><span class="w"> </span>
-
-<span class="c1">#R20 : R2 on the observed scale</span>
-<span class="n">R2O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="n">lmv</span><span class="o">$</span><span class="n">fitted.values</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ncase</span><span class="o">/</span><span class="n">nt</span><span class="o">*</span><span class="n">ncont</span><span class="o">/</span><span class="n">nt</span><span class="p">)</span>
-
-<span class="c1"># calculate correction factors</span>
-<span class="n">theta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mv</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">mv</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">-</span><span class="n">thd</span><span class="p">)</span><span class="w"> </span>
-<span class="n">cv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="n">zv</span><span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">P</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">P</span><span class="p">))</span><span class="w"> </span>
-
-<span class="c1"># convert to R2 on the liability scale</span>
-<span class="n">R2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R2O</span><span class="o">*</span><span class="n">cv</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">R2O</span><span class="o">*</span><span class="n">theta</span><span class="o">*</span><span class="n">cv</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<h2 id="bootstrap-confidence-interval-methods-for-r2">Bootstrap Confidence Interval Methods for R2</h2>
-<p>Bootstrap is a commonly used resampling method to generate a sampling distribution from the known sample dataset. It repeatedly takes random samples with replacement from the known sample dataset.</p>
-<p>Steps:</p>
-<ul>
-<li>Sample with replacement B times. (B should be large.)</li>
-<li>Estimate the parameter using the bootstrp sample. </li>
-<li>Obtain the approximate distribution of the parameter.</li>
-</ul>
-<p>The percentile bootstrap interval is then defined as the interval between <span class="arithmatex">\(100 \times \alpha /2\)</span> and <span class="arithmatex">\(100 \times (1 - \alpha /2)\)</span> percentiles of the parameters estimated by bootstrapping. We can use this method to estimate the  bootstrap interval for <span class="arithmatex">\(R^2\)</span>.</p>
 <h2 id="meta-scoring-methods-for-prs">Meta-scoring methods for PRS</h2>
 <p>It has been shown recently that the PRS models generated from multiple traits using a meta-scoring method potentially outperforms PRS models generated from a single trait.
 Inouye et al. first used this approach for generating a PRS model for CAD from multiple PRS models. </p>
@@ -1918,11 +1724,8 @@ Inouye et al. first used this approach for generating a PRS model for CAD from m
 <li><strong>PGS Catalog</strong> : Lambert, Samuel A., et al. "The Polygenic Score Catalog as an open database for reproducibility and systematic evaluation." Nature Genetics 53.4 (2021): 420-425.</li>
 <li><strong>PRS-CS</strong> : Ge, Tian, et al. "Polygenic prediction via Bayesian regression and continuous shrinkage priors." Nature communications 10.1 (2019): 1-10.</li>
 <li><strong>PRS Tutorial</strong>: Choi, Shing Wan, Timothy Shin-Heng Mak, and Paul F. O’Reilly. "Tutorial: a guide to performing polygenic risk score analyses." Nature protocols 15.9 (2020): 2759-2772.</li>
-<li><strong>R2 on liability scale</strong>: Lee, S. H., Goddard, M. E., Wray, N. R., &amp; Visscher, P. M. (2012). A better coefficient of determination for genetic profile analysis. Genetic epidemiology, 36(3), 214-224.</li>
 <li><strong>metaGRS 1</strong>: Inouye, M., Abraham, G., Nelson, C. P., Wood, A. M., Sweeting, M. J., Dudbridge, F., ... &amp; UK Biobank CardioMetabolic Consortium CHD Working Group. (2018). Genomic risk prediction of coronary artery disease in 480,000 adults: implications for primary prevention. Journal of the American College of Cardiology, 72(16), 1883-1893.</li>
 <li><strong>metaGRS 2</strong>: Abraham, G., Malik, R., Yonova-Doing, E., Salim, A., Wang, T., Danesh, J., ... &amp; Dichgans, M. (2019). Genomic risk score offers predictive performance comparable to clinical risk factors for ischaemic stroke. Nature communications, 10(1), 1-10.</li>
-<li><strong>C-index 1</strong>: Harrell, F. E., Califf, R. M., Pryor, D. B., Lee, K. L., &amp; Rosati, R. A. (1982). Evaluating the yield of medical tests. Jama, 247(18), 2543-2546.</li>
-<li><strong>C-index 2</strong>: Longato, E., Vettoretti, M., &amp; Di Camillo, B. (2020). A practical perspective on the concordance index for the evaluation and selection of prognostic time-to-event models. Journal of Biomedical Informatics, 108, 103496.</li>
 </ul>
 
               
@@ -1958,13 +1761,13 @@ Inouye et al. first used this approach for generating a PRS model for CAD from m
       
       
         
-        <a href="../prs_evaluation/" class="md-footer__link md-footer__link--next" aria-label="Next: PRS Tutorial" rel="next">
+        <a href="../PRS_evaluation/" class="md-footer__link md-footer__link--next" aria-label="Next: PRS evaluation" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              PRS Tutorial
+              PRS evaluation
             </div>
           </div>
           <div class="md-footer__button md-icon">

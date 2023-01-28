@@ -15,7 +15,7 @@
     
     
       
-        <title>Fine-mapping Basics - GWASTutorial</title>
+        <title>PRS evaluation - GWASTutorial</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fine-mapping" class="md-skip">
+        <a href="#polygenic-risk-scores-evaluation" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Fine-mapping Basics
+              PRS evaluation
             
           </span>
         </div>
@@ -1021,14 +1021,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7" type="checkbox" id="__nav_5_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7" data-md-state="indeterminate" type="checkbox" id="__nav_5_7" checked>
       
       
       
@@ -1049,80 +1047,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Fine-mapping Basics
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../12_fine_mapping/" class="md-nav__link">
         Fine-mapping Basics
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    Introduction
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#file-preparation" class="md-nav__link">
-    File Preparation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ld-matrix-calculation" class="md-nav__link">
-    LD Matrix Calculation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fine-mapping-with-summary-statistics-using-susier" class="md-nav__link">
-    Fine-mapping with summary statistics using SusieR
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
-    Reference
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1167,12 +1096,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_9" data-md-state="indeterminate" type="checkbox" id="__nav_5_9" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_9" type="checkbox" id="__nav_5_9" checked>
       
       
       
@@ -1207,11 +1138,100 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../PRS_evaluation/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          PRS evaluation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         PRS evaluation
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#regressions-for-evaluation-of-prs" class="md-nav__link">
+    Regressions for evaluation of PRS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluation" class="md-nav__link">
+    Evaluation
+  </a>
+  
+    <nav class="md-nav" aria-label="Evaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#roc-aic-auc-and-c-index" class="md-nav__link">
+    ROC, AIC, AUC, and C-index
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r2-and-pseudo-r2" class="md-nav__link">
+    R2 and pseudo-R2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r2-on-the-liability-scale-lee" class="md-nav__link">
+    R2 on the liability scale (Lee)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bootstrap-confidence-interval-methods-for-r2" class="md-nav__link">
+    Bootstrap Confidence Interval Methods for R2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1469,29 +1489,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    Introduction
+  <a href="#regressions-for-evaluation-of-prs" class="md-nav__link">
+    Regressions for evaluation of PRS
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#file-preparation" class="md-nav__link">
-    File Preparation
+  <a href="#evaluation" class="md-nav__link">
+    Evaluation
   </a>
+  
+    <nav class="md-nav" aria-label="Evaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#roc-aic-auc-and-c-index" class="md-nav__link">
+    ROC, AIC, AUC, and C-index
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r2-and-pseudo-r2" class="md-nav__link">
+    R2 and pseudo-R2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r2-on-the-liability-scale-lee" class="md-nav__link">
+    R2 on the liability scale (Lee)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ld-matrix-calculation" class="md-nav__link">
-    LD Matrix Calculation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fine-mapping-with-summary-statistics-using-susier" class="md-nav__link">
-    Fine-mapping with summary statistics using SusieR
+  <a href="#bootstrap-confidence-interval-methods-for-r2" class="md-nav__link">
+    Bootstrap Confidence Interval Methods for R2
   </a>
   
 </li>
@@ -1517,172 +1557,124 @@
                 
 
 
-<h1 id="fine-mapping">Fine-mapping</h1>
-<h2 id="introduction">Introduction</h2>
-<p>Fine-mapping : Fine-mapping aims to identfiy the causal variant(s) within a locus for a disease, given the evidence of the significant association of the locus (or genomic region) in GWAS of a disease. </p>
-<p>Fine-mapping using individual data is usually performed by fitting the multiple linear regression model:</p>
-<div class="arithmatex">\[y = Xb + e\]</div>
+<h1 id="polygenic-risk-scores-evaluation">Polygenic risk scores evaluation</h1>
+<h2 id="regressions-for-evaluation-of-prs">Regressions for evaluation of PRS</h2>
+<div class="arithmatex">\[Phenotype \sim PRS_{phenotype} + Covariates\]</div>
+<div class="arithmatex">\[logit(P) \sim PRS_{phenotype} + Covariates\]</div>
+<p>Covariates usually include sex, age and top 10 PCs.</p>
+<h2 id="evaluation">Evaluation</h2>
+<h3 id="roc-aic-auc-and-c-index">ROC, AIC, AUC, and C-index</h3>
+<p>ROC : receiver operating characteristic curve shows the performance of a classification model at all thresholds.</p>
 <ul>
-<li><span class="arithmatex">\(b = (b_1, …, b_J)^T\)</span> is a vector of genetic effects of variants.</li>
+<li>"y" : True Positive rate. <span class="arithmatex">\({{TP}\over{TP + FN}}\)</span></li>
+<li>"x" : False Positive rate. <span class="arithmatex">\({{FP}\over{FP + TN}}\)</span></li>
 </ul>
-<p>The aim of fine-mapping is to estimate the PIP (posterior inclusion probability), which indicates the evidence for SNP j having a non-zero effect (namely, causal) :</p>
-<div class="arithmatex">\[ PIP_j:=Pr(b_j\neq0|X,y) \]</div>
-<div class="admonition note">
-<p class="admonition-title">Commonly used tools for fine-mapping</p>
+<p>AUC: area under the ROC Curve, a common measure for the performance of a classification model.</p>
+<div class="admonition info">
+<p class="admonition-title">AIC</p>
+<p>Akaike Information Criterion (AIC): a measure for comparison of different statistical models.</p>
+<div class="arithmatex">\[AIC = 2k - 2ln(\hat{L})\]</div>
 <ul>
-<li>FINEMAP</li>
-<li>SUSIE / SUSIE-RSS</li>
-<li>CAVIAR</li>
-<li>PAINTOR</li>
+<li><span class="arithmatex">\(k\)</span> : number of estimated parameters</li>
+<li><span class="arithmatex">\(\hat{L}\)</span> : maximum value of the model likelihood function</li>
 </ul>
-<p>You can check <a href="https://cloufield.github.io/CTGCatalog/Tools_Fine_mapping_README/">here</a> for more information.</p>
 </div>
-<p>In this tutorial, we will introduce SuSiE as an example. SuSiE stands for Sum of Single Effects” model.</p>
-<p>The key idea behind SuSiE is : </p>
-<div class="arithmatex">\[b = \sum_{l=1}^L b_l \]</div>
-<p>where each vector <span class="arithmatex">\(b_l = (b_{l1}, …, b_{lJ})^T\)</span> is a so-called <strong>single effect</strong> vector (a vector with only one non-zero element).  L is the upper bound of number of causal variants. And this model could be fitted using <strong>Iterative Bayesian Stepwise Selection (IBSS)</strong>.</p>
-<p>For fine-mapping with summary statistics using Susie (SuSiE-RSS), IBSS was modified (IBSS-ss) to take sufficient statistics (which can be computed from other combinations of summary statistics) as input. SuSie will then approximate the sufficient statistics to run fine-mapping. </p>
-<div class="admonition quote">
-<p class="admonition-title">Quote</p>
-<p>For details of SuSiE and SuSiE-RSS, please check : Zou, Y., Carbonetto, P., Wang, G., &amp; Stephens, M. (2022). Fine-mapping from summary data with the “Sum of Single Effects” model. PLoS Genetics, 18(7), e1010299. <a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1010299">Link</a></p>
+<div class="admonition info">
+<p class="admonition-title">C-index</p>
+<p><strong>C-index</strong>: concordance index, which is a metric to evaluate the predictive performance of models and is commonly used in survival analysis. It is a measure of the probability that the predicted scores <span class="arithmatex">\(M_i\)</span> and $ M_j$ by a model of two randomly selected individuals <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span>, have the reverse relative order as their true event times <span class="arithmatex">\(T_i, T_j\)</span>.</p>
+<div class="arithmatex">\[ C = Pr (M_j &gt; M_i | T_j &lt; T_i) \]</div>
+<p>Interpretation: Individuals with higher scores should have higher risk of the disease events</p>
+<p>Reference: Harrell, F. E., Califf, R. M., Pryor, D. B., Lee, K. L., &amp; Rosati, R. A. (1982). Evaluating the yield of medical tests. Jama, 247(18), 2543-2546.
+Reference: Longato, E., Vettoretti, M., &amp; Di Camillo, B. (2020). A practical perspective on the concordance index for the evaluation and selection of prognostic time-to-event models. Journal of Biomedical Informatics, 108, 103496.</p>
 </div>
-<h2 id="file-preparation">File Preparation</h2>
+<h3 id="r2-and-pseudo-r2">R2 and pseudo-R2</h3>
+<div class="admonition info">
+<p class="admonition-title">Coefficient of determination</p>
+<p><span class="arithmatex">\(R^2\)</span> : coefficient of determination, which measures the amount of variance explained by the regression model.</p>
+<p>In linear regression:</p>
+<div class="arithmatex">\[ R^2 = 1 - {{RSS}\over{TSS}} \]</div>
 <ul>
-<li>Sumstats for the loci</li>
-<li>SNP list for calculating LD matrix</li>
+<li><span class="arithmatex">\(RSS\)</span> : sum of squares of residuals</li>
+<li><span class="arithmatex">\(TSS\)</span> : total sum of squares</li>
 </ul>
-<div class="admonition example">
-<p class="admonition-title">Using python to check novel loci and extract the files.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">gwaslab</span> <span class="k">as</span> <span class="nn">gl</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">sumstats</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">Sumstats</span><span class="p">(</span><span class="s2">&quot;../06_Association_tests/1kgeas.B1.glm.firth&quot;</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;plink2&quot;</span><span class="p">)</span>
-<span class="o">...</span>
-
-<span class="n">sumstats</span><span class="o">.</span><span class="n">basic_check</span><span class="p">()</span>
-<span class="o">...</span>
-
-<span class="n">sumstats</span><span class="o">.</span><span class="n">get_lead</span><span class="p">()</span>
-
-<span class="n">Fri</span> <span class="n">Jan</span> <span class="mi">13</span> <span class="mi">23</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">43</span> <span class="mi">2023</span> <span class="n">Start</span> <span class="n">to</span> <span class="n">extract</span> <span class="n">lead</span> <span class="n">variants</span><span class="o">...</span>
-<span class="n">Fri</span> <span class="n">Jan</span> <span class="mi">13</span> <span class="mi">23</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">43</span> <span class="mi">2023</span>  <span class="o">-</span><span class="n">Processing</span> <span class="mi">1122285</span> <span class="n">variants</span><span class="o">...</span>
-<span class="n">Fri</span> <span class="n">Jan</span> <span class="mi">13</span> <span class="mi">23</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">43</span> <span class="mi">2023</span>  <span class="o">-</span><span class="n">Significance</span> <span class="n">threshold</span> <span class="p">:</span> <span class="mf">5e-08</span>
-<span class="n">Fri</span> <span class="n">Jan</span> <span class="mi">13</span> <span class="mi">23</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">43</span> <span class="mi">2023</span>  <span class="o">-</span><span class="n">Sliding</span> <span class="n">window</span> <span class="n">size</span><span class="p">:</span> <span class="mi">500</span>  <span class="n">kb</span>
-<span class="n">Fri</span> <span class="n">Jan</span> <span class="mi">13</span> <span class="mi">23</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">44</span> <span class="mi">2023</span>  <span class="o">-</span><span class="n">Found</span> <span class="mi">59</span> <span class="n">significant</span> <span class="n">variants</span> <span class="ow">in</span> <span class="n">total</span><span class="o">...</span>
-<span class="n">Fri</span> <span class="n">Jan</span> <span class="mi">13</span> <span class="mi">23</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">44</span> <span class="mi">2023</span>  <span class="o">-</span><span class="n">Identified</span> <span class="mi">3</span> <span class="n">lead</span> <span class="n">variants</span><span class="err">!</span>
-<span class="n">Fri</span> <span class="n">Jan</span> <span class="mi">13</span> <span class="mi">23</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">44</span> <span class="mi">2023</span> <span class="n">Finished</span> <span class="n">extracting</span> <span class="n">lead</span> <span class="n">variants</span> <span class="n">successfully</span><span class="err">!</span>
-
-<span class="n">SNPID</span> <span class="n">CHR</span> <span class="n">POS</span> <span class="n">EA</span>  <span class="n">NEA</span> <span class="n">SE</span>  <span class="n">Z</span> <span class="n">P</span> <span class="n">OR</span>  <span class="n">N</span> <span class="n">STATUS</span>
-<span class="mi">110723</span>  <span class="mi">2</span><span class="p">:</span><span class="mi">55574452</span><span class="p">:</span><span class="n">G</span><span class="p">:</span><span class="n">C</span>  <span class="mi">2</span> <span class="mi">55574452</span>  <span class="n">C</span> <span class="n">G</span> <span class="mf">0.160948</span>  <span class="o">-</span><span class="mf">5.98392</span>  <span class="mf">2.178320e-09</span>  <span class="mf">0.381707</span>  <span class="mi">503</span> <span class="mi">9960099</span>
-<span class="mi">424615</span>  <span class="mi">6</span><span class="p">:</span><span class="mi">29919659</span><span class="p">:</span><span class="n">T</span><span class="p">:</span><span class="n">C</span>  <span class="mi">6</span> <span class="mi">29919659</span>  <span class="n">T</span> <span class="n">C</span> <span class="mf">0.155457</span>  <span class="o">-</span><span class="mf">5.89341</span>  <span class="mf">3.782970e-09</span>  <span class="mf">0.400048</span>  <span class="mi">503</span> <span class="mi">9960099</span>
-<span class="mi">635128</span>  <span class="mi">9</span><span class="p">:</span><span class="mi">36660672</span><span class="p">:</span><span class="n">A</span><span class="p">:</span><span class="n">G</span>  <span class="mi">9</span> <span class="mi">36660672</span>  <span class="n">G</span> <span class="n">A</span> <span class="mf">0.160275</span>  <span class="mf">5.63422</span> <span class="mf">1.758540e-08</span>  <span class="mf">2.467060</span>  <span class="mi">503</span> <span class="mi">9960099</span>
-</code></pre></div>
-We will perform fine-mapping for the first significant loci whose lead variant is <code>2:55574452:G:C</code>.</p>
-<div class="highlight"><pre><span></span><code># filter in the variants in the this locus.
-
-locus = sumstats.filter_value(&#39;CHR==2 &amp; POS&gt;55074452 &amp; POS&lt;56074452&#39;)
-locus.fill_data(to_fill=[&quot;BETA&quot;])
-locus.harmonize(basic_check=False, ref_seq=&quot;/Users/he/mydata/Reference/Genome/human_g1k_v37.fasta&quot;)
-locus.data.to_csv(&quot;sig_locus.tsv&quot;,sep=&quot;\t&quot;,index=None)
-locus.data[&quot;SNPID&quot;].to_csv(&quot;sig_locus.snplist&quot;,sep=&quot;\t&quot;,index=None,header=None)
-</code></pre></div>
-<p>check in terminal:
-<div class="highlight"><pre><span></span><code>head<span class="w"> </span>sig_locus.tsv
-SNPID<span class="w">   </span>CHR<span class="w">     </span>POS<span class="w">     </span>EA<span class="w">      </span>NEA<span class="w">     </span>BETA<span class="w">    </span>SE<span class="w">      </span>Z<span class="w">       </span>P<span class="w">       </span>OR<span class="w">      </span>N<span class="w">       </span>STATUS
-<span class="m">2</span>:54535206:C:T<span class="w">  </span><span class="m">2</span><span class="w">       </span><span class="m">54535206</span><span class="w">        </span>T<span class="w">       </span>C<span class="w">       </span><span class="m">0</span>.30028978<span class="w">      </span><span class="m">0</span>.142461<span class="w">        </span><span class="m">2</span>.10786<span class="w"> </span><span class="m">0</span>.0350429<span class="w">       </span><span class="m">1</span>.35025<span class="w"> </span><span class="m">503</span><span class="w">     </span><span class="m">9960099</span>
-<span class="m">2</span>:54536167:C:G<span class="w">  </span><span class="m">2</span><span class="w">       </span><span class="m">54536167</span><span class="w">        </span>G<span class="w">       </span>C<span class="w">       </span><span class="m">0</span>.14885099<span class="w">      </span><span class="m">0</span>.246871<span class="w">        </span><span class="m">0</span>.602952<span class="w">        </span><span class="m">0</span>.546541<span class="w">        </span><span class="m">1</span>.1605<span class="w">  </span><span class="m">503</span><span class="w">     </span><span class="m">9960099</span>
-<span class="m">2</span>:54539096:A:G<span class="w">  </span><span class="m">2</span><span class="w">       </span><span class="m">54539096</span><span class="w">        </span>G<span class="w">       </span>A<span class="w">       </span>-0.0038474211<span class="w">   </span><span class="m">0</span>.288489<span class="w">        </span>-0.0133355<span class="w">      </span><span class="m">0</span>.98936<span class="w"> </span><span class="m">0</span>.99616<span class="w"> </span><span class="m">503</span><span class="w">     </span><span class="m">9960099</span>
-<span class="m">2</span>:54540264:G:A<span class="w">  </span><span class="m">2</span><span class="w">       </span><span class="m">54540264</span><span class="w">        </span>A<span class="w">       </span>G<span class="w">       </span>-0.1536723<span class="w">      </span><span class="m">0</span>.165879<span class="w">        </span>-0.926409<span class="w">       </span><span class="m">0</span>.354234<span class="w">        </span><span class="m">0</span>.857553<span class="w">        </span><span class="m">503</span><span class="w">     </span><span class="m">9960099</span>
-<span class="m">2</span>:54540614:G:T<span class="w">  </span><span class="m">2</span><span class="w">       </span><span class="m">54540614</span><span class="w">        </span>T<span class="w">       </span>G<span class="w">       </span>-0.1536723<span class="w">      </span><span class="m">0</span>.165879<span class="w">        </span>-0.926409<span class="w">       </span><span class="m">0</span>.354234<span class="w">        </span><span class="m">0</span>.857553<span class="w">        </span><span class="m">503</span><span class="w">     </span><span class="m">9960099</span>
-<span class="m">2</span>:54540621:A:G<span class="w">  </span><span class="m">2</span><span class="w">       </span><span class="m">54540621</span><span class="w">        </span>G<span class="w">       </span>A<span class="w">       </span>-0.1536723<span class="w">      </span><span class="m">0</span>.165879<span class="w">        </span>-0.926409<span class="w">       </span><span class="m">0</span>.354234<span class="w">        </span><span class="m">0</span>.857553<span class="w">        </span><span class="m">503</span><span class="w">     </span><span class="m">9960099</span>
-<span class="m">2</span>:54540970:T:C<span class="w">  </span><span class="m">2</span><span class="w">       </span><span class="m">54540970</span><span class="w">        </span>C<span class="w">       </span>T<span class="w">       </span>-0.049506452<span class="w">    </span><span class="m">0</span>.149053<span class="w">        </span>-0.332144<span class="w">       </span><span class="m">0</span>.739781<span class="w">        </span><span class="m">0</span>.951699<span class="w">        </span><span class="m">503</span><span class="w">     </span><span class="m">9960099</span>
-<span class="m">2</span>:54544229:T:C<span class="w">  </span><span class="m">2</span><span class="w">       </span><span class="m">54544229</span><span class="w">        </span>C<span class="w">       </span>T<span class="w">       </span>-0.14338203<span class="w">     </span><span class="m">0</span>.151172<span class="w">        </span>-0.948468<span class="w">       </span><span class="m">0</span>.342891<span class="w">        </span><span class="m">0</span>.866423<span class="w">        </span><span class="m">503</span><span class="w">     </span><span class="m">9960099</span>
-<span class="m">2</span>:54545593:T:C<span class="w">  </span><span class="m">2</span><span class="w">       </span><span class="m">54545593</span><span class="w">        </span>C<span class="w">       </span>T<span class="w">       </span>-0.1536723<span class="w">      </span><span class="m">0</span>.165879<span class="w">        </span>-0.926409<span class="w">       </span><span class="m">0</span>.354234<span class="w">        </span><span class="m">0</span>.857553<span class="w">        </span><span class="m">503</span><span class="w">     </span><span class="m">9960099</span>
-
-head<span class="w">  </span>sig_locus.snplist
-<span class="m">2</span>:54535206:C:T
-<span class="m">2</span>:54536167:C:G
-<span class="m">2</span>:54539096:A:G
-<span class="m">2</span>:54540264:G:A
-<span class="m">2</span>:54540614:G:T
-<span class="m">2</span>:54540621:A:G
-<span class="m">2</span>:54540970:T:C
-<span class="m">2</span>:54544229:T:C
-<span class="m">2</span>:54545593:T:C
-<span class="m">2</span>:54546032:C:G
-</code></pre></div></p>
 </div>
-<h2 id="ld-matrix-calculation">LD Matrix Calculation</h2>
-<div class="admonition example calculate ld matrix using plink">
-<p class="admonition-title">Example</p>
-<p><div class="highlight"><pre><span></span><code>#!/bin/bash
+<div class="admonition info">
+<p class="admonition-title">Pseudo-R2 (Nagelkerke)</p>
+<p>In logistic regression, </p>
+<p>One of the most commonly used Pseudo-R2 for PRS analysis is Nagelkerke's <span class="arithmatex">\(R^2\)</span></p>
+<div class="arithmatex">\[R^2_{Nagelkerke} = {{1 - ({{L_0}\over{L_M}})^{2/n}}\over{1 - L_0^{2/n}}}\]</div>
+<ul>
+<li><span class="arithmatex">\(L_0\)</span> : Likelihood of the null model</li>
+<li><span class="arithmatex">\(L_full\)</span> : Likelihood of the full model</li>
+</ul>
+</div>
+<h3 id="r2-on-the-liability-scale-lee">R2 on the liability scale (Lee)</h3>
+<div class="admonition info">
+<p class="admonition-title">R2 on liability scale</p>
+<p><span class="arithmatex">\(R^2\)</span> on the liability scale for ascertained case-control studies</p>
+<div class="arithmatex">\[ R^2_l = {{R_o^2 C}\over{1 + R_o^2 \theta C }} \]</div>
+<ul>
+<li><span class="arithmatex">\(C\)</span> and <span class="arithmatex">\(\theta\)</span> are correcting factors for ascertainment</li>
+<li><span class="arithmatex">\(C = {{K(1-K)}\over{Z^2}}{{K(1-K)}\over{P(1-P)}}\)</span> </li>
+<li>
+<p><span class="arithmatex">\(\theta = m {{P-K}\over{1-K}} ( m{{P-K}\over{1-K}} - t)\)</span>  </p>
+</li>
+<li>
+<p><span class="arithmatex">\(K\)</span> : population disease prevalence</p>
+</li>
+<li><span class="arithmatex">\(P\)</span> : sample disease prevalence</li>
+<li><span class="arithmatex">\(t\)</span>: the threshold on the normal distribution truncating the proportion of disease prevalence K</li>
+<li><span class="arithmatex">\(m = z / K\)</span> : mean liability for cases</li>
+<li><span class="arithmatex">\(z = f(t)\)</span> : the value of probability density function of standard normal distribution at t </li>
+</ul>
+<p>Reference : Lee, S. H., Goddard, M. E., Wray, N. R., &amp; Visscher, P. M. (2012). A better coefficient of determination for genetic profile analysis. Genetic epidemiology, 36(3), 214-224.</p>
+<p>The authors also provided R codes for calculation (removed unrelated codes for simplicity)</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># R2 on the liability scale using the transformation</span>
 
-plinkFile=&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot;
+<span class="n">nt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">sample</span>
+<span class="n">ncase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">cases</span>
+<span class="n">ncont</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">controls</span>
+<span class="n">thd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">threshold</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">normal</span><span class="w"> </span><span class="n">distribution</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">truncates</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">proportion</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">disease</span><span class="w"> </span><span class="n">prevalence</span>
+<span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">population</span><span class="w"> </span><span class="n">prevalence</span>
+<span class="n">P</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">proportion</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">cases</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">case</span><span class="o">-</span><span class="n">control</span><span class="w"> </span><span class="n">samples</span>
 
-# LD r matrix
-plink \
-  --bfile ${plinkFile} \
-  --keep-allele-order \
-  --r square \
-  --extract sig_locus.snplist \
-  --out sig_locus_mt
+<span class="c1">#threshold</span>
+<span class="n">thd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="nf">qnorm</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
 
-# LD r2 matrix
-plink \
-  --bfile ${plinkFile} \
-  --keep-allele-order \
-  --r2 square \
-  --extract sig_locus.snplist \
-  --out sig_locus_mt_r2
+<span class="c1">#value of standard normal density function at thd</span>
+<span class="n">zv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">dnorm</span><span class="p">(</span><span class="n">thd</span><span class="p">)</span><span class="w"> </span>
+
+<span class="c1">#mean liability for case</span>
+<span class="n">mv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zv</span><span class="o">/</span><span class="n">K</span><span class="w"> </span>
+
+<span class="c1">#linear model</span>
+<span class="n">lmv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">y</span>∼<span class="n">g</span><span class="p">)</span><span class="w"> </span>
+
+<span class="c1">#R20 : R2 on the observed scale</span>
+<span class="n">R2O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="n">lmv</span><span class="o">$</span><span class="n">fitted.values</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ncase</span><span class="o">/</span><span class="n">nt</span><span class="o">*</span><span class="n">ncont</span><span class="o">/</span><span class="n">nt</span><span class="p">)</span>
+
+<span class="c1"># calculate correction factors</span>
+<span class="n">theta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mv</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">mv</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">-</span><span class="n">thd</span><span class="p">)</span><span class="w"> </span>
+<span class="n">cv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="n">zv</span><span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">K</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">P</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">P</span><span class="p">))</span><span class="w"> </span>
+
+<span class="c1"># convert to R2 on the liability scale</span>
+<span class="n">R2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R2O</span><span class="o">*</span><span class="n">cv</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">R2O</span><span class="o">*</span><span class="n">theta</span><span class="o">*</span><span class="n">cv</span><span class="p">)</span>
 </code></pre></div>
-Take a look at the LD matrix (first 5 rows and columns)</p>
-<p><div class="highlight"><pre><span></span><code>head -5 sig_locus_mt.ld | cut -f 1-5
-1       -0.145634       0.252616        -0.0876317      -0.0876317
--0.145634       1       -0.0916734      -0.159635       -0.159635
-0.252616        -0.0916734      1       0.452333        0.452333
--0.0876317      -0.159635       0.452333        1       1
--0.0876317      -0.159635       0.452333        1       1
-
-head -5 sig_locus_mt_r2.ld | cut -f 1-5
-1       0.0212091       0.0638148       0.00767931      0.00767931
-0.0212091       1       0.00840401      0.0254833       0.0254833
-0.0638148       0.00840401      1       0.204605        0.204605
-0.00767931      0.0254833       0.204605        1       1
-0.00767931      0.0254833       0.204605        1       1
-</code></pre></div>
-Heatmap of the LD matrix:</p>
-<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/212523500-6ec7cfb9-eda6-4ee0-9dce-463772821ca2.png" /></p>
 </div>
-<h2 id="fine-mapping-with-summary-statistics-using-susier">Fine-mapping with summary statistics using SusieR</h2>
-<div class="admonition note susie in r">
-<p class="admonition-title">Note</p>
-<div class="highlight"><pre><span></span><code>install.packages(&quot;susieR&quot;)
-
-# Fine-mapping with summary statistics
-fitted_rss2 = susie_rss(bhat = sumstats$betahat, shat = sumstats$sebetahat, R = R, n = n, L = 10)
-</code></pre></div>
-<p><code>R</code> : a <code>p</code> x <code>p</code> LD r matrix.
-<code>N</code> : Sample size.
-<code>bhat</code> : Alternative summary data giving the estimated effects (a vector of length <code>p</code>). This, together with shat, may be provided instead of z.
-<code>shat</code> : Alternative summary data giving the standard errors of the estimated effects (a vector of length <code>p</code>). This, together with bhat, may be provided instead of z.
-<code>L</code> : Maximum number of non-zero effects in the susie regression model. (defaul : <code>L = 10</code>)</p>
-</div>
-<div class="admonition quote susier tutorial">
-<p class="admonition-title">Quote</p>
-<p>For deatils, please check <a href="https://stephenslab.github.io/susieR/articles/finemapping_summary_statistics.html">SusieR tutorial - Fine-mapping with susieR using summary statistics</a></p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Use susieR in jupyter notebook (with Python):</p>
-<p>Please check : https://github.com/Cloufield/GWASTutorial/blob/main/12_fine_mapping/finemapping_susie.ipynb</p>
-</div>
-<p><img width="770" alt="image" src="https://user-images.githubusercontent.com/40289485/212628837-d20c0a59-9a6a-46a5-8c2d-a12fd427c794.png"></p>
+<h2 id="bootstrap-confidence-interval-methods-for-r2">Bootstrap Confidence Interval Methods for R2</h2>
+<p>Bootstrap is a commonly used resampling method to generate a sampling distribution from the known sample dataset. It repeatedly takes random samples with replacement from the known sample dataset.</p>
+<p>Steps:</p>
+<ul>
+<li>Sample with replacement B times. (B should be large.)</li>
+<li>Estimate the parameter using the bootstrp sample. </li>
+<li>Obtain the approximate distribution of the parameter.</li>
+</ul>
+<p>The percentile bootstrap interval is then defined as the interval between <span class="arithmatex">\(100 \times \alpha /2\)</span> and <span class="arithmatex">\(100 \times (1 - \alpha /2)\)</span> percentiles of the parameters estimated by bootstrapping. We can use this method to estimate the  bootstrap interval for <span class="arithmatex">\(R^2\)</span>.</p>
 <h2 id="reference">Reference</h2>
 <ul>
-<li>Wang, G., Sarkar, A., Carbonetto, P. &amp; Stephens, M. (2020). A simple new approach to variable selection in regression, with application to genetic fine mapping. Journal of the Royal Statistical Society, Series B 82, 1273–1300. https://doi.org/10.1111/rssb.12388</li>
-<li>Zou, Y., Carbonetto, P., Wang, G. &amp; Stephens, M. (2021). Fine-mapping from summary data with the “Sum of Single Effects” model. bioRxiv https://doi.org/10.1101/2021.11.03.467167</li>
-<li>Schaid, Daniel J., Wenan Chen, and Nicholas B. Larson. "From genome-wide associations to candidate causal variants by statistical fine-mapping." Nature Reviews Genetics 19.8 (2018): 491-504.</li>
-<li>Purcell, Shaun, et al. "PLINK: a tool set for whole-genome association and population-based linkage analyses." The American journal of human genetics 81.3 (2007): 559-575.</li>
+<li><strong>R2 on liability scale</strong>: Lee, S. H., Goddard, M. E., Wray, N. R., &amp; Visscher, P. M. (2012). A better coefficient of determination for genetic profile analysis. Genetic epidemiology, 36(3), 214-224.</li>
+<li><strong>C-index 1</strong>: Harrell, F. E., Califf, R. M., Pryor, D. B., Lee, K. L., &amp; Rosati, R. A. (1982). Evaluating the yield of medical tests. Jama, 247(18), 2543-2546.</li>
+<li><strong>C-index 2</strong>: Longato, E., Vettoretti, M., &amp; Di Camillo, B. (2020). A practical perspective on the concordance index for the evaluation and selection of prognostic time-to-event models. Journal of Biomedical Informatics, 108, 103496.</li>
 </ul>
 
               
@@ -1702,7 +1694,7 @@ fitted_rss2 = susie_rss(bhat = sumstats$betahat, shat = sumstats$sebetahat, R = 
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../09_Gene_based_analysis/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Gene/Gene-set tests by MAGMA" rel="prev">
+        <a href="../10_PRS/" class="md-footer__link md-footer__link--prev" aria-label="Previous: PRS Basics" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1711,20 +1703,20 @@ fitted_rss2 = susie_rss(bhat = sumstats$betahat, shat = sumstats$sebetahat, R = 
               <span class="md-footer__direction">
                 Previous
               </span>
-              Gene/Gene-set tests by MAGMA
+              PRS Basics
             </div>
           </div>
         </a>
       
       
         
-        <a href="../finemapping_susie/" class="md-footer__link md-footer__link--next" aria-label="Next: Finemapping using susieR" rel="next">
+        <a href="../prs_evaluation/" class="md-footer__link md-footer__link--next" aria-label="Next: PRS Tutorial" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Finemapping using susieR
+              PRS Tutorial
             </div>
           </div>
           <div class="md-footer__button md-icon">
