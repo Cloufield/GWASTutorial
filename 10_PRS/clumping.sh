@@ -30,13 +30,13 @@ plink \
 awk 'NR!=1{print $3}' 1kgeas.clumped >  1kgeas.valid.snp
 awk '{print $1,$4}' ${sumStats} > SNP.pvalue
 
-echo "0.001 0 0.001" > range_list 
-echo "0.05 0 0.05" >> range_list
-echo "0.1 0 0.1" >> range_list
-echo "0.2 0 0.2" >> range_list
-echo "0.3 0 0.3" >> range_list
-echo "0.4 0 0.4" >> range_list
-echo "0.5 0 0.5" >> range_list
+echo "pT0.001 0 0.001" > range_list 
+echo "pT0.05 0 0.05" >> range_list
+echo "pT0.1 0 0.1" >> range_list
+echo "pT0.2 0 0.2" >> range_list
+echo "pT0.3 0 0.3" >> range_list
+echo "pT0.4 0 0.4" >> range_list
+echo "pT0.5 0 0.5" >> range_list
 
 plink \
     --bfile ${plinkFile} \

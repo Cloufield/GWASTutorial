@@ -99,8 +99,78 @@ Reference: Lambert, S. A., Gil, L., Jupp, S., Ritchie, S. C., Xu, Y., Buniello, 
 ## Calculate PRS using PLINK
 
 ```
-plink --score
+plink --score <score_filename> [variant ID col.] [allele col.] [score col.] ['header']
 ```
+
+- `<score_filename>`: the score file
+- `[variant ID col.]`: the column number for variant IDs
+- `[allele col.]`: the column number for effect alleles
+- `[score col.]`: the column number for betas
+- `['header']`: skip the first header line
+
+Please check [here](https://www.cog-genomics.org/plink/1.9/score) for detailed documents on `plink --score`.
+
+!!! example 
+    ```
+    # genotype data
+    plinkFile=../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020
+    # summary statistics for scoring
+    sumStats=./t2d_plink_reduced.txt
+    # SNPs after clumpping
+    awk 'NR!=1{print $3}' 1kgeas.clumped >  1kgeas.valid.snp
+    
+    plink \
+        --bfile ${plinkFile} \
+        --score ${sumStats} 1 2 3 header \
+        --extract 1kgeas.valid.snp \
+        --out 1kgeas
+    ```
+
+
+For thresholding using P values,  we can create a range file and a p-value file.
+
+The options we use:
+```
+--q-score-range <range file> <data file> [variant ID col.] [data col.] ['header']
+```
+
+!!! example
+    ```
+    # SNP - P value file for thresholding
+    awk '{print $1,$4}' ${sumStats} > SNP.pvalue
+    
+    # create a range file with 3 columns: range label, p-value lower bound, p-value upper bound
+    head range_list
+    pT0.001 0 0.001
+    pT0.05 0 0.05
+    pT0.1 0 0.1
+    pT0.2 0 0.2
+    pT0.3 0 0.3
+    pT0.4 0 0.4
+    pT0.5 0 0.5
+    ```
+    
+    and then calculate the scores using the p-value ranges:
+    
+    ```
+    plink \
+    --bfile ${plinkFile} \
+    --score ${sumStats} 1 2 3 header \
+    --q-score-range range_list SNP.pvalue \
+    --extract 1kgeas.valid.snp \
+    --out 1kgeas
+    ```
+
+    You will get the following files:
+    ```
+    1kgeas.pT0.001.profile
+    1kgeas.pT0.05.profile
+    1kgeas.pT0.1.profile
+    1kgeas.pT0.2.profile
+    1kgeas.pT0.3.profile
+    1kgeas.pT0.4.profile
+    1kgeas.pT0.5.profile
+    ```
 
 ## Meta-scoring methods for PRS
 
