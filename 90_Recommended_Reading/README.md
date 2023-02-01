@@ -5,6 +5,7 @@
 |Year| Category | Reference|
 |-|-|-|
 |2020|Statistical Genetics|An Introduction to Statistical Genetic Data Analysis By Melinda C. Mills, Nicola Barban and Felix C. Tropf https://mitpress.mit.edu/books/introduction-statistical-genetic-data-analysis|
+|2019|Statistical Genetics|Handbook of Statistical Genomics: Fourth Edition https://onlinelibrary.wiley.com/doi/book/10.1002/9781119487845|
 |2009|Statistical Analysis and Machine Learning|The Elements of Statistical Learning: Data Mining, Inference, and Prediction, Second Edition (Springer Series in Statistics)introduction-statistical-genetic-data-analysis. Trevor Hastie, Robert Tibshirani, Jerome Friedman. https://hastie.su.domains/ElemStatLearn/ (PDF book is available)|
 
 ## Overview Reviews
@@ -36,6 +37,7 @@
 |Year| Reference | Link|
 |-|-|-|
 |2010|Marchini, J., & Howie, B. (2010). Genotype imputation for genome-wide association studies. Nature Reviews Genetics, 11(7), 499-511.|Pubmed|
+|2018|Das S, Abecasis GR, Browning BL. (2018). Genotype Imputation from Large Reference Panels. Annu. Rev. Genomics Hum. Genet. |[link](https://www.annualreviews.org/doi/10.1146/annurev-genom-083117-021602)|
 
 ### Heritability
 
@@ -60,6 +62,7 @@
 
 |Year| Reference | Link|
 |-|-|-|
+|2022|Wang, Y., Tsuo, K., Kanai, M., Neale, B. M., & Martin, A. R. (2022). Challenges and opportunities for developing more generalizable polygenic risk scores. Annual review of biomedical data science. |[link](https://www.annualreviews.org/doi/10.1146/annurev-biodatasci-111721-074830)|
 |2020|Choi, S. W., Mak, T. S. H., & O’Reilly, P. F. (2020). Tutorial: a guide to performing polygenic risk score analyses. Nature protocols, 15(9), 2759-2772.|Pubmed|
 |2019|Martin, A. R., Kanai, M., Kamatani, Y., Okada, Y., Neale, B. M., & Daly, M. J. (2019). Clinical use of current polygenic risk scores may exacerbate health disparities. Nature genetics, 51(4), 584-591.|Pubmed|
 
