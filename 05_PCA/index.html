@@ -843,8 +843,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-a-list-for-snps-in-high-ld-or-hla-regions" class="md-nav__link">
-    Create a list for SNPs in high-LD or HLA regions
+  <a href="#create-a-list-of-snps-in-high-ld-or-hla-regions" class="md-nav__link">
+    Create a list of SNPs in high-LD or HLA regions
   </a>
   
 </li>
@@ -1516,8 +1516,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-a-list-for-snps-in-high-ld-or-hla-regions" class="md-nav__link">
-    Create a list for SNPs in high-LD or HLA regions
+  <a href="#create-a-list-of-snps-in-high-ld-or-hla-regions" class="md-nav__link">
+    Create a list of SNPs in high-LD or HLA regions
   </a>
   
 </li>
@@ -1586,14 +1586,17 @@ Price, A., Patterson, N., Plenge, R. et al. Principal components analysis correc
 <h2 id="preparation">Preparation</h2>
 <h3 id="exclude-snps-in-high-ld-or-hla-regions">Exclude SNPs in high-LD or HLA regions</h3>
 <p>For PCA, we first exclude SNPs in high-LD or HLA regions from the genotype data. </p>
-<div class="admonition note">
+<div class="admonition quote">
 <p class="admonition-title">The reason why we want to exclude such high-LD or HLA regions</p>
 <ul>
 <li>Price, A. L., Weale, M. E., Patterson, N., Myers, S. R., Need, A. C., Shianna, K. V., Ge, D., Rotter, J. I., Torres, E., Taylor, K. D., Goldstein, D. B., &amp; Reich, D. (2008). Long-range LD can confound genome scans in admixed populations. American journal of human genetics, 83(1), 132–139. https://doi.org/10.1016/j.ajhg.2008.06.005 </li>
 </ul>
 </div>
 <h3 id="download-bed-like-files-for-high-ld-or-hla-regions">Download BED-like files for high-LD or HLA regions</h3>
-<p>You can simply copy the list of high-LD or HLA regions in Genome build version(.bed format) to a text file <code>high-ld.txt</code>. For details, please check https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD).</p>
+<p>You can simply copy the list of high-LD or HLA regions in Genome build version(.bed format) to a text file <code>high-ld.txt</code>. </p>
+<div class="admonition quote">
+<p class="admonition-title">High LD regions were obtained from https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD).</p>
+</div>
 <div class="highlight"><pre><span></span><code>$cat high-ld-hg19.txt 
 1   48000000    52000000    highld
 2   86000000    100500000   highld
@@ -1620,12 +1623,13 @@ Price, A., Patterson, N., Plenge, R. et al. Principal components analysis correc
 12  109500000   112000000   highld
 20  32000000    34500000    highld
 </code></pre></div>
-<h3 id="create-a-list-for-snps-in-high-ld-or-hla-regions">Create a list for SNPs in high-LD or HLA regions</h3>
+<h3 id="create-a-list-of-snps-in-high-ld-or-hla-regions">Create a list of SNPs in high-LD or HLA regions</h3>
 <p>Next, use <code>high-ld.txt</code> to extract all SNPs which are located in the regions described in the file using the code as follows:</p>
 <div class="highlight"><pre><span></span><code>plink --file ${plinkFile} --make-set high-ld.txt --write-set --out hild
 </code></pre></div>
-<p>For example:</p>
-<p><div class="highlight"><pre><span></span><code>plinkFile=&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot; #!please set this to your own path
+<div class="admonition example">
+<p class="admonition-title">Create a list of SNPs in the regions specified in <code>high-ld.txt</code> </p>
+<div class="highlight"><pre><span></span><code>plinkFile=&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot; #!please set this to your own path
 
 plink \
     --bfile ${plinkFile} \
@@ -1633,7 +1637,7 @@ plink \
     --write-set \
     --out hild
 </code></pre></div>
-And all SNPs in the regions will be extracted to hild.set.</p>
+<p>And all SNPs in the regions will be extracted to hild.set.</p>
 <div class="highlight"><pre><span></span><code>$head hild.set
 highld
 1:48000156:C:G
@@ -1646,6 +1650,7 @@ highld
 1:48009994:C:T
 1:48009997:C:A
 </code></pre></div>
+</div>
 <p>For downstream analysis, we can exclude these SNPs using <code>--exclude hild.set</code>.</p>
 <hr />
 <h2 id="pca-steps">PCA steps</h2>
@@ -1657,6 +1662,8 @@ highld
 </ul>
 <hr />
 <h2 id="sample-codes">Sample codes</h2>
+<div class="admonition example">
+<p class="admonition-title">Sample codes for performing PCA</p>
 <div class="highlight"><pre><span></span><code>plinkFile=&quot;&quot; #please set this to your own path
 outPrefix=&quot;plink_results&quot;
 threadnum=2
@@ -1697,6 +1704,7 @@ plink2 \
         --score-col-nums 6-15 \
         --out ${outPrefix}_projected
 </code></pre></div>
+</div>
 <p>After step 3, the <code>allele-wts 10</code> modifier requests an additional one-line-per-allele <code>.eigenvec.allele</code> file with first <code>10 PCs</code> expressed as allele weights instead of sample weights.</p>
 <p>We will get the <code>plink_results.eigenvec.allele</code> file, which will be used to project onto all samples along with a allele count <code>plink_results.acount</code> file.</p>
 <p>In the projection, <code>score ${outPrefix}.eigenvec.allele 2 5</code> sets the <code>ID</code> (2nd column) and <code>A1</code> (5th column), <code>score-col-nums 6-15</code> sets the first 10 PCs to be projected.</p>
@@ -1742,8 +1750,11 @@ plink2 \
 <p>You can now create scatterplots of the PCs using R or python.</p>
 <p>For plotting using python:
 <a href="https://github.com/Cloufield/GWASTutorial/blob/main/05_PCA/plot_PCA.ipynb">plot_PCA.ipynb</a></p>
-<p><img width="473" alt="image" src="https://user-images.githubusercontent.com/40289485/209298567-d4871fd0-aaa4-4d90-a7db-bc6aa34ab011.png">
-Note : We only used 20% of all availble variants. This figure only very roughly shows the population structure in East Asia.</p>
+<div class="admonition example">
+<p class="admonition-title">Scatter plot of PC1 and PC2 using 1KG EAS individuals</p>
+<p><img width="500" alt="image" src="https://user-images.githubusercontent.com/40289485/209298567-d4871fd0-aaa4-4d90-a7db-bc6aa34ab011.png">
+Note : We only used 20% of all available variants. This figure only very roughly shows the population structure in East Asia.</p>
+</div>
 <p>Requrements:
 - python&gt;3
 - numpy,pandas,seaborn,matplotlib</p>
