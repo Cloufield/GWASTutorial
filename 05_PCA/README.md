@@ -30,35 +30,37 @@ For PCA, we first exclude SNPs in high-LD or HLA regions from the genotype data.
 
 You can simply copy the list of high-LD or HLA regions in Genome build version(.bed format) to a text file `high-ld.txt`. 
 
-!!! quote "High LD regions were obtained from https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD)."
+!!! quote "High LD regions were obtained from" 
+    [https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD)](https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD))
 
-```
-$cat high-ld-hg19.txt 
-1	48000000	52000000	highld
-2	86000000	100500000	highld
-2	134500000	138000000	highld
-2	183000000	190000000	highld
-3	47500000	50000000	highld
-3	83500000	87000000	highld
-3	89000000	97500000	highld
-5	44500000	50500000	highld
-5	98000000	100500000	highld
-5	129000000	132000000	highld
-5	135500000	138500000	highld
-6	25000000	35000000	highld
-6	57000000	64000000	highld
-6	140000000	142500000	highld
-7	55000000	66000000	highld
-8	7000000	13000000	highld
-8	43000000	50000000	highld
-8	112000000	115000000	highld
-10	37000000	43000000	highld
-11	46000000	57000000	highld
-11	87500000	90500000	highld
-12	33000000	40000000	highld
-12	109500000	112000000	highld
-20	32000000	34500000	highld
-```
+
+!!! info "High LD regions of hg19"
+    ```txt title="high-ld-hg19.txt"
+    1	48000000	52000000	highld
+    2	86000000	100500000	highld
+    2	134500000	138000000	highld
+    2	183000000	190000000	highld
+    3	47500000	50000000	highld
+    3	83500000	87000000	highld
+    3	89000000	97500000	highld
+    5	44500000	50500000	highld
+    5	98000000	100500000	highld
+    5	129000000	132000000	highld
+    5	135500000	138500000	highld
+    6	25000000	35000000	highld
+    6	57000000	64000000	highld
+    6	140000000	142500000	highld
+    7	55000000	66000000	highld
+    8	7000000 13000000	highld
+    8	43000000	50000000	highld
+    8	112000000	115000000	highld
+    10	37000000	43000000	highld
+    11	46000000	57000000	highld
+    11	87500000	90500000	highld
+    12	33000000	40000000	highld
+    12	109500000	112000000	highld
+    20	32000000	34500000	highld
+    ```
 
 ### Create a list of SNPs in high-LD or HLA regions
 
@@ -120,35 +122,35 @@ For downstream analysis, we can exclude these SNPs using `--exclude hild.set`.
     # LD-pruning, excluding high-LD and HLA regions
     plink2 \
             --bfile ${plinkFile} \
-    	--threads ${threadnum} \
-    	--exclude ${hildset} \ 
-    	--indep-pairwise 500 50 0.2 \
+    	    --threads ${threadnum} \
+    	    --exclude ${hildset} \ 
+    	    --indep-pairwise 500 50 0.2 \
             --out ${outPrefix}
     
     # Remove related samples using king-cuttoff
     plink2 \
             --bfile ${plinkFile} \
-    	--extract ${outPrefix}.prune.in \
+    	    --extract ${outPrefix}.prune.in \
             --king-cutoff 0.0884 \
-    	--threads ${threadnum} \
+    	    --threads ${threadnum} \
             --out ${outPrefix}
     
     # PCA after pruning and removing related samples
     plink2 \
             --bfile ${plinkFile} \
             --keep ${outPrefix}.king.cutoff.in.id \
-    	--extract ${outPrefix}.prune.in \
-    	--freq counts \
-    	--threads ${threadnum} \
+    	    --extract ${outPrefix}.prune.in \
+    	    --freq counts \
+    	    --threads ${threadnum} \
             --pca approx allele-wts 10 \
             --out ${outPrefix}
     
     # Projection (related and unrelated samples)
     plink2 \
             --bfile ${plinkFile} \
-    	--threads ${threadnum} \
+    	    --threads ${threadnum} \
             --read-freq ${outPrefix}.acount \
-    	--score ${outPrefix}.eigenvec.allele 2 5 header-read no-mean-imputation variance-standardize \
+    	    --score ${outPrefix}.eigenvec.allele 2 5 header-read no-mean-imputation variance-standardize \
             --score-col-nums 6-15 \
             --out ${outPrefix}_projected
     ```
@@ -212,6 +214,7 @@ For plotting using python:
 
 !!! example "Scatter plot of PC1 and PC2 using 1KG EAS individuals"
     <img width="500" alt="image" src="https://user-images.githubusercontent.com/40289485/209298567-d4871fd0-aaa4-4d90-a7db-bc6aa34ab011.png">
+
     Note : We only used 20% of all available variants. This figure only very roughly shows the population structure in East Asia.
  
 Requrements:
