@@ -104,10 +104,12 @@ For downstream analysis, we can exclude these SNPs using `--exclude hild.set`.
 ---------
 ## PCA steps
 
-- 1.Pruning (https://www.cog-genomics.org/plink/2.0/ld#indep)
-- 2.Removing relatives (usually 2-degree) (https://www.cog-genomics.org/plink/2.0/distance#king_cutoff)
-- 3.Run PCA using un-related samples and independent SNPs (https://www.cog-genomics.org/plink/2.0/strat#pca)
-- 4.Project to all samples (https://www.cog-genomics.org/plink/2.0/score#pca_project)
+!!! info "Steps to perform a typical genomic PCA analysis"
+
+    - 1.LD-Pruning (https://www.cog-genomics.org/plink/2.0/ld#indep)
+    - 2.Removing relatives from calculating PCs (usually 2-degree) (https://www.cog-genomics.org/plink/2.0/distance#king_cutoff)
+    - 3.Running PCA using un-related samples and independent SNPs (https://www.cog-genomics.org/plink/2.0/strat#pca)
+    - 4.Projecting to all samples (https://www.cog-genomics.org/plink/2.0/score#pca_project)
 
 ---------
 ## Sample codes
@@ -155,56 +157,56 @@ For downstream analysis, we can exclude these SNPs using `--exclude hild.set`.
             --out ${outPrefix}_projected
     ```
 
-After step 3, the `allele-wts 10` modifier requests an additional one-line-per-allele `.eigenvec.allele` file with first `10 PCs` expressed as allele weights instead of sample weights.
+After step 3, the `allele-wts 10` modifier requests an additional one-line-per-allele `.eigenvec.allele` file with the first `10 PCs` expressed as allele weights instead of sample weights.
 
-We will get the `plink_results.eigenvec.allele` file, which will be used to project onto all samples along with a allele count `plink_results.acount` file.
+We will get the `plink_results.eigenvec.allele` file, which will be used to project onto all samples along with an allele count `plink_results.acount` file.
 
 In the projection, `score ${outPrefix}.eigenvec.allele 2 5` sets the `ID` (2nd column) and `A1` (5th column), `score-col-nums 6-15` sets the first 10 PCs to be projected.
 
-Please check https://www.cog-genomics.org/plink/2.0/score#pca_project for more details on projection.
+Please check https://www.cog-genomics.org/plink/2.0/score#pca_project for more details on the projection.
 
-```
-$head plink_results.eigenvec.allele
-#CHROM	ID	REF	ALT	A1	PC1	PC2	PC3	PC4	PC5	PC6	PC7	PC8	PC9	PC10
-1	1:13273:G:C	G	C	G	1.12369	-0.320826	-0.0206569	-0.218665	0.869801	0.378433	-0.0723841	-0.227555	0.0361673	-0.368192
-1	1:13273:G:C	G	C	C	-1.12369	0.320826	0.0206569	0.218665	-0.869801	-0.378433	0.0723841	0.227555	-0.0361673	0.368192
-1	1:14599:T:A	T	A	T	0.99902	-1.15824	-1.80519	-0.36774	0.179881	0.25242	0.068899	0.206564	-0.342483	0.103762
-1	1:14599:T:A	T	A	A	-0.99902	1.15824	1.80519	0.36774	-0.179881	-0.25242	-0.068899	-0.206564	0.342483	-0.103762
-1	1:14930:A:G	A	G	A	-0.0704343	-0.35091	-0.41535	-0.304856	0.081039	-0.49408	-0.0667606	-0.0698847	0.245836	0.330869
-1	1:14930:A:G	A	G	G	0.0704343	0.35091	0.41535	0.304856	-0.081039	0.49408	0.0667606	0.0698847	-0.245836	-0.330869
-1	1:69897:T:C	T	C	T	-0.514024	0.563153	-0.997768	-0.298234	-0.840608	-0.247155	0.545471	-0.675274	-0.787836	-0.509647
-1	1:69897:T:C	T	C	C	0.514024	-0.563153	0.997768	0.298234	0.840608	0.247155	-0.545471	0.675274	0.787836	0.509647
-1	1:86331:A:G	A	G	A	-0.169641	-0.0125126	-0.531174	-0.0219291	0.614439	0.140143	0.133833	-0.570109	0.392805	-0.065334
-
-#head plink_results.acount
-#CHROM	ID	REF	ALT	ALT_CTS	OBS_CT
-1	1:13273:G:C	G	C	63	1004
-1	1:14599:T:A	T	A	90	1004
-1	1:14930:A:G	A	G	417	1004
-1	1:69897:T:C	T	C	879	1004
-1	1:86331:A:G	A	G	87	1004
-1	1:91581:G:A	G	A	499	1004
-1	1:122872:T:G	T	G	259	1004
-1	1:135163:C:T	C	T	91	1004
-1	1:233473:C:G	C	G	156	1004
-
-```
+!!! example "Allele weight and count files"
+    ```txt title="plink_results.eigenvec.allele"
+    #CHROM	ID	REF	ALT	A1	PC1	PC2	PC3	PC4	PC5	PC6	PC7	PC8	PC9	PC10
+    1	1:13273:G:C	G	C	G	1.12369	-0.320826	-0.0206569	-0.218665	0.869801	0.378433	-0.0723841	-0.227555	0.0361673	-0.368192
+    1	1:13273:G:C	G	C	C	-1.12369	0.320826	0.0206569	0.218665	-0.869801	-0.378433	0.0723841	0.227555	-0.0361673	0.368192
+    1	1:14599:T:A	T	A	T	0.99902	-1.15824	-1.80519	-0.36774	0.179881	0.25242	0.068899	0.206564	-0.342483	0.103762
+    1	1:14599:T:A	T	A	A	-0.99902	1.15824	1.80519	0.36774	-0.179881	-0.25242	-0.068899	-0.206564	0.342483	-0.103762
+    1	1:14930:A:G	A	G	A	-0.0704343	-0.35091	-0.41535	-0.304856	0.081039	-0.49408	-0.0667606	-0.0698847	0.245836	0.330869
+    1	1:14930:A:G	A	G	G	0.0704343	0.35091	0.41535	0.304856	-0.081039	0.49408	0.0667606	0.0698847	-0.245836	-0.330869
+    1	1:69897:T:C	T	C	T	-0.514024	0.563153	-0.997768	-0.298234	-0.840608	-0.247155	0.545471	-0.675274	-0.787836	-0.509647
+    1	1:69897:T:C	T	C	C	0.514024	-0.563153	0.997768	0.298234	0.840608	0.247155	-0.545471	0.675274	0.787836	0.509647
+    1	1:86331:A:G	A	G	A	-0.169641	-0.0125126	-0.531174	-0.0219291	0.614439	0.140143	0.133833	-0.570109	0.392805	-0.065334
+    ```
+    
+    ```txt title="plink_results.acount"
+    #CHROM	ID	REF	ALT	ALT_CTS	OBS_CT
+    1	1:13273:G:C	G	C	63	1004
+    1	1:14599:T:A	T	A	90	1004
+    1	1:14930:A:G	A	G	417	1004
+    1	1:69897:T:C	T	C	879	1004
+    1	1:86331:A:G	A	G	87	1004
+    1	1:91581:G:A	G	A	499	1004
+    1	1:122872:T:G	T	G	259	1004
+    1	1:135163:C:T	C	T	91	1004
+    1	1:233473:C:G	C	G	156	1004
+    ```
 
 Eventually, we will get the PCA results for all samples.
 
-```
-head plink_results_projected.sscore
-#FID	IID	ALLELE_CT	NAMED_ALLELE_DOSAGE_SUM	PC1_AVG	PC2_AVG	PC3_AVG	PC4_AVG	PC5_AVG	PC6_AVG	PC7_AVG	PC8_AVG	PC9_AVG	PC10_AVG
-0	HG00403	219504	219504	0.000643981	-0.0297502	-0.0151499	-0.0122381	0.0229149	0.0235408	-0.033705	-0.0075127	-0.0125402	0.00271677
-0	HG00404	219504	219504	-0.000492225	-0.031018	-0.00764244	-0.0204998	0.0284068	-0.00872449	0.0123353	-0.00492058	-0.00557003	0.0248966
-0	HG00406	219504	219504	0.00620984	-0.034375	-0.00898555	-0.00335076	-0.0217559	-0.0182433	0.00333925	-0.00760613	-0.0340018	0.00641082
-0	HG00407	219504	219504	0.00678586	-0.0239308	-0.00704419	-0.00466139	0.00985433	0.000889767	0.00679557	-0.0200495	-0.0131869	0.0350328
-0	HG00409	219504	219504	-0.00236345	-0.0231604	0.0320665	0.0145563	0.0236768	0.00704788	0.012859	0.0319605	-0.0130627	0.0110219
-0	HG00410	219504	219504	0.000670927	-0.0210665	0.0467767	0.00293079	0.0184061	0.045967	0.00384994	0.0212317	-0.0296434	0.0237174
-0	HG00419	219504	219504	0.00526139	-0.0369818	-0.00974662	0.00855412	-0.0053907	-0.00102057	0.0063254	0.0140126	-0.00600854	0.00732882
-0	HG00421	219504	219504	0.00038356	-0.0319534	-0.00648054	0.00311739	-0.022044	0.0064945	-0.0105273	-0.0276718	-0.00973368	0.0208449
-0	HG00422	219504	219504	0.00437335	-0.0323416	-0.0111979	0.0106245	-0.0267334	0.00142919	-0.00487295	-0.0124099	-0.00467014	-0.0188086
-```
+!!! example "PCA results for all samples"
+    ```txt title="plink_results_projected.sscore"
+    #FID	IID	ALLELE_CT	NAMED_ALLELE_DOSAGE_SUM	PC1_AVG	PC2_AVG	PC3_AVG	PC4_AVG	PC5_AVG	PC6_AVG	PC7_AVG	PC8_AVG	PC9_AVG	PC10_AVG
+    0	HG00403	219504	219504	0.000643981	-0.0297502	-0.0151499	-0.0122381	0.0229149	0.0235408	-0.033705	-0.0075127	-0.0125402	0.00271677
+    0	HG00404	219504	219504	-0.000492225	-0.031018	-0.00764244	-0.0204998	0.0284068	-0.00872449	0.0123353	-0.00492058	-0.00557003	0.0248966
+    0	HG00406	219504	219504	0.00620984	-0.034375	-0.00898555	-0.00335076	-0.0217559	-0.0182433	0.00333925	-0.00760613	-0.0340018	0.00641082
+    0	HG00407	219504	219504	0.00678586	-0.0239308	-0.00704419	-0.00466139	0.00985433	0.000889767	0.00679557	-0.0200495	-0.0131869	0.0350328
+    0	HG00409	219504	219504	-0.00236345	-0.0231604	0.0320665	0.0145563	0.0236768	0.00704788	0.012859	0.0319605	-0.0130627	0.0110219
+    0	HG00410	219504	219504	0.000670927	-0.0210665	0.0467767	0.00293079	0.0184061	0.045967	0.00384994	0.0212317	-0.0296434	0.0237174
+    0	HG00419	219504	219504	0.00526139	-0.0369818	-0.00974662	0.00855412	-0.0053907	-0.00102057	0.0063254	0.0140126	-0.00600854	0.00732882
+    0	HG00421	219504	219504	0.00038356	-0.0319534	-0.00648054	0.00311739	-0.022044	0.0064945	-0.0105273	-0.0276718	-0.00973368	0.0208449
+    0	HG00422	219504	219504	0.00437335	-0.0323416	-0.0111979	0.0106245	-0.0267334	0.00142919	-0.00487295	-0.0124099	-0.00467014	-0.0188086
+    ```
 
 ## Plotting the PCs 
 You can now create scatterplots of the PCs using R or python.
