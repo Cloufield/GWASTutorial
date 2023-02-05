@@ -1595,10 +1595,12 @@ Price, A., Patterson, N., Plenge, R. et al. Principal components analysis correc
 <h3 id="download-bed-like-files-for-high-ld-or-hla-regions">Download BED-like files for high-LD or HLA regions</h3>
 <p>You can simply copy the list of high-LD or HLA regions in Genome build version(.bed format) to a text file <code>high-ld.txt</code>. </p>
 <div class="admonition quote">
-<p class="admonition-title">High LD regions were obtained from https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD).</p>
+<p class="admonition-title">High LD regions were obtained from</p>
+<p><a href="https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD)">https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD)</a></p>
 </div>
-<div class="highlight"><pre><span></span><code>$cat high-ld-hg19.txt 
-1   48000000    52000000    highld
+<div class="admonition info">
+<p class="admonition-title">High LD regions of hg19</p>
+<div class="highlight"><span class="filename">high-ld-hg19.txt</span><pre><span></span><code>1   48000000    52000000    highld
 2   86000000    100500000   highld
 2   134500000   138000000   highld
 2   183000000   190000000   highld
@@ -1623,6 +1625,7 @@ Price, A., Patterson, N., Plenge, R. et al. Principal components analysis correc
 12  109500000   112000000   highld
 20  32000000    34500000    highld
 </code></pre></div>
+</div>
 <h3 id="create-a-list-of-snps-in-high-ld-or-hla-regions">Create a list of SNPs in high-LD or HLA regions</h3>
 <p>Next, use <code>high-ld.txt</code> to extract all SNPs which are located in the regions described in the file using the code as follows:</p>
 <div class="highlight"><pre><span></span><code>plink --file ${plinkFile} --make-set high-ld.txt --write-set --out hild
@@ -1672,35 +1675,35 @@ hildset = hild.set
 # LD-pruning, excluding high-LD and HLA regions
 plink2 \
         --bfile ${plinkFile} \
-    --threads ${threadnum} \
-    --exclude ${hildset} \ 
-    --indep-pairwise 500 50 0.2 \
+        --threads ${threadnum} \
+        --exclude ${hildset} \ 
+        --indep-pairwise 500 50 0.2 \
         --out ${outPrefix}
 
 # Remove related samples using king-cuttoff
 plink2 \
         --bfile ${plinkFile} \
-    --extract ${outPrefix}.prune.in \
+        --extract ${outPrefix}.prune.in \
         --king-cutoff 0.0884 \
-    --threads ${threadnum} \
+        --threads ${threadnum} \
         --out ${outPrefix}
 
 # PCA after pruning and removing related samples
 plink2 \
         --bfile ${plinkFile} \
         --keep ${outPrefix}.king.cutoff.in.id \
-    --extract ${outPrefix}.prune.in \
-    --freq counts \
-    --threads ${threadnum} \
+        --extract ${outPrefix}.prune.in \
+        --freq counts \
+        --threads ${threadnum} \
         --pca approx allele-wts 10 \
         --out ${outPrefix}
 
 # Projection (related and unrelated samples)
 plink2 \
         --bfile ${plinkFile} \
-    --threads ${threadnum} \
+        --threads ${threadnum} \
         --read-freq ${outPrefix}.acount \
-    --score ${outPrefix}.eigenvec.allele 2 5 header-read no-mean-imputation variance-standardize \
+        --score ${outPrefix}.eigenvec.allele 2 5 header-read no-mean-imputation variance-standardize \
         --score-col-nums 6-15 \
         --out ${outPrefix}_projected
 </code></pre></div>
@@ -1752,8 +1755,8 @@ plink2 \
 <a href="https://github.com/Cloufield/GWASTutorial/blob/main/05_PCA/plot_PCA.ipynb">plot_PCA.ipynb</a></p>
 <div class="admonition example">
 <p class="admonition-title">Scatter plot of PC1 and PC2 using 1KG EAS individuals</p>
-<p><img width="500" alt="image" src="https://user-images.githubusercontent.com/40289485/209298567-d4871fd0-aaa4-4d90-a7db-bc6aa34ab011.png">
-Note : We only used 20% of all available variants. This figure only very roughly shows the population structure in East Asia.</p>
+<p><img width="500" alt="image" src="https://user-images.githubusercontent.com/40289485/209298567-d4871fd0-aaa4-4d90-a7db-bc6aa34ab011.png"></p>
+<p>Note : We only used 20% of all available variants. This figure only very roughly shows the population structure in East Asia.</p>
 </div>
 <p>Requrements:
 - python&gt;3
