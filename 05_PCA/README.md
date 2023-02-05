@@ -22,13 +22,15 @@ So before association analysis, we will learn how to run PCA analysis first.
 ### Exclude SNPs in high-LD or HLA regions
 For PCA, we first exclude SNPs in high-LD or HLA regions from the genotype data. 
 
-!!! note "The reason why we want to exclude such high-LD or HLA regions"
+!!! quote "The reason why we want to exclude such high-LD or HLA regions"
     - Price, A. L., Weale, M. E., Patterson, N., Myers, S. R., Need, A. C., Shianna, K. V., Ge, D., Rotter, J. I., Torres, E., Taylor, K. D., Goldstein, D. B., & Reich, D. (2008). Long-range LD can confound genome scans in admixed populations. American journal of human genetics, 83(1), 132–139. https://doi.org/10.1016/j.ajhg.2008.06.005 
 
 
 ### Download BED-like files for high-LD or HLA regions
 
-You can simply copy the list of high-LD or HLA regions in Genome build version(.bed format) to a text file `high-ld.txt`. For details, please check https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD).
+You can simply copy the list of high-LD or HLA regions in Genome build version(.bed format) to a text file `high-ld.txt`. 
+
+!!! quote "High LD regions were obtained from https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD)."
 
 ```
 $cat high-ld-hg19.txt 
@@ -58,40 +60,42 @@ $cat high-ld-hg19.txt
 20	32000000	34500000	highld
 ```
 
-### Create a list for SNPs in high-LD or HLA regions
+### Create a list of SNPs in high-LD or HLA regions
 
 Next, use `high-ld.txt` to extract all SNPs which are located in the regions described in the file using the code as follows:
+    
 
 ```
 plink --file ${plinkFile} --make-set high-ld.txt --write-set --out hild
 ```
 
-For example:
-
-```
-plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020" #!please set this to your own path
-
-plink \
-	--bfile ${plinkFile} \
-	--make-set high-ld-hg19.txt \
-	--write-set \
-	--out hild
-```
-And all SNPs in the regions will be extracted to hild.set.
-
-```
-$head hild.set
-highld
-1:48000156:C:G
-1:48002096:C:G
-1:48003081:T:C
-1:48004776:C:T
-1:48006500:A:G
-1:48006546:C:T
-1:48008102:T:G
-1:48009994:C:T
-1:48009997:C:A
-```
+!!! example "Create a list of SNPs in the regions specified in `high-ld.txt` "
+    
+    ```
+    plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020" #!please set this to your own path
+    
+    plink \
+    	--bfile ${plinkFile} \
+    	--make-set high-ld-hg19.txt \
+    	--write-set \
+    	--out hild
+    ```
+    
+    And all SNPs in the regions will be extracted to hild.set.
+    
+    ```
+    $head hild.set
+    highld
+    1:48000156:C:G
+    1:48002096:C:G
+    1:48003081:T:C
+    1:48004776:C:T
+    1:48006500:A:G
+    1:48006546:C:T
+    1:48008102:T:G
+    1:48009994:C:T
+    1:48009997:C:A
+    ```
 
 For downstream analysis, we can exclude these SNPs using `--exclude hild.set`.
 
@@ -105,47 +109,49 @@ For downstream analysis, we can exclude these SNPs using `--exclude hild.set`.
 
 ---------
 ## Sample codes
-```
-plinkFile="" #please set this to your own path
-outPrefix="plink_results"
-threadnum=2
-hildset = hild.set 
 
-# LD-pruning, excluding high-LD and HLA regions
-plink2 \
-        --bfile ${plinkFile} \
-	--threads ${threadnum} \
-	--exclude ${hildset} \ 
-	--indep-pairwise 500 50 0.2 \
-        --out ${outPrefix}
-
-# Remove related samples using king-cuttoff
-plink2 \
-        --bfile ${plinkFile} \
-	--extract ${outPrefix}.prune.in \
-        --king-cutoff 0.0884 \
-	--threads ${threadnum} \
-        --out ${outPrefix}
-
-# PCA after pruning and removing related samples
-plink2 \
-        --bfile ${plinkFile} \
-        --keep ${outPrefix}.king.cutoff.in.id \
-	--extract ${outPrefix}.prune.in \
-	--freq counts \
-	--threads ${threadnum} \
-        --pca approx allele-wts 10 \
-        --out ${outPrefix}
-
-# Projection (related and unrelated samples)
-plink2 \
-        --bfile ${plinkFile} \
-	--threads ${threadnum} \
-        --read-freq ${outPrefix}.acount \
-	--score ${outPrefix}.eigenvec.allele 2 5 header-read no-mean-imputation variance-standardize \
-        --score-col-nums 6-15 \
-        --out ${outPrefix}_projected
-```
+!!! example "Sample codes for performing PCA"
+    ```
+    plinkFile="" #please set this to your own path
+    outPrefix="plink_results"
+    threadnum=2
+    hildset = hild.set 
+    
+    # LD-pruning, excluding high-LD and HLA regions
+    plink2 \
+            --bfile ${plinkFile} \
+    	--threads ${threadnum} \
+    	--exclude ${hildset} \ 
+    	--indep-pairwise 500 50 0.2 \
+            --out ${outPrefix}
+    
+    # Remove related samples using king-cuttoff
+    plink2 \
+            --bfile ${plinkFile} \
+    	--extract ${outPrefix}.prune.in \
+            --king-cutoff 0.0884 \
+    	--threads ${threadnum} \
+            --out ${outPrefix}
+    
+    # PCA after pruning and removing related samples
+    plink2 \
+            --bfile ${plinkFile} \
+            --keep ${outPrefix}.king.cutoff.in.id \
+    	--extract ${outPrefix}.prune.in \
+    	--freq counts \
+    	--threads ${threadnum} \
+            --pca approx allele-wts 10 \
+            --out ${outPrefix}
+    
+    # Projection (related and unrelated samples)
+    plink2 \
+            --bfile ${plinkFile} \
+    	--threads ${threadnum} \
+            --read-freq ${outPrefix}.acount \
+    	--score ${outPrefix}.eigenvec.allele 2 5 header-read no-mean-imputation variance-standardize \
+            --score-col-nums 6-15 \
+            --out ${outPrefix}_projected
+    ```
 
 After step 3, the `allele-wts 10` modifier requests an additional one-line-per-allele `.eigenvec.allele` file with first `10 PCs` expressed as allele weights instead of sample weights.
 
@@ -204,8 +210,9 @@ You can now create scatterplots of the PCs using R or python.
 For plotting using python:
 [plot_PCA.ipynb](https://github.com/Cloufield/GWASTutorial/blob/main/05_PCA/plot_PCA.ipynb)
 
-<img width="473" alt="image" src="https://user-images.githubusercontent.com/40289485/209298567-d4871fd0-aaa4-4d90-a7db-bc6aa34ab011.png">
-Note : We only used 20% of all availble variants. This figure only very roughly shows the population structure in East Asia.
+!!! example "Scatter plot of PC1 and PC2 using 1KG EAS individuals"
+    <img width="500" alt="image" src="https://user-images.githubusercontent.com/40289485/209298567-d4871fd0-aaa4-4d90-a7db-bc6aa34ab011.png">
+    Note : We only used 20% of all available variants. This figure only very roughly shows the population structure in East Asia.
  
 Requrements:
 - python>3
