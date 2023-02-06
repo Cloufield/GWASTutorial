@@ -12,15 +12,11 @@ Meta-analysis is one of the most commonly used statistical methods to combine th
 To address these problems, meta-analysis is a powerful approach to integrate multiple GWAS summary statistics, especially when more and more summary statistics are publicly available.
 . This method allows us to obtain increases in statistical power as sample size increases. 
 
-## Fixed effect IVW
+## Fixed effects meta-analysis
 
-$$ \bar{\beta} = {{\sum_{i=1}^{k} {w_i \beta_i}}\over{\sum_{i=1}^{k} {w_i}}} $$
+$$ \bar{\beta_{ij}} = {{\sum_{i=1}^{k} {w_{ij} \beta_{ij}}}\over{\sum_{i=1}^{k} {w_{ij}}}} $$
 
-- $w_i = 1 / \delta^2_i$
-
-
-## 
-
+- $w_{ij} = 1 / Var(\beta_{ij})$
 
 ## Heterogeneity test
 
@@ -29,7 +25,17 @@ $$ \bar{\beta} = {{\sum_{i=1}^{k} {w_i \beta_i}}\over{\sum_{i=1}^{k} {w_i}}} $$
     $$ Q = \sum_{i=1}^{k} {w_i (\beta_i - \bar{\beta})^2} $$
 
 !!! info "$I^2$"
-    $$ I^2 =  {{Q - df}\over{Q}}\times 100% =  {{Q - (k - 1)}\over{Q}}\times 100% $$
+    $$ I_j^2 =  {{Q_j - df_j}\over{Q_j}}\times 100% =  {{Q - (k - 1)}\over{Q}}\times 100% $$
+
+## Random effects meta-analysis
+
+$$ r_j^2 = max\left(0, {{Q_j - (N_j -1)}\over{\sum_iw_{ij} - ({{\sum_iw_{ij}^2} \over {\sum_iw_{ij}}})}}\right)$$
+
+$$ \bar{\beta_j}^* = {{\sum_{i=1}^{k} {w_{ij}^* \beta_i}}\over{\sum_{i=1}^{k} {w_{ij}^*}}} $$
+
+$$w_{ij}^* = {{1}\over{r_j^2 + Var(\beta_{ij})}} $$
+
+!!! quote
 
 ## METAL
 
