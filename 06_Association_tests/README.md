@@ -255,7 +255,9 @@ Data we need from sumstats to create mahattan plot:
     4. create scatter plot using the sorted -log10(P) of sumstats as Y and sorted -log10(P) we generated as X.
 
 !!! note 
-    The expected distribution of P value is an Uniform distribution from 0 to 1.
+    The expected distribution of P value is a Uniform distribution from 0 to 1.
+
+    $$P_{expected} \sim U(0,1)$$
 
 ### Regional plot
 
