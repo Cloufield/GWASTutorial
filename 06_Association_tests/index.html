@@ -1610,6 +1610,8 @@
 <li>Dominant model (DOM)</li>
 <li>Recessive model (REC)</li>
 </ul>
+<div class="admonition example">
+<p class="admonition-title">Three genetic models</p>
 <p>For example, suppose we have a biallelic SNP whose reference allele is A and alternative allele is G.</p>
 <p>There are three possible genotypes for this SNP: AA, AG, and GG.</p>
 <p>The table shows how we group different genotypes under each genetic model.</p>
@@ -1643,8 +1645,8 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h2 id="association-testing-basics">Association testing basics</h2>
-<p>Please check https://www.cog-genomics.org/plink/2.0/assoc for more details.</p>
 <p>For quantitative traits, we can employ a simple linear regression model to test associations:</p>
 <div class="arithmatex">\[ 
 y = G\beta_G + X\beta_X + e
@@ -1696,6 +1698,7 @@ Covariate file (only top PCs calculated in the previous PCA section)
 </code></pre></div>
 </div>
 <h2 id="association-tests-using-plink">Association tests using PLINK</h2>
+<p>Please check https://www.cog-genomics.org/plink/2.0/assoc for more details.</p>
 <p>We will perform logistic regression with firth correction for a simulated binary trait under the additive model using the 1KG East Asian individuals.</p>
 <div class="admonition note">
 <p class="admonition-title">firth correction</p>
