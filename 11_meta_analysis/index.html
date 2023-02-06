@@ -1128,15 +1128,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fixed-effect-ivw" class="md-nav__link">
-    Fixed effect IVW
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    
+  <a href="#fixed-effects-meta-analysis" class="md-nav__link">
+    Fixed effects meta-analysis
   </a>
   
 </li>
@@ -1144,6 +1137,13 @@
         <li class="md-nav__item">
   <a href="#heterogeneity-test" class="md-nav__link">
     Heterogeneity test
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#random-effects-meta-analysis" class="md-nav__link">
+    Random effects meta-analysis
   </a>
   
 </li>
@@ -1484,15 +1484,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fixed-effect-ivw" class="md-nav__link">
-    Fixed effect IVW
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    
+  <a href="#fixed-effects-meta-analysis" class="md-nav__link">
+    Fixed effects meta-analysis
   </a>
   
 </li>
@@ -1500,6 +1493,13 @@
         <li class="md-nav__item">
   <a href="#heterogeneity-test" class="md-nav__link">
     Heterogeneity test
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#random-effects-meta-analysis" class="md-nav__link">
+    Random effects meta-analysis
   </a>
   
 </li>
@@ -1546,12 +1546,11 @@
 </div>
 <p>To address these problems, meta-analysis is a powerful approach to integrate multiple GWAS summary statistics, especially when more and more summary statistics are publicly available.
 . This method allows us to obtain increases in statistical power as sample size increases. </p>
-<h2 id="fixed-effect-ivw">Fixed effect IVW</h2>
-<div class="arithmatex">\[ \bar{\beta} = {{\sum_{i=1}^{k} {w_i \beta_i}}\over{\sum_{i=1}^{k} {w_i}}} \]</div>
+<h2 id="fixed-effects-meta-analysis">Fixed effects meta-analysis</h2>
+<div class="arithmatex">\[ \bar{\beta_{ij}} = {{\sum_{i=1}^{k} {w_{ij} \beta_{ij}}}\over{\sum_{i=1}^{k} {w_{ij}}}} \]</div>
 <ul>
-<li><span class="arithmatex">\(w_i = 1 / \delta^2_i\)</span></li>
+<li><span class="arithmatex">\(w_{ij} = 1 / Var(\beta_{ij})\)</span></li>
 </ul>
-<h2 id="_1"></h2>
 <h2 id="heterogeneity-test">Heterogeneity test</h2>
 <div class="admonition info">
 <p class="admonition-title">Cochran's Q test</p>
@@ -1559,7 +1558,14 @@
 </div>
 <div class="admonition info">
 <p class="admonition-title"><span class="arithmatex">\(I^2\)</span></p>
-<div class="arithmatex">\[ I^2 =  {{Q - df}\over{Q}}\times 100% =  {{Q - (k - 1)}\over{Q}}\times 100% \]</div>
+<div class="arithmatex">\[ I_j^2 =  {{Q_j - df_j}\over{Q_j}}\times 100% =  {{Q - (k - 1)}\over{Q}}\times 100% \]</div>
+</div>
+<h2 id="random-effects-meta-analysis">Random effects meta-analysis</h2>
+<div class="arithmatex">\[ r_j^2 = max\left(0, {{Q_j - (N_j -1)}\over{\sum_iw_{ij} - ({{\sum_iw_{ij}^2} \over {\sum_iw_{ij}}})}}\right)\]</div>
+<div class="arithmatex">\[ \bar{\beta_j}^* = {{\sum_{i=1}^{k} {w_{ij}^* \beta_i}}\over{\sum_{i=1}^{k} {w_{ij}^*}}} \]</div>
+<div class="arithmatex">\[w_{ij}^* = {{1}\over{r_j^2 + Var(\beta_{ij})}} \]</div>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
 </div>
 <h2 id="metal">METAL</h2>
 <h2 id="mr-mega">MR-MEGA</h2>
