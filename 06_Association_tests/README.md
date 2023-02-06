@@ -10,22 +10,21 @@ There are three basic genetic models:
 - Dominant model (DOM)
 - Recessive model (REC)
 
-For example, suppose we have a biallelic SNP whose reference allele is A and alternative allele is G.
-
-There are three possible genotypes for this SNP: AA, AG, and GG.
-
-The table shows how we group different genotypes under each genetic model.
-
-|Genetic models|AA|AG|GG|
-|-|-|-|-|
-|Additive model|0|1|2|
-|Dominant model|0|1|1|
-|Recessive model|0|0|1|
+!!! example "Three genetic models"
+    For example, suppose we have a biallelic SNP whose reference allele is A and alternative allele is G.
+    
+    There are three possible genotypes for this SNP: AA, AG, and GG.
+    
+    The table shows how we group different genotypes under each genetic model.
+    
+    |Genetic models|AA|AG|GG|
+    |-|-|-|-|
+    |Additive model|0|1|2|
+    |Dominant model|0|1|1|
+    |Recessive model|0|0|1|
 
 
 ## Association testing basics
-
-Please check https://www.cog-genomics.org/plink/2.0/assoc for more details.
 
 For quantitative traits, we can employ a simple linear regression model to test associations:
 
@@ -85,6 +84,9 @@ To perform genome-wide association tests, usually we need the following files:
     ```
 
 ## Association tests using PLINK
+
+Please check https://www.cog-genomics.org/plink/2.0/assoc for more details.
+
 We will perform logistic regression with firth correction for a simulated binary trait under the additive model using the 1KG East Asian individuals.
 
 !!! note "firth correction"
