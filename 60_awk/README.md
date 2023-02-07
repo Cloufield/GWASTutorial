@@ -17,7 +17,7 @@ Some special variables in awk:
 
 ## Examples
 
-Using the sample sumstats, we will demonstate some simple but useful one-liners.
+Using the sample sumstats, we will demonstrate some simple but useful one-liners.
 
 ```bash
 # sample sumstats
@@ -77,7 +77,7 @@ The `NR` here means row number. The condition here `NR==1 || $1==3` means if it 
 
 !!! example "Create a bed-like format for annotation"
     
-    ```
+    ```bash
     awk 'NR>1 {print $1,$2,$2,$4,$5}' ../02_Linux_basics/sumstats.txt | head
     1 13273 13273 G C
     1 14599 14599 T A
@@ -93,6 +93,8 @@ The `NR` here means row number. The condition here `NR==1 || $1==3` means if it 
 
 ## awk workflow
 
+The workflow of awk can be summarized in the following figure: 
+
 !!! info "awk workflow"
     ![image](https://user-images.githubusercontent.com/40289485/217223344-233fd8fc-d734-4559-b32b-ce94acab37b9.png)
 
@@ -101,6 +103,7 @@ The `NR` here means row number. The condition here `NR==1 || $1==3` means if it 
 |Variable|Desciption|
 |-|-|
 |NR|The number of input records|
+|NF|The number of input fields|
 |FS|The input field separator. The default value is `" "`|
 |OFS|The output field separator.  The default value is `" "`|
 |RS|The input record separator. The default value is `"\n"`|
@@ -109,7 +112,7 @@ The `NR` here means row number. The condition here `NR==1 || $1==3` means if it 
 |FNR|The current record number in the current file|
 
 !!! example "Handle csv and tsv files"
-    ```
+    ```bash
     head ../03_Data_formats/sample_data.csv
     #CHROM,POS,ID,REF,ALT,A1,FIRTH?,TEST,OBS_CT,OR,LOG(OR)_SE,Z_STAT,P,ERRCODE
     1,13273,1:13273:G:C,G,C,C,N,ADD,503,0.750168,0.280794,-1.02373,0.305961,.
@@ -123,7 +126,7 @@ The `NR` here means row number. The condition here `NR==1 || $1==3` means if it 
     1,135163,1:135163:C:T,C,T,T,N,ADD,503,0.711822,0.23908,-1.42182,0.155079,.
     ```
 
-    ```
+    ```bash
     awk -v FS=',' -v OFS="\t" '{print $1,$2}' sample_data.csv
     #CHROM  POS
     1       13273
@@ -139,7 +142,7 @@ The `NR` here means row number. The condition here `NR==1 || $1==3` means if it 
 
 !!! example "Skip and replace headers"
     
-    ```
+    ```bash
     awk -v FS=',' -v OFS="\t" 'BEGIN{print "CHR\tPOS"} NR>1 {print $1,$2}' sample_data.csv
     
     CHR     POS
@@ -154,6 +157,21 @@ The `NR` here means row number. The condition here `NR==1 || $1==3` means if it 
     1       135163
     ```
 
+!!! example "Print the last two columns"
+    ```bash
+    awk -v FS=',' '{print $(NF-1),$(NF)}' sample_data.csv
+    P ERRCODE
+    0.305961 .
+    0.0104299 .
+    0.0104299 .
+    0.0269602 .
+    0.0188466 .
+    0.102694 .
+    0.522847 .
+    0.703856 .
+    0.155079 .
+    ```
+
 ## awk functions
 
 Numeric functions
@@ -164,7 +182,7 @@ Numeric functions
 - sqrt(x)
 
 !!! example "Convert OR and P to BETA and -log10(P)"
-    ```
+    ```bash
     awk -v FS=',' -v OFS="\t" 'BEGIN{print "SNPID\tBETA\tMLOG10P"}NR>1{print $3,log($10),-log($13)/log(10)}' sample_data.csv
     SNPID   BETA    MLOG10P
     1:13273:G:C     -0.287458       0.514334
@@ -190,7 +208,7 @@ String manipulating function
 
 ## awk options
 
-```
+```bash
 $ awk --help
 Usage: awk [POSIX or GNU style options] -f progfile [--] file ...
 Usage: awk [POSIX or GNU style options] [--] 'program' file ...
