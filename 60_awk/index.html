@@ -550,28 +550,35 @@
       
         <li class="md-nav__item">
   <a href="#awk-workflow" class="md-nav__link">
-    awk workflow
+    AWK workflow
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#awk-variables" class="md-nav__link">
-    awk variables
+    AWK variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awk-operators" class="md-nav__link">
+    AWK operators
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#awk-functions" class="md-nav__link">
-    awk functions
+    AWK functions
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#awk-options" class="md-nav__link">
-    awk options
+    AWK options
   </a>
   
 </li>
@@ -1566,28 +1573,35 @@
       
         <li class="md-nav__item">
   <a href="#awk-workflow" class="md-nav__link">
-    awk workflow
+    AWK workflow
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#awk-variables" class="md-nav__link">
-    awk variables
+    AWK variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awk-operators" class="md-nav__link">
+    AWK operators
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#awk-functions" class="md-nav__link">
-    awk functions
+    AWK functions
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#awk-options" class="md-nav__link">
-    awk options
+    AWK options
   </a>
   
 </li>
@@ -1689,13 +1703,13 @@ head<span class="w"> </span>../02_Linux_basics/sumstats.txt<span class="w"> </sp
 <span class="m">1</span><span class="w"> </span><span class="m">233473</span><span class="w"> </span><span class="m">233473</span><span class="w"> </span>C<span class="w"> </span>G
 </code></pre></div>
 </div>
-<h2 id="awk-workflow">awk workflow</h2>
+<h2 id="awk-workflow">AWK workflow</h2>
 <p>The workflow of awk can be summarized in the following figure: </p>
 <div class="admonition info">
 <p class="admonition-title">awk workflow</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/217223344-233fd8fc-d734-4559-b32b-ce94acab37b9.png" /></p>
 </div>
-<h2 id="awk-variables">awk variables</h2>
+<h2 id="awk-variables">AWK variables</h2>
 <div class="admonition info">
 <p class="admonition-title">Frequently used awk variables</p>
 <table>
@@ -1799,14 +1813,77 @@ P<span class="w"> </span>ERRCODE
 <span class="m">0</span>.155079<span class="w"> </span>.
 </code></pre></div>
 </div>
-<h2 id="awk-functions">awk functions</h2>
+<h2 id="awk-operators">AWK operators</h2>
+<div class="admonition info">
+<p class="admonition-title">Arithmetic Operators</p>
+<table>
+<thead>
+<tr>
+<th>Arithmetic Operators</th>
+<th>Desciption</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>add</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>subtract</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>multiply</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>divide</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>modulus division</td>
+</tr>
+<tr>
+<td><code>**</code></td>
+<td>x**y : x raised to the y-th power</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Logical Operators</p>
+<table>
+<thead>
+<tr>
+<th>Logical Operators</th>
+<th>Desciption</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\|\|</code></td>
+<td>or</td>
+</tr>
+<tr>
+<td><code>&amp;&amp;</code></td>
+<td>and</td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>not</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="awk-functions">AWK functions</h2>
 <div class="admonition info">
 <p class="admonition-title">Numeric functions in awk</p>
 <ul>
-<li>exp(x)</li>
-<li>int(x)</li>
-<li>log(x)</li>
-<li>sqrt(x)</li>
+<li>int(x) : truncate x to integer</li>
+<li>log(x) : the natural logarithm of x</li>
+<li>exp(x) : natural exponential function</li>
+<li>sqrt(x) : square root of x</li>
 </ul>
 </div>
 <div class="admonition example">
@@ -1836,7 +1913,7 @@ SNPID<span class="w">   </span>BETA<span class="w">    </span>MLOG10P
 <li>toupper(string)</li>
 </ul>
 </div>
-<h2 id="awk-options">awk options</h2>
+<h2 id="awk-options">AWK options</h2>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>awk<span class="w"> </span>--help
 Usage:<span class="w"> </span>awk<span class="w"> </span><span class="o">[</span>POSIX<span class="w"> </span>or<span class="w"> </span>GNU<span class="w"> </span>style<span class="w"> </span>options<span class="o">]</span><span class="w"> </span>-f<span class="w"> </span>progfile<span class="w"> </span><span class="o">[</span>--<span class="o">]</span><span class="w"> </span>file<span class="w"> </span>...
 Usage:<span class="w"> </span>awk<span class="w"> </span><span class="o">[</span>POSIX<span class="w"> </span>or<span class="w"> </span>GNU<span class="w"> </span>style<span class="w"> </span>options<span class="o">]</span><span class="w"> </span><span class="o">[</span>--<span class="o">]</span><span class="w"> </span><span class="s1">&#39;program&#39;</span><span class="w"> </span>file<span class="w"> </span>...
