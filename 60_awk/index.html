@@ -1696,6 +1696,8 @@ head<span class="w"> </span>../02_Linux_basics/sumstats.txt<span class="w"> </sp
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/217223344-233fd8fc-d734-4559-b32b-ce94acab37b9.png" /></p>
 </div>
 <h2 id="awk-variables">awk variables</h2>
+<div class="admonition info">
+<p class="admonition-title">Frequently used awk variables</p>
 <table>
 <thead>
 <tr>
@@ -1738,6 +1740,7 @@ head<span class="w"> </span>../02_Linux_basics/sumstats.txt<span class="w"> </sp
 </tr>
 </tbody>
 </table>
+</div>
 <div class="admonition example">
 <p class="admonition-title">Handle csv and tsv files</p>
 <div class="highlight"><pre><span></span><code>head<span class="w"> </span>../03_Data_formats/sample_data.csv
@@ -1797,13 +1800,15 @@ P<span class="w"> </span>ERRCODE
 </code></pre></div>
 </div>
 <h2 id="awk-functions">awk functions</h2>
-<p>Numeric functions</p>
+<div class="admonition info">
+<p class="admonition-title">Numeric functions in awk</p>
 <ul>
 <li>exp(x)</li>
 <li>int(x)</li>
 <li>log(x)</li>
 <li>sqrt(x)</li>
 </ul>
+</div>
 <div class="admonition example">
 <p class="admonition-title">Convert OR and P to BETA and -log10(P)</p>
 <div class="highlight"><pre><span></span><code>awk<span class="w"> </span>-v<span class="w"> </span><span class="nv">FS</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="w"> </span>-v<span class="w"> </span><span class="nv">OFS</span><span class="o">=</span><span class="s2">&quot;\t&quot;</span><span class="w"> </span><span class="s1">&#39;BEGIN{print &quot;SNPID\tBETA\tMLOG10P&quot;}NR&gt;1{print $3,log($10),-log($13)/log(10)}&#39;</span><span class="w"> </span>sample_data.csv
@@ -1819,7 +1824,8 @@ SNPID<span class="w">   </span>BETA<span class="w">    </span>MLOG10P
 <span class="m">1</span>:135163:C:T<span class="w">    </span>-0.339927<span class="w">       </span><span class="m">0</span>.809447
 </code></pre></div>
 </div>
-<p>String manipulating function</p>
+<div class="admonition info">
+<p class="admonition-title">String manipulating functions in awk</p>
 <ul>
 <li>length([string])</li>
 <li>split(string, array [, fieldsep [, seps ] ])</li>
@@ -1829,6 +1835,7 @@ SNPID<span class="w">   </span>BETA<span class="w">    </span>MLOG10P
 <li>tolower(string)</li>
 <li>toupper(string)</li>
 </ul>
+</div>
 <h2 id="awk-options">awk options</h2>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>awk<span class="w"> </span>--help
 Usage:<span class="w"> </span>awk<span class="w"> </span><span class="o">[</span>POSIX<span class="w"> </span>or<span class="w"> </span>GNU<span class="w"> </span>style<span class="w"> </span>options<span class="o">]</span><span class="w"> </span>-f<span class="w"> </span>progfile<span class="w"> </span><span class="o">[</span>--<span class="o">]</span><span class="w"> </span>file<span class="w"> </span>...
