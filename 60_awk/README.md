@@ -91,14 +91,14 @@ The `NR` here means row number. The condition here `NR==1 || $1==3` means if it 
     1 233473 233473 C G
     ```
 
-## awk workflow
+## AWK workflow
 
 The workflow of awk can be summarized in the following figure: 
 
 !!! info "awk workflow"
     ![image](https://user-images.githubusercontent.com/40289485/217223344-233fd8fc-d734-4559-b32b-ce94acab37b9.png)
 
-## awk variables
+## AWK variables
 
 !!! info "Frequently used awk variables"
     |Variable|Desciption|
@@ -173,14 +173,32 @@ The workflow of awk can be summarized in the following figure:
     0.155079 .
     ```
 
-## awk functions
+## AWK operators
+
+!!! info "Arithmetic Operators"
+    |Arithmetic Operators|Desciption|
+    |-|-|
+    |`+` |add|
+    |`-` |subtract|
+    |`*` |multiply|
+    |`\` |divide|
+    |`%` |modulus division|
+    |`**`|x**y : x raised to the y-th power|
+
+!!! info "Logical Operators"
+    |Logical Operators|Desciption|
+    |-|-|
+    |`\|\|`|or|
+    |`&&`|and|
+    |`!`|not|
+
+## AWK functions
 
 !!! info "Numeric functions in awk"
-    
-    - exp(x)
-    - int(x)
-    - log(x)
-    - sqrt(x)
+    - int(x) : truncate x to integer
+    - log(x) : the natural logarithm of x
+    - exp(x) : natural exponential function
+    - sqrt(x) : square root of x
 
 !!! example "Convert OR and P to BETA and -log10(P)"
     ```bash
@@ -207,7 +225,7 @@ The workflow of awk can be summarized in the following figure:
     - tolower(string)
     - toupper(string)
 
-## awk options
+## AWK options
 
 ```bash
 $ awk --help
