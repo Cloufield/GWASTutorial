@@ -91,13 +91,11 @@ The `NR` here means row number. The condition here `NR==1 || $1==3` means if it 
     1 233473 233473 C G
     ```
 
-### awk workflow
+## awk workflow
 
 ![image](https://user-images.githubusercontent.com/40289485/217223344-233fd8fc-d734-4559-b32b-ce94acab37b9.png)
 
-
-
-### awk variables
+## awk variables
 
 |Variable|Desciption|
 |-|-|
@@ -109,7 +107,55 @@ The `NR` here means row number. The condition here `NR==1 || $1==3` means if it 
 |FILENAME|The name of the current input file.|
 |FNR|The current record number in the current file|
 
-### awk functions
+!!! example "Handle csv and tsv files"
+    ```
+    head ../03_Data_formats/sample_data.csv
+    #CHROM,POS,ID,REF,ALT,A1,FIRTH?,TEST,OBS_CT,OR,LOG(OR)_SE,Z_STAT,P,ERRCODE
+    1,13273,1:13273:G:C,G,C,C,N,ADD,503,0.750168,0.280794,-1.02373,0.305961,.
+    1,14599,1:14599:T:A,T,A,A,N,ADD,503,1.80972,0.231595,2.56124,0.0104299,.
+    1,14604,1:14604:A:G,A,G,G,N,ADD,503,1.80972,0.231595,2.56124,0.0104299,.
+    1,14930,1:14930:A:G,A,G,G,N,ADD,503,1.70139,0.240245,2.21209,0.0269602,.
+    1,69897,1:69897:T:C,T,C,T,N,ADD,503,1.58002,0.194774,2.34855,0.0188466,.
+    1,86331,1:86331:A:G,A,G,G,N,ADD,503,1.47006,0.236102,1.63193,0.102694,.
+    1,91581,1:91581:G:A,G,A,A,N,ADD,503,0.924422,0.122991,-0.638963,0.522847,.
+    1,122872,1:122872:T:G,T,G,G,N,ADD,503,1.07113,0.180776,0.380121,0.703856,.
+    1,135163,1:135163:C:T,C,T,T,N,ADD,503,0.711822,0.23908,-1.42182,0.155079,.
+    ```
+
+    ```
+    awk -v FS=',' -v OFS="\t" '{print $1,$2}' sample_data.csv
+    #CHROM  POS
+    1       13273
+    1       14599
+    1       14604
+    1       14930
+    1       69897
+    1       86331
+    1       91581
+    1       122872
+    1       135163
+    ```
+
+!!! example "Skip and replace headers"
+    
+    ```
+    awk -v FS=',' -v OFS="\t" 'BEGIN{print "CHR\tPOS"} NR>1 {print $1,$2}' sample_data.csv
+    
+    CHR     POS
+    1       13273
+    1       14599
+    1       14604
+    1       14930
+    1       69897
+    1       86331
+    1       91581
+    1       122872
+    1       135163
+    ```
+
+
+
+## awk functions
 
 Numeric functions
 
@@ -117,6 +163,21 @@ Numeric functions
 - int(x)
 - log(x)
 - sqrt(x)
+
+!!! example "Convert OR and P to BETA and -log10(P)"
+    ```
+    awk -v FS=',' -v OFS="\t" 'BEGIN{print "SNPID\tBETA\tMLOG10P"}NR>1{print $3,log($10),-log($13)/log(10)}' sample_data.csv
+    SNPID   BETA    MLOG10P
+    1:13273:G:C     -0.287458       0.514334
+    1:14599:T:A     0.593172        1.98172
+    1:14604:A:G     0.593172        1.98172
+    1:14930:A:G     0.531446        1.56928
+    1:69897:T:C     0.457438        1.72477
+    1:86331:A:G     0.385303        0.988455
+    1:91581:G:A     -0.0785866      0.281625
+    1:122872:T:G    0.0687142       0.152516
+    1:135163:C:T    -0.339927       0.809447
+    ```
 
 String manipulating function
 
