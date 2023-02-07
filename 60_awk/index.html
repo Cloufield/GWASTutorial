@@ -567,18 +567,19 @@
     awk functions
   </a>
   
-    <nav class="md-nav" aria-label="awk functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#awk-options" class="md-nav__link">
     awk options
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
   
 </li>
       
@@ -1582,18 +1583,19 @@
     awk functions
   </a>
   
-    <nav class="md-nav" aria-label="awk functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#awk-options" class="md-nav__link">
     awk options
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
   
 </li>
       
@@ -1617,7 +1619,7 @@
 <h2 id="awk-syntax">AWK syntax</h2>
 <div class="highlight"><pre><span></span><code>awk OPTION &#39;CONDITION {PROCESS}&#39; FILENAME
 </code></pre></div>
-<p>Some special variable in awk:</p>
+<p>Some special variables in awk:</p>
 <ul>
 <li><code>$0</code> : all columns</li>
 <li><code>$n</code> : column n. For example, $1 means the first column. $4 means column 4.</li>
@@ -1688,7 +1690,10 @@ head<span class="w"> </span>../02_Linux_basics/sumstats.txt<span class="w"> </sp
 </code></pre></div>
 </div>
 <h2 id="awk-workflow">awk workflow</h2>
+<div class="admonition info">
+<p class="admonition-title">awk workflow</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/217223344-233fd8fc-d734-4559-b32b-ce94acab37b9.png" /></p>
+</div>
 <h2 id="awk-variables">awk variables</h2>
 <table>
 <thead>
@@ -1704,19 +1709,19 @@ head<span class="w"> </span>../02_Linux_basics/sumstats.txt<span class="w"> </sp
 </tr>
 <tr>
 <td>FS</td>
-<td>The input field separator. The default value is " "</td>
+<td>The input field separator. The default value is <code>" "</code></td>
 </tr>
 <tr>
 <td>OFS</td>
-<td>The output field separator.  The default value is " "</td>
+<td>The output field separator.  The default value is <code>" "</code></td>
 </tr>
 <tr>
 <td>RS</td>
-<td>The input record separator. The default value is "\n"</td>
+<td>The input record separator. The default value is <code>"\n"</code></td>
 </tr>
 <tr>
 <td>ORS</td>
-<td>The output record separator.The default value is "\n"</td>
+<td>The output record separator.The default value is <code>"\n"</code></td>
 </tr>
 <tr>
 <td>FILENAME</td>
@@ -1804,7 +1809,7 @@ SNPID   BETA    MLOG10P
 <li>tolower(string)</li>
 <li>toupper(string)</li>
 </ul>
-<h3 id="awk-options">awk options</h3>
+<h2 id="awk-options">awk options</h2>
 <div class="highlight"><pre><span></span><code>$ awk --help
 Usage: awk [POSIX or GNU style options] -f progfile [--] file ...
 Usage: awk [POSIX or GNU style options] [--] &#39;program&#39; file ...
@@ -1847,6 +1852,10 @@ Examples:
         gawk &#39;{ sum += $1 }; END { print sum }&#39; file
         gawk -F: &#39;{ print $1 }&#39; /etc/passwd
 </code></pre></div>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>https://www.gnu.org/software/gawk/manual/gawk.html</li>
+</ul>
 
               
             </article>
