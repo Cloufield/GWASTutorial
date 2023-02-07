@@ -1626,7 +1626,7 @@
 <li><code>NR</code> : Row number.</li>
 </ul>
 <h2 id="examples">Examples</h2>
-<p>Using the sample sumstats, we will demonstate some simple but useful one-liners.</p>
+<p>Using the sample sumstats, we will demonstrate some simple but useful one-liners.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># sample sumstats</span>
 head<span class="w"> </span>../02_Linux_basics/sumstats.txt<span class="w"> </span>
 <span class="c1">#CHROM  POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG(OR)_SE  Z_STAT  P   ERRCODE</span>
@@ -1676,20 +1676,21 @@ head<span class="w"> </span>../02_Linux_basics/sumstats.txt<span class="w"> </sp
 <h3 id="example-3">Example 3</h3>
 <div class="admonition example">
 <p class="admonition-title">Create a bed-like format for annotation</p>
-<div class="highlight"><pre><span></span><code>awk &#39;NR&gt;1 {print $1,$2,$2,$4,$5}&#39; ../02_Linux_basics/sumstats.txt | head
-1 13273 13273 G C
-1 14599 14599 T A
-1 14604 14604 A G
-1 14930 14930 A G
-1 69897 69897 T C
-1 86331 86331 A G
-1 91581 91581 G A
-1 122872 122872 T G
-1 135163 135163 C T
-1 233473 233473 C G
+<div class="highlight"><pre><span></span><code>awk<span class="w"> </span><span class="s1">&#39;NR&gt;1 {print $1,$2,$2,$4,$5}&#39;</span><span class="w"> </span>../02_Linux_basics/sumstats.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+<span class="m">1</span><span class="w"> </span><span class="m">13273</span><span class="w"> </span><span class="m">13273</span><span class="w"> </span>G<span class="w"> </span>C
+<span class="m">1</span><span class="w"> </span><span class="m">14599</span><span class="w"> </span><span class="m">14599</span><span class="w"> </span>T<span class="w"> </span>A
+<span class="m">1</span><span class="w"> </span><span class="m">14604</span><span class="w"> </span><span class="m">14604</span><span class="w"> </span>A<span class="w"> </span>G
+<span class="m">1</span><span class="w"> </span><span class="m">14930</span><span class="w"> </span><span class="m">14930</span><span class="w"> </span>A<span class="w"> </span>G
+<span class="m">1</span><span class="w"> </span><span class="m">69897</span><span class="w"> </span><span class="m">69897</span><span class="w"> </span>T<span class="w"> </span>C
+<span class="m">1</span><span class="w"> </span><span class="m">86331</span><span class="w"> </span><span class="m">86331</span><span class="w"> </span>A<span class="w"> </span>G
+<span class="m">1</span><span class="w"> </span><span class="m">91581</span><span class="w"> </span><span class="m">91581</span><span class="w"> </span>G<span class="w"> </span>A
+<span class="m">1</span><span class="w"> </span><span class="m">122872</span><span class="w"> </span><span class="m">122872</span><span class="w"> </span>T<span class="w"> </span>G
+<span class="m">1</span><span class="w"> </span><span class="m">135163</span><span class="w"> </span><span class="m">135163</span><span class="w"> </span>C<span class="w"> </span>T
+<span class="m">1</span><span class="w"> </span><span class="m">233473</span><span class="w"> </span><span class="m">233473</span><span class="w"> </span>C<span class="w"> </span>G
 </code></pre></div>
 </div>
 <h2 id="awk-workflow">awk workflow</h2>
+<p>The workflow of awk can be summarized in the following figure: </p>
 <div class="admonition info">
 <p class="admonition-title">awk workflow</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/217223344-233fd8fc-d734-4559-b32b-ce94acab37b9.png" /></p>
@@ -1706,6 +1707,10 @@ head<span class="w"> </span>../02_Linux_basics/sumstats.txt<span class="w"> </sp
 <tr>
 <td>NR</td>
 <td>The number of input records</td>
+</tr>
+<tr>
+<td>NF</td>
+<td>The number of input fields</td>
 </tr>
 <tr>
 <td>FS</td>
@@ -1735,45 +1740,60 @@ head<span class="w"> </span>../02_Linux_basics/sumstats.txt<span class="w"> </sp
 </table>
 <div class="admonition example">
 <p class="admonition-title">Handle csv and tsv files</p>
-<div class="highlight"><pre><span></span><code>head ../03_Data_formats/sample_data.csv
-#CHROM,POS,ID,REF,ALT,A1,FIRTH?,TEST,OBS_CT,OR,LOG(OR)_SE,Z_STAT,P,ERRCODE
-1,13273,1:13273:G:C,G,C,C,N,ADD,503,0.750168,0.280794,-1.02373,0.305961,.
-1,14599,1:14599:T:A,T,A,A,N,ADD,503,1.80972,0.231595,2.56124,0.0104299,.
-1,14604,1:14604:A:G,A,G,G,N,ADD,503,1.80972,0.231595,2.56124,0.0104299,.
-1,14930,1:14930:A:G,A,G,G,N,ADD,503,1.70139,0.240245,2.21209,0.0269602,.
-1,69897,1:69897:T:C,T,C,T,N,ADD,503,1.58002,0.194774,2.34855,0.0188466,.
-1,86331,1:86331:A:G,A,G,G,N,ADD,503,1.47006,0.236102,1.63193,0.102694,.
-1,91581,1:91581:G:A,G,A,A,N,ADD,503,0.924422,0.122991,-0.638963,0.522847,.
-1,122872,1:122872:T:G,T,G,G,N,ADD,503,1.07113,0.180776,0.380121,0.703856,.
-1,135163,1:135163:C:T,C,T,T,N,ADD,503,0.711822,0.23908,-1.42182,0.155079,.
+<div class="highlight"><pre><span></span><code>head<span class="w"> </span>../03_Data_formats/sample_data.csv
+<span class="c1">#CHROM,POS,ID,REF,ALT,A1,FIRTH?,TEST,OBS_CT,OR,LOG(OR)_SE,Z_STAT,P,ERRCODE</span>
+<span class="m">1</span>,13273,1:13273:G:C,G,C,C,N,ADD,503,0.750168,0.280794,-1.02373,0.305961,.
+<span class="m">1</span>,14599,1:14599:T:A,T,A,A,N,ADD,503,1.80972,0.231595,2.56124,0.0104299,.
+<span class="m">1</span>,14604,1:14604:A:G,A,G,G,N,ADD,503,1.80972,0.231595,2.56124,0.0104299,.
+<span class="m">1</span>,14930,1:14930:A:G,A,G,G,N,ADD,503,1.70139,0.240245,2.21209,0.0269602,.
+<span class="m">1</span>,69897,1:69897:T:C,T,C,T,N,ADD,503,1.58002,0.194774,2.34855,0.0188466,.
+<span class="m">1</span>,86331,1:86331:A:G,A,G,G,N,ADD,503,1.47006,0.236102,1.63193,0.102694,.
+<span class="m">1</span>,91581,1:91581:G:A,G,A,A,N,ADD,503,0.924422,0.122991,-0.638963,0.522847,.
+<span class="m">1</span>,122872,1:122872:T:G,T,G,G,N,ADD,503,1.07113,0.180776,0.380121,0.703856,.
+<span class="m">1</span>,135163,1:135163:C:T,C,T,T,N,ADD,503,0.711822,0.23908,-1.42182,0.155079,.
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>awk -v FS=&#39;,&#39; -v OFS=&quot;\t&quot; &#39;{print $1,$2}&#39; sample_data.csv
-#CHROM  POS
-1       13273
-1       14599
-1       14604
-1       14930
-1       69897
-1       86331
-1       91581
-1       122872
-1       135163
+<div class="highlight"><pre><span></span><code>awk<span class="w"> </span>-v<span class="w"> </span><span class="nv">FS</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="w"> </span>-v<span class="w"> </span><span class="nv">OFS</span><span class="o">=</span><span class="s2">&quot;\t&quot;</span><span class="w"> </span><span class="s1">&#39;{print $1,$2}&#39;</span><span class="w"> </span>sample_data.csv
+<span class="c1">#CHROM  POS</span>
+<span class="m">1</span><span class="w">       </span><span class="m">13273</span>
+<span class="m">1</span><span class="w">       </span><span class="m">14599</span>
+<span class="m">1</span><span class="w">       </span><span class="m">14604</span>
+<span class="m">1</span><span class="w">       </span><span class="m">14930</span>
+<span class="m">1</span><span class="w">       </span><span class="m">69897</span>
+<span class="m">1</span><span class="w">       </span><span class="m">86331</span>
+<span class="m">1</span><span class="w">       </span><span class="m">91581</span>
+<span class="m">1</span><span class="w">       </span><span class="m">122872</span>
+<span class="m">1</span><span class="w">       </span><span class="m">135163</span>
 </code></pre></div>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Skip and replace headers</p>
-<div class="highlight"><pre><span></span><code>awk -v FS=&#39;,&#39; -v OFS=&quot;\t&quot; &#39;BEGIN{print &quot;CHR\tPOS&quot;} NR&gt;1 {print $1,$2}&#39; sample_data.csv
+<div class="highlight"><pre><span></span><code>awk<span class="w"> </span>-v<span class="w"> </span><span class="nv">FS</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="w"> </span>-v<span class="w"> </span><span class="nv">OFS</span><span class="o">=</span><span class="s2">&quot;\t&quot;</span><span class="w"> </span><span class="s1">&#39;BEGIN{print &quot;CHR\tPOS&quot;} NR&gt;1 {print $1,$2}&#39;</span><span class="w"> </span>sample_data.csv
 
-CHR     POS
-1       13273
-1       14599
-1       14604
-1       14930
-1       69897
-1       86331
-1       91581
-1       122872
-1       135163
+CHR<span class="w">     </span>POS
+<span class="m">1</span><span class="w">       </span><span class="m">13273</span>
+<span class="m">1</span><span class="w">       </span><span class="m">14599</span>
+<span class="m">1</span><span class="w">       </span><span class="m">14604</span>
+<span class="m">1</span><span class="w">       </span><span class="m">14930</span>
+<span class="m">1</span><span class="w">       </span><span class="m">69897</span>
+<span class="m">1</span><span class="w">       </span><span class="m">86331</span>
+<span class="m">1</span><span class="w">       </span><span class="m">91581</span>
+<span class="m">1</span><span class="w">       </span><span class="m">122872</span>
+<span class="m">1</span><span class="w">       </span><span class="m">135163</span>
+</code></pre></div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Print the last two columns</p>
+<div class="highlight"><pre><span></span><code>awk<span class="w"> </span>-v<span class="w"> </span><span class="nv">FS</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="w"> </span><span class="s1">&#39;{print $(NF-1),$(NF)}&#39;</span><span class="w"> </span>sample_data.csv
+P<span class="w"> </span>ERRCODE
+<span class="m">0</span>.305961<span class="w"> </span>.
+<span class="m">0</span>.0104299<span class="w"> </span>.
+<span class="m">0</span>.0104299<span class="w"> </span>.
+<span class="m">0</span>.0269602<span class="w"> </span>.
+<span class="m">0</span>.0188466<span class="w"> </span>.
+<span class="m">0</span>.102694<span class="w"> </span>.
+<span class="m">0</span>.522847<span class="w"> </span>.
+<span class="m">0</span>.703856<span class="w"> </span>.
+<span class="m">0</span>.155079<span class="w"> </span>.
 </code></pre></div>
 </div>
 <h2 id="awk-functions">awk functions</h2>
@@ -1786,17 +1806,17 @@ CHR     POS
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Convert OR and P to BETA and -log10(P)</p>
-<div class="highlight"><pre><span></span><code>awk -v FS=&#39;,&#39; -v OFS=&quot;\t&quot; &#39;BEGIN{print &quot;SNPID\tBETA\tMLOG10P&quot;}NR&gt;1{print $3,log($10),-log($13)/log(10)}&#39; sample_data.csv
-SNPID   BETA    MLOG10P
-1:13273:G:C     -0.287458       0.514334
-1:14599:T:A     0.593172        1.98172
-1:14604:A:G     0.593172        1.98172
-1:14930:A:G     0.531446        1.56928
-1:69897:T:C     0.457438        1.72477
-1:86331:A:G     0.385303        0.988455
-1:91581:G:A     -0.0785866      0.281625
-1:122872:T:G    0.0687142       0.152516
-1:135163:C:T    -0.339927       0.809447
+<div class="highlight"><pre><span></span><code>awk<span class="w"> </span>-v<span class="w"> </span><span class="nv">FS</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="w"> </span>-v<span class="w"> </span><span class="nv">OFS</span><span class="o">=</span><span class="s2">&quot;\t&quot;</span><span class="w"> </span><span class="s1">&#39;BEGIN{print &quot;SNPID\tBETA\tMLOG10P&quot;}NR&gt;1{print $3,log($10),-log($13)/log(10)}&#39;</span><span class="w"> </span>sample_data.csv
+SNPID<span class="w">   </span>BETA<span class="w">    </span>MLOG10P
+<span class="m">1</span>:13273:G:C<span class="w">     </span>-0.287458<span class="w">       </span><span class="m">0</span>.514334
+<span class="m">1</span>:14599:T:A<span class="w">     </span><span class="m">0</span>.593172<span class="w">        </span><span class="m">1</span>.98172
+<span class="m">1</span>:14604:A:G<span class="w">     </span><span class="m">0</span>.593172<span class="w">        </span><span class="m">1</span>.98172
+<span class="m">1</span>:14930:A:G<span class="w">     </span><span class="m">0</span>.531446<span class="w">        </span><span class="m">1</span>.56928
+<span class="m">1</span>:69897:T:C<span class="w">     </span><span class="m">0</span>.457438<span class="w">        </span><span class="m">1</span>.72477
+<span class="m">1</span>:86331:A:G<span class="w">     </span><span class="m">0</span>.385303<span class="w">        </span><span class="m">0</span>.988455
+<span class="m">1</span>:91581:G:A<span class="w">     </span>-0.0785866<span class="w">      </span><span class="m">0</span>.281625
+<span class="m">1</span>:122872:T:G<span class="w">    </span><span class="m">0</span>.0687142<span class="w">       </span><span class="m">0</span>.152516
+<span class="m">1</span>:135163:C:T<span class="w">    </span>-0.339927<span class="w">       </span><span class="m">0</span>.809447
 </code></pre></div>
 </div>
 <p>String manipulating function</p>
@@ -1810,47 +1830,47 @@ SNPID   BETA    MLOG10P
 <li>toupper(string)</li>
 </ul>
 <h2 id="awk-options">awk options</h2>
-<div class="highlight"><pre><span></span><code>$ awk --help
-Usage: awk [POSIX or GNU style options] -f progfile [--] file ...
-Usage: awk [POSIX or GNU style options] [--] &#39;program&#39; file ...
-POSIX options:          GNU long options: (standard)
-        -f progfile             --file=progfile
-        -F fs                   --field-separator=fs
-        -v var=val              --assign=var=val
-Short options:          GNU long options: (extensions)
-        -b                      --characters-as-bytes
-        -c                      --traditional
-        -C                      --copyright
-        -d[file]                --dump-variables[=file]
-        -D[file]                --debug[=file]
-        -e &#39;program-text&#39;       --source=&#39;program-text&#39;
-        -E file                 --exec=file
-        -g                      --gen-pot
-        -h                      --help
-        -i includefile          --include=includefile
-        -l library              --load=library
-        -L[fatal|invalid]       --lint[=fatal|invalid]
-        -M                      --bignum
-        -N                      --use-lc-numeric
-        -n                      --non-decimal-data
-        -o[file]                --pretty-print[=file]
-        -O                      --optimize
-        -p[file]                --profile[=file]
-        -P                      --posix
-        -r                      --re-interval
-        -S                      --sandbox
-        -t                      --lint-old
-        -V                      --version
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>awk<span class="w"> </span>--help
+Usage:<span class="w"> </span>awk<span class="w"> </span><span class="o">[</span>POSIX<span class="w"> </span>or<span class="w"> </span>GNU<span class="w"> </span>style<span class="w"> </span>options<span class="o">]</span><span class="w"> </span>-f<span class="w"> </span>progfile<span class="w"> </span><span class="o">[</span>--<span class="o">]</span><span class="w"> </span>file<span class="w"> </span>...
+Usage:<span class="w"> </span>awk<span class="w"> </span><span class="o">[</span>POSIX<span class="w"> </span>or<span class="w"> </span>GNU<span class="w"> </span>style<span class="w"> </span>options<span class="o">]</span><span class="w"> </span><span class="o">[</span>--<span class="o">]</span><span class="w"> </span><span class="s1">&#39;program&#39;</span><span class="w"> </span>file<span class="w"> </span>...
+POSIX<span class="w"> </span>options:<span class="w">          </span>GNU<span class="w"> </span>long<span class="w"> </span>options:<span class="w"> </span><span class="o">(</span>standard<span class="o">)</span>
+<span class="w">        </span>-f<span class="w"> </span>progfile<span class="w">             </span>--file<span class="o">=</span>progfile
+<span class="w">        </span>-F<span class="w"> </span>fs<span class="w">                   </span>--field-separator<span class="o">=</span>fs
+<span class="w">        </span>-v<span class="w"> </span><span class="nv">var</span><span class="o">=</span>val<span class="w">              </span>--assign<span class="o">=</span><span class="nv">var</span><span class="o">=</span>val
+Short<span class="w"> </span>options:<span class="w">          </span>GNU<span class="w"> </span>long<span class="w"> </span>options:<span class="w"> </span><span class="o">(</span>extensions<span class="o">)</span>
+<span class="w">        </span>-b<span class="w">                      </span>--characters-as-bytes
+<span class="w">        </span>-c<span class="w">                      </span>--traditional
+<span class="w">        </span>-C<span class="w">                      </span>--copyright
+<span class="w">        </span>-d<span class="o">[</span>file<span class="o">]</span><span class="w">                </span>--dump-variables<span class="o">[=</span>file<span class="o">]</span>
+<span class="w">        </span>-D<span class="o">[</span>file<span class="o">]</span><span class="w">                </span>--debug<span class="o">[=</span>file<span class="o">]</span>
+<span class="w">        </span>-e<span class="w"> </span><span class="s1">&#39;program-text&#39;</span><span class="w">       </span>--source<span class="o">=</span><span class="s1">&#39;program-text&#39;</span>
+<span class="w">        </span>-E<span class="w"> </span>file<span class="w">                 </span>--exec<span class="o">=</span>file
+<span class="w">        </span>-g<span class="w">                      </span>--gen-pot
+<span class="w">        </span>-h<span class="w">                      </span>--help
+<span class="w">        </span>-i<span class="w"> </span>includefile<span class="w">          </span>--include<span class="o">=</span>includefile
+<span class="w">        </span>-l<span class="w"> </span>library<span class="w">              </span>--load<span class="o">=</span>library
+<span class="w">        </span>-L<span class="o">[</span>fatal<span class="p">|</span>invalid<span class="o">]</span><span class="w">       </span>--lint<span class="o">[=</span>fatal<span class="p">|</span>invalid<span class="o">]</span>
+<span class="w">        </span>-M<span class="w">                      </span>--bignum
+<span class="w">        </span>-N<span class="w">                      </span>--use-lc-numeric
+<span class="w">        </span>-n<span class="w">                      </span>--non-decimal-data
+<span class="w">        </span>-o<span class="o">[</span>file<span class="o">]</span><span class="w">                </span>--pretty-print<span class="o">[=</span>file<span class="o">]</span>
+<span class="w">        </span>-O<span class="w">                      </span>--optimize
+<span class="w">        </span>-p<span class="o">[</span>file<span class="o">]</span><span class="w">                </span>--profile<span class="o">[=</span>file<span class="o">]</span>
+<span class="w">        </span>-P<span class="w">                      </span>--posix
+<span class="w">        </span>-r<span class="w">                      </span>--re-interval
+<span class="w">        </span>-S<span class="w">                      </span>--sandbox
+<span class="w">        </span>-t<span class="w">                      </span>--lint-old
+<span class="w">        </span>-V<span class="w">                      </span>--version
 
-To report bugs, see node `Bugs&#39; in `gawk.info&#39;, which is
-section `Reporting Problems and Bugs&#39; in the printed version.
+To<span class="w"> </span>report<span class="w"> </span>bugs,<span class="w"> </span>see<span class="w"> </span>node<span class="w"> </span><span class="sb">`</span>Bugs<span class="s1">&#39; in `gawk.info&#39;</span>,<span class="w"> </span>which<span class="w"> </span>is
+section<span class="w"> </span><span class="sb">`</span>Reporting<span class="w"> </span>Problems<span class="w"> </span>and<span class="w"> </span>Bugs<span class="s1">&#39; in the printed version.</span>
 
-gawk is a pattern scanning and processing language.
-By default it reads standard input and writes standard output.
+<span class="s1">gawk is a pattern scanning and processing language.</span>
+<span class="s1">By default it reads standard input and writes standard output.</span>
 
-Examples:
-        gawk &#39;{ sum += $1 }; END { print sum }&#39; file
-        gawk -F: &#39;{ print $1 }&#39; /etc/passwd
+<span class="s1">Examples:</span>
+<span class="s1">        gawk &#39;</span><span class="o">{</span><span class="w"> </span><span class="nv">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="o">}</span><span class="p">;</span><span class="w"> </span>END<span class="w"> </span><span class="o">{</span><span class="w"> </span>print<span class="w"> </span>sum<span class="w"> </span><span class="o">}</span><span class="s1">&#39; file</span>
+<span class="s1">        gawk -F: &#39;</span><span class="o">{</span><span class="w"> </span>print<span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="o">}</span><span class="err">&#39;</span><span class="w"> </span>/etc/passwd
 </code></pre></div>
 <h2 id="reference">Reference</h2>
 <ul>
