@@ -100,16 +100,17 @@ The workflow of awk can be summarized in the following figure:
 
 ## awk variables
 
-|Variable|Desciption|
-|-|-|
-|NR|The number of input records|
-|NF|The number of input fields|
-|FS|The input field separator. The default value is `" "`|
-|OFS|The output field separator.  The default value is `" "`|
-|RS|The input record separator. The default value is `"\n"`|
-|ORS|The output record separator.The default value is `"\n"` |
-|FILENAME|The name of the current input file.|
-|FNR|The current record number in the current file|
+!!! info "Frequently used awk variables"
+    |Variable|Desciption|
+    |-|-|
+    |NR|The number of input records|
+    |NF|The number of input fields|
+    |FS|The input field separator. The default value is `" "`|
+    |OFS|The output field separator.  The default value is `" "`|
+    |RS|The input record separator. The default value is `"\n"`|
+    |ORS|The output record separator.The default value is `"\n"` |
+    |FILENAME|The name of the current input file.|
+    |FNR|The current record number in the current file|
 
 !!! example "Handle csv and tsv files"
     ```bash
@@ -174,12 +175,12 @@ The workflow of awk can be summarized in the following figure:
 
 ## awk functions
 
-Numeric functions
-
-- exp(x)
-- int(x)
-- log(x)
-- sqrt(x)
+!!! info "Numeric functions in awk"
+    
+    - exp(x)
+    - int(x)
+    - log(x)
+    - sqrt(x)
 
 !!! example "Convert OR and P to BETA and -log10(P)"
     ```bash
@@ -196,15 +197,15 @@ Numeric functions
     1:135163:C:T    -0.339927       0.809447
     ```
 
-String manipulating function
-
-- length([string])
-- split(string, array [, fieldsep [, seps ] ])
-- sub(regexp, replacement [, target]) 
-- gsub(regexp, replacement [, target])
-- substr(string, start [, length ])
-- tolower(string)
-- toupper(string)
+!!! info "String manipulating functions in awk"
+    
+    - length([string])
+    - split(string, array [, fieldsep [, seps ] ])
+    - sub(regexp, replacement [, target]) 
+    - gsub(regexp, replacement [, target])
+    - substr(string, start [, length ])
+    - tolower(string)
+    - toupper(string)
 
 ## awk options
 
