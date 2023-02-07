@@ -93,6 +93,7 @@ The `NR` here means row number. The condition here `NR==1 || $1==3` means if it 
 
 ### awk workflow
 
+![image](https://user-images.githubusercontent.com/40289485/217223344-233fd8fc-d734-4559-b32b-ce94acab37b9.png)
 
 
 
