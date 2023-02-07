@@ -9,7 +9,7 @@
 awk OPTION 'CONDITION {PROCESS}' FILENAME
 ```
 
-Some special variable in awk:
+Some special variables in awk:
 
 - `$0` : all columns
 - `$n` : column n. For example, $1 means the first column. $4 means column 4.
@@ -93,17 +93,18 @@ The `NR` here means row number. The condition here `NR==1 || $1==3` means if it 
 
 ## awk workflow
 
-![image](https://user-images.githubusercontent.com/40289485/217223344-233fd8fc-d734-4559-b32b-ce94acab37b9.png)
+!!! info "awk workflow"
+    ![image](https://user-images.githubusercontent.com/40289485/217223344-233fd8fc-d734-4559-b32b-ce94acab37b9.png)
 
 ## awk variables
 
 |Variable|Desciption|
 |-|-|
 |NR|The number of input records|
-|FS|The input field separator. The default value is " " |
-|OFS|The output field separator.  The default value is " "|
-|RS|The input record separator. The default value is "\n"|
-|ORS|The output record separator.The default value is "\n" |
+|FS|The input field separator. The default value is `" "`|
+|OFS|The output field separator.  The default value is `" "`|
+|RS|The input record separator. The default value is `"\n"`|
+|ORS|The output record separator.The default value is `"\n"` |
 |FILENAME|The name of the current input file.|
 |FNR|The current record number in the current file|
 
@@ -153,8 +154,6 @@ The `NR` here means row number. The condition here `NR==1 || $1==3` means if it 
     1       135163
     ```
 
-
-
 ## awk functions
 
 Numeric functions
@@ -189,7 +188,7 @@ String manipulating function
 - tolower(string)
 - toupper(string)
 
-### awk options
+## awk options
 
 ```
 $ awk --help
@@ -234,3 +233,6 @@ Examples:
         gawk '{ sum += $1 }; END { print sum }' file
         gawk -F: '{ print $1 }' /etc/passwd
 ```
+
+## Reference
+- https://www.gnu.org/software/gawk/manual/gawk.html
