@@ -90,3 +90,85 @@ The `NR` here means row number. The condition here `NR==1 || $1==3` means if it 
     1 135163 135163 C T
     1 233473 233473 C G
     ```
+
+### awk workflow
+
+
+
+
+### awk variables
+
+|Variable|Desciption|
+|-|-|
+|NR|The number of input records|
+|FS|The input field separator. The default value is " " |
+|OFS|The output field separator.  The default value is " "|
+|RS|The input record separator. The default value is "\n"|
+|ORS|The output record separator.The default value is "\n" |
+|FILENAME|The name of the current input file.|
+|FNR|The current record number in the current file|
+
+### awk functions
+
+Numeric functions
+
+- exp(x)
+- int(x)
+- log(x)
+- sqrt(x)
+
+String manipulating function
+
+- length([string])
+- split(string, array [, fieldsep [, seps ] ])
+- sub(regexp, replacement [, target]) 
+- gsub(regexp, replacement [, target])
+- substr(string, start [, length ])
+- tolower(string)
+- toupper(string)
+
+### awk options
+
+```
+$ awk --help
+Usage: awk [POSIX or GNU style options] -f progfile [--] file ...
+Usage: awk [POSIX or GNU style options] [--] 'program' file ...
+POSIX options:          GNU long options: (standard)
+        -f progfile             --file=progfile
+        -F fs                   --field-separator=fs
+        -v var=val              --assign=var=val
+Short options:          GNU long options: (extensions)
+        -b                      --characters-as-bytes
+        -c                      --traditional
+        -C                      --copyright
+        -d[file]                --dump-variables[=file]
+        -D[file]                --debug[=file]
+        -e 'program-text'       --source='program-text'
+        -E file                 --exec=file
+        -g                      --gen-pot
+        -h                      --help
+        -i includefile          --include=includefile
+        -l library              --load=library
+        -L[fatal|invalid]       --lint[=fatal|invalid]
+        -M                      --bignum
+        -N                      --use-lc-numeric
+        -n                      --non-decimal-data
+        -o[file]                --pretty-print[=file]
+        -O                      --optimize
+        -p[file]                --profile[=file]
+        -P                      --posix
+        -r                      --re-interval
+        -S                      --sandbox
+        -t                      --lint-old
+        -V                      --version
+
+To report bugs, see node `Bugs' in `gawk.info', which is
+section `Reporting Problems and Bugs' in the printed version.
+
+gawk is a pattern scanning and processing language.
+By default it reads standard input and writes standard output.
+
+Examples:
+        gawk '{ sum += $1 }; END { print sum }' file
+        gawk -F: '{ print $1 }' /etc/passwd
+```
