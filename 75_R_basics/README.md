@@ -3,6 +3,38 @@
 
 ## Installing R
 
+### Download R from CRAN
+
+R can be downloaded from its official website CRAN (The Comprehensive R Archive Network).
+
+[https://cran.r-project.org/](https://cran.r-project.org/)
+
+### Install R using conda
+
+It is convenient to use conda to manage your R environment. 
+
+```
+conda install -c conda-forge r-base=4.x.x
+```
+
+### IDE for R: Posit(Rstudio)
+
+Posit(Rstudio) is one of the most commonly used Integrated development environment(IDE) for R.
+
+[https://posit.co/](https://posit.co/)
+
+
+## Use R in interactive mode
+```
+R
+```
+
+## Run R script
+```
+Rscript mycode.R
+```
+
+
 ## Installing and Using R packages 
 
 ```
