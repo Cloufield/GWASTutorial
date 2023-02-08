@@ -327,7 +327,17 @@ myfunction <- function(x){
 
 ### Regression
 
-
-
 ```
+lm(formula, data, subset, weights, na.action,
+   method = "qr", model = TRUE, x = FALSE, y = FALSE, qr = TRUE,
+   singular.ok = TRUE, contrasts = NULL, offset, …)
+
+# linear regression
+results <- lm(formula = y ~ x1 + x2)
+
+# logistic regression
+results <- lm(formula = y ~ x1 + x2, family = "binomial")
 ```
+
+Reference:
+- https://stat.ethz.ch/R-manual/R-devel/library/stats/html/lm.html
