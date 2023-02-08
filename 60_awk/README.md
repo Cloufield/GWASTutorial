@@ -141,6 +141,10 @@ The workflow of awk can be summarized in the following figure:
     1       135163
     ```
 
+!!! example   "convert csv to tsv"
+    ```
+    awk 'BEGIN { FS=","; OFS="\t" } {$1=$1; print}' sample_data.csv
+    ```
 !!! example "Skip and replace headers"
     
     ```bash
@@ -156,6 +160,14 @@ The workflow of awk can be summarized in the following figure:
     1       91581
     1       122872
     1       135163
+    ```
+
+!!! example "Extract a line"
+    
+    ```bash
+    awk 'NR==4' sample_data.csv
+
+    1,14604,1:14604:A:G,A,G,G,N,ADD,503,1.80972,0.231595,2.56124,0.0104299,.
     ```
 
 !!! example "Print the last two columns"
