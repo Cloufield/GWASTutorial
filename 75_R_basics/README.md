@@ -7,6 +7,8 @@
 
 R can be downloaded from its official website CRAN (The Comprehensive R Archive Network).
 
+!!! info "CRAN"
+
 [https://cran.r-project.org/](https://cran.r-project.org/)
 
 ### Install R using conda
@@ -282,4 +284,50 @@ myfunction <- function(x){
 }
 > my_add_function(1,3)
 [1] 4
+```
+
+## Statistical functions
+
+### Normal distribution
+
+|Function|Description|
+|-|-|
+|dnorm(x, mean = 0, sd = 1, log = FALSE)|probability density function|
+|pnorm(q, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALSE)|cumulative density function|
+|qnorm(p, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALSE)|quantile function|
+|rnorm(n, mean = 0, sd = 1)| generate random values from normal distribution |
+
+```
+> dnorm(1.96)
+[1] 0.05844094
+
+> pnorm(1.96)
+[1] 0.9750021
+
+> pnorm(1.96, lower.tail=FALSE)
+[1] 0.0249979
+
+> qnorm(0.975)
+[1] 1.959964
+
+> rnorm(10)
+ [1] -0.05595019  0.83176199  0.58362601 -0.89434812  0.85722843  0.96199308
+ [7]  0.47782706 -0.46322066  0.03525421 -1.00715141
+```
+
+### Chi-square distribution
+
+|Function|Description|
+|-|-|
+|dchisq(x, df, ncp = 0, log = FALSE)|probability density function|
+|pchisq(q, df, ncp = 0, lower.tail = TRUE, log.p = FALSE)|cumulative density function|
+|qchisq(p, df, ncp = 0, lower.tail = TRUE, log.p = FALSE)|quantile function|
+|rchisq(n, df, ncp = 0)| generate random values from normal distribution |
+
+
+### Regression
+
+
+
+```
 ```
