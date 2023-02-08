@@ -214,7 +214,7 @@ SNPID	CHR	POS	EA	NEA	SE	Z	P	OR	N	STATUS
 
 ## Visualization
 
-To visualize the sumstats, we will create Manhattan plot, QQ plot and regional plot.
+To visualize the sumstats, we will create the Manhattan plot, QQ plot and regional plot.
 
 Please check for codes : [Visualization using gwaslab](https://cloufield.github.io/GWASTutorial/Visualization/)
 
@@ -222,20 +222,22 @@ Please check for codes : [Visualization using gwaslab](https://cloufield.github.
 
 ### Manhattan plot
 
-Manhattan plot is the most classic visualization of GWAS summary statistics. It is a form of scatter plot. Each dot represents the test result for a variants. variants are sorted by its genome coordinates and are aligned along the X axis. Y axis shows the -log10(P value) for tests of variants in GWAS. 
+Manhattan plot is the most classic visualization of GWAS summary statistics. It is a form of scatter plot. Each dot represents the test result for a variant. variants are sorted by its genome coordinates and are aligned along the X axis. Y axis shows the -log10(P value) for tests of variants in GWAS. 
 
 !!! note
     This kind of plot was named after Manhattan in New York City since it resembles the Manhattan skyline.   
 
-<img width="686" alt="image" src="https://user-images.githubusercontent.com/40289485/209780549-54a24fdd-485b-4875-8f40-d6812eb644fe.png">
+!!! info "A real Manhattan plot"
+    <img width="686" alt="image" src="https://user-images.githubusercontent.com/40289485/209780549-54a24fdd-485b-4875-8f40-d6812eb644fe.png">
+    I took this photo in 2020 just before the COVID-19 pandemic. It was a cloudy and misty day. Those birds formed a significance threshold line. And the skyscrapers above that line resembled the significant signals in your GWAS.  I believe you could easily get how the GWAS Manhattan plot was named. 
 
-Data we need from sumstats to create Manhattan plot:
+Data we need from sumstats to create Manhattan plots:
 
 - Chromosome 
 - Basepair position
 - P value or -log10(P)
 
-!!! tips "Steps to create Mahattan plot"
+!!! tips "Steps to create Manhattan plot"
     
     1. sort the variants by genome coordinates.
     2. map the genome coordinates of variants to the x axis.
