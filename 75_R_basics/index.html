@@ -2194,8 +2194,18 @@ while (x&lt;5)
 </tbody>
 </table>
 <h3 id="regression">Regression</h3>
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code>lm(formula, data, subset, weights, na.action,
+   method = &quot;qr&quot;, model = TRUE, x = FALSE, y = FALSE, qr = TRUE,
+   singular.ok = TRUE, contrasts = NULL, offset, …)
+
+# linear regression
+results &lt;- lm(formula = y ~ x1 + x2)
+
+# logistic regression
+results &lt;- lm(formula = y ~ x1 + x2, family = &quot;binomial&quot;)
 </code></pre></div>
+<p>Reference:
+- https://stat.ethz.ch/R-manual/R-devel/library/stats/html/lm.html</p>
 
               
             </article>
