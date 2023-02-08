@@ -1811,24 +1811,28 @@ End time: Tue Dec 27 23:04:40 2022
 11:56249438:A:G 11  56249438    G   A   0.188891    -4.77836    1.767350e-06    0.405518    503 9999999
 </code></pre></div></p>
 <h2 id="visualization">Visualization</h2>
-<p>To visualize the sumstats, we will create Manhattan plot, QQ plot and regional plot.</p>
+<p>To visualize the sumstats, we will create the Manhattan plot, QQ plot and regional plot.</p>
 <p>Please check for codes : <a href="https://cloufield.github.io/GWASTutorial/Visualization/">Visualization using gwaslab</a></p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/209681591-dc691764-7346-4936-80b4-528bc425a61e.png" /></p>
 <h3 id="manhattan-plot">Manhattan plot</h3>
-<p>Manhattan plot is the most classic visualization of GWAS summary statistics. It is a form of scatter plot. Each dot represents the test result for a variants. variants are sorted by its genome coordinates and are aligned along the X axis. Y axis shows the -log10(P value) for tests of variants in GWAS. </p>
+<p>Manhattan plot is the most classic visualization of GWAS summary statistics. It is a form of scatter plot. Each dot represents the test result for a variant. variants are sorted by its genome coordinates and are aligned along the X axis. Y axis shows the -log10(P value) for tests of variants in GWAS. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This kind of plot was named after Manhattan in New York City since it resembles the Manhattan skyline.   </p>
 </div>
-<p><img width="686" alt="image" src="https://user-images.githubusercontent.com/40289485/209780549-54a24fdd-485b-4875-8f40-d6812eb644fe.png"></p>
-<p>Data we need from sumstats to create Manhattan plot:</p>
+<div class="admonition info">
+<p class="admonition-title">A real Manhattan plot</p>
+<p><img width="686" alt="image" src="https://user-images.githubusercontent.com/40289485/209780549-54a24fdd-485b-4875-8f40-d6812eb644fe.png">
+I took this photo in 2020 just before the COVID-19 pandemic. It was a cloudy and misty day. Those birds formed a significance threshold line. And the skyscrapers above that line resembled the significant signals in your GWAS.  I believe you could easily get how the GWAS Manhattan plot was named. </p>
+</div>
+<p>Data we need from sumstats to create Manhattan plots:</p>
 <ul>
 <li>Chromosome </li>
 <li>Basepair position</li>
 <li>P value or -log10(P)</li>
 </ul>
 <div class="admonition tips">
-<p class="admonition-title">Steps to create Mahattan plot</p>
+<p class="admonition-title">Steps to create Manhattan plot</p>
 <ol>
 <li>sort the variants by genome coordinates.</li>
 <li>map the genome coordinates of variants to the x axis.</li>
