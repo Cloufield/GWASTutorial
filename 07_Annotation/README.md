@@ -13,9 +13,9 @@ In this tutorial, we will use ANNOVAR to annotate the variants in our summary st
 
 Download ANNOVAR from [here](https://annovar.openbioinformatics.org/en/latest/user-guide/download/) (registration required; freely available to personal, academic and non-profit use only.)
 
-You will receive an eamil with the download link after registration. Download it and decompress:
+You will receive an email with the download link after registration. Download it and decompress:
 
-```
+```bash
 tar -xvzf annovar.latest.tar.gz
 ```
 
@@ -26,45 +26,72 @@ For refGene annotation for hg19, we do not need to download additional files.
 The default input file for ANNOVAR is a 1-based coordinate file.
 
 We will only use the first 100000 variants as an example.
-```
-awk 'NR>1 && NR<100000 {print $1,$2,$2,$4,$5}' ../06_Association_tests/1kgeas.B1.glm.logistic.hybrid > annovar_input.txt
-```
 
-```
-head annovar_input.txt 
-1 13273 13273 G C
-1 14599 14599 T A
-1 14604 14604 A G
-1 14930 14930 A G
-1 69897 69897 T C
-1 86331 86331 A G
-1 91581 91581 G A
-1 122872 122872 T G
-1 135163 135163 C T
-1 233473 233473 C G
-```
+!!! example "annovar_input"
+    ```bash
+    awk 'NR>1 && NR<100000 {print $1,$2,$2,$4,$5}' ../06_Association_tests/1kgeas.B1.glm.logistic.    hybrid > annovar_input.txt
+    ```
+    
+    ```
+    head annovar_input.txt 
+    1 13273 13273 G C
+    1 14599 14599 T A
+    1 14604 14604 A G
+    1 14930 14930 A G
+    1 69897 69897 T C
+    1 86331 86331 A G
+    1 91581 91581 G A
+    1 122872 122872 T G
+    1 135163 135163 C T
+    1 233473 233473 C G
+    ```
+
+!!! info "With `-vcfinput` option, ANNOVAR can accept input files in VCF format."
+    
 
 ### Annotation
-Annotate the variants with its gene information.
+Annotate the variants with gene information.
 
-```
-input=annovar_input.txt
-humandb=/home/he/tools/annovar/annovar/humandb
-table_annovar.pl ${input} ${humandb} -buildver hg19 -out myannotation -remove -protocol refGene -operation g -nastring . -polish
-```
+!!! example "A minimal example of annotation using refGene"
+    
+    ```bash
+    input=annovar_input.txt
+    humandb=/home/he/tools/annovar/annovar/humandb
+    table_annovar.pl ${input} ${humandb} -buildver hg19 -out myannotation -remove -protocol refGene     -operation g -nastring . -polish
+    ```
+    
+    ```
+    Chr	Start	End	Ref	Alt	Func.refGene	Gene.refGene	GeneDetail.refGene	ExonicFunc.refGene	AAChange.    refGene
+    1	13273	13273	G	C	ncRNA_exonic	DDX11L1;LOC102725121	.	.	.
+    1	14599	14599	T	A	ncRNA_exonic	WASH7P	.	.	.
+    1	14604	14604	A	G	ncRNA_exonic	WASH7P	.	.	.
+    1	14930	14930	A	G	ncRNA_intronic	WASH7P	.	.	.
+    1	69897	69897	T	C	exonic	OR4F5	.	synonymous SNV	OR4F5:NM_001005484:exon1:c.T807C:p.S269S
+    1	86331	86331	A	G	intergenic	OR4F5;LOC729737	dist=16323;dist=48442	.	.
+    1	91581	91581	G	A	intergenic	OR4F5;LOC729737	dist=21573;dist=43192	.	.
+    1	122872	122872	T	G	intergenic	OR4F5;LOC729737	dist=52864;dist=11901	.	.
+    1	135163	135163	C	T	ncRNA_exonic	LOC729737	.	.	.
+    ```
 
-```
-Chr	Start	End	Ref	Alt	Func.refGene	Gene.refGene	GeneDetail.refGene	ExonicFunc.refGene	AAChange.refGene
-1	13273	13273	G	C	ncRNA_exonic	DDX11L1;LOC102725121	.	.	.
-1	14599	14599	T	A	ncRNA_exonic	WASH7P	.	.	.
-1	14604	14604	A	G	ncRNA_exonic	WASH7P	.	.	.
-1	14930	14930	A	G	ncRNA_intronic	WASH7P	.	.	.
-1	69897	69897	T	C	exonic	OR4F5	.	synonymous SNV	OR4F5:NM_001005484:exon1:c.T807C:p.S269S
-1	86331	86331	A	G	intergenic	OR4F5;LOC729737	dist=16323;dist=48442	.	.
-1	91581	91581	G	A	intergenic	OR4F5;LOC729737	dist=21573;dist=43192	.	.
-1	122872	122872	T	G	intergenic	OR4F5;LOC729737	dist=52864;dist=11901	.	.
-1	135163	135163	C	T	ncRNA_exonic	LOC729737	.	.	.
-```
+### Additional databases
+
+ANNOVAR supports a wide range of commonly used databases including `dbsnp` , `dbnsfp`, `clinvar`, `gnomad`, `1000g`, `cadd` and so forth. For details, please check ANNOVAR's official documents:
+
+https://annovar.openbioinformatics.org/en/latest/user-guide/download/
+
+!!! example "An example of annotation using multiple databases"
+    ```
+    # input file is in vcf format
+    table_annovar.pl \
+      ${in_vcf} \
+      ${humandb} \
+      -buildver hg19 \
+      -protocol refGene,avsnp150,clinvar_20200316,gnomad211_exome \
+      -operation g,f,f,f \
+      -remove \
+      -out ${out_prefix} \ 
+      -vcfinput
+    ```
 
 ## VEP (under construction)
 
