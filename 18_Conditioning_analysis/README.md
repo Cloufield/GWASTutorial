@@ -1,15 +1,14 @@
-Conditioning analysis
----
+# Conditioning analysis
 
-
-Multiple association signals could harbore in one loci, especially when observering complex LD structure in the regional plot.
-Conditioning on one signal allows to separate the independent signals.
+Multiple association signals could exist in one locus, especially when observing complex LD structures in the regional plot.
+Conditioning on one signal allows the separation of independent signals.
 
 Several ways to perform the conditioning analysis:
-* Adding the lead variant to the covariates step-wisely and rerun the association test.
-* [GCTA-COJO](https://www.nature.com/articles/ng.2213).
 
-# Adding the lead variant to the covariates
+- Adding the lead variant to the covariates step-wisely and rerun the association test.
+- [Conditional & joint association analysis using GWAS summary statistics (GCTA-COJO)](https://www.nature.com/articles/ng.2213).
+
+## Adding the lead variant to the covariates
 
 First, extract the individual genotype (dosage) to the text file. Then add it to covariates.
 
@@ -25,12 +24,14 @@ plink2 \
 The exported format could be found in [Export non-PLINK 2 fileset](https://www.cog-genomics.org/plink/2.0/data#export).
 
 !!! note
+    Major allele dosage would be outputted. If adding `ref-first`, REF allele would be outputted. It does not matter as a covariate.
 
-Major allele dosage would be outputed. If adding `ref-first`, ref allele would be outputed. It does not matter as a covariate.
+Then just paste it to the covariates table and run the association test.
 
-Then just paste it to the covariates table and run association test.
+!!! note
+    Some association test software will also provide options for condition analysis. For example, in PLINK, you can use `--condition <variant ID> ` for condition analysis. You can simply provide a list of variant IDs to run the condition analysis.
 
-# GCTA-COJO
+## GCTA-COJO
 
 If raw genotypes and phenotypes are not available, GCTA-COJO performs conditioning analysis using sumstats and external LD reference.
 
@@ -48,8 +49,7 @@ gcta \
 ```
 
 !!! note
-
-`bfile` is used to generate LD. A size of [> 4000 unrelated samples](https://yanglab.westlake.edu.cn/software/gcta/#COJO) is suggested. Estimation of LD in GATC is based on the hard-call genotype.
+    `bfile` is used to generate LD. A size of [> 4000 unrelated samples](https://yanglab.westlake.edu.cn/software/gcta/#COJO) is suggested. Estimation of LD in GATC is based on the hard-call genotype.
 
 Input file format `less chr1_cojo.input`:
 ```
@@ -59,8 +59,12 @@ chr1:13024:G:A  A       G       1.63957e-05     -3.2714 3.26302 0.3161  180590
 ```
 Here `A1` is the effect allele. 
 
-Then `--cojo-cond` could be used to generate new sumstats conditioned on the above selected variant(s).
+Then `--cojo-cond` could be used to generate new sumstats conditioned on the above-selected variant(s).
 
+Reference:
+
+- https://www.cog-genomics.org/plink/1.9/assoc
+- Yang, J., Ferreira, T., Morris, A. P., Medland, S. E., Genetic Investigation of ANthropometric Traits (GIANT) Consortium, DIAbetes Genetics Replication And Meta-analysis (DIAGRAM) Consortium, ... & Visscher, P. M. (2012). Conditional and joint multiple-SNP analysis of GWAS summary statistics identifies additional variants influencing complex traits. Nature genetics, 44(4), 369-375.
 
 
 
