@@ -1240,6 +1240,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Conditional analysis
@@ -1256,19 +1258,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#conditioning-analysis" class="md-nav__link">
-    Conditioning analysis
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#adding-the-lead-variant-to-the-covariates" class="md-nav__link">
@@ -1439,19 +1436,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#conditioning-analysis" class="md-nav__link">
-    Conditioning analysis
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#adding-the-lead-variant-to-the-covariates" class="md-nav__link">
@@ -1481,13 +1473,15 @@
                 
 
 
-<h2 id="conditioning-analysis">Conditioning analysis</h2>
-<p>Multiple association signals could harbore in one loci, especially when observering complex LD structure in the regional plot.
-Conditioning on one signal allows to separate the independent signals.</p>
-<p>Several ways to perform the conditioning analysis:
-* Adding the lead variant to the covariates step-wisely and rerun the association test.
-* <a href="https://www.nature.com/articles/ng.2213">GCTA-COJO</a>.</p>
-<h1 id="adding-the-lead-variant-to-the-covariates">Adding the lead variant to the covariates</h1>
+<h1 id="conditioning-analysis">Conditioning analysis</h1>
+<p>Multiple association signals could exist in one locus, especially when observing complex LD structures in the regional plot.
+Conditioning on one signal allows the separation of independent signals.</p>
+<p>Several ways to perform the conditioning analysis:</p>
+<ul>
+<li>Adding the lead variant to the covariates step-wisely and rerun the association test.</li>
+<li><a href="https://www.nature.com/articles/ng.2213">Conditional &amp; joint association analysis using GWAS summary statistics (GCTA-COJO)</a>.</li>
+</ul>
+<h2 id="adding-the-lead-variant-to-the-covariates">Adding the lead variant to the covariates</h2>
 <p>First, extract the individual genotype (dosage) to the text file. Then add it to covariates.</p>
 <div class="highlight"><pre><span></span><code>plink2<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--pfile<span class="w"> </span>chr1.dose.Rsq0.3<span class="w"> </span>vzs<span class="w"> </span><span class="se">\</span>
@@ -1499,10 +1493,14 @@ Conditioning on one signal allows to separate the independent signals.</p>
 <p>The exported format could be found in <a href="https://www.cog-genomics.org/plink/2.0/data#export">Export non-PLINK 2 fileset</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>Major allele dosage would be outputted. If adding <code>ref-first</code>, REF allele would be outputted. It does not matter as a covariate.</p>
 </div>
-<p>Major allele dosage would be outputed. If adding <code>ref-first</code>, ref allele would be outputed. It does not matter as a covariate.</p>
-<p>Then just paste it to the covariates table and run association test.</p>
-<h1 id="gcta-cojo">GCTA-COJO</h1>
+<p>Then just paste it to the covariates table and run the association test.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some association test software will also provide options for condition analysis. For example, in PLINK, you can use <code>--condition &lt;variant ID&gt;</code> for condition analysis. You can simply provide a list of variant IDs to run the condition analysis.</p>
+</div>
+<h2 id="gcta-cojo">GCTA-COJO</h2>
 <p>If raw genotypes and phenotypes are not available, GCTA-COJO performs conditioning analysis using sumstats and external LD reference.</p>
 <p><code>cojo-top-SNPs 10</code> will perform a step-wise model selection to select 10 independently associated SNPs (including non-significant ones).</p>
 <div class="highlight"><pre><span></span><code>gcta \
@@ -1516,15 +1514,20 @@ Conditioning on one signal allows to separate the independent signals.</p>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-</div>
 <p><code>bfile</code> is used to generate LD. A size of <a href="https://yanglab.westlake.edu.cn/software/gcta/#COJO">&gt; 4000 unrelated samples</a> is suggested. Estimation of LD in GATC is based on the hard-call genotype.</p>
+</div>
 <p>Input file format <code>less chr1_cojo.input</code>:
 <div class="highlight"><pre><span></span><code>ID      ALLELE1 ALLELE0 A1FREQ  BETA    SE      P       N
 chr1:11171:CCTTG:C      C       CCTTG   0.0831407       -0.0459889      0.0710074       0.5172  180590
 chr1:13024:G:A  A       G       1.63957e-05     -3.2714 3.26302 0.3161  180590
 </code></pre></div>
 Here <code>A1</code> is the effect allele. </p>
-<p>Then <code>--cojo-cond</code> could be used to generate new sumstats conditioned on the above selected variant(s).</p>
+<p>Then <code>--cojo-cond</code> could be used to generate new sumstats conditioned on the above-selected variant(s).</p>
+<p>Reference:</p>
+<ul>
+<li>https://www.cog-genomics.org/plink/1.9/assoc</li>
+<li>Yang, J., Ferreira, T., Morris, A. P., Medland, S. E., Genetic Investigation of ANthropometric Traits (GIANT) Consortium, DIAbetes Genetics Replication And Meta-analysis (DIAGRAM) Consortium, ... &amp; Visscher, P. M. (2012). Conditional and joint multiple-SNP analysis of GWAS summary statistics identifies additional variants influencing complex traits. Nature genetics, 44(4), 369-375.</li>
+</ul>
 
               
             </article>
