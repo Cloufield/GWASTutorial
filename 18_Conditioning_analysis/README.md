@@ -15,8 +15,8 @@ First, extract the individual genotype (dosage) to the text file. Then add it to
 
 ```sh
 plink2 \
-  --pfile topmed_pgen/chr1.dose.Rsq0.3 vzs \
-  --extract genotype/chr1.list \
+  --pfile chr1.dose.Rsq0.3 vzs \
+  --extract chr1.list \
   --threads 1 \
   --export A \
   --out genotype/chr1
@@ -38,7 +38,7 @@ If raw genotypes and phenotypes are not available, GCTA-COJO performs conditioni
 
 ```
 gcta \
-    --bfile chr1 \
+  --bfile chr1 \
   --chr 1 \
   --maf 0.001 \
   --cojo-file chr1_cojo.input \
