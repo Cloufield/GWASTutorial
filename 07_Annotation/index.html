@@ -1008,6 +1008,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#additional-databases" class="md-nav__link">
+    Additional databases
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1528,6 +1535,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#additional-databases" class="md-nav__link">
+    Additional databases
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1578,15 +1592,17 @@
 <p>In this tutorial, we will use ANNOVAR to annotate the variants in our summary statistics (hg19).</p>
 <h3 id="install">Install</h3>
 <p>Download ANNOVAR from <a href="https://annovar.openbioinformatics.org/en/latest/user-guide/download/">here</a> (registration required; freely available to personal, academic and non-profit use only.)</p>
-<p>You will receive an eamil with the download link after registration. Download it and decompress:</p>
-<div class="highlight"><pre><span></span><code>tar -xvzf annovar.latest.tar.gz
+<p>You will receive an email with the download link after registration. Download it and decompress:</p>
+<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xvzf<span class="w"> </span>annovar.latest.tar.gz
 </code></pre></div>
 <p>For refGene annotation for hg19, we do not need to download additional files.</p>
 <h3 id="format-input-file">Format input file</h3>
 <p>The default input file for ANNOVAR is a 1-based coordinate file.</p>
-<p>We will only use the first 100000 variants as an example.
-<div class="highlight"><pre><span></span><code>awk &#39;NR&gt;1 &amp;&amp; NR&lt;100000 {print $1,$2,$2,$4,$5}&#39; ../06_Association_tests/1kgeas.B1.glm.logistic.hybrid &gt; annovar_input.txt
-</code></pre></div></p>
+<p>We will only use the first 100000 variants as an example.</p>
+<div class="admonition example">
+<p class="admonition-title">annovar_input</p>
+<div class="highlight"><pre><span></span><code>awk<span class="w"> </span><span class="s1">&#39;NR&gt;1 &amp;&amp; NR&lt;100000 {print $1,$2,$2,$4,$5}&#39;</span><span class="w"> </span>../06_Association_tests/1kgeas.B1.glm.logistic.<span class="w">    </span>hybrid<span class="w"> </span>&gt;<span class="w"> </span>annovar_input.txt
+</code></pre></div>
 <div class="highlight"><pre><span></span><code>head annovar_input.txt 
 1 13273 13273 G C
 1 14599 14599 T A
@@ -1599,13 +1615,19 @@
 1 135163 135163 C T
 1 233473 233473 C G
 </code></pre></div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">With <code>-vcfinput</code> option, ANNOVAR can accept input files in VCF format.</p>
+</div>
 <h3 id="annotation">Annotation</h3>
-<p>Annotate the variants with its gene information.</p>
-<div class="highlight"><pre><span></span><code>input=annovar_input.txt
-humandb=/home/he/tools/annovar/annovar/humandb
-table_annovar.pl ${input} ${humandb} -buildver hg19 -out myannotation -remove -protocol refGene -operation g -nastring . -polish
+<p>Annotate the variants with gene information.</p>
+<div class="admonition example">
+<p class="admonition-title">A minimal example of annotation using refGene</p>
+<div class="highlight"><pre><span></span><code><span class="nv">input</span><span class="o">=</span>annovar_input.txt
+<span class="nv">humandb</span><span class="o">=</span>/home/he/tools/annovar/annovar/humandb
+table_annovar.pl<span class="w"> </span><span class="si">${</span><span class="nv">input</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">humandb</span><span class="si">}</span><span class="w"> </span>-buildver<span class="w"> </span>hg19<span class="w"> </span>-out<span class="w"> </span>myannotation<span class="w"> </span>-remove<span class="w"> </span>-protocol<span class="w"> </span>refGene<span class="w">     </span>-operation<span class="w"> </span>g<span class="w"> </span>-nastring<span class="w"> </span>.<span class="w"> </span>-polish
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Chr Start   End Ref Alt Func.refGene    Gene.refGene    GeneDetail.refGene  ExonicFunc.refGene  AAChange.refGene
+<div class="highlight"><pre><span></span><code>Chr Start   End Ref Alt Func.refGene    Gene.refGene    GeneDetail.refGene  ExonicFunc.refGene  AAChange.    refGene
 1   13273   13273   G   C   ncRNA_exonic    DDX11L1;LOC102725121    .   .   .
 1   14599   14599   T   A   ncRNA_exonic    WASH7P  .   .   .
 1   14604   14604   A   G   ncRNA_exonic    WASH7P  .   .   .
@@ -1616,6 +1638,24 @@ table_annovar.pl ${input} ${humandb} -buildver hg19 -out myannotation -remove -p
 1   122872  122872  T   G   intergenic  OR4F5;LOC729737 dist=52864;dist=11901   .   .
 1   135163  135163  C   T   ncRNA_exonic    LOC729737   .   .   .
 </code></pre></div>
+</div>
+<h3 id="additional-databases">Additional databases</h3>
+<p>ANNOVAR supports a wide range of commonly used databases including <code>dbsnp</code> , <code>dbnsfp</code>, <code>clinvar</code>, <code>gnomad</code>, <code>1000g</code>, <code>cadd</code> and so forth. For details, please check ANNOVAR's official documents:</p>
+<p>https://annovar.openbioinformatics.org/en/latest/user-guide/download/</p>
+<div class="admonition example">
+<p class="admonition-title">An example of annotation using multiple databases</p>
+<div class="highlight"><pre><span></span><code># input file is in vcf format
+table_annovar.pl \
+  ${in_vcf} \
+  ${humandb} \
+  -buildver hg19 \
+  -protocol refGene,avsnp150,clinvar_20200316,gnomad211_exome \
+  -operation g,f,f,f \
+  -remove \
+  -out ${out_prefix} \ 
+  -vcfinput
+</code></pre></div>
+</div>
 <h2 id="vep-under-construction">VEP (under construction)</h2>
 <h3 id="install_1">Install</h3>
 <div class="highlight"><pre><span></span><code>git clone https://github.com/Ensembl/ensembl-vep.git
