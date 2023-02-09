@@ -1490,8 +1490,8 @@ Conditioning on one signal allows to separate the independent signals.</p>
 <h1 id="adding-the-lead-variant-to-the-covariates">Adding the lead variant to the covariates</h1>
 <p>First, extract the individual genotype (dosage) to the text file. Then add it to covariates.</p>
 <div class="highlight"><pre><span></span><code>plink2<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--pfile<span class="w"> </span>topmed_pgen/chr1.dose.Rsq0.3<span class="w"> </span>vzs<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--extract<span class="w"> </span>genotype/chr1.list<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--pfile<span class="w"> </span>chr1.dose.Rsq0.3<span class="w"> </span>vzs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--extract<span class="w"> </span>chr1.list<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--threads<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--export<span class="w"> </span>A<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--out<span class="w"> </span>genotype/chr1
@@ -1506,7 +1506,7 @@ Conditioning on one signal allows to separate the independent signals.</p>
 <p>If raw genotypes and phenotypes are not available, GCTA-COJO performs conditioning analysis using sumstats and external LD reference.</p>
 <p><code>cojo-top-SNPs 10</code> will perform a step-wise model selection to select 10 independently associated SNPs (including non-significant ones).</p>
 <div class="highlight"><pre><span></span><code>gcta \
-    --bfile chr1 \
+  --bfile chr1 \
   --chr 1 \
   --maf 0.001 \
   --cojo-file chr1_cojo.input \
