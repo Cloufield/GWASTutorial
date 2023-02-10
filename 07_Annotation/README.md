@@ -75,13 +75,13 @@ Annotate the variants with gene information.
 
 ### Additional databases
 
-ANNOVAR supports a wide range of commonly used databases including `dbsnp` , `dbnsfp`, `clinvar`, `gnomad`, `1000g`, `cadd` and so forth. For details, please check ANNOVAR's official documents: https://annovar.openbioinformatics.org/en/latest/user-guide/download/
+ANNOVAR supports a wide range of commonly used databases including `dbsnp` , `dbnsfp`, `clinvar`, `gnomad`, `1000g`, `cadd` and so forth. For details, please check [ANNOVAR's official documents](https://annovar.openbioinformatics.org/en/latest/user-guide/download/)
 
 You can check the Table Name listed in [the link above](https://annovar.openbioinformatics.org/en/latest/user-guide/download/)  and download the database you need using the following command.
 
-!!! example "Download avsnp147 for hg19 from ANNOVAR"
+!!! example "Example: Downloading avsnp150 for hg19 from ANNOVAR"
     ```
-    annotate_variation.pl -buildver hg19 -downdb -webfrom annovar avsnp147 humandb/
+    annotate_variation.pl -buildver hg19 -downdb -webfrom annovar avsnp150 humandb/
     ```
 
 !!! example "An example of annotation using multiple databases"
