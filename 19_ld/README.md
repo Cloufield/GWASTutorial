@@ -30,9 +30,13 @@ Please check [Calculate LD using PLINK](https://cloufield.github.io/GWASTutorial
 LDlink is a very useful tool for quick lookups of any information related to LD. 
 
 ### LDlink-LDpair
+!!! example "LDpair"
+    ![image](https://user-images.githubusercontent.com/40289485/218093225-91f3f59c-654f-4ba0-a869-2fb67aa91913.png)
 
 
 ### LDlink-LDproxy
+!!! example "LDproxy for rs671"
+    ![image](https://user-images.githubusercontent.com/40289485/218092256-f3750a19-307a-4559-9544-f0431c83d9bd.png)
 
 
 ### Query in batch using LDlink API
