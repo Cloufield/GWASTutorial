@@ -10,7 +10,6 @@ theme:
     - navigation.tabs
     - navigation.top
     - navigation.tracking
-    - navigation.expand
     - navigation.path
     
   font:
@@ -73,12 +72,13 @@ nav:
           - "MR Basics" : 16_mendelian_randomization.md
           - "TwoSampleMR Tutorial" : TwoSampleMR.ipynb
        - "Conditional analysis" : 18_Conditioning_analysis.md
-       - "Colocalization" : 
-          - "Colocalization" : 17_colocalization.md
+       - "Colocalization" : 17_colocalization.md
     - Others :
        - "Recommended reading" : 90_Recommended_Reading.md
        - "Assignment - 1KG PCA" : 95_Assignment.md
        - "Assignment - Presentation" : 96_Assignment2.md
+    - Topics :
+       - "Linkage Disequilibrium (LD)" : 19_ld.md
 
 markdown_extensions:
   - toc:
