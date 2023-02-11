@@ -12,13 +12,20 @@ Meta-analysis is one of the most commonly used statistical methods to combine th
 To address these problems, meta-analysis is a powerful approach to integrate multiple GWAS summary statistics, especially when more and more summary statistics are publicly available.
 . This method allows us to obtain increases in statistical power as sample size increases. 
 
+!!! note "What we could achieve by conducting meta-analysis"
+    
+    - increase the statistical power for GWASs. 
+    - improve the effect size estimations, which could facilitate downstream analyses. (For example, PRS or MR).
+    - provide opportunities to study the less prevalent or understudied diseases. 
+    - cross-validate findings across different studies. 
+
 ## Fixed effects meta-analysis
 
 $$ \bar{\beta_{ij}} = {{\sum_{i=1}^{k} {w_{ij} \beta_{ij}}}\over{\sum_{i=1}^{k} {w_{ij}}}} $$
 
 - $w_{ij} = 1 / Var(\beta_{ij})$
 
-## Heterogeneity test
+### Heterogeneity test
 
 !!! info "Cochran's Q test"
 
@@ -26,6 +33,29 @@ $$ \bar{\beta_{ij}} = {{\sum_{i=1}^{k} {w_{ij} \beta_{ij}}}\over{\sum_{i=1}^{k} 
 
 !!! info "$I^2$"
     $$ I_j^2 =  {{Q_j - df_j}\over{Q_j}}\times 100% =  {{Q - (k - 1)}\over{Q}}\times 100% $$
+
+### METAL
+
+METAL is one of the most commonly used tools for GWA meta-analysis. Its official documentation can be found [here](https://genome.sph.umich.edu/wiki/METAL_Documentation). METAL supports two models: (1) Sample size based approach and (2) Inverse variance based approach.
+
+!!! example "A minimal example of meta-analysis using the IVW method" 
+    ```txt
+    # classical approach, uses effect size estimates and standard errors
+    SCHEME STDERR  
+    
+    # === DESCRIBE AND PROCESS THE FIRST INPUT FILE ===
+    MARKER SNP
+    ALLELE REF_ALLELE OTHER_ALLELE
+    EFFECT BETA
+    PVALUE PVALUE 
+    STDERR SE 
+    PROCESS inputfile1.txt
+    
+    # === THE SECOND INPUT FILE HAS THE SAME FORMAT AND CAN BE PROCESSED IMMEDIATELY ===
+    PROCESS inputfile2.txt
+    
+    ANALYZE
+    ```
 
 ## Random effects meta-analysis
 
@@ -37,6 +67,27 @@ $$w_{ij}^* = {{1}\over{r_j^2 + Var(\beta_{ij})}} $$
 
 !!! quote
 
-## METAL
+### GWAMA
 
-## MR-MEGA
+
+
+## Cross-ancestry meta-analysis
+
+### MR-MEGA
+
+```
+```
+
+
+## Global Biobank Meta-analysis Initiative
+
+
+## Reference
+
+- **review** : Zeggini, E., & Ioannidis, J. P. (2009). Meta-analysis in genome-wide association studies.
+- **review** : Evangelou, E., & Ioannidis, J. P. (2013). Meta-analysis methods for genome-wide association studies and beyond. Nature Reviews Genetics, 14(6), 379-389.
+- **metal** : Willer, C. J., Li, Y., & Abecasis, G. R. (2010). METAL: fast and efficient meta-analysis of genomewide association scans. Bioinformatics, 26(17), 2190-2191.
+- **gwama** : Mägi, R., & Morris, A. P. (2010). GWAMA: software for genome-wide association meta-analysis. BMC bioinformatics, 11, 1-6.
+- **mantra**: Morris, A. P. (2011). Transethnic meta‐analysis of genomewide association studies. Genetic epidemiology, 35(8), 809-822.
+- **mr-mega** :Mägi, R., Horikoshi, M., Sofer, T., Mahajan, A., Kitajima, H., Franceschini, N., ... & Morris, A. P. (2017). Trans-ethnic meta-regression of genome-wide association studies accounting for ancestry increases power for discovery and improves fine-mapping resolution. Human molecular genetics, 26(18), 3639-3650.
+- **GBMI** : Zhou, W., Kanai, M., Wu, K. H. H., Rasheed, H., Tsuo, K., Hirbo, J. B., ... & Study, C. O. H. (2022). Global Biobank Meta-analysis Initiative: Powering genetic discovery across human disease. Cell Genomics, 2(10), 100192.
