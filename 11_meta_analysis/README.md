@@ -19,6 +19,8 @@ To address these problems, meta-analysis is a powerful approach to integrate mul
     - provide opportunities to study the less prevalent or understudied diseases. 
     - cross-validate findings across different studies. 
 
+## Harmonization and QC
+
 ## Fixed effects meta-analysis
 
 $$ \bar{\beta_{ij}} = {{\sum_{i=1}^{k} {w_{ij} \beta_{ij}}}\over{\sum_{i=1}^{k} {w_{ij}}}} $$
@@ -65,19 +67,30 @@ $$ \bar{\beta_j}^* = {{\sum_{i=1}^{k} {w_{ij}^* \beta_i}}\over{\sum_{i=1}^{k} {w
 
 $$w_{ij}^* = {{1}\over{r_j^2 + Var(\beta_{ij})}} $$
 
-!!! quote
-
 ### GWAMA
 
-
+The random effect model was implemented in GWAMA, which is another very popular GWA meta-analysis tool. Its official documentation can be found [here](https://genomics.ut.ee/en/tools).
 
 ## Cross-ancestry meta-analysis
 
 ### MR-MEGA
 
-```
-```
+MR-MEGA employs meta-regression to model the heterogeneity in effect sizes across ancestries. Its official documentation can be found [here](https://genomics.ut.ee/en/tools) (The same first author as GWAMA).
 
+It will first construct a matrix $D$ of pairwise Euclidean distances between GWAS across autosomal variants. The elements of D , $d_{k'k} $ for a pair of studies can be expressed as the following. For each variant $j$, $p_{kj}$ is the allele frequency of j in study k, then:
+
+$$d_{k'k} = {{\sum_jI_j(p_{kj}-p_{k'j})^2}\over{\sum_jI_j}}$$
+
+- $I$ : an indicator of the inclusion of the $j$th variant 
+
+Then multi-dimensional scaling (MDS) will be performed to derive T axes of genetic variation ($x_k$ for study k)
+
+For each variant j, the effect size of the reference allele can be modeled in a linear regression model as :
+
+$$E[\beta_{kj}] = \beta_j + \sum_{t=1}^T\beta_{tj}x_{kj}$$
+
+- $\beta_j$ : intercept
+- $\beta_{tj}$ : the effect size of the $t$ th axis of genetic variation for the $j$ th variant
 
 ## Global Biobank Meta-analysis Initiative
 
