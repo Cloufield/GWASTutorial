@@ -1145,12 +1145,25 @@
     Fixed effects meta-analysis
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Fixed effects meta-analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#heterogeneity-test" class="md-nav__link">
     Heterogeneity test
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metal" class="md-nav__link">
+    METAL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1159,18 +1172,51 @@
     Random effects meta-analysis
   </a>
   
+    <nav class="md-nav" aria-label="Random effects meta-analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwama" class="md-nav__link">
+    GWAMA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#metal" class="md-nav__link">
-    METAL
+  <a href="#cross-ancestry-meta-analysis" class="md-nav__link">
+    Cross-ancestry meta-analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Cross-ancestry meta-analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mr-mega" class="md-nav__link">
+    MR-MEGA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-biobank-meta-analysis-initiative" class="md-nav__link">
+    Global Biobank Meta-analysis Initiative
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mr-mega" class="md-nav__link">
-    MR-MEGA
+  <a href="#reference" class="md-nav__link">
+    Reference
   </a>
   
 </li>
@@ -1516,12 +1562,25 @@
     Fixed effects meta-analysis
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Fixed effects meta-analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#heterogeneity-test" class="md-nav__link">
     Heterogeneity test
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metal" class="md-nav__link">
+    METAL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1530,18 +1589,51 @@
     Random effects meta-analysis
   </a>
   
+    <nav class="md-nav" aria-label="Random effects meta-analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gwama" class="md-nav__link">
+    GWAMA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#metal" class="md-nav__link">
-    METAL
+  <a href="#cross-ancestry-meta-analysis" class="md-nav__link">
+    Cross-ancestry meta-analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Cross-ancestry meta-analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mr-mega" class="md-nav__link">
+    MR-MEGA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-biobank-meta-analysis-initiative" class="md-nav__link">
+    Global Biobank Meta-analysis Initiative
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mr-mega" class="md-nav__link">
-    MR-MEGA
+  <a href="#reference" class="md-nav__link">
+    Reference
   </a>
   
 </li>
@@ -1573,12 +1665,21 @@
 </div>
 <p>To address these problems, meta-analysis is a powerful approach to integrate multiple GWAS summary statistics, especially when more and more summary statistics are publicly available.
 . This method allows us to obtain increases in statistical power as sample size increases. </p>
+<div class="admonition note">
+<p class="admonition-title">What we could achieve by conducting meta-analysis</p>
+<ul>
+<li>increase the statistical power for GWASs. </li>
+<li>improve the effect size estimations, which could facilitate downstream analyses. (For example, PRS or MR).</li>
+<li>provide opportunities to study the less prevalent or understudied diseases. </li>
+<li>cross-validate findings across different studies. </li>
+</ul>
+</div>
 <h2 id="fixed-effects-meta-analysis">Fixed effects meta-analysis</h2>
 <div class="arithmatex">\[ \bar{\beta_{ij}} = {{\sum_{i=1}^{k} {w_{ij} \beta_{ij}}}\over{\sum_{i=1}^{k} {w_{ij}}}} \]</div>
 <ul>
 <li><span class="arithmatex">\(w_{ij} = 1 / Var(\beta_{ij})\)</span></li>
 </ul>
-<h2 id="heterogeneity-test">Heterogeneity test</h2>
+<h3 id="heterogeneity-test">Heterogeneity test</h3>
 <div class="admonition info">
 <p class="admonition-title">Cochran's Q test</p>
 <div class="arithmatex">\[ Q = \sum_{i=1}^{k} {w_i (\beta_i - \bar{\beta})^2} \]</div>
@@ -1587,6 +1688,27 @@
 <p class="admonition-title"><span class="arithmatex">\(I^2\)</span></p>
 <div class="arithmatex">\[ I_j^2 =  {{Q_j - df_j}\over{Q_j}}\times 100% =  {{Q - (k - 1)}\over{Q}}\times 100% \]</div>
 </div>
+<h3 id="metal">METAL</h3>
+<p>METAL is one of the most commonly used tools for GWA meta-analysis. Its official documentation can be found <a href="https://genome.sph.umich.edu/wiki/METAL_Documentation">here</a>. METAL supports two models: (1) Sample size based approach and (2) Inverse variance based approach.</p>
+<div class="admonition example">
+<p class="admonition-title">A minimal example of meta-analysis using the IVW method</p>
+<div class="highlight"><pre><span></span><code># classical approach, uses effect size estimates and standard errors
+SCHEME STDERR  
+
+# === DESCRIBE AND PROCESS THE FIRST INPUT FILE ===
+MARKER SNP
+ALLELE REF_ALLELE OTHER_ALLELE
+EFFECT BETA
+PVALUE PVALUE 
+STDERR SE 
+PROCESS inputfile1.txt
+
+# === THE SECOND INPUT FILE HAS THE SAME FORMAT AND CAN BE PROCESSED IMMEDIATELY ===
+PROCESS inputfile2.txt
+
+ANALYZE
+</code></pre></div>
+</div>
 <h2 id="random-effects-meta-analysis">Random effects meta-analysis</h2>
 <div class="arithmatex">\[ r_j^2 = max\left(0, {{Q_j - (N_j -1)}\over{\sum_iw_{ij} - ({{\sum_iw_{ij}^2} \over {\sum_iw_{ij}}})}}\right)\]</div>
 <div class="arithmatex">\[ \bar{\beta_j}^* = {{\sum_{i=1}^{k} {w_{ij}^* \beta_i}}\over{\sum_{i=1}^{k} {w_{ij}^*}}} \]</div>
@@ -1594,8 +1716,22 @@
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 </div>
-<h2 id="metal">METAL</h2>
-<h2 id="mr-mega">MR-MEGA</h2>
+<h3 id="gwama">GWAMA</h3>
+<h2 id="cross-ancestry-meta-analysis">Cross-ancestry meta-analysis</h2>
+<h3 id="mr-mega">MR-MEGA</h3>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<h2 id="global-biobank-meta-analysis-initiative">Global Biobank Meta-analysis Initiative</h2>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><strong>review</strong> : Zeggini, E., &amp; Ioannidis, J. P. (2009). Meta-analysis in genome-wide association studies.</li>
+<li><strong>review</strong> : Evangelou, E., &amp; Ioannidis, J. P. (2013). Meta-analysis methods for genome-wide association studies and beyond. Nature Reviews Genetics, 14(6), 379-389.</li>
+<li><strong>metal</strong> : Willer, C. J., Li, Y., &amp; Abecasis, G. R. (2010). METAL: fast and efficient meta-analysis of genomewide association scans. Bioinformatics, 26(17), 2190-2191.</li>
+<li><strong>gwama</strong> : Mägi, R., &amp; Morris, A. P. (2010). GWAMA: software for genome-wide association meta-analysis. BMC bioinformatics, 11, 1-6.</li>
+<li><strong>mantra</strong>: Morris, A. P. (2011). Transethnic meta‐analysis of genomewide association studies. Genetic epidemiology, 35(8), 809-822.</li>
+<li><strong>mr-mega</strong> :Mägi, R., Horikoshi, M., Sofer, T., Mahajan, A., Kitajima, H., Franceschini, N., ... &amp; Morris, A. P. (2017). Trans-ethnic meta-regression of genome-wide association studies accounting for ancestry increases power for discovery and improves fine-mapping resolution. Human molecular genetics, 26(18), 3639-3650.</li>
+<li><strong>GBMI</strong> : Zhou, W., Kanai, M., Wu, K. H. H., Rasheed, H., Tsuo, K., Hirbo, J. B., ... &amp; Study, C. O. H. (2022). Global Biobank Meta-analysis Initiative: Powering genetic discovery across human disease. Cell Genomics, 2(10), 100192.</li>
+</ul>
 
               
             </article>
