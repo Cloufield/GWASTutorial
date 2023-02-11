@@ -1141,6 +1141,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#harmonization-and-qc" class="md-nav__link">
+    Harmonization and QC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fixed-effects-meta-analysis" class="md-nav__link">
     Fixed effects meta-analysis
   </a>
@@ -1558,6 +1565,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#harmonization-and-qc" class="md-nav__link">
+    Harmonization and QC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fixed-effects-meta-analysis" class="md-nav__link">
     Fixed effects meta-analysis
   </a>
@@ -1674,6 +1688,7 @@
 <li>cross-validate findings across different studies. </li>
 </ul>
 </div>
+<h2 id="harmonization-and-qc">Harmonization and QC</h2>
 <h2 id="fixed-effects-meta-analysis">Fixed effects meta-analysis</h2>
 <div class="arithmatex">\[ \bar{\beta_{ij}} = {{\sum_{i=1}^{k} {w_{ij} \beta_{ij}}}\over{\sum_{i=1}^{k} {w_{ij}}}} \]</div>
 <ul>
@@ -1713,14 +1728,23 @@ ANALYZE
 <div class="arithmatex">\[ r_j^2 = max\left(0, {{Q_j - (N_j -1)}\over{\sum_iw_{ij} - ({{\sum_iw_{ij}^2} \over {\sum_iw_{ij}}})}}\right)\]</div>
 <div class="arithmatex">\[ \bar{\beta_j}^* = {{\sum_{i=1}^{k} {w_{ij}^* \beta_i}}\over{\sum_{i=1}^{k} {w_{ij}^*}}} \]</div>
 <div class="arithmatex">\[w_{ij}^* = {{1}\over{r_j^2 + Var(\beta_{ij})}} \]</div>
-<div class="admonition quote">
-<p class="admonition-title">Quote</p>
-</div>
 <h3 id="gwama">GWAMA</h3>
+<p>The random effect model was implemented in GWAMA, which is another very popular GWA meta-analysis tool. Its official documentation can be found <a href="https://genomics.ut.ee/en/tools">here</a>.</p>
 <h2 id="cross-ancestry-meta-analysis">Cross-ancestry meta-analysis</h2>
 <h3 id="mr-mega">MR-MEGA</h3>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
+<p>MR-MEGA employs meta-regression to model the heterogeneity in effect sizes across ancestries. Its official documentation can be found <a href="https://genomics.ut.ee/en/tools">here</a> (The same first author as GWAMA).</p>
+<p>It will first construct a matrix <span class="arithmatex">\(D\)</span> of pairwise Euclidean distances between GWAS across autosomal variants. The elements of D , $d_{k'k} $ for a pair of studies can be expressed as the following. For each variant <span class="arithmatex">\(j\)</span>, <span class="arithmatex">\(p_{kj}\)</span> is the allele frequency of j in study k, then:</p>
+<div class="arithmatex">\[d_{k'k} = {{\sum_jI_j(p_{kj}-p_{k'j})^2}\over{\sum_jI_j}}\]</div>
+<ul>
+<li><span class="arithmatex">\(I\)</span> : an indicator of the inclusion of the <span class="arithmatex">\(j\)</span>th variant </li>
+</ul>
+<p>Then multi-dimensional scaling (MDS) will be performed to derive T axes of genetic variation (<span class="arithmatex">\(x_k\)</span> for study k)</p>
+<p>For each variant j, the effect size of the reference allele can be modeled in a linear regression model as :</p>
+<div class="arithmatex">\[E[\beta_{kj}] = \beta_j + \sum_{t=1}^T\beta_{tj}x_{kj}\]</div>
+<ul>
+<li><span class="arithmatex">\(\beta_j\)</span> : intercept</li>
+<li><span class="arithmatex">\(\beta_{tj}\)</span> : the effect size of the <span class="arithmatex">\(t\)</span> th axis of genetic variation for the <span class="arithmatex">\(j\)</span> th variant</li>
+</ul>
 <h2 id="global-biobank-meta-analysis-initiative">Global Biobank Meta-analysis Initiative</h2>
 <h2 id="reference">Reference</h2>
 <ul>
