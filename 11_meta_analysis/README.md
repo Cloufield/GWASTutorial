@@ -19,7 +19,34 @@ To address these problems, meta-analysis is a powerful approach to integrate mul
     - provide opportunities to study the less prevalent or understudied diseases. 
     - cross-validate findings across different studies. 
 
-## Harmonization and QC
+## Harmonization and QC for GWA meta-analysis
+
+Before performing any type of meta-analysis, we need to make sure our datasets contain sufficient information and are QCed and harmonized. 
+
+!!! info "Key points for Dataset selection"
+    - **Minimal requirements for data**
+    - **Phenotype definition**
+    - Study design
+    - **Sample overlap**
+    - Proper citation
+    - Data integrity
+    - Ancestry
+    - Downloading from the source
+
+!!! info "Key points for Quality control"
+    - Remove variants with minor allele frequency being too low
+    - Remove Multi-allelic Variants
+    - Remove Duplicated variants
+    - Remove Copy number variation
+    - Normalize Indels
+    - Standardize notations
+    - Removed variants with extreme effect sizes
+    - Filter out variants with low imputation accuracy
+
+!!! info "Key points for Harmonization"
+    - On the genomic coordinate 
+    - On the same strand (mostly forward)
+    - Be cautious for palindromic SNPs
 
 ## Fixed effects meta-analysis
 
@@ -73,6 +100,12 @@ The random effect model was implemented in GWAMA, which is another very popular 
 
 ## Cross-ancestry meta-analysis
 
+### MANTRA
+
+MANTRA (Meta-ANalysis of Transethnic Association studies) is one of the early efforts to address the heterogeneity for cross-ancestry meta-analysis.
+
+MANTRA implements a Bayesian partition model where GWASs were clustered into ancestry clusters based on a prior model of similarity between them. MANTRA then uses Markov chain Monte Carlo (MCMC) algorithms to approximate the posterior distribution of parameters (which might be quite computationally intensive). MANTRA has been shown to increase power and mapping resolution over random-effects meta-analysis over a range of models of heterogeneity situations.
+
 ### MR-MEGA
 
 MR-MEGA employs meta-regression to model the heterogeneity in effect sizes across ancestries. Its official documentation can be found [here](https://genomics.ut.ee/en/tools) (The same first author as GWAMA).
@@ -92,7 +125,11 @@ $$E[\beta_{kj}] = \beta_j + \sum_{t=1}^T\beta_{tj}x_{kj}$$
 - $\beta_j$ : intercept
 - $\beta_{tj}$ : the effect size of the $t$ th axis of genetic variation for the $j$ th variant
 
-## Global Biobank Meta-analysis Initiative
+## Global Biobank Meta-analysis Initiative (GBMI)
+
+As a recent success achieved by meta-analysis, GBMI showed an example of the improvement of our understanding of diseases by taking advantage of large-scale meta-analyses.
+
+For more details, you check check [here](https://www.globalbiobankmeta.org/).
 
 
 ## Reference
