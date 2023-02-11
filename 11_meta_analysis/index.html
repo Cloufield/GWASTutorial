@@ -1141,8 +1141,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#harmonization-and-qc" class="md-nav__link">
-    Harmonization and QC
+  <a href="#harmonization-and-qc-for-gwa-meta-analysis" class="md-nav__link">
+    Harmonization and QC for GWA meta-analysis
   </a>
   
 </li>
@@ -1201,6 +1201,13 @@
   
     <nav class="md-nav" aria-label="Cross-ancestry meta-analysis">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mantra" class="md-nav__link">
+    MANTRA
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#mr-mega" class="md-nav__link">
@@ -1565,8 +1572,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#harmonization-and-qc" class="md-nav__link">
-    Harmonization and QC
+  <a href="#harmonization-and-qc-for-gwa-meta-analysis" class="md-nav__link">
+    Harmonization and QC for GWA meta-analysis
   </a>
   
 </li>
@@ -1625,6 +1632,13 @@
   
     <nav class="md-nav" aria-label="Cross-ancestry meta-analysis">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mantra" class="md-nav__link">
+    MANTRA
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#mr-mega" class="md-nav__link">
@@ -1688,7 +1702,42 @@
 <li>cross-validate findings across different studies. </li>
 </ul>
 </div>
-<h2 id="harmonization-and-qc">Harmonization and QC</h2>
+<h2 id="harmonization-and-qc-for-gwa-meta-analysis">Harmonization and QC for GWA meta-analysis</h2>
+<p>Before performing any type of meta-analysis, we need to make sure our datasets contains sufficient information and are QCed and harmonized. </p>
+<div class="admonition info">
+<p class="admonition-title">Key points for Dataset selection</p>
+<ul>
+<li><strong>Minimal requirements for data</strong>.</li>
+<li><strong>Phenotype definition</strong>.</li>
+<li>Study design matches.</li>
+<li><strong>Sample overlap</strong></li>
+<li>Proper citation.</li>
+<li>Data integrity.</li>
+<li>Sample Ancestry.</li>
+<li>Downloading from the source.</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Key points for Quality control</p>
+<ul>
+<li>Remove variants with minor allele frequency being too low</li>
+<li>Remove Multi-allelic Variants</li>
+<li>Remove Duplicated variants</li>
+<li>Remove Copy number variation</li>
+<li>Normalize Indels</li>
+<li>Standardize notations</li>
+<li>Removed variants with extreme effect sizes</li>
+<li>Filter out variants with low imputation accuracy</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Key points for Harmonization</p>
+<ul>
+<li>On the genomic coordinate </li>
+<li>On the same strand (mostly forward)</li>
+<li>Be cautious for palindromic SNPs</li>
+</ul>
+</div>
 <h2 id="fixed-effects-meta-analysis">Fixed effects meta-analysis</h2>
 <div class="arithmatex">\[ \bar{\beta_{ij}} = {{\sum_{i=1}^{k} {w_{ij} \beta_{ij}}}\over{\sum_{i=1}^{k} {w_{ij}}}} \]</div>
 <ul>
@@ -1731,6 +1780,7 @@ ANALYZE
 <h3 id="gwama">GWAMA</h3>
 <p>The random effect model was implemented in GWAMA, which is another very popular GWA meta-analysis tool. Its official documentation can be found <a href="https://genomics.ut.ee/en/tools">here</a>.</p>
 <h2 id="cross-ancestry-meta-analysis">Cross-ancestry meta-analysis</h2>
+<h3 id="mantra">MANTRA</h3>
 <h3 id="mr-mega">MR-MEGA</h3>
 <p>MR-MEGA employs meta-regression to model the heterogeneity in effect sizes across ancestries. Its official documentation can be found <a href="https://genomics.ut.ee/en/tools">here</a> (The same first author as GWAMA).</p>
 <p>It will first construct a matrix <span class="arithmatex">\(D\)</span> of pairwise Euclidean distances between GWAS across autosomal variants. The elements of D , $d_{k'k} $ for a pair of studies can be expressed as the following. For each variant <span class="arithmatex">\(j\)</span>, <span class="arithmatex">\(p_{kj}\)</span> is the allele frequency of j in study k, then:</p>
