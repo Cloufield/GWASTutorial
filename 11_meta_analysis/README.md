@@ -20,6 +20,7 @@ To address these problems, meta-analysis is a powerful approach to integrate mul
     - [x] Cross-validate findings across different studies. 
 
 ## A typical workflow of meta-analysis
+
 <img width="450" alt="image" src="https://user-images.githubusercontent.com/40289485/218293217-d6a50f73-98f7-4957-82a3-d10a85bed8dc.png">
 
 
@@ -28,29 +29,29 @@ To address these problems, meta-analysis is a powerful approach to integrate mul
 Before performing any type of meta-analysis, we need to make sure our datasets contain sufficient information and the datasets are QCed and harmonized. It is important to perform this step to avoid any unexpected errors and heterogeneity.
 
 !!! info "Key points for Dataset selection"
-    - **Minimal requirements for data** (CHR,POS,BETA,SE,P,N,EA,NEA,EAF... )
-    - **Phenotype definition** 
-    - Study design 
-    - **Sample overlap** (independent population)
-    - Proper citations (we can obtain sufficient information on study design, phenotype definition and QC)
-    - Data integrity (md5sum check)
-    - Ancestry (population with the same ancestry)
-    - Downloading from the source (preferably not second-hand datasets)
+    - [] **Minimal requirements for data** (CHR,POS,BETA,SE,P,N,EA,NEA,EAF... )
+    - [] **Phenotype definition** 
+    - [] Study design 
+    - [] **Sample overlap** (independent population)
+    - [] Proper citations (we can obtain sufficient information on study design, phenotype definition and QC)
+    - [] Data integrity (md5sum check)
+    - [] Ancestry (population with the same ancestry)
+    - [] Downloading from the source (preferably not second-hand datasets)
 
 !!! info "Key points for Quality control"
-    - Remove variants with minor allele frequency being too low
-    - Remove Multi-allelic Variants
-    - Remove Duplicated variants
-    - Remove Copy number variation
-    - Normalize Indels
-    - Standardize notations
-    - Removed variants with extreme effect sizes
-    - Filter out variants with low imputation accuracy
+    - [] Remove variants with minor allele frequency being too low
+    - [] Remove Multi-allelic Variants
+    - [] Remove Duplicated variants
+    - [] Remove Copy number variation
+    - [] Normalize Indels
+    - [] Standardize notations
+    - [] Removed variants with extreme effect sizes
+    - [] Filter out variants with low imputation accuracy
 
 !!! info "Key points for Harmonization"
-    - On the genomic coordinate 
-    - On the same strand (mostly forward)
-    - Be cautious for palindromic SNPs
+    - [] On the genomic coordinate 
+    - [] On the same strand (mostly forward)
+    - [] Be cautious for palindromic SNPs
 
 ## Fixed effects meta-analysis
 
@@ -76,7 +77,7 @@ METAL is one of the most commonly used tools for GWA meta-analysis. Its official
 
 !!! example "A minimal example of meta-analysis using the IVW method" 
     
-    ```txt
+    ```txt title="metal_script.txt"
     # classical approach, uses effect size estimates and standard errors
     SCHEME STDERR  
     
@@ -92,6 +93,12 @@ METAL is one of the most commonly used tools for GWA meta-analysis. Its official
     PROCESS inputfile2.txt
     
     ANALYZE
+    ```
+
+    Then, just run the following command to execute the metal script.
+    
+    ```bash
+    metal meta_input.txt
     ```
 
 ## Random effects meta-analysis
@@ -117,6 +124,22 @@ If heterogeneity of effects exists across studies, we need to model the between-
 
 The random effect model was implemented in GWAMA, which is another very popular GWA meta-analysis tool. Its official documentation can be found [here](https://genomics.ut.ee/en/tools).
 
+!!! example "A minimal example of random effect meta-analysis using GWAMA" 
+    
+    The input file for GWAMA contains the path to each sumstats. Column names need to be standardized.
+    
+    ```txt title="GWAMA_script.in"
+    Pop1.txt
+    Pop2.txt
+    Pop3.txt
+    ```
+
+    ```bash
+    GWAMA \
+        -i GWAMA_script.in \
+        --random \
+        -o myresults
+    ```
 ## Cross-ancestry meta-analysis
 
 ### MANTRA
@@ -145,6 +168,28 @@ MR-MEGA employs meta-regression to model the heterogeneity in effect sizes acros
     
     - $\beta_j$ : intercept
     - $\beta_{tj}$ : the effect size of the $t$ th axis of genetic variation for the $j$ th variant
+
+!!! example "A minimal example of meta-analysis using MR-MEGA" 
+    
+    The input file for MR-MEGA contains the path to each sumstats. Column names need to be standardized like GWAMA.
+    
+    ```txt title="MRMEGA_script.in"
+    Pop1.txt.gz
+    Pop2.txt.gz
+    Pop3.txt.gz
+    Pop4.txt.gz
+    Pop5.txt.gz
+    Pop6.txt.gz
+    Pop7.txt.gz
+    Pop8.txt.gz
+    ```
+
+    ```bash
+    MR-MEGA \
+        -i MRMEGA_script.in \
+        --pc 4 \
+        -o myresults
+    ```
 
 ## Global Biobank Meta-analysis Initiative (GBMI)
 
