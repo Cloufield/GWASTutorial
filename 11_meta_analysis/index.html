@@ -1141,6 +1141,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#a-typical-workflow-of-meta-analysis" class="md-nav__link">
+    A typical workflow of meta-analysis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#harmonization-and-qc-for-gwa-meta-analysis" class="md-nav__link">
     Harmonization and QC for GWA meta-analysis
   </a>
@@ -1572,6 +1579,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#a-typical-workflow-of-meta-analysis" class="md-nav__link">
+    A typical workflow of meta-analysis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#harmonization-and-qc-for-gwa-meta-analysis" class="md-nav__link">
     Harmonization and QC for GWA meta-analysis
   </a>
@@ -1695,30 +1709,28 @@
 . This method allows us to obtain increases in statistical power as sample size increases. </p>
 <div class="admonition note">
 <p class="admonition-title">What we could achieve by conducting meta-analysis</p>
-<ul>
-<li>increase the statistical power for GWASs. </li>
-<li>improve the effect size estimations, which could facilitate downstream analyses. (For example, PRS or MR).</li>
-<li>provide opportunities to study the less prevalent or understudied diseases. </li>
-<li>cross-validate findings across different studies. </li>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Increase the statistical power for GWASs. </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Improve the effect size estimations, which could facilitate downstream analyses. (For example, PRS or MR).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Provide opportunities to study the less prevalent or understudied diseases. </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Cross-validate findings across different studies. </li>
 </ul>
 </div>
-<div class="admonition info">
-<p class="admonition-title">A typical workflow of meta-analysis</p>
-<p><img width="300" alt="image" src="https://user-images.githubusercontent.com/40289485/218293217-d6a50f73-98f7-4957-82a3-d10a85bed8dc.png"></p>
-</div>
+<h2 id="a-typical-workflow-of-meta-analysis">A typical workflow of meta-analysis</h2>
+<p><img width="450" alt="image" src="https://user-images.githubusercontent.com/40289485/218293217-d6a50f73-98f7-4957-82a3-d10a85bed8dc.png"></p>
 <h2 id="harmonization-and-qc-for-gwa-meta-analysis">Harmonization and QC for GWA meta-analysis</h2>
-<p>Before performing any type of meta-analysis, we need to make sure our datasets contain sufficient information and are QCed and harmonized. </p>
+<p>Before performing any type of meta-analysis, we need to make sure our datasets contain sufficient information and the datasets are QCed and harmonized. It is important to perform this step to avoid any unexpected errors and heterogeneity.</p>
 <div class="admonition info">
 <p class="admonition-title">Key points for Dataset selection</p>
 <ul>
-<li><strong>Minimal requirements for data</strong></li>
-<li><strong>Phenotype definition</strong></li>
-<li>Study design</li>
-<li><strong>Sample overlap</strong></li>
-<li>Proper citation</li>
-<li>Data integrity</li>
-<li>Ancestry</li>
-<li>Downloading from the source</li>
+<li><strong>Minimal requirements for data</strong> (CHR,POS,BETA,SE,P,N,EA,NEA,EAF... )</li>
+<li><strong>Phenotype definition</strong> </li>
+<li>Study design </li>
+<li><strong>Sample overlap</strong> (independent population)</li>
+<li>Proper citations (we can obtain sufficient information on study design, phenotype definition and QC)</li>
+<li>Data integrity (md5sum check)</li>
+<li>Ancestry (population with the same ancestry)</li>
+<li>Downloading from the source (preferably not second-hand datasets)</li>
 </ul>
 </div>
 <div class="admonition info">
@@ -1744,17 +1756,17 @@
 </div>
 <h2 id="fixed-effects-meta-analysis">Fixed effects meta-analysis</h2>
 <p>Simply speaking, the fixed effects we mentioned here mean that the between-study variance is zero. Under the fixed effect model, we assume a common effect size across studies for a certain SNP.</p>
+<div class="admonition info">
+<p class="admonition-title">Fixed effect model</p>
 <div class="arithmatex">\[ \bar{\beta_{ij}} = {{\sum_{i=1}^{k} {w_{ij} \beta_{ij}}}\over{\sum_{i=1}^{k} {w_{ij}}}} \]</div>
 <ul>
 <li><span class="arithmatex">\(w_{ij} = 1 / Var(\beta_{ij})\)</span></li>
 </ul>
+</div>
 <h3 id="heterogeneity-test">Heterogeneity test</h3>
 <div class="admonition info">
-<p class="admonition-title">Cochran's Q test</p>
+<p class="admonition-title">Cochran's Q test and <span class="arithmatex">\(I^2\)</span> </p>
 <div class="arithmatex">\[ Q = \sum_{i=1}^{k} {w_i (\beta_i - \bar{\beta})^2} \]</div>
-</div>
-<div class="admonition info">
-<p class="admonition-title"><span class="arithmatex">\(I^2\)</span></p>
 <div class="arithmatex">\[ I_j^2 =  {{Q_j - df_j}\over{Q_j}}\times 100% =  {{Q - (k - 1)}\over{Q}}\times 100% \]</div>
 </div>
 <h3 id="metal">METAL</h3>
@@ -1780,14 +1792,17 @@ ANALYZE
 </div>
 <h2 id="random-effects-meta-analysis">Random effects meta-analysis</h2>
 <p>On the other hand, random effects mean that we need to model the between-study variance, which is not zero in this case. Under the random effect model, we assume the true effect size for a certain SNP varies across studies.</p>
-<p>If heterogeneity of effects exists across studies, we need to model the between-study variance to correct for the deflation of variance in fixed-effect estiamtes.  </p>
+<p>If heterogeneity of effects exists across studies, we need to model the between-study variance to correct for the deflation of variance in fixed-effect estimates.  </p>
+<h3 id="gwama">GWAMA</h3>
+<div class="admonition quote">
+<p class="admonition-title">Random effect model</p>
 <p>The random effect variance component can be estimated by:</p>
-<div class="arithmatex">\[ r_j^2 = max\left(0, {{Q_j - (N_j -1)}\over{\sum_iw_{ij} - ({{\sum_iw_{ij}^2} \over {\sum_iw_{ij}}})}}\right)\]</div>
+<div class="arithmatex">\[ r_j^2 = max\left(0, {{Q_j - (N_j -1)}\over{\sum_iw_{ij} - ({{\sum_iw_{ij}^2} \over {\sum_iw_    {ij}}})}}\right)\]</div>
 <p>Then the effect size for SNP j can be obtained by:</p>
 <div class="arithmatex">\[ \bar{\beta_j}^* = {{\sum_{i=1}^{k} {w_{ij}^* \beta_i}}\over{\sum_{i=1}^{k} {w_{ij}^*}}} \]</div>
 <p>The weights are estimated by:</p>
 <div class="arithmatex">\[w_{ij}^* = {{1}\over{r_j^2 + Var(\beta_{ij})}} \]</div>
-<h3 id="gwama">GWAMA</h3>
+</div>
 <p>The random effect model was implemented in GWAMA, which is another very popular GWA meta-analysis tool. Its official documentation can be found <a href="https://genomics.ut.ee/en/tools">here</a>.</p>
 <h2 id="cross-ancestry-meta-analysis">Cross-ancestry meta-analysis</h2>
 <h3 id="mantra">MANTRA</h3>
@@ -1795,18 +1810,21 @@ ANALYZE
 <p>MANTRA implements a Bayesian partition model where GWASs were clustered into ancestry clusters based on a prior model of similarity between them. MANTRA then uses Markov chain Monte Carlo (MCMC) algorithms to approximate the posterior distribution of parameters (which might be quite computationally intensive). MANTRA has been shown to increase power and mapping resolution over random-effects meta-analysis over a range of models of heterogeneity situations.</p>
 <h3 id="mr-mega">MR-MEGA</h3>
 <p>MR-MEGA employs meta-regression to model the heterogeneity in effect sizes across ancestries. Its official documentation can be found <a href="https://genomics.ut.ee/en/tools">here</a> (The same first author as GWAMA).</p>
-<p>It will first construct a matrix <span class="arithmatex">\(D\)</span> of pairwise Euclidean distances between GWAS across autosomal variants. The elements of D , $d_{k'k} $ for a pair of studies can be expressed as the following. For each variant <span class="arithmatex">\(j\)</span>, <span class="arithmatex">\(p_{kj}\)</span> is the allele frequency of j in study k, then:</p>
+<div class="admonition quote">
+<p class="admonition-title">Meta-regression implemented in MR-MEGA</p>
+<p>It will first construct a matrix <span class="arithmatex">\(D\)</span> of pairwise Euclidean distances between GWAS across autosomal     variants. The elements of D , $d_{k'k} $ for a pair of studies can be expressed as the following.     For each variant <span class="arithmatex">\(j\)</span>, <span class="arithmatex">\(p_{kj}\)</span> is the allele frequency of j in study k, then:</p>
 <div class="arithmatex">\[d_{k'k} = {{\sum_jI_j(p_{kj}-p_{k'j})^2}\over{\sum_jI_j}}\]</div>
 <ul>
 <li><span class="arithmatex">\(I\)</span> : an indicator of the inclusion of the <span class="arithmatex">\(j\)</span>th variant </li>
 </ul>
-<p>Then multi-dimensional scaling (MDS) will be performed to derive T axes of genetic variation (<span class="arithmatex">\(x_k\)</span> for study k)</p>
-<p>For each variant j, the effect size of the reference allele can be modeled in a linear regression model as :</p>
+<p>Then multi-dimensional scaling (MDS) will be performed to derive T axes of genetic variation (<span class="arithmatex">\(x_k\)</span>     for study k)</p>
+<p>For each variant j, the effect size of the reference allele can be modeled in a linear regression     model as :</p>
 <div class="arithmatex">\[E[\beta_{kj}] = \beta_j + \sum_{t=1}^T\beta_{tj}x_{kj}\]</div>
 <ul>
 <li><span class="arithmatex">\(\beta_j\)</span> : intercept</li>
 <li><span class="arithmatex">\(\beta_{tj}\)</span> : the effect size of the <span class="arithmatex">\(t\)</span> th axis of genetic variation for the <span class="arithmatex">\(j\)</span> th variant</li>
 </ul>
+</div>
 <h2 id="global-biobank-meta-analysis-initiative-gbmi">Global Biobank Meta-analysis Initiative (GBMI)</h2>
 <p>As a recent success achieved by meta-analysis, GBMI showed an example of the improvement of our understanding of diseases by taking advantage of large-scale meta-analyses.</p>
 <p>For more details, you check check <a href="https://www.globalbiobankmeta.org/">here</a>.</p>
