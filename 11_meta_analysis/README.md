@@ -19,6 +19,11 @@ To address these problems, meta-analysis is a powerful approach to integrate mul
     - provide opportunities to study the less prevalent or understudied diseases. 
     - cross-validate findings across different studies. 
 
+!!! info "A typical workflow of meta-analysis"
+    ![image](https://user-images.githubusercontent.com/40289485/218293217-d6a50f73-98f7-4957-82a3-d10a85bed8dc.png)
+
+
+
 ## Harmonization and QC for GWA meta-analysis
 
 Before performing any type of meta-analysis, we need to make sure our datasets contain sufficient information and are QCed and harmonized. 
@@ -130,7 +135,6 @@ $$E[\beta_{kj}] = \beta_j + \sum_{t=1}^T\beta_{tj}x_{kj}$$
 As a recent success achieved by meta-analysis, GBMI showed an example of the improvement of our understanding of diseases by taking advantage of large-scale meta-analyses.
 
 For more details, you check check [here](https://www.globalbiobankmeta.org/).
-
 
 ## Reference
 
