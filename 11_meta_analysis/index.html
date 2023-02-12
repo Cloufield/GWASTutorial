@@ -1785,8 +1785,8 @@ ANALYZE
 <div class="arithmatex">\[ r_j^2 = max\left(0, {{Q_j - (N_j -1)}\over{\sum_iw_{ij} - ({{\sum_iw_{ij}^2} \over {\sum_iw_{ij}}})}}\right)\]</div>
 <p>Then the effect size for SNP j can be obtained by:</p>
 <div class="arithmatex">\[ \bar{\beta_j}^* = {{\sum_{i=1}^{k} {w_{ij}^* \beta_i}}\over{\sum_{i=1}^{k} {w_{ij}^*}}} \]</div>
-<p>The weights are estimated by:
-$$w_{ij}^* = {{1}\over{r_j^2 + Var(\beta_{ij})}} $$</p>
+<p>The weights are estimated by:</p>
+<div class="arithmatex">\[w_{ij}^* = {{1}\over{r_j^2 + Var(\beta_{ij})}} \]</div>
 <h3 id="gwama">GWAMA</h3>
 <p>The random effect model was implemented in GWAMA, which is another very popular GWA meta-analysis tool. Its official documentation can be found <a href="https://genomics.ut.ee/en/tools">here</a>.</p>
 <h2 id="cross-ancestry-meta-analysis">Cross-ancestry meta-analysis</h2>
