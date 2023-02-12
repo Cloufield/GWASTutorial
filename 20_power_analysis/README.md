@@ -6,9 +6,21 @@
 
 test statistic:
 
+
+
 power for large-scale one-stage studies
 
 distribution of z
+
+$P_{case}$
+
+$P_{control}$
+
+$u = {{P_{case} - P_{control}}\over {\sqrt{(P_{case}/N_{control} + P_{case}/N_{control})*0.5 }}}$
+
+$C = \Phi^{-1}(1 - \alpha / 2 )$
+
+$ Power = 1 - \Phi(-C-u) + \Phi(C-u)$
 
 !!! example "GAS power calculator"
     url : https://csg.sph.umich.edu/abecasis/cats/gas_power_calculator/index.html
