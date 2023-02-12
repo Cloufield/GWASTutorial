@@ -1704,7 +1704,7 @@
 </div>
 <div class="admonition info">
 <p class="admonition-title">A typical workflow of meta-analysis</p>
-<p><img height="500" alt="image" src="https://user-images.githubusercontent.com/40289485/218293217-d6a50f73-98f7-4957-82a3-d10a85bed8dc.png"></p>
+<p><img width="300" alt="image" src="https://user-images.githubusercontent.com/40289485/218293217-d6a50f73-98f7-4957-82a3-d10a85bed8dc.png"></p>
 </div>
 <h2 id="harmonization-and-qc-for-gwa-meta-analysis">Harmonization and QC for GWA meta-analysis</h2>
 <p>Before performing any type of meta-analysis, we need to make sure our datasets contain sufficient information and are QCed and harmonized. </p>
@@ -1743,6 +1743,7 @@
 </ul>
 </div>
 <h2 id="fixed-effects-meta-analysis">Fixed effects meta-analysis</h2>
+<p>Simply speaking, the fixed effects we mentioned here mean that the between-study variance is zero. Under the fixed effect model, we assume a common effect size across studies for a certain SNP.</p>
 <div class="arithmatex">\[ \bar{\beta_{ij}} = {{\sum_{i=1}^{k} {w_{ij} \beta_{ij}}}\over{\sum_{i=1}^{k} {w_{ij}}}} \]</div>
 <ul>
 <li><span class="arithmatex">\(w_{ij} = 1 / Var(\beta_{ij})\)</span></li>
@@ -1778,9 +1779,14 @@ ANALYZE
 </code></pre></div>
 </div>
 <h2 id="random-effects-meta-analysis">Random effects meta-analysis</h2>
+<p>On the other hand, random effects mean that we need to model the between-study variance, which is not zero in this case. Under the random effect model, we assume the true effect size for a certain SNP varies across studies.</p>
+<p>If heterogeneity of effects exists across studies, we need to model the between-study variance to correct for the deflation of variance in fixed-effect estiamtes.  </p>
+<p>The random effect variance component can be estimated by:</p>
 <div class="arithmatex">\[ r_j^2 = max\left(0, {{Q_j - (N_j -1)}\over{\sum_iw_{ij} - ({{\sum_iw_{ij}^2} \over {\sum_iw_{ij}}})}}\right)\]</div>
+<p>Then the effect size for SNP j can be obtained by:</p>
 <div class="arithmatex">\[ \bar{\beta_j}^* = {{\sum_{i=1}^{k} {w_{ij}^* \beta_i}}\over{\sum_{i=1}^{k} {w_{ij}^*}}} \]</div>
-<div class="arithmatex">\[w_{ij}^* = {{1}\over{r_j^2 + Var(\beta_{ij})}} \]</div>
+<p>The weights are estimated by:
+$$w_{ij}^* = {{1}\over{r_j^2 + Var(\beta_{ij})}} $$</p>
 <h3 id="gwama">GWAMA</h3>
 <p>The random effect model was implemented in GWAMA, which is another very popular GWA meta-analysis tool. Its official documentation can be found <a href="https://genomics.ut.ee/en/tools">here</a>.</p>
 <h2 id="cross-ancestry-meta-analysis">Cross-ancestry meta-analysis</h2>
