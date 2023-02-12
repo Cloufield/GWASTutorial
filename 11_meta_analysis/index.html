@@ -1723,35 +1723,35 @@
 <div class="admonition info">
 <p class="admonition-title">Key points for Dataset selection</p>
 <ul>
-<li><strong>Minimal requirements for data</strong> (CHR,POS,BETA,SE,P,N,EA,NEA,EAF... )</li>
-<li><strong>Phenotype definition</strong> </li>
-<li>Study design </li>
-<li><strong>Sample overlap</strong> (independent population)</li>
-<li>Proper citations (we can obtain sufficient information on study design, phenotype definition and QC)</li>
-<li>Data integrity (md5sum check)</li>
-<li>Ancestry (population with the same ancestry)</li>
-<li>Downloading from the source (preferably not second-hand datasets)</li>
+<li>[] <strong>Minimal requirements for data</strong> (CHR,POS,BETA,SE,P,N,EA,NEA,EAF... )</li>
+<li>[] <strong>Phenotype definition</strong> </li>
+<li>[] Study design </li>
+<li>[] <strong>Sample overlap</strong> (independent population)</li>
+<li>[] Proper citations (we can obtain sufficient information on study design, phenotype definition and QC)</li>
+<li>[] Data integrity (md5sum check)</li>
+<li>[] Ancestry (population with the same ancestry)</li>
+<li>[] Downloading from the source (preferably not second-hand datasets)</li>
 </ul>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Key points for Quality control</p>
 <ul>
-<li>Remove variants with minor allele frequency being too low</li>
-<li>Remove Multi-allelic Variants</li>
-<li>Remove Duplicated variants</li>
-<li>Remove Copy number variation</li>
-<li>Normalize Indels</li>
-<li>Standardize notations</li>
-<li>Removed variants with extreme effect sizes</li>
-<li>Filter out variants with low imputation accuracy</li>
+<li>[] Remove variants with minor allele frequency being too low</li>
+<li>[] Remove Multi-allelic Variants</li>
+<li>[] Remove Duplicated variants</li>
+<li>[] Remove Copy number variation</li>
+<li>[] Normalize Indels</li>
+<li>[] Standardize notations</li>
+<li>[] Removed variants with extreme effect sizes</li>
+<li>[] Filter out variants with low imputation accuracy</li>
 </ul>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Key points for Harmonization</p>
 <ul>
-<li>On the genomic coordinate </li>
-<li>On the same strand (mostly forward)</li>
-<li>Be cautious for palindromic SNPs</li>
+<li>[] On the genomic coordinate </li>
+<li>[] On the same strand (mostly forward)</li>
+<li>[] Be cautious for palindromic SNPs</li>
 </ul>
 </div>
 <h2 id="fixed-effects-meta-analysis">Fixed effects meta-analysis</h2>
@@ -1773,7 +1773,7 @@
 <p>METAL is one of the most commonly used tools for GWA meta-analysis. Its official documentation can be found <a href="https://genome.sph.umich.edu/wiki/METAL_Documentation">here</a>. METAL supports two models: (1) Sample size based approach and (2) Inverse variance based approach.</p>
 <div class="admonition example">
 <p class="admonition-title">A minimal example of meta-analysis using the IVW method</p>
-<div class="highlight"><pre><span></span><code># classical approach, uses effect size estimates and standard errors
+<div class="highlight"><span class="filename">metal_script.txt</span><pre><span></span><code># classical approach, uses effect size estimates and standard errors
 SCHEME STDERR  
 
 # === DESCRIBE AND PROCESS THE FIRST INPUT FILE ===
@@ -1788,6 +1788,9 @@ PROCESS inputfile1.txt
 PROCESS inputfile2.txt
 
 ANALYZE
+</code></pre></div>
+<p>Then, just run the following command to execute the metal script.</p>
+<div class="highlight"><pre><span></span><code>metal<span class="w"> </span>meta_input.txt
 </code></pre></div>
 </div>
 <h2 id="random-effects-meta-analysis">Random effects meta-analysis</h2>
@@ -1804,6 +1807,19 @@ ANALYZE
 <div class="arithmatex">\[w_{ij}^* = {{1}\over{r_j^2 + Var(\beta_{ij})}} \]</div>
 </div>
 <p>The random effect model was implemented in GWAMA, which is another very popular GWA meta-analysis tool. Its official documentation can be found <a href="https://genomics.ut.ee/en/tools">here</a>.</p>
+<div class="admonition example">
+<p class="admonition-title">A minimal example of random effect meta-analysis using GWAMA</p>
+<p>The input file for GWAMA contains the path to each sumstats. Column names need to be standardized.</p>
+<div class="highlight"><span class="filename">GWAMA_script.in</span><pre><span></span><code>Pop1.txt
+Pop2.txt
+Pop3.txt
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>GWAMA<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-i<span class="w"> </span>GWAMA_script.in<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--random<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>myresults
+</code></pre></div>
+</div>
 <h2 id="cross-ancestry-meta-analysis">Cross-ancestry meta-analysis</h2>
 <h3 id="mantra">MANTRA</h3>
 <p>MANTRA (Meta-ANalysis of Transethnic Association studies) is one of the early efforts to address the heterogeneity for cross-ancestry meta-analysis.</p>
@@ -1824,6 +1840,24 @@ ANALYZE
 <li><span class="arithmatex">\(\beta_j\)</span> : intercept</li>
 <li><span class="arithmatex">\(\beta_{tj}\)</span> : the effect size of the <span class="arithmatex">\(t\)</span> th axis of genetic variation for the <span class="arithmatex">\(j\)</span> th variant</li>
 </ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">A minimal example of meta-analysis using MR-MEGA</p>
+<p>The input file for MR-MEGA contains the path to each sumstats. Column names need to be standardized like GWAMA.</p>
+<div class="highlight"><span class="filename">MRMEGA_script.in</span><pre><span></span><code>Pop1.txt.gz
+Pop2.txt.gz
+Pop3.txt.gz
+Pop4.txt.gz
+Pop5.txt.gz
+Pop6.txt.gz
+Pop7.txt.gz
+Pop8.txt.gz
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>MR-MEGA<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-i<span class="w"> </span>MRMEGA_script.in<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--pc<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>myresults
+</code></pre></div>
 </div>
 <h2 id="global-biobank-meta-analysis-initiative-gbmi">Global Biobank Meta-analysis Initiative (GBMI)</h2>
 <p>As a recent success achieved by meta-analysis, GBMI showed an example of the improvement of our understanding of diseases by taking advantage of large-scale meta-analyses.</p>
