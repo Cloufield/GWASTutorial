@@ -108,6 +108,7 @@ Then the effect size for SNP j can be obtained by:
 $$ \bar{\beta_j}^* = {{\sum_{i=1}^{k} {w_{ij}^* \beta_i}}\over{\sum_{i=1}^{k} {w_{ij}^*}}} $$
 
 The weights are estimated by:
+
 $$w_{ij}^* = {{1}\over{r_j^2 + Var(\beta_{ij})}} $$
 
 ### GWAMA
