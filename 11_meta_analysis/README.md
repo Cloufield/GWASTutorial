@@ -20,7 +20,7 @@ To address these problems, meta-analysis is a powerful approach to integrate mul
     - cross-validate findings across different studies. 
 
 !!! info "A typical workflow of meta-analysis"
-     <img height="500" alt="image" src="https://user-images.githubusercontent.com/40289485/218293217-d6a50f73-98f7-4957-82a3-d10a85bed8dc.png">
+     <img width="300" alt="image" src="https://user-images.githubusercontent.com/40289485/218293217-d6a50f73-98f7-4957-82a3-d10a85bed8dc.png">
 
 
 ## Harmonization and QC for GWA meta-analysis
@@ -54,6 +54,8 @@ Before performing any type of meta-analysis, we need to make sure our datasets c
 
 ## Fixed effects meta-analysis
 
+Simply speaking, the fixed effects we mentioned here mean that the between-study variance is zero. Under the fixed effect model, we assume a common effect size across studies for a certain SNP.
+
 $$ \bar{\beta_{ij}} = {{\sum_{i=1}^{k} {w_{ij} \beta_{ij}}}\over{\sum_{i=1}^{k} {w_{ij}}}} $$
 
 - $w_{ij} = 1 / Var(\beta_{ij})$
@@ -70,6 +72,7 @@ $$ \bar{\beta_{ij}} = {{\sum_{i=1}^{k} {w_{ij} \beta_{ij}}}\over{\sum_{i=1}^{k} 
 ### METAL
 
 METAL is one of the most commonly used tools for GWA meta-analysis. Its official documentation can be found [here](https://genome.sph.umich.edu/wiki/METAL_Documentation). METAL supports two models: (1) Sample size based approach and (2) Inverse variance based approach.
+
 
 !!! example "A minimal example of meta-analysis using the IVW method" 
     ```txt
@@ -92,10 +95,19 @@ METAL is one of the most commonly used tools for GWA meta-analysis. Its official
 
 ## Random effects meta-analysis
 
+On the other hand, random effects mean that we need to model the between-study variance, which is not zero in this case. Under the random effect model, we assume the true effect size for a certain SNP varies across studies.
+
+If heterogeneity of effects exists across studies, we need to model the between-study variance to correct for the deflation of variance in fixed-effect estiamtes.  
+
+The random effect variance component can be estimated by:
+
 $$ r_j^2 = max\left(0, {{Q_j - (N_j -1)}\over{\sum_iw_{ij} - ({{\sum_iw_{ij}^2} \over {\sum_iw_{ij}}})}}\right)$$
+
+Then the effect size for SNP j can be obtained by:
 
 $$ \bar{\beta_j}^* = {{\sum_{i=1}^{k} {w_{ij}^* \beta_i}}\over{\sum_{i=1}^{k} {w_{ij}^*}}} $$
 
+The weights are estimated by:
 $$w_{ij}^* = {{1}\over{r_j^2 + Var(\beta_{ij})}} $$
 
 ### GWAMA
