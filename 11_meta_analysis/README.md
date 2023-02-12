@@ -14,28 +14,28 @@ To address these problems, meta-analysis is a powerful approach to integrate mul
 
 !!! note "What we could achieve by conducting meta-analysis"
     
-    - increase the statistical power for GWASs. 
-    - improve the effect size estimations, which could facilitate downstream analyses. (For example, PRS or MR).
-    - provide opportunities to study the less prevalent or understudied diseases. 
-    - cross-validate findings across different studies. 
+    - [x] Increase the statistical power for GWASs. 
+    - [x] Improve the effect size estimations, which could facilitate downstream analyses. (For example, PRS or MR).
+    - [x] Provide opportunities to study the less prevalent or understudied diseases. 
+    - [x] Cross-validate findings across different studies. 
 
-!!! info "A typical workflow of meta-analysis"
-     <img width="300" alt="image" src="https://user-images.githubusercontent.com/40289485/218293217-d6a50f73-98f7-4957-82a3-d10a85bed8dc.png">
+## A typical workflow of meta-analysis
+<img width="450" alt="image" src="https://user-images.githubusercontent.com/40289485/218293217-d6a50f73-98f7-4957-82a3-d10a85bed8dc.png">
 
 
 ## Harmonization and QC for GWA meta-analysis
 
-Before performing any type of meta-analysis, we need to make sure our datasets contain sufficient information and are QCed and harmonized. 
+Before performing any type of meta-analysis, we need to make sure our datasets contain sufficient information and the datasets are QCed and harmonized. It is important to perform this step to avoid any unexpected errors and heterogeneity.
 
 !!! info "Key points for Dataset selection"
-    - **Minimal requirements for data**
-    - **Phenotype definition**
-    - Study design
-    - **Sample overlap**
-    - Proper citation
-    - Data integrity
-    - Ancestry
-    - Downloading from the source
+    - **Minimal requirements for data** (CHR,POS,BETA,SE,P,N,EA,NEA,EAF... )
+    - **Phenotype definition** 
+    - Study design 
+    - **Sample overlap** (independent population)
+    - Proper citations (we can obtain sufficient information on study design, phenotype definition and QC)
+    - Data integrity (md5sum check)
+    - Ancestry (population with the same ancestry)
+    - Downloading from the source (preferably not second-hand datasets)
 
 !!! info "Key points for Quality control"
     - Remove variants with minor allele frequency being too low
@@ -56,17 +56,17 @@ Before performing any type of meta-analysis, we need to make sure our datasets c
 
 Simply speaking, the fixed effects we mentioned here mean that the between-study variance is zero. Under the fixed effect model, we assume a common effect size across studies for a certain SNP.
 
-$$ \bar{\beta_{ij}} = {{\sum_{i=1}^{k} {w_{ij} \beta_{ij}}}\over{\sum_{i=1}^{k} {w_{ij}}}} $$
+!!! info "Fixed effect model"
+    $$ \bar{\beta_{ij}} = {{\sum_{i=1}^{k} {w_{ij} \beta_{ij}}}\over{\sum_{i=1}^{k} {w_{ij}}}} $$
 
-- $w_{ij} = 1 / Var(\beta_{ij})$
+    - $w_{ij} = 1 / Var(\beta_{ij})$
 
 ### Heterogeneity test
 
-!!! info "Cochran's Q test"
+!!! info "Cochran's Q test and $I^2$ "
 
     $$ Q = \sum_{i=1}^{k} {w_i (\beta_i - \bar{\beta})^2} $$
 
-!!! info "$I^2$"
     $$ I_j^2 =  {{Q_j - df_j}\over{Q_j}}\times 100% =  {{Q - (k - 1)}\over{Q}}\times 100% $$
 
 ### METAL
@@ -75,6 +75,7 @@ METAL is one of the most commonly used tools for GWA meta-analysis. Its official
 
 
 !!! example "A minimal example of meta-analysis using the IVW method" 
+    
     ```txt
     # classical approach, uses effect size estimates and standard errors
     SCHEME STDERR  
@@ -97,21 +98,22 @@ METAL is one of the most commonly used tools for GWA meta-analysis. Its official
 
 On the other hand, random effects mean that we need to model the between-study variance, which is not zero in this case. Under the random effect model, we assume the true effect size for a certain SNP varies across studies.
 
-If heterogeneity of effects exists across studies, we need to model the between-study variance to correct for the deflation of variance in fixed-effect estiamtes.  
-
-The random effect variance component can be estimated by:
-
-$$ r_j^2 = max\left(0, {{Q_j - (N_j -1)}\over{\sum_iw_{ij} - ({{\sum_iw_{ij}^2} \over {\sum_iw_{ij}}})}}\right)$$
-
-Then the effect size for SNP j can be obtained by:
-
-$$ \bar{\beta_j}^* = {{\sum_{i=1}^{k} {w_{ij}^* \beta_i}}\over{\sum_{i=1}^{k} {w_{ij}^*}}} $$
-
-The weights are estimated by:
-
-$$w_{ij}^* = {{1}\over{r_j^2 + Var(\beta_{ij})}} $$
+If heterogeneity of effects exists across studies, we need to model the between-study variance to correct for the deflation of variance in fixed-effect estimates.  
 
 ### GWAMA
+
+!!! quote "Random effect model"
+    The random effect variance component can be estimated by:
+    
+    $$ r_j^2 = max\left(0, {{Q_j - (N_j -1)}\over{\sum_iw_{ij} - ({{\sum_iw_{ij}^2} \over {\sum_iw_    {ij}}})}}\right)$$
+    
+    Then the effect size for SNP j can be obtained by:
+    
+    $$ \bar{\beta_j}^* = {{\sum_{i=1}^{k} {w_{ij}^* \beta_i}}\over{\sum_{i=1}^{k} {w_{ij}^*}}} $$
+    
+    The weights are estimated by:
+    
+    $$w_{ij}^* = {{1}\over{r_j^2 + Var(\beta_{ij})}} $$
 
 The random effect model was implemented in GWAMA, which is another very popular GWA meta-analysis tool. Its official documentation can be found [here](https://genomics.ut.ee/en/tools).
 
@@ -127,20 +129,22 @@ MANTRA implements a Bayesian partition model where GWASs were clustered into anc
 
 MR-MEGA employs meta-regression to model the heterogeneity in effect sizes across ancestries. Its official documentation can be found [here](https://genomics.ut.ee/en/tools) (The same first author as GWAMA).
 
-It will first construct a matrix $D$ of pairwise Euclidean distances between GWAS across autosomal variants. The elements of D , $d_{k'k} $ for a pair of studies can be expressed as the following. For each variant $j$, $p_{kj}$ is the allele frequency of j in study k, then:
 
-$$d_{k'k} = {{\sum_jI_j(p_{kj}-p_{k'j})^2}\over{\sum_jI_j}}$$
-
-- $I$ : an indicator of the inclusion of the $j$th variant 
-
-Then multi-dimensional scaling (MDS) will be performed to derive T axes of genetic variation ($x_k$ for study k)
-
-For each variant j, the effect size of the reference allele can be modeled in a linear regression model as :
-
-$$E[\beta_{kj}] = \beta_j + \sum_{t=1}^T\beta_{tj}x_{kj}$$
-
-- $\beta_j$ : intercept
-- $\beta_{tj}$ : the effect size of the $t$ th axis of genetic variation for the $j$ th variant
+!!! quote "Meta-regression implemented in MR-MEGA"
+    It will first construct a matrix $D$ of pairwise Euclidean distances between GWAS across autosomal     variants. The elements of D , $d_{k'k} $ for a pair of studies can be expressed as the following.     For each variant $j$, $p_{kj}$ is the allele frequency of j in study k, then:
+    
+    $$d_{k'k} = {{\sum_jI_j(p_{kj}-p_{k'j})^2}\over{\sum_jI_j}}$$
+    
+    - $I$ : an indicator of the inclusion of the $j$th variant 
+    
+    Then multi-dimensional scaling (MDS) will be performed to derive T axes of genetic variation ($x_k$     for study k)
+    
+    For each variant j, the effect size of the reference allele can be modeled in a linear regression     model as :
+    
+    $$E[\beta_{kj}] = \beta_j + \sum_{t=1}^T\beta_{tj}x_{kj}$$
+    
+    - $\beta_j$ : intercept
+    - $\beta_{tj}$ : the effect size of the $t$ th axis of genetic variation for the $j$ th variant
 
 ## Global Biobank Meta-analysis Initiative (GBMI)
 
