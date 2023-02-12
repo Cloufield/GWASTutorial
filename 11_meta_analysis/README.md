@@ -20,8 +20,7 @@ To address these problems, meta-analysis is a powerful approach to integrate mul
     - cross-validate findings across different studies. 
 
 !!! info "A typical workflow of meta-analysis"
-    ![image](https://user-images.githubusercontent.com/40289485/218293217-d6a50f73-98f7-4957-82a3-d10a85bed8dc.png)
-
+     <img height="500" alt="image" src="https://user-images.githubusercontent.com/40289485/218293217-d6a50f73-98f7-4957-82a3-d10a85bed8dc.png">
 
 
 ## Harmonization and QC for GWA meta-analysis
