@@ -2181,14 +2181,16 @@ sumstats.txt
 </code></pre></div>
 </div>
 <p>Now, let's move it back to the current directory and rename it to <code>sumstats_new.txt</code>.</p>
-<p>!!! "Rename a file using <code>mv</code>"
-    <div class="highlight"><pre><span></span><code>$ mv ./new_directory/sumstats.txt ./
+<div class="admonition example">
+<p class="admonition-title">Rename a file using <code>mv</code></p>
+<p><div class="highlight"><pre><span></span><code>$ mv ./new_directory/sumstats.txt ./
 </code></pre></div>
-    Note: <code>./</code> means the current directory
-    You can also use <code>mv</code> to rename a file:
-    <div class="highlight"><pre><span></span><code><span class="c1">#rename</span>
+Note: <code>./</code> means the current directory
+You can also use <code>mv</code> to rename a file:
+<div class="highlight"><pre><span></span><code><span class="c1">#rename</span>
 <span class="nv">$mv</span> sumstats.txt sumstats_new.txt 
 </code></pre></div></p>
+</div>
 <h4 id="rm"><code>rm</code></h4>
 <p><code>rm</code> : Remove files or diretories</p>
 <div class="admonition example">
@@ -2201,7 +2203,7 @@ sumstats.txt
 </code></pre></div>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">There is no trash can in Linux command-line interface !</p>
+<p class="admonition-title">There is no trash can in Linux command-line interface</p>
 <p>If you delete a file with <code>rm</code> , it will be very difficult to restore it. Please be careful wehn using <code>rm</code>. </p>
 </div>
 <h4 id="cp"><code>cp</code></h4>
@@ -2383,11 +2385,11 @@ CHROM   POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG<span class="o">(</span>OR<sp
 <p>For example, </p>
 <div class="admonition example">
 <p class="admonition-title">Count the lines, words, and characters in <code>sumstats.txt</code></p>
-<div class="highlight"><pre><span></span><code>$ wc sumstats.txt 
+<p><div class="highlight"><pre><span></span><code>$ wc sumstats.txt 
   <span class="m">445933</span>  <span class="m">5797129</span> <span class="m">32790417</span> sumstats.txt
 </code></pre></div>
+This means that <code>sumstats.txt</code> has 445933 lines, 5797129 words, and 32790417 characters. </p>
 </div>
-<p>This means that <code>sumstats.txt</code> has 445933 lines, 5797129 words, and 32790417 characters. </p>
 <h3 id="edit-files">Edit files</h3>
 <p><strong>Vim</strong> is a handy text editor in command line.</p>
 <div class="highlight"><pre><span></span><code>vim README.md
