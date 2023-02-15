@@ -2167,7 +2167,7 @@ total <span class="m">64048</span>
 <li>(2) rename files</li>
 </ul>
 <p>The following command will create a new directoru called <code>new_directory</code>, and move <code>sumstats.txt</code> into that directory. Just like draggig a file in to a folder in window system.</p>
-<div class="admonition exmaple">
+<div class="admonition example">
 <p class="admonition-title">Move a file to a different directory</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># make a new directory</span>
 $ mkdir new_directory
@@ -2302,17 +2302,16 @@ $ ls -lh
 <p><code>cat</code> command can print the contents of files or concatenate the files.</p>
 <div class="admonition example">
 <p class="admonition-title">Create and then <code>cat</code> the file <code>a_text_file.txt</code> </p>
-<p>```Bash
-$ ls -lha &gt; a_text_file.txt
+<div class="highlight"><pre><span></span><code>$ ls -lha &gt; a_text_file.txt
 $ cat a_text_file.txt 
 total 32M
-drwxr-x---  2 he staff 4.0K Apr  2 00:37 .
-drwxr-x--- 29 he staff 4.0K Apr  1 22:20 ..
--rw-r-----  1 he staff    0 Apr  2 00:37 a_text_file.txt
--rw-r-----  1 he staff 5.0K Apr  1 22:20 README.md
--rw-r-----  1 he staff  32M Mar 30 18:17 sumstats.txt</p>
+drwxr-x---  <span class="m">2</span> he staff <span class="m">4</span>.0K Apr  <span class="m">2</span> <span class="m">00</span>:37 .
+drwxr-x--- <span class="m">29</span> he staff <span class="m">4</span>.0K Apr  <span class="m">1</span> <span class="m">22</span>:20 ..
+-rw-r-----  <span class="m">1</span> he staff    <span class="m">0</span> Apr  <span class="m">2</span> <span class="m">00</span>:37 a_text_file.txt
+-rw-r-----  <span class="m">1</span> he staff <span class="m">5</span>.0K Apr  <span class="m">1</span> <span class="m">22</span>:20 README.md
+-rw-r-----  <span class="m">1</span> he staff  32M Mar <span class="m">30</span> <span class="m">18</span>:17 sumstats.txt
+</code></pre></div>
 </div>
-<p>```</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Be careful not to <code>cat</code> a text file with a huge number of lines. You can try to <code>cat sumstats.txt</code> and see what happends.</p>
