@@ -1590,22 +1590,22 @@
 <tbody>
 <tr>
 <td>Do Not Reject</td>
-<td>True negative : $1 -  \alpha $</td>
-<td>Type II error (false negative) : $\beta $</td>
+<td>True negative : <span class="arithmatex">\(1 -  \alpha\)</span></td>
+<td>Type II error (false negative) : <span class="arithmatex">\(\beta\)</span></td>
 </tr>
 <tr>
 <td>Reject</td>
-<td>Type I error (false positive) : $\alpha $</td>
-<td>True positive : $1 -  \beta $</td>
+<td>Type I error (false positive) : <span class="arithmatex">\(\alpha\)</span></td>
+<td>True positive : <span class="arithmatex">\(1 -  \beta\)</span></td>
 </tr>
 </tbody>
 </table>
 <p><span class="arithmatex">\(\alpha\)</span> : significance level</p>
 <p>By definition, the statistical power of a test refers to <strong>the probability that the test will correctly reject the null hypothesis</strong>, namely the <strong>True positive</strong> rate in the table above. </p>
-<p>$Power = Pr ( Reject\ | H_0\ is\ False) = 1 -  \beta $ </p>
+<p><span class="arithmatex">\(Power = Pr ( Reject\ | H_0\ is\ False) = 1 -  \beta\)</span> </p>
 <div class="admonition info">
 <p class="admonition-title">Power</p>
-<p><img width="600" alt="image" src="https://user-images.githubusercontent.com/40289485/219032691-900856fb-4f41-4892-ad31-fe61ecd37330.png"></p>
+<p><img width="800" alt="image" src="https://user-images.githubusercontent.com/40289485/219032691-900856fb-4f41-4892-ad31-fe61ecd37330.png"></p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Factors affecting power</p>
@@ -1623,31 +1623,33 @@
 <div class="arithmatex">\[ y = \mu +\beta x + \epsilon \]</div>
 <p>The variance of the error term:</p>
 <div class="arithmatex">\[\sigma^2 = Var(y) - Var(x)\beta^2 \]</div>
-<p>Usually the phenotypic variance that a single SNP could explain is very limited , so we can approximate <span class="arithmatex">\(\sigma^2\)</span> by:</p>
+<p>Usually, the phenotypic variance that a single SNP could explain is very limited, so we can approximate <span class="arithmatex">\(\sigma^2\)</span> by:</p>
 <div class="arithmatex">\[ \sigma^2  \thickapprox Var(y)\]</div>
 <p>Under Hardy-Weinberg equilibrium, we can get: </p>
 <div class="arithmatex">\[Var(x) = 2f(1-f)\]</div>
 <ul>
 <li><span class="arithmatex">\(f\)</span> : the allele frequency for this variant</li>
 </ul>
-<p>So the Non-centrality parameter(NCP) <span class="arithmatex">\(\lambda\)</span> for chi-square distribution with degree of freedom being 1: </p>
+<p>So the Non-centrality parameter(NCP) <span class="arithmatex">\(\lambda\)</span> for <span class="arithmatex">\(\chi^2\)</span> distribution with degree of freedom 1: </p>
 <div class="arithmatex">\[ \lambda = ({{\beta}\over{SE_{\beta}}})^2\]</div>
 <h3 id="power-for-quantitative-traits">Power for quantitative traits</h3>
 <div class="arithmatex">\[ \lambda = ({{\beta}\over{SE_{\beta}}})^2 \thickapprox N \times {{Var(x)\beta^2}\over{\sigma^2}} \thickapprox N \times {{2f(1-f) \beta^2 }\over {Var(y)}}  \]</div>
 <p>Significance threshold: <span class="arithmatex">\(C = CDF_{\chi^2}^{-1}(1 - \alpha,df=1)\)</span></p>
 <ul>
-<li>$ CDF_{\chi^2}^{-1}(x)$ : is the inverse of Cumulative distribution function for chisq distribution.</li>
+<li>$ CDF_{\chi^2}^{-1}(x)$ : is the inverse of the cumulative distribution function for <span class="arithmatex">\(\chi^2\)</span> distribution.</li>
 </ul>
 <div class="arithmatex">\[ Power = Pr(\lambda &gt; C ) = CDF_{\chi^2}(C, ncp = \lambda,df=1) \]</div>
 <ul>
-<li>$ CDF_{\chi^2}(x, ncp= \lambda)$ : is the cumulative distribution function for non-central chisq distribution with non-centrality parameter <span class="arithmatex">\(\lambda\)</span>.</li>
+<li>$ CDF_{\chi^2}(x, ncp= \lambda)$ : is the cumulative distribution function for non-central <span class="arithmatex">\(\chi^2\)</span> distribution with non-centrality parameter <span class="arithmatex">\(\lambda\)</span>.</li>
 </ul>
 <h2 id="power-for-large-scale-case-control-genome-wide-association-studies">Power for large-scale case-control genome-wide association studies</h2>
-<p>Denote :
-- <span class="arithmatex">\(P_{case}\)</span> : Risk allele frequency in cases
-- <span class="arithmatex">\(N_{case}\)</span> : Number of cases. The total allele count for cases is then <span class="arithmatex">\(2N_{case}\)</span>.
-- <span class="arithmatex">\(P_{control}\)</span> : Risk allele frequency in controls
-- <span class="arithmatex">\(N_{control}\)</span> : Number of control. The total allele count for control is then <span class="arithmatex">\(2N_{control}\)</span>.</p>
+<p>Denote :</p>
+<ul>
+<li><span class="arithmatex">\(P_{case}\)</span> : Risk allele frequency in cases</li>
+<li><span class="arithmatex">\(N_{case}\)</span> : Number of cases. The total allele count for cases is then <span class="arithmatex">\(2N_{case}\)</span>.</li>
+<li><span class="arithmatex">\(P_{control}\)</span> : Risk allele frequency in controls</li>
+<li><span class="arithmatex">\(N_{control}\)</span> : Number of control. The total allele count for control is then <span class="arithmatex">\(2N_{control}\)</span>.</li>
+</ul>
 <p>Null hypothesis : <span class="arithmatex">\(P_{case} = P_{control}\)</span></p>
 <p>To test whether one proportion <span class="arithmatex">\(P_{case}\)</span> equals the other proportion <span class="arithmatex">\(P_{control}\)</span>, the test statistic is:</p>
 <div class="arithmatex">\[z = {{P_{case} - P_{control}}\over {\sqrt{ {{P_{case}(1 - P_{case})}\over{2N_{case}}} + {{P_{control}(1 - P_{control})}\over{2N_{control}}} }}}\]</div>
@@ -1655,7 +1657,7 @@
 <div class="arithmatex">\[ Power = Pr(|Z|&gt;C) = 1 - \Phi(-C-z) + \Phi(C-z)\]</div>
 <div class="admonition example">
 <p class="admonition-title">GAS power calculator</p>
-<p>url : https://csg.sph.umich.edu/abecasis/cats/gas_power_calculator/index.html</p>
+<p>GAS power calculator implemented this method, and you can easily calculate the power using their <a href="https://csg.sph.umich.edu/abecasis/cats/gas_power_calculator/index.html">website</a></p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/218300614-cc36e850-e5ee-4ec8-aa41-b75d5002518a.png" /></p>
 </div>
 <h2 id="reference">Reference:</h2>
