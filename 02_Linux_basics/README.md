@@ -48,13 +48,16 @@ In this section, we will introduce the most basic commands which enable you to h
     - Hardware device drivers  
     - File system management
 
-![image](https://user-images.githubusercontent.com/40289485/210223071-b9d3de64-a2ac-4785-95a5-6a30fdfd7ed4.png)
-
 !!! example "Some of the most common linux distributions"
+    ![image](https://user-images.githubusercontent.com/40289485/210223071-b9d3de64-a2ac-4785-95a5-6a30fdfd7ed4.png)
+
     - Unbuntu : [https://ubuntu.com/](https://ubuntu.com/)
     - CentOS : [https://www.centos.org/](https://www.centos.org/)
     - Fedora : [https://getfedora.org/](https://getfedora.org/)
     - Linux Mint : [https://linuxmint.com/](https://linuxmint.com/)
+
+!!! tip "Linux and Linus"
+    Linux is named after **Linus** Benedict Torvalds, who is a legendary Finnish software engineer who lead the development of the Linux kernel. He also developped the amazing version control software - **Git**.
 
 Reference: https://en.wikipedia.org/wiki/Linux
 
@@ -154,10 +157,12 @@ The first set of commands are: `pwd` , `cd` , `ls`, `mkdir` and `rmdir`, which a
 
 `pwd` : Print working directory, which means print the path of the current directory (working directory)
 
-```Bash
-$ pwd
-/home/he/work/GWASTutorial/02_Linux_basics
-```
+!!! example "Use `pwd` to print the current directory you are in"
+    ```Bash
+    $ pwd
+    /home/he/work/GWASTutorial/02_Linux_basics
+    ```
+
 This command prints the absolute path.
 
 !!! example "An example of Linux file system and file paths"
@@ -179,11 +184,13 @@ This command prints the absolute path.
 #### `cd` 
 
 `cd`: Change the current working directory 
-```Bash
-$ cd 02_Linux_basics
-$ pwd
-/home/he/work/GWASTutorial/02_Linux_basics
-```
+
+!!! example "Use `cd` to change directory to `02_Linux_basics` and then print the current directory"
+    ```Bash
+    $ cd 02_Linux_basics
+    $ pwd
+    /home/he/work/GWASTutorial/02_Linux_basics
+    ```
 
 #### `ls` : 
 
@@ -195,16 +202,20 @@ Some frequently used options for `ls` :
 - `-h`: convert file size into a human readable format (KB,MB,GB...)
 - `-a`: list all files (including hidden files, namly those files a period at the beginning of the filename)
 
-```Bash
-$ ls
-README.md  sumstats.txt
+!!! example "Simply list the files and directories in the current directory"
+    ```Bash
+    $ ls
+    README.md  sumstats.txt
+    ```
 
-$ ls -lha
-drwxr-xr-x   4 he  staff   128B Dec 23 14:07 .
-drwxr-xr-x  17 he  staff   544B Dec 23 12:13 ..
--rw-r--r--   1 he  staff     0B Oct 17 11:24 README.md
--rw-r--r--   1 he  staff    31M Dec 23 14:07 sumstats.txt
-```
+!!! example "List the files and directories with options `-lha`"
+    ```
+    $ ls -lha
+    drwxr-xr-x   4 he  staff   128B Dec 23 14:07 .
+    drwxr-xr-x  17 he  staff   544B Dec 23 12:13 ..
+    -rw-r--r--   1 he  staff     0B Oct 17 11:24 README.md
+    -rw-r--r--   1 he  staff    31M Dec 23 14:07 sumstats.txt
+    ```
 
 !!! tip "Tip: use `tree` to visualize the structure of a directory"
     
@@ -224,96 +235,103 @@ drwxr-xr-x  17 he  staff   544B Dec 23 12:13 ..
 - `mkdir` : Create a new empty directory
 - `rmdir`: Delete an empty directory
 
-```Bash
-$ mkdir new_directory
-$ ls
-new_directory  README.md  sumstats.txt
-$ rmdir new_directory/
-$ ls
-README.md  sumstats.txt
-```
+!!! example "Make a directory and delete it"
+    ```Bash
+    $ mkdir new_directory
+    $ ls
+    new_directory  README.md  sumstats.txt
+    $ rmdir new_directory/
+    $ ls
+    README.md  sumstats.txt
+    ```
 
 ### Manipulating files
 
 This set of commands includes: `touch`, `mv` , `rm` and `cp`
 
-#### `touch`:
+#### `touch`
 `touch` command is used to create a new empty file.
 
-For example, let's create a text file called `newfile.txt` in this directory.
+!!! example "Create an empty text file called `newfile.txt` in this directory"
 
-```Bash
-$ ls -l
-total 64048
--rw-r--r--  1 he  staff         0 Oct 17 11:24 README.md
--rw-r--r--  1 he  staff  32790417 Dec 23 14:07 sumstats.txt
+    ```Bash
+    $ ls -l
+    total 64048
+    -rw-r--r--  1 he  staff         0 Oct 17 11:24 README.md
+    -rw-r--r--  1 he  staff  32790417 Dec 23 14:07 sumstats.txt
+    
+    touch newfile.txt
+    
+    $ touch newfile.txt
+    $ ls -l
+    total 64048
+    -rw-r--r--  1 he  staff         0 Oct 17 11:24 README.md
+    -rw-r--r--  1 he  staff         0 Dec 23 14:14 newfile.txt
+    -rw-r--r--  1 he  staff  32790417 Dec 23 14:07 sumstats.txt
+    ```
 
-touch newfile.txt
-
-$ touch newfile.txt
-$ ls -l
-total 64048
--rw-r--r--  1 he  staff         0 Oct 17 11:24 README.md
--rw-r--r--  1 he  staff         0 Dec 23 14:14 newfile.txt
--rw-r--r--  1 he  staff  32790417 Dec 23 14:07 sumstats.txt
-
-```
-
-#### `mv`: 
+#### `mv`
 `mv` has two functions:
 
 - (1) move files to another paths
 - (2) rename files
 
 The following command will create a new directoru called `new_directory`, and move `sumstats.txt` into that directory. Just like draggig a file in to a folder in window system.
-```Bash
-# make a new directory
-$ mkdir new_directory
 
-#move sumstats to the new directory
-$ mv sumstats.txt new_directory/
-
-# list the item in new_directory
-$ ls new_directory/
-sumstats.txt
-```
+!!! example "Move a file to a different directory"
+    ```Bash
+    # make a new directory
+    $ mkdir new_directory
+    
+    #move sumstats to the new directory
+    $ mv sumstats.txt new_directory/
+    
+    # list the item in new_directory
+    $ ls new_directory/
+    sumstats.txt
+    ```
 
 Now, let's move it back to the current directory and rename it to `sumstats_new.txt `.
-```Bash
-$ mv ./new_directory/sumstats.txt ./
-```
-Note: `./` means the current directory
-You can also use `mv` to rename a file:
-```Bash
-#rename
-$mv sumstats.txt sumstats_new.txt 
-```
 
-#### `rm`:
+!!! example "Rename a file using `mv`"
+    ```Bash
+    $ mv ./new_directory/sumstats.txt ./
+    ```
+    Note: `./` means the current directory
+    You can also use `mv` to rename a file:
+    ```Bash
+    #rename
+    $mv sumstats.txt sumstats_new.txt 
+    ```
 
-Remove files or diretories
+#### `rm`
 
-```Bash
-# remove a file
-$rm file
+`rm` : Remove files or diretories
 
-#remove files in a directory (recursive mode)
-$rm -r directory/
-```
-!!! warning "There is no trash can in Linux command-line interface !"
+!!! example "Remove a file and a directory"
+    ```Bash
+    # remove a file
+    $rm file
+    
+    #remove files in a directory (recursive mode)
+    $rm -r directory/
+    ```
+
+!!! warning "There is no trash can in Linux command-line interface"
     If you delete a file with `rm` , it will be very difficult to restore it. Please be careful wehn using `rm`. 
 
 #### `cp` 
 
 `cp` command is used to copy files or diretories.
 
-```Bash
-#cp files
-$cp file1 file2
-
-# copy directory
-$cp -r directory1/ directory2/
-```
+!!! example "Copy a file and a directory"
+    ```Bash
+    #cp files
+    $cp file1 file2
+    
+    # copy directory
+    $cp -r directory1/ directory2/
+    ```
 
 ### Links  
 
@@ -323,16 +341,21 @@ It is very useful when you want to organize your tool box or working space.
 
 You can use `ln -s pathA pathB` to create such a link. 
 
-Example:
+!!! example "Create a symbolic link for plink"
+    Let`s create a symbolic link for plink first.
+    ```Bash
+    # /home/he/tools/plink/plink is the orinial file
+    # /home/he/tools/bin is the path for the symbolic link 
+    ln -s /home/he/tools/plink/plink /home/he/tools/bin
+    ```
+    
+    And then check the link.
 
-```Bash
-ln -s /home/he/tools/plink/plink /home/he/tools/bin
-
-cd /home/he/tools/bin
-ls -lha
-...Bash
-lrwxr-xr-x  1 he  staff    27B Aug 30 11:30 plink -> /home/he/tools/plink/plink
-```
+    ```Bash
+    cd /home/he/tools/bin
+    ls -lha
+    lrwxr-xr-x  1 he  staff    27B Aug 30 11:30 plink -> /home/he/tools/plink/plink
+    ```
 
 ### Archiving and Compression
 
@@ -355,19 +378,19 @@ Commoly used commands for archiving and compression:
 | `files.tar.gz` or `files.tgz` |      `tar -czvf`|   `tar -xvzf`|  archive and compress|
 | `file.zip`                  |            `zip`|       `unzip` | archive and compress|
 
-
-```Bash
-$ ls -lh
--rw-r--r--  1 he  staff    31M Dec 23 14:07 sumstats.txt
-
-$ gzip sumstats.txt
-$ ls -lh
--rw-r--r--  1 he  staff   9.9M Dec 23 14:07 sumstats.txt.gz
-
-$ gunzip sumstats.txt.gz
-$ ls -lh
--rw-r--r--   1 he  staff    31M Dec 23 14:07 sumstats.txt
-```
+!!! example "Compress and decompress a file using `gzip` and `gunzip`"
+    ```Bash
+    $ ls -lh
+    -rw-r--r--  1 he  staff    31M Dec 23 14:07 sumstats.txt
+    
+    $ gzip sumstats.txt
+    $ ls -lh
+    -rw-r--r--  1 he  staff   9.9M Dec 23 14:07 sumstats.txt.gz
+    
+    $ gunzip sumstats.txt.gz
+    $ ls -lh
+    -rw-r--r--   1 he  staff    31M Dec 23 14:07 sumstats.txt
+    ```
 
 ### Read and check files
 We have a group of handy commands to check part of or the entire file, including `cat`, `zcat`, `less`, `head`, `tail`, `wc`
@@ -376,17 +399,18 @@ We have a group of handy commands to check part of or the entire file, including
 
 `cat` command can print the contents of files or concatenate the files.
 
-```Bash
-$ ls -lha > a_text_file.txt
-$ cat a_text_file.txt 
-total 32M
-drwxr-x---  2 he staff 4.0K Apr  2 00:37 .
-drwxr-x--- 29 he staff 4.0K Apr  1 22:20 ..
--rw-r-----  1 he staff    0 Apr  2 00:37 a_text_file.txt
--rw-r-----  1 he staff 5.0K Apr  1 22:20 README.md
--rw-r-----  1 he staff  32M Mar 30 18:17 sumstats.txt
+!!! example "Create and then `cat` the file `a_text_file.txt` "
+    ```Bash
+    $ ls -lha > a_text_file.txt
+    $ cat a_text_file.txt 
+    total 32M
+    drwxr-x---  2 he staff 4.0K Apr  2 00:37 .
+    drwxr-x--- 29 he staff 4.0K Apr  1 22:20 ..
+    -rw-r-----  1 he staff    0 Apr  2 00:37 a_text_file.txt
+    -rw-r-----  1 he staff 5.0K Apr  1 22:20 README.md
+    -rw-r-----  1 he staff  32M Mar 30 18:17 sumstats.txt
+    ```
 
-```
 !!! warning
     Be careful not to `cat` a text file with a huge number of lines. You can try to `cat sumstats.txt` and see what happends.
 
@@ -396,22 +420,23 @@ By the way, `> a_text_file.txt` here means redirect the output to file ` a_text_
 
 `zcat` is similar to `cat`, but can only applied to compressed files.
 
-```Bash
-$ gzip a_text_file.txt 
-$ cat a_text_file.txt.gz                                                         TGba_text_file.txtя
-@ȱ»O𻀙v؂𧢩¼򀳠bq}󑢤\¤n٢ª򠀬n»ڡǭ
-                          w5J_½𳘧P߉=ÿK
-(֣԰§ҤŶaކ                              ¬M­R󽒊m³þe¸¤¼׍Sd￱߲들ª­v
-       婁                                                                                                               resize: unknown character, exiting.
-
-$ zcat a_text_file.txt.gz 
-total 32M
-drwxr-x---  2 he staff 4.0K Apr  2 00:37 .
-drwxr-x--- 29 he staff 4.0K Apr  1 22:20 ..
--rw-r-----  1 he staff    0 Apr  2 00:37 a_text_file.txt
--rw-r-----  1 he staff 5.0K Apr  1 22:20 README.md
--rw-r-----  1 he staff  32M Mar 30 18:17 sumstats.txt
-```
+!!! example "`cat` and `zcat` a gzipped text file"
+    ```Bash
+    $ gzip a_text_file.txt 
+    $ cat a_text_file.txt.gz                                                         TGba_text_file.    txtя
+    @ȱ»O𻀙v؂𧢩¼򀳠bq}󑢤\¤n٢ª򠀬n»ڡǭ
+                              w5J_½𳘧P߉=ÿK
+    (֣԰§ҤŶaކ                              ¬M­R󽒊m³þe¸¤¼׍Sd￱߲들ª­v
+           婁                                                                                                               resize: unknown character, exiting.
+    
+    $ zcat a_text_file.txt.gz 
+    total 32M
+    drwxr-x---  2 he staff 4.0K Apr  2 00:37 .
+    drwxr-x--- 29 he staff 4.0K Apr  1 22:20 ..
+    -rw-r-----  1 he staff    0 Apr  2 00:37 a_text_file.txt
+    -rw-r-----  1 he staff 5.0K Apr  1 22:20 README.md
+    -rw-r-----  1 he staff  32M Mar 30 18:17 sumstats.txt
+    ```
 
 !!! info "gzcat"
     Use `gzcat` instead of `zcat` if your device is running MacOS. 
@@ -423,40 +448,42 @@ drwxr-x--- 29 he staff 4.0K Apr  1 22:20 ..
 
 `-n`: option to change the number of lines.
 
-```Bash
-$ head sumstats.txt 
-CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
-1	319	17	2	1	1	ADD	10000	1.04326	0.0495816	0.854176	0.393008	.
-1	319	22	1	2	2	ADD	10000	1.03347	0.0493972	0.666451	0.505123	.
-1	418	23	1	2	2	ADD	10000	1.02668	0.0498185	0.528492	0.597158	.
-1	537	30	1	2	2	ADD	10000	1.01341	0.0498496	0.267238	0.789286	.
-1	546	31	2	1	1	ADD	10000	1.02051	0.0336786	0.60284	0.546615	.
-1	575	33	2	1	1	ADD	10000	1.09795	0.0818305	1.14199	0.25346	.
-1	752	44	2	1	1	ADD	10000	1.02038	0.0494069	0.408395	0.682984	.
-1	913	50	2	1	1	ADD	10000	1.07852	0.0493585	1.53144	0.12566	.
-1	1356	77	2	1	1	ADD	10000	0.947521	0.0339805	-1.5864	0.112649	.
-
-$ head -n 1 sumstats.txt 
-CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
-```
+!!! example "Check the first 10 lines and only the first line of the file `sumstats.txt `"
+    ```Bash
+    $ head sumstats.txt 
+    CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
+    1	319	17	2	1	1	ADD	10000	1.04326	0.0495816	0.854176	0.393008	.
+    1	319	22	1	2	2	ADD	10000	1.03347	0.0493972	0.666451	0.505123	.
+    1	418	23	1	2	2	ADD	10000	1.02668	0.0498185	0.528492	0.597158	.
+    1	537	30	1	2	2	ADD	10000	1.01341	0.0498496	0.267238	0.789286	.
+    1	546	31	2	1	1	ADD	10000	1.02051	0.0336786	0.60284	0.546615	.
+    1	575	33	2	1	1	ADD	10000	1.09795	0.0818305	1.14199	0.25346	.
+    1	752	44	2	1	1	ADD	10000	1.02038	0.0494069	0.408395	0.682984	.
+    1	913	50	2	1	1	ADD	10000	1.07852	0.0493585	1.53144	0.12566	.
+    1	1356	77	2	1	1	ADD	10000	0.947521	0.0339805	-1.5864	0.112649	.
+    
+    $ head -n 1 sumstats.txt 
+    CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
+    ```
 
 #### `tail`
 
 Similar to `head`, you can use `tail` ro check the last 10 lines. `-n` works in the same way.
 
-```Bash
-$ tail sumstats.txt 
-22	99996057	9959945	2	1	1	ADD	10000	1.03234	0.0335547	0.948413	0.342919.
-22	99996465	9959971	2	1	1	ADD	10000	1.04755	0.0337187	1.37769	0.1683	.
-22	99997041	9960013	2	1	1	ADD	10000	1.01942	0.0937548	0.205195	0.837419.
-22	99997608	9960051	2	1	1	ADD	10000	0.969928	0.0397711	-0.767722	0.442652	.
-22	99997629	9960055	2	1	1	ADD	10000	0.986949	0.0395305	-0.332315	0.739652	.
-22	99997742	9960061	2	1	1	ADD	10000	0.990829	0.0396614	-0.232298	0.816307	.
-22	99998121	9960086	2	1	1	ADD	10000	1.04448	0.0335879	1.29555	0.19513	.
-22	99998455	9960106	2	1	1	ADD	10000	0.880953	0.152754	-0.829771	0.406668	.
-22	99999208	9960146	2	1	1	ADD	10000	0.944604	0.065187	-0.874248	0.381983	.
-22	99999382	9960164	2	1	1	ADD	10000	0.970509	0.033978	-0.881014	0.37831	.
-```
+!!! example "Check the last 10 lines of the file `sumstats.txt `"
+    ```Bash
+    $ tail sumstats.txt 
+    22	99996057	9959945	2	1	1	ADD	10000	1.03234	0.0335547	0.948413	0.342919.
+    22	99996465	9959971	2	1	1	ADD	10000	1.04755	0.0337187	1.37769	0.1683	.
+    22	99997041	9960013	2	1	1	ADD	10000	1.01942	0.0937548	0.205195	0.837419.
+    22	99997608	9960051	2	1	1	ADD	10000	0.969928	0.0397711	-0.767722	0.    442652	.
+    22	99997629	9960055	2	1	1	ADD	10000	0.986949	0.0395305	-0.332315	0.    739652	.
+    22	99997742	9960061	2	1	1	ADD	10000	0.990829	0.0396614	-0.232298	0.    816307	.
+    22	99998121	9960086	2	1	1	ADD	10000	1.04448	0.0335879	1.29555	0.19513	.
+    22	99998455	9960106	2	1	1	ADD	10000	0.880953	0.152754	-0.829771	0.    406668	.
+    22	99999208	9960146	2	1	1	ADD	10000	0.944604	0.065187	-0.874248	0.    381983	.
+    22	99999382	9960164	2	1	1	ADD	10000	0.970509	0.033978	-0.881014	0.37831	.
+    ```
 
 #### `wc`
 
@@ -464,11 +491,12 @@ $ tail sumstats.txt
 
 For example, 
 
-```Bash
-$ wc sumstats.txt 
-  445933  5797129 32790417 sumstats.txt
-```
-This means that `sumstats.txt` has 445933 lines, 5797129 words, and 32790417 characters. 
+!!! example "Count the lines, words, and characters in `sumstats.txt`"
+    ```Bash
+    $ wc sumstats.txt 
+      445933  5797129 32790417 sumstats.txt
+    ```
+    This means that `sumstats.txt` has 445933 lines, 5797129 words, and 32790417 characters. 
 
 ### Edit files
 
@@ -528,23 +556,23 @@ chmod [3-digit Binary notation] [path]
 |1|`--x`|001|
 |0|`---`|000|
 
-Example:
+!!! example "Change the permissions of the file `README.md` to `660`"
+    ```Bash
+    # there is a readme file in the directory, and its permissions are -rw-r----- 
+    $ ls -lh
+    total 4.0K
+    -rw-r----- 1 he staff 2.1K Feb 24 01:16 README.md
+    
+    # let's change the permissions to 660, which is a numeric notation of -rw-rw---- based on the     table above
+    $ chmod 660 README.md 
+    
+    # chack again, and it was changed.
+    $ ls -lh
+    total 4.0K
+    -rw-rw---- 1 he staff 2.1K Feb 24 01:16 README.md
+    
+    ```
 
-```Bash
-# there is a readme file in the directory, and its permissions are -rw-r----- 
-$ ls -lh
-total 4.0K
--rw-r----- 1 he staff 2.1K Feb 24 01:16 README.md
-
-# let's change the permissions to 660, which is a numeric notation of -rw-rw---- based on the table above
-$ chmod 660 README.md 
-
-# chack again, and it was changed.
-$ ls -lh
-total 4.0K
--rw-rw---- 1 he staff 2.1K Feb 24 01:16 README.md
-
-```
 !!! note 
     These commands are very important because we use genome data, which could raise severe ethical and privacy issues if there is data leak. 
 
@@ -560,24 +588,29 @@ There are a group of very handy and flexible commands which will greatly improve
 Pipe basically is used to pass the output of the previous command to the next command as input, instead of printing is in terminal.
 Using pipe you can do very complicated manipulations of the files.
 
-```Bash
-cat sumstats.txt | sort | uniq | wc
-```
-This means (1) print sumstats, (2) sort the output, (3) then keep the unique lines and finally (4) count the lines and words.
+!!! example "An example of Pipe"
+    ```Bash
+    cat sumstats.txt | sort | uniq | wc
+    ```
+    This means (1) print sumstats, (2) sort the output, (3) then keep the unique lines and finally (4) count the lines and words.
 
 #### `>`
 
 `>` redirects output to a new file (if the file already exist, it will be overwritten)
-```Bash
-cat sumstats.txt | sort | uniq | wc > count.txt
-```
+
+!!! example "Redirects the output of `cat sumstats.txt | sort | uniq | wc` to `count.txt`"
+    ```Bash
+    cat sumstats.txt | sort | uniq | wc > count.txt
+    ```
+
 #### `>>`
 
 `>>` redirects output to a file by appending to the end of the file (if the file already exist, it will not be overwritten)
 
-```Bash
-cat sumstats.txt | sort | uniq | wc >> count.txt
-```
+!!! example "Redirects the output of `cat sumstats.txt | sort | uniq | wc` to `count.txt` by appending"
+    ```Bash
+    cat sumstats.txt | sort | uniq | wc >> count.txt
+    ```
 
 Other useful commands include : 
 
@@ -600,11 +633,12 @@ We can use vim to create a bash script called `hello.sh`
 
 A simple example of bash scripts:
 
-```Bash
-#!/bin/bash
-echo "Hello, world1"
-echo "Hello, world2"
-```
+!!! example 
+    ```Bash title="hello.sh"
+    #!/bin/bash
+    echo "Hello, world1"
+    echo "Hello, world2"
+    ```
 
 `#!` is called shebang, which tells the system which interpreter to use to excute the shell script.
 
@@ -657,12 +691,11 @@ We can use `wget [option] [url]` command to download files to local machine.
 
 `-O` option specify the file name you want to change for the downloaded file. 
 
-Example:
-
-```Bash
-# Download hg19 reference genome from UCSC
-wget https://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/hg19.fa.gz
-
-# Download hg19 reference genome from UCSC and rename it to  my_refgenome.fa.gz
-wget -O my_refgenome.fa.gz https://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/hg19.fa.gz
-```
+!!! example "Use wget to download the hg19 reference genome from UCSC"
+    ```Bash
+    # Download hg19 reference genome from UCSC
+    wget https://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/hg19.fa.gz
+    
+    # Download hg19 reference genome from UCSC and rename it to  my_refgenome.fa.gz
+    wget -O my_refgenome.fa.gz https://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/hg19.fa.gz
+    ```
