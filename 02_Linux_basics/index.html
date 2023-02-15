@@ -1878,11 +1878,11 @@ In this section, we will introduce the most basic commands which enable you to h
 <li>Linux Mint : <a href="https://linuxmint.com/">https://linuxmint.com/</a></li>
 </ul>
 </div>
-<p>Reference: https://en.wikipedia.org/wiki/Linux</p>
-<div class="admonition tips">
+<div class="admonition tip">
 <p class="admonition-title">Linux and Linus</p>
-<p>Linux is named after <strong>Linus</strong> Benedict Torvalds, who is a legendary Finnish software engineer who lead the development of the Linux kernel. He also developped the amazing version control software - Git.</p>
+<p>Linux is named after <strong>Linus</strong> Benedict Torvalds, who is a legendary Finnish software engineer who lead the development of the Linux kernel. He also developped the amazing version control software - <strong>Git</strong>.</p>
 </div>
+<p>Reference: https://en.wikipedia.org/wiki/Linux</p>
 <h3 id="how-do-we-interact-with-computers">How do we interact with computers?</h3>
 <ul>
 <li>Graphical User Interface (GUI): allows users to interact with computers through graphical icons </li>
@@ -2042,10 +2042,13 @@ DESCRIPTION
 <p>The first set of commands are: <code>pwd</code> , <code>cd</code> , <code>ls</code>, <code>mkdir</code> and <code>rmdir</code>, which are related to directories (like the folders in a Windows system).</p>
 <h4 id="pwd"><code>pwd</code></h4>
 <p><code>pwd</code> : Print working directory, which means print the path of the current directory (working directory)</p>
-<p><div class="highlight"><pre><span></span><code>$ <span class="nb">pwd</span>
+<div class="admonition example">
+<p class="admonition-title">Use <code>pwd</code> to print the current directory you are in</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">pwd</span>
 /home/he/work/GWASTutorial/02_Linux_basics
 </code></pre></div>
-This command prints the absolute path.</p>
+</div>
+<p>This command prints the absolute path.</p>
 <div class="admonition example">
 <p class="admonition-title">An example of Linux file system and file paths</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/210223719-890626d0-a502-4399-8ed3-e016338b51cb.png" /></p>
@@ -2079,11 +2082,14 @@ This command prints the absolute path.</p>
 </code></pre></div>
 </div>
 <h4 id="cd"><code>cd</code></h4>
-<p><code>cd</code>: Change the current working directory 
+<p><code>cd</code>: Change the current working directory </p>
+<div class="admonition example">
+<p class="admonition-title">Use <code>cd</code> to change directory to <code>02_Linux_basics</code> and then print the current directory</p>
 <div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> 02_Linux_basics
 $ <span class="nb">pwd</span>
 /home/he/work/GWASTutorial/02_Linux_basics
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <h4 id="ls"><code>ls</code> :</h4>
 <p><code>ls</code> : List the files in the directory</p>
 <p>Some frequently used options for <code>ls</code> :</p>
@@ -2092,15 +2098,21 @@ $ <span class="nb">pwd</span>
 <li><code>-h</code>: convert file size into a human readable format (KB,MB,GB...)</li>
 <li><code>-a</code>: list all files (including hidden files, namly those files a period at the beginning of the filename)</li>
 </ul>
+<div class="admonition example">
+<p class="admonition-title">Simply list the files and directories in the current directory</p>
 <div class="highlight"><pre><span></span><code>$ ls
 README.md  sumstats.txt
-
-$ ls -lha
-drwxr-xr-x   <span class="m">4</span> he  staff   128B Dec <span class="m">23</span> <span class="m">14</span>:07 .
-drwxr-xr-x  <span class="m">17</span> he  staff   544B Dec <span class="m">23</span> <span class="m">12</span>:13 ..
--rw-r--r--   <span class="m">1</span> he  staff     0B Oct <span class="m">17</span> <span class="m">11</span>:24 README.md
--rw-r--r--   <span class="m">1</span> he  staff    31M Dec <span class="m">23</span> <span class="m">14</span>:07 sumstats.txt
 </code></pre></div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">List the files and directories with options <code>-lha</code></p>
+<div class="highlight"><pre><span></span><code>$ ls -lha
+drwxr-xr-x   4 he  staff   128B Dec 23 14:07 .
+drwxr-xr-x  17 he  staff   544B Dec 23 12:13 ..
+-rw-r--r--   1 he  staff     0B Oct 17 11:24 README.md
+-rw-r--r--   1 he  staff    31M Dec 23 14:07 sumstats.txt
+</code></pre></div>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip: use <code>tree</code> to visualize the structure of a directory</p>
 <p>You can use <code>tree</code> command to visualize the structure of a directory.</p>
@@ -2117,6 +2129,8 @@ drwxr-xr-x  <span class="m">17</span> he  staff   544B Dec <span class="m">23</s
 <li><code>mkdir</code> : Create a new empty directory</li>
 <li><code>rmdir</code>: Delete an empty directory</li>
 </ul>
+<div class="admonition example">
+<p class="admonition-title">Make a directory and delete it</p>
 <div class="highlight"><pre><span></span><code>$ mkdir new_directory
 $ ls
 new_directory  README.md  sumstats.txt
@@ -2124,11 +2138,13 @@ $ rmdir new_directory/
 $ ls
 README.md  sumstats.txt
 </code></pre></div>
+</div>
 <h3 id="manipulating-files">Manipulating files</h3>
 <p>This set of commands includes: <code>touch</code>, <code>mv</code> , <code>rm</code> and <code>cp</code></p>
-<h4 id="touch"><code>touch</code>:</h4>
+<h4 id="touch"><code>touch</code></h4>
 <p><code>touch</code> command is used to create a new empty file.</p>
-<p>For example, let's create a text file called <code>newfile.txt</code> in this directory.</p>
+<div class="admonition example">
+<p class="admonition-title">Create an empty text file called <code>newfile.txt</code> in this directory</p>
 <div class="highlight"><pre><span></span><code>$ ls -l
 total <span class="m">64048</span>
 -rw-r--r--  <span class="m">1</span> he  staff         <span class="m">0</span> Oct <span class="m">17</span> <span class="m">11</span>:24 README.md
@@ -2143,13 +2159,16 @@ total <span class="m">64048</span>
 -rw-r--r--  <span class="m">1</span> he  staff         <span class="m">0</span> Dec <span class="m">23</span> <span class="m">14</span>:14 newfile.txt
 -rw-r--r--  <span class="m">1</span> he  staff  <span class="m">32790417</span> Dec <span class="m">23</span> <span class="m">14</span>:07 sumstats.txt
 </code></pre></div>
-<h4 id="mv"><code>mv</code>:</h4>
+</div>
+<h4 id="mv"><code>mv</code></h4>
 <p><code>mv</code> has two functions:</p>
 <ul>
 <li>(1) move files to another paths</li>
 <li>(2) rename files</li>
 </ul>
-<p>The following command will create a new directoru called <code>new_directory</code>, and move <code>sumstats.txt</code> into that directory. Just like draggig a file in to a folder in window system.
+<p>The following command will create a new directoru called <code>new_directory</code>, and move <code>sumstats.txt</code> into that directory. Just like draggig a file in to a folder in window system.</p>
+<div class="admonition exmaple">
+<p class="admonition-title">Move a file to a different directory</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># make a new directory</span>
 $ mkdir new_directory
 
@@ -2159,47 +2178,60 @@ $ mv sumstats.txt new_directory/
 <span class="c1"># list the item in new_directory</span>
 $ ls new_directory/
 sumstats.txt
-</code></pre></div></p>
-<p>Now, let's move it back to the current directory and rename it to <code>sumstats_new.txt</code>.
-<div class="highlight"><pre><span></span><code>$ mv ./new_directory/sumstats.txt ./
 </code></pre></div>
-Note: <code>./</code> means the current directory
-You can also use <code>mv</code> to rename a file:
-<div class="highlight"><pre><span></span><code><span class="c1">#rename</span>
+</div>
+<p>Now, let's move it back to the current directory and rename it to <code>sumstats_new.txt</code>.</p>
+<p>!!! "Rename a file using <code>mv</code>"
+    <div class="highlight"><pre><span></span><code>$ mv ./new_directory/sumstats.txt ./
+</code></pre></div>
+    Note: <code>./</code> means the current directory
+    You can also use <code>mv</code> to rename a file:
+    <div class="highlight"><pre><span></span><code><span class="c1">#rename</span>
 <span class="nv">$mv</span> sumstats.txt sumstats_new.txt 
 </code></pre></div></p>
-<h4 id="rm"><code>rm</code>:</h4>
-<p>Remove files or diretories</p>
+<h4 id="rm"><code>rm</code></h4>
+<p><code>rm</code> : Remove files or diretories</p>
+<div class="admonition example">
+<p class="admonition-title">Remove a file and a directory</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># remove a file</span>
 <span class="nv">$rm</span> file
 
 <span class="c1">#remove files in a directory (recursive mode)</span>
 <span class="nv">$rm</span> -r directory/
 </code></pre></div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">There is no trash can in Linux command-line interface !</p>
 <p>If you delete a file with <code>rm</code> , it will be very difficult to restore it. Please be careful wehn using <code>rm</code>. </p>
 </div>
 <h4 id="cp"><code>cp</code></h4>
 <p><code>cp</code> command is used to copy files or diretories.</p>
+<div class="admonition example">
+<p class="admonition-title">Copy a file and a directory</p>
 <div class="highlight"><pre><span></span><code><span class="c1">#cp files</span>
 <span class="nv">$cp</span> file1 file2
 
 <span class="c1"># copy directory</span>
 <span class="nv">$cp</span> -r directory1/ directory2/
 </code></pre></div>
+</div>
 <h3 id="links">Links</h3>
 <p>Symbolic link is like a shortcut on window system, which is a special type of file that points to another file.</p>
 <p>It is very useful when you want to organize your tool box or working space.</p>
 <p>You can use <code>ln -s pathA pathB</code> to create such a link. </p>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code>ln -s /home/he/tools/plink/plink /home/he/tools/bin
-
-<span class="nb">cd</span> /home/he/tools/bin
+<div class="admonition example">
+<p class="admonition-title">Create a symbolic link for plink</p>
+<p>Let`s create a symbolic link for plink first.
+<div class="highlight"><pre><span></span><code><span class="c1"># /home/he/tools/plink/plink is the orinial file</span>
+<span class="c1"># /home/he/tools/bin is the path for the symbolic link </span>
+ln -s /home/he/tools/plink/plink /home/he/tools/bin
+</code></pre></div></p>
+<p>And then check the link.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /home/he/tools/bin
 ls -lha
-...Bash
 lrwxr-xr-x  <span class="m">1</span> he  staff    27B Aug <span class="m">30</span> <span class="m">11</span>:30 plink -&gt; /home/he/tools/plink/plink
 </code></pre></div>
+</div>
 <h3 id="archiving-and-compression">Archiving and Compression</h3>
 <p>Results for millions of variants are usually very large, sometimes &gt;10GB, or consists of multiple files. </p>
 <p>To save space and make it easier to transfer, we need to archive and compress these files.</p>
@@ -2248,6 +2280,8 @@ lrwxr-xr-x  <span class="m">1</span> he  staff    27B Aug <span class="m">30</sp
 </tr>
 </tbody>
 </table>
+<div class="admonition example">
+<p class="admonition-title">Compress and decompress a file using <code>gzip</code> and <code>gunzip</code></p>
 <div class="highlight"><pre><span></span><code>$ ls -lh
 -rw-r--r--  <span class="m">1</span> he  staff    31M Dec <span class="m">23</span> <span class="m">14</span>:07 sumstats.txt
 
@@ -2259,19 +2293,24 @@ $ gunzip sumstats.txt.gz
 $ ls -lh
 -rw-r--r--   <span class="m">1</span> he  staff    31M Dec <span class="m">23</span> <span class="m">14</span>:07 sumstats.txt
 </code></pre></div>
+</div>
 <h3 id="read-and-check-files">Read and check files</h3>
 <p>We have a group of handy commands to check part of or the entire file, including <code>cat</code>, <code>zcat</code>, <code>less</code>, <code>head</code>, <code>tail</code>, <code>wc</code></p>
 <h4 id="cat"><code>cat</code></h4>
 <p><code>cat</code> command can print the contents of files or concatenate the files.</p>
-<div class="highlight"><pre><span></span><code>$ ls -lha &gt; a_text_file.txt
+<div class="admonition example">
+<p class="admonition-title">Create and then <code>cat</code> the file <code>a_text_file.txt</code> </p>
+<p>```Bash
+$ ls -lha &gt; a_text_file.txt
 $ cat a_text_file.txt 
 total 32M
-drwxr-x---  <span class="m">2</span> he staff <span class="m">4</span>.0K Apr  <span class="m">2</span> <span class="m">00</span>:37 .
-drwxr-x--- <span class="m">29</span> he staff <span class="m">4</span>.0K Apr  <span class="m">1</span> <span class="m">22</span>:20 ..
--rw-r-----  <span class="m">1</span> he staff    <span class="m">0</span> Apr  <span class="m">2</span> <span class="m">00</span>:37 a_text_file.txt
--rw-r-----  <span class="m">1</span> he staff <span class="m">5</span>.0K Apr  <span class="m">1</span> <span class="m">22</span>:20 README.md
--rw-r-----  <span class="m">1</span> he staff  32M Mar <span class="m">30</span> <span class="m">18</span>:17 sumstats.txt
-</code></pre></div>
+drwxr-x---  2 he staff 4.0K Apr  2 00:37 .
+drwxr-x--- 29 he staff 4.0K Apr  1 22:20 ..
+-rw-r-----  1 he staff    0 Apr  2 00:37 a_text_file.txt
+-rw-r-----  1 he staff 5.0K Apr  1 22:20 README.md
+-rw-r-----  1 he staff  32M Mar 30 18:17 sumstats.txt</p>
+</div>
+<p>```</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Be careful not to <code>cat</code> a text file with a huge number of lines. You can try to <code>cat sumstats.txt</code> and see what happends.</p>
@@ -2279,8 +2318,10 @@ drwxr-x--- <span class="m">29</span> he staff <span class="m">4</span>.0K Apr  <
 <p>By the way, <code>&gt; a_text_file.txt</code> here means redirect the output to file <code>a_text_file.txt</code>.</p>
 <h4 id="zcat"><code>zcat</code></h4>
 <p><code>zcat</code> is similar to <code>cat</code>, but can only applied to compressed files.</p>
+<div class="admonition example">
+<p class="admonition-title"><code>cat</code> and <code>zcat</code> a gzipped text file</p>
 <div class="highlight"><pre><span></span><code>$ gzip a_text_file.txt 
-$ cat a_text_file.txt.gz                                                         TGba_text_file.txtя
+$ cat a_text_file.txt.gz                                                         TGba_text_file.    txtя
 @ȱ»O𻀙v؂𧢩¼򀳠bq<span class="o">}</span>󑢤<span class="se">\</span>¤n٢ª򠀬n»ڡǭ
                           w5J_½𳘧P߉<span class="o">=</span>ÿK
 <span class="o">(</span>֣԰§ҤŶaކ                              ¬M­R󽒊m³þe¸¤¼׍Sd￱߲들ª­v
@@ -2294,6 +2335,7 @@ drwxr-x--- <span class="m">29</span> he staff <span class="m">4</span>.0K Apr  <
 -rw-r-----  <span class="m">1</span> he staff <span class="m">5</span>.0K Apr  <span class="m">1</span> <span class="m">22</span>:20 README.md
 -rw-r-----  <span class="m">1</span> he staff  32M Mar <span class="m">30</span> <span class="m">18</span>:17 sumstats.txt
 </code></pre></div>
+</div>
 <div class="admonition info">
 <p class="admonition-title">gzcat</p>
 <p>Use <code>gzcat</code> instead of <code>zcat</code> if your device is running MacOS. </p>
@@ -2301,6 +2343,8 @@ drwxr-x--- <span class="m">29</span> he staff <span class="m">4</span>.0K Apr  <
 <h4 id="head"><code>head</code></h4>
 <p><code>head</code>: Print the first 10 lines.</p>
 <p><code>-n</code>: option to change the number of lines.</p>
+<div class="admonition example">
+<p class="admonition-title">Check the first 10 lines and only the first line of the file <code>sumstats.txt</code></p>
 <div class="highlight"><pre><span></span><code>$ head sumstats.txt 
 CHROM   POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG<span class="o">(</span>OR<span class="o">)</span>_SE  Z_STAT  P   ERRCODE
 <span class="m">1</span>   <span class="m">319</span> <span class="m">17</span>  <span class="m">2</span>   <span class="m">1</span>   <span class="m">1</span>   ADD <span class="m">10000</span>   <span class="m">1</span>.04326 <span class="m">0</span>.0495816   <span class="m">0</span>.854176    <span class="m">0</span>.393008    .
@@ -2316,27 +2360,34 @@ CHROM   POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG<span class="o">(</span>OR<sp
 $ head -n <span class="m">1</span> sumstats.txt 
 CHROM   POS ID  REF ALT A1  TEST    OBS_CT  OR  LOG<span class="o">(</span>OR<span class="o">)</span>_SE  Z_STAT  P   ERRCODE
 </code></pre></div>
+</div>
 <h4 id="tail"><code>tail</code></h4>
 <p>Similar to <code>head</code>, you can use <code>tail</code> ro check the last 10 lines. <code>-n</code> works in the same way.</p>
+<div class="admonition example">
+<p class="admonition-title">Check the last 10 lines of the file <code>sumstats.txt</code></p>
 <div class="highlight"><pre><span></span><code>$ tail sumstats.txt 
 <span class="m">22</span>  <span class="m">99996057</span>    <span class="m">9959945</span> <span class="m">2</span>   <span class="m">1</span>   <span class="m">1</span>   ADD <span class="m">10000</span>   <span class="m">1</span>.03234 <span class="m">0</span>.0335547   <span class="m">0</span>.948413    <span class="m">0</span>.342919.
 <span class="m">22</span>  <span class="m">99996465</span>    <span class="m">9959971</span> <span class="m">2</span>   <span class="m">1</span>   <span class="m">1</span>   ADD <span class="m">10000</span>   <span class="m">1</span>.04755 <span class="m">0</span>.0337187   <span class="m">1</span>.37769 <span class="m">0</span>.1683  .
 <span class="m">22</span>  <span class="m">99997041</span>    <span class="m">9960013</span> <span class="m">2</span>   <span class="m">1</span>   <span class="m">1</span>   ADD <span class="m">10000</span>   <span class="m">1</span>.01942 <span class="m">0</span>.0937548   <span class="m">0</span>.205195    <span class="m">0</span>.837419.
-<span class="m">22</span>  <span class="m">99997608</span>    <span class="m">9960051</span> <span class="m">2</span>   <span class="m">1</span>   <span class="m">1</span>   ADD <span class="m">10000</span>   <span class="m">0</span>.969928    <span class="m">0</span>.0397711   -0.767722   <span class="m">0</span>.442652    .
-<span class="m">22</span>  <span class="m">99997629</span>    <span class="m">9960055</span> <span class="m">2</span>   <span class="m">1</span>   <span class="m">1</span>   ADD <span class="m">10000</span>   <span class="m">0</span>.986949    <span class="m">0</span>.0395305   -0.332315   <span class="m">0</span>.739652    .
-<span class="m">22</span>  <span class="m">99997742</span>    <span class="m">9960061</span> <span class="m">2</span>   <span class="m">1</span>   <span class="m">1</span>   ADD <span class="m">10000</span>   <span class="m">0</span>.990829    <span class="m">0</span>.0396614   -0.232298   <span class="m">0</span>.816307    .
+<span class="m">22</span>  <span class="m">99997608</span>    <span class="m">9960051</span> <span class="m">2</span>   <span class="m">1</span>   <span class="m">1</span>   ADD <span class="m">10000</span>   <span class="m">0</span>.969928    <span class="m">0</span>.0397711   -0.767722   <span class="m">0</span>.    <span class="m">442652</span>    .
+<span class="m">22</span>  <span class="m">99997629</span>    <span class="m">9960055</span> <span class="m">2</span>   <span class="m">1</span>   <span class="m">1</span>   ADD <span class="m">10000</span>   <span class="m">0</span>.986949    <span class="m">0</span>.0395305   -0.332315   <span class="m">0</span>.    <span class="m">739652</span>    .
+<span class="m">22</span>  <span class="m">99997742</span>    <span class="m">9960061</span> <span class="m">2</span>   <span class="m">1</span>   <span class="m">1</span>   ADD <span class="m">10000</span>   <span class="m">0</span>.990829    <span class="m">0</span>.0396614   -0.232298   <span class="m">0</span>.    <span class="m">816307</span>    .
 <span class="m">22</span>  <span class="m">99998121</span>    <span class="m">9960086</span> <span class="m">2</span>   <span class="m">1</span>   <span class="m">1</span>   ADD <span class="m">10000</span>   <span class="m">1</span>.04448 <span class="m">0</span>.0335879   <span class="m">1</span>.29555 <span class="m">0</span>.19513 .
-<span class="m">22</span>  <span class="m">99998455</span>    <span class="m">9960106</span> <span class="m">2</span>   <span class="m">1</span>   <span class="m">1</span>   ADD <span class="m">10000</span>   <span class="m">0</span>.880953    <span class="m">0</span>.152754    -0.829771   <span class="m">0</span>.406668    .
-<span class="m">22</span>  <span class="m">99999208</span>    <span class="m">9960146</span> <span class="m">2</span>   <span class="m">1</span>   <span class="m">1</span>   ADD <span class="m">10000</span>   <span class="m">0</span>.944604    <span class="m">0</span>.065187    -0.874248   <span class="m">0</span>.381983    .
+<span class="m">22</span>  <span class="m">99998455</span>    <span class="m">9960106</span> <span class="m">2</span>   <span class="m">1</span>   <span class="m">1</span>   ADD <span class="m">10000</span>   <span class="m">0</span>.880953    <span class="m">0</span>.152754    -0.829771   <span class="m">0</span>.    <span class="m">406668</span>    .
+<span class="m">22</span>  <span class="m">99999208</span>    <span class="m">9960146</span> <span class="m">2</span>   <span class="m">1</span>   <span class="m">1</span>   ADD <span class="m">10000</span>   <span class="m">0</span>.944604    <span class="m">0</span>.065187    -0.874248   <span class="m">0</span>.    <span class="m">381983</span>    .
 <span class="m">22</span>  <span class="m">99999382</span>    <span class="m">9960164</span> <span class="m">2</span>   <span class="m">1</span>   <span class="m">1</span>   ADD <span class="m">10000</span>   <span class="m">0</span>.970509    <span class="m">0</span>.033978    -0.881014   <span class="m">0</span>.37831 .
 </code></pre></div>
+</div>
 <h4 id="wc"><code>wc</code></h4>
 <p><code>wc</code>: short for word count, which count the lines, words, and characters in a file.</p>
 <p>For example, </p>
-<p><div class="highlight"><pre><span></span><code>$ wc sumstats.txt 
+<div class="admonition example">
+<p class="admonition-title">Count the lines, words, and characters in <code>sumstats.txt</code></p>
+<div class="highlight"><pre><span></span><code>$ wc sumstats.txt 
   <span class="m">445933</span>  <span class="m">5797129</span> <span class="m">32790417</span> sumstats.txt
 </code></pre></div>
-This means that <code>sumstats.txt</code> has 445933 lines, 5797129 words, and 32790417 characters. </p>
+</div>
+<p>This means that <code>sumstats.txt</code> has 445933 lines, 5797129 words, and 32790417 characters. </p>
 <h3 id="edit-files">Edit files</h3>
 <p><strong>Vim</strong> is a handy text editor in command line.</p>
 <div class="highlight"><pre><span></span><code>vim README.md
@@ -2447,13 +2498,14 @@ For more detailed tutorials on Vim, you can check: https://github.com/iggredible
 </tr>
 </tbody>
 </table>
-<p>Example:</p>
+<div class="admonition example">
+<p class="admonition-title">Change the permissions of the file <code>README.md</code> to <code>660</code></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># there is a readme file in the directory, and its permissions are -rw-r----- </span>
 $ ls -lh
 total <span class="m">4</span>.0K
 -rw-r----- <span class="m">1</span> he staff <span class="m">2</span>.1K Feb <span class="m">24</span> <span class="m">01</span>:16 README.md
 
-<span class="c1"># let&#39;s change the permissions to 660, which is a numeric notation of -rw-rw---- based on the table above</span>
+<span class="c1"># let&#39;s change the permissions to 660, which is a numeric notation of -rw-rw---- based on the     table above</span>
 $ chmod <span class="m">660</span> README.md 
 
 <span class="c1"># chack again, and it was changed.</span>
@@ -2461,6 +2513,7 @@ $ ls -lh
 total <span class="m">4</span>.0K
 -rw-rw---- <span class="m">1</span> he staff <span class="m">2</span>.1K Feb <span class="m">24</span> <span class="m">01</span>:16 README.md
 </code></pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>These commands are very important because we use genome data, which could raise severe ethical and privacy issues if there is data leak. </p>
@@ -2474,17 +2527,26 @@ total <span class="m">4</span>.0K
 <h4 id="pipe"><code>|</code>  (pipe)</h4>
 <p>Pipe basically is used to pass the output of the previous command to the next command as input, instead of printing is in terminal.
 Using pipe you can do very complicated manipulations of the files.</p>
+<div class="admonition example">
+<p class="admonition-title">An example of Pipe</p>
 <p><div class="highlight"><pre><span></span><code>cat sumstats.txt <span class="p">|</span> sort <span class="p">|</span> uniq <span class="p">|</span> wc
 </code></pre></div>
 This means (1) print sumstats, (2) sort the output, (3) then keep the unique lines and finally (4) count the lines and words.</p>
+</div>
 <h4 id="_1"><code>&gt;</code></h4>
-<p><code>&gt;</code> redirects output to a new file (if the file already exist, it will be overwritten)
+<p><code>&gt;</code> redirects output to a new file (if the file already exist, it will be overwritten)</p>
+<div class="admonition example">
+<p class="admonition-title">Redirects the output of <code>cat sumstats.txt | sort | uniq | wc</code> to <code>count.txt</code></p>
 <div class="highlight"><pre><span></span><code>cat sumstats.txt <span class="p">|</span> sort <span class="p">|</span> uniq <span class="p">|</span> wc &gt; count.txt
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <h4 id="_2"><code>&gt;&gt;</code></h4>
 <p><code>&gt;&gt;</code> redirects output to a file by appending to the end of the file (if the file already exist, it will not be overwritten)</p>
+<div class="admonition example">
+<p class="admonition-title">Redirects the output of <code>cat sumstats.txt | sort | uniq | wc</code> to <code>count.txt</code> by appending</p>
 <div class="highlight"><pre><span></span><code>cat sumstats.txt <span class="p">|</span> sort <span class="p">|</span> uniq <span class="p">|</span> wc &gt;&gt; count.txt
 </code></pre></div>
+</div>
 <p>Other useful commands include : </p>
 <table>
 <thead>
@@ -2536,10 +2598,13 @@ This means (1) print sumstats, (2) sort the output, (3) then keep the unique lin
 <p>If you have a lot of commands to run, or if you want to automate some complex manipulations, bash scripts are a good way to address this issue.</p>
 <p>We can use vim to create a bash script called <code>hello.sh</code></p>
 <p>A simple example of bash scripts:</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><span class="filename">hello.sh</span><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nb">echo</span> <span class="s2">&quot;Hello, world1&quot;</span>
 <span class="nb">echo</span> <span class="s2">&quot;Hello, world2&quot;</span>
 </code></pre></div>
+</div>
 <p><code>#!</code> is called shebang, which tells the system which interpreter to use to excute the shell script.</p>
 <p>Then use <code>chmod</code> to give it permission to execute.</p>
 <div class="highlight"><pre><span></span><code>chmod +x hello.sh 
@@ -2577,13 +2642,15 @@ This means (1) print sumstats, (2) sort the output, (3) then keep the unique lin
 <h2 id="download">Download</h2>
 <p>We can use <code>wget [option] [url]</code> command to download files to local machine.</p>
 <p><code>-O</code> option specify the file name you want to change for the downloaded file. </p>
-<p>Example:</p>
+<div class="admonition example">
+<p class="admonition-title">Use wget to download the hg19 reference genome from UCSC</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Download hg19 reference genome from UCSC</span>
 wget https://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/hg19.fa.gz
 
 <span class="c1"># Download hg19 reference genome from UCSC and rename it to  my_refgenome.fa.gz</span>
 wget -O my_refgenome.fa.gz https://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/hg19.fa.gz
 </code></pre></div>
+</div>
 
 
 
