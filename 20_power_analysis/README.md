@@ -17,6 +17,9 @@ By definition, the statistical power of a test refers to **the probability that 
 
 $Power = Pr ( Reject\ | H_0\ is\ False) = 1 -  \beta $ 
 
+!!! info "Power"
+    <img width="600" alt="image" src="https://user-images.githubusercontent.com/40289485/219032691-900856fb-4f41-4892-ad31-fe61ecd37330.png">
+
 !!! tip "Factors affecting power"
 
     - Total sample size
