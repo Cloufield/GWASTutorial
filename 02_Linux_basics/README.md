@@ -39,8 +39,14 @@ In this section, we will introduce the most basic commands which enable you to h
 |Term|Description|
 |-|-|
 |**Linux** |refers to a family of open-source Unix-like operating systems based on the **Linux kernel**.|
-|**Linux kernel** | a free and open-source Unix-like operating system kernel, which works on Memory management, Process management, Device drivers and System calls and security.|
+|**Linux kernel** | a free and open-source Unix-like operating system kernel, which controls the software and hardware of the computer.|
 |**Linux distributions**| refer to operating systems made from a software collection that is based upon the Linux kernel.|
+
+!!! info "Main functions of the Linux kernel"
+    - System memory management 
+    - Software process management
+    - Hardware device drivers  
+    - File system management
 
 ![image](https://user-images.githubusercontent.com/40289485/210223071-b9d3de64-a2ac-4785-95a5-6a30fdfd7ed4.png)
 
@@ -59,6 +65,11 @@ Reference: https://en.wikipedia.org/wiki/Linux
 
 !!! example "GUI and CUI"
     ![image](https://user-images.githubusercontent.com/40289485/210223188-5b8fd313-5081-40ee-9c4c-d60c1115de8d.png)
+
+!!! tip "Shell"
+    - A **Shell** provided the actual interface for you to interact with the Linux system. When you type commands in a shell, it will collect and execute the commands. 
+    - `$` is called the shell **prompt**, which indicate that you can type commands after the `$` sign.
+    - There are multiple available shells which differ in their features. For a typical linux system, the default shell is `bash`.  
 
 ### A general comparison between CUI and GUI
 
