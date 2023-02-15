@@ -8,17 +8,17 @@ This table shows the relationship between the null hypothesis $H_0$ and the resu
 
 ||H0 is True|H0 is False|
 |-|-|-|
-|Do Not Reject|True negative : $1 -  \alpha $ |Type II error (false negative) : $\beta $|
-|Reject|Type I error (false positive) : $\alpha $ |True positive : $1 -  \beta $  |
+|Do Not Reject|True negative : $1 -  \alpha$ |Type II error (false negative) : $\beta$|
+|Reject|Type I error (false positive) : $\alpha$ |True positive : $1 -  \beta$  |
 
 $\alpha$ : significance level
 
 By definition, the statistical power of a test refers to **the probability that the test will correctly reject the null hypothesis**, namely the **True positive** rate in the table above. 
 
-$Power = Pr ( Reject\ | H_0\ is\ False) = 1 -  \beta $ 
+$Power = Pr ( Reject\ | H_0\ is\ False) = 1 -  \beta$ 
 
 !!! info "Power"
-    <img width="600" alt="image" src="https://user-images.githubusercontent.com/40289485/219032691-900856fb-4f41-4892-ad31-fe61ecd37330.png">
+    <img width="800" alt="image" src="https://user-images.githubusercontent.com/40289485/219032691-900856fb-4f41-4892-ad31-fe61ecd37330.png">
 
 !!! tip "Factors affecting power"
 
@@ -40,7 +40,7 @@ The variance of the error term:
 
 $$\sigma^2 = Var(y) - Var(x)\beta^2 $$
 
-Usually the phenotypic variance that a single SNP could explain is very limited , so we can approximate $\sigma^2$ by:
+Usually, the phenotypic variance that a single SNP could explain is very limited, so we can approximate $\sigma^2$ by:
 
 $$ \sigma^2  \thickapprox Var(y)$$
 
@@ -51,7 +51,7 @@ $$Var(x) = 2f(1-f)$$
 - $f$ : the allele frequency for this variant
 
 
-So the Non-centrality parameter(NCP) $\lambda$ for chi-square distribution with degree of freedom being 1: 
+So the Non-centrality parameter(NCP) $\lambda$ for $\chi^2$ distribution with degree of freedom 1: 
 
 $$ \lambda = ({{\beta}\over{SE_{\beta}}})^2$$
 
@@ -61,14 +61,16 @@ $$ \lambda = ({{\beta}\over{SE_{\beta}}})^2 \thickapprox N \times {{Var(x)\beta^
 
 Significance threshold: $C = CDF_{\chi^2}^{-1}(1 - \alpha,df=1)$
 
-- $ CDF_{\chi^2}^{-1}(x)$ : is the inverse of Cumulative distribution function for chisq distribution.
+- $ CDF_{\chi^2}^{-1}(x)$ : is the inverse of the cumulative distribution function for $\chi^2$ distribution.
 
 $$ Power = Pr(\lambda > C ) = CDF_{\chi^2}(C, ncp = \lambda,df=1) $$ 
 
-- $ CDF_{\chi^2}(x, ncp= \lambda)$ : is the cumulative distribution function for non-central chisq distribution with non-centrality parameter $\lambda$.
+- $ CDF_{\chi^2}(x, ncp= \lambda)$ : is the cumulative distribution function for non-central $\chi^2$ distribution with non-centrality parameter $\lambda$.
 
 ## Power for large-scale case-control genome-wide association studies
+
 Denote :
+
 - $P_{case}$ : Risk allele frequency in cases
 - $N_{case}$ : Number of cases. The total allele count for cases is then $2N_{case}$.
 - $P_{control}$ : Risk allele frequency in controls
@@ -85,7 +87,7 @@ Significance threshold: $C = \Phi^{-1}(1 - \alpha / 2 )$
 $$ Power = Pr(|Z|>C) = 1 - \Phi(-C-z) + \Phi(C-z)$$
 
 !!! example "GAS power calculator"
-    url : https://csg.sph.umich.edu/abecasis/cats/gas_power_calculator/index.html
+    GAS power calculator implemented this method, and you can easily calculate the power using their [website](https://csg.sph.umich.edu/abecasis/cats/gas_power_calculator/index.html)
     
     ![image](https://user-images.githubusercontent.com/40289485/218300614-cc36e850-e5ee-4ec8-aa41-b75d5002518a.png)
 
