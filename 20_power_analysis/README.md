@@ -34,11 +34,11 @@ NCP describes the degree of difference between the alternative hypothesis $H_1$ 
 
 Consider a simple linear regression model:
 
-$$ y = \mu +\beta x + \epsilon $$
+$$y = \mu +\beta x + \epsilon$$
 
 The variance of the error term:
 
-$$\sigma^2 = Var(y) - Var(x)\beta^2 $$
+$$\sigma^2 = Var(y) - Var(x)\beta^2$$
 
 Usually, the phenotypic variance that a single SNP could explain is very limited, so we can approximate $\sigma^2$ by:
 
@@ -61,11 +61,11 @@ $$ \lambda = ({{\beta}\over{SE_{\beta}}})^2 \thickapprox N \times {{Var(x)\beta^
 
 Significance threshold: $C = CDF_{\chi^2}^{-1}(1 - \alpha,df=1)$
 
-- $ CDF_{\chi^2}^{-1}(x)$ : is the inverse of the cumulative distribution function for $\chi^2$ distribution.
+- $CDF_{\chi^2}^{-1}(x)$ : is the inverse of the cumulative distribution function for $\chi^2$ distribution.
 
 $$ Power = Pr(\lambda > C ) = CDF_{\chi^2}(C, ncp = \lambda,df=1) $$ 
 
-- $ CDF_{\chi^2}(x, ncp= \lambda)$ : is the cumulative distribution function for non-central $\chi^2$ distribution with non-centrality parameter $\lambda$.
+- $CDF_{\chi^2}(x, ncp= \lambda)$ : is the cumulative distribution function for non-central $\chi^2$ distribution with non-centrality parameter $\lambda$.
 
 ## Power for large-scale case-control genome-wide association studies
 

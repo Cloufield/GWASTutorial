@@ -71,7 +71,8 @@ Reference: https://en.wikipedia.org/wiki/Linux
 
 !!! tip "Shell"
     - A **Shell** provided the actual interface for you to interact with the Linux system. When you type commands in a shell, it will collect and execute the commands. 
-    - `$` is called the shell **prompt**, which indicate that you can type commands after the `$` sign.
+    - `$` is the **prompt** for bash shell, which indicate that you can type commands after the `$` sign.
+    - Different shells might use other signs for the prompt. For example, the defaul zsh in Mac uses `%` , and C shell uses `>` as the prompt sign.
     - There are multiple available shells which differ in their features. For a typical linux system, the default shell is `bash`.  
 
 ### A general comparison between CUI and GUI
