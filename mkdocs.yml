@@ -55,7 +55,6 @@ nav:
        - "Whole genome regression by REGENIE" : 32_whole_genome_regression.md
     - "Post-GWAS" :
        - "Annotation by ANNOVAR & VEP" : 07_Annotation.md
-       - "Heritability Concepts" : 13_heritability.md
        - "SNP-heritability estimation by GREML" : 14_gcta_greml.md
        - "LD socre regression by LDSC" : 08_LDSC.md
        - "Gene/Gene-set tests by MAGMA" : 09_Gene_based_analysis.md
@@ -72,14 +71,15 @@ nav:
           - "TwoSampleMR Tutorial" : TwoSampleMR.ipynb
        - "Conditional analysis" : 18_Conditioning_analysis.md
        - "Colocalization" : 17_colocalization.md
-    - Others :
-       - "Recommended reading" : 90_Recommended_Reading.md
-       - "Assignment - 1KG PCA" : 95_Assignment.md
-       - "Assignment - Presentation" : 96_Assignment2.md
     - Topics :
        - "Linkage Disequilibrium (LD)" : 19_ld.md
+       - "Heritability Concepts" : 13_heritability.md
        - "Statistical power" : 20_power_analysis.md
        - "Winner's curse" : 15_winners_curse.md
+       - "Recommended reading" : 90_Recommended_Reading.md
+    - "Assignments" :
+       - "Assignment - 1KG PCA" : 95_Assignment.md
+       - "Assignment - Presentation" : 96_Assignment2.md
 
 markdown_extensions:
   - toc:
