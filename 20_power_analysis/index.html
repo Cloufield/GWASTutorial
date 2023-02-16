@@ -1620,9 +1620,9 @@
 <h2 id="non-centrality-parameter">Non-centrality parameter</h2>
 <p>NCP describes the degree of difference between the alternative hypothesis <span class="arithmatex">\(H_1\)</span> and the null hypothesis <span class="arithmatex">\(H_0\)</span> values.</p>
 <p>Consider a simple linear regression model:</p>
-<div class="arithmatex">\[ y = \mu +\beta x + \epsilon \]</div>
+<div class="arithmatex">\[y = \mu +\beta x + \epsilon\]</div>
 <p>The variance of the error term:</p>
-<div class="arithmatex">\[\sigma^2 = Var(y) - Var(x)\beta^2 \]</div>
+<div class="arithmatex">\[\sigma^2 = Var(y) - Var(x)\beta^2\]</div>
 <p>Usually, the phenotypic variance that a single SNP could explain is very limited, so we can approximate <span class="arithmatex">\(\sigma^2\)</span> by:</p>
 <div class="arithmatex">\[ \sigma^2  \thickapprox Var(y)\]</div>
 <p>Under Hardy-Weinberg equilibrium, we can get: </p>
@@ -1636,11 +1636,11 @@
 <div class="arithmatex">\[ \lambda = ({{\beta}\over{SE_{\beta}}})^2 \thickapprox N \times {{Var(x)\beta^2}\over{\sigma^2}} \thickapprox N \times {{2f(1-f) \beta^2 }\over {Var(y)}}  \]</div>
 <p>Significance threshold: <span class="arithmatex">\(C = CDF_{\chi^2}^{-1}(1 - \alpha,df=1)\)</span></p>
 <ul>
-<li>$ CDF_{\chi^2}^{-1}(x)$ : is the inverse of the cumulative distribution function for <span class="arithmatex">\(\chi^2\)</span> distribution.</li>
+<li><span class="arithmatex">\(CDF_{\chi^2}^{-1}(x)\)</span> : is the inverse of the cumulative distribution function for <span class="arithmatex">\(\chi^2\)</span> distribution.</li>
 </ul>
 <div class="arithmatex">\[ Power = Pr(\lambda &gt; C ) = CDF_{\chi^2}(C, ncp = \lambda,df=1) \]</div>
 <ul>
-<li>$ CDF_{\chi^2}(x, ncp= \lambda)$ : is the cumulative distribution function for non-central <span class="arithmatex">\(\chi^2\)</span> distribution with non-centrality parameter <span class="arithmatex">\(\lambda\)</span>.</li>
+<li><span class="arithmatex">\(CDF_{\chi^2}(x, ncp= \lambda)\)</span> : is the cumulative distribution function for non-central <span class="arithmatex">\(\chi^2\)</span> distribution with non-centrality parameter <span class="arithmatex">\(\lambda\)</span>.</li>
 </ul>
 <h2 id="power-for-large-scale-case-control-genome-wide-association-studies">Power for large-scale case-control genome-wide association studies</h2>
 <p>Denote :</p>
