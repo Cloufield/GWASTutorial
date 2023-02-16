@@ -617,8 +617,8 @@ Other useful commands include :
 
 |Command|Description|Example Code| Example code meaning|
 |-|-|-|-|
-|`*` |zero or more characters; Useful when you want to manipulate multiple files|-|-|
-|`?` |a single characters; Useful when you want to manipulate multiple files|-|-|
+|`*` |represent zero or more characters|-|-|
+|`?` |represent a single character|-|-|
 |`.` |the current directory|-|-|
 |`..`|the parent directory of the current directory.|`cd ..`|change to the parent directory of the current directory|
 |`~` |the home directory|`cd ~`|change to the curent user's home directory|
@@ -627,7 +627,7 @@ Other useful commands include :
 !!! tip "Wildcards"
     The asterisk `*` and the question mark  `?` are called wildcard characters or wildcards in Linux, which are special symbols that can represent other normal characters. Wildcards are especially useful when handling multiple files with similar pattern in their names. 
 
-!!! warnig
+!!! warning
     Be extremely careful when you use rm and *. It is disastrous when you mistakenly type `rm *`
  
 ## Bash scripts
