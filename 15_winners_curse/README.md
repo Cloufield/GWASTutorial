@@ -15,7 +15,7 @@ $$\beta_{Observed} \sim N(\beta_{True},\sigma^2)$$
     ![image](https://user-images.githubusercontent.com/40289485/219680828-2300b866-b64f-4141-b63c-d21f7826db87.png)
 
 
-- $c$ :  test statistic cutpoint corresponding to the significance threshold.
+- $c$ :  Z score cutpoint corresponding to the significance threshold.
 
 It is equivalent to:
 
