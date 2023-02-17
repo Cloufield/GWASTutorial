@@ -42,7 +42,11 @@ $$ \hat{\beta}_{X,Y} = {{\hat{\beta}_{IV,Y}}\over{\hat{\beta}_{IV,X}}} $$
 
     Therefore, for two-sample MR, we usually use datasets from similar non-overlapping populations in terms of not only ancestry but also contextual factors. 
 
+## IV selection
 
+One of the first things to do when you plan to perform any type of MR is to check the associations of instrumental variables with the exposure to avoid bias caused by weak IVs.
+ 
+The most commonly used method here is the **F-statistic**, which tests the association of instrumental variables with the exposure.
 
 ## Practice
 
