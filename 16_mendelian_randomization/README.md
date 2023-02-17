@@ -2,6 +2,9 @@
 
 ## Mendelian randomization introduction
 
+!!! tip "Comparison between RCT and MR"
+    <img width="636" alt="image" src="https://user-images.githubusercontent.com/40289485/219572347-1ebc2f0a-3c9a-49a0-a058-638e4973873e.png">
+
 ## Instrumental Variables (IV)
 
 Instrumental variable (IV) can be defined as a variable  that is correlated with the exposure X and uncorrelated with the error $\epsilon$ in the following regression: 
