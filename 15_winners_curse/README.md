@@ -11,8 +11,9 @@ The asymptotic distribution of $\beta_{Observed}$ is:
 
 $$\beta_{Observed} \sim N(\beta_{True},\sigma^2)$$
 
-!!! info "Distribution of $\beta_{Observed}$"
-    ![image](https://user-images.githubusercontent.com/40289485/219667132-edbd935d-6ad7-4ac3-8548-6bd6df507547.png)
+!!! info "An example of distribution of $\beta_{Observed}$"
+    ![image](https://user-images.githubusercontent.com/40289485/219680828-2300b866-b64f-4141-b63c-d21f7826db87.png)
+
 
 - $c$ :  test statistic cutpoint corresponding to the significance threshold.
 
@@ -20,8 +21,8 @@ It is equivalent to:
 
 $${{\beta_{Observed} - \beta_{True}}\over{\sigma}} \sim N(0,1)$$
 
-!!! info "Distribution of ${{\beta_{Observed} - \beta_{True}}\over{\sigma}}$"
-    ![image](https://user-images.githubusercontent.com/40289485/219665814-7d611e24-bda8-4701-ba5c-4bc9fcc51228.png)
+!!! info "An example of distribution of ${{\beta_{Observed} - \beta_{True}}\over{\sigma}}$"
+    ![image](https://user-images.githubusercontent.com/40289485/219680536-eb20ae9c-2220-450a-95b1-9b4b6a7c91ce.png)
 
 
 We can obtain the asymptotic sampling distribution (which is a [truncated normal distribution](https://en.wikipedia.org/wiki/Truncated_normal_distribution)) for $\beta_{Observed}$ by:
