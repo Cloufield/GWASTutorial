@@ -8,11 +8,13 @@ Winner's curse refers to the phenomenon that genetic effects are systematically 
 ## WC correction
 
 The asymptotic distribution of $\beta_{Observed}$ is:
-$$ \beta_{Observed} \sim N(\beta_{True},\sigma)$$
+$$\beta_{Observed} \sim N(\beta_{True},\sigma)$$
 
-$$ {{\beta_{Observed} - \beta_{True}}\over{\sigma}}  \sim N(0,1)$$
+$${{\beta_{Observed} - \beta_{True}}\over{\sigma}} \sim N(0,1)$$
 
 !!! tip "Distribution of $\beta_{Observed}$"
+    ![image](https://user-images.githubusercontent.com/40289485/219662857-dfc88aaf-8d74-497e-b781-60805323a5be.png)
+
 
 The asymptotic sampling distribution for $\beta_{Observed}$ is a truncated normal distribution:
 
