@@ -1525,17 +1525,17 @@
 <p>The asymptotic distribution of <span class="arithmatex">\(\beta_{Observed}\)</span> is:</p>
 <div class="arithmatex">\[\beta_{Observed} \sim N(\beta_{True},\sigma^2)\]</div>
 <div class="admonition info">
-<p class="admonition-title">Distribution of <span class="arithmatex">\(\beta_{Observed}\)</span></p>
-<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/219667132-edbd935d-6ad7-4ac3-8548-6bd6df507547.png" /></p>
+<p class="admonition-title">An example of distribution of <span class="arithmatex">\(\beta_{Observed}\)</span></p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/219680828-2300b866-b64f-4141-b63c-d21f7826db87.png" /></p>
 </div>
 <ul>
-<li><span class="arithmatex">\(c\)</span> :  test statistic cutpoint corresponding to the significance threshold.</li>
+<li><span class="arithmatex">\(c\)</span> :  Z score cutpoint corresponding to the significance threshold.</li>
 </ul>
 <p>It is equivalent to:</p>
 <div class="arithmatex">\[{{\beta_{Observed} - \beta_{True}}\over{\sigma}} \sim N(0,1)\]</div>
 <div class="admonition info">
-<p class="admonition-title">Distribution of <span class="arithmatex">\({{\beta_{Observed} - \beta_{True}}\over{\sigma}}\)</span></p>
-<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/219665814-7d611e24-bda8-4701-ba5c-4bc9fcc51228.png" /></p>
+<p class="admonition-title">An example of distribution of <span class="arithmatex">\({{\beta_{Observed} - \beta_{True}}\over{\sigma}}\)</span></p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/219680536-eb20ae9c-2220-450a-95b1-9b4b6a7c91ce.png" /></p>
 </div>
 <p>We can obtain the asymptotic sampling distribution (which is a <a href="https://en.wikipedia.org/wiki/Truncated_normal_distribution">truncated normal distribution</a>) for <span class="arithmatex">\(\beta_{Observed}\)</span> by:</p>
 <div class="arithmatex">\[f(x,\beta_{True}) ={{1}\over{\sigma}} {{\phi({{{x - \beta_{True}}\over{\sigma}}})} \over {\Phi({{{\beta_{True}}\over{\sigma}}-c}) + \Phi({{{-\beta_{True}}\over{\sigma}}-c})}}\]</div>
