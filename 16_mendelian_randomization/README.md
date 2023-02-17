@@ -28,7 +28,18 @@ $$ Y = \mu_2 + \beta_{2SLS} \hat{X} + \epsilon_2 $$
 
 ## Two-sample MR
 
+Two-sample MR refers to the approach that the genetic effects of the instruments on the exposure can be estimated in an independent sample other than that used to estimate effects between instruments on the outcome. As more and more GWAS summary statistics become publicly available, the scope of MR also expands with Two-sample MR methods.
+
 $$ \hat{\beta}_{X,Y} = {{\hat{\beta}_{IV,Y}}\over{\hat{\beta}_{IV,X}}} $$
+
+!!! warning "Caveats"
+    For two-sample MR, there is an additional key assumption:
+    
+    **The two samples used for MR are from the same underlying populations. (The effect size of instruments on exposure should be the same in both samples.)** 
+
+    Therefore, for two-sample MR, we usually use datasets from similar non-overlapping populations in terms of not only ancestry but also contextual factors. 
+
+
 
 ## Practice
 
