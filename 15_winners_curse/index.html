@@ -1523,28 +1523,40 @@
 <p>Winner's curse refers to the phenomenon that genetic effects are systematically overestimated by thresholding or selection process. </p>
 <h2 id="wc-correction">WC correction</h2>
 <p>The asymptotic distribution of <span class="arithmatex">\(\beta_{Observed}\)</span> is:
-<span class="arithmatex">\(<span class="arithmatex">\(\beta_{Observed} \sim N(\beta_{True},\sigma)\)</span>\)</span></p>
-<div class="arithmatex">\[{{\beta_{Observed} - \beta_{True}}\over{\sigma}} \sim N(0,1)\]</div>
-<div class="admonition tip">
+<span class="arithmatex">\(<span class="arithmatex">\(\beta_{Observed} \sim N(\beta_{True},\sigma^2)\)</span>\)</span></p>
+<div class="admonition info">
 <p class="admonition-title">Distribution of <span class="arithmatex">\(\beta_{Observed}\)</span></p>
-<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/219662857-dfc88aaf-8d74-497e-b781-60805323a5be.png" /></p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/219667132-edbd935d-6ad7-4ac3-8548-6bd6df507547.png" /></p>
 </div>
-<p>The asymptotic sampling distribution for <span class="arithmatex">\(\beta_{Observed}\)</span> is a truncated normal distribution:</p>
+<ul>
+<li><span class="arithmatex">\(c\)</span> :  test statistic cutpoint corresponding to the significance threshold.</li>
+</ul>
+<p>It is equivalent to:</p>
+<div class="arithmatex">\[{{\beta_{Observed} - \beta_{True}}\over{\sigma}} \sim N(0,1)\]</div>
+<div class="admonition info">
+<p class="admonition-title">Distribution of <span class="arithmatex">\({{\beta_{Observed} - \beta_{True}}\over{\sigma}}\)</span></p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/40289485/219665814-7d611e24-bda8-4701-ba5c-4bc9fcc51228.png" /></p>
+</div>
+<p>We can obtain the asymptotic sampling distribution (which is a <a href="https://en.wikipedia.org/wiki/Truncated_normal_distribution">truncated normal distribution</a>) for <span class="arithmatex">\(\beta_{Observed}\)</span> by:</p>
 <div class="arithmatex">\[f(x,\beta_{True}) ={{1}\over{\sigma}} {{\phi({{{x - \beta_{True}}\over{\sigma}}})} \over {\Phi({{{\beta_{True}}\over{\sigma}}-c}) + \Phi({{{-\beta_{True}}\over{\sigma}}-c})}}\]</div>
 <p>when</p>
 <div class="arithmatex">\[|{{x}\over{\sigma}}|\geq c\]</div>
 <ul>
 <li><span class="arithmatex">\(\phi(x)\)</span> : standard normal density function.</li>
 <li><span class="arithmatex">\(\Phi(x)\)</span> : standard normal cumulative density function.</li>
-<li><span class="arithmatex">\(c\)</span> :  test statistic cutpoint corresponding to the significance threshold.</li>
 </ul>
-<p>The expectation of effect sizes for the selected variants can then be approximated by: </p>
+<p>From the asymptotic sampling distribution, the expectation of effect sizes for the selected variants can then be approximated by: </p>
 <div class="arithmatex">\[ E(\beta_{Observed}; \beta_{True}) = \beta_{True} + \sigma {{\phi({{{\beta_{True}}\over{\sigma}}-c}) - \phi({{{-\beta_{True}}\over{\sigma}}-c})} \over {\Phi({{{\beta_{True}}\over{\sigma}}-c}) + \Phi({{{-\beta_{True}}\over{\sigma}}-c})}}\]</div>
 <ul>
 <li><span class="arithmatex">\(\beta_{Observed}\)</span> is biased. </li>
 <li>The bias is dependent on <span class="arithmatex">\(\beta_{True}\)</span>, SE <span class="arithmatex">\(\sigma\)</span>, and the selection threshold.</li>
 </ul>
-<p>Reference: Zhong, H., &amp; Prentice, R. L. (2008). Bias-reduced estimators and confidence intervals for odds ratios in genome-wide association studies. Biostatistics, 9(4), 621-634.</p>
+<div class="admonition tip">
+<p class="admonition-title">Derivation of this equation can be found in the Appendix A of Ghosh, A., Zou, F., &amp; Wright, F. A. (2008). Estimating odds ratios in genome scans: an approximate conditional likelihood approach. The American Journal of Human Genetics, 82(5), 1064-1074.</p>
+</div>
+<p>Reference: 
+- Zhong, H., &amp; Prentice, R. L. (2008). Bias-reduced estimators and confidence intervals for odds ratios in genome-wide association studies. Biostatistics, 9(4), 621-634.
+- Ghosh, A., Zou, F., &amp; Wright, F. A. (2008). Estimating odds ratios in genome scans: an approximate conditional likelihood approach. The American Journal of Human Genetics, 82(5), 1064-1074.</p>
 <p>Also see reference: https://amandaforde.github.io/winnerscurse/articles/winners_curse_methods.html</p>
 
               
