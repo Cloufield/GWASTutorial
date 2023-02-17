@@ -1261,6 +1261,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#iv-selection" class="md-nav__link">
+    IV selection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice" class="md-nav__link">
     Practice
   </a>
@@ -1731,6 +1738,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#iv-selection" class="md-nav__link">
+    IV selection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice" class="md-nav__link">
     Practice
   </a>
@@ -1926,6 +1940,10 @@
 
 <h1 id="mendelian-randomization">Mendelian randomization</h1>
 <h2 id="mendelian-randomization-introduction">Mendelian randomization introduction</h2>
+<div class="admonition tip">
+<p class="admonition-title">Comparison between RCT and MR</p>
+<p><img width="636" alt="image" src="https://user-images.githubusercontent.com/40289485/219572347-1ebc2f0a-3c9a-49a0-a058-638e4973873e.png"></p>
+</div>
 <h2 id="instrumental-variables-iv">Instrumental Variables (IV)</h2>
 <p>Instrumental variable (IV) can be defined as a variable  that is correlated with the exposure X and uncorrelated with the error <span class="arithmatex">\(\epsilon\)</span> in the following regression: </p>
 <div class="arithmatex">\[ Y = X\beta + \epsilon \]</div>
@@ -1978,6 +1996,9 @@
 <p><strong>The two samples used for MR are from the same underlying populations. (The effect size of instruments on exposure should be the same in both samples.)</strong> </p>
 <p>Therefore, for two-sample MR, we usually use datasets from similar non-overlapping populations in terms of not only ancestry but also contextual factors. </p>
 </div>
+<h2 id="iv-selection">IV selection</h2>
+<p>One of the first things to do when you plan to perform any type of MR is to check the associations of instrumental variables with the exposure to avoid bias caused by weak IVs.</p>
+<p>The most commonly used method here is the <strong>F-statistic</strong>, which tests the association of instrumental variables with the exposure.</p>
 <h2 id="practice">Practice</h2>
 <p>In this tutorial, we will walk you through how to perform a minimal TwoSampleMR analysis. We will use the R package <a href="https://mrcieu.github.io/TwoSampleMR/index.html">TwoSampleMR</a>, which provides easy-to-use functions for formatting, clumping and harmonizing GWAS summary statistics. </p>
 <p>This package integrates a variety of commonly used MR methods for analysis, including:
