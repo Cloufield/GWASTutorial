@@ -19,6 +19,8 @@
 
 Simply run `download_sampledata.sh` and the dataset will be downloaded and decompressed.
 
+!!! warning "Sample dataset is currently hosted on Dropbox which may not be accessible for users in certain regions."
+
 ```
 ./download_sampledata.sh
 ```

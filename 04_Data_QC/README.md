@@ -150,6 +150,8 @@ This dataset contains 504 EAS individuals from 1000 Genome Project Phase 3v5 wit
 
 Simply run `download.sh` in 01_Dataset to download this dataset (from Dropbox).
 
+!!! warning "Sample dataset is currently hosted on Dropbox which may not be accessible for users in certain regions."
+
 !!! example "Download sample data"
 
     ```bash
