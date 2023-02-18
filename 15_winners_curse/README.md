@@ -7,9 +7,13 @@ Winner's curse refers to the phenomenon that genetic effects are systematically 
 
 !!! info "Winner's curse in auctions"
     This term was initially used to describe a phenomenon that occurs in auctions. The winning bid is very likely to overestimate the intrinsic value of an item even if all the bids are unbiased (the auctioned item is of equal value to all bidders). The thresholding process in GWAS resembles auctions, where the lead variants are the winning bids.
+    ![image](https://user-images.githubusercontent.com/40289485/219857681-e500620f-da3f-49ce-82d4-eb6191e17c7b.png)
     
-    Reference: Bazerman, M. H., & Samuelson, W. F. (1983). I won the auction but don't want the prize. Journal of conflict resolution, 27(4), 618-634.
-
+    Reference: 
+    
+    - Bazerman, M. H., & Samuelson, W. F. (1983). I won the auction but don't want the prize. Journal of conflict resolution, 27(4), 618-634.
+    - Göring, H. H., Terwilliger, J. D., & Blangero, J. (2001). Large upward bias in estimation of locus-specific effects from genomewide scans. The American Journal of Human Genetics, 69(6), 1357-1369.
+    
 ## WC correction
 
 The asymptotic distribution of $\beta_{Observed}$ is:
