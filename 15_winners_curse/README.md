@@ -3,7 +3,12 @@
 
 ## Winner's curse definition
 
-Winner's curse refers to the phenomenon that genetic effects are systematically overestimated by thresholding or selection process. 
+Winner's curse refers to the phenomenon that genetic effects are systematically overestimated by thresholding or selection process in genetic association studies. 
+
+!!! info "Winner's curse in auctions"
+    This term was initially used to describe a phenomenon that occurs in auctions. The winning bid is very likely to overestimate the intrinsic value of an item even if all the bids are unbiased (the auctioned item is of equal value to all bidders). The thresholding process in GWAS resembles auctions, where the lead variants are the winning bids.
+    
+    Reference: Bazerman, M. H., & Samuelson, W. F. (1983). I won the auction but don't want the prize. Journal of conflict resolution, 27(4), 618-634.
 
 ## WC correction
 
