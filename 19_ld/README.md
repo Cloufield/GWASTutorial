@@ -60,7 +60,7 @@ So we can simply denote $D = D_{AB}$, and the relationship between haplotype fre
 
 !!! warning "The range of possible values of D depends on the allele frequencies, which is not suitable for comparison between different pairs of alleles."
 
-Normalization of D :
+[Lewontin](#reference) suggested a method for the normalization of D :
 
 $$D_{normalized} = {{D}\over{D_{max}}}$$
 
@@ -196,6 +196,7 @@ Please check [LD score regression](https://cloufield.github.io/GWASTutorial/08_L
 ## Reference
 
 - **LD review** :  Slatkin, M. (2008). Linkage disequilibrium—understanding the evolutionary past and mapping the medical future. Nature Reviews Genetics, 9(6), 477-485.
+- **LD normalization** : Lewontin, R. C. (1964). The interaction of selection and linkage. I. General considerations; heterotic models. Genetics, 49(1), 49.
 - **plink**: Purcell, S., Neale, B., Todd-Brown, K., Thomas, L., Ferreira, M. A., Bender, D., ... & Sham, P. C. (2007). PLINK: a tool set for whole-genome association and population-based linkage analyses. The American journal of human genetics, 81(3), 559-575.
 - **gcta**: Yang, J., Lee, S. H., Goddard, M. E., & Visscher, P. M. (2011). GCTA: a tool for genome-wide complex trait analysis. The American Journal of Human Genetics, 88(1), 76-82.
 - **ldstore**: Benner, C. et al. Prospects of fine-papping trait-associated genomic regions by using summary statistics from genome-wide association studies. Am. J. Hum. Genet. (2017).
