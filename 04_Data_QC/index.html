@@ -2225,7 +2225,10 @@ head plink_results.afreq
    <span class="m">0</span>   HG00422       <span class="m">752725</span>    <span class="m">7</span>.488e+05      <span class="m">1122299</span>      <span class="m">0</span>.01049
 </code></pre></div>
 </div>
-<p>A commonly used method is to exclude samples with heterozygosity F deviating more than 3 standard deviation(SD) from the mean F.</p>
+<p>A commonly used method is to exclude samples with heterozygosity F deviating more than 3 standard deviation(SD) from the mean.</p>
+<div class="admonition warning">
+<p class="admonition-title">Usually we will use only <a href="#ld-pruning">LD-pruned SNPs</a>  for the calculation of F.</p>
+</div>
 <h3 id="hardy-weinberg-equilibrium-exact-test">Hardy-Weinberg equilibrium exact test</h3>
 <p>For SNP QC, besides checking the missing rate, we also need to check if the SNP is in Hardy-Weinberg equilibrium:</p>
 <p><code>--hardy</code> will perform Hardy-Weinberg equilibrium exact test for each variant. Variants with low P value usually suggest genotyping errors, or indicate evolutionary selection for these variants.</p>
@@ -2270,7 +2273,7 @@ Under HWE, the <strong>exact probability</strong> of observing <span class="arit
 <li><code>--hwe 5e-6</code> : filters out all variants which have Hardy-Weinberg equilibrium exact test p-value below the provided threshold. NOTE: With case/control data, cases and missing phenotypes are normally ignored. (see https://www.cog-genomics.org/plink/1.9/filter#hwe)</li>
 </ul>
 <h3 id="ld-pruning">LD Pruning</h3>
-<p>There are often strong Linkage disequilibrium(LD) among SNPs, for some analysis we don't need all SNPs and we need to remove the redundant SNPs to avoid bias in genetic estimations. For example, for relatedness estimation, we will use only LD-Pruned SNP set. </p>
+<p>There is often strong Linkage disequilibrium(LD) among SNPs, for some analysis we don't need all SNPs and we need to remove the redundant SNPs to avoid bias in genetic estimations. For example, for relatedness estimation, we will use only LD-Pruned SNP set. </p>
 <p>We can use <code>--indep-pairwise 50 5 0.2</code> to filter out those in strong LD and keep only the independent SNPs.
 Please check https://www.cog-genomics.org/plink/1.9/ld#indep for the meaning of each parameter.
 Combined with the filters we just introduced, we can run:</p>
