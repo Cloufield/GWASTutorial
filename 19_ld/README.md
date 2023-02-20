@@ -3,11 +3,85 @@
 
 ## LD Definition
 
-Please check [here](https://cloufield.github.io/GWASTutorial/04_Data_QC/#ld-calculation).
+**Linkage disequilibrium** refers to the non-random association of alleles of different loci.
+
+!!! info "Factors affecting LD"
+    
+    - Recombination rates
+    - Mutation
+    - Natural selection
+    - Genetic drift
+    - Population subdivision and bottlenecks
+    - Inbreeding 
+
+## LD Estimation
+
+Suppose we have two SNPs whose alleles are $A/a$ and $B/b$. 
+
+The haplotype frequencies are: 
+
+|Haplotype|Frequency|
+|-|-|
+|AB|$p_{AB}$|
+|Ab|$p_{Ab}$|
+|aB|$p_{aB}$|
+|ab|$p_{ab}$|
+
+The allele frequencies are: 
+
+|Allele|Frequency|
+|-|-|
+|A|$p_A=p_{AB}+p_{Ab}$|
+|a|$p_A=p_{aB}+p_{ab}$|
+|B|$p_A=p_{AB}+p_{aB}$|
+|b|$p_A=p_{Ab}+p_{ab}$|
+
+D : the level of LD between A and B can be estimated using **coefficient of linkage disequilibrium (D)**, which is defined as:
+
+$$D_{AB} = p_{AB} - p_Ap_B$$
+
+If A and B are in **linkage equilibrium**, we can get 
+
+$$D_{AB} = p_{AB} - p_Ap_B = 0$$
+
+which means the coefficient of linkage disequilibrium is 0 in this case.
+
+D can be calculated for each pair of alleles and their relationships can be expressed as:
+
+$$D_{AB} = -D_{Ab} = -D_{aB} = D_{ab} $$
+
+So we can simply denote $D = D_{AB}$, and the relationship between haplotype frequencies and allele frequencies can be summarized in the following table.
+
+|Allele|A|a|Total|
+|-|-|-|-|
+|B|$p_{AB}=p_Ap_B+D$|$p_{aB}=p_ap_B-D$|$p_B$|
+|b|$p_{AB}=p_Ap_b-D$|$p_{AB}=p_ap_b+D$|$p_b$|
+|Total|$p_A$|$p_a$|1|
+
+!!! warning "The range of possible values of D depends on the allele frequencies, which is not suitable for comparison between different pairs of alleles."
+
+Normalization of D :
+
+$$D_{normalized} = {{D}\over{D_{max}}}$$
+
+where 
+
+$$
+D_{max} = \begin{cases} 
+max\{-p_Ap_B, -(1-p_A)(1-p_B)\} & \text{when } D \lt 0 \\
+min\{ p_A(1-p_B), p_B(1-p_A)  \} & \text{when } D \gt 0 \\ 
+\end{cases}
+$$
+
+In practice, the most commonly used alternative metric to $D_{normalized}$ is $r^2$, the correlation coefficient, which can be obtained by:
+
+$$
+r^2 = {{D^2}\over{p_A(1-p_A)p_B(1-p_B)}}
+$$
 
 Reference: Slatkin, M. (2008). Linkage disequilibrium—understanding the evolutionary past and mapping the medical future. Nature Reviews Genetics, 9(6), 477-485.
 
-## Calculate LD
+## LD Calculation using software
 
 ### LDstore2
 LDstore2: http://www.christianbenner.com/#

@@ -581,12 +581,11 @@ Combined with the `--extract`, we can run:
 
 ### LD calculation
 
-We can also use our data to calculate LD between a pair of SNPs.
+We can also use our data to estimate the LD between a pair of SNPs.
 
-!!! info How we calculate LD r2
-    ![image](https://user-images.githubusercontent.com/40289485/161413586-d4f6e21e-f0c7-4c54-a703-bb060ec6913d.png)
+!!! info "Details on LD can be found [here](https://cloufield.github.io/GWASTutorial/19_ld/)"
 
-`--chr` option allows us to include SNPs on a specific chromosome.
+`--chr` option in PLINK allows us to include SNPs on a specific chromosome.
 To calculate LD r2 for SNPs on chr22 , we can run:
 
 !!! example Calculate LD r2 for SNPs on chr22
