@@ -417,7 +417,9 @@ Next, we can check the heterozygosity F of samples (https://www.cog-genomics.org
        0   HG00422       752725    7.488e+05      1122299      0.01049
     ```
     
-A commonly used method is to exclude samples with heterozygosity F deviating more than 3 standard deviation(SD) from the mean F.
+A commonly used method is to exclude samples with heterozygosity F deviating more than 3 standard deviation(SD) from the mean.
+
+!!! warning "Usually we will use only [LD-pruned SNPs](#ld-pruning)  for the calculation of F."
 
 ### Hardy-Weinberg equilibrium exact test
 
@@ -478,7 +480,7 @@ In this case we can apply the following filters for example:
 
 ### LD Pruning
 
-There are often strong Linkage disequilibrium(LD) among SNPs, for some analysis we don't need all SNPs and we need to remove the redundant SNPs to avoid bias in genetic estimations. For example, for relatedness estimation, we will use only LD-Pruned SNP set. 
+There is often strong Linkage disequilibrium(LD) among SNPs, for some analysis we don't need all SNPs and we need to remove the redundant SNPs to avoid bias in genetic estimations. For example, for relatedness estimation, we will use only LD-Pruned SNP set. 
 
 We can use `--indep-pairwise 50 5 0.2` to filter out those in strong LD and keep only the independent SNPs.
 Please check https://www.cog-genomics.org/plink/1.9/ld#indep for the meaning of each parameter.
