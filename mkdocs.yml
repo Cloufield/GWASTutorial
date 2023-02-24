@@ -65,7 +65,7 @@ nav:
        - "Polygenic Risk Score" : 
           - "PRS Basics" : 10_PRS.md
           - "PRS evaluation" : PRS_evaluation.md
-          - "PRS Tutorial" : prs_evaluation.ipynb
+          - "PRS Tutorial" : prs_tutorial.ipynb
        - "Mendelian randomization": 
           - "MR Basics" : 16_mendelian_randomization.md
           - "TwoSampleMR Tutorial" : TwoSampleMR.ipynb

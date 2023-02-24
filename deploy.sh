@@ -5,7 +5,7 @@ do
 cp ${dir}/README.md docs/${dir}.md
 done
 
-cp 10_PRS/prs_evaluation.ipynb docs/prs_evaluation.ipynb
+cp 10_PRS/prs_tutorial.ipynb docs/prs_tutorial.ipynb
 cp 10_PRS/PRS_evaluation.md docs/PRS_evaluation.md
 cp 12_fine_mapping/finemapping_susie.ipynb docs/finemapping_susie.ipynb
 cp 16_mendelian_randomization/TwoSampleMR.ipynb docs/TwoSampleMR.ipynb
