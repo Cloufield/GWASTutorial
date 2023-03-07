@@ -32,7 +32,7 @@
 |-|-|-|
 |2008|Slatkin, M. (2008). Linkage disequilibrium—understanding the evolutionary past and mapping the medical future. Nature Reviews Genetics, 9(6), 477-485.|Pubmed|
 
-### Imuptation
+### Imputation
 
 |Year| Reference | Link|
 |-|-|-|
