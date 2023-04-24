@@ -87,7 +87,8 @@
 |A Bioinformatician's UNIX Toolbox |http://lh3lh3.users.sourceforge.net/biounix.shtml|
 |Osaka university, Department of Statistical Genetics Homepage|http://www.sg.med.osaka-u.ac.jp/school_2021.html|
 |Genome analysis wiki (Abecasis Group Wiki)|https://genome.sph.umich.edu/wiki/Main_Page|
-|EPI 511, Advanced Population and Medical Genetics (Alkes Price, Harvard School of Public Health) |https://alkesgroup.broadinstitute.org/EPI511|
+|EPI 511, Advanced Population and Medical Genetics<br>(Alkes Price, Harvard School of Public Health) |https://alkesgroup.broadinstitute.org/EPI511|
+|fiveMinuteStats<br>(Matthew Stephens, Statistics and Human Genetics at the University of Chicago)|https://stephens999.github.io/fiveMinuteStats|
 
 ## 和文
 
