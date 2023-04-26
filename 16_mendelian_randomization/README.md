@@ -343,7 +343,7 @@ p4[[1]]
 
 ## MR Steiger directionality test
 
-MR Steiger directionality test is a method to test the casual direction.
+MR Steiger directionality test is a method to test the causal direction.
 
 ```
 harmonized_data$"r.outcome" <- get_r_from_lor(
