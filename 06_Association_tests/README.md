@@ -89,8 +89,11 @@ Please check https://www.cog-genomics.org/plink/2.0/assoc for more details.
 
 We will perform logistic regression with firth correction for a simulated binary trait under the additive model using the 1KG East Asian individuals.
 
-!!! note "firth correction"
+!!! note "Firth correction"
     Adding a penalty term to the log-likelihood function when fitting the logistic model, which results in less bias. - Firth, David. "Bias reduction of maximum likelihood estimates." Biometrika 80.1 (1993): 27-38.
+
+!!! note "Quantitative traits"
+    For quantitative traits, linear regressions will be performed and in this case, we do not need to add `firth` (since Firth correction is not appliable). 
 
 !!! example "Sample codes for association test using plink for binary traits"
     ```
