@@ -111,6 +111,9 @@ For downstream analysis, we can exclude these SNPs using `--exclude hild.set`.
     - 3.Running PCA using un-related samples and independent SNPs (https://www.cog-genomics.org/plink/2.0/strat#pca)
     - 4.Projecting to all samples (https://www.cog-genomics.org/plink/2.0/score#pca_project)
 
+!!! note "MAF filter for LD-pruning and PCA"
+    For LD-pruning and PCA, we usually only use variants with MAF > 0.01 or MAF>0.05. Since the sample dataset only contains variants with MAF > 0.05. We will skip the MAF filtering here. But please do keep this in mind when you work with your own datasets. (You can simply add `--maf 0.01` or `--maf 0.05` when performing LD-pruning or PCA.)
+
 ---------
 ## Sample codes
 
