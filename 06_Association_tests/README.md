@@ -112,10 +112,12 @@ We will perform logistic regression with firth correction for a simulated binary
     	--maf 0.01 \
     	--covar ${covariateFile} \
     	--covar-col-nums ${covariateCols} \
-    	--glm hide-covar firth \
+    	--glm hide-covar firth  firth-residualize single-prec-cc \
     	--threads ${threadnum} \
     	--out 1kgeas
     ```
+!!! note
+    Using the latest version of PLINK2, you need to add `firth-residualize single-prec-cc` to generate the results. (The algorithm and precision have been changed since 2023 for firth regression)
 
 You will see a similar log like:
 
