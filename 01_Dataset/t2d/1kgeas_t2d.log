@@ -1,0 +1,43 @@
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Mac
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 15:16:23 JST on Mon Jan 23 2023.
+Hostname: HEs-MacBook-Air.local
+
+Accepted options:
+--bfile ../1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020
+--simu-cc 200 304
+--simu-causal-loci t2d_casual.txt
+--simu-hsq 0.2
+--simu-k 0.4
+--simu-rep 1
+--out 1kgeas_t2d
+
+
+Reading PLINK FAM file from [../1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam].
+504 individuals to be included from [../1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam].
+Reading PLINK BIM file from [../1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim].
+1122299 SNPs to be included from [../1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim].
+Reading PLINK BED file from [../1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed] in SNP-major format ...
+Genotype data for 504 individuals and 1122299 SNPs to be included from [../1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed].
+Simulation parameters:
+Number of simulation replicate(s) = 1 (Default = 1)
+Heritability of liability = 0.2 (Default = 0.1)
+Disease prevalence = 0.4 (Default = 0.1)
+Number of cases = 200
+Number of controls = 304
+
+Reading a list of SNPs (as causal variants) from [t2d_casual.txt].
+1096272 SNPs (as causal variants) to be included from [t2d_casual.txt].
+1096272 user-specified QTL effects.
+Calculating allele frequencies ...
+Recoding genotypes (individual major mode) ...
+Simulated QTL effect(s) have been saved in [1kgeas_t2d.par].
+Simulating GWAS based on the real genotyped data with 1 replicate(s) ...
+Simulated 200 cases and 304 controls have been saved in [1kgeas_t2d.phen].
+
+Analysis finished at 15:17:23 JST on Mon Jan 23 2023
+Overall computational time: 1 minute 0 sec.
