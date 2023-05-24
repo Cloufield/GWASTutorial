@@ -25,6 +25,8 @@ Simply run `download_sampledata.sh` and the dataset will be downloaded and decom
 ./download_sampledata.sh
 ```
 
+or you can manually download it from [this link](https://www.dropbox.com/s/nhmibzq5o8slusu/sample_data.tar).
+
 And you will get the following files:
 ```
 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed

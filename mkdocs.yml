@@ -105,3 +105,4 @@ extra_css:
 
 plugins:
   - mkdocs-jupyter
+  - search
