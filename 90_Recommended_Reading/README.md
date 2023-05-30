@@ -89,6 +89,7 @@
 |Genome analysis wiki (Abecasis Group Wiki)|https://genome.sph.umich.edu/wiki/Main_Page|
 |EPI 511, Advanced Population and Medical Genetics<br>(Alkes Price, Harvard School of Public Health) |https://alkesgroup.broadinstitute.org/EPI511|
 |fiveMinuteStats<br>(Matthew Stephens, Statistics and Human Genetics at the University of Chicago)|https://stephens999.github.io/fiveMinuteStats|
+|Course homepage and digital textbook for Human Genome Variation with Computational Lab|https://mccoy-lab.github.io/hgv_modules/|
 
 ## 和文
 
