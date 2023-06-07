@@ -57,7 +57,7 @@
 |Year| Reference | Link|
 |-|-|-|
 |2019|Schaid, D. J., Chen, W., & Larson, N. B. (2018). From genome-wide associations to candidate causal variants by statistical fine-mapping. Nature Reviews Genetics, 19(8), 491-504.|Pubmed|
-
+|2023|王 青波, ゲノムワイド関連解析のその先へ：統計的fine-mappingの基礎と発展, JSBi Bioinformatics Review, 2023, 4 巻, 1 号, p. 35-51|[J-STAGE](https://www.jstage.jst.go.jp/article/jsbibr/4/1/4_jsbibr.2023.primer4/_html/-char/ja)|
 ### Polygenic risk scores
 
 |Year| Reference | Link|
