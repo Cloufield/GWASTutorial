@@ -3,7 +3,8 @@
 
 ## LD Definition
 
-**Linkage disequilibrium** refers to the non-random association of alleles of different loci.
+In meiosis, homologous chromosomes are recombined. Recombination rates at different DNA regions are not equal. 
+The fragments can be detected after tens of generations, causing **Linkage disequilibrium**, which refers to the non-random association of alleles of different loci.
 
 !!! info "Factors affecting LD"
     
@@ -72,6 +73,8 @@ max\{-p_Ap_B, -(1-p_A)(1-p_B)\} & \text{when } D \lt 0 \\
 min\{ p_A(1-p_B), p_B(1-p_A)  \} & \text{when } D \gt 0 \\ 
 \end{cases}
 $$
+
+It measures how much proportion of the haplotypes had undergone recombination.
 
 In practice, the most commonly used alternative metric to $D_{normalized}$ is $r^2$, the correlation coefficient, which can be obtained by:
 
