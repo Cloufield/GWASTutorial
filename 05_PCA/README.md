@@ -1,8 +1,21 @@
-# Principle conponent analysis (PCA)
+# Principle component analysis (PCA)
 
 PCA aims to find the orthogonal directions of maximum variance and project the data onto a new subspace with equal or fewer dimensions than the original one. Simply speaking, GRM (genetic relationship matrix; covariance matrix) is first estimated and then PCA is applied to this matrix to generate eigenvectors and eigenvalues. Finally, the $k$ eigenvectors with the largest eigenvalues are used to transform the genotypes to a new feature subspace.
 
-PCA is by far the most commonly used dimension reduction approach used in population genetics which could identify the diffenrence in ancestry among the sample individuals. The population outliers could be excluded from the main cluster. For GWAS we also need to include top PCs to adjust for the population stratification.
+!!! example A simple PCA
+    
+    Source data:
+    ```
+    cov = np.array([[6, -3], [-3, 3.5]])
+    pts = np.random.multivariate_normal([0, 0], cov, size=800)
+    ```
+    
+    <img width="500" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/124b8c3d-0f83-4936-ab08-342efd29660a">
+
+!!! quote "Interpretation of PCs" 
+    **The first principal component** of a set of p variables, presumed to be jointly normally distributed, is the derived variable formed as a linear combination of the original variables that **explains the most variance**. The second principal component explains the most variance in what is left once the effect of the first component is removed, and we may proceed through p iterations until all the variance is explained.
+
+PCA is by far the most commonly used dimension reduction approach used in population genetics which could identify the difference in ancestry among the sample individuals. The population outliers could be excluded from the main cluster. For GWAS we also need to include top PCs to adjust for the population stratification.
 
 Please read the following paper on how we apply PCA to genetic data:
 Price, A., Patterson, N., Plenge, R. et al. Principal components analysis corrects for stratification in genome-wide association studies. Nat Genet 38, 904–909 (2006). https://doi.org/10.1038/ng1847 https://www.nature.com/articles/ng1847
@@ -74,7 +87,7 @@ plink --file ${plinkFile} --make-set high-ld.txt --write-set --out hild
 !!! example "Create a list of SNPs in the regions specified in `high-ld.txt` "
     
     ```
-    plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020" #!please set this to your own path
+    plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020" #! Please set this to your own path
     
     plink \
     	--bfile ${plinkFile} \
@@ -106,10 +119,10 @@ For downstream analysis, we can exclude these SNPs using `--exclude hild.set`.
 
 !!! info "Steps to perform a typical genomic PCA analysis"
 
-    - 1.LD-Pruning (https://www.cog-genomics.org/plink/2.0/ld#indep)
-    - 2.Removing relatives from calculating PCs (usually 2-degree) (https://www.cog-genomics.org/plink/2.0/distance#king_cutoff)
-    - 3.Running PCA using un-related samples and independent SNPs (https://www.cog-genomics.org/plink/2.0/strat#pca)
-    - 4.Projecting to all samples (https://www.cog-genomics.org/plink/2.0/score#pca_project)
+    - 1. LD-Pruning (https://www.cog-genomics.org/plink/2.0/ld#indep)
+    - 2. Removing relatives from calculating PCs (usually 2-degree) (https://www.cog-genomics.org/plink/2.0/distance#king_cutoff)
+    - 3. Running PCA using un-related samples and independent SNPs (https://www.cog-genomics.org/plink/2.0/strat#pca)
+    - 4. Projecting to all samples (https://www.cog-genomics.org/plink/2.0/score#pca_project)
 
 !!! note "MAF filter for LD-pruning and PCA"
     For LD-pruning and PCA, we usually only use variants with MAF > 0.01 or MAF>0.05. Since the sample dataset only contains variants with MAF > 0.05. We will skip the MAF filtering here. But please do keep this in mind when you work with your own datasets. (You can simply add `--maf 0.01` or `--maf 0.05` when performing LD-pruning or PCA.)
@@ -212,9 +225,9 @@ Eventually, we will get the PCA results for all samples.
     ```
 
 ## Plotting the PCs 
-You can now create scatterplots of the PCs using R or python.
+You can now create scatterplots of the PCs using R or Python.
 
-For plotting using python:
+For plotting using Python:
 [plot_PCA.ipynb](https://github.com/Cloufield/GWASTutorial/blob/main/05_PCA/plot_PCA.ipynb)
 
 !!! example "Scatter plot of PC1 and PC2 using 1KG EAS individuals"
@@ -222,7 +235,7 @@ For plotting using python:
 
     Note : We only used 20% of all available variants. This figure only very roughly shows the population structure in East Asia.
  
-Requrements:
+Requirements:
 - python>3
 - numpy,pandas,seaborn,matplotlib
 
