@@ -1,9 +1,9 @@
 # Principle component analysis (PCA)
 
-PCA aims to find the orthogonal directions of maximum variance and project the data onto a new subspace with equal or fewer dimensions than the original one. Simply speaking, GRM (genetic relationship matrix; covariance matrix) is first estimated and then PCA is applied to this matrix to generate eigenvectors and eigenvalues. Finally, the $k$ eigenvectors with the largest eigenvalues are used to transform the genotypes to a new feature subspace.
+PCA aims to find the **orthogonal directions of maximum variance** and project the data onto a new subspace with equal or fewer dimensions than the original one. Simply speaking, **GRM (genetic relationship matrix; covariance matrix)** is first estimated and then PCA is applied to this matrix to generate **eigenvectors** and **eigenvalues**. Finally, the $k$ eigenvectors with the largest eigenvalues are used to transform the genotypes to a new feature subspace.
 
-!!! example "Genetic relationship matrix (GRM)"
-    <img width="500" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/767d940c-0ade-47b9-b53e-8e55cc3e0591">
+!!! info "Genetic relationship matrix (GRM)"
+    <img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/767d940c-0ade-47b9-b53e-8e55cc3e0591">
     
     Citation: Yang, J., Lee, S. H., Goddard, M. E., & Visscher, P. M. (2011). GCTA: a tool for genome-wide complex trait analysis. The American Journal of Human Genetics, 88(1), 76-82.
     
@@ -14,8 +14,10 @@ PCA aims to find the orthogonal directions of maximum variance and project the d
     cov = np.array([[6, -3], [-3, 3.5]])
     pts = np.random.multivariate_normal([0, 0], cov, size=800)
     ```
+
+    The red arrow shows the first principal component axis (PC1) and the blue arrow shows the second principal component axis (PC2). The two axes are orthogonal.
     
-    <img width="500" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/124b8c3d-0f83-4936-ab08-342efd29660a">
+    <img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/124b8c3d-0f83-4936-ab08-342efd29660a">
 
 !!! quote "Interpretation of PCs" 
     **The first principal component** of a set of p variables, presumed to be jointly normally distributed, is the derived variable formed as a linear combination of the original variables that **explains the most variance**. The second principal component explains the most variance in what is left once the effect of the first component is removed, and we may proceed through p iterations until all the variance is explained.
