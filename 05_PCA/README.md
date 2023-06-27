@@ -2,7 +2,12 @@
 
 PCA aims to find the orthogonal directions of maximum variance and project the data onto a new subspace with equal or fewer dimensions than the original one. Simply speaking, GRM (genetic relationship matrix; covariance matrix) is first estimated and then PCA is applied to this matrix to generate eigenvectors and eigenvalues. Finally, the $k$ eigenvectors with the largest eigenvalues are used to transform the genotypes to a new feature subspace.
 
-!!! example A simple PCA
+!!! example "Genetic relationship matrix (GRM)"
+    <img width="500" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/767d940c-0ade-47b9-b53e-8e55cc3e0591">
+    
+    Citation: Yang, J., Lee, S. H., Goddard, M. E., & Visscher, P. M. (2011). GCTA: a tool for genome-wide complex trait analysis. The American Journal of Human Genetics, 88(1), 76-82.
+    
+!!! example "A simple PCA"
     
     Source data:
     ```
