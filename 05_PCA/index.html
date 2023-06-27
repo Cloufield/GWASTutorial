@@ -1668,8 +1668,13 @@
 
 <h1 id="principle-component-analysis-pca">Principle component analysis (PCA)</h1>
 <p>PCA aims to find the orthogonal directions of maximum variance and project the data onto a new subspace with equal or fewer dimensions than the original one. Simply speaking, GRM (genetic relationship matrix; covariance matrix) is first estimated and then PCA is applied to this matrix to generate eigenvectors and eigenvalues. Finally, the <span class="arithmatex">\(k\)</span> eigenvectors with the largest eigenvalues are used to transform the genotypes to a new feature subspace.</p>
-<div class="admonition example a simple pca">
-<p class="admonition-title">Example</p>
+<div class="admonition example">
+<p class="admonition-title">Genetic relationship matrix (GRM)</p>
+<p><img width="500" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/767d940c-0ade-47b9-b53e-8e55cc3e0591"></p>
+<p>Citation: Yang, J., Lee, S. H., Goddard, M. E., &amp; Visscher, P. M. (2011). GCTA: a tool for genome-wide complex trait analysis. The American Journal of Human Genetics, 88(1), 76-82.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">A simple PCA</p>
 <p>Source data:
 <div class="highlight"><pre><span></span><code>cov = np.array([[6, -3], [-3, 3.5]])
 pts = np.random.multivariate_normal([0, 0], cov, size=800)
