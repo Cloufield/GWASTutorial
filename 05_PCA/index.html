@@ -1667,10 +1667,10 @@
 
 
 <h1 id="principle-component-analysis-pca">Principle component analysis (PCA)</h1>
-<p>PCA aims to find the orthogonal directions of maximum variance and project the data onto a new subspace with equal or fewer dimensions than the original one. Simply speaking, GRM (genetic relationship matrix; covariance matrix) is first estimated and then PCA is applied to this matrix to generate eigenvectors and eigenvalues. Finally, the <span class="arithmatex">\(k\)</span> eigenvectors with the largest eigenvalues are used to transform the genotypes to a new feature subspace.</p>
-<div class="admonition example">
+<p>PCA aims to find the <strong>orthogonal directions of maximum variance</strong> and project the data onto a new subspace with equal or fewer dimensions than the original one. Simply speaking, <strong>GRM (genetic relationship matrix; covariance matrix)</strong> is first estimated and then PCA is applied to this matrix to generate <strong>eigenvectors</strong> and <strong>eigenvalues</strong>. Finally, the <span class="arithmatex">\(k\)</span> eigenvectors with the largest eigenvalues are used to transform the genotypes to a new feature subspace.</p>
+<div class="admonition info">
 <p class="admonition-title">Genetic relationship matrix (GRM)</p>
-<p><img width="500" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/767d940c-0ade-47b9-b53e-8e55cc3e0591"></p>
+<p><img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/767d940c-0ade-47b9-b53e-8e55cc3e0591"></p>
 <p>Citation: Yang, J., Lee, S. H., Goddard, M. E., &amp; Visscher, P. M. (2011). GCTA: a tool for genome-wide complex trait analysis. The American Journal of Human Genetics, 88(1), 76-82.</p>
 </div>
 <div class="admonition example">
@@ -1679,7 +1679,8 @@
 <div class="highlight"><pre><span></span><code>cov = np.array([[6, -3], [-3, 3.5]])
 pts = np.random.multivariate_normal([0, 0], cov, size=800)
 </code></pre></div></p>
-<p><img width="500" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/124b8c3d-0f83-4936-ab08-342efd29660a"></p>
+<p>The red arrow shows the first principal component axis (PC1) and the blue arrow shows the second principal component axis (PC2). The two axes are orthogonal.</p>
+<p><img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/124b8c3d-0f83-4936-ab08-342efd29660a"></p>
 </div>
 <div class="admonition quote">
 <p class="admonition-title">Interpretation of PCs</p>
