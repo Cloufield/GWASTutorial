@@ -97,7 +97,7 @@ text-based format for storing both a nucleotide sequence and its corresponding q
 
 ## Alingment
 ### SAM/BAM
-Sequence Alignment/Map Format is a TAB-delimited text file format consisting of a header section, and an alignment section.
+Sequence Alignment/Map Format is a TAB-delimited text file format consisting of a header section and an alignment section.
 
 !!! example "`.sam`"
     ```
@@ -115,7 +115,7 @@ Sequence Alignment/Map Format is a TAB-delimited text file format consisting of 
 ## Variant and genotype
 
 ### vcf / vcf.gz / vcf.gz.tbi
-VCF is a text file format consisting of meta-information lines, a header line, and then data lines. Each data lien contains information about a variant in the genome (and the genotype information on samples for each variant). 
+VCF is a text file format consisting of meta-information lines, a header line, and then data lines. Each data line contains information about a variant in the genome (and the genotype information on samples for each variant). 
 
 !!! example "`.vcf`"
     ```
@@ -145,6 +145,27 @@ VCF is a text file format consisting of meta-information lines, a header line, a
     20 1234567 microsat1 GTC G,GTCT 50 PASS NS=3;DP=9;AA=G GT:GQ:DP 0/1:35:4 0/2:17:2 1/1:40:3
     ```
     Reference : https://samtools.github.io/hts-specs/VCFv4.2.pdf 
+
+### PLINK format
+
+The figure shows how genotypes are stored in files.
+
+We have 3 parts of information:
+
+1. Individual information
+2. Variant information
+3. Genotype matrix
+
+And there are different ways (format sets) to represent this information in PLINK1.9 and PLINK2:
+
+1. ped / map
+2. fam / bim / bed
+3. psam / pvar / pgen
+
+
+<img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/70dc5c9c-5096-41af-95ee-4f925483a93c">
+
+
 
 ### ped / map 
 `.ped` (PLINK/MERLIN/Haploview text pedigree + genotype table)
