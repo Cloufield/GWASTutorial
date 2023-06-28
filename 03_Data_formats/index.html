@@ -963,6 +963,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#plink-format" class="md-nav__link">
+    PLINK format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ped-map" class="md-nav__link">
     ped / map
   </a>
@@ -1801,6 +1808,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#plink-format" class="md-nav__link">
+    PLINK format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ped-map" class="md-nav__link">
     ped / map
   </a>
@@ -1971,7 +1985,7 @@ Reference: https://en.wikipedia.org/wiki/FASTQ_format</p>
 </div>
 <h2 id="alingment">Alingment</h2>
 <h3 id="sambam">SAM/BAM</h3>
-<p>Sequence Alignment/Map Format is a TAB-delimited text file format consisting of a header section, and an alignment section.</p>
+<p>Sequence Alignment/Map Format is a TAB-delimited text file format consisting of a header section and an alignment section.</p>
 <div class="admonition example">
 <p class="admonition-title"><code>.sam</code></p>
 <p><div class="highlight"><pre><span></span><code>@HD VN:1.6 SO:coordinate
@@ -1987,7 +2001,7 @@ Reference : https://samtools.github.io/hts-specs/SAMv1.pdf</p>
 </div>
 <h2 id="variant-and-genotype">Variant and genotype</h2>
 <h3 id="vcf-vcfgz-vcfgztbi">vcf / vcf.gz / vcf.gz.tbi</h3>
-<p>VCF is a text file format consisting of meta-information lines, a header line, and then data lines. Each data lien contains information about a variant in the genome (and the genotype information on samples for each variant). </p>
+<p>VCF is a text file format consisting of meta-information lines, a header line, and then data lines. Each data line contains information about a variant in the genome (and the genotype information on samples for each variant). </p>
 <div class="admonition example">
 <p class="admonition-title"><code>.vcf</code></p>
 <p><div class="highlight"><pre><span></span><code>##fileformat=VCFv4.2
@@ -2017,6 +2031,21 @@ Reference : https://samtools.github.io/hts-specs/SAMv1.pdf</p>
 </code></pre></div>
 Reference : https://samtools.github.io/hts-specs/VCFv4.2.pdf </p>
 </div>
+<h3 id="plink-format">PLINK format</h3>
+<p>The figure shows how genotypes are stored in files.</p>
+<p>We have 3 parts of information:</p>
+<ol>
+<li>Individual information</li>
+<li>Variant information</li>
+<li>Genotype matrix</li>
+</ol>
+<p>And there are different ways (format sets) to represent this information in PLINK1.9 and PLINK2:</p>
+<ol>
+<li>ped / map</li>
+<li>fam / bim / bed</li>
+<li>psam / pvar / pgen</li>
+</ol>
+<p><img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/70dc5c9c-5096-41af-95ee-4f925483a93c"></p>
 <h3 id="ped-map">ped / map</h3>
 <p><code>.ped</code> (PLINK/MERLIN/Haploview text pedigree + genotype table)</p>
 <p>Original standard text format for sample pedigree information and genotype calls.Contains no header line, and one line per sample with 2V+6 fields where V is the number of variants. The first six fields are the same as those in a .fam file. The seventh and eighth fields are allele calls for the first variant in the .map file ('0' = no call); the 9th and 10th are allele calls for the second variant; and so on.</p>
