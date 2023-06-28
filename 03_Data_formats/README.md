@@ -74,6 +74,11 @@ Tabular data format
     ```
     
 ## Data formats in bioinformatics
+
+A typical workflow for generating genotype data for genome-wide association analysis.
+
+<img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/42c1f84a-ccc4-4fbe-96ab-366127fa5059">
+
 ## Sequence
 ### fasta
 text-based format for representing either nucleotide sequences or amino acid (protein) sequences
