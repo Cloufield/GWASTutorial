@@ -11,17 +11,17 @@
       
       
       
-        <link rel="prev" href="../84_ssh/">
+        <link rel="prev" href="../Phasing/">
       
       
-        <link rel="next" href="../60_awk/">
+        <link rel="next" href="../06_Association_tests/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
-        <title>Job scheduler - GWASTutorial</title>
+        <title>Imputation - GWASTutorial</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#job-scheduling-system" class="md-skip">
+        <a href="#imputation" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Job scheduler
+              Imputation
             
           </span>
         </div>
@@ -192,8 +192,6 @@
         
   
   
-    
-  
 
 
   
@@ -205,7 +203,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../02_Linux_basics/" class="md-tabs__link md-tabs__link--active">
+      <a href="../02_Linux_basics/" class="md-tabs__link">
         Command Line
       </a>
     </li>
@@ -217,13 +215,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../01_Dataset/" class="md-tabs__link">
+      <a href="../01_Dataset/" class="md-tabs__link md-tabs__link--active">
         Pre-GWAS
       </a>
     </li>
@@ -407,16 +407,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
       
       
       
@@ -425,7 +423,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Command Line
@@ -436,16 +434,14 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
       
       
       
@@ -454,7 +450,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_2_1">
           <span class="md-nav__icon md-icon"></span>
           Linux
@@ -507,21 +503,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../85_job_scheduler/" class="md-nav__link">
         Job scheduler
       </a>
-      
     </li>
   
 
@@ -788,14 +774,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
       
@@ -804,7 +792,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Pre-GWAS
@@ -899,11 +887,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Imputation/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Imputation
       </a>
+      
     </li>
   
 
@@ -1540,13 +1538,70 @@
                   
 
 
-<h1 id="job-scheduling-system">Job scheduling system</h1>
-<p>(If needed) Try to use job scheduling system to run a simple script:</p>
-<p>Two of the most commonly used job scheduling systems:</p>
+<h1 id="imputation">Imputation</h1>
+<p>The missing data imputation is not a task specific to genetic study. 
+By comparing the genotyping array (generally 500k–1M markers) to the reference panel (WGSed), missing markers on the array are filled. 
+The tabular data imputation methods could been used to impute the genotype data.
+However, haplotypes are coalescented from the ancestors, and the recombination events during gametogenesis, 
+each individual's haplotype is a mosaic of all haplotypes in a population.
+Given these properties, hidden Markov model (HMM) based methods usually outperform the tabular data based ones.</p>
+<p>This HMM was first described in <a href="https://academic.oup.com/genetics/article/165/4/2213/6050566">Li &amp; Stephens 2003</a>. 
+Here we will not go through tools over the past 20 years. 
+We will introduce the concept and the usage of <a href="https://www.nature.com/articles/ng.3656">Minimac</a>.</p>
+<h1 id="figure-illustration">Figure illustration</h1>
+<p><img width="490" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/84720165/afff6f31-6a97-4ed2-975e-6f795a39b440"></p>
+<p>In the figure, each row in the above panel represents a reference haplotype. The middle panel shows the genotyping array. 
+Genotyped markers are squared and WGS-only markers are circled. The two colors represent the ref and alt allele. 
+You could also think they represent different haplotype fragments. The red triangles indicate the recombination hot spots, 
+which a crossover between the reference haplotypes is more likely to happen.</p>
+<p>Given the genotyped marker, matching probabilities are calculated for all potential paths through reference haplotypes. 
+Then, in this example (the real case is not this simple), we assumed at each recombination hotspot, there is a free recombination. 
+You will see that all paths chained by dark blue match 2 of the 4 genotyped markers. So these paths have equal probability.</p>
+<p>Finally, missing markers are filled with the probability weighted alleles on each path. For the left three circles, 
+two paths are cyan and one path is orange, the imputation result will be 1/3 orange and 2/3 cyan.</p>
+<h1 id="how-to-do-imputation">How to do imputation</h1>
+<p>The simplest way is to use the <a href="https://imputationserver.sph.umich.edu/index.html#!">Michigan</a> or <a href="https://imputation.biodatacatalyst.nhlbi.nih.gov/#!">TOPMed</a> imputation server, 
+if you don't have resources of WGS data.
+Just make your vcf, submit it to the server, and select the favored reference panel. There are built-in phasing, liftover, and QC on the server, 
+but we would strongly suggest to check the data and do these steps by yourself. For example:</p>
 <ul>
-<li><a href="https://slurm.schedmd.com/documentation.html">Slurm Workload Manager</a> : sbatch, scancel, sq, sjobs, shosts </li>
-<li><a href="https://en.wikipedia.org/wiki/Univa_Grid_Engine">Univa Grid Engine</a> : qsub, qdel, qstat </li>
+<li>Liftover between hg19 and hg38, properly flip the alleles, and exclude the ambiguous variants.</li>
+<li>Phasing the data locally and store it. The phased data can be used for imputation against any reference panel.</li>
+<li>Check the ancestry information and select the proper reference panel.</li>
 </ul>
+<p>Another way is to run the job locally. Recent tools are memory and computation efficient, you may run it in a small in-house server or even PC.</p>
+<p>A typical workflow of Minimac is:</p>
+<p>Parameter estimation (this step will create a <a href="https://genome.sph.umich.edu/wiki/M3VCF_Files">m3vcf</a> reference panel file):</p>
+<div class="highlight"><pre><span></span><code>Minimac3<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--refHaps<span class="w"> </span>./phased_reference.vcf.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--processReference<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--prefix<span class="w"> </span>./phased_reference<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--log
+</code></pre></div>
+<p>Imputation:</p>
+<div class="highlight"><pre><span></span><code>minimac4<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--refHaps<span class="w"> </span>./phased_reference.m3vcf<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--haps<span class="w"> </span>./phased_target.vcf.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--prefix<span class="w"> </span>./result<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--format<span class="w"> </span>GT,DS,HDS,GP,SD<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--meta<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--log<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cpus<span class="w"> </span><span class="m">10</span>
+</code></pre></div>
+<p>Details of the <a href="https://genome.sph.umich.edu/wiki/Minimac4_Documentation">options</a>.</p>
+<h1 id="after-imputation">After imputation</h1>
+<p>The output is a vcf file. First, we need to examine the <a href="https://www.biorxiv.org/content/10.1101/2023.05.30.542466v1">imputation quality</a>. 
+It can be a long long story and I will not explain it in detail. Most of the time, 
+when the following criteria meets, </p>
+<ul>
+<li>Genotyping array contains &gt; 500k markers</li>
+<li>Reference panel is 1KG or ancestry matched, or at least the major ancestry in the panel matchs the target</li>
+</ul>
+<p>The standard imputation quality metric, named <code>Rsq</code>, efficiently discriminates the well-imputed variants at a threshold 0.7 
+(may loosen it to 0.3 to allow more variants in the GWAS).</p>
+<h1 id="before-gwas">Before GWAS</h1>
+<p>Three types of genotypes are widely used in GWAS -- best-guess genotype, allelic dosage, and genotype probability. 
+Using Dosage (DS) keeps the dataset smallest while most association test software only require this information.</p>
 
 
 

@@ -11,17 +11,17 @@
       
       
       
-        <link rel="prev" href="../84_ssh/">
+        <link rel="prev" href="../plot_PCA/">
       
       
-        <link rel="next" href="../60_awk/">
+        <link rel="next" href="../Imputation/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
-        <title>Job scheduler - GWASTutorial</title>
+        <title>Phasing - GWASTutorial</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#job-scheduling-system" class="md-skip">
+        <a href="#phasing" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Job scheduler
+              Phasing
             
           </span>
         </div>
@@ -192,8 +192,6 @@
         
   
   
-    
-  
 
 
   
@@ -205,7 +203,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../02_Linux_basics/" class="md-tabs__link md-tabs__link--active">
+      <a href="../02_Linux_basics/" class="md-tabs__link">
         Command Line
       </a>
     </li>
@@ -217,13 +215,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../01_Dataset/" class="md-tabs__link">
+      <a href="../01_Dataset/" class="md-tabs__link md-tabs__link--active">
         Pre-GWAS
       </a>
     </li>
@@ -407,16 +407,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
       
       
       
@@ -425,7 +423,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Command Line
@@ -436,16 +434,14 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
       
       
       
@@ -454,7 +450,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_2_1">
           <span class="md-nav__icon md-icon"></span>
           Linux
@@ -507,21 +503,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../85_job_scheduler/" class="md-nav__link">
         Job scheduler
       </a>
-      
     </li>
   
 
@@ -788,14 +774,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
       
@@ -804,7 +792,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Pre-GWAS
@@ -885,11 +873,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Phasing/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Phasing
       </a>
+      
     </li>
   
 
@@ -1540,13 +1538,36 @@
                   
 
 
-<h1 id="job-scheduling-system">Job scheduling system</h1>
-<p>(If needed) Try to use job scheduling system to run a simple script:</p>
-<p>Two of the most commonly used job scheduling systems:</p>
+<h1 id="phasing">Phasing</h1>
+<p>Human genome is diploid. Distribution of variants between homologous chromosomes can affect the interpretation of genotype data, such as allele specific expression, 
+context-informed annotation, loss-of-function compound heterozygous events. </p>
+<p><img width="270" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/84720165/7e18a7e1-0c17-4cce-9e74-d387294ba702"></p>
+<p>( <a href="https://www.biorxiv.org/content/10.1101/2022.10.19.512867v2.full">SHAPEIT5</a> )</p>
+<p><em>In the above illustration, when LoF variants are on both copies of a gene, the gene is thought knocked out</em></p>
+<p>Trio data and long read sequencing can solve the haplotyping problem. That is not always possible. Statistical phasing is based on the <a href="">Li &amp; Stephens</a> Markov model. 
+The haploid version of this model (see Imputation) is easier to understand. Because the maternal and paternal haplotypes are independent, 
+unphased genotype could be constructed by the addition of two haplotypes.</p>
+<p>Recent methods had incopoorates long IBD sharing, local haplotypes, etc, to make it tractable for large datasets. 
+You could read the following methods if you are interested.</p>
 <ul>
-<li><a href="https://slurm.schedmd.com/documentation.html">Slurm Workload Manager</a> : sbatch, scancel, sq, sjobs, shosts </li>
-<li><a href="https://en.wikipedia.org/wiki/Univa_Grid_Engine">Univa Grid Engine</a> : qsub, qdel, qstat </li>
+<li><a href="https://linkinghub.elsevier.com/retrieve/pii/S0002929707633412">PHASE</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/full/10.1002/gepi.20533">MaCH</a></li>
+<li><a href="https://www.nature.com/articles/ng.3679">EAGLE2</a></li>
+<li><a href="https://www.biorxiv.org/content/10.1101/2022.10.19.512867v2.full">SHAPEIT5</a></li>
+<li><a href="http://www.cell.com/article/S0002929709000123/fulltext">BEAGLE3</a></li>
 </ul>
+<h1 id="how-to-do-phasing">How to do phasing</h1>
+<p>In most of the cases, phasing is just a pre-step of imputation, and we do not care about how the phasing goes. 
+But there are several considerations, like reference-based or reference-free, large and small sample size, rare variants cutoff. 
+There is no single method that could best fit all cases.</p>
+<p>Here I show one example using EAGLE2.</p>
+<div class="highlight"><pre><span></span><code>eagle<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--vcf<span class="o">=</span>target.vcf.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--geneticMapFile<span class="o">=</span>genetic_map_hg19_withX.txt.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--chrom<span class="o">=</span><span class="m">19</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--outPrefix<span class="o">=</span>target.eagle<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--numThreads<span class="o">=</span><span class="m">10</span>
+</code></pre></div>
 
 
 
