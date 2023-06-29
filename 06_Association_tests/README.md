@@ -297,6 +297,7 @@ GWAS-SSF consists of :
 2. a ccompanying meta data file describing the study (such as sample ancestry, gentyping method, md5sum and so forth)
 
 !!! "Schematic representation of GWAS-SSF data file"
+    <img width="800" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/9c6526ec-0742-426a-83e5-8134e37078c2">
 
 !!! quote GWAS-SSF
     Hayhurst, J., Buniello, A., Harris, L., Mosaku, A., Chang, C., Gignoux, C. R., ... & Barroso, I. (2022). A community driven GWAS summary statistics standard. bioRxiv, 2022-07.
