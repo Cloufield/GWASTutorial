@@ -3,12 +3,12 @@
 Human genome is diploid. Distribution of variants between homologous chromosomes can affect the interpretation of genotype data, such as allele specific expression, 
 context-informed annotation, loss-of-function compound heterozygous events. 
 
-<img width="270" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/84720165/7e18a7e1-0c17-4cce-9e74-d387294ba702">
+!!! example
+    <img width="270" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/84720165/7e18a7e1-0c17-4cce-9e74-d387294ba702">
 
-( [SHAPEIT5](https://www.biorxiv.org/content/10.1101/2022.10.19.512867v2.full) )
+    ( [SHAPEIT5](https://www.biorxiv.org/content/10.1101/2022.10.19.512867v2.full) )
 
-*In the above illustration, when LoF variants are on both copies of a gene, the gene is thought knocked out*
-
+    *In the above illustration, when LoF variants are on both copies of a gene, the gene is thought knocked out*
 
 Trio data and long read sequencing can solve the haplotyping problem. That is not always possible. Statistical phasing is based on the [Li & Stephens]() Markov model. 
 The haploid version of this model (see Imputation) is easier to understand. Because the maternal and paternal haplotypes are independent, 
@@ -24,7 +24,7 @@ You could read the following methods if you are interested.
 - [BEAGLE3](http://www.cell.com/article/S0002929709000123/fulltext)
 
 
-# How to do phasing
+## How to do phasing
 
 
 In most of the cases, phasing is just a pre-step of imputation, and we do not care about how the phasing goes. 
