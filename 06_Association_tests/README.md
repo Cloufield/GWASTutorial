@@ -1,5 +1,9 @@
 # Association test
 
+## Overview
+
+<img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/1e4ab229-6f5a-44a0-9850-81244944b969">
+
 ## Genetic models
 
 To test the association between a phenotype and genotypes, we need to group the genotypes based on genetic models.
