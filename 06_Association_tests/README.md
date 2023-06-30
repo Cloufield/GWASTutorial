@@ -303,17 +303,17 @@ Please check [Visualization using gwaslab](https://cloufield.github.io/GWASTutor
 
 ### GWAS-SSF
 
-To standardized the format of GWAS summary statistics for sharing, GWAS-SSF format was proposed in 2022. This format is now used as the stadard format for GWAS Catalog.
+To standardize the format of GWAS summary statistics for sharing, GWAS-SSF format was proposed in 2022. This format is now used as the standard format for GWAS Catalog.
 
 GWAS-SSF consists of :
 
 1. a tab-separated data file with well-defined fields (shown in the following figure)
-2. a ccompanying meta data file describing the study (such as sample ancestry, gentyping method, md5sum and so forth)
+2. an accompanying metadata file describing the study (such as sample ancestry, genotyping method, md5sum, and so forth)
 
-!!! "Schematic representation of GWAS-SSF data file"
+!!! example "Schematic representation of GWAS-SSF data file"
     <img width="800" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/9c6526ec-0742-426a-83e5-8134e37078c2">
 
-!!! quote GWAS-SSF
+!!! quote "GWAS-SSF"
     Hayhurst, J., Buniello, A., Harris, L., Mosaku, A., Chang, C., Gignoux, C. R., ... & Barroso, I. (2022). A community driven GWAS summary statistics standard. bioRxiv, 2022-07.
 
 For details, please check:
