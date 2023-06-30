@@ -27,7 +27,7 @@ There are three basic genetic models:
     |Dominant model|0|1|1|
     |Recessive model|0|0|1|
 
-!!! contingency table and non-parametric tests 
+!!! info "Contingency table and non-parametric tests" 
     <img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/f2b0f941-9405-4ebe-8e89-aef608eb9bb1">
 
 ## Association testing basics
@@ -43,7 +43,7 @@ $$
 - $X$ and $\beta_X$ are covariates and their effects.
 - $e$ is the error term.
 
-!!! info "Linear regression"
+!!! info "Interpretation of linear regression"
     <img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/d5092f82-c5b5-4f08-873e-c2942955e634">
 
 
