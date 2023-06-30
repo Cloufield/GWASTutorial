@@ -898,9 +898,61 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Imputation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Imputation
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#figure-illustration" class="md-nav__link">
+    Figure illustration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-do-imputation" class="md-nav__link">
+    How to do imputation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#after-imputation" class="md-nav__link">
+    After imputation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-gwas" class="md-nav__link">
+    Before GWAS
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1525,6 +1577,42 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#figure-illustration" class="md-nav__link">
+    Figure illustration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-do-imputation" class="md-nav__link">
+    How to do imputation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#after-imputation" class="md-nav__link">
+    After imputation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-gwas" class="md-nav__link">
+    Before GWAS
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1539,34 +1627,34 @@
 
 
 <h1 id="imputation">Imputation</h1>
-<p>The missing data imputation is not a task specific to genetic study. 
+<p>The missing data imputation is not a task specific to genetic studies. 
 By comparing the genotyping array (generally 500k–1M markers) to the reference panel (WGSed), missing markers on the array are filled. 
-The tabular data imputation methods could been used to impute the genotype data.
-However, haplotypes are coalescented from the ancestors, and the recombination events during gametogenesis, 
+The tabular data imputation methods could be used to impute the genotype data.
+However, haplotypes are coalesced from the ancestors, and the recombination events during gametogenesis, 
 each individual's haplotype is a mosaic of all haplotypes in a population.
-Given these properties, hidden Markov model (HMM) based methods usually outperform the tabular data based ones.</p>
+Given these properties, hidden Markov model (HMM) based methods usually outperform tabular data-based ones.</p>
 <p>This HMM was first described in <a href="https://academic.oup.com/genetics/article/165/4/2213/6050566">Li &amp; Stephens 2003</a>. 
 Here we will not go through tools over the past 20 years. 
 We will introduce the concept and the usage of <a href="https://www.nature.com/articles/ng.3656">Minimac</a>.</p>
-<h1 id="figure-illustration">Figure illustration</h1>
+<h2 id="figure-illustration">Figure illustration</h2>
 <p><img width="490" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/84720165/afff6f31-6a97-4ed2-975e-6f795a39b440"></p>
 <p>In the figure, each row in the above panel represents a reference haplotype. The middle panel shows the genotyping array. 
-Genotyped markers are squared and WGS-only markers are circled. The two colors represent the ref and alt allele. 
+Genotyped markers are squared and WGS-only markers are circled. The two colors represent the ref and alt alleles. 
 You could also think they represent different haplotype fragments. The red triangles indicate the recombination hot spots, 
 which a crossover between the reference haplotypes is more likely to happen.</p>
 <p>Given the genotyped marker, matching probabilities are calculated for all potential paths through reference haplotypes. 
 Then, in this example (the real case is not this simple), we assumed at each recombination hotspot, there is a free recombination. 
 You will see that all paths chained by dark blue match 2 of the 4 genotyped markers. So these paths have equal probability.</p>
-<p>Finally, missing markers are filled with the probability weighted alleles on each path. For the left three circles, 
+<p>Finally, missing markers are filled with the probability-weighted alleles on each path. For the left three circles, 
 two paths are cyan and one path is orange, the imputation result will be 1/3 orange and 2/3 cyan.</p>
-<h1 id="how-to-do-imputation">How to do imputation</h1>
+<h2 id="how-to-do-imputation">How to do imputation</h2>
 <p>The simplest way is to use the <a href="https://imputationserver.sph.umich.edu/index.html#!">Michigan</a> or <a href="https://imputation.biodatacatalyst.nhlbi.nih.gov/#!">TOPMed</a> imputation server, 
 if you don't have resources of WGS data.
 Just make your vcf, submit it to the server, and select the favored reference panel. There are built-in phasing, liftover, and QC on the server, 
-but we would strongly suggest to check the data and do these steps by yourself. For example:</p>
+but we would strongly suggest checking the data and doing these steps by yourself. For example:</p>
 <ul>
 <li>Liftover between hg19 and hg38, properly flip the alleles, and exclude the ambiguous variants.</li>
-<li>Phasing the data locally and store it. The phased data can be used for imputation against any reference panel.</li>
+<li>Phasing the data locally and storing it. The phased data can be used for imputation against any reference panel.</li>
 <li>Check the ancestry information and select the proper reference panel.</li>
 </ul>
 <p>Another way is to run the job locally. Recent tools are memory and computation efficient, you may run it in a small in-house server or even PC.</p>
@@ -1589,19 +1677,19 @@ but we would strongly suggest to check the data and do these steps by yourself. 
 <span class="w">  </span>--cpus<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 <p>Details of the <a href="https://genome.sph.umich.edu/wiki/Minimac4_Documentation">options</a>.</p>
-<h1 id="after-imputation">After imputation</h1>
+<h2 id="after-imputation">After imputation</h2>
 <p>The output is a vcf file. First, we need to examine the <a href="https://www.biorxiv.org/content/10.1101/2023.05.30.542466v1">imputation quality</a>. 
 It can be a long long story and I will not explain it in detail. Most of the time, 
-when the following criteria meets, </p>
+when the following criteria meet, </p>
 <ul>
 <li>Genotyping array contains &gt; 500k markers</li>
-<li>Reference panel is 1KG or ancestry matched, or at least the major ancestry in the panel matchs the target</li>
+<li>Reference panel is 1KG or ancestry matched, or at least the major ancestry in the panel matches the target</li>
 </ul>
 <p>The standard imputation quality metric, named <code>Rsq</code>, efficiently discriminates the well-imputed variants at a threshold 0.7 
 (may loosen it to 0.3 to allow more variants in the GWAS).</p>
-<h1 id="before-gwas">Before GWAS</h1>
+<h2 id="before-gwas">Before GWAS</h2>
 <p>Three types of genotypes are widely used in GWAS -- best-guess genotype, allelic dosage, and genotype probability. 
-Using Dosage (DS) keeps the dataset smallest while most association test software only require this information.</p>
+Using Dosage (DS) keeps the dataset smallest while most association test software only requires this information.</p>
 
 
 

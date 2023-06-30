@@ -884,9 +884,40 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Phasing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Phasing
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-do-phasing" class="md-nav__link">
+    How to do phasing
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1525,6 +1556,21 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-do-phasing" class="md-nav__link">
+    How to do phasing
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1541,9 +1587,12 @@
 <h1 id="phasing">Phasing</h1>
 <p>Human genome is diploid. Distribution of variants between homologous chromosomes can affect the interpretation of genotype data, such as allele specific expression, 
 context-informed annotation, loss-of-function compound heterozygous events. </p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
 <p><img width="270" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/84720165/7e18a7e1-0c17-4cce-9e74-d387294ba702"></p>
 <p>( <a href="https://www.biorxiv.org/content/10.1101/2022.10.19.512867v2.full">SHAPEIT5</a> )</p>
 <p><em>In the above illustration, when LoF variants are on both copies of a gene, the gene is thought knocked out</em></p>
+</div>
 <p>Trio data and long read sequencing can solve the haplotyping problem. That is not always possible. Statistical phasing is based on the <a href="">Li &amp; Stephens</a> Markov model. 
 The haploid version of this model (see Imputation) is easier to understand. Because the maternal and paternal haplotypes are independent, 
 unphased genotype could be constructed by the addition of two haplotypes.</p>
@@ -1556,7 +1605,7 @@ You could read the following methods if you are interested.</p>
 <li><a href="https://www.biorxiv.org/content/10.1101/2022.10.19.512867v2.full">SHAPEIT5</a></li>
 <li><a href="http://www.cell.com/article/S0002929709000123/fulltext">BEAGLE3</a></li>
 </ul>
-<h1 id="how-to-do-phasing">How to do phasing</h1>
+<h2 id="how-to-do-phasing">How to do phasing</h2>
 <p>In most of the cases, phasing is just a pre-step of imputation, and we do not care about how the phasing goes. 
 But there are several considerations, like reference-based or reference-free, large and small sample size, rare variants cutoff. 
 There is no single method that could best fit all cases.</p>
