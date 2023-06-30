@@ -30,7 +30,6 @@ There are three basic genetic models:
 !!! contingency table and non-parametric tests 
     <img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/f2b0f941-9405-4ebe-8e89-aef608eb9bb1">
 
-
 ## Association testing basics
 
 For quantitative traits, we can employ a simple linear regression model to test associations:
@@ -43,6 +42,9 @@ $$
 - $\beta_G$ is the effect size for variants.
 - $X$ and $\beta_X$ are covariates and their effects.
 - $e$ is the error term.
+
+!!! info "Linear regression"
+    <img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/d5092f82-c5b5-4f08-873e-c2942955e634">
 
 
 For binary traits, we can utilize the logistic regression model to test associations:
