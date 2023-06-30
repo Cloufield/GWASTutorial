@@ -14,12 +14,12 @@ There are three basic genetic models:
 - Dominant model (DOM)
 - Recessive model (REC)
 
-!!! example "Three genetic models"
+!!! info "Three genetic models"
     For example, suppose we have a biallelic SNP whose reference allele is A and alternative allele is G.
     
     There are three possible genotypes for this SNP: AA, AG, and GG.
     
-    The table shows how we group different genotypes under each genetic model.
+    This table shows how we group different genotypes under each genetic model for association tests using linear or logistic regressions.
     
     |Genetic models|AA|AG|GG|
     |-|-|-|-|
