@@ -48,6 +48,9 @@ $$
 logit(p) = G\beta_G + X\beta_X + e
 $$
 
+!!! info "Linear regression and logistic regression"
+    <img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/1b902ad6-db06-44f7-9215-43b13a1a4fea">
+
 ## File Preparation
 
 To perform genome-wide association tests, usually we need the following files:
