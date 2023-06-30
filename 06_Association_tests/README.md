@@ -28,6 +28,8 @@ There are three basic genetic models:
     |Recessive model|0|0|1|
 
 !!! info "Contingency table and non-parametric tests" 
+    A simple way to test association is to use the 2x2 or 2x3 contingency table. For dominant and recessive models,  Chi-square tests are performed using the 2x2 table. For the additive model, Cochran-Armitage trend tests are performed for the 2x3 table. However, the non-parametric tests do not adjust for the bias caused by other covariates like sex, age and so forth.
+    
     <img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/f2b0f941-9405-4ebe-8e89-aef608eb9bb1">
 
 ## Association testing basics
