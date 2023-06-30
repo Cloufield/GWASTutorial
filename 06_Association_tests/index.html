@@ -972,6 +972,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#genetic-models" class="md-nav__link">
     Genetic models
   </a>
@@ -1639,6 +1646,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#genetic-models" class="md-nav__link">
     Genetic models
   </a>
@@ -1737,6 +1751,8 @@
 
 
 <h1 id="association-test">Association test</h1>
+<h2 id="overview">Overview</h2>
+<p><img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/1e4ab229-6f5a-44a0-9850-81244944b969"></p>
 <h2 id="genetic-models">Genetic models</h2>
 <p>To test the association between a phenotype and genotypes, we need to group the genotypes based on genetic models.</p>
 <p>There are three basic genetic models:</p>
@@ -1781,6 +1797,10 @@
 </tbody>
 </table>
 </div>
+<div class="admonition contingency table and non-parametric tests">
+<p class="admonition-title">Contingency</p>
+<p><img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/f2b0f941-9405-4ebe-8e89-aef608eb9bb1"></p>
+</div>
 <h2 id="association-testing-basics">Association testing basics</h2>
 <p>For quantitative traits, we can employ a simple linear regression model to test associations:</p>
 <div class="arithmatex">\[ 
@@ -1792,10 +1812,18 @@ y = G\beta_G + X\beta_X + e
 <li><span class="arithmatex">\(X\)</span> and <span class="arithmatex">\(\beta_X\)</span> are covariates and their effects.</li>
 <li><span class="arithmatex">\(e\)</span> is the error term.</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">Linear regression</p>
+<p><img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/d5092f82-c5b5-4f08-873e-c2942955e634"></p>
+</div>
 <p>For binary traits, we can utilize the logistic regression model to test associations:</p>
 <div class="arithmatex">\[ 
 logit(p) = G\beta_G + X\beta_X + e
 \]</div>
+<div class="admonition info">
+<p class="admonition-title">Linear regression and logistic regression</p>
+<p><img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/1b902ad6-db06-44f7-9215-43b13a1a4fea"></p>
+</div>
 <h2 id="file-preparation">File Preparation</h2>
 <p>To perform genome-wide association tests, usually we need the following files:</p>
 <ul>
