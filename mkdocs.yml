@@ -73,6 +73,7 @@ nav:
           - "TwoSampleMR Tutorial" : TwoSampleMR.ipynb
        - "Conditional analysis" : 18_Conditioning_analysis.md
        - "Colocalization" : 17_colocalization.md
+       - "TWAS by FUSION (not finished)": 21_twas.md
     - Topics :
        - "Linkage Disequilibrium (LD)" : 19_ld.md
        - "Heritability Concepts" : 13_heritability.md
