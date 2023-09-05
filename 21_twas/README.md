@@ -122,6 +122,19 @@ wget https://data.broadinstitute.org/alkesgroup/FUSION/WGT/GTEx.Whole_Blood.tar.
 tar xjf GTEx.Whole_Blood.tar.bz2
 ```
 
+!!! info "WEIGHTS"
+
+
+!!! info "files in each WEIGHTS folder"
+    RDat weight files for each gene in a tissue type
+    ```
+    GTEx.Whole_Blood.ENSG00000002549.8.LAP3.wgt.RDat         GTEx.Whole_Blood.ENSG00000166394.10.CYB5R2.wgt.RDat
+    GTEx.Whole_Blood.ENSG00000002822.11.MAD1L1.wgt.RDat      GTEx.Whole_Blood.ENSG00000166435.11.XRRA1.wgt.RDat
+    GTEx.Whole_Blood.ENSG00000002919.10.SNX11.wgt.RDat       GTEx.Whole_Blood.ENSG00000166436.11.TRIM66.wgt.RDat
+    GTEx.Whole_Blood.ENSG00000002933.3.TMEM176A.wgt.RDat     GTEx.Whole_Blood.ENSG00000166444.13.ST5.wgt.RDat
+    GTEx.Whole_Blood.ENSG00000003137.4.CYP26B1.wgt.RDat      GTEx.Whole_Blood.ENSG00000166471.6.TMEM41B.wgt.RDat
+    ...
+    ``` 
 
 Expression imputation
 ```
@@ -151,4 +164,25 @@ NA	../WEIGHTS//GTEx.Whole_Blood/GTEx.Whole_Blood.ENSG00000230513.1.THAP7-AS1.wgt
 
 ```
 
+Descriptions of the output (cited from http://gusevlab.org/projects/fusion/ )
 
+|Colume number	|Column	header|Value	|Usage|
+|-|-|-|-|
+|1	|FILE|	…	|Full path to the reference weight file used|
+|2	|ID|	FAM109B	|Feature/gene identifier, taken from --weights file|
+|3	|CHR|	22	|Chromosome|
+|4	|P0|	42470255	|Gene start (from --weights)|
+|5	|P1|	42475445	|Gene end (from --weights)|
+|6	|HSQ|	0.0447	|Heritability of the gene|
+|7	|BEST.GWAS.ID|	rs1023500	|rsID of the most significant GWAS SNP in locus|
+|8	|BEST.GWAS.Z|	-5.94	|Z-score of the most significant GWAS SNP in locus|
+|9	|EQTL.ID|	rs5758566	|rsID of the best eQTL in the locus|
+|10	|EQTL.R2|	0.058680	|cross-validation R2 of the best eQTL in the locus|
+|11	|EQTL.Z|	-5.16	|Z-score of the best eQTL in the locus|
+|12	|EQTL.GWAS.Z|	-5.0835	|GWAS Z-score for this eQTL|
+|13	|NSNP	|327	|Number of SNPs in the locus|
+|14	|MODEL	|lasso	|Best performing model|
+|15	|MODELCV.R2	|0.058870	|cross-validation R2 of the best performing model|
+|16	|MODELCV.PV	|3.94e-06	|cross-validation P-value of the best performing model|
+|17	|TWAS.Z	|5.1100	|TWAS Z-score (our primary statistic of interest)|
+|18	|TWAS.P	|3.22e-07	|TWAS P-value|
