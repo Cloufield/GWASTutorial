@@ -90,6 +90,9 @@ install.packages('plink2R-master/plink2R/',repos=NULL)
 
 ### Example
 
+!!! info "FUSION framework"
+    <img width="800" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/9a98c0bb-a302-41e8-8ede-a1a39636fa0b">
+
 Input:
 
 1. GWAS summary statistics (in LDSC format)
