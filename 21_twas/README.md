@@ -9,9 +9,15 @@ Most variants identified in GWAS are located in regulatory regions, and these ge
 
 TWAS is a method to identify significant expression-trait associations using expression imputation from genetic data or summary statistics. 
 
+- Individual-level TWAS: uses individual-level genotype and phenotype for expression prediction and association test (e.g. PrediXcan)
+- Summary-level TWAS: uses only GWAS summary statistics for expression prediction and association test (e.g. FUSION, PrediXcan2) 
+
+!!! info "GWAS and TWAS"
+    <img width="800" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/f3344916-1ad2-4ad6-b21e-a9b10813110e">
+
 ## FUSION
 
-In this tutorial, we will introduce FUSION, which is one of the most commonly used tools for performing transcriptome-wide association studies (TWAS). 
+In this tutorial, we will introduce FUSION, which is one of the most commonly used tools for performing transcriptome-wide association studies (TWAS) using summary-level data. 
 
 url : http://gusevlab.org/projects/fusion/
 
