@@ -3,7 +3,11 @@
 
 ## Background
 
-Most variants identified in GWAS are located in regulatory regions, and these genetic variants could potentially affect complex traits through gene expression. However, due to the limitation of samples and high cost, it is difficult to measure gene expression at a large scale. Consequently, many expression-trait associations have not been detected, especially for those with small effect sizes. To address these issues, alternative approaches have been proposed and transcriptome-wide association study (TWAS) has become a common and easy-to-perform approach to identify genes whose expression is significantly associated with complex traits in individuals without directly measured expression levels.     
+Most variants identified in GWAS are located in regulatory regions, and these genetic variants could potentially affect complex traits through gene expression. 
+
+However, due to the **limitation of samples and high cost**, it is difficult to measure gene expression at a large scale. Consequently, many expression-trait associations have not been detected, especially for those with small effect sizes. 
+
+To address these issues, alternative approaches have been proposed and **transcriptome-wide association study (TWAS)** has become a common and easy-to-perform approach to **identify genes whose expression is significantly associated with complex traits in individuals without directly measured expression levels**.     
 
 !!! info "GWAS and TWAS"
     <img width="800" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/37ab9489-50bc-41f3-8a82-341a291b428e">
@@ -13,7 +17,7 @@ Most variants identified in GWAS are located in regulatory regions, and these ge
 TWAS is a method to identify significant expression-trait associations using expression imputation from genetic data or summary statistics. 
 
 - Individual-level TWAS: uses individual-level genotype and phenotype for expression prediction and association test (e.g. PrediXcan)
-- Summary-level TWAS: uses only GWAS summary statistics for expression prediction and association test (e.g. FUSION, PrediXcan2) 
+- Summary-level TWAS: uses only GWAS summary statistics for expression prediction and association test (e.g. FUSION, S-PrediXcan) 
 
 !!! info "Individual-level and summary-level TWAS"
     <img width="800" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/0880f9b0-4c22-48b2-86ac-2a78b8c4b41d">
@@ -23,7 +27,7 @@ TWAS is a method to identify significant expression-trait associations using exp
 
 In this tutorial, we will introduce FUSION, which is one of the most commonly used tools for performing transcriptome-wide association studies (TWAS) using summary-level data. 
 
-url : http://gusevlab.org/projects/fusion/
+url : [http://gusevlab.org/projects/fusion/](http://gusevlab.org/projects/fusion/)
 
 FUSION trains predictive models of the genetic component of a functional/molecular phenotype and predicts and tests that component for association with disease using GWAS summary statistics. The goal is to identify associations between a GWAS phenotype and a functional phenotype that was only measured in reference data. (http://gusevlab.org/projects/fusion/)
 
@@ -34,34 +38,36 @@ FUSION trains predictive models of the genetic component of a functional/molecul
 
 ImpG-Summary algorithm was extended to impute the Z scores for the cis genetic component of expression.
 
-$Z$ : a vector of standardized  effect  sizes  (z  scores)  of SNPs for the target trait at a given locus
+!!! info "FUSION statistical model" 
 
-We impute the Z score of the expression and trait as a linear combination of elements of $Z$ with weights $W$.
-
-$$
-W = \Sigma_{e,s}\Sigma_{s,s}^{-1}
-$$
-
-- $\Sigma_{e,s}$ : covariance among all SNPs (LD)
-
-- $\Sigma_{s,s}$ : covariance matrix between all SNPs and gene expression
-
-Both $\Sigma_{e,s}$ and $\Sigma_{s,s}$ are estimated from reference datsets.
-
-$$
-Z \sim N(0, \Sigma_{s,s} )
-$$
-
-The variance of $WZ$ (imputed z score of expression and trait) 
-$$
-Var(WZ) = W\Sigma_{s,s}W^t 
-$$
-
-The imputation Z score can be obtained by:
-
-$$
-{{WZ}\over{W\Sigma_{s,s}W^t}^{1/2}}
-$$
+    $Z$ : a vector of standardized  effect  sizes  (z  scores)  of SNPs for the target trait at a given locus
+    
+    We impute the Z score of the expression and trait as a linear combination of elements of $Z$ with weights $W$.
+    
+    $$
+    W = \Sigma_{e,s}\Sigma_{s,s}^{-1}
+    $$
+    
+    - $\Sigma_{e,s}$ : covariance among all SNPs (LD)
+    
+    - $\Sigma_{s,s}$ : covariance matrix between all SNPs and gene expression
+    
+    Both $\Sigma_{e,s}$ and $\Sigma_{s,s}$ are estimated from reference datsets.
+    
+    $$
+    Z \sim N(0, \Sigma_{s,s} )
+    $$
+    
+    The variance of $WZ$ (imputed z score of expression and trait) 
+    $$
+    Var(WZ) = W\Sigma_{s,s}W^t 
+    $$
+    
+    The imputation Z score can be obtained by:
+    
+    $$
+    {{WZ}\over{W\Sigma_{s,s}W^t}^{1/2}}
+    $$
 
 !!! quote "ImpG-Summary algorithm"
     Pasaniuc, B., Zaitlen, N., Shi, H., Bhatia, G., Gusev, A., Pickrell, J., ... & Price, A. L. (2014). Fast and accurate imputation of summary statistics enhances evidence of functional enrichment. Bioinformatics, 30(20), 2906-2914.
@@ -199,3 +205,11 @@ Descriptions of the output (cited from http://gusevlab.org/projects/fusion/ )
 |16	|MODELCV.PV	|3.94e-06	|cross-validation P-value of the best performing model|
 |17	|TWAS.Z	|5.1100	|TWAS Z-score (our primary statistic of interest)|
 |18	|TWAS.P	|3.22e-07	|TWAS P-value|
+
+
+## Reference
+
+- **(FUSION)** Gusev, A., Ko, A., Shi, H., Bhatia, G., Chung, W., Penninx, B. W., ... & Pasaniuc, B. (2016). Integrative approaches for large-scale transcriptome-wide association studies. Nature genetics, 48(3), 245-252.
+- **(review of TWAS)** Wainberg, M., Sinnott-Armstrong, N., Mancuso, N., Barbeira, A. N., Knowles, D. A., Golan, D., ... & Kundaje, A. (2019). Opportunities and challenges for transcriptome-wide association studies. Nature genetics, 51(4), 592-599.
+- **(PrediXcan)** Gamazon, E. R., Wheeler, H. E., Shah, K. P., Mozaffari, S. V., Aquino-Michaels, K., Carroll, R. J., ... & Im, H. K. (2015). A gene-based association method for mapping traits using reference transcriptome data. Nature genetics, 47(9), 1091-1098.
+- **(S-PrediXcan)** Barbeira, A. N., Dickinson, S. P., Bonazzola, R., Zheng, J., Wheeler, H. E., Torres, J. M., ... & Genome Browser Data Integration & Visualization—EBI Flicek Paul 108 Juettemann Thomas 108 Ruffier Magali 108 Sheppard Dan 108 Taylor Kieron 108 Trevanion Stephen J. 108 Zerbino Daniel R. 108. (2018). Exploring the phenotypic consequences of tissue specific gene expression variation inferred from GWAS summary statistics. Nature communications, 9(1), 1825.
