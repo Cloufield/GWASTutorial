@@ -1685,8 +1685,16 @@
 <p>Most variants identified in GWAS are located in regulatory regions, and these genetic variants could potentially affect complex traits through gene expression. However, due to the limitation of samples and high cost, it is difficult to measure gene expression at a large scale. Consequently, many expression-trait associations have not been detected, especially for those with small effect sizes. To address these issues, alternative approaches have been proposed and transcriptome-wide association study (TWAS) has become a common and easy-to-perform approach to identify genes whose expression is significantly associated with complex traits in individuals without directly measured expression levels.     </p>
 <h2 id="definition">Definition</h2>
 <p>TWAS is a method to identify significant expression-trait associations using expression imputation from genetic data or summary statistics. </p>
+<ul>
+<li>Individual-level TWAS: uses individual-level genotype and phenotype for expression prediction and association test (e.g. PrediXcan)</li>
+<li>Summary-level TWAS: uses only GWAS summary statistics for expression prediction and association test (e.g. FUSION, PrediXcan2) </li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">GWAS and TWAS</p>
+<p><img width="800" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/f3344916-1ad2-4ad6-b21e-a9b10813110e"></p>
+</div>
 <h2 id="fusion">FUSION</h2>
-<p>In this tutorial, we will introduce FUSION, which is one of the most commonly used tools for performing transcriptome-wide association studies (TWAS). </p>
+<p>In this tutorial, we will introduce FUSION, which is one of the most commonly used tools for performing transcriptome-wide association studies (TWAS) using summary-level data. </p>
 <p>url : http://gusevlab.org/projects/fusion/</p>
 <p>FUSION trains predictive models of the genetic component of a functional/molecular phenotype and predicts and tests that component for association with disease using GWAS summary statistics. The goal is to identify associations between a GWAS phenotype and a functional phenotype that was only measured in reference data. (http://gusevlab.org/projects/fusion/)</p>
 <div class="admonition quote">
