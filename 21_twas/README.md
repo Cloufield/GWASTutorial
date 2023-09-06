@@ -5,6 +5,9 @@
 
 Most variants identified in GWAS are located in regulatory regions, and these genetic variants could potentially affect complex traits through gene expression. However, due to the limitation of samples and high cost, it is difficult to measure gene expression at a large scale. Consequently, many expression-trait associations have not been detected, especially for those with small effect sizes. To address these issues, alternative approaches have been proposed and transcriptome-wide association study (TWAS) has become a common and easy-to-perform approach to identify genes whose expression is significantly associated with complex traits in individuals without directly measured expression levels.     
 
+!!! info "GWAS and TWAS"
+    <img width="800" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/37ab9489-50bc-41f3-8a82-341a291b428e">
+
 ## Definition
 
 TWAS is a method to identify significant expression-trait associations using expression imputation from genetic data or summary statistics. 
@@ -12,8 +15,9 @@ TWAS is a method to identify significant expression-trait associations using exp
 - Individual-level TWAS: uses individual-level genotype and phenotype for expression prediction and association test (e.g. PrediXcan)
 - Summary-level TWAS: uses only GWAS summary statistics for expression prediction and association test (e.g. FUSION, PrediXcan2) 
 
-!!! info "GWAS and TWAS"
-    <img width="800" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/f3344916-1ad2-4ad6-b21e-a9b10813110e">
+!!! info "Individual-level and summary-level TWAS"
+    <img width="800" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/0880f9b0-4c22-48b2-86ac-2a78b8c4b41d">
+
 
 ## FUSION
 
