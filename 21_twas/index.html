@@ -1408,6 +1408,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1665,6 +1672,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1682,7 +1696,9 @@
 
 <h1 id="twas">TWAS</h1>
 <h2 id="background">Background</h2>
-<p>Most variants identified in GWAS are located in regulatory regions, and these genetic variants could potentially affect complex traits through gene expression. However, due to the limitation of samples and high cost, it is difficult to measure gene expression at a large scale. Consequently, many expression-trait associations have not been detected, especially for those with small effect sizes. To address these issues, alternative approaches have been proposed and transcriptome-wide association study (TWAS) has become a common and easy-to-perform approach to identify genes whose expression is significantly associated with complex traits in individuals without directly measured expression levels.     </p>
+<p>Most variants identified in GWAS are located in regulatory regions, and these genetic variants could potentially affect complex traits through gene expression. </p>
+<p>However, due to the <strong>limitation of samples and high cost</strong>, it is difficult to measure gene expression at a large scale. Consequently, many expression-trait associations have not been detected, especially for those with small effect sizes. </p>
+<p>To address these issues, alternative approaches have been proposed and <strong>transcriptome-wide association study (TWAS)</strong> has become a common and easy-to-perform approach to <strong>identify genes whose expression is significantly associated with complex traits in individuals without directly measured expression levels</strong>.     </p>
 <div class="admonition info">
 <p class="admonition-title">GWAS and TWAS</p>
 <p><img width="800" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/37ab9489-50bc-41f3-8a82-341a291b428e"></p>
@@ -1691,7 +1707,7 @@
 <p>TWAS is a method to identify significant expression-trait associations using expression imputation from genetic data or summary statistics. </p>
 <ul>
 <li>Individual-level TWAS: uses individual-level genotype and phenotype for expression prediction and association test (e.g. PrediXcan)</li>
-<li>Summary-level TWAS: uses only GWAS summary statistics for expression prediction and association test (e.g. FUSION, PrediXcan2) </li>
+<li>Summary-level TWAS: uses only GWAS summary statistics for expression prediction and association test (e.g. FUSION, S-PrediXcan) </li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Individual-level and summary-level TWAS</p>
@@ -1699,7 +1715,7 @@
 </div>
 <h2 id="fusion">FUSION</h2>
 <p>In this tutorial, we will introduce FUSION, which is one of the most commonly used tools for performing transcriptome-wide association studies (TWAS) using summary-level data. </p>
-<p>url : http://gusevlab.org/projects/fusion/</p>
+<p>url : <a href="http://gusevlab.org/projects/fusion/">http://gusevlab.org/projects/fusion/</a></p>
 <p>FUSION trains predictive models of the genetic component of a functional/molecular phenotype and predicts and tests that component for association with disease using GWAS summary statistics. The goal is to identify associations between a GWAS phenotype and a functional phenotype that was only measured in reference data. (http://gusevlab.org/projects/fusion/)</p>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
@@ -1707,6 +1723,8 @@
 </div>
 <h3 id="algorithm-for-imputing-expression-into-gwas-summary-statistics">Algorithm for imputing expression into GWAS summary statistics</h3>
 <p>ImpG-Summary algorithm was extended to impute the Z scores for the cis genetic component of expression.</p>
+<div class="admonition info">
+<p class="admonition-title">FUSION statistical model</p>
 <p><span class="arithmatex">\(Z\)</span> : a vector of standardized  effect  sizes  (z  scores)  of SNPs for the target trait at a given locus</p>
 <p>We impute the Z score of the expression and trait as a linear combination of elements of <span class="arithmatex">\(Z\)</span> with weights <span class="arithmatex">\(W\)</span>.</p>
 <div class="arithmatex">\[
@@ -1732,6 +1750,7 @@ $$</p>
 <div class="arithmatex">\[
 {{WZ}\over{W\Sigma_{s,s}W^t}^{1/2}}
 \]</div>
+</div>
 <div class="admonition quote">
 <p class="admonition-title">ImpG-Summary algorithm</p>
 <p>Pasaniuc, B., Zaitlen, N., Shi, H., Bhatia, G., Gusev, A., Pickrell, J., ... &amp; Price, A. L. (2014). Fast and accurate imputation of summary statistics enhances evidence of functional enrichment. Bioinformatics, 30(20), 2906-2914.</p>
@@ -1949,6 +1968,13 @@ NA  ../WEIGHTS//GTEx.Whole_Blood/GTEx.Whole_Blood.ENSG00000230513.1.THAP7-AS1.wg
 </tr>
 </tbody>
 </table>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><strong>(FUSION)</strong> Gusev, A., Ko, A., Shi, H., Bhatia, G., Chung, W., Penninx, B. W., ... &amp; Pasaniuc, B. (2016). Integrative approaches for large-scale transcriptome-wide association studies. Nature genetics, 48(3), 245-252.</li>
+<li><strong>(review of TWAS)</strong> Wainberg, M., Sinnott-Armstrong, N., Mancuso, N., Barbeira, A. N., Knowles, D. A., Golan, D., ... &amp; Kundaje, A. (2019). Opportunities and challenges for transcriptome-wide association studies. Nature genetics, 51(4), 592-599.</li>
+<li><strong>(PrediXcan)</strong> Gamazon, E. R., Wheeler, H. E., Shah, K. P., Mozaffari, S. V., Aquino-Michaels, K., Carroll, R. J., ... &amp; Im, H. K. (2015). A gene-based association method for mapping traits using reference transcriptome data. Nature genetics, 47(9), 1091-1098.</li>
+<li><strong>(S-PrediXcan)</strong> Barbeira, A. N., Dickinson, S. P., Bonazzola, R., Zheng, J., Wheeler, H. E., Torres, J. M., ... &amp; Genome Browser Data Integration &amp; Visualization—EBI Flicek Paul 108 Juettemann Thomas 108 Ruffier Magali 108 Sheppard Dan 108 Taylor Kieron 108 Trevanion Stephen J. 108 Zerbino Daniel R. 108. (2018). Exploring the phenotypic consequences of tissue specific gene expression variation inferred from GWAS summary statistics. Nature communications, 9(1), 1825.</li>
+</ul>
 
 
 
