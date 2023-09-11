@@ -207,9 +207,31 @@ Descriptions of the output (cited from http://gusevlab.org/projects/fusion/ )
 |18	|TWAS.P	|3.22e-07	|TWAS P-value|
 
 
+## Limitations
+
+1. Significant loci identified in TWAS also contain multiple tarit-associated genes. GWAS often identifies multiple variants in LD. Similarly, TWAS frequently identifies multiple genes in a locus. 
+
+2. Co-regulation may cause false positive results. Just like SNPs are correlated due to LD, gene expressions are often correlated due to co-regulation.
+
+3. Sometimes even when co-regulation is not captured, the shared variants (or variants in strong LD) in different expression prediction models may cause false positive results. 
+
+4. Predicted expression account for only a limited portion of total gene expression. Total expression is affected not only by genetic components like cis-eQTL but also by other factors like environmental and technical components.
+
+5. Other factors. For example, the window size for selecting variants may affect association results.
+
+## Criticism
+
+TWAS aims to test the relationship of the phenotype with the genetic component of the gene expression. But under current framework, TWAS only test the relationship of the phenotype with the **predicted** gene expression without accounting for the uncertainty in that prediction. The key point here is that the current framework omits the fact that the gene expression data is also the result of a sampling process from the analysis.
+
+"Consequently, the test of association between that predicted genetic component and a phenotype reduces to merely **a (weighted) test of joint association of the SNPs with the phenotype**, which means that they cannot be used to infer a genetic relationship between gene expression and the phenotype on a population level."
+
+!!! quote
+    de Leeuw, C., Werme, J., Savage, J. E., Peyrot, W. J., & Posthuma, D. (2021). On the interpretation of transcriptome-wide association studies. bioRxiv, 2021-08.
+
 ## Reference
 
 - **(FUSION)** Gusev, A., Ko, A., Shi, H., Bhatia, G., Chung, W., Penninx, B. W., ... & Pasaniuc, B. (2016). Integrative approaches for large-scale transcriptome-wide association studies. Nature genetics, 48(3), 245-252.
 - **(review of TWAS)** Wainberg, M., Sinnott-Armstrong, N., Mancuso, N., Barbeira, A. N., Knowles, D. A., Golan, D., ... & Kundaje, A. (2019). Opportunities and challenges for transcriptome-wide association studies. Nature genetics, 51(4), 592-599.
 - **(PrediXcan)** Gamazon, E. R., Wheeler, H. E., Shah, K. P., Mozaffari, S. V., Aquino-Michaels, K., Carroll, R. J., ... & Im, H. K. (2015). A gene-based association method for mapping traits using reference transcriptome data. Nature genetics, 47(9), 1091-1098.
 - **(S-PrediXcan)** Barbeira, A. N., Dickinson, S. P., Bonazzola, R., Zheng, J., Wheeler, H. E., Torres, J. M., ... & Genome Browser Data Integration & Visualization—EBI Flicek Paul 108 Juettemann Thomas 108 Ruffier Magali 108 Sheppard Dan 108 Taylor Kieron 108 Trevanion Stephen J. 108 Zerbino Daniel R. 108. (2018). Exploring the phenotypic consequences of tissue specific gene expression variation inferred from GWAS summary statistics. Nature communications, 9(1), 1825.
+- **(Criticism of current TWAS framework)** de Leeuw, C., Werme, J., Savage, J. E., Peyrot, W. J., & Posthuma, D. (2021). On the interpretation of transcriptome-wide association studies. bioRxiv, 2021-08
