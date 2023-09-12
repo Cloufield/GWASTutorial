@@ -48,9 +48,9 @@ ImpG-Summary algorithm was extended to impute the Z scores for the cis genetic c
     W = \Sigma_{e,s}\Sigma_{s,s}^{-1}
     $$
     
-    - $\Sigma_{e,s}$ : covariance among all SNPs (LD)
+    - $\Sigma_{e,s}$ : covariance matrix between all SNPs and gene expression
     
-    - $\Sigma_{s,s}$ : covariance matrix between all SNPs and gene expression
+    - $\Sigma_{s,s}$ : covariance among all SNPs (LD) 
     
     Both $\Sigma_{e,s}$ and $\Sigma_{s,s}$ are estimated from reference datsets.
     
