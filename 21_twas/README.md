@@ -59,6 +59,7 @@ ImpG-Summary algorithm was extended to impute the Z scores for the cis genetic c
     $$
     
     The variance of $WZ$ (imputed z score of expression and trait) 
+    
     $$
     Var(WZ) = W\Sigma_{s,s}W^t 
     $$
