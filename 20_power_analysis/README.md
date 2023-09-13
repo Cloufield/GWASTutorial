@@ -63,7 +63,7 @@ Significance threshold: $C = CDF_{\chi^2}^{-1}(1 - \alpha,df=1)$
 
 - $CDF_{\chi^2}^{-1}(x)$ : is the inverse of the cumulative distribution function for $\chi^2$ distribution.
 
-$$ Power = Pr(\lambda > C ) = CDF_{\chi^2}(C, ncp = \lambda,df=1) $$ 
+$$ Power = Pr(\lambda > C ) = 1 - CDF_{\chi^2}(C, ncp = \lambda,df=1) $$ 
 
 - $CDF_{\chi^2}(x, ncp= \lambda)$ : is the cumulative distribution function for non-central $\chi^2$ distribution with non-centrality parameter $\lambda$.
 
