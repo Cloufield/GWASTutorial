@@ -37,19 +37,23 @@ Fine-mapping (using Bayesian methods) aims to estimate the **PIP (posterior incl
 
 !!! note "Commonly used tools for fine-mapping"
     
-    Methods assuming only one causal variant in the locus
+    Methods assuming only **one causal variant** in the locus
+    
     - ABF
     
-    Methods assuming multiple causal variants in the locus
+    Methods assuming **multiple causal variants** in the locus
+    
     - SUSIE / SUSIE-RSS
     - CAVIAR, CAVIARBF, eCAVIAR
     - FINEMAP
 
-    Methods assuming a small number of larger causal effects with a large number of infinitesimal effects
+    Methods assuming a small number of **larger causal effects** with a large number of **infinitesimal effects**
+    
     - SUSIE-inf
     - FINEMAP-inf
 
-    Methods for Cross-ancestry fine-mapping
+    Methods for **Cross-ancestry** fine-mapping
+    
     - SUSIEX
     
     You can check [here](https://cloufield.github.io/CTGCatalog/Tools_Fine_mapping_README/) for more information.
