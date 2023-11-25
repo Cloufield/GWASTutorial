@@ -1661,8 +1661,10 @@
 <p><span class="arithmatex">\(Pr(M_m)\)</span>: <strong>Prior</strong> distribution of Model m (the probability of Model m being true)</p>
 <p><span class="arithmatex">\({\sum_{i=1}^n{Pr( O | M_i) Pr(M_i)}}\)</span>: <strong>Evidence</strong> (the probability of observing your dataset), namely <span class="arithmatex">\(Pr(O)\)</span></p>
 </div>
-<p>!!! "Credible sets"
-    A <strong>credible set</strong> refers to the minimum set of variants that contains all causal SNPs with probability <span class="arithmatex">\(α\)</span>. (Under the single-causal-variant-per-locus assumption, the credible set is calculated by ranking variants based on their posterior probabilities, and then summing these until the cumulative sum is <span class="arithmatex">\(&gt;α\)</span>). We usually report 95% credible sets (α=95%) for fine-mapping analysis.</p>
+<div class="admonition info">
+<p class="admonition-title">Credible sets</p>
+<p>A <strong>credible set</strong> refers to the minimum set of variants that contains all causal SNPs with probability <span class="arithmatex">\(α\)</span>. (Under the single-causal-variant-per-locus assumption, the credible set is calculated by ranking variants based on their posterior probabilities, and then summing these until the cumulative sum is <span class="arithmatex">\(&gt;α\)</span>). We usually report 95% credible sets (α=95%) for fine-mapping analysis.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Commonly used tools for fine-mapping</p>
 <p>Methods assuming only one causal variant in the locus
