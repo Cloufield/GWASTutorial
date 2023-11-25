@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Fine-mapping : Fine-mapping aims to identfiy the causal variant(s) within a locus for a disease, given the evidence of the significant association of the locus (or genomic region) in GWAS of a disease. 
+Fine-mapping : Fine-mapping aims to identify the causal variant(s) within a locus for a disease, given the evidence of the significant association of the locus (or genomic region) in GWAS of a disease.
 
 Fine-mapping using individual data is usually performed by fitting the multiple linear regression model:
 
@@ -10,16 +10,46 @@ $$y = Xb + e$$
 
 - $b = (b_1, …, b_J)^T$ is a vector of genetic effects of variants.
 
-The aim of fine-mapping is to estimate the PIP (posterior inclusion probability), which indicates the evidence for SNP j having a non-zero effect (namely, causal) :
+Fine-mapping (using Bayesian methods) aims to estimate the **PIP (posterior inclusion probability)**, which indicates the evidence for SNP j having a non-zero effect (namely, causal).
 
-$$ PIP_j:=Pr(b_j\neq0|X,y) $$
+!!! info "PIP(Posterior Inclusion Probability)"
+    PIP is often calculated by the sum of the **posterior probabilities** over all models that include variant j as causal.
+    $$ PIP_j:=Pr(b_j\neq0|X,y) $$
+
+!!! info "Bayesian methods and Posterior probability" 
+    $$ Pr(M_m | O) = {{Pr(O | M_m) Pr(M_m)}\over{\sum_{i=1}^n{Pr( O | M_i) Pr(M_i)}}} $$
+
+    $O$ : Observed data
+    
+    $M$ : Models (**the configurations of causal variants** in the context of fine-mapping).
+    
+    $Pr(M_m | O)$: **Posterior Probability** of Model m
+    
+    $Pr(O | M_m)$: **Likelihood** (the probability of observing your dataset given Model m is true.)
+    
+    $Pr(M_m)$: **Prior** distribution of Model m (the probability of Model m being true)
+    
+    ${\sum_{i=1}^n{Pr( O | M_i) Pr(M_i)}}$: **Evidence** (the probability of observing your dataset), namely $Pr(O)$
+
+!!! "Credible sets"
+    A **credible set** refers to the minimum set of variants that contains all causal SNPs with probability $α$. (Under the single-causal-variant-per-locus assumption, the credible set is calculated by ranking variants based on their posterior probabilities, and then summing these until the cumulative sum is $>α$). We usually report 95% credible sets (α=95%) for fine-mapping analysis.
 
 !!! note "Commonly used tools for fine-mapping"
     
-    - FINEMAP
+    Methods assuming only one causal variant in the locus
+    - ABF
+    
+    Methods assuming multiple causal variants in the locus
     - SUSIE / SUSIE-RSS
-    - CAVIAR
-    - PAINTOR
+    - CAVIAR, CAVIARBF, eCAVIAR
+    - FINEMAP
+
+    Methods assuming a small number of larger causal effects with a large number of infinitesimal effects
+    - SUSIE-inf
+    - FINEMAP-inf
+
+    Methods for Cross-ancestry fine-mapping
+    - SUSIEX
     
     You can check [here](https://cloufield.github.io/CTGCatalog/Tools_Fine_mapping_README/) for more information.
 
