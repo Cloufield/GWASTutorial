@@ -14,6 +14,7 @@ Fine-mapping (using Bayesian methods) aims to estimate the **PIP (posterior incl
 
 !!! info "PIP(Posterior Inclusion Probability)"
     PIP is often calculated by the sum of the **posterior probabilities** over all models that include variant j as causal.
+    
     $$ PIP_j:=Pr(b_j\neq0|X,y) $$
 
 !!! info "Bayesian methods and Posterior probability" 
