@@ -14,7 +14,7 @@ Fine-mapping (using Bayesian methods) aims to estimate the **PIP (posterior incl
 
 !!! info "PIP(Posterior Inclusion Probability)"
     PIP is often calculated by the sum of the **posterior probabilities** over all models that include variant j as causal.
-    
+
     $$ PIP_j:=Pr(b_j\neq0|X,y) $$
 
 !!! info "Bayesian methods and Posterior probability" 
@@ -32,7 +32,7 @@ Fine-mapping (using Bayesian methods) aims to estimate the **PIP (posterior incl
     
     ${\sum_{i=1}^n{Pr( O | M_i) Pr(M_i)}}$: **Evidence** (the probability of observing your dataset), namely $Pr(O)$
 
-!!! "Credible sets"
+!!! info "Credible sets"
     A **credible set** refers to the minimum set of variants that contains all causal SNPs with probability $α$. (Under the single-causal-variant-per-locus assumption, the credible set is calculated by ranking variants based on their posterior probabilities, and then summing these until the cumulative sum is $>α$). We usually report 95% credible sets (α=95%) for fine-mapping analysis.
 
 !!! note "Commonly used tools for fine-mapping"
