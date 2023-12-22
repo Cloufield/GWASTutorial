@@ -12,13 +12,14 @@ Covariates usually include sex, age and top 10 PCs.
 
 ### ROC, AIC, AUC, and C-index
 
-ROC : receiver operating characteristic curve shows the performance of a classification model at all thresholds.
+!!! info "ROC"
+    ROC: **receiver operating characteristic curve** shows the performance of a classification model at all thresholds.
 
-- "y" : True Positive rate. ${{TP}\over{TP + FN}}$
-- "x" : False Positive rate. ${{FP}\over{FP + TN}}$
+    - y axis: True Positive rate. ${{TP}\over{TP + FN}}$
+    - x axis: False Positive rate. ${{FP}\over{FP + TN}}$
 
-AUC: area under the ROC Curve, a common measure for the performance of a classification model.
-
+!!! info "AUC"
+    AUC: area under the ROC Curve, a common measure for the performance of a classification model.
 
 !!! info "AIC"
     Akaike Information Criterion (AIC): a measure for comparison of different statistical models.
@@ -30,14 +31,15 @@ AUC: area under the ROC Curve, a common measure for the performance of a classif
 
 
 !!! info  "C-index"
-    **C-index**: concordance index, which is a metric to evaluate the predictive performance of models and is commonly used in survival analysis. It is a measure of the probability that the predicted scores $M_i$ and $ M_j$ by a model of two randomly selected individuals $i$ and $j$, have the reverse relative order as their true event times $T_i, T_j$.
+    **C-index**: Harrell’s C-index (concordance index), which is a metric to evaluate the predictive performance of models and is commonly used in survival analysis. It is a measure of the probability that the predicted scores $M_i$ and $M_j$ by a model of two randomly selected individuals $i$ and $j$, have the reverse relative order as their true event times $T_i, T_j$.
 
     $$ C = Pr (M_j > M_i | T_j < T_i) $$
 
-    Interpretation: Individuals with higher scores should have higher risk of the disease events
+    Interpretation: Individuals with higher scores should have higher risks of the disease events
     
-    Reference: Harrell, F. E., Califf, R. M., Pryor, D. B., Lee, K. L., & Rosati, R. A. (1982). Evaluating the yield of medical tests. Jama, 247(18), 2543-2546.
-    Reference: Longato, E., Vettoretti, M., & Di Camillo, B. (2020). A practical perspective on the concordance index for the evaluation and selection of prognostic time-to-event models. Journal of Biomedical Informatics, 108, 103496.
+    - Reference: Harrell, F. E., Califf, R. M., Pryor, D. B., Lee, K. L., & Rosati, R. A. (1982). Evaluating the yield of medical tests. Jama, 247(18), 2543-2546.
+
+    - Reference: Longato, E., Vettoretti, M., & Di Camillo, B. (2020). A practical perspective on the concordance index for the evaluation and selection of prognostic time-to-event models. Journal of Biomedical Informatics, 108, 103496.
 
 ### R2 and pseudo-R2
 
@@ -60,7 +62,7 @@ AUC: area under the ROC Curve, a common measure for the performance of a classif
     $$R^2_{Nagelkerke} = {{1 - ({{L_0}\over{L_M}})^{2/n}}\over{1 - L_0^{2/n}}}$$
 
     - $L_0$ : Likelihood of the null model
-    - $L_full$ : Likelihood of the full model
+    - $L_{full}$ : Likelihood of the full model
 
 ### R2 on the liability scale (Lee)
 
@@ -124,7 +126,7 @@ Bootstrap is a commonly used resampling method to generate a sampling distributi
 Steps:
 
 - Sample with replacement B times. (B should be large.)
-- Estimate the parameter using the bootstrp sample. 
+- Estimate the parameter using the bootstrap sample. 
 - Obtain the approximate distribution of the parameter.
 
 The percentile bootstrap interval is then defined as the interval between $100 \times \alpha /2$ and $100 \times (1 - \alpha /2)$ percentiles of the parameters estimated by bootstrapping. We can use this method to estimate the  bootstrap interval for $R^2$.
