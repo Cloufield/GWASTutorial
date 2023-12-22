@@ -79,6 +79,7 @@ nav:
        - "Heritability Concepts" : 13_heritability.md
        - "Statistical power" : 20_power_analysis.md
        - "Winner's curse" : 15_winners_curse.md
+       - "Measure of effect" : 55_measure_of_effect.md
        - "Recommended reading" : 90_Recommended_Reading.md
     - "Assignments" :
        - "Assignment - 1KG PCA" : 95_Assignment.md
