@@ -54,6 +54,8 @@ $$
 OR = {{Odds_{Intervention}}\over{Odds_{ conrol}}}={{IE/IN}\over{CE/CN}} = {{IE * CN}\over{CE * IN}}
 $$
 
+When the event occurs in less than 10% of the unexposed population, the OR provides a reasonable approximation of the RR.
+
 ## Hazard ratios (HR)
 Hazard ratios (relative hazard) are usually estimated from Cox proportional hazards model:
 
