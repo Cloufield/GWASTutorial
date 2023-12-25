@@ -9,10 +9,10 @@ In this module, we will learn the basics of genotype data QC using PLINK, which 
 - [PLINK tutorial](#plink-tutorial)
 	- [Calculate the missing rate and call rate](#missing-rate-call-rate)
 	- [Calculate allele frequency](#allele-frequency)
-	- [Calculate the inbreeding F coefficient ](#inbreeding-f-coefficient)
 	- [Hardy-Weinberg equilibrium exact test](#hardy-weinberg-equilibrium-exact-test)
 	- [Applying filters](#applying-filters)
 	- [LD-Pruning](#LD-pruning)
+    - [Calculate the inbreeding F coefficient ](#inbreeding-f-coefficient)
 	- [Sample & SNP filtering (extract/exclude/keep/remove)](#sample--snp-filtering-extractexcludekeepremove)
 	- [LD calculation](#ld-calculation)
 	- [Estimate IBD / PI_HAT](#ibd--pi_hat)
@@ -377,49 +377,7 @@ In PLINK1.9, the concept here is minor (A1) and major(A2) allele, while in PLINK
 - **Ref / Alt**: The reference (REF) and alternative (ALT) alleles are simply determined by the allele on a reference genome. If we use the same reference genome, the reference(REF) and alternative(ALT) alleles will be the same across populations. The reference allele could be major or minor in different populations. The range for alternative allele frequency is [0,1], since it could be the major allele or the minor allele in a given population.
 
 
-### Inbreeding F coefficient 
 
-Next, we can check the heterozygosity F of samples (https://www.cog-genomics.org/plink/1.9/basic_stats#ibc) : 
-
-`-het` option will compute observed and expected autosomal homozygous genotype counts for each sample. Usually, we need to exclude individuals with high or low heterozygosity coefficients, which suggests that the sample might be contaminated. 
-
-!!! info "Inbreeding F coefficient calculation by PLINK"
-
-    $$F = {{O(HOM) - E(HOM)}\over{ M - E(HOM)}}$$
-    
-    - $E(HOM)$ :Expected Homozygous Genotype Count 
-    - $O(HOM)$ :Observed Homozygous Genotype Count 
-    - M : Number of SNPs
-
-
-!!! example "Calculate inbreeding F coefficient"
-
-    ```bash
-    plink \
-    	--bfile ${genotypeFile} \
-    	--het \
-    	--out plink_results
-    ```
-    
-    Check the output:
-    
-    ```bash
-    head plink_results.het
-     FID       IID       O(HOM)       E(HOM)        N(NM)            F
-       0   HG00403       747270    7.488e+05      1122299    -0.004114
-       0   HG00404       748955    7.488e+05      1122299    0.0003974
-       0   HG00406       750093    7.488e+05      1122299     0.003444
-       0   HG00407       746566    7.488e+05      1122299    -0.005999
-       0   HG00409       751694    7.488e+05      1122299     0.007731
-       0   HG00410       745078    7.488e+05      1122299    -0.009983
-       0   HG00419       747996    7.488e+05      1122299     -0.00217
-       0   HG00421       757199    7.488e+05      1122299      0.02247
-       0   HG00422       752725    7.488e+05      1122299      0.01049
-    ```
-    
-A commonly used method is to exclude samples with heterozygosity F deviating more than 3 standard deviation(SD) from the mean.
-
-!!! warning "Usually we will use only [LD-pruned SNPs](#ld-pruning)  for the calculation of F."
 
 ### Hardy-Weinberg equilibrium exact test
 
@@ -514,6 +472,53 @@ Combined with the filters we just introduced, we can run:
     1:559480:C:T
     1:565433:C:T
     ```
+
+### Inbreeding F coefficient 
+
+Next, we can check the heterozygosity F of samples (https://www.cog-genomics.org/plink/1.9/basic_stats#ibc) : 
+
+`-het` option will compute observed and expected autosomal homozygous genotype counts for each sample. Usually, we need to exclude individuals with high or low heterozygosity coefficients, which suggests that the sample might be contaminated. 
+
+!!! info "Inbreeding F coefficient calculation by PLINK"
+
+    $$F = {{O(HOM) - E(HOM)}\over{ M - E(HOM)}}$$
+    
+    - $E(HOM)$ :Expected Homozygous Genotype Count 
+    - $O(HOM)$ :Observed Homozygous Genotype Count 
+    - M : Number of SNPs
+
+!!! warning "Performing LD-pruning beforehand since these calculations do not take LD into account."
+
+!!! example "Calculate inbreeding F coefficient"
+
+    ```bash
+    plink \
+    	--bfile ${genotypeFile} \
+        --extract plink_results.prune.in \
+    	--het \
+    	--out plink_results
+    ```
+    
+    Check the output:
+    
+    ```bash
+    head plink_results.het
+     FID       IID       O(HOM)       E(HOM)        N(NM)            F
+       0   HG00403       747270    7.488e+05      1122299    -0.004114
+       0   HG00404       748955    7.488e+05      1122299    0.0003974
+       0   HG00406       750093    7.488e+05      1122299     0.003444
+       0   HG00407       746566    7.488e+05      1122299    -0.005999
+       0   HG00409       751694    7.488e+05      1122299     0.007731
+       0   HG00410       745078    7.488e+05      1122299    -0.009983
+       0   HG00419       747996    7.488e+05      1122299     -0.00217
+       0   HG00421       757199    7.488e+05      1122299      0.02247
+       0   HG00422       752725    7.488e+05      1122299      0.01049
+    ```
+    
+A commonly used method is to exclude samples with heterozygosity F deviating more than 3 standard deviation(SD) from the mean.
+
+!!! warning "Usually we will use only [LD-pruned SNPs](#ld-pruning)  for the calculation of F."
+
 
 ### Sample & SNP filtering (extract/exclude/keep/remove)
 Sometimes we will use only a subset of samples or SNPs included the original dataset. 

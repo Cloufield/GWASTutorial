@@ -11,8 +11,8 @@
 - Variants were normalized
 - Remove duplicated variants
 - Selected only SNP (ATCG)
-- Selected only SNPs with MAF>0.05
-- Randomly selected 20% of SNPs (`plink --thin 0.2`)
+- Selected 2% rare SNPs (`plink --mac 2 --max--maf 0.01 --thin 0.02`)
+- Selected 15% common SNPs (`plink --maf 0.01 --thin 0.15`)
 - Converted to plink bed format and merged to a single file  
 
 ## Download
@@ -25,40 +25,36 @@ Simply run `download_sampledata.sh` and the dataset will be downloaded and decom
 ./download_sampledata.sh
 ```
 
-or you can manually download it from [this link](https://www.dropbox.com/s/nhmibzq5o8slusu/sample_data.tar).
+or you can manually download it from [this link](https://www.dropbox.com/scl/fi/v3h431srji9ad7xh0qj6z/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.zip?rlkey=imv1rivhchxzyz6si2wr7ddcs&dl=0).
 
-And you will get the following files:
+And you will get the following files in `1KG.EAS.auto.snp.norm.nodup.split.rare002.common015`:
 ```
-1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
-1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
-1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
+1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.bed
+1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.bim
+1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.fam
 ```
 
 ## Phenotype Simulation
-Phenotypes were simply simulated using GCTA with the 1KG EAS dataset (without thinning).
+Phenotypes were simply simulated using GCTA with the 1KG EAS dataset.
+
 ```Bash
-gcta64  \
-  --bfile 1KG.EAS.auto.snp.norm.nodup.split.maf005 \ 
-  --simu-cc 200 304 \
-  --simu-causal-loci causal_10.snplist  \
+gcta  \
+  --bfile 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015 \
+  --simu-cc 250 254  \
+  --simu-causal-loci causal.snplist  \
   --simu-hsq 0.8  \
-  --simu-k 0.4 \
-  --simu-rep 1 \
+  --simu-k 0.5  \
+  --simu-rep 1  \
   --out 1kgeas_binary
 ```
 
 ``` 
-$ cat causal_10.snplist
-3:176520196:C:T 3
-1:217437563:C:T 3
-9:36591968:T:G 3
-6:29898352:T:C 3
+$ cat causal.snplist
 2:55620927:G:A 3
-13:92117183:G:A 3
-14:78760515:T:C 3
-11:102442005:T:G 3
-11:56317673:T:A 3
-7:139979401:G:C 3
+8:97094292:C:T 3
+20:42758834:T:C 3
+7:134326056:G:T 3
+1:167562605:G:A 3
 ```
 
 ## Reference
