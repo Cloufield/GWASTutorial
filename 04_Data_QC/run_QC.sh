@@ -10,8 +10,8 @@ plink \
         --missing \
         --freq \
         --hardy \
-        --het \
         --out plink_results
+
 plink2 \
 	--bfile ${genotypeFile} \
         --freq \
@@ -24,6 +24,12 @@ plink \
         --mind 0.02 \
         --hwe 5e-6 \
         --indep-pairwise 50 5 0.2 \
+        --out plink_results
+
+plink \
+        --bfile ${genotypeFile} \
+        --extract plink_results.prune.in \
+        --het \
         --out plink_results
 
 plink \

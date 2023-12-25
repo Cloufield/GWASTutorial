@@ -1,6 +1,7 @@
 #!/bin/bash
 
 plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020" #!!!please set this to your own path
+plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015"
 outPrefix="plink_results"
 threadnum=2
 
@@ -36,6 +37,6 @@ plink2 \
         --bfile ${plinkFile} \
 	--threads ${threadnum} \
         --read-freq ${outPrefix}.acount \
-	--score ${outPrefix}.eigenvec.allele 2 5 header-read no-mean-imputation variance-standardize \
-        --score-col-nums 6-15 \
+	--score ${outPrefix}.eigenvec.allele 2 6 header-read no-mean-imputation variance-standardize \
+        --score-col-nums 7-16 \
         --out ${outPrefix}_projected
