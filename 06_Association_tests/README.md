@@ -15,7 +15,7 @@ There are three basic genetic models:
 - Recessive model (REC)
 
 !!! info "Three genetic models"
-    For example, suppose we have a biallelic SNP whose reference allele is A and alternative allele is G.
+    For example, suppose we have a biallelic SNP whose reference allele is A and the alternative allele is G.
     
     There are three possible genotypes for this SNP: AA, AG, and GG.
     
@@ -60,11 +60,11 @@ $$
 
 ## File Preparation
 
-To perform genome-wide association tests, usually we need the following files:
+To perform genome-wide association tests, usually, we need the following files:
 
 - **Genotype file** (or dosage file) : usually in PLINK format, VCF format, or BGEN format.
 - **Phenotype file** : plain text file.
-- **Covariate file** (optional): plain text file. Usually covariates include age, sex, and top Principal Components. 
+- **Covariate file** (optional): plain text file. Commonly used covariates include age, sex, and top Principal Components. 
 
 !!! example "Phenotype and covariate files"
 
@@ -72,29 +72,29 @@ To perform genome-wide association tests, usually we need the following files:
     
     ```txt title="1kgeas_binary.txt"
     FID IID B1
-    0 HG00403 2 
-    0 HG00404 1 
-    0 HG00406 2 
-    0 HG00407 2 
-    0 HG00409 2 
-    0 HG00410 2
-    0 HG00419 1 
-    0 HG00421 2 
-    0 HG00422 1
+    HG00403 HG00403 1
+    HG00404 HG00404 2
+    HG00406 HG00406 1
+    HG00407 HG00407 1
+    HG00409 HG00409 2
+    HG00410 HG00410 2
+    HG00419 HG00419 1
+    HG00421 HG00421 1
+    HG00422 HG00422 1
     
     Covariate file (only top PCs calculated in the previous PCA section)
     
     ```txt title="plink_results_projected.sscore"
-    #FID	IID	ALLELE_CT	NAMED_ALLELE_DOSAGE_SUM	PC1_AVG	PC2_AVG	PC3_AVG	PC4_AVG	PC5_AVG	PC6_AVG	    PC7_AVG	PC8_AVG	PC9_AVG	PC10_AVG
-    0	HG00403	224016	224016	0.000246109	0.0292717	-0.0127437	-0.0135105	0.0301317	0.    0196699	0.0232392	-0.0205941	-0.00416543	0.0121819
-    0	HG00404	224016	224016	-0.000716664	0.032043	-0.00573731	-0.0189504	0.0277385	-0.    0154478	-0.0136551	-0.00147269	0.00510851	0.0268694
-    0	HG00406	224016	224016	0.00681476	0.0346759	-0.00706221	-0.0054266	-0.025458	-0.    0166505	-0.00510707	-0.00105581	-0.0224028	0.0202523
-    0	HG00407	224016	224016	0.00695106	0.0244759	-0.00890072	-0.000694057	0.00946838	-0.    00773378	-0.0139923	-0.0204871	-0.0003338	0.0387022
-    0	HG00409	224016	224016	-0.0023481	0.0213108	0.03235	0.0158793	0.026655	0.    00324455-0.0107152	0.0317714	-0.00764455	0.0155973
-    0	HG00410	224016	224016	0.000926147	0.0198139	0.0475798	0.00314974	0.0275373	0.    041886	-0.0133896	0.0184717	-0.0143644	0.0291036
-    0	HG00419	224016	224016	0.00580767	0.0369208	-0.00907507	0.00903163	-0.00649345	-0.    000472359	-0.00327011	0.0160456	-0.005133	0.0141021
-    0	HG00421	224016	224016	0.000987901	0.0336895	-0.00697814	0.00557199	-0.0210537	0.    00700968	0.00319921	-0.0215999	0.00127686	0.0350116
-    0	HG00422	224016	224016	0.00440288	0.0335901	-0.0125043	0.0135621	-0.0228428	0.    00492741	0.00445856	-0.00911147	-0.00312742	-0.00784459
+    #FID    IID     ALLELE_CT       NAMED_ALLELE_DOSAGE_SUM PC1_AVG PC2_AVG PC3_AVG PC4_AVG PC5_AVG PC6_AVG PC7_AVG PC8_AVGPC9_AVG  PC10_AVG
+    HG00403 HG00403 390256  390256  0.00290265      -0.0248649      -0.0100407      0.00957595      0.00694056      0.00222996      0.00823028      0.00116497      -0.00334937     0.00434627
+    HG00404 HG00404 390696  390696  -0.000141221    -0.027965       -0.025389       -0.00582553     -0.00274711     -0.00657958     0.0113769       -0.00778919     -0.0159685      0.0180678
+    HG00406 HG00406 388524  388524  0.00707397      -0.0315445      0.00437013      -0.00126195     -0.0114938      0.00538932      -0.00619657     -0.00454686     0.000969112     -0.00217617
+    HG00407 HG00407 388808  388808  0.00683977      -0.025073       0.00652723      0.00679731      -0.0116001      0.0102403       0.0139674       -0.00621948     -0.013797       0.00827744
+    HG00409 HG00409 391646  391646  0.000398695     -0.0290334      0.0189352       -0.00135996     0.0290464       -0.00941851     -0.0171911      0.01293 -0.0252628      0.0230819
+    HG00410 HG00410 391600  391600  0.00277094      -0.0280021      0.0209991       -0.00799089     0.0318043       0.00283456      -0.0315157      0.000978664     -0.0133768      0.0356721
+    HG00419 HG00419 387118  387118  0.00684154      -0.0326244      -0.00237159     0.0167284       -0.0119684      0.00795149      -0.0144241      -0.00716183     -0.0115059      0.0038652
+    HG00421 HG00421 387720  387720  0.00157095      -0.0338115      0.00690542      0.0121058       0.00111448      -0.00531714     -0.00175494     0.00118513      -0.00391494     0.00414682
+    HG00422 HG00422 387466  387466  0.00439167      -0.0332386      -0.000741482    0.0124843       -0.00362885     0.00342491      -0.0073205      -0.00939123     0.010718        0.00360906
     ```
 
 ## Association tests using PLINK
@@ -104,14 +104,14 @@ Please check https://www.cog-genomics.org/plink/2.0/assoc for more details.
 We will perform logistic regression with firth correction for a simulated binary trait under the additive model using the 1KG East Asian individuals.
 
 !!! note "Firth correction"
-    Adding a penalty term to the log-likelihood function when fitting the logistic model, which results in less bias. - Firth, David. "Bias reduction of maximum likelihood estimates." Biometrika 80.1 (1993): 27-38.
+    Adding a penalty term to the log-likelihood function when fitting the logistic model results in less bias. - Firth, David. "Bias reduction of maximum likelihood estimates." Biometrika 80.1 (1993): 27-38.
 
 !!! note "Quantitative traits"
     For quantitative traits, linear regressions will be performed and in this case, we do not need to add `firth` (since Firth correction is not appliable). 
 
 !!! example "Sample codes for association test using plink for binary traits"
     ```
-    genotypeFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020"  #!please set this to your own path
+    genotypeFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020"  #!please set this to your path
     phenotypeFile="../01_Dataset/1kgeas_binary.txt" #!please set this to your own path
     covariateFile="../05_PCA/plink_results_projected.sscore"
     
@@ -173,16 +173,16 @@ Let's check the first lines of the output:
 
 !!! example "Association test results"
     ```txt title="1kgeas.B1.glm.firth"
-    #CHROM  POS     ID      REF     ALT     PROVISIONAL_REF?        A1      OMITTED A1_FREQ TEST    OBS_CT  OR      LOG(OR)_SE  Z_STAT  P       ERRCODE
-1       15774   1:15774:G:A     G       A       Y       A       G       0.0282828       ADD     495     NA      NA NA       NA      FIRTH_CONVERGE_FAIL
-1       15777   1:15777:A:G     A       G       Y       G       A       0.0737374       ADD     495     NA      NA NA       NA      FIRTH_CONVERGE_FAIL
-1       57292   1:57292:C:T     C       T       Y       T       C       0.104675        ADD     492     NA      NA NA       NA      FIRTH_CONVERGE_FAIL
-1       77874   1:77874:G:A     G       A       Y       A       G       0.0191532       ADD     496     1.12228 0.46275     0.249299        0.80313 .
-1       87360   1:87360:C:T     C       T       Y       T       C       0.0231388       ADD     497     NA      NA NA       NA      FIRTH_CONVERGE_FAIL
-1       125271  1:125271:C:T    C       T       Y       C       T       0.0292339       ADD     496     1.53387 0.373358    1.1458  0.25188 .
-1       232449  1:232449:G:A    G       A       Y       A       G       0.185484        ADD     496     0.884097   0.168961 -0.729096       0.465943        .
-1       533113  1:533113:A:G    A       G       Y       G       A       0.129555        ADD     494     0.90593 0.196631    -0.50243        0.615365        .
-1       565697  1:565697:A:G    A       G       Y       G       A       0.334677        ADD     496     1.04653 0.15286     0.297509        0.766078        .
+        #CHROM  POS     ID      REF     ALT     PROVISIONAL_REF?        A1      OMITTED A1_FREQ TEST    OBS_CT  OR      LOG(OR)_SE  Z_STAT  P       ERRCODE
+    1       15774   1:15774:G:A     G       A       Y       A       G       0.0282828       ADD     495     NA      NA NA       NA      FIRTH_CONVERGE_FAIL
+    1       15777   1:15777:A:G     A       G       Y       G       A       0.0737374       ADD     495     NA      NA NA       NA      FIRTH_CONVERGE_FAIL
+    1       57292   1:57292:C:T     C       T       Y       T       C       0.104675        ADD     492     NA      NA NA       NA      FIRTH_CONVERGE_FAIL
+    1       77874   1:77874:G:A     G       A       Y       A       G       0.0191532       ADD     496     1.12228 0.46275     0.249299        0.80313 .
+    1       87360   1:87360:C:T     C       T       Y       T       C       0.0231388       ADD     497     NA      NA NA       NA      FIRTH_CONVERGE_FAIL
+    1       125271  1:125271:C:T    C       T       Y       C       T       0.0292339       ADD     496     1.53387 0.373358    1.1458  0.25188 .
+    1       232449  1:232449:G:A    G       A       Y       A       G       0.185484        ADD     496     0.884097   0.168961 -0.729096       0.465943        .
+    1       533113  1:533113:A:G    A       G       Y       G       A       0.129555        ADD     494     0.90593 0.196631    -0.50243        0.615365        .
+    1       565697  1:565697:A:G    A       G       Y       G       A       0.334677        ADD     496     1.04653 0.15286     0.297509        0.766078        .
     ```
 
 !!! info "Usually, other options are added to enhance the sumstats"
@@ -219,7 +219,7 @@ Reference: Devlin, B., & Roeder, K. (1999). Genomic control for association stud
 
 Please check [Visualization using gwaslab](https://cloufield.github.io/GWASTutorial/Visualization/)
 
-Loci that reached genome-wide significance threhold (P value < 5e-8) :
+Loci that reached genome-wide significance threshold (P value < 5e-8) :
 ```
 SNPID	CHR	POS	EA	NEA	EAF	SE	Z	P	OR	N	STATUS	REF	ALT
 1:167562605:G:A	1	167562605	A	G	0.391481	0.159645	7.69462	1.419150e-14	3.415780	493	9999999	G	A
@@ -234,11 +234,12 @@ To visualize the sumstats, we will create the Manhattan plot, QQ plot and region
 
 Please check for codes : [Visualization using gwaslab](https://cloufield.github.io/GWASTutorial/Visualization/)
 
-![image](https://user-images.githubusercontent.com/40289485/209681591-dc691764-7346-4936-80b4-528bc425a61e.png)
+![image](https://github.com/Cloufield/GWASTutorial/assets/40289485/40ad5aff-5ac5-4cd0-b9c2-077c0ce20e46)
+
 
 ### Manhattan plot
 
-Manhattan plot is the most classic visualization of GWAS summary statistics. It is a form of scatter plot. Each dot represents the test result for a variant. variants are sorted by its genome coordinates and are aligned along the X axis. Y axis shows the -log10(P value) for tests of variants in GWAS. 
+Manhattan plot is the most classic visualization of GWAS summary statistics. It is a form of scatter plot. Each dot represents the test result for a variant. variants are sorted by their genome coordinates and are aligned along the X axis. Y axis shows the -log10(P value) for tests of variants in GWAS. 
 
 !!! note
     This kind of plot was named after Manhattan in New York City since it resembles the Manhattan skyline.   
@@ -262,7 +263,7 @@ Data we need from sumstats to create Manhattan plots:
 
 ### Quantile-quantile plot
 
-Quantile-quantile plot (as known as Q-Q plot), is commonly used to compare an observed distribution with its expected distribution. For a specific point (x,y) on Q-Q plot, its y coordinate corresponds to one of the quantiles of the observed distribution, while its x coordinate corresponds to the same quantile of the expected distribution.
+Quantile-quantile plot (also known as Q-Q plot), is commonly used to compare an observed distribution with its expected distribution. For a specific point (x,y) on Q-Q plot, its y coordinate corresponds to one of the quantiles of the observed distribution, while its x coordinate corresponds to the same quantile of the expected distribution.
 
 Quantile-quantile plot is used to check if there is any significant inflation in P value distribution, which usually indicates population stratification or cryptic relatedness. 
 
@@ -287,15 +288,15 @@ Data we need from sumstats to create the Manhattan plot:
 
 ### Regional plot
 
-Manhattan plot is very useful to check the overview of our sumstats. But if we want to check a specific genomic locus, we need a plot with finer resolution. This kind of plot is called regional plot. It is basically the Manhattan plot of only a small region on the genome, with points colored by its LD r2 with the lead variant in this region.
+Manhattan plot is very useful to check the overview of our sumstats. But if we want to check a specific genomic locus, we need a plot with finer resolution. This kind of plot is called a regional plot. It is basically the Manhattan plot of only a small region on the genome, with points colored by its LD r2 with the lead variant in this region.
 
-Such a plot is especially helpful to understand the signal and loci, e.g., LD structure, independent signals and genes.
+Such a plot is especially helpful to understand the signal and loci, e.g., LD structure, independent signals, and genes.
 
-The regional plot for the loci of 2:55574452:G:C. 
+The regional plot for the loci of 2:55513738:C:T. 
 
 Please check [Visualization using gwaslab](https://cloufield.github.io/GWASTutorial/Visualization/)
 
-![image](https://user-images.githubusercontent.com/40289485/209681608-3973c546-ad52-4d77-a3a1-a1c60a7a0a97.png)
+![image](https://github.com/Cloufield/GWASTutorial/assets/40289485/2aacd0b4-4a4a-485b-97bd-8548679f19e0)
 
 
 ### GWAS-SSF
