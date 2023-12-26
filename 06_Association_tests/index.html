@@ -1902,9 +1902,9 @@ HG00422 HG00422 387466  387466  0.00439167      -0.0332386      -0.000741482    
 </div>
 <div class="admonition example">
 <p class="admonition-title">Sample codes for association test using plink for binary traits</p>
-<div class="highlight"><pre><span></span><code>genotypeFile=&quot;../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020&quot;  #!please set this to your path
-phenotypeFile=&quot;../01_Dataset/1kgeas_binary.txt&quot; #!please set this to your own path
-covariateFile=&quot;../05_PCA/plink_results_projected.sscore&quot;
+<div class="highlight"><pre><span></span><code>genotypeFile=&quot;../04_Data_QC/sample_data.clean&quot; # the clean dataset we generated in previous section
+phenotypeFile=&quot;../01_Dataset/1kgeas_binary.txt&quot; # the phenotype file
+covariateFile=&quot;../05_PCA/plink_results_projected.sscore&quot; # the PC score file
 
 covariateCols=6-10
 colName=&quot;B1&quot;
