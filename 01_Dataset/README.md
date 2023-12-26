@@ -28,7 +28,7 @@ Simply run `download_sampledata.sh` in `01_Dataset` and the dataset will be down
 
 or you can manually download it from [this link](https://www.dropbox.com/scl/fi/41ep8xbdccp9xw5epim19/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.zip?rlkey=tklapxwypeg79b1sx03o6ycs7&dl=1).
 
-And you will get the following files:
+Unzip the dataset `unzip -j 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.zip`, and you will get the following files:
 ```
 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bed
 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bim
