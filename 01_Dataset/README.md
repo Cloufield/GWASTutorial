@@ -1,8 +1,15 @@
 # Sample Dataset
 
 504 EAS individuals from 1000 Genome Project Phase 3 version 5
+- CHB: Han Chinese in Beijing, China
+- JPT: Japanese in Tokyo, Japan
+- CHS: Southern Han Chinese
+- CDX: Chinese Dai in Xishuanagbanna, China
+- KHV: Kinh in Ho Chi Minh City, Vietnam
 
-- Url: [http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/](http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/)
+Url: [http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/](http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/)
+
+Genome build:  human_g1k_v37.fasta (hg19)
 
 ## Genotype Data Processing
 

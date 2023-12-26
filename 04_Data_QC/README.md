@@ -1,6 +1,6 @@
-# Plink basics
+# PLINK basics
 
-In this module, we will learn the basics of genotype data QC using PLINK, which is one of the most commonly used software in complex trait genomics.
+In this module, we will learn the basics of genotype data QC using PLINK, which is one of the most commonly used software in complex trait genomics. (Huge thanks to the developers: [PLINK1.9](https://www.cog-genomics.org/plink/1.9/credits) and [PLINK2](https://www.cog-genomics.org/plink/2.0/credits))
 
 ## Table of Contents
 - [Preparation](#preparation)
@@ -18,6 +18,7 @@ In this module, we will learn the basics of genotype data QC using PLINK, which 
 	- [Estimate IBD / PI_HAT](#ibd--pi_hat)
 	- [Data management (make-bed/recode)](#data-management-make-bedrecode)
     - [Apply all the filters to obtain a clean dataset](#apply-all-the-filters-to-obtain-a-clean-dataset)
+    - [Other common QC steps not included in this tutorial](#other-common-qc-steps-not-included-in-this-tutorial)
 - [Exercise](#exercise)
 - [Additional resources](#additional-resources)
 - [Reference](#reference)
@@ -113,6 +114,7 @@ All done. Let's test if we installed PLINK successfully or not.
 !!! example "Check if PLINK is installed successfully."
 
     ```bash
+    ./plink
     PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
     (C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
 
@@ -132,6 +134,7 @@ All done. Let's test if we installed PLINK successfully or not.
     ```
     
     ```bash
+    ./plink2
     PLINK v2.00a5.9LM AVX2 AMD (12 Dec 2023)       www.cog-genomics.org/plink/2.0/
     (C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
 
@@ -148,7 +151,7 @@ All done. Let's test if we installed PLINK successfully or not.
     "plink2 --help | more" describes all functions.
     ```
     
-Well done. We have installed plink1.9 and plink2.
+Well done. We have successfully installed plink1.9 and plink2.
 
 
 ### Download genotype data
@@ -230,8 +233,8 @@ All sample codes and results for this module are available in `./04_data_QC`
 !!! info "QC Step Summary"
     |QC step|Option in PLINK|Commonly used threshold to exclude|
     |-|-|-|
-    |Sample missing rate| `--geno`,  `--missing` | missing rate > 0.02 |
-    |SNP missing rate| `--mind`, `--missing` | missing rate > 0.02 |
+    |Sample missing rate| `--geno`,  `--missing` | missing rate > 0.01 (0.02, or 0.05) |
+    |SNP missing rate| `--mind`, `--missing` | missing rate > 0.01 (0.02, or 0.05) |
     |Minor allele frequency| `--freq`, `--maf` |maf < 0.01|
     |Sample Relatedness| `--genome` |pi_hat > 0.2 to exclude second-degree relatives|
     |Hardy-Weinberg equilibrium| `--hwe`,`--hardy`|hwe < 1e-6|
@@ -741,6 +744,11 @@ plink \
 -rw-r--r--  1 yunye yunye  39M Dec 26 15:40 sample_data.clean.bim
 -rw-r--r--  1 yunye yunye  13K Dec 26 15:40 sample_data.clean.fam
 ```
+
+## Other common QC steps not included in this tutorial
+
+- check-sex: compares sex assignments in the input dataset with those imputed from X chromosome inbreeding coefficients [https://www.cog-genomics.org/plink/1.9/basic_stats#check_sex](https://www.cog-genomics.org/plink/1.9/basic_stats#check_sex)
+- case/control nonrandom missingness test:  detect platform/batch differences between case and control genotype data by performing Fisher's exact test on case/control missing call counts at each variant. [https://www.cog-genomics.org/plink/1.9/assoc#test_missing](https://www.cog-genomics.org/plink/1.9/assoc#test_missing)
 
 ## Exercise
 - [x] Follow this tutorial and type in the commands:
