@@ -1,15 +1,20 @@
 #!/bin/bash
 
-plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020" #!!!please set this to your own path
-plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015"
+plinkFile="../04_Data_QC/sample_data.clean"
 outPrefix="plink_results"
 threadnum=2
 
-#hildset = hild # change to file of SNPs located in HLA and high ld region 
+plink \
+        --bfile ${plinkFile} \
+        --make-set high-ld-hg19.txt \
+        --write-set \
+        --out hild
 
 # pruning
 plink2 \
         --bfile ${plinkFile} \
+	--maf 0.01 \
+	--exclude hild.set \
 	--threads ${threadnum} \
 	--indep-pairwise 500 50 0.2 \
         --out ${outPrefix}

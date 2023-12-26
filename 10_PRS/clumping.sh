@@ -1,19 +1,19 @@
 #!/bin/bash
 
-#plinkFile=../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020
-#sumStats=../06_Association_tests/1kgeas.B1.glm.firth
+plinkFile=../04_Data_QC/sample_data.clean
+sumStats=../06_Association_tests/1kgeas.B1.glm.firth
 #
-#plink \
-#    --bfile ${plinkFile} \
-#    --clump-p1 0.0001 \
-#    --clump-r2 0.1 \
-#    --clump-kb 250 \
-#    --clump ${sumStats} \
-#    --clump-snp-field ID \
-#    --clump-field P \
-#    --out 1kg_eas
+plink \
+    --bfile ${plinkFile} \
+    --clump-p1 0.0001 \
+    --clump-r2 0.1 \
+    --clump-kb 250 \
+    --clump ${sumStats} \
+    --clump-snp-field ID \
+    --clump-field P \
+    --out 1kg_eas
 
-plinkFile=../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020
+plinkFile=../04_Data_QC/sample_data.clean
 sumStats=./t2d_plink_reduced.txt
 
 plink \
@@ -40,7 +40,7 @@ echo "pT0.5 0 0.5" >> range_list
 
 plink2 \
     --bfile ${plinkFile} \
-    --score ${sumStats} 1 2 3 header cols+=denom,scoresums\
+    --score ${sumStats} 1 2 3 header cols=nallele,scoreavgs,denom,scoresums\
     --q-score-range range_list SNP.pvalue \
     --extract 1kgeas.valid.snp \
     --out 1kgeas

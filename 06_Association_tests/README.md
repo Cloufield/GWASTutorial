@@ -137,52 +137,52 @@ You will see a similar log like:
 
 !!! example "Log"
     ```txt title="1kgeas.log"
-    PLINK v2.00a3LM 64-bit Intel (12 Dec 2020)     www.cog-genomics.org/plink/2.0/
-    (C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
+    PLINK v2.00a5.9LM AVX2 AMD (12 Dec 2023)       www.cog-genomics.org/plink/2.0/
+    (C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
     Logging to 1kgeas.log.
     Options in effect:
-      --bfile ../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020
-      --covar ../05_PCA/plink_results_projected.sscore
-      --covar-col-nums 6-10
-      --glm hide-covar firth
-      --maf 0.01
-      --out 1kgeas
-      --pheno ../01_Dataset/1kgeas_binary.txt
-      --pheno-name B1
-      --threads 2
-    
-    Start time: Tue Dec 27 23:02:52 2022
-    15957 MiB RAM detected; reserving 7978 MiB for main workspace.
+    --bfile ../04_Data_QC/sample_data.clean
+    --covar ../05_PCA/plink_results_projected.sscore
+    --covar-col-nums 6-10
+    --glm hide-covar firth firth-residualize single-prec-cc
+    --maf 0.01
+    --out 1kgeas
+    --pheno ../01_Dataset/1kgeas_binary.txt
+    --pheno-name B1
+    --threads 2
+
+    Start time: Tue Dec 26 15:52:10 2023
+    31934 MiB RAM detected, ~30479 available; reserving 15967 MiB for main
+    workspace.
     Using up to 2 compute threads.
-    504 samples (0 females, 0 males, 504 ambiguous; 504 founders) loaded from
-    ../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam.
-    1122299 variants loaded from
-    ../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim.
-    1 binary phenotype loaded (201 cases, 302 controls).
+    500 samples (0 females, 0 males, 500 ambiguous; 500 founders) loaded from
+    ../04_Data_QC/sample_data.clean.fam.
+    1224104 variants loaded from ../04_Data_QC/sample_data.clean.bim.
+    1 binary phenotype loaded (248 cases, 250 controls).
     5 covariates loaded from ../05_PCA/plink_results_projected.sscore.
     Calculating allele frequencies... done.
-    0 variants removed due to allele frequency threshold(s)
+    95372 variants removed due to allele frequency threshold(s)
     (--maf/--max-maf/--mac/--max-mac).
-    1122299 variants remaining after main filters.
+    1128732 variants remaining after main filters.
     --glm Firth regression on phenotype 'B1': done.
     Results written to 1kgeas.B1.glm.firth .
-    End time: Tue Dec 27 23:04:40 2022
+    End time: Tue Dec 26 15:53:49 2023
     ```
 
 Let's check the first lines of the output:
 
 !!! example "Association test results"
     ```txt title="1kgeas.B1.glm.firth"
-    #CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
-    1	13273	1:13273:G:C	G	C	C	ADD	503	0.746149	0.282904	-1.03509	0.300628	.
-    1	14599	1:14599:T:A	T	A	A	ADD	503	1.67693	0.240899	2.14598	0.0318742.
-    1	14604	1:14604:A:G	A	G	G	ADD	503	1.67693	0.240899	2.14598	0.0318742.
-    1	14930	1:14930:A:G	A	G	G	ADD	503	1.64359	0.242872	2.04585	0.0407708.
-    1	69897	1:69897:T:C	T	C	T	ADD	503	1.69142	0.200238	2.62471	0.00867216.
-    1	86331	1:86331:A:G	A	G	G	ADD	503	1.41887	0.238055	1.46968	0.141649	.
-    1	91581	1:91581:G:A	G	A	A	ADD	503	0.931304	0.123644	-0.5755980.564887	.
-    1	122872	1:122872:T:G	T	G	G	ADD	503	1.04828	0.182036	0.259034	0.795609	.
-    1	135163	1:135163:C:T	C	T	T	ADD	503	0.676666	0.242611	-1.60989	0.    107422	.
+    #CHROM  POS     ID      REF     ALT     PROVISIONAL_REF?        A1      OMITTED A1_FREQ TEST    OBS_CT  OR      LOG(OR)_SE  Z_STAT  P       ERRCODE
+1       15774   1:15774:G:A     G       A       Y       A       G       0.0282828       ADD     495     NA      NA NA       NA      FIRTH_CONVERGE_FAIL
+1       15777   1:15777:A:G     A       G       Y       G       A       0.0737374       ADD     495     NA      NA NA       NA      FIRTH_CONVERGE_FAIL
+1       57292   1:57292:C:T     C       T       Y       T       C       0.104675        ADD     492     NA      NA NA       NA      FIRTH_CONVERGE_FAIL
+1       77874   1:77874:G:A     G       A       Y       A       G       0.0191532       ADD     496     1.12228 0.46275     0.249299        0.80313 .
+1       87360   1:87360:C:T     C       T       Y       T       C       0.0231388       ADD     497     NA      NA NA       NA      FIRTH_CONVERGE_FAIL
+1       125271  1:125271:C:T    C       T       Y       C       T       0.0292339       ADD     496     1.53387 0.373358    1.1458  0.25188 .
+1       232449  1:232449:G:A    G       A       Y       A       G       0.185484        ADD     496     0.884097   0.168961 -0.729096       0.465943        .
+1       533113  1:533113:A:G    A       G       Y       G       A       0.129555        ADD     494     0.90593 0.196631    -0.50243        0.615365        .
+1       565697  1:565697:A:G    A       G       Y       G       A       0.334677        ADD     496     1.04653 0.15286     0.297509        0.766078        .
     ```
 
 !!! info "Usually, other options are added to enhance the sumstats"
@@ -219,16 +219,13 @@ Reference: Devlin, B., & Roeder, K. (1999). Genomic control for association stud
 
 Please check [Visualization using gwaslab](https://cloufield.github.io/GWASTutorial/Visualization/)
 
-Loci that reached suggestive significance threhold (P value < 5e-6) :
+Loci that reached genome-wide significance threhold (P value < 5e-8) :
 ```
-SNPID	CHR	POS	EA	NEA	SE	Z	P	OR	N	STATUS
-1:217437563:C:T	1	217437563	C	T	0.151157	-5.22793	1.714210e-07	0.453736	503	9999999
-2:55574452:G:C	2	55574452	C	G	0.160948	-5.98392	2.178320e-09	0.381707	503	9999999
-3:176524872:C:T	3	176524872	T	C	0.248418	4.92774	8.318440e-07	3.401240	503	9999999
-3:193128900:G:A	3	193128900	A	G	0.153788	4.70811	2.500290e-06	2.062770	503	9999999
-6:29919659:T:C	6	29919659	T	C	0.155457	-5.89341	3.782970e-09	0.400048	503	9999999
-9:36660672:A:G	9	36660672	G	A	0.160275	5.63422	1.758540e-08	2.467060	503	9999999
-11:56249438:A:G	11	56249438	G	A	0.188891	-4.77836	1.767350e-06	0.405518	503	9999999
+SNPID	CHR	POS	EA	NEA	EAF	SE	Z	P	OR	N	STATUS	REF	ALT
+1:167562605:G:A	1	167562605	A	G	0.391481	0.159645	7.69462	1.419150e-14	3.415780	493	9999999	G	A
+2:55513738:C:T	2	55513738	C	T	0.376008	0.153159	-7.96244	1.686760e-15	0.295373	496	9999999	C	T
+7:134368632:T:G	7	134368632	G	T	0.138105	0.225526	6.89025	5.569440e-12	4.730010	496	9999999	T	G
+20:42758834:T:C	20	42758834	T	C	0.227273	0.184323	-7.76902	7.909780e-15	0.238829	495	9999999	T	C
 ```
 
 ## Visualization

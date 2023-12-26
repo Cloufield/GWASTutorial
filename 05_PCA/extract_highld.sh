@@ -1,6 +1,6 @@
 #!/bin/bash
 
-plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020" #!!!please set this to your own path
+plinkFile="../04_Data_QC/sample_data.clean" #!!!please set this to your own path
 
 plink \
 	--bfile ${plinkFile} \

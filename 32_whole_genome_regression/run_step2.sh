@@ -6,9 +6,6 @@ covarFile=../05_PCA/plink_results_projected.sscore
 covarList="PC1_AVG,PC2_AVG,PC3_AVG,PC4_AVG,PC5_AVG,PC6_AVG,PC7_AVG,PC8_AVG,PC9_AVG,PC10_AVG"
 extract=../05_PCA/plink_results.prune.in
 
-sed -i 's/#FID/FID/' ../05_PCA/plink_results_projected.sscore
-mkdir tmpdir
-
 regenie \
   --step 2 \
   --bed ${plinkFile} \

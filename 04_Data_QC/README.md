@@ -17,6 +17,7 @@ In this module, we will learn the basics of genotype data QC using PLINK, which 
 	- [LD calculation](#ld-calculation)
 	- [Estimate IBD / PI_HAT](#ibd--pi_hat)
 	- [Data management (make-bed/recode)](#data-management-make-bedrecode)
+    - [Apply all the filters to obtain the clean dataset](#apply-all-the-filters-to-obtain-the-clean-dataset)
 - [Exercise](#exercise)
 - [Additional resources](#additional-resources)
 - [Reference](#reference)
@@ -68,7 +69,7 @@ Find the suitable version on the PLINK website, right-click and copy the link ad
     ```
 Then do the same for PLINK1.9
 
-!!! example "Download PLINK1 (Linux 64-bit)"
+!!! example "Download PLINK1.9 (Linux 64-bit)"
     ```bash
     cd ~/tools/plink
     wget https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20231211.zip
@@ -99,7 +100,7 @@ Then add `~/tools/bin/` to the environment path.
     ```
     This command will add the path to your current shell. 
     
-    If you restart the terminal, it will be lost. So you may need to add it to the configuration file. Then run 
+    If you restart the terminal, it will be lost. So you may need to add it to the Bash  configuration file. Then run 
     
     ```
     echo "export PATH=$PATH:~/tools/bin/" >> ~/.bashrc
@@ -155,7 +156,7 @@ Well done. We have installed plink1.9 and plink2.
 Next, we need to download the sample genotype data. The way to create the sample data is described [here].(https://cloufield.github.io/GWASTutorial/01_Dataset/)
 This dataset contains 504 EAS individuals from 1000 Genome Project Phase 3v5 with around 1 million variants.
 
-Simply run `download.sh` in 01_Dataset to download this dataset (from Dropbox).
+Simply run `download_sampledata.sh` in 01_Dataset to download this dataset (from Dropbox). See [here](https://cloufield.github.io/GWASTutorial/01_Dataset/#genotype-data-processing)
 
 !!! warning "Sample dataset is currently hosted on Dropbox which may not be accessible for users in certain regions."
 
@@ -169,40 +170,40 @@ Simply run `download.sh` in 01_Dataset to download this dataset (from Dropbox).
     And you will get the following three PLINK files:
     
     ```
-    -rw-r-----   1 he  staff   135M Dec 23 11:45 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
-    -rw-r-----   1 he  staff    36M Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
-    -rw-r-----   1 he  staff   9.4K Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
+    -rw-r--r-- 1 yunye yunye 149M Dec 26 13:25 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bed
+    -rw-r--r-- 1 yunye yunye  40M Dec 26 13:25 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bim
+    -rw-r--r-- 1 yunye yunye  13K Dec 26 13:25 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.fam
     ```
     
     Check the bim file:
     
     ```bash
-    head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
-    1	1:13273:G:C	0	13273	C	G
-    1	1:14599:T:A	0	14599	A	T
-    1	1:14604:A:G	0	14604	G	A
-    1	1:14930:A:G	0	14930	G	A
-    1	1:69897:T:C	0	69897	C	T
-    1	1:86331:A:G	0	86331	G	A
-    1	1:91581:G:A	0	91581	A	G
-    1	1:122872:T:G	0	122872	G	T
-    1	1:135163:C:T	0	135163	T	C
-    1	1:233473:C:G	0	233473	G	C
+    head 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bim
+    1       1:14930:A:G     0       14930   G       A
+    1       1:15774:G:A     0       15774   A       G
+    1       1:15777:A:G     0       15777   G       A
+    1       1:57292:C:T     0       57292   T       C
+    1       1:77874:G:A     0       77874   A       G
+    1       1:87360:C:T     0       87360   T       C
+    1       1:92917:T:A     0       92917   A       T
+    1       1:104186:T:C    0       104186  T       C
+    1       1:125271:C:T    0       125271  C       T
+    1       1:232449:G:A    0       232449  A       G
     ```
     
     Check the fam file:
     ```bash
-    head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
-    0 HG00403 0 0 0 -9
-    0 HG00404 0 0 0 -9
-    0 HG00406 0 0 0 -9
-    0 HG00407 0 0 0 -9
-    0 HG00409 0 0 0 -9
-    0 HG00410 0 0 0 -9
-    0 HG00419 0 0 0 -9
-    0 HG00421 0 0 0 -9
-    0 HG00422 0 0 0 -9
-    0 HG00428 0 0 0 -9
+    head 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.fam
+    HG00403 HG00403 0 0 0 -9
+    HG00404 HG00404 0 0 0 -9
+    HG00406 HG00406 0 0 0 -9
+    HG00407 HG00407 0 0 0 -9
+    HG00409 HG00409 0 0 0 -9
+    HG00410 HG00410 0 0 0 -9
+    HG00419 HG00419 0 0 0 -9
+    HG00421 HG00421 0 0 0 -9
+    HG00422 HG00422 0 0 0 -9
+    HG00428 HG00428 0 0 0 -9
     ```
 
 ## PLINK tutorial
@@ -212,11 +213,11 @@ Detailed descriptions can be found on plink's website: [PLINK1.9](https://www.co
 The functions we will learn in this tutorial:
 
 1. Calculating missing rate (call rate)
-2. Calculating inbreeding F coefficient
+2. Calculating allele Frequency
 3. Conducting Hardy-Weinberg equilibrium exact test
-4. Calculating allele Frequency
-5. Applying filters
-6. Conducting LD-Pruning
+4. Applying filters
+5. Conducting LD-Pruning
+6. Calculating inbreeding F coefficient
 7. Conducting sample & SNP filtering (extract/exclude/keep/remove)
 8. Estimating IBD / PI_HAT
 9. Calculating LD
@@ -229,11 +230,11 @@ All sample codes and results for this module are available in `./04_data_QC`
 !!! info "QC Step Summary"
     |QC step|Option in PLINK|Commonly used threshold to exclude|
     |-|-|-|
-    |Sample missing rate| `--geno`,  `--missing` | missing rate > 0.01 |
-    |SNP missing rate| `--mind`, `--missing` | missing rate > 0.01 |
+    |Sample missing rate| `--geno`,  `--missing` | missing rate > 0.02 |
+    |SNP missing rate| `--mind`, `--missing` | missing rate > 0.02 |
     |Minor allele frequency| `--freq`, `--maf` |maf < 0.01|
     |Sample Relatedness| `--genome` |pi_hat > 0.2 to exclude second-degree relatives|
-    |Hardy-Weinberg equilibrium| `--hwe`,`--hardy`|hwe < 5e-6|
+    |Hardy-Weinberg equilibrium| `--hwe`,`--hardy`|hwe < 1e-6|
     |Inbreeding F coefficient|`--het`|outside of 3 SD from the mean|
 
 First, we can calculate some basic statistics of our simulated data:
@@ -267,9 +268,10 @@ The input is PLINK bed/bim/fam file. Usually, they have the same prefix, and we 
 To calculate the missing rate, we need the flag `--missing`, which tells PLINK to calculate the missing rate in the dataset specified by `--bfile`. 
 
 !!! example "Calculate missing rate"
+    
     ```bash
     cd ../04_Data_QC
-    genotypeFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020" #!!! Please add your own path here.  "1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020" is the prefix of PLINK bed file. 
+    genotypeFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing" #!!! Please add your own path here.  "1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing" is the prefix of PLINK bed file. 
     
     plink \
     	--bfile ${genotypeFile} \
@@ -280,20 +282,37 @@ To calculate the missing rate, we need the flag `--missing`, which tells PLINK t
 
 This code will generate two files `plink_results.imiss` and `plink_results.lmiss`, which contain the missing rate information for samples and SNPs respectively.
 
-Take a look at the `.imiss` file. The last column shows the missing rate for samples. Since we used part of the 1000 Genome Project data this time, there are no missing samples or SNPs. So the missing rate is zero.
+Take a look at the `.imiss` file. The last column shows the missing rate for samples. Since we used part of the 1000 Genome Project data this time, there are no missing SNPs in the original datasets. But for educational purposes, we randomly added make some of the genotypes missing.
 
 ```bash
+# missing rate for each sample
 head plink_results.imiss
- FID       IID MISS_PHENO   N_MISS   N_GENO   F_MISS
-   0   HG00403          Y        0  1122299        0
-   0   HG00404          Y        0  1122299        0
-   0   HG00406          Y        0  1122299        0
-   0   HG00407          Y        0  1122299        0
-   0   HG00409          Y        0  1122299        0
-   0   HG00410          Y        0  1122299        0
-   0   HG00419          Y        0  1122299        0
-   0   HG00421          Y        0  1122299        0
-   0   HG00422          Y        0  1122299        0
+    FID       IID MISS_PHENO   N_MISS   N_GENO   F_MISS
+HG00403   HG00403          Y    10020  1235116 0.008113
+HG00404   HG00404          Y     9192  1235116 0.007442
+HG00406   HG00406          Y    15751  1235116  0.01275
+HG00407   HG00407          Y    14653  1235116  0.01186
+HG00409   HG00409          Y     5667  1235116 0.004588
+HG00410   HG00410          Y     6066  1235116 0.004911
+HG00419   HG00419          Y    20000  1235116  0.01619
+HG00421   HG00421          Y    17542  1235116   0.0142
+HG00422   HG00422          Y    18608  1235116  0.01507
+```
+
+```bash
+# missing rate for each SNP
+head plink_results.lmiss
+ CHR              SNP   N_MISS   N_GENO   F_MISS
+   1      1:14930:A:G        2      504 0.003968
+   1      1:15774:G:A        3      504 0.005952
+   1      1:15777:A:G        3      504 0.005952
+   1      1:57292:C:T        6      504   0.0119
+   1      1:77874:G:A        3      504 0.005952
+   1      1:87360:C:T        1      504 0.001984
+   1      1:92917:T:A        7      504  0.01389
+   1     1:104186:T:C        3      504 0.005952
+   1     1:125271:C:T        2      504 0.003968
+
 ```
 
 For the meaning of headers, please refer to [PLINK documents](https://www.cog-genomics.org/plink/1.9/formats).
@@ -339,16 +358,16 @@ Using PLINK1.9 we can easily calculate the MAF of variants in the input data.
     ```bash
     # results from plink1.9
     head plink_results.frq
-     CHR              SNP   A1   A2          MAF  NCHROBS
-       1      1:13273:G:C    C    G       0.0625     1008
-       1      1:14599:T:A    A    T      0.08929     1008
-       1      1:14604:A:G    G    A      0.08929     1008
-       1      1:14930:A:G    G    A       0.4137     1008
-       1      1:69897:T:C    T    C        0.124     1008
-       1      1:86331:A:G    G    A       0.0873     1008
-       1      1:91581:G:A    A    G        0.498     1008
-       1     1:122872:T:G    G    T       0.2589     1008
-       1     1:135163:C:T    T    C      0.09226     1008
+    CHR              SNP   A1   A2          MAF  NCHROBS
+    1      1:14930:A:G    G    A       0.4133     1004
+    1      1:15774:G:A    A    G      0.02794     1002
+    1      1:15777:A:G    G    A      0.07385     1002
+    1      1:57292:C:T    T    C       0.1054      996
+    1      1:77874:G:A    A    G      0.01996     1002
+    1      1:87360:C:T    T    C      0.02286     1006
+    1      1:92917:T:A    A    T     0.003018      994
+    1     1:104186:T:C    T    C        0.499     1002
+    1     1:125271:C:T    C    T      0.03088     1004
     ```
 
 Next, we use plink2 to run the same options to check the difference between the results.
@@ -364,16 +383,16 @@ Next, we use plink2 to run the same options to check the difference between the 
     ```bash
     # results from plink2
     head plink_results.afreq
-    #CHROM	ID	REF	ALT	ALT_FREQS	OBS_CT
-    1	1:13273:G:C	G	C	0.0625	1008
-    1	1:14599:T:A	T	A	0.0892857	1008
-    1	1:14604:A:G	A	G	0.0892857	1008
-    1	1:14930:A:G	A	G	0.41369	1008
-    1	1:69897:T:C	T	C	0.875992	1008
-    1	1:86331:A:G	A	G	0.0873016	1008
-    1	1:91581:G:A	G	A	0.498016	1008
-    1	1:122872:T:G	T	G	0.258929	1008
-    1	1:135163:C:T	C	T	0.0922619	1008
+    #CHROM  ID      REF     ALT     PROVISIONAL_REF?        ALT_FREQS       OBS_CT
+    1       1:14930:A:G     A       G       Y       0.413347        1004
+    1       1:15774:G:A     G       A       Y       0.0279441       1002
+    1       1:15777:A:G     A       G       Y       0.0738523       1002
+    1       1:57292:C:T     C       T       Y       0.105422        996
+    1       1:77874:G:A     G       A       Y       0.0199601       1002
+    1       1:87360:C:T     C       T       Y       0.0228628       1006
+    1       1:92917:T:A     T       A       Y       0.00301811      994
+    1       1:104186:T:C    T       C       Y       0.500998        1002
+    1       1:125271:C:T    C       T       Y       0.969124        1004
     ```
 
 We need to pay attention to the concepts here.
@@ -420,28 +439,30 @@ The following command can calculate the Hardy-Weinberg equilibrium exact test st
     ```
     ```bash
     head plink_results.hwe
-     CHR              SNP     TEST   A1   A2                 GENO   O(HET)   E(HET)            P 
-       1      1:13273:G:C  ALL(NP)    C    G             1/61/442    0.121   0.1172       0.7113
-       1      1:14599:T:A  ALL(NP)    A    T             1/88/415   0.1746   0.1626       0.1625
-       1      1:14604:A:G  ALL(NP)    G    A             1/88/415   0.1746   0.1626       0.1625
-       1      1:14930:A:G  ALL(NP)    G    A             4/409/91   0.8115   0.4851    1.679e-61
-       1      1:69897:T:C  ALL(NP)    T    C            7/111/386   0.2202   0.2173            1
-       1      1:86331:A:G  ALL(NP)    G    A             0/88/416   0.1746   0.1594      0.02387
-       1      1:91581:G:A  ALL(NP)    A    G          137/228/139   0.4524      0.5      0.03271
-       1     1:122872:T:G  ALL(NP)    G    T            1/259/244   0.5139   0.3838     8.04e-19
-       1     1:135163:C:T  ALL(NP)    T    C             1/91/412   0.1806   0.1675       0.1066
+        CHR              SNP     TEST   A1   A2                 GENO   O(HET)   E(HET)            P
+    1      1:14930:A:G  ALL(NP)    G    A             4/407/91   0.8108    0.485    4.864e-61
+    1      1:15774:G:A  ALL(NP)    A    G             0/28/473  0.05589  0.05433            1
+    1      1:15777:A:G  ALL(NP)    G    A             1/72/428   0.1437   0.1368       0.5053
+    1      1:57292:C:T  ALL(NP)    T    C             3/99/396   0.1988   0.1886       0.3393
+    1      1:77874:G:A  ALL(NP)    A    G             0/20/481  0.03992  0.03912            1
+    1      1:87360:C:T  ALL(NP)    T    C             0/23/480  0.04573  0.04468            1
+    1      1:92917:T:A  ALL(NP)    A    T              0/3/494 0.006036 0.006018            1
+    1     1:104186:T:C  ALL(NP)    T    C            74/352/75   0.7026      0.5    6.418e-20
+    1     1:125271:C:T  ALL(NP)    C    T             1/29/472  0.05777  0.05985       0.3798
     ```
 
 ### Applying filters
 
-Previously we just calculate the basic statistics using PLINK. But when performing certain analyses, we just want to exclude the bad-quality samples or SNPs instead of calculating the statistics for all samples and SNPs.
+Previously we calculated the basic statistics using PLINK. But when performing certain analyses, we just want to exclude the bad-quality samples or SNPs instead of calculating the statistics for all samples and SNPs.
 
 In this case we can apply the following filters for example:
 
 - `--maf 0.01` : exlcude snps with maf<0.01
-- `--geno 0.01` :filters out all variants with missing rates exceeding 0.0
+- `--geno 0.02` :filters out all variants with missing rates exceeding 0.02
 - `--mind 0.02` :filters out all samples with missing rates exceeding 0.02
-- `--hwe 5e-6` : filters out all variants which have Hardy-Weinberg equilibrium exact test p-value below the provided threshold. NOTE: With case/control data, cases and missing phenotypes are normally ignored. (see https://www.cog-genomics.org/plink/1.9/filter#hwe)
+- `--hwe 1e-6` : filters out all variants which have Hardy-Weinberg equilibrium exact test p-value below the provided threshold. NOTE: With case/control data, cases and missing phenotypes are normally ignored. (see https://www.cog-genomics.org/plink/1.9/filter#hwe)
+
+We will apply these filters in the following example if LD-pruning.
 
 ### LD Pruning
 
@@ -456,28 +477,39 @@ Combined with the filters we just introduced, we can run:
     plink \
     	--bfile ${genotypeFile} \
     	--maf 0.01 \
-    	--geno 0.01 \
+    	--geno 0.02 \
     	--mind 0.02 \
-    	--hwe 5e-6 \
+    	--hwe 1e-6 \
     	--indep-pairwise 50 5 0.2 \
     	--out plink_results
     ```
     This command generates two outputs:  `plink_results.prune.in` and `plink_results.prune.out`
     `plink_results.prune.in` is the independent set of SNPs we will use in the following analysis.
-    Let's take a look at this file. Basically, it just contains one SNP id per line.
+    
+    You can check the PLINK log for how many variants were removed based on the filters you applied:
+    ```
+    Total genotyping rate in remaining samples is 0.993916.
+    108837 variants removed due to missing genotype data (--geno).
+    --hwe: 9754 variants removed due to Hardy-Weinberg exact test.
+    87149 variants removed due to minor allele threshold(s)
+    (--maf/--max-maf/--mac/--max-mac).
+    1029376 variants and 501 people pass filters and QC.
+    ```
+    
+    Let's take a look at the LD-pruned SNP file. Basically, it just contains one SNP id per line.
     
     ```bash
     head plink_results.prune.in
-    1:13273:G:C
-    1:14599:T:A
-    1:69897:T:C
-    1:86331:A:G
-    1:91581:G:A
-    1:135163:C:T
-    1:233473:C:G
-    1:532929:T:C
-    1:559480:C:T
-    1:565433:C:T
+    1:15774:G:A
+    1:15777:A:G
+    1:77874:G:A
+    1:87360:C:T
+    1:125271:C:T
+    1:232449:G:A
+    1:533113:A:G
+    1:565697:A:G
+    1:566933:A:G
+    1:567092:T:C
     ```
 
 ### Inbreeding F coefficient 
@@ -510,21 +542,29 @@ Next, we can check the heterozygosity F of samples (https://www.cog-genomics.org
     
     ```bash
     head plink_results.het
-     FID       IID       O(HOM)       E(HOM)        N(NM)            F
-       0   HG00403       747270    7.488e+05      1122299    -0.004114
-       0   HG00404       748955    7.488e+05      1122299    0.0003974
-       0   HG00406       750093    7.488e+05      1122299     0.003444
-       0   HG00407       746566    7.488e+05      1122299    -0.005999
-       0   HG00409       751694    7.488e+05      1122299     0.007731
-       0   HG00410       745078    7.488e+05      1122299    -0.009983
-       0   HG00419       747996    7.488e+05      1122299     -0.00217
-       0   HG00421       757199    7.488e+05      1122299      0.02247
-       0   HG00422       752725    7.488e+05      1122299      0.01049
+        FID       IID       O(HOM)       E(HOM)        N(NM)            F
+    HG00403   HG00403       180222    1.796e+05       217363      0.01698
+    HG00404   HG00404       180127    1.797e+05       217553      0.01023
+    HG00406   HG00406       178891    1.789e+05       216533   -0.0001138
+    HG00407   HG00407       178992     1.79e+05       216677   -0.0008034
+    HG00409   HG00409       179918    1.801e+05       218045    -0.006049
+    HG00410   HG00410       179782    1.801e+05       218028    -0.009268
+    HG00419   HG00419       178362    1.783e+05       215849     0.001315
+    HG00421   HG00421       178222    1.785e+05       216110    -0.008288
+    HG00422   HG00422       178316    1.784e+05       215938      -0.0022
     ```
-    
-A commonly used method is to exclude samples with heterozygosity F deviating more than 3 standard deviation(SD) from the mean.
+
+A commonly used method is to exclude samples with heterozygosity F deviating more than 3 standard deviation(SD) from the mean. Some studies used a fixed value such as +-0.15 or +-0.2.
 
 !!! warning "Usually we will use only [LD-pruned SNPs](#ld-pruning)  for the calculation of F."
+
+We can plot the distribution of F:
+
+Here we use +-0.1 as threshold for simplicity, 
+```
+# only one sample
+awk 'NR>1 && $6>0.1 || $6<-0.1 {print $1,$2}' plink_results.het > high_het.sample
+```
 
 
 ### Sample & SNP filtering (extract/exclude/keep/remove)
@@ -536,16 +576,16 @@ For `--extract` or `--exclude` , the input is the filename of a SNP list file.
 
 ```bash
 head plink_results.prune.in
-1:13273:G:C
-1:14599:T:A
-1:69897:T:C
-1:86331:A:G
-1:91581:G:A
-1:135163:C:T
-1:233473:C:G
-1:532929:T:C
-1:559480:C:T
-1:565433:C:T
+1:15774:G:A
+1:15777:A:G
+1:77874:G:A
+1:87360:C:T
+1:125271:C:T
+1:232449:G:A
+1:533113:A:G
+1:565697:A:G
+1:566933:A:G
+1:567092:T:C
 ```
 
 ### IBD / PI_HAT
@@ -581,17 +621,21 @@ Combined with the `--extract`, we can run:
     PI_HAT is the IBD estimation. Please check https://www.cog-genomics.org/plink/1.9/ibd for more details.
     ```bash
     head plink_results.genome
-     FID1     IID1 FID2     IID2 RT    EZ      Z0      Z1      Z2  PI_HAT PHE       DST     PPC   RATIO
-       0  HG00403   0  HG00404 OT     0  0.9800  0.0086  0.0114  0.0157  -1  0.749375  0.5531  2.0089
-       0  HG00403   0  HG00406 OT     0  0.9751  0.0231  0.0018  0.0133  -1  0.748336  0.6309  2.0225
-       0  HG00403   0  HG00407 OT     0  0.9801  0.0153  0.0046  0.0122  -1  0.748293  0.5045  2.0007
-       0  HG00403   0  HG00409 OT     0  0.9807  0.0193  0.0000  0.0097  -1  0.747215  0.6014  2.0173
-       0  HG00403   0  HG00410 OT     0  0.9744  0.0256  0.0000  0.0128  -1  0.748058  0.8621  2.0745
-       0  HG00403   0  HG00419 OT     0  0.9650  0.0350  0.0000  0.0175  -1  0.747146  0.8080  2.0595
-       0  HG00403   0  HG00421 OT     0  0.9842  0.0158  0.0000  0.0079  -1  0.746522  0.4557  1.9926
-       0  HG00403   0  HG00422 OT     0  0.9832  0.0111  0.0056  0.0112  -1  0.748156  0.4208  1.9867
-       0  HG00403   0  HG00428 OT     0  0.9929  0.0000  0.0071  0.0071  -1  0.746851  0.3115  1.9674
+        FID1     IID1     FID2     IID2 RT    EZ      Z0      Z1      Z2  PI_HAT PHE       DST     PPC   RATIO
+    HG00403  HG00403  HG00404  HG00404 UN    NA  1.0000  0.0000  0.0000  0.0000  -1  0.858562  0.3679  1.9774
+    HG00403  HG00403  HG00406  HG00406 UN    NA  0.9805  0.0044  0.0151  0.0173  -1  0.858324  0.8183  2.0625
+    HG00403  HG00403  HG00407  HG00407 UN    NA  0.9790  0.0000  0.0210  0.0210  -1  0.857794  0.8034  2.0587
+    HG00403  HG00403  HG00409  HG00409 UN    NA  0.9912  0.0000  0.0088  0.0088  -1  0.857024  0.2637  1.9578
+    HG00403  HG00403  HG00410  HG00410 UN    NA  0.9699  0.0235  0.0066  0.0184  -1  0.858194  0.6889  2.0335
+    HG00403  HG00403  HG00419  HG00419 UN    NA  1.0000  0.0000  0.0000  0.0000  -1  0.857643  0.8597  2.0745
+    HG00403  HG00403  HG00421  HG00421 UN    NA  0.9773  0.0218  0.0010  0.0118  -1  0.857276  0.2186  1.9484
+    HG00403  HG00403  HG00422  HG00422 UN    NA  0.9880  0.0000  0.0120  0.0120  -1  0.857224  0.8277  2.0652
+    HG00403  HG00403  HG00428  HG00428 UN    NA  0.9801  0.0069  0.0130  0.0164  -1  0.858162  0.9812  2.1471
     ```
+
+Note: PLINK2 uses KING-robust kinship estimator, which is more robust for mixed-population datasets. See [here](https://www.cog-genomics.org/plink/2.0/distance#make_king).
+
+Since the samples are unrelated, we do not need to remove any sample at this step. But remebr to check this for your own dataset.
 
 ### LD calculation
 
@@ -614,16 +658,16 @@ To calculate LD r2 for SNPs on chr22 , we can run:
     
     ```bash
     head plink_results.ld
-     CHR_A         BP_A             SNP_A  CHR_B         BP_B             SNP_B           R2 
-        22     16053659   22:16053659:A:C     22     16067500   22:16067500:T:C      0.64577 
-        22     16053862   22:16053862:C:T     22     16054454   22:16054454:C:T     0.987505 
-        22     16053862   22:16053862:C:T     22     16055122   22:16055122:G:T     0.601708 
-        22     16053863   22:16053863:G:A     22     16055070   22:16055070:G:A     0.931043 
-        22     16054454   22:16054454:C:T     22     16055122   22:16055122:G:T     0.594216 
-        22     16058767   22:16058767:A:G     22     16067462   22:16067462:C:T     0.266916 
-        22     16067462   22:16067462:C:T     22     16069771   22:16069771:G:A     0.382323 
-        22     16069771   22:16069771:G:A     22     16123813   22:16123813:G:A     0.291935 
-        22     16143946   22:16143946:A:G     22     16155259   22:16155259:A:G     0.559165 
+     CHR_A         BP_A             SNP_A  CHR_B         BP_B             SNP_B           R2
+    22     16069141   22:16069141:C:G     22     16071624   22:16071624:A:G     0.771226
+    22     16069784   22:16069784:A:T     22     16149743   22:16149743:T:A     0.217197
+    22     16069784   22:16069784:A:T     22     16150589   22:16150589:C:A     0.224992
+    22     16069784   22:16069784:A:T     22     16159060   22:16159060:G:A       0.2289
+    22     16149743   22:16149743:T:A     22     16150589   22:16150589:C:A     0.965109
+    22     16149743   22:16149743:T:A     22     16152606   22:16152606:T:C     0.692157
+    22     16149743   22:16149743:T:A     22     16159060   22:16159060:G:A     0.721796
+    22     16149743   22:16149743:T:A     22     16193549   22:16193549:C:T     0.336477
+    22     16149743   22:16149743:T:A     22     16212542   22:16212542:C:T     0.442424
     ```
 
 ### Data management (make-bed/recode)
@@ -651,6 +695,33 @@ To convert the formats, we can run:
             --recode \
             --out plink_1000_pruned
     ```
+
+## Apply all the filters to obtain the clean dataset
+
+We can then apply the filters and remove samples with high $F_{het}$ to get the clean dataset for later use.
+
+```bash
+plink \
+        --bfile ${genotypeFile} \
+        --maf 0.01 \
+        --geno 0.02 \
+        --mind 0.02 \
+        --hwe 1e-6 \
+        --remove high_het.sample \
+        --keep-allele-order \
+        --make-bed \
+        --out sample_data.clean
+```
+
+```
+1224104 variants and 500 people pass filters and QC.
+```
+
+```
+-rw-r--r--  1 yunye yunye 146M Dec 26 15:40 sample_data.clean.bed
+-rw-r--r--  1 yunye yunye  39M Dec 26 15:40 sample_data.clean.bim
+-rw-r--r--  1 yunye yunye  13K Dec 26 15:40 sample_data.clean.fam
+```
 
 ## Exercise
 - [x] Follow this tutorial and type in the commands:

@@ -18,7 +18,7 @@
 
 ## Download
 
-Simply run `download_sampledata.sh` and the dataset will be downloaded and decompressed.
+Simply run `download_sampledata.sh` in `01_Dataset` and the dataset will be downloaded and decompressed.
 
 !!! warning "Sample dataset is currently hosted on Dropbox which may not be accessible for users in certain regions."
 
@@ -26,9 +26,9 @@ Simply run `download_sampledata.sh` and the dataset will be downloaded and decom
 ./download_sampledata.sh
 ```
 
-or you can manually download it from [this link](https://www.dropbox.com/scl/fi/u569n0cs43q1cx5u0aamq/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.zip?rlkey=vprtn9rhiegbrol1p73xh2w7q&dl=1).
+or you can manually download it from [this link](https://www.dropbox.com/scl/fi/41ep8xbdccp9xw5epim19/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.zip?rlkey=tklapxwypeg79b1sx03o6ycs7&dl=1).
 
-And you will get the following files in `1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing`:
+And you will get the following files:
 ```
 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bed
 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bim
