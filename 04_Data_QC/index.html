@@ -1026,6 +1026,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#other-common-qc-steps-not-included-in-this-tutorial" class="md-nav__link">
+    Other common QC steps not included in this tutorial
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     Exercise
   </a>
@@ -1923,6 +1930,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#other-common-qc-steps-not-included-in-this-tutorial" class="md-nav__link">
+    Other common QC steps not included in this tutorial
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     Exercise
   </a>
@@ -1958,8 +1972,8 @@
                   
 
 
-<h1 id="plink-basics">Plink basics</h1>
-<p>In this module, we will learn the basics of genotype data QC using PLINK, which is one of the most commonly used software in complex trait genomics.</p>
+<h1 id="plink-basics">PLINK basics</h1>
+<p>In this module, we will learn the basics of genotype data QC using PLINK, which is one of the most commonly used software in complex trait genomics. (Huge thanks to the developers: <a href="https://www.cog-genomics.org/plink/1.9/credits">PLINK1.9</a> and <a href="https://www.cog-genomics.org/plink/2.0/credits">PLINK2</a>)</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
 <li><a href="#preparation">Preparation</a><ul>
@@ -1979,6 +1993,7 @@
 <li><a href="#ibd--pi_hat">Estimate IBD / PI_HAT</a></li>
 <li><a href="#data-management-make-bedrecode">Data management (make-bed/recode)</a></li>
 <li><a href="#apply-all-the-filters-to-obtain-a-clean-dataset">Apply all the filters to obtain a clean dataset</a></li>
+<li><a href="#other-common-qc-steps-not-included-in-this-tutorial">Other common QC steps not included in this tutorial</a></li>
 </ul>
 </li>
 <li><a href="#exercise">Exercise</a></li>
@@ -2054,7 +2069,8 @@ This command will add the path to your current shell. </p>
 <p>All done. Let's test if we installed PLINK successfully or not.</p>
 <div class="admonition example">
 <p class="admonition-title">Check if PLINK is installed successfully.</p>
-<div class="highlight"><pre><span></span><code>PLINK<span class="w"> </span>v1.90b7.2<span class="w"> </span><span class="m">64</span>-bit<span class="w"> </span><span class="o">(</span><span class="m">11</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">2023</span><span class="o">)</span><span class="w">           </span>www.cog-genomics.org/plink/1.9/
+<div class="highlight"><pre><span></span><code>./plink
+PLINK<span class="w"> </span>v1.90b7.2<span class="w"> </span><span class="m">64</span>-bit<span class="w"> </span><span class="o">(</span><span class="m">11</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">2023</span><span class="o">)</span><span class="w">           </span>www.cog-genomics.org/plink/1.9/
 <span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2005</span>-2023<span class="w"> </span>Shaun<span class="w"> </span>Purcell,<span class="w"> </span>Christopher<span class="w"> </span>Chang<span class="w">   </span>GNU<span class="w"> </span>General<span class="w"> </span>Public<span class="w"> </span>License<span class="w"> </span>v3
 
 plink<span class="w"> </span>&lt;input<span class="w"> </span>flag<span class="o">(</span>s<span class="o">)</span>...&gt;<span class="w"> </span><span class="o">[</span><span class="nb">command</span><span class="w"> </span>flag<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span><span class="w"> </span><span class="o">[</span>other<span class="w"> </span>flag<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span>
@@ -2071,7 +2087,8 @@ Commands<span class="w"> </span>include<span class="w"> </span>--make-bed,<span 
 
 <span class="s2">&quot;plink --help | more&quot;</span><span class="w"> </span>describes<span class="w"> </span>all<span class="w"> </span>functions<span class="w"> </span><span class="o">(</span>warning:<span class="w"> </span>long<span class="o">)</span>.
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>PLINK<span class="w"> </span>v2.00a5.9LM<span class="w"> </span>AVX2<span class="w"> </span>AMD<span class="w"> </span><span class="o">(</span><span class="m">12</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">2023</span><span class="o">)</span><span class="w">       </span>www.cog-genomics.org/plink/2.0/
+<div class="highlight"><pre><span></span><code>./plink2
+PLINK<span class="w"> </span>v2.00a5.9LM<span class="w"> </span>AVX2<span class="w"> </span>AMD<span class="w"> </span><span class="o">(</span><span class="m">12</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">2023</span><span class="o">)</span><span class="w">       </span>www.cog-genomics.org/plink/2.0/
 <span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2005</span>-2023<span class="w"> </span>Shaun<span class="w"> </span>Purcell,<span class="w"> </span>Christopher<span class="w"> </span>Chang<span class="w">   </span>GNU<span class="w"> </span>General<span class="w"> </span>Public<span class="w"> </span>License<span class="w"> </span>v3
 
 plink2<span class="w"> </span>&lt;input<span class="w"> </span>flag<span class="o">(</span>s<span class="o">)</span>...&gt;<span class="w"> </span><span class="o">[</span><span class="nb">command</span><span class="w"> </span>flag<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span><span class="w"> </span><span class="o">[</span>other<span class="w"> </span>flag<span class="o">(</span>s<span class="o">)</span>...<span class="o">]</span>
@@ -2087,7 +2104,7 @@ Commands<span class="w"> </span>include<span class="w"> </span>--rm-dup<span cla
 <span class="s2">&quot;plink2 --help | more&quot;</span><span class="w"> </span>describes<span class="w"> </span>all<span class="w"> </span>functions.
 </code></pre></div>
 </div>
-<p>Well done. We have installed plink1.9 and plink2.</p>
+<p>Well done. We have successfully installed plink1.9 and plink2.</p>
 <h3 id="download-genotype-data">Download genotype data</h3>
 <p>Next, we need to download the sample genotype data. The way to create the sample data is described [here].(https://cloufield.github.io/GWASTutorial/01_Dataset/)
 This dataset contains 504 EAS individuals from 1000 Genome Project Phase 3v5 with around 1 million variants.</p>
@@ -2163,12 +2180,12 @@ HG00428<span class="w"> </span>HG00428<span class="w"> </span><span class="m">0<
 <tr>
 <td>Sample missing rate</td>
 <td><code>--geno</code>,  <code>--missing</code></td>
-<td>missing rate &gt; 0.02</td>
+<td>missing rate &gt; 0.01 (0.02, or 0.05)</td>
 </tr>
 <tr>
 <td>SNP missing rate</td>
 <td><code>--mind</code>, <code>--missing</code></td>
-<td>missing rate &gt; 0.02</td>
+<td>missing rate &gt; 0.01 (0.02, or 0.05)</td>
 </tr>
 <tr>
 <td>Minor allele frequency</td>
@@ -2599,6 +2616,11 @@ plink<span class="w"> </span><span class="se">\</span>
 -rw-r--r--  1 yunye yunye  39M Dec 26 15:40 sample_data.clean.bim
 -rw-r--r--  1 yunye yunye  13K Dec 26 15:40 sample_data.clean.fam
 </code></pre></div>
+<h2 id="other-common-qc-steps-not-included-in-this-tutorial">Other common QC steps not included in this tutorial</h2>
+<ul>
+<li>check-sex: compares sex assignments in the input dataset with those imputed from X chromosome inbreeding coefficients <a href="https://www.cog-genomics.org/plink/1.9/basic_stats#check_sex">https://www.cog-genomics.org/plink/1.9/basic_stats#check_sex</a></li>
+<li>case/control nonrandom missingness test:  detect platform/batch differences between case and control genotype data by performing Fisher's exact test on case/control missing call counts at each variant. <a href="https://www.cog-genomics.org/plink/1.9/assoc#test_missing">https://www.cog-genomics.org/plink/1.9/assoc#test_missing</a></li>
+</ul>
 <h2 id="exercise">Exercise</h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Follow this tutorial and type in the commands:</li>
