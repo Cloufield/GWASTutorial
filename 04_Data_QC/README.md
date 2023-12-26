@@ -17,7 +17,7 @@ In this module, we will learn the basics of genotype data QC using PLINK, which 
 	- [LD calculation](#ld-calculation)
 	- [Estimate IBD / PI_HAT](#ibd--pi_hat)
 	- [Data management (make-bed/recode)](#data-management-make-bedrecode)
-    - [Apply all the filters to obtain the clean dataset](#apply-all-the-filters-to-obtain-the-clean-dataset)
+    - [Apply all the filters to obtain a clean dataset](#apply-all-the-filters-to-obtain-a-clean-dataset)
 - [Exercise](#exercise)
 - [Additional resources](#additional-resources)
 - [Reference](#reference)
@@ -282,7 +282,7 @@ To calculate the missing rate, we need the flag `--missing`, which tells PLINK t
 
 This code will generate two files `plink_results.imiss` and `plink_results.lmiss`, which contain the missing rate information for samples and SNPs respectively.
 
-Take a look at the `.imiss` file. The last column shows the missing rate for samples. Since we used part of the 1000 Genome Project data this time, there are no missing SNPs in the original datasets. But for educational purposes, we randomly added make some of the genotypes missing.
+Take a look at the `.imiss` file. The last column shows the missing rate for samples. Since we used part of the 1000 Genome Project data this time, there are no missing SNPs in the original datasets. But for educational purposes, we randomly make some of the genotypes missing.
 
 ```bash
 # missing rate for each sample
@@ -315,13 +315,26 @@ head plink_results.lmiss
 
 ```
 
+!!! example "Distribution of sample missing rate and SNP missing rate"
+    
+    Note: The missing values were simulated based on normal distributions for each individual.  
+    
+    Sample missing rate
+    
+    ![image](https://github.com/Cloufield/GWASTutorial/assets/40289485/ec776c99-d73f-4cc7-b1e4-d4566acc83df)
+
+    SNP missing rate
+    
+    ![image](https://github.com/Cloufield/GWASTutorial/assets/40289485/30a11f16-d43e-4e1f-a281-90cf02947916)
+
+
 For the meaning of headers, please refer to [PLINK documents](https://www.cog-genomics.org/plink/1.9/formats).
 
 ### Allele Frequency
 
-One of the most important statistics of SNPs is their frequency in a certain population. A number of downstream analysis is based on investigating differences in allele frequencies.
+One of the most important statistics of SNPs is their frequency in a certain population. Many downstream analyses are based on investigating differences in allele frequencies.
 
-Usually, variants can be categorized into 3 groups based on their Minor Allel Frequency (MAF):
+Usually, variants can be categorized into 3 groups based on their Minor Allele Frequency (MAF):
 
 1. **Common variants** : MAF>=0.05
 2. **Low-frequency variants** : 0.01<=MAF<0.05
@@ -554,13 +567,19 @@ Next, we can check the heterozygosity F of samples (https://www.cog-genomics.org
     HG00422   HG00422       178316    1.784e+05       215938      -0.0022
     ```
 
-A commonly used method is to exclude samples with heterozygosity F deviating more than 3 standard deviation(SD) from the mean. Some studies used a fixed value such as +-0.15 or +-0.2.
+A commonly used method is to exclude samples with heterozygosity F deviating more than 3 standard deviations (SD) from the mean. Some studies used a fixed value such as +-0.15 or +-0.2.
 
 !!! warning "Usually we will use only [LD-pruned SNPs](#ld-pruning)  for the calculation of F."
 
 We can plot the distribution of F:
 
-Here we use +-0.1 as threshold for simplicity, 
+!!! example "Distribution of $F_{het}$ in sample data"
+    
+    ![image](https://github.com/Cloufield/GWASTutorial/assets/40289485/6dec3e49-fe35-45ee-9337-d788ef3d51cd)
+    
+
+Here we use +-0.1 as the $F_{het}$ threshold for convenience. 
+
 ```
 # only one sample
 awk 'NR>1 && $6>0.1 || $6<-0.1 {print $1,$2}' plink_results.het > high_het.sample
@@ -571,8 +590,8 @@ awk 'NR>1 && $6>0.1 || $6<-0.1 {print $1,$2}' plink_results.het > high_het.sampl
 Sometimes we will use only a subset of samples or SNPs included the original dataset. 
 In this case, we can use `--extract` or `--exclude` to select or exclude SNPs from analysis, `--keep` or `--remove` to select or exclude samples.
 
-For  `--keep` or `--remove` , the input is the filename of a sample FID and IID file.
-For `--extract` or `--exclude` , the input is the filename of a SNP list file.
+For  `--keep` or `--remove`, the input is the filename of a sample FID and IID file.
+For `--extract` or `--exclude`, the input is the filename of an SNP list file.
 
 ```bash
 head plink_results.prune.in
@@ -594,7 +613,7 @@ head plink_results.prune.in
 
 Combined with the `--extract`, we can run:
 
-!!! info "How PLINK extimates IBD"
+!!! info "How PLINK estimates IBD"
     
     The prior probability of IBS sharing can be modeled as: 
     
@@ -696,9 +715,9 @@ To convert the formats, we can run:
             --out plink_1000_pruned
     ```
 
-## Apply all the filters to obtain the clean dataset
+## Apply all the filters to obtain a clean dataset
 
-We can then apply the filters and remove samples with high $F_{het}$ to get the clean dataset for later use.
+We can then apply the filters and remove samples with high $F_{het}$ to get a clean dataset for later use.
 
 ```bash
 plink \
