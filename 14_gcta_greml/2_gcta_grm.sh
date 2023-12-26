@@ -1,6 +1,6 @@
 #!/bin/bash
 
-plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020"
+plinkFile="../04_Data_QC/sample_data.clean"
 
 gcta \
   --bfile ${plinkFile} \

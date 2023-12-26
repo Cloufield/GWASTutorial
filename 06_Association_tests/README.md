@@ -228,6 +228,9 @@ SNPID	CHR	POS	EA	NEA	EAF	SE	Z	P	OR	N	STATUS	REF	ALT
 20:42758834:T:C	20	42758834	T	C	0.227273	0.184323	-7.76902	7.909780e-15	0.238829	495	9999999	T	C
 ```
 
+!!! warning
+    This is just to show the analysis pipeline and data format. The trait was simulated under an unreal condition (effect sizes are extremely large) so the result is meaningless here.   
+
 ## Visualization
 
 To visualize the sumstats, we will create the Manhattan plot, QQ plot and regional plot.

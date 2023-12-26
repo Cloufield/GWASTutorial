@@ -80,39 +80,39 @@ gcta \
 * (C) 2010-present, Yang Lab, Westlake University
 * Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
 *******************************************************************
-Analysis started at 12:24:19 JST on Sun Jan 15 2023.
-Hostname: Home-Desktop
+Analysis started at 17:21:24 JST on Tue Dec 26 2023.
+Hostname: Yunye
 
 Options:
 
---bfile ../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020
+--bfile ../04_Data_QC/sample_data.clean
 --autosome
 --maf 0.01
 --make-grm
 --out 1kg_eas
 
 Note: GRM is computed using the SNPs on the autosomes.
-Reading PLINK FAM file from [../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam]...
-504 individuals to be included from FAM file.
-504 individuals to be included. 0 males, 0 females, 504 unknown.
-Reading PLINK BIM file from [../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim]...
-1122299 SNPs to be included from BIM file(s).
+Reading PLINK FAM file from [../04_Data_QC/sample_data.clean.fam]...
+500 individuals to be included from FAM file.
+500 individuals to be included. 0 males, 0 females, 500 unknown.
+Reading PLINK BIM file from [../04_Data_QC/sample_data.clean.bim]...
+1224104 SNPs to be included from BIM file(s).
 Threshold to filter variants: MAF > 0.010000.
 Computing the genetic relationship matrix (GRM) v2 ...
-Subset 1/1, no. subject 1-504
-  504 samples, 1122299 markers, 127260 GRM elements
+Subset 1/1, no. subject 1-500
+  500 samples, 1224104 markers, 125250 GRM elements
 IDs for the GRM file have been saved in the file [1kg_eas.grm.id]
 Computing GRM...
-  100% finished in 8.2 sec
-1122299 SNPs have been processed.
-  Used 1122299 valid SNPs.
+  100% finished in 7.4 sec
+1224104 SNPs have been processed.
+  Used 1128732 valid SNPs.
 The GRM computation is completed.
 Saving GRM...
 GRM has been saved in the file [1kg_eas.grm.bin]
 Number of SNPs in each pair of individuals has been saved in the file [1kg_eas.grm.N.bin]
 
-Analysis finished at 12:24:29 JST on Sun Jan 15 2023
-Overall computational time: 9.52 sec.
+Analysis finished at 17:21:32 JST on Tue Dec 26 2023
+Overall computational time: 8.51 sec.
 ```
 
 ## Estimation
@@ -122,15 +122,21 @@ Overall computational time: 9.52 sec.
 
 #the grm we calculated in step1
 GRM=1kg_eas
+
 # phenotype file
-phenotypeFile=../01_Dataset/1kgeas_binary.txt
+phenotypeFile=../01_Dataset/1kgeas_binary_gcta.txt
+
 # disease prevalence used for conversion to liability-scale heritability
-prevalence=0.4
+prevalence=0.5
+
+# use 5PCs as covariates 
+awk '{print $1,$2,$5,$6,$7,$8,$9}' ../05_PCA/plink_results_projected.sscore > 5PCs.txt
 
 gcta \
   --grm ${GRM} \
   --pheno ${phenotypeFIile} \
   --prevalence ${prevalence} \
+  --qcovar  5PCs.txt \
   --reml \
   --out 1kg_eas
 
@@ -138,19 +144,86 @@ gcta \
 
 ## Results
 
-```bash
-head 1kg_eas.hsq
+!!! warning
+    This is just to show the analysis pipeline. The trait was simulated under an unreal condition (effect size is extremely large) so the result is meaningless here. 
+    
+    For real analysis, you need a larger sample size to get robust estimation. Please see the [GCTA FAQ](https://yanglab.westlake.edu.cn/software/gcta/#FAQ) 
 
+```bash
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:36:37 JST on Tue Dec 26 2023.
+Hostname: Yunye
+
+Accepted options:
+--grm 1kg_eas
+--pheno ../01_Dataset/1kgeas_binary_gcta.txt
+--prevalence 0.5
+--qcovar 5PCs.txt
+--reml
+--out 1kg_eas
+
+Note: This is a multi-thread program. You could specify the number of threads by the --thread-num option to speed up the computation if there are multiple processors in your machine.
+
+Reading IDs of the GRM from [1kg_eas.grm.id].
+500 IDs are read from [1kg_eas.grm.id].
+Reading the GRM from [1kg_eas.grm.bin].
+GRM for 500 individuals are included from [1kg_eas.grm.bin].
+Reading phenotypes from [../01_Dataset/1kgeas_binary_gcta.txt].
+Non-missing phenotypes of 503 individuals are included from [../01_Dataset/1kgeas_binary_gcta.txt].
+Reading quantitative covariate(s) from [5PCs.txt].
+5 quantitative covariate(s) of 501 individuals are included from [5PCs.txt].
+Assuming a disease phenotype for a case-control study: 248 cases and 250 controls
+5 quantitative variable(s) included as covariate(s).
+498 individuals are in common in these files.
+
+Performing  REML analysis ... (Note: may take hours depending on sample size).
+498 observations, 6 fixed effect(s), and 2 variance component(s)(including residual variance).
+Calculating prior values of variance components by EM-REML ...
+Updated prior values:  0.12498 0.124846
+logL: 95.34
+Running AI-REML algorithm ...
+Iter.   logL    V(G)    V(e)
+1       95.34   0.14264 0.10708
+2       95.37   0.18079 0.06875
+3       95.40   0.18071 0.06888
+4       95.40   0.18071 0.06888
+Log-likelihood ratio converged.
+
+Calculating the logLikelihood for the reduced model ...
+(variance component 1 is dropped from the model)
+Calculating prior values of variance components by EM-REML ...
+Updated prior values: 0.24901
+logL: 94.78319
+Running AI-REML algorithm ...
+Iter.   logL    V(e)
+1       94.79   0.24900
+2       94.79   0.24899
+Log-likelihood ratio converged.
+
+Summary result of REML analysis:
 Source  Variance        SE
-V(G)    0.100469        0.094051
-V(e)    0.138337        0.093889
-Vp      0.238806        0.015077
-V(G)/Vp 0.420715        0.392317
-The estimate of variance explained on the observed scale is transformed to that on the underlying scale:
-(Proportion of cases in the sample = 0.399602; User-specified disease prevalence = 0.400000)
-V(G)/Vp_L       0.676703        0.631026
-logL    105.187
-logL0   103.680
+V(G)    0.180708        0.164863
+V(e)    0.068882        0.162848
+Vp      0.249590        0.016001
+V(G)/Vp 0.724021        0.654075
+The estimate of variance explained on the observed scale is transformed to that on the underlying liability scale:
+(Proportion of cases in the sample = 0.497992; User-specified disease prevalence = 0.500000)
+V(G)/Vp_L       1.137308        1.027434
+
+Sampling variance/covariance of the estimates of variance components:
+2.717990e-02    -2.672171e-02
+-2.672171e-02   2.651955e-02
+
+Summary result of REML analysis has been saved in the file [1kg_eas.hsq].
+
+Analysis finished at 17:36:38 JST on Tue Dec 26 2023
+Overall computational time: 0.08 sec.
 ```
 
 ## Reference
