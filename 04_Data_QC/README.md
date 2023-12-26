@@ -48,7 +48,7 @@ The `bin` directory here is for keeping all the symbolic links to the executable
 In this way, it is much easier to manage and organize the paths and tools. We will only add the `bin` directory here to the environment path.
 
 ### Download PLINK1.9 and PLINK2 and then unzip
-Next, go to the plink webpage to download the software. We will need both PLINK1.9 and PLINK2.
+Next, go to the Plink webpage to download the software. We will need both PLINK1.9 and PLINK2.
 
 Download PLINK1.9 and PLINK2 from the following webpage to the corresponding directories:
 
@@ -56,17 +56,26 @@ Download PLINK1.9 and PLINK2 from the following webpage to the corresponding dir
 - PLINK2 : [https://www.cog-genomics.org/plink/2.0/](https://www.cog-genomics.org/plink/2.0/)
 
 !!! note
-    If you are using mac or windows, then please download the mac or windows version. In this tutorial, we will use a Linux system and the Linux version of PLINK. 
+    If you are using Mac or Windows, then please download the Mac or Windows version. In this tutorial, we will use a Linux system and the Linux version of PLINK. 
 
-Find the suitable version in the PLINK website, right click and copy the link address.
+Find the suitable version on the PLINK website, right-click and copy the link address.
 
-!!! example "Download PLINK"
+!!! example "Download PLINK2 (Linux AVX2 AMD)"
     ```bash
-    cd plink2
-    wget https://s3.amazonaws.com/plink2-assets/plink2_linux_x86_64_20211011.zip
-    unzip plink2_linux_x86_64_20211011.zip
+    cd ~/tools/plink2
+    wget https://s3.amazonaws.com/plink2-assets/alpha5/plink2_linux_amd_avx2_20231212.zip
+    unzip plink2_linux_amd_avx2_20231212.zip
     ```
 Then do the same for PLINK1.9
+
+!!! example "Download PLINK1 (Linux 64-bit)"
+    ```bash
+    cd ~/tools/plink
+    wget https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20231211.zip
+    unzip plink_linux_x86_64_20231211.zip
+    ```
+
+
 
 ### Create symbolic links
 
@@ -103,13 +112,12 @@ All done. Let's test if we installed PLINK successfully or not.
 !!! example "Check if PLINK is installed successfully."
 
     ```bash
-    plink -h
-    PLINK v1.90b6.21 64-bit (19 Oct 2020)          www.cog-genomics.org/plink/1.9/
-    (C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
-    
-      plink <input flag(s)...> [command flag(s)...] [other flag(s)...]
-      plink --help [flag name(s)...]
-    
+    PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
+    (C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+
+    plink <input flag(s)...> [command flag(s)...] [other flag(s)...]
+    plink --help [flag name(s)...]
+
     Commands include --make-bed, --recode, --flip-scan, --merge-list,
     --write-snplist, --list-duplicate-vars, --freqx, --missing, --test-mishap,
     --hardy, --mendel, --ibc, --impute-sex, --indep-pairphase, --r2, --show-tags,
@@ -118,25 +126,24 @@ All done. Let's test if we installed PLINK successfully or not.
     --model, --bd, --gxe, --logistic, --dosage, --lasso, --test-missing,
     --make-perm-pheno, --tdt, --qfam, --annotate, --clump, --gene-report,
     --meta-analysis, --epistasis, --fast-epistasis, and --score.
-    
+
     "plink --help | more" describes all functions (warning: long).
     ```
     
     ```bash
-    plink2 -h
-    PLINK v2.00a3LM 64-bit Intel (1 Jul 2021)      www.cog-genomics.org/plink/2.0/
-    (C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
-    
-      plink2 <input flag(s)...> [command flag(s)...] [other flag(s)...]
-      plink2 --help [flag name(s)...]
-    
+    PLINK v2.00a5.9LM AVX2 AMD (12 Dec 2023)       www.cog-genomics.org/plink/2.0/
+    (C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+
+    plink2 <input flag(s)...> [command flag(s)...] [other flag(s)...]
+    plink2 --help [flag name(s)...]
+
     Commands include --rm-dup list, --make-bpgen, --export, --freq, --geno-counts,
     --sample-counts, --missing, --hardy, --het, --fst, --indep-pairwise, --ld,
     --sample-diff, --make-king, --king-cutoff, --pmerge, --pgen-diff,
     --write-samples, --write-snplist, --make-grm-list, --pca, --glm, --adjust-file,
-    --score, --variant-score, --genotyping-rate, --pgen-info, --validate, and
-    --zst-decompress.
-    
+    --gwas-ssf, --clump, --score, --variant-score, --genotyping-rate, --pgen-info,
+    --validate, and --zst-decompress.
+
     "plink2 --help | more" describes all functions.
     ```
     

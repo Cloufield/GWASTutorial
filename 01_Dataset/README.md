@@ -14,6 +14,7 @@
 - Selected 2% rare SNPs (`plink --mac 2 --max--maf 0.01 --thin 0.02`)
 - Selected 15% common SNPs (`plink --maf 0.01 --thin 0.15`)
 - Converted to plink bed format and merged to a single file  
+- Added some missing data points
 
 ## Download
 
@@ -25,13 +26,13 @@ Simply run `download_sampledata.sh` and the dataset will be downloaded and decom
 ./download_sampledata.sh
 ```
 
-or you can manually download it from [this link](https://www.dropbox.com/scl/fi/v3h431srji9ad7xh0qj6z/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.zip?rlkey=imv1rivhchxzyz6si2wr7ddcs&dl=0).
+or you can manually download it from [this link](https://www.dropbox.com/scl/fi/u569n0cs43q1cx5u0aamq/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.zip?rlkey=vprtn9rhiegbrol1p73xh2w7q&dl=1).
 
-And you will get the following files in `1KG.EAS.auto.snp.norm.nodup.split.rare002.common015`:
+And you will get the following files in `1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing`:
 ```
-1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.bed
-1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.bim
-1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.fam
+1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bed
+1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bim
+1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.fam
 ```
 
 ## Phenotype Simulation
