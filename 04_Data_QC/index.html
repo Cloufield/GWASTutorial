@@ -1019,8 +1019,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#apply-all-the-filters-to-obtain-the-clean-dataset" class="md-nav__link">
-    Apply all the filters to obtain the clean dataset
+  <a href="#apply-all-the-filters-to-obtain-a-clean-dataset" class="md-nav__link">
+    Apply all the filters to obtain a clean dataset
   </a>
   
 </li>
@@ -1916,8 +1916,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#apply-all-the-filters-to-obtain-the-clean-dataset" class="md-nav__link">
-    Apply all the filters to obtain the clean dataset
+  <a href="#apply-all-the-filters-to-obtain-a-clean-dataset" class="md-nav__link">
+    Apply all the filters to obtain a clean dataset
   </a>
   
 </li>
@@ -1978,7 +1978,7 @@
 <li><a href="#ld-calculation">LD calculation</a></li>
 <li><a href="#ibd--pi_hat">Estimate IBD / PI_HAT</a></li>
 <li><a href="#data-management-make-bedrecode">Data management (make-bed/recode)</a></li>
-<li><a href="#apply-all-the-filters-to-obtain-the-clean-dataset">Apply all the filters to obtain the clean dataset</a></li>
+<li><a href="#apply-all-the-filters-to-obtain-a-clean-dataset">Apply all the filters to obtain a clean dataset</a></li>
 </ul>
 </li>
 <li><a href="#exercise">Exercise</a></li>
@@ -2228,7 +2228,7 @@ plink<span class="w"> </span><span class="se">\</span>
 Remeber to set the value for <code>${genotypeFile}</code>.</p>
 </div>
 <p>This code will generate two files <code>plink_results.imiss</code> and <code>plink_results.lmiss</code>, which contain the missing rate information for samples and SNPs respectively.</p>
-<p>Take a look at the <code>.imiss</code> file. The last column shows the missing rate for samples. Since we used part of the 1000 Genome Project data this time, there are no missing SNPs in the original datasets. But for educational purposes, we randomly added make some of the genotypes missing.</p>
+<p>Take a look at the <code>.imiss</code> file. The last column shows the missing rate for samples. Since we used part of the 1000 Genome Project data this time, there are no missing SNPs in the original datasets. But for educational purposes, we randomly make some of the genotypes missing.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># missing rate for each sample</span>
 head<span class="w"> </span>plink_results.imiss
 <span class="w">    </span>FID<span class="w">       </span>IID<span class="w"> </span>MISS_PHENO<span class="w">   </span>N_MISS<span class="w">   </span>N_GENO<span class="w">   </span>F_MISS
@@ -2255,10 +2255,18 @@ head<span class="w"> </span>plink_results.lmiss
 <span class="w">   </span><span class="m">1</span><span class="w">     </span><span class="m">1</span>:104186:T:C<span class="w">        </span><span class="m">3</span><span class="w">      </span><span class="m">504</span><span class="w"> </span><span class="m">0</span>.005952
 <span class="w">   </span><span class="m">1</span><span class="w">     </span><span class="m">1</span>:125271:C:T<span class="w">        </span><span class="m">2</span><span class="w">      </span><span class="m">504</span><span class="w"> </span><span class="m">0</span>.003968
 </code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Distribution of sample missing rate and SNP missing rate</p>
+<p>Note: The missing values were simulated based on normal distributions for each individual.  </p>
+<p>Sample missing rate</p>
+<p><img alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/ec776c99-d73f-4cc7-b1e4-d4566acc83df" /></p>
+<p>SNP missing rate</p>
+<p><img alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/30a11f16-d43e-4e1f-a281-90cf02947916" /></p>
+</div>
 <p>For the meaning of headers, please refer to <a href="https://www.cog-genomics.org/plink/1.9/formats">PLINK documents</a>.</p>
 <h3 id="allele-frequency">Allele Frequency</h3>
-<p>One of the most important statistics of SNPs is their frequency in a certain population. A number of downstream analysis is based on investigating differences in allele frequencies.</p>
-<p>Usually, variants can be categorized into 3 groups based on their Minor Allel Frequency (MAF):</p>
+<p>One of the most important statistics of SNPs is their frequency in a certain population. Many downstream analyses are based on investigating differences in allele frequencies.</p>
+<p>Usually, variants can be categorized into 3 groups based on their Minor Allele Frequency (MAF):</p>
 <ol>
 <li><strong>Common variants</strong> : MAF&gt;=0.05</li>
 <li><strong>Low-frequency variants</strong> : 0.01&lt;=MAF&lt;0.05</li>
@@ -2451,20 +2459,24 @@ HG00421<span class="w">   </span>HG00421<span class="w">       </span><span clas
 HG00422<span class="w">   </span>HG00422<span class="w">       </span><span class="m">178316</span><span class="w">    </span><span class="m">1</span>.784e+05<span class="w">       </span><span class="m">215938</span><span class="w">      </span>-0.0022
 </code></pre></div>
 </div>
-<p>A commonly used method is to exclude samples with heterozygosity F deviating more than 3 standard deviation(SD) from the mean. Some studies used a fixed value such as +-0.15 or +-0.2.</p>
+<p>A commonly used method is to exclude samples with heterozygosity F deviating more than 3 standard deviations (SD) from the mean. Some studies used a fixed value such as +-0.15 or +-0.2.</p>
 <div class="admonition warning">
 <p class="admonition-title">Usually we will use only <a href="#ld-pruning">LD-pruned SNPs</a>  for the calculation of F.</p>
 </div>
 <p>We can plot the distribution of F:</p>
-<p>Here we use +-0.1 as threshold for simplicity, 
+<div class="admonition example">
+<p class="admonition-title">Distribution of <span class="arithmatex">\(F_{het}\)</span> in sample data</p>
+<p><img alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/6dec3e49-fe35-45ee-9337-d788ef3d51cd" /></p>
+</div>
+<p>Here we use +-0.1 as the <span class="arithmatex">\(F_{het}\)</span> threshold for convenience. </p>
 <div class="highlight"><pre><span></span><code># only one sample
 awk &#39;NR&gt;1 &amp;&amp; $6&gt;0.1 || $6&lt;-0.1 {print $1,$2}&#39; plink_results.het &gt; high_het.sample
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="sample-snp-filtering-extractexcludekeepremove">Sample &amp; SNP filtering (extract/exclude/keep/remove)</h3>
 <p>Sometimes we will use only a subset of samples or SNPs included the original dataset. 
 In this case, we can use <code>--extract</code> or <code>--exclude</code> to select or exclude SNPs from analysis, <code>--keep</code> or <code>--remove</code> to select or exclude samples.</p>
-<p>For  <code>--keep</code> or <code>--remove</code> , the input is the filename of a sample FID and IID file.
-For <code>--extract</code> or <code>--exclude</code> , the input is the filename of a SNP list file.</p>
+<p>For  <code>--keep</code> or <code>--remove</code>, the input is the filename of a sample FID and IID file.
+For <code>--extract</code> or <code>--exclude</code>, the input is the filename of an SNP list file.</p>
 <div class="highlight"><pre><span></span><code>head<span class="w"> </span>plink_results.prune.in
 <span class="m">1</span>:15774:G:A
 <span class="m">1</span>:15777:A:G
@@ -2482,7 +2494,7 @@ For <code>--extract</code> or <code>--exclude</code> , the input is the filename
 (This step is computationally intensive)</p>
 <p>Combined with the <code>--extract</code>, we can run:</p>
 <div class="admonition info">
-<p class="admonition-title">How PLINK extimates IBD</p>
+<p class="admonition-title">How PLINK estimates IBD</p>
 <p>The prior probability of IBS sharing can be modeled as: </p>
 <div class="arithmatex">\[P(I=i) = \sum^{z=i}_{z=0}P(I=i|Z=z)P(Z=z)\]</div>
 <ul>
@@ -2568,8 +2580,8 @@ plink<span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>--out<span class="w"> </span>plink_1000_pruned
 </code></pre></div>
 </div>
-<h2 id="apply-all-the-filters-to-obtain-the-clean-dataset">Apply all the filters to obtain the clean dataset</h2>
-<p>We can then apply the filters and remove samples with high <span class="arithmatex">\(F_{het}\)</span> to get the clean dataset for later use.</p>
+<h2 id="apply-all-the-filters-to-obtain-a-clean-dataset">Apply all the filters to obtain a clean dataset</h2>
+<p>We can then apply the filters and remove samples with high <span class="arithmatex">\(F_{het}\)</span> to get a clean dataset for later use.</p>
 <div class="highlight"><pre><span></span><code>plink<span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>--bfile<span class="w"> </span><span class="si">${</span><span class="nv">genotypeFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>--maf<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
