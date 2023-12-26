@@ -109,11 +109,12 @@ We will perform logistic regression with firth correction for a simulated binary
 !!! note "Quantitative traits"
     For quantitative traits, linear regressions will be performed and in this case, we do not need to add `firth` (since Firth correction is not appliable). 
 
+
 !!! example "Sample codes for association test using plink for binary traits"
     ```
-    genotypeFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020"  #!please set this to your path
-    phenotypeFile="../01_Dataset/1kgeas_binary.txt" #!please set this to your own path
-    covariateFile="../05_PCA/plink_results_projected.sscore"
+    genotypeFile="../04_Data_QC/sample_data.clean" # the clean dataset we generated in previous section
+    phenotypeFile="../01_Dataset/1kgeas_binary.txt" # the phenotype file
+    covariateFile="../05_PCA/plink_results_projected.sscore" # the PC score file
     
     covariateCols=6-10
     colName="B1"

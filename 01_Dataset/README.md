@@ -1,6 +1,7 @@
 # Sample Dataset
 
-504 EAS individuals from 1000 Genome Project Phase 3 version 5
+504 EAS individuals from 1000 Genomes Project Phase 3 version 5
+
 - CHB: Han Chinese in Beijing, China
 - JPT: Japanese in Tokyo, Japan
 - CHS: Southern Han Chinese
@@ -21,7 +22,7 @@ Genome build:  human_g1k_v37.fasta (hg19)
 - Selected 2% rare SNPs (`plink --mac 2 --max--maf 0.01 --thin 0.02`)
 - Selected 15% common SNPs (`plink --maf 0.01 --thin 0.15`)
 - Converted to plink bed format and merged to a single file  
-- Added some missing data points
+- Randomly added some missing data points
 
 ## Download
 
