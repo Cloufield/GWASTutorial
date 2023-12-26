@@ -1750,70 +1750,143 @@ gcta<span class="w"> </span><span class="se">\</span>
 * (C) 2010-present, Yang Lab, Westlake University
 * Please report bugs to Jian Yang &lt;jian.yang@westlake.edu.cn&gt;
 *******************************************************************
-Analysis started at 12:24:19 JST on Sun Jan 15 2023.
-Hostname: Home-Desktop
+Analysis started at 17:21:24 JST on Tue Dec 26 2023.
+Hostname: Yunye
 
 Options:
 
---bfile ../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020
+--bfile ../04_Data_QC/sample_data.clean
 --autosome
 --maf 0.01
 --make-grm
 --out 1kg_eas
 
 Note: GRM is computed using the SNPs on the autosomes.
-Reading PLINK FAM file from [../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam]...
-504 individuals to be included from FAM file.
-504 individuals to be included. 0 males, 0 females, 504 unknown.
-Reading PLINK BIM file from [../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim]...
-1122299 SNPs to be included from BIM file(s).
+Reading PLINK FAM file from [../04_Data_QC/sample_data.clean.fam]...
+500 individuals to be included from FAM file.
+500 individuals to be included. 0 males, 0 females, 500 unknown.
+Reading PLINK BIM file from [../04_Data_QC/sample_data.clean.bim]...
+1224104 SNPs to be included from BIM file(s).
 Threshold to filter variants: MAF &gt; 0.010000.
 Computing the genetic relationship matrix (GRM) v2 ...
-Subset 1/1, no. subject 1-504
-  504 samples, 1122299 markers, 127260 GRM elements
+Subset 1/1, no. subject 1-500
+  500 samples, 1224104 markers, 125250 GRM elements
 IDs for the GRM file have been saved in the file [1kg_eas.grm.id]
 Computing GRM...
-  100% finished in 8.2 sec
-1122299 SNPs have been processed.
-  Used 1122299 valid SNPs.
+  100% finished in 7.4 sec
+1224104 SNPs have been processed.
+  Used 1128732 valid SNPs.
 The GRM computation is completed.
 Saving GRM...
 GRM has been saved in the file [1kg_eas.grm.bin]
 Number of SNPs in each pair of individuals has been saved in the file [1kg_eas.grm.N.bin]
 
-Analysis finished at 12:24:29 JST on Sun Jan 15 2023
-Overall computational time: 9.52 sec.
+Analysis finished at 17:21:32 JST on Tue Dec 26 2023
+Overall computational time: 8.51 sec.
 </code></pre></div>
 <h2 id="estimation">Estimation</h2>
 <div class="highlight"><pre><span></span><code>#!/bin/bash
 
 #the grm we calculated in step1
 GRM=1kg_eas
+
 # phenotype file
-phenotypeFile=../01_Dataset/1kgeas_binary.txt
+phenotypeFile=../01_Dataset/1kgeas_binary_gcta.txt
+
 # disease prevalence used for conversion to liability-scale heritability
-prevalence=0.4
+prevalence=0.5
+
+# use 5PCs as covariates 
+awk &#39;{print $1,$2,$5,$6,$7,$8,$9}&#39; ../05_PCA/plink_results_projected.sscore &gt; 5PCs.txt
 
 gcta \
   --grm ${GRM} \
   --pheno ${phenotypeFIile} \
   --prevalence ${prevalence} \
+  --qcovar  5PCs.txt \
   --reml \
   --out 1kg_eas
 </code></pre></div>
 <h2 id="results">Results</h2>
-<div class="highlight"><pre><span></span><code>head<span class="w"> </span>1kg_eas.hsq
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is just to show the analysis pipeline. The trait was simulated under an unreal condition (effect size is extremely large) so the result is meaningless here. </p>
+<p>For real analysis, you need a larger sample size to get robust estimation. Please see the <a href="https://yanglab.westlake.edu.cn/software/gcta/#FAQ">GCTA FAQ</a> </p>
+</div>
+<div class="highlight"><pre><span></span><code>*******************************************************************
+*<span class="w"> </span>Genome-wide<span class="w"> </span>Complex<span class="w"> </span>Trait<span class="w"> </span>Analysis<span class="w"> </span><span class="o">(</span>GCTA<span class="o">)</span>
+*<span class="w"> </span>version<span class="w"> </span>v1.94.1<span class="w"> </span>Linux
+*<span class="w"> </span>Built<span class="w"> </span>at<span class="w"> </span>Nov<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">2022</span><span class="w"> </span><span class="m">21</span>:14:25,<span class="w"> </span>by<span class="w"> </span>GCC<span class="w"> </span><span class="m">8</span>.5
+*<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2010</span>-present,<span class="w"> </span>Yang<span class="w"> </span>Lab,<span class="w"> </span>Westlake<span class="w"> </span>University
+*<span class="w"> </span>Please<span class="w"> </span>report<span class="w"> </span>bugs<span class="w"> </span>to<span class="w"> </span>Jian<span class="w"> </span>Yang<span class="w"> </span>&lt;jian.yang@westlake.edu.cn&gt;
+*******************************************************************
+Analysis<span class="w"> </span>started<span class="w"> </span>at<span class="w"> </span><span class="m">17</span>:36:37<span class="w"> </span>JST<span class="w"> </span>on<span class="w"> </span>Tue<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">2023</span>.
+Hostname:<span class="w"> </span>Yunye
 
+Accepted<span class="w"> </span>options:
+--grm<span class="w"> </span>1kg_eas
+--pheno<span class="w"> </span>../01_Dataset/1kgeas_binary_gcta.txt
+--prevalence<span class="w"> </span><span class="m">0</span>.5
+--qcovar<span class="w"> </span>5PCs.txt
+--reml
+--out<span class="w"> </span>1kg_eas
+
+Note:<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>multi-thread<span class="w"> </span>program.<span class="w"> </span>You<span class="w"> </span>could<span class="w"> </span>specify<span class="w"> </span>the<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>threads<span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>--thread-num<span class="w"> </span>option<span class="w"> </span>to<span class="w"> </span>speed<span class="w"> </span>up<span class="w"> </span>the<span class="w"> </span>computation<span class="w"> </span><span class="k">if</span><span class="w"> </span>there<span class="w"> </span>are<span class="w"> </span>multiple<span class="w"> </span>processors<span class="w"> </span><span class="k">in</span><span class="w"> </span>your<span class="w"> </span>machine.
+
+Reading<span class="w"> </span>IDs<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>GRM<span class="w"> </span>from<span class="w"> </span><span class="o">[</span>1kg_eas.grm.id<span class="o">]</span>.
+<span class="m">500</span><span class="w"> </span>IDs<span class="w"> </span>are<span class="w"> </span><span class="nb">read</span><span class="w"> </span>from<span class="w"> </span><span class="o">[</span>1kg_eas.grm.id<span class="o">]</span>.
+Reading<span class="w"> </span>the<span class="w"> </span>GRM<span class="w"> </span>from<span class="w"> </span><span class="o">[</span>1kg_eas.grm.bin<span class="o">]</span>.
+GRM<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">500</span><span class="w"> </span>individuals<span class="w"> </span>are<span class="w"> </span>included<span class="w"> </span>from<span class="w"> </span><span class="o">[</span>1kg_eas.grm.bin<span class="o">]</span>.
+Reading<span class="w"> </span>phenotypes<span class="w"> </span>from<span class="w"> </span><span class="o">[</span>../01_Dataset/1kgeas_binary_gcta.txt<span class="o">]</span>.
+Non-missing<span class="w"> </span>phenotypes<span class="w"> </span>of<span class="w"> </span><span class="m">503</span><span class="w"> </span>individuals<span class="w"> </span>are<span class="w"> </span>included<span class="w"> </span>from<span class="w"> </span><span class="o">[</span>../01_Dataset/1kgeas_binary_gcta.txt<span class="o">]</span>.
+Reading<span class="w"> </span>quantitative<span class="w"> </span>covariate<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>from<span class="w"> </span><span class="o">[</span>5PCs.txt<span class="o">]</span>.
+<span class="m">5</span><span class="w"> </span>quantitative<span class="w"> </span>covariate<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>of<span class="w"> </span><span class="m">501</span><span class="w"> </span>individuals<span class="w"> </span>are<span class="w"> </span>included<span class="w"> </span>from<span class="w"> </span><span class="o">[</span>5PCs.txt<span class="o">]</span>.
+Assuming<span class="w"> </span>a<span class="w"> </span>disease<span class="w"> </span>phenotype<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span><span class="k">case</span>-control<span class="w"> </span>study:<span class="w"> </span><span class="m">248</span><span class="w"> </span>cases<span class="w"> </span>and<span class="w"> </span><span class="m">250</span><span class="w"> </span>controls
+<span class="m">5</span><span class="w"> </span>quantitative<span class="w"> </span>variable<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>included<span class="w"> </span>as<span class="w"> </span>covariate<span class="o">(</span>s<span class="o">)</span>.
+<span class="m">498</span><span class="w"> </span>individuals<span class="w"> </span>are<span class="w"> </span><span class="k">in</span><span class="w"> </span>common<span class="w"> </span><span class="k">in</span><span class="w"> </span>these<span class="w"> </span>files.
+
+Performing<span class="w">  </span>REML<span class="w"> </span>analysis<span class="w"> </span>...<span class="w"> </span><span class="o">(</span>Note:<span class="w"> </span>may<span class="w"> </span>take<span class="w"> </span>hours<span class="w"> </span>depending<span class="w"> </span>on<span class="w"> </span>sample<span class="w"> </span>size<span class="o">)</span>.
+<span class="m">498</span><span class="w"> </span>observations,<span class="w"> </span><span class="m">6</span><span class="w"> </span>fixed<span class="w"> </span>effect<span class="o">(</span>s<span class="o">)</span>,<span class="w"> </span>and<span class="w"> </span><span class="m">2</span><span class="w"> </span>variance<span class="w"> </span>component<span class="o">(</span>s<span class="o">)(</span>including<span class="w"> </span>residual<span class="w"> </span>variance<span class="o">)</span>.
+Calculating<span class="w"> </span>prior<span class="w"> </span>values<span class="w"> </span>of<span class="w"> </span>variance<span class="w"> </span>components<span class="w"> </span>by<span class="w"> </span>EM-REML<span class="w"> </span>...
+Updated<span class="w"> </span>prior<span class="w"> </span>values:<span class="w">  </span><span class="m">0</span>.12498<span class="w"> </span><span class="m">0</span>.124846
+logL:<span class="w"> </span><span class="m">95</span>.34
+Running<span class="w"> </span>AI-REML<span class="w"> </span>algorithm<span class="w"> </span>...
+Iter.<span class="w">   </span>logL<span class="w">    </span>V<span class="o">(</span>G<span class="o">)</span><span class="w">    </span>V<span class="o">(</span>e<span class="o">)</span>
+<span class="m">1</span><span class="w">       </span><span class="m">95</span>.34<span class="w">   </span><span class="m">0</span>.14264<span class="w"> </span><span class="m">0</span>.10708
+<span class="m">2</span><span class="w">       </span><span class="m">95</span>.37<span class="w">   </span><span class="m">0</span>.18079<span class="w"> </span><span class="m">0</span>.06875
+<span class="m">3</span><span class="w">       </span><span class="m">95</span>.40<span class="w">   </span><span class="m">0</span>.18071<span class="w"> </span><span class="m">0</span>.06888
+<span class="m">4</span><span class="w">       </span><span class="m">95</span>.40<span class="w">   </span><span class="m">0</span>.18071<span class="w"> </span><span class="m">0</span>.06888
+Log-likelihood<span class="w"> </span>ratio<span class="w"> </span>converged.
+
+Calculating<span class="w"> </span>the<span class="w"> </span>logLikelihood<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>reduced<span class="w"> </span>model<span class="w"> </span>...
+<span class="o">(</span>variance<span class="w"> </span>component<span class="w"> </span><span class="m">1</span><span class="w"> </span>is<span class="w"> </span>dropped<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>model<span class="o">)</span>
+Calculating<span class="w"> </span>prior<span class="w"> </span>values<span class="w"> </span>of<span class="w"> </span>variance<span class="w"> </span>components<span class="w"> </span>by<span class="w"> </span>EM-REML<span class="w"> </span>...
+Updated<span class="w"> </span>prior<span class="w"> </span>values:<span class="w"> </span><span class="m">0</span>.24901
+logL:<span class="w"> </span><span class="m">94</span>.78319
+Running<span class="w"> </span>AI-REML<span class="w"> </span>algorithm<span class="w"> </span>...
+Iter.<span class="w">   </span>logL<span class="w">    </span>V<span class="o">(</span>e<span class="o">)</span>
+<span class="m">1</span><span class="w">       </span><span class="m">94</span>.79<span class="w">   </span><span class="m">0</span>.24900
+<span class="m">2</span><span class="w">       </span><span class="m">94</span>.79<span class="w">   </span><span class="m">0</span>.24899
+Log-likelihood<span class="w"> </span>ratio<span class="w"> </span>converged.
+
+Summary<span class="w"> </span>result<span class="w"> </span>of<span class="w"> </span>REML<span class="w"> </span>analysis:
 Source<span class="w">  </span>Variance<span class="w">        </span>SE
-V<span class="o">(</span>G<span class="o">)</span><span class="w">    </span><span class="m">0</span>.100469<span class="w">        </span><span class="m">0</span>.094051
-V<span class="o">(</span>e<span class="o">)</span><span class="w">    </span><span class="m">0</span>.138337<span class="w">        </span><span class="m">0</span>.093889
-Vp<span class="w">      </span><span class="m">0</span>.238806<span class="w">        </span><span class="m">0</span>.015077
-V<span class="o">(</span>G<span class="o">)</span>/Vp<span class="w"> </span><span class="m">0</span>.420715<span class="w">        </span><span class="m">0</span>.392317
-The<span class="w"> </span>estimate<span class="w"> </span>of<span class="w"> </span>variance<span class="w"> </span>explained<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>observed<span class="w"> </span>scale<span class="w"> </span>is<span class="w"> </span>transformed<span class="w"> </span>to<span class="w"> </span>that<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>underlying<span class="w"> </span>scale:
-<span class="o">(</span>Proportion<span class="w"> </span>of<span class="w"> </span>cases<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span><span class="nv">sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.399602<span class="p">;</span><span class="w"> </span>User-specified<span class="w"> </span>disease<span class="w"> </span><span class="nv">prevalence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.400000<span class="o">)</span>
-V<span class="o">(</span>G<span class="o">)</span>/Vp_L<span class="w">       </span><span class="m">0</span>.676703<span class="w">        </span><span class="m">0</span>.631026
-logL<span class="w">    </span><span class="m">105</span>.187
-logL0<span class="w">   </span><span class="m">103</span>.680
+V<span class="o">(</span>G<span class="o">)</span><span class="w">    </span><span class="m">0</span>.180708<span class="w">        </span><span class="m">0</span>.164863
+V<span class="o">(</span>e<span class="o">)</span><span class="w">    </span><span class="m">0</span>.068882<span class="w">        </span><span class="m">0</span>.162848
+Vp<span class="w">      </span><span class="m">0</span>.249590<span class="w">        </span><span class="m">0</span>.016001
+V<span class="o">(</span>G<span class="o">)</span>/Vp<span class="w"> </span><span class="m">0</span>.724021<span class="w">        </span><span class="m">0</span>.654075
+The<span class="w"> </span>estimate<span class="w"> </span>of<span class="w"> </span>variance<span class="w"> </span>explained<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>observed<span class="w"> </span>scale<span class="w"> </span>is<span class="w"> </span>transformed<span class="w"> </span>to<span class="w"> </span>that<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>underlying<span class="w"> </span>liability<span class="w"> </span>scale:
+<span class="o">(</span>Proportion<span class="w"> </span>of<span class="w"> </span>cases<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span><span class="nv">sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.497992<span class="p">;</span><span class="w"> </span>User-specified<span class="w"> </span>disease<span class="w"> </span><span class="nv">prevalence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.500000<span class="o">)</span>
+V<span class="o">(</span>G<span class="o">)</span>/Vp_L<span class="w">       </span><span class="m">1</span>.137308<span class="w">        </span><span class="m">1</span>.027434
+
+Sampling<span class="w"> </span>variance/covariance<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>estimates<span class="w"> </span>of<span class="w"> </span>variance<span class="w"> </span>components:
+<span class="m">2</span>.717990e-02<span class="w">    </span>-2.672171e-02
+-2.672171e-02<span class="w">   </span><span class="m">2</span>.651955e-02
+
+Summary<span class="w"> </span>result<span class="w"> </span>of<span class="w"> </span>REML<span class="w"> </span>analysis<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span><span class="o">[</span>1kg_eas.hsq<span class="o">]</span>.
+
+Analysis<span class="w"> </span>finished<span class="w"> </span>at<span class="w"> </span><span class="m">17</span>:36:38<span class="w"> </span>JST<span class="w"> </span>on<span class="w"> </span>Tue<span class="w"> </span>Dec<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">2023</span>
+Overall<span class="w"> </span>computational<span class="w"> </span>time:<span class="w"> </span><span class="m">0</span>.08<span class="w"> </span>sec.
 </code></pre></div>
 <h2 id="reference">Reference</h2>
 <ul>
