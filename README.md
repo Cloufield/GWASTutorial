@@ -1,7 +1,5 @@
 # GWASTutorial
-
- ![image](https://user-images.githubusercontent.com/40289485/211962816-5f367b28-f136-468f-8d41-0bffff54481f.png) 
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FCloufield%2FGWASTutorial&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Views&edge_flat=false)](https://hits.seeyoufarm.com)
+![image](https://user-images.githubusercontent.com/40289485/211962816-5f367b28-f136-468f-8d41-0bffff54481f.png) 
 
 Note: this tutorial is being updated to Version 2024
 
@@ -15,14 +13,14 @@ If you have any questions or suggestions, please feel free to let us know in the
 
 ## Contents
 
-### Command lines 
+### Command lines
 - [Linux command line basics (optional)](https://cloufield.github.io/GWASTutorial/02_Linux_basics/) : For those who haven't used the command line, we will first introduce the basics of the Linux system and commonly used commands.
 
 ### Pre-GWAS
 
 - [Data formats](https://cloufield.github.io/GWASTutorial/03_Data_formats/) : Before any analysis, the first thing is always to get familiar with your data. In this section, we will introduce some basic formats used to store sequence, genotype and dosage data.
 - [Data QC](https://cloufield.github.io/GWASTutorial/04_Data_QC/) : Usually the raw genotype data is "dirty". This means that there are usually errors, invalid or missing values. In this section, we will learn how to perform quality control for the raw genotype data using PLINK. 
-- [Principal component analysis (PCA)](https://cloufield.github.io/GWASTutorial/05_PCA/) : In this section, we will cover how to perform Principal Component Analysis (PCA) to analyze the population structure.  
+- [Principal component analysis (PCA)](https://cloufield.github.io/GWASTutorial/05_PCA/) : In this section, we will cover how to perform Principal Component Analysis (PCA) to analyze the population structure.  
 
 ### GWAS
 
@@ -31,7 +29,7 @@ If you have any questions or suggestions, please feel free to let us know in the
 
 ### Post-GWAS
 
-In these sections, we will briefly introduce the Post-GWAS analyses, which will dig deeper into the GWAS summary statistics.  
+In these sections, we will briefly introduce the Post-GWAS analyses, which will dig deeper into the GWAS summary statistics.  
 
 - [Variant Annotation by ANNOVAR/VEP](https://cloufield.github.io/GWASTutorial/07_Annotation/)
 - [Heritability Concepts](https://cloufield.github.io/GWASTutorial/13_heritability/)
@@ -40,7 +38,20 @@ In these sections, we will briefly introduce the Post-GWAS analyses, which will 
 - [Gene / Gene-set analysis by MAGMA](https://cloufield.github.io/GWASTutorial/09_Gene_based_analysis/)
 - [Fine-mapping by SUSIE](https://cloufield.github.io/GWASTutorial/12_fine_mapping/)
 - [Polygenic risk scores](https://cloufield.github.io/GWASTutorial/10_PRS/)
+- [Colocalization](https://cloufield.github.io/GWASTutorial/17_colocalization/)
+- [TWAS](https://cloufield.github.io/GWASTutorial/21_twas/)
+
+### Topics
+
+Introductions on GWAS-related issues
+
+- [Linkage disequilibrium (LD) ](https://cloufield.github.io/GWASTutorial/19_ld/)
+- [Heritability](https://cloufield.github.io/GWASTutorial/13_heritability/)
+- [Power analysis for GWAS](https://cloufield.github.io/GWASTutorial/20_power_analysis/)
+- [Winner's curse](https://cloufield.github.io/GWASTutorial/15_winners_curse/)
+- [Measure of effect](https://cloufield.github.io/GWASTutorial/55_measure_of_effect/)
 
 ### Others
-
 - [Recommended reading](https://cloufield.github.io/GWASTutorial/90_Recommended_Reading/)
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FCloufield%2FGWASTutorial&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Views&edge_flat=false)](https://hits.seeyoufarm.com)

@@ -233,7 +233,7 @@ SNPID	CHR	POS	EA	NEA	EAF	SE	Z	P	OR	N	STATUS	REF	ALT
     This is just to show the analysis pipeline and data format. The trait was simulated under an unreal condition (effect sizes are extremely large) so the result is meaningless here.   
 
 !!! info "Allele frequency and Effect size"
-    <img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/d5133405-290c-4436-b61e-60f8a750f194">
+    <img width="700" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/d5133405-290c-4436-b61e-60f8a750f194">
 
 
 
