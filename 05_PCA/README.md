@@ -239,9 +239,9 @@ For plotting using Python:
 [plot_PCA.ipynb](https://github.com/Cloufield/GWASTutorial/blob/main/05_PCA/plot_PCA.ipynb)
 
 !!! example "Scatter plot of PC1 and PC2 using 1KG EAS individuals"
-    <img width="500" alt="image" src="https://user-images.githubusercontent.com/40289485/209298567-d4871fd0-aaa4-4d90-a7db-bc6aa34ab011.png">
+    <img width="500" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/f4cfc158-9db7-4b87-af13-041a954fc1fa">
 
-    Note : We only used 20% of all available variants. This figure only very roughly shows the population structure in East Asia.
+    Note : We only used a small proportion of all available variants. This figure only very roughly shows the population structure in East Asia.
  
 Requirements:
 - python>3
