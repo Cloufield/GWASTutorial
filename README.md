@@ -1,5 +1,6 @@
 # GWASTutorial
-![image](https://user-images.githubusercontent.com/40289485/211962816-5f367b28-f136-468f-8d41-0bffff54481f.png) 
+
+[<img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/3a188b0f-b693-4cd1-819f-50c4e9ebf816">](https://sites.google.com/edu.k.u-tokyo.ac.jp/kamatanilab/)
 
 Note: this tutorial is being updated to Version 2024
 
@@ -9,7 +10,7 @@ This tutorial covers the minimum skills and knowledge required to perform a typi
 
 If you have any questions or suggestions, please feel free to let us know in the [Issue section of this repository](https://github.com/Cloufield/GWASTutorial/issues).
 
-<img width="686" alt="image" src="https://user-images.githubusercontent.com/40289485/209779725-73b62b15-b044-46a4-98ae-ce5db06f93b3.png">
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/40289485/209779725-73b62b15-b044-46a4-98ae-ce5db06f93b3.png">
 
 ## Contents
 
