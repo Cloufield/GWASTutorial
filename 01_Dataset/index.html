@@ -1678,18 +1678,22 @@
 <li>Randomly added some missing data points</li>
 </ul>
 <h2 id="download">Download</h2>
-<p>Simply run <code>download_sampledata.sh</code> in <code>01_Dataset</code> and the dataset will be downloaded and decompressed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The sample dataset <code>1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.zip</code> has been included in <code>01_Dataset</code> when you clone the repository. There is no need to download it again if you clone this repository.</p>
+</div>
+<p>You can also simply run <code>download_sampledata.sh</code> in <code>01_Dataset</code> and the dataset will be downloaded and decompressed.</p>
+<div class="highlight"><pre><span></span><code>./download_sampledata.sh
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Sample dataset is currently hosted on Dropbox which may not be accessible for users in certain regions.</p>
 </div>
-<div class="highlight"><pre><span></span><code>./download_sampledata.sh
-</code></pre></div>
 <p>or you can manually download it from <a href="https://www.dropbox.com/scl/fi/41ep8xbdccp9xw5epim19/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.zip?rlkey=tklapxwypeg79b1sx03o6ycs7&amp;dl=1">this link</a>.</p>
-<p>Unzip the dataset <code>unzip -j 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.zip</code>, and you will get the following files:
+<p>Unzip the dataset <code>unzip -j 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.zip</code>, and you will get the following files:</p>
 <div class="highlight"><pre><span></span><code>1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bed
 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bim
 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.fam
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="phenotype-simulation">Phenotype Simulation</h2>
 <p>Phenotypes were simply simulated using GCTA with the 1KG EAS dataset.</p>
 <div class="highlight"><pre><span></span><code>gcta<span class="w">  </span><span class="se">\</span>
@@ -1708,6 +1712,12 @@
 7:134326056:G:T 3
 1:167562605:G:A 3
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This simulation is just used for showing the analysis pipeline and data format. The trait was simulated under an unreal condition (effect sizes are extremely large) so the result itself is meaningless.   </p>
+<p>Allele frequency and Effect size</p>
+<p><img width="700" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/d5133405-290c-4436-b61e-60f8a750f194"></p>
+</div>
 <h2 id="reference">Reference</h2>
 <ul>
 <li>1000 Genomes Project Consortium. (2015). A global reference for human genetic variation. Nature, 526(7571), 68.</li>
