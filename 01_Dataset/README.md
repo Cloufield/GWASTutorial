@@ -26,17 +26,21 @@ Genome build:  human_g1k_v37.fasta (hg19)
 
 ## Download
 
-Simply run `download_sampledata.sh` in `01_Dataset` and the dataset will be downloaded and decompressed.
+!!! note 
+    The sample dataset `1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.zip` has been included in `01_Dataset` when you clone the repository. There is no need to download it again if you clone this repository.
 
-!!! warning "Sample dataset is currently hosted on Dropbox which may not be accessible for users in certain regions."
+You can also simply run `download_sampledata.sh` in `01_Dataset` and the dataset will be downloaded and decompressed.
 
 ```
 ./download_sampledata.sh
 ```
 
+!!! warning "Sample dataset is currently hosted on Dropbox which may not be accessible for users in certain regions."
+
 or you can manually download it from [this link](https://www.dropbox.com/scl/fi/41ep8xbdccp9xw5epim19/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.zip?rlkey=tklapxwypeg79b1sx03o6ycs7&dl=1).
 
 Unzip the dataset `unzip -j 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.zip`, and you will get the following files:
+
 ```
 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bed
 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bim
@@ -65,6 +69,14 @@ $ cat causal.snplist
 7:134326056:G:T 3
 1:167562605:G:A 3
 ```
+
+!!! warning
+    This simulation is just used for showing the analysis pipeline and data format. The trait was simulated under an unreal condition (effect sizes are extremely large) so the result itself is meaningless.   
+
+    Allele frequency and Effect size
+
+    <img width="700" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/d5133405-290c-4436-b61e-60f8a750f194">
+
 
 ## Reference
 - 1000 Genomes Project Consortium. (2015). A global reference for human genetic variation. Nature, 526(7571), 68.
