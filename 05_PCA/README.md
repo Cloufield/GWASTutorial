@@ -168,7 +168,7 @@ For downstream analysis, we can exclude these SNPs using `--exclude hild.set`.
     	    --extract ${outPrefix}.prune.in \
     	    --freq counts \
     	    --threads ${threadnum} \
-            --pca approx allele-wts 10 \
+            --pca approx allele-wts 10 \     
             --out ${outPrefix}
     
     # Projection (related and unrelated samples)
@@ -180,6 +180,8 @@ For downstream analysis, we can exclude these SNPs using `--exclude hild.set`.
             --score-col-nums 6-15 \
             --out ${outPrefix}_projected
     ```
+
+For step 3, please note that `approx` flag is only recommended for analysis of >5000 samples. (It was applied in the sample code anyway because in real analysis you usually have a much larger sample size, though the sample size of our data is just ~500)
 
 After step 3, the `allele-wts 10` modifier requests an additional one-line-per-allele `.eigenvec.allele` file with the first `10 PCs` expressed as allele weights instead of sample weights.
 

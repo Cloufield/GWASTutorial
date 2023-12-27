@@ -59,7 +59,8 @@ $$
 
 ### Install MAGMA
 Dowload MAGMA for your operating system from the following url:
-https://ctg.cncr.nl/software/magma
+
+MAGMA: https://ctg.cncr.nl/software/magma
 
 For example:
 ```
@@ -80,12 +81,18 @@ MAGMA version: v1.10 (linux)
 ### Download reference files
 
 We nedd the following reference files:
+
 - gene location files
 - LD reference panel
 - Gene-set files
 
-The gene location files and LD reference panel can be downloaded from magma website. -> https://ctg.cncr.nl/software/magma
-The third one can be downloaded form MsigDB. -> https://www.gsea-msigdb.org/gsea/msigdb/
+The gene location files and LD reference panel can be downloaded from magma website. 
+
+-> https://ctg.cncr.nl/software/magma
+
+The third one can be downloaded form MsigDB. 
+
+-> https://www.gsea-msigdb.org/gsea/msigdb/
 
 ### Format input files
 ```
@@ -105,7 +112,9 @@ magma --annotate \
 ```
 
 !!! tip
-    Usually to capture the variants in the regulatory regions, we will add windows upstream and downstream of the genes with `--annotate window`. For example, `--annotate window=35,10` set a 35 kilobase pair(kb) upstream and 10kb downstream window.
+    Usually to capture the variants in the regulatory regions, we will add windows upstream and downstream of the genes with `--annotate window`. 
+    
+    For example, `--annotate window=35,10` set a 35 kilobase pair(kb) upstream and 10kb downstream window.
 
 
 ### Gene-based analysis
