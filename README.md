@@ -10,7 +10,7 @@ This tutorial covers the minimum skills and knowledge required to perform a typi
 
 If you have any questions or suggestions, please feel free to let us know in the [Issue section of this repository](https://github.com/Cloufield/GWASTutorial/issues).
 
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/40289485/209779725-73b62b15-b044-46a4-98ae-ce5db06f93b3.png">
+<img width="755" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/13609a79-2e2d-41f3-af9b-912fc47d57a9">
 
 ## Contents
 
