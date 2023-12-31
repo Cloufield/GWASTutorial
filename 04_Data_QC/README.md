@@ -15,7 +15,7 @@ In this module, we will learn the basics of genotype data QC using PLINK, which 
     - [Calculate the inbreeding F coefficient ](#inbreeding-f-coefficient)
 	- [Sample & SNP filtering (extract/exclude/keep/remove)](#sample--snp-filtering-extractexcludekeepremove)
 	- [LD calculation](#ld-calculation)
-	- [Estimate IBD / PI_HAT](#ibd--pi_hat)
+	- [Estimate IBD / PI_HAT](#ibd--pi_hat--kinship-coefficient)
 	- [Data management (make-bed/recode)](#data-management-make-bedrecode)
     - [Apply all the filters to obtain a clean dataset](#apply-all-the-filters-to-obtain-a-clean-dataset)
     - [Other common QC steps not included in this tutorial](#other-common-qc-steps-not-included-in-this-tutorial)
@@ -57,7 +57,7 @@ Download PLINK1.9 and PLINK2 from the following webpage to the corresponding dir
 - PLINK1.9 : [https://www.cog-genomics.org/plink/](https://www.cog-genomics.org/plink/)
 - PLINK2 : [https://www.cog-genomics.org/plink/2.0/](https://www.cog-genomics.org/plink/2.0/)
 
-!!! note
+!!! info
     If you are using Mac or Windows, then please download the Mac or Windows version. In this tutorial, we will use a Linux system and the Linux version of PLINK. 
 
 Find the suitable version on the PLINK website, right-click and copy the link address.
@@ -542,6 +542,10 @@ Next, we can check the heterozygosity F of samples (https://www.cog-genomics.org
     - $O(HOM)$ :Observed Homozygous Genotype Count 
     - M : Number of SNPs
 
+    High F may indicate a relatively high level of inbreeding. 
+    
+    Low F may suggest the sample DNA was contaminated.
+
 !!! warning "Performing LD-pruning beforehand since these calculations do not take LD into account."
 
 !!! example "Calculate inbreeding F coefficient"
@@ -583,10 +587,11 @@ We can plot the distribution of F:
 
 Here we use +-0.1 as the $F_{het}$ threshold for convenience. 
 
-```
-# only one sample
-awk 'NR>1 && $6>0.1 || $6<-0.1 {print $1,$2}' plink_results.het > high_het.sample
-```
+!!! example "Create sample list of individuals with extreme F using awk"
+    ```
+    # only one sample
+    awk 'NR>1 && $6>0.1 || $6<-0.1 {print $1,$2}' plink_results.het > high_het.sample
+    ```
 
 
 ### Sample & SNP filtering (extract/exclude/keep/remove)
@@ -610,7 +615,7 @@ head plink_results.prune.in
 1:567092:T:C
 ```
 
-### IBD / PI_HAT
+### IBD / PI_HAT / kinship coefficient
 `--genome` will estimate IBS/IBD. Usually, for this analysis, we need to prune our data first since the strong LD will cause bias in the results.
 (This step is computationally intensive)
 
@@ -655,9 +660,13 @@ Combined with the `--extract`, we can run:
     HG00403  HG00403  HG00428  HG00428 UN    NA  0.9801  0.0069  0.0130  0.0164  -1  0.858162  0.9812  2.1471
     ```
 
-Note: PLINK2 uses KING-robust kinship estimator, which is more robust for mixed-population datasets. See [here](https://www.cog-genomics.org/plink/2.0/distance#make_king).
+!!! info "KING-robust kinship estimator"
+    
+    PLINK2 uses KING-robust kinship estimator, which is more robust in the presence of population substructure. See [here](https://www.cog-genomics.org/plink/2.0/distance#make_king).
 
-Since the samples are unrelated, we do not need to remove any sample at this step. But remebr to check this for your own dataset.
+    Manichaikul, A., Mychaleckyj, J. C., Rich, S. S., Daly, K., Sale, M., & Chen, W. M. (2010). Robust relationship inference in genome-wide association studies. Bioinformatics, 26(22), 2867-2873.
+
+Since the samples are unrelated, we do not need to remove any samples at this step. But remember to check this for your dataset.
 
 ### LD calculation
 
@@ -766,3 +775,4 @@ plink \
 ## Reference
 - Purcell, S., Neale, B., Todd-Brown, K., Thomas, L., Ferreira, M. A., Bender, D., ... & Sham, P. C. (2007). PLINK: a tool set for whole-genome association and population-based linkage analyses. The American journal of human genetics, 81(3), 559-575.
 - Chang, C. C., Chow, C. C., Tellier, L. C., Vattikuti, S., Purcell, S. M., & Lee, J. J. (2015). Second-generation PLINK: rising to the challenge of larger and richer datasets. Gigascience, 4(1), s13742-015.
+- Manichaikul, A., Mychaleckyj, J. C., Rich, S. S., Daly, K., Sale, M., & Chen, W. M. (2010). Robust relationship inference in genome-wide association studies. Bioinformatics, 26(22), 2867-2873.

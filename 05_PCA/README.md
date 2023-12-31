@@ -19,7 +19,7 @@ PCA aims to find the **orthogonal directions of maximum variance** and project t
     
     <img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/124b8c3d-0f83-4936-ab08-342efd29660a">
 
-!!! quote "Interpretation of PCs" 
+!!! info "Interpretation of PCs" 
     **The first principal component** of a set of p variables, presumed to be jointly normally distributed, is the derived variable formed as a linear combination of the original variables that **explains the most variance**. The second principal component explains the most variance in what is left once the effect of the first component is removed, and we may proceed through p iterations until all the variance is explained.
 
 PCA is by far the most commonly used dimension reduction approach used in population genetics which could identify the difference in ancestry among the sample individuals. The population outliers could be excluded from the main cluster. For GWAS we also need to include top PCs to adjust for the population stratification.
@@ -131,8 +131,8 @@ For downstream analysis, we can exclude these SNPs using `--exclude hild.set`.
     - 3. Running PCA using un-related samples and independent SNPs (https://www.cog-genomics.org/plink/2.0/strat#pca)
     - 4. Projecting to all samples (https://www.cog-genomics.org/plink/2.0/score#pca_project)
 
-!!! note "MAF filter for LD-pruning and PCA"
-    For LD-pruning and PCA, we usually only use variants with MAF > 0.01 or MAF>0.05. Since the sample dataset only contains variants with MAF > 0.05. We will skip the MAF filtering here. But please do keep this in mind when you work with your own datasets. (You can simply add `--maf 0.01` or `--maf 0.05` when performing LD-pruning or PCA.)
+!!! info "MAF filter for LD-pruning and PCA"
+    For LD-pruning and PCA, we usually only use variants with MAF > 0.01 or MAF>0.05 ( `--maf 0.01` or `--maf 0.05`) for robust estimation.
 
 ---------
 ## Sample codes
@@ -181,7 +181,8 @@ For downstream analysis, we can exclude these SNPs using `--exclude hild.set`.
             --out ${outPrefix}_projected
     ```
 
-For step 3, please note that `approx` flag is only recommended for analysis of >5000 samples. (It was applied in the sample code anyway because in real analysis you usually have a much larger sample size, though the sample size of our data is just ~500)
+!!! info "`--pca` and `--pca approx`"
+    For step 3, please note that `approx` flag is only recommended for analysis of >5000 samples. (It was applied in the sample code anyway because in real analysis you usually have a much larger sample size, though the sample size of our data is just ~500)
 
 After step 3, the `allele-wts 10` modifier requests an additional one-line-per-allele `.eigenvec.allele` file with the first `10 PCs` expressed as allele weights instead of sample weights.
 
@@ -251,7 +252,7 @@ Requirements:
 
 ## PCA-UMAP
 (optional) 
-We can also apply another non-linear dimension reduction algorithm called UMAP to the PCs to further identfy the local structures. (PCA-UMAP)
+We can also apply another non-linear dimension reduction algorithm called UMAP to the PCs to further identify the local structures. (PCA-UMAP)
 
 For more details, please check:
 - https://umap-learn.readthedocs.io/en/latest/index.html
