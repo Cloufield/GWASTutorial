@@ -36,7 +36,7 @@ head ../02_Linux_basics/sumstats.txt
 
 ### Example 1
 
-!!! example "Select variants on chromosome 3 (keeping the headers)"
+!!! example "Select variants on chromosome 2 (keeping the headers)"
 
     ```bash
     awk 'NR==1 ||  $1==2 {print $0}' ../02_Linux_basics/sumstats.txt | head
@@ -52,7 +52,7 @@ head ../02_Linux_basics/sumstats.txt
     2	55237	2:55237:T:C	T	C	C	ADD	503	1.314860.161988	1.68983	0.0910614	.
     ```
 
-The `NR` here means row number. The condition here `NR==1 || $1==3` means if it is the first row or the first column is equal to 3, conduct the process `print $0`, which mean print all columns. 
+The `NR` here means row number. The condition here `NR==1 || $1==2` means if it is the first row or the first column is equal to 2, conduct the process `print $0`, which mean print all columns. 
 
 ### Example 2
 

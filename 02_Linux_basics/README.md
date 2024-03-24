@@ -172,7 +172,7 @@ This command prints the absolute path.
 |Type|Description|Example|
 |-|-|-|
 |**Absolute path**|path starting from root (the orange path)|`/home/User3/GWASTutorial/02_Linux_basics/README.md`|
-|**Relative path**|ath starting from the current directory (the blue path)|`./GWASTutorial/02_Linux_basics/README.md`|
+|**Relative path**|path starting from the current directory (the blue path)|`./GWASTutorial/02_Linux_basics/README.md`|
 
 !!! tip "Tip: use `readlink` to obtain the absolute path of a file"
     To get the absolute path of a file, you can use `readlink -f [filename]`.
@@ -201,7 +201,7 @@ Some frequently used options for `ls` :
 
 - `-l`: in a list-like format
 - `-h`: convert file size into a human readable format (KB,MB,GB...)
-- `-a`: list all files (including hidden files, namly those files a period at the beginning of the filename)
+- `-a`: list all files (including hidden files, namly those files with a period at the beginning of the filename)
 
 !!! example "Simply list the files and directories in the current directory"
     ```Bash
