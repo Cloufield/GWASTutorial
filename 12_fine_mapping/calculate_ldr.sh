@@ -1,6 +1,6 @@
 #!/bin/bash
 
-plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020"
+plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing"
 
 plink \
   --bfile ${plinkFile} \
