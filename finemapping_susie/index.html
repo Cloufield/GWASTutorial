@@ -3035,9 +3035,9 @@ import matplotlib.pyplot as plt</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">sumstats</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">Sumstats</span><span class="p">(</span><span class="s2">"../06_Association_tests/1kgeas.B1.glm.firth"</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s2">"plink2"</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">sumstats</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">Sumstats</span><span class="p">(</span><span class="s2">"./1kgeas.B1.glm.firth.gz"</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s2">"plink2"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-2">sumstats = gl.Sumstats("../06_Association_tests/1kgeas.B1.glm.firth",fmt="plink2")</div>
+<div class="clipboard-copy-txt" id="cell-2">sumstats = gl.Sumstats("./1kgeas.B1.glm.firth.gz",fmt="plink2")</div>
 </div>
 </div>
 </div>
@@ -3049,36 +3049,36 @@ import matplotlib.pyplot as plt</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>2024/04/17 13:32:47 GWASLab v3.4.43 https://cloufield.github.io/gwaslab/
-2024/04/17 13:32:47 (C) 2022-2024, Yunye He, Kamatani Lab, MIT License, gwaslab@gmail.com
-2024/04/17 13:32:47 Start to load format from formatbook....
-2024/04/17 13:32:47  -plink2 format meta info:
-2024/04/17 13:32:47   - format_name  : PLINK2 .glm.firth, .glm.logistic,.glm.linear
-2024/04/17 13:32:47   - format_source  : https://www.cog-genomics.org/plink/2.0/formats
-2024/04/17 13:32:47   - format_version  : Alpha 3.3 final (3 Jun)
-2024/04/17 13:32:47   - last_check_date  :  20220806
-2024/04/17 13:32:47  -plink2 to gwaslab format dictionary:
-2024/04/17 13:32:47   - plink2 keys: ID,#CHROM,POS,REF,ALT,A1,OBS_CT,A1_FREQ,BETA,LOG(OR)_SE,SE,T_STAT,Z_STAT,P,LOG10_P,MACH_R2,OR
-2024/04/17 13:32:47   - gwaslab values: SNPID,CHR,POS,REF,ALT,EA,N,EAF,BETA,SE,SE,T,Z,P,MLOG10P,INFO,OR
-2024/04/17 13:32:47 Start to initialize gl.Sumstats from file :../06_Association_tests/1kgeas.B1.glm.firth
-2024/04/17 13:32:48  -Reading columns          : OBS_CT,#CHROM,POS,LOG(OR)_SE,P,A1_FREQ,ID,ALT,Z_STAT,OR,REF,A1
-2024/04/17 13:32:48  -Renaming columns to      : N,CHR,POS,SE,P,EAF,SNPID,ALT,Z,OR,REF,EA
-2024/04/17 13:32:48  -Current Dataframe shape : 1128732  x  12
-2024/04/17 13:32:48  -Initiating a status column: STATUS ...
-2024/04/17 13:32:48  #WARNING! Version of genomic coordinates is unknown...
-2024/04/17 13:32:48  NEA not available: assigning REF to NEA...
-2024/04/17 13:32:48  -EA,REF and ALT columns are available: assigning NEA...
-2024/04/17 13:32:48  -For variants with EA == ALT : assigning REF to NEA ...
-2024/04/17 13:32:48  -For variants with EA != ALT : assigning ALT to NEA ...
-2024/04/17 13:32:48 Start to reorder the columns...v3.4.43
-2024/04/17 13:32:48  -Current Dataframe shape : 1128732 x 14 ; Memory usage: 106.06 MB
-2024/04/17 13:32:48  -Reordering columns to    : SNPID,CHR,POS,EA,NEA,EAF,SE,Z,P,OR,N,STATUS,REF,ALT
-2024/04/17 13:32:48 Finished reordering the columns.
-2024/04/17 13:32:48  -Column  : SNPID  CHR   POS   EA       NEA      EAF     SE      Z       P       OR      N     STATUS   REF      ALT     
-2024/04/17 13:32:48  -DType   : object int64 int64 category category float64 float64 float64 float64 float64 int64 category category category
-2024/04/17 13:32:48  -Verified: T      T     T     T        T        T       T       T       T       T       T     T        T        T       
-2024/04/17 13:32:48  -Current Dataframe memory usage: 106.06 MB
-2024/04/17 13:32:48 Finished loading data successfully!
+<pre>2024/04/18 10:40:48 GWASLab v3.4.43 https://cloufield.github.io/gwaslab/
+2024/04/18 10:40:48 (C) 2022-2024, Yunye He, Kamatani Lab, MIT License, gwaslab@gmail.com
+2024/04/18 10:40:48 Start to load format from formatbook....
+2024/04/18 10:40:48  -plink2 format meta info:
+2024/04/18 10:40:48   - format_name  : PLINK2 .glm.firth, .glm.logistic,.glm.linear
+2024/04/18 10:40:48   - format_source  : https://www.cog-genomics.org/plink/2.0/formats
+2024/04/18 10:40:48   - format_version  : Alpha 3.3 final (3 Jun)
+2024/04/18 10:40:48   - last_check_date  :  20220806
+2024/04/18 10:40:48  -plink2 to gwaslab format dictionary:
+2024/04/18 10:40:48   - plink2 keys: ID,#CHROM,POS,REF,ALT,A1,OBS_CT,A1_FREQ,BETA,LOG(OR)_SE,SE,T_STAT,Z_STAT,P,LOG10_P,MACH_R2,OR
+2024/04/18 10:40:48   - gwaslab values: SNPID,CHR,POS,REF,ALT,EA,N,EAF,BETA,SE,SE,T,Z,P,MLOG10P,INFO,OR
+2024/04/18 10:40:48 Start to initialize gl.Sumstats from file :./1kgeas.B1.glm.firth.gz
+2024/04/18 10:40:49  -Reading columns          : Z_STAT,A1_FREQ,POS,ALT,REF,P,A1,OR,OBS_CT,#CHROM,LOG(OR)_SE,ID
+2024/04/18 10:40:49  -Renaming columns to      : Z,EAF,POS,ALT,REF,P,EA,OR,N,CHR,SE,SNPID
+2024/04/18 10:40:49  -Current Dataframe shape : 1128732  x  12
+2024/04/18 10:40:49  -Initiating a status column: STATUS ...
+2024/04/18 10:40:49  #WARNING! Version of genomic coordinates is unknown...
+2024/04/18 10:40:49  NEA not available: assigning REF to NEA...
+2024/04/18 10:40:49  -EA,REF and ALT columns are available: assigning NEA...
+2024/04/18 10:40:49  -For variants with EA == ALT : assigning REF to NEA ...
+2024/04/18 10:40:49  -For variants with EA != ALT : assigning ALT to NEA ...
+2024/04/18 10:40:49 Start to reorder the columns...v3.4.43
+2024/04/18 10:40:49  -Current Dataframe shape : 1128732 x 14 ; Memory usage: 106.06 MB
+2024/04/18 10:40:49  -Reordering columns to    : SNPID,CHR,POS,EA,NEA,EAF,SE,Z,P,OR,N,STATUS,REF,ALT
+2024/04/18 10:40:49 Finished reordering the columns.
+2024/04/18 10:40:49  -Column  : SNPID  CHR   POS   EA       NEA      EAF     SE      Z       P       OR      N     STATUS   REF      ALT     
+2024/04/18 10:40:49  -DType   : object int64 int64 category category float64 float64 float64 float64 float64 int64 category category category
+2024/04/18 10:40:49  -Verified: T      T     T     T        T        T       T       T       T       T       T     T        T        T       
+2024/04/18 10:40:50  -Current Dataframe memory usage: 106.06 MB
+2024/04/18 10:40:50 Finished loading data successfully!
 </pre>
 </div>
 </div>
@@ -3129,73 +3129,73 @@ import matplotlib.pyplot as plt</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>2024/04/17 13:32:49 Start to check SNPID/rsID...v3.4.43
-2024/04/17 13:32:49  -Current Dataframe shape : 1128732 x 14 ; Memory usage: 106.06 MB
-2024/04/17 13:32:49  -Checking SNPID data type...
-2024/04/17 13:32:49  -Converting SNPID to pd.string data type...
-2024/04/17 13:32:49  -Checking if SNPID is CHR:POS:NEA:EA...(separator: - ,: , _)
-2024/04/17 13:32:50 Finished checking SNPID/rsID.
-2024/04/17 13:32:50 Start to fix chromosome notation (CHR)...v3.4.43
-2024/04/17 13:32:50  -Current Dataframe shape : 1128732 x 14 ; Memory usage: 106.06 MB
-2024/04/17 13:32:50  -Checking CHR data type...
-2024/04/17 13:32:50  -Variants with standardized chromosome notation: 1128732
-2024/04/17 13:32:50  -All CHR are already fixed...
-2024/04/17 13:32:51 Finished fixing chromosome notation (CHR).
-2024/04/17 13:32:51 Start to fix basepair positions (POS)...v3.4.43
-2024/04/17 13:32:51  -Current Dataframe shape : 1128732 x 14 ; Memory usage: 107.13 MB
-2024/04/17 13:32:51  -Converting to Int64 data type ...
-2024/04/17 13:32:52  -Position bound:(0 , 250,000,000)
-2024/04/17 13:32:52  -Removed outliers: 0
-2024/04/17 13:32:52 Finished fixing basepair positions (POS).
-2024/04/17 13:32:52 Start to fix alleles (EA and NEA)...v3.4.43
-2024/04/17 13:32:52  -Current Dataframe shape : 1128732 x 14 ; Memory usage: 116.82 MB
-2024/04/17 13:32:52  -Converted all bases to string datatype and UPPERCASE.
-2024/04/17 13:32:52  -Variants with bad EA  : 0
-2024/04/17 13:32:52  -Variants with bad NEA : 0
-2024/04/17 13:32:52  -Variants with NA for EA or NEA: 0
-2024/04/17 13:32:52  -Variants with same EA and NEA: 0
-2024/04/17 13:32:52  -Detected 0 variants with alleles that contain bases other than A/C/T/G .
-2024/04/17 13:32:53 Finished fixing alleles (EA and NEA).
-2024/04/17 13:32:53 Start to perform sanity check for statistics...v3.4.43
-2024/04/17 13:32:53  -Current Dataframe shape : 1128732 x 14 ; Memory usage: 116.82 MB
-2024/04/17 13:32:53  -Comparison tolerance for floats: 1e-07
-2024/04/17 13:32:53  -Checking if 0 &lt;= N &lt;= 2147483647 ...
-2024/04/17 13:32:53  -Removed 0 variants with bad/na N.
-2024/04/17 13:32:53  -Checking if -1e-07 &lt; EAF &lt; 1.0000001 ...
-2024/04/17 13:32:53  -Removed 0 variants with bad/na EAF.
-2024/04/17 13:32:53  -Checking if -9999.0000001 &lt; Z &lt; 9999.0000001 ...
-2024/04/17 13:32:53   -Examples of invalid variants(SNPID): 1:15774:G:A,1:15777:A:G,1:57292:C:T,1:87360:C:T,1:625392:T:C ...
-2024/04/17 13:32:53   -Examples of invalid values (Z): NA,NA,NA,NA,NA ...
-2024/04/17 13:32:53  -Removed 220793 variants with bad/na Z.
-2024/04/17 13:32:53  -Checking if -1e-07 &lt; P &lt; 1.0000001 ...
-2024/04/17 13:32:54  -Removed 0 variants with bad/na P.
-2024/04/17 13:32:54  -Checking if -1e-07 &lt; SE &lt; inf ...
-2024/04/17 13:32:54  -Removed 0 variants with bad/na SE.
-2024/04/17 13:32:54  -Checking if -100.0000001 &lt; OR &lt; 100.0000001 ...
-2024/04/17 13:32:54  -Removed 0 variants with bad/na OR.
-2024/04/17 13:32:54  -Checking STATUS and converting STATUS to categories....
-2024/04/17 13:32:54  -Removed 220793 variants with bad statistics in total.
-2024/04/17 13:32:54  -Data types for each column:
-2024/04/17 13:32:54  -Column  : SNPID  CHR   POS   EA       NEA      EAF     SE      Z       P       OR      N     STATUS   REF      ALT     
-2024/04/17 13:32:54  -DType   : string Int64 Int64 category category float32 float64 float64 float64 float64 Int64 category category category
-2024/04/17 13:32:54  -Verified: T      T     T     T        T        T       T       T       T       T       T     T        T        T       
-2024/04/17 13:32:54 Finished sanity check for statistics.
-2024/04/17 13:32:54 Start to check data consistency across columns...v3.4.43
-2024/04/17 13:32:54  -Current Dataframe shape : 907939 x 14 ; Memory usage: 95.27 MB
-2024/04/17 13:32:54  -Tolerance: 0.001 (Relative) and 0.001 (Absolute)
-2024/04/17 13:32:54  -No availalbe columns for data consistency checking...Skipping...
-2024/04/17 13:32:54 Finished checking data consistency across columns.
-2024/04/17 13:32:54 Start to normalize indels...v3.4.43
-2024/04/17 13:32:54  -Current Dataframe shape : 907939 x 14 ; Memory usage: 95.27 MB
-2024/04/17 13:32:54  -No available variants to normalize..
-2024/04/17 13:32:54 Finished normalizing variants successfully!
-2024/04/17 13:32:54 Start to sort the genome coordinates...v3.4.43
-2024/04/17 13:32:54  -Current Dataframe shape : 907939 x 14 ; Memory usage: 95.27 MB
-2024/04/17 13:32:54 Finished sorting coordinates.
-2024/04/17 13:32:54 Start to reorder the columns...v3.4.43
-2024/04/17 13:32:54  -Current Dataframe shape : 907939 x 14 ; Memory usage: 88.35 MB
-2024/04/17 13:32:54  -Reordering columns to    : SNPID,CHR,POS,EA,NEA,EAF,SE,Z,P,OR,N,STATUS,REF,ALT
-2024/04/17 13:32:54 Finished reordering the columns.
+<pre>2024/04/18 10:40:50 Start to check SNPID/rsID...v3.4.43
+2024/04/18 10:40:50  -Current Dataframe shape : 1128732 x 14 ; Memory usage: 106.06 MB
+2024/04/18 10:40:50  -Checking SNPID data type...
+2024/04/18 10:40:50  -Converting SNPID to pd.string data type...
+2024/04/18 10:40:50  -Checking if SNPID is CHR:POS:NEA:EA...(separator: - ,: , _)
+2024/04/18 10:40:51 Finished checking SNPID/rsID.
+2024/04/18 10:40:51 Start to fix chromosome notation (CHR)...v3.4.43
+2024/04/18 10:40:51  -Current Dataframe shape : 1128732 x 14 ; Memory usage: 106.06 MB
+2024/04/18 10:40:51  -Checking CHR data type...
+2024/04/18 10:40:51  -Variants with standardized chromosome notation: 1128732
+2024/04/18 10:40:51  -All CHR are already fixed...
+2024/04/18 10:40:52 Finished fixing chromosome notation (CHR).
+2024/04/18 10:40:52 Start to fix basepair positions (POS)...v3.4.43
+2024/04/18 10:40:52  -Current Dataframe shape : 1128732 x 14 ; Memory usage: 107.13 MB
+2024/04/18 10:40:52  -Converting to Int64 data type ...
+2024/04/18 10:40:53  -Position bound:(0 , 250,000,000)
+2024/04/18 10:40:53  -Removed outliers: 0
+2024/04/18 10:40:53 Finished fixing basepair positions (POS).
+2024/04/18 10:40:53 Start to fix alleles (EA and NEA)...v3.4.43
+2024/04/18 10:40:53  -Current Dataframe shape : 1128732 x 14 ; Memory usage: 116.82 MB
+2024/04/18 10:40:53  -Converted all bases to string datatype and UPPERCASE.
+2024/04/18 10:40:53  -Variants with bad EA  : 0
+2024/04/18 10:40:54  -Variants with bad NEA : 0
+2024/04/18 10:40:54  -Variants with NA for EA or NEA: 0
+2024/04/18 10:40:54  -Variants with same EA and NEA: 0
+2024/04/18 10:40:54  -Detected 0 variants with alleles that contain bases other than A/C/T/G .
+2024/04/18 10:40:55 Finished fixing alleles (EA and NEA).
+2024/04/18 10:40:55 Start to perform sanity check for statistics...v3.4.43
+2024/04/18 10:40:55  -Current Dataframe shape : 1128732 x 14 ; Memory usage: 116.82 MB
+2024/04/18 10:40:55  -Comparison tolerance for floats: 1e-07
+2024/04/18 10:40:55  -Checking if 0 &lt;= N &lt;= 2147483647 ...
+2024/04/18 10:40:55  -Removed 0 variants with bad/na N.
+2024/04/18 10:40:55  -Checking if -1e-07 &lt; EAF &lt; 1.0000001 ...
+2024/04/18 10:40:55  -Removed 0 variants with bad/na EAF.
+2024/04/18 10:40:55  -Checking if -9999.0000001 &lt; Z &lt; 9999.0000001 ...
+2024/04/18 10:40:55   -Examples of invalid variants(SNPID): 1:15774:G:A,1:15777:A:G,1:57292:C:T,1:87360:C:T,1:625392:T:C ...
+2024/04/18 10:40:55   -Examples of invalid values (Z): NA,NA,NA,NA,NA ...
+2024/04/18 10:40:55  -Removed 220793 variants with bad/na Z.
+2024/04/18 10:40:55  -Checking if -1e-07 &lt; P &lt; 1.0000001 ...
+2024/04/18 10:40:55  -Removed 0 variants with bad/na P.
+2024/04/18 10:40:55  -Checking if -1e-07 &lt; SE &lt; inf ...
+2024/04/18 10:40:55  -Removed 0 variants with bad/na SE.
+2024/04/18 10:40:55  -Checking if -100.0000001 &lt; OR &lt; 100.0000001 ...
+2024/04/18 10:40:55  -Removed 0 variants with bad/na OR.
+2024/04/18 10:40:55  -Checking STATUS and converting STATUS to categories....
+2024/04/18 10:40:56  -Removed 220793 variants with bad statistics in total.
+2024/04/18 10:40:56  -Data types for each column:
+2024/04/18 10:40:56  -Column  : SNPID  CHR   POS   EA       NEA      EAF     SE      Z       P       OR      N     STATUS   REF      ALT     
+2024/04/18 10:40:56  -DType   : string Int64 Int64 category category float32 float64 float64 float64 float64 Int64 category category category
+2024/04/18 10:40:56  -Verified: T      T     T     T        T        T       T       T       T       T       T     T        T        T       
+2024/04/18 10:40:56 Finished sanity check for statistics.
+2024/04/18 10:40:56 Start to check data consistency across columns...v3.4.43
+2024/04/18 10:40:56  -Current Dataframe shape : 907939 x 14 ; Memory usage: 95.27 MB
+2024/04/18 10:40:56  -Tolerance: 0.001 (Relative) and 0.001 (Absolute)
+2024/04/18 10:40:56  -No availalbe columns for data consistency checking...Skipping...
+2024/04/18 10:40:56 Finished checking data consistency across columns.
+2024/04/18 10:40:56 Start to normalize indels...v3.4.43
+2024/04/18 10:40:56  -Current Dataframe shape : 907939 x 14 ; Memory usage: 95.27 MB
+2024/04/18 10:40:56  -No available variants to normalize..
+2024/04/18 10:40:56 Finished normalizing variants successfully!
+2024/04/18 10:40:56 Start to sort the genome coordinates...v3.4.43
+2024/04/18 10:40:56  -Current Dataframe shape : 907939 x 14 ; Memory usage: 95.27 MB
+2024/04/18 10:40:56 Finished sorting coordinates.
+2024/04/18 10:40:56 Start to reorder the columns...v3.4.43
+2024/04/18 10:40:56  -Current Dataframe shape : 907939 x 14 ; Memory usage: 88.35 MB
+2024/04/18 10:40:56  -Reordering columns to    : SNPID,CHR,POS,EA,NEA,EAF,SE,Z,P,OR,N,STATUS,REF,ALT
+2024/04/18 10:40:56 Finished reordering the columns.
 </pre>
 </div>
 </div>
@@ -3257,15 +3257,15 @@ import matplotlib.pyplot as plt</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>2024/04/17 13:32:55 Start to extract lead variants...v3.4.43
-2024/04/17 13:32:55  -Current Dataframe shape : 907939 x 14 ; Memory usage: 88.35 MB
-2024/04/17 13:32:55  -Processing 907939 variants...
-2024/04/17 13:32:55  -Significance threshold : 5e-08
-2024/04/17 13:32:55  -Sliding window size: 500  kb
-2024/04/17 13:32:55  -Using P for extracting lead variants...
-2024/04/17 13:32:55  -Found 43 significant variants in total...
-2024/04/17 13:32:55  -Identified 4 lead variants!
-2024/04/17 13:32:55 Finished extracting lead variants.
+<pre>2024/04/18 10:40:56 Start to extract lead variants...v3.4.43
+2024/04/18 10:40:56  -Current Dataframe shape : 907939 x 14 ; Memory usage: 88.35 MB
+2024/04/18 10:40:56  -Processing 907939 variants...
+2024/04/18 10:40:56  -Significance threshold : 5e-08
+2024/04/18 10:40:56  -Sliding window size: 500  kb
+2024/04/18 10:40:56  -Using P for extracting lead variants...
+2024/04/18 10:40:56  -Found 43 significant variants in total...
+2024/04/18 10:40:56  -Identified 4 lead variants!
+2024/04/18 10:40:56 Finished extracting lead variants.
 </pre>
 </div>
 </div>
@@ -3427,57 +3427,57 @@ import matplotlib.pyplot as plt</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>2024/04/17 13:32:55 Start to create MQQ plot...v3.4.43:
-2024/04/17 13:32:55  -Genomic coordinates version: 99...
-2024/04/17 13:32:55  #WARNING! Genomic coordinates version is unknown.
-2024/04/17 13:32:55  -Genome-wide significance level to plot is set to 5e-08 ...
-2024/04/17 13:32:55  -Raw input contains 907939 variants...
-2024/04/17 13:32:55  -MQQ plot layout mode is : mqq
-2024/04/17 13:32:55 Finished loading specified columns from the sumstats.
-2024/04/17 13:32:55 Start data conversion and sanity check:
-2024/04/17 13:32:55  -Removed 0 variants with nan in CHR or POS column ...
-2024/04/17 13:32:55  -Removed 0 variants with CHR &lt;=0...
-2024/04/17 13:32:55  -Removed 0 variants with nan in P column ...
-2024/04/17 13:32:55  -Sanity check after conversion: 0 variants with P value outside of (0,1] will be removed...
-2024/04/17 13:32:55  -Sumstats P values are being converted to -log10(P)...
-2024/04/17 13:32:55  -Sanity check: 0 na/inf/-inf variants will be removed...
-2024/04/17 13:32:55  -Converting data above cut line...
-2024/04/17 13:32:55  -Maximum -log10(P) value is 14.772946706439042 .
-2024/04/17 13:32:55 Finished data conversion and sanity check.
-2024/04/17 13:32:55 Start to create MQQ plot with 907939 variants...
-2024/04/17 13:32:56  -Creating background plot...
-2024/04/17 13:32:57 Finished creating MQQ plot successfully!
-2024/04/17 13:32:57 Start to extract variants for annotation...
-2024/04/17 13:32:57  -Found 4 significant variants with a sliding window size of 500 kb...
-2024/04/17 13:32:57 Finished extracting variants for annotation...
-2024/04/17 13:32:57 Start to process figure arts.
-2024/04/17 13:32:57  -Processing X ticks...
-2024/04/17 13:32:57  -Processing X labels...
-2024/04/17 13:32:57  -Processing Y labels...
-2024/04/17 13:32:57  -Processing Y tick lables...
-2024/04/17 13:32:57  -Processing Y labels...
-2024/04/17 13:32:57  -Processing lines...
-2024/04/17 13:32:57 Finished processing figure arts.
-2024/04/17 13:32:57 Start to annotate variants...
-2024/04/17 13:32:57  -Skip annotating
-2024/04/17 13:32:57 Finished annotating variants.
-2024/04/17 13:32:57 Start to create QQ plot with 907939 variants:
-2024/04/17 13:32:57  -Plotting all variants...
-2024/04/17 13:32:57  -Expected range of P: (0,1.0)
-2024/04/17 13:32:57  -Lambda GC (MLOG10P mode) at 0.5 is   0.98908
-2024/04/17 13:32:57  -Processing Y tick lables...
-2024/04/17 13:32:57 Finished creating QQ plot successfully!
-2024/04/17 13:32:57 Start to save figure...
-2024/04/17 13:32:57  -Skip saving figure!
-2024/04/17 13:32:57 Finished saving figure...
-2024/04/17 13:32:57 Finished creating plot successfully!
+<pre>2024/04/18 10:40:57 Start to create MQQ plot...v3.4.43:
+2024/04/18 10:40:57  -Genomic coordinates version: 99...
+2024/04/18 10:40:57  #WARNING! Genomic coordinates version is unknown.
+2024/04/18 10:40:57  -Genome-wide significance level to plot is set to 5e-08 ...
+2024/04/18 10:40:57  -Raw input contains 907939 variants...
+2024/04/18 10:40:57  -MQQ plot layout mode is : mqq
+2024/04/18 10:40:57 Finished loading specified columns from the sumstats.
+2024/04/18 10:40:57 Start data conversion and sanity check:
+2024/04/18 10:40:57  -Removed 0 variants with nan in CHR or POS column ...
+2024/04/18 10:40:57  -Removed 0 variants with CHR &lt;=0...
+2024/04/18 10:40:57  -Removed 0 variants with nan in P column ...
+2024/04/18 10:40:57  -Sanity check after conversion: 0 variants with P value outside of (0,1] will be removed...
+2024/04/18 10:40:57  -Sumstats P values are being converted to -log10(P)...
+2024/04/18 10:40:57  -Sanity check: 0 na/inf/-inf variants will be removed...
+2024/04/18 10:40:57  -Converting data above cut line...
+2024/04/18 10:40:57  -Maximum -log10(P) value is 14.772946706439042 .
+2024/04/18 10:40:57 Finished data conversion and sanity check.
+2024/04/18 10:40:57 Start to create MQQ plot with 907939 variants...
+2024/04/18 10:40:58  -Creating background plot...
+2024/04/18 10:40:59 Finished creating MQQ plot successfully!
+2024/04/18 10:40:59 Start to extract variants for annotation...
+2024/04/18 10:40:59  -Found 4 significant variants with a sliding window size of 500 kb...
+2024/04/18 10:40:59 Finished extracting variants for annotation...
+2024/04/18 10:40:59 Start to process figure arts.
+2024/04/18 10:40:59  -Processing X ticks...
+2024/04/18 10:40:59  -Processing X labels...
+2024/04/18 10:40:59  -Processing Y labels...
+2024/04/18 10:40:59  -Processing Y tick lables...
+2024/04/18 10:40:59  -Processing Y labels...
+2024/04/18 10:40:59  -Processing lines...
+2024/04/18 10:40:59 Finished processing figure arts.
+2024/04/18 10:40:59 Start to annotate variants...
+2024/04/18 10:40:59  -Skip annotating
+2024/04/18 10:40:59 Finished annotating variants.
+2024/04/18 10:40:59 Start to create QQ plot with 907939 variants:
+2024/04/18 10:40:59  -Plotting all variants...
+2024/04/18 10:40:59  -Expected range of P: (0,1.0)
+2024/04/18 10:40:59  -Lambda GC (MLOG10P mode) at 0.5 is   0.98908
+2024/04/18 10:40:59  -Processing Y tick lables...
+2024/04/18 10:40:59 Finished creating QQ plot successfully!
+2024/04/18 10:40:59 Start to save figure...
+2024/04/18 10:40:59  -Skip saving figure!
+2024/04/18 10:40:59 Finished saving figure...
+2024/04/18 10:40:59 Finished creating plot successfully!
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>(&lt;Figure size 3000x1000 with 2 Axes&gt;, &lt;gwaslab.g_Log.Log at 0x7fbed84dd4c0&gt;)</pre>
+<pre>(&lt;Figure size 3000x1000 with 2 Axes&gt;, &lt;gwaslab.g_Log.Log at 0x7fa6ad1132b0&gt;)</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -3533,9 +3533,9 @@ import matplotlib.pyplot as plt</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>2024/04/17 13:33:04 Start filtering values by condition: CHR==2 &amp; POS&gt;55013738 &amp; POS&lt;56013738
-2024/04/17 13:33:04  -Removing 907560 variants not meeting the conditions: CHR==2 &amp; POS&gt;55013738 &amp; POS&lt;56013738
-2024/04/17 13:33:04 Finished filtering values.
+<pre>2024/04/18 10:41:06 Start filtering values by condition: CHR==2 &amp; POS&gt;55013738 &amp; POS&lt;56013738
+2024/04/18 10:41:06  -Removing 907560 variants not meeting the conditions: CHR==2 &amp; POS&gt;55013738 &amp; POS&lt;56013738
+2024/04/18 10:41:06 Finished filtering values.
 </pre>
 </div>
 </div>
@@ -3586,20 +3586,20 @@ import matplotlib.pyplot as plt</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>2024/04/17 13:33:04 Start filling data using existing columns...v3.4.43
-2024/04/17 13:33:04  -Column  : SNPID  CHR   POS   EA       NEA      EAF     SE      Z       P       OR      N     STATUS   REF      ALT     
-2024/04/17 13:33:04  -DType   : string Int64 Int64 category category float32 float64 float64 float64 float64 Int64 category category category
-2024/04/17 13:33:04  -Verified: T      T     T     T        T        T       T       T       T       T       T     T        T        T       
-2024/04/17 13:33:04  -Overwrite mode:  False
-2024/04/17 13:33:04   -Skipping columns:  []
-2024/04/17 13:33:04  -Filling columns:  ['BETA']
-2024/04/17 13:33:04   - Filling Columns iteratively...
-2024/04/17 13:33:04   - Filling BETA value using OR column...
-2024/04/17 13:33:04 Finished filling data using existing columns.
-2024/04/17 13:33:04 Start to reorder the columns...v3.4.43
-2024/04/17 13:33:04  -Current Dataframe shape : 379 x 15 ; Memory usage: 19.97 MB
-2024/04/17 13:33:04  -Reordering columns to    : SNPID,CHR,POS,EA,NEA,EAF,BETA,SE,Z,P,OR,N,STATUS,REF,ALT
-2024/04/17 13:33:04 Finished reordering the columns.
+<pre>2024/04/18 10:41:06 Start filling data using existing columns...v3.4.43
+2024/04/18 10:41:06  -Column  : SNPID  CHR   POS   EA       NEA      EAF     SE      Z       P       OR      N     STATUS   REF      ALT     
+2024/04/18 10:41:06  -DType   : string Int64 Int64 category category float32 float64 float64 float64 float64 Int64 category category category
+2024/04/18 10:41:06  -Verified: T      T     T     T        T        T       T       T       T       T       T     T        T        T       
+2024/04/18 10:41:06  -Overwrite mode:  False
+2024/04/18 10:41:06   -Skipping columns:  []
+2024/04/18 10:41:06  -Filling columns:  ['BETA']
+2024/04/18 10:41:06   - Filling Columns iteratively...
+2024/04/18 10:41:06   - Filling BETA value using OR column...
+2024/04/18 10:41:06 Finished filling data using existing columns.
+2024/04/18 10:41:06 Start to reorder the columns...v3.4.43
+2024/04/18 10:41:06  -Current Dataframe shape : 379 x 15 ; Memory usage: 19.97 MB
+2024/04/18 10:41:06  -Reordering columns to    : SNPID,CHR,POS,EA,NEA,EAF,BETA,SE,Z,P,OR,N,STATUS,REF,ALT
+2024/04/18 10:41:06 Finished reordering the columns.
 </pre>
 </div>
 </div>
@@ -3926,48 +3926,48 @@ import matplotlib.pyplot as plt</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>2024/04/17 13:33:04 Start to check if NEA is aligned with reference sequence...v3.4.43
-2024/04/17 13:33:04  -Current Dataframe shape : 379 x 15 ; Memory usage: 19.97 MB
-2024/04/17 13:33:04  -Reference genome FASTA file: /home/yunye/CommonData/Reference/genome/humanG1Kv37/human_g1k_v37.fasta
-2024/04/17 13:33:04  -Loading fasta records:2  
-2024/04/17 13:33:13  -Checking records
-2024/04/17 13:33:13    -Building numpy fasta records from dict
-2024/04/17 13:33:14    -Checking records for ( len(NEA) &lt;= 4 and len(EA) &lt;= 4 )
-2024/04/17 13:33:14    -Checking records for ( len(NEA) &gt; 4 or len(EA) &gt; 4 )
-2024/04/17 13:33:14  -Finished checking records
-2024/04/17 13:33:14  -Variants allele on given reference sequence :  264
-2024/04/17 13:33:14  -Variants flipped :  115
-2024/04/17 13:33:14   -Raw Matching rate :  100.00%
-2024/04/17 13:33:14  -Variants inferred reverse_complement :  0
-2024/04/17 13:33:14  -Variants inferred reverse_complement_flipped :  0
-2024/04/17 13:33:14  -Both allele on genome + unable to distinguish :  0
-2024/04/17 13:33:14  -Variants not on given reference sequence :  0
-2024/04/17 13:33:14 Finished checking if NEA is aligned with reference sequence.
-2024/04/17 13:33:14 Start to adjust statistics based on STATUS code...v3.4.43
-2024/04/17 13:33:14  -Current Dataframe shape : 379 x 15 ; Memory usage: 0.04 MB
-2024/04/17 13:33:14 Start to flip allele-specific stats for SNPs with status xxxxx[35]x: ALT-&gt;EA , REF-&gt;NEA ...v3.4.43
-2024/04/17 13:33:14  -Flipping 115 variants...
-2024/04/17 13:33:14  -Swapping column: NEA &lt;=&gt; EA...
-2024/04/17 13:33:14  -Flipping column: BETA = - BETA...
-2024/04/17 13:33:14  -Flipping column: Z = - Z...
-2024/04/17 13:33:14  -Flipping column: EAF = 1 - EAF...
-2024/04/17 13:33:14  -Flipping column: OR = 1 / OR...
-2024/04/17 13:33:14  -Changed the status for flipped variants : xxxxx[35]x -&gt; xxxxx[12]x
-2024/04/17 13:33:14 Finished adjusting statistics based on STATUS code.
-2024/04/17 13:33:14 Start to sort the genome coordinates...v3.4.43
-2024/04/17 13:33:14  -Current Dataframe shape : 379 x 15 ; Memory usage: 0.04 MB
-2024/04/17 13:33:14 Finished sorting coordinates.
-2024/04/17 13:33:14 Start to reorder the columns...v3.4.43
-2024/04/17 13:33:14  -Current Dataframe shape : 379 x 15 ; Memory usage: 0.03 MB
-2024/04/17 13:33:14  -Reordering columns to    : SNPID,CHR,POS,EA,NEA,EAF,BETA,SE,Z,P,OR,N,STATUS,REF,ALT
-2024/04/17 13:33:14 Finished reordering the columns.
+<pre>2024/04/18 10:41:07 Start to check if NEA is aligned with reference sequence...v3.4.43
+2024/04/18 10:41:07  -Current Dataframe shape : 379 x 15 ; Memory usage: 19.97 MB
+2024/04/18 10:41:07  -Reference genome FASTA file: /home/yunye/CommonData/Reference/genome/humanG1Kv37/human_g1k_v37.fasta
+2024/04/18 10:41:07  -Loading fasta records:2  
+2024/04/18 10:41:19  -Checking records
+2024/04/18 10:41:19    -Building numpy fasta records from dict
+2024/04/18 10:41:20    -Checking records for ( len(NEA) &lt;= 4 and len(EA) &lt;= 4 )
+2024/04/18 10:41:20    -Checking records for ( len(NEA) &gt; 4 or len(EA) &gt; 4 )
+2024/04/18 10:41:20  -Finished checking records
+2024/04/18 10:41:20  -Variants allele on given reference sequence :  264
+2024/04/18 10:41:20  -Variants flipped :  115
+2024/04/18 10:41:20   -Raw Matching rate :  100.00%
+2024/04/18 10:41:20  -Variants inferred reverse_complement :  0
+2024/04/18 10:41:20  -Variants inferred reverse_complement_flipped :  0
+2024/04/18 10:41:20  -Both allele on genome + unable to distinguish :  0
+2024/04/18 10:41:20  -Variants not on given reference sequence :  0
+2024/04/18 10:41:20 Finished checking if NEA is aligned with reference sequence.
+2024/04/18 10:41:20 Start to adjust statistics based on STATUS code...v3.4.43
+2024/04/18 10:41:20  -Current Dataframe shape : 379 x 15 ; Memory usage: 0.04 MB
+2024/04/18 10:41:20 Start to flip allele-specific stats for SNPs with status xxxxx[35]x: ALT-&gt;EA , REF-&gt;NEA ...v3.4.43
+2024/04/18 10:41:20  -Flipping 115 variants...
+2024/04/18 10:41:20  -Swapping column: NEA &lt;=&gt; EA...
+2024/04/18 10:41:20  -Flipping column: BETA = - BETA...
+2024/04/18 10:41:20  -Flipping column: Z = - Z...
+2024/04/18 10:41:20  -Flipping column: EAF = 1 - EAF...
+2024/04/18 10:41:20  -Flipping column: OR = 1 / OR...
+2024/04/18 10:41:20  -Changed the status for flipped variants : xxxxx[35]x -&gt; xxxxx[12]x
+2024/04/18 10:41:20 Finished adjusting statistics based on STATUS code.
+2024/04/18 10:41:20 Start to sort the genome coordinates...v3.4.43
+2024/04/18 10:41:20  -Current Dataframe shape : 379 x 15 ; Memory usage: 0.04 MB
+2024/04/18 10:41:20 Finished sorting coordinates.
+2024/04/18 10:41:20 Start to reorder the columns...v3.4.43
+2024/04/18 10:41:20  -Current Dataframe shape : 379 x 15 ; Memory usage: 0.03 MB
+2024/04/18 10:41:20  -Reordering columns to    : SNPID,CHR,POS,EA,NEA,EAF,BETA,SE,Z,P,OR,N,STATUS,REF,ALT
+2024/04/18 10:41:20 Finished reordering the columns.
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;gwaslab.g_Sumstats.Sumstats at 0x7fbecdda31c0&gt;</pre>
+<pre>&lt;gwaslab.g_Sumstats.Sumstats at 0x7fa6a33a8130&gt;</pre>
 </div>
 </div>
 </div>
@@ -5234,7 +5234,7 @@ axes[1].legend()</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>/tmp/ipykernel_9988/3928380454.py:9: UserWarning: You passed a edgecolor/edgecolors ('black') for an unfilled marker ('x').  Matplotlib is ignoring the edgecolor in favor of the facecolor.  This behavior may change in the future.
+<pre>/tmp/ipykernel_420/3928380454.py:9: UserWarning: You passed a edgecolor/edgecolors ('black') for an unfilled marker ('x').  Matplotlib is ignoring the edgecolor in favor of the facecolor.  This behavior may change in the future.
   axes[0].scatter(df.loc[(df["CHR"]==2)&amp;(df["POS"]==55620927),"POS"],df.loc[(df["CHR"]==2)&amp;(df["POS"]==55620927),col_to_plot],
 </pre>
 </div>
@@ -5242,7 +5242,7 @@ axes[1].legend()</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;matplotlib.legend.Legend at 0x7fbecdcce130&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0x7fa6a330d5e0&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
