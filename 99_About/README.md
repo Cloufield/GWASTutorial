@@ -9,6 +9,7 @@ This tutorial is provided by the [Laboratory of Complex Trait Genomics (Kamatani
 - @koido : https://github.com/koido
 - @shimaomao26 : https://github.com/shimaomao26
 - @Cloufield : https://github.com/Cloufield
+- @TakeuchiYohei : https://github.com/TakeuchiYohei
 
 ## Contact Us
 This repository is currently maintained by [Yunye He](https://github.com/Cloufield). 
