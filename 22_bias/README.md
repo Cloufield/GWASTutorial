@@ -1,7 +1,7 @@
 
 # Bias
 
-In statistics, bias of an estimator refers to the **systematic** and **nonrandom** error in the parameter estimation.
+In statistics, the bias of an estimator refers to the **systematic** and **nonrandom** error in the parameter estimation.
 
 The bias of statistic $T$ with respect to $\theta$
 $$
@@ -21,8 +21,9 @@ $$
 
 Confounding occurs when an exposure and outcome have a shared cause.
 
-Two of the common confounding factors in genome-wide association testing are population structure and cryptic relateness.
+Two of the common confounding factors in genome-wide association testing are population structure and cryptic relatedness.
 
+<img width="700" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/2e60f785-7486-420a-a52a-ab6929ca19c7">
 
 
 ## Measurement/information bias
@@ -31,13 +32,14 @@ Measurement/information bias refers to the errors occured during measuring expos
 
 ## Selection bias
 
-Selection bias occurs when the study participants were selected in a biased approach so that they are not representative of the original target study population.
+Selection bias occurs when the study participants are selected in a biased approach so that they are not representative of the original target study population.
 
 ### Collider bias
 
-In the context of evaluating the causal association of an exposure with an outcome, collider bias occurs when the exposure and outcome both affect a common third variable, and that common variable is controlled for in the study.
-(in other words, controlling a variable that are affected by both exposure and outcome could lead to collider bias)
+In the context of evaluating the causal association of exposure with an outcome, collider bias occurs when the exposure and outcome both affect a common third variable, and that common variable is controlled for in the study.
+(in other words, controlling a variable that is affected by both exposure and outcome could lead to collider bias)
 
+<img width="700" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/c763e7d1-de0f-4f3e-a56d-acd5eb12c019">
 
 
 ## Reference
