@@ -5,21 +5,43 @@
 !!! tip "Comparison between RCT and MR"
     <img width="636" alt="image" src="https://user-images.githubusercontent.com/40289485/219572347-1ebc2f0a-3c9a-49a0-a058-638e4973873e.png">
 
-## Instrumental Variables (IV)
+## Fundamental assumption: gene-environment equivalence
+
+(cited from George Davey Smith Mendelian Randomization - 25th April 2024)
+
+The fundamental assumption of mendelian randomization (MR) is of **gene-environment equivalence**. MR reflects the phenocopy/ genocopy dialectic (Goldschmidt, Schmalhausen). The idea here is that all environmental effects can be mimicked by one or several mutations. (Zuckerkandl and Villet, PNAS 1988)
+
+Gene-environment equivalence
+
+- Requires justifying in all situation
+- Relates to biological processes that are influenced by genetic variantion
+
+If we consider BMI as the outcome, let's think about if genetic variants related to the following exposures meet the gene-environment equivalence assumption:
+
+- Higher calorie intake : Yes
+- Physical activity level : Yes
+- Losing a leg (which dramtically affects BMI) : No (there is no such genetic variation anyway)
+- Smoking: ? Maybe. Complicated.
+
+
+## Methods: Instrumental Variables (IV)
 
 Instrumental variable (IV) can be defined as a variable  that is correlated with the exposure X and uncorrelated with the error $\epsilon$ in the following regression: 
 
 $$ Y = X\beta + \epsilon $$
 
 - $Y$ is the outcome
+- $X$ is the exposure
+- $C$ is the confounders
 
-## Assumptions
+## IV Assumptions
+
 !!! danger "Key Assumptions"
     |Assumptions|Description|
     |-|-|
-    |**Relevance**|Instrumental variables are strongly associated with the exposure.|
-    |**Exclusion restriction**|Instrumental variables do not affect the outcome except through the exposure.|
-    |**Independence**| There are no confounders of the instrumental variables and the outcome.|
+    |**Relevance**|Instrumental variables are strongly associated with the exposure.(IVs are not independent of X)|
+    |**Exclusion restriction**|Instrumental variables do not affect the outcome except through the exposure.(IV is independent of Y, conditional on X and C)|
+    |**Independence**| There are no confounders of the instrumental variables and the outcome.(IV is independent of C)|
     |Monotonicity| Variants affect the exposure in the same direction for all individuals|
     |No assortative mating|Assortative mating might cause bias in MR|
 
@@ -370,8 +392,15 @@ Reference: Hemani, G., Tilling, K., & Davey Smith, G. (2017). Orienting the caus
 
 [MR-Base web app](https://app.mrbase.org/)
 
-## Reference
+## STROBE-MR
+
+Before reporting any MR results, please check the STROBE-MR Checklist first, which consists of 20 things that should be addressed when reporting a mendelian randomization study.
+
+- Skrivankova, V. W., Richmond, R. C., Woolf, B. A., Yarmolinsky, J., Davies, N. M., Swanson, S. A., ... & Richards, J. B. (2021). Strengthening the reporting of observational studies in epidemiology using Mendelian randomization: the STROBE-MR statement. Jama, 326(16), 1614-1621.
+
+## References
 
 - Sanderson, E., Glymour, M. M., Holmes, M. V., Kang, H., Morrison, J., Munafò, M. R., ... & Davey Smith, G. (2022). Mendelian randomization. Nature Reviews Methods Primers, 2(1), 1-21.
 - Hemani, G., Zheng, J., Elsworth, B., Wade, K. H., Haberland, V., Baird, D., ... & Haycock, P. C. (2018). The MR-Base platform supports systematic causal inference across the human phenome. elife, 7, e34408.
--
+- Zuckerkandl, E., & Villet, R. (1988). Concentration-affinity equivalence in gene regulation: convergence of genetic and environmental effects. Proceedings of the National Academy of Sciences, 85(13), 4784-4788.
+- Skrivankova, V. W., Richmond, R. C., Woolf, B. A., Yarmolinsky, J., Davies, N. M., Swanson, S. A., ... & Richards, J. B. (2021). Strengthening the reporting of observational studies in epidemiology using Mendelian randomization: the STROBE-MR statement. Jama, 326(16), 1614-1621.
