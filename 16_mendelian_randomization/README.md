@@ -13,15 +13,15 @@ The fundamental assumption of mendelian randomization (MR) is of **gene-environm
 
 Gene-environment equivalence
 
-- Requires justifying in all situation
-- Relates to biological processes that are influenced by genetic variantion
+- Requires justifying in all situations
+- Relates to biological processes that are influenced by genetic variations
 
-If we consider BMI as the outcome, let's think about if genetic variants related to the following exposures meet the gene-environment equivalence assumption:
+If we consider BMI as the outcome, let's think about whether genetic variants related to the following exposures meet the gene-environment equivalence assumption:
 
-- Higher calorie intake : Yes
-- Physical activity level : Yes
-- Losing a leg (which dramtically affects BMI) : No (there is no such genetic variation anyway)
-- Smoking: ? Maybe. Complicated.
+- Higher calorie intake: Yes
+- Physical activity level: Yes
+- Losing a leg (which dramatically affects BMI): No
+- Smoking:? Maybe. Complicated.
 
 
 ## Methods: Instrumental Variables (IV)
@@ -33,6 +33,8 @@ $$ Y = X\beta + \epsilon $$
 - $Y$ is the outcome
 - $X$ is the exposure
 - $C$ is the confounders
+
+<img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/63c25ce6-e086-4010-86bf-212818f2ac64">
 
 ## IV Assumptions
 
