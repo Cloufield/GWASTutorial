@@ -1744,18 +1744,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#instrumental-variables-iv" class="md-nav__link">
+  <a href="#fundamental-assumption-gene-environment-equivalence" class="md-nav__link">
     <span class="md-ellipsis">
-      Instrumental Variables (IV)
+      Fundamental assumption: gene-environment equivalence
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#assumptions" class="md-nav__link">
+  <a href="#methods-instrumental-variables-iv" class="md-nav__link">
     <span class="md-ellipsis">
-      Assumptions
+      Methods: Instrumental Variables (IV)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV Assumptions
     </span>
   </a>
   
@@ -1996,18 +2005,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
+  <a href="#strobe-mr" class="md-nav__link">
     <span class="md-ellipsis">
-      Reference
+      STROBE-MR
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#hemani-g-zheng-j-elsworth-b-wade-k-h-haberland-v-baird-d-haycock-p-c-2018-the-mr-base-platform-supports-systematic-causal-inference-across-the-human-phenome-elife-7-e34408" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
-      Hemani, G., Zheng, J., Elsworth, B., Wade, K. H., Haberland, V., Baird, D., ... &amp; Haycock, P. C. (2018). The MR-Base platform supports systematic causal inference across the human phenome. elife, 7, e34408.
+      References
     </span>
   </a>
   
@@ -2419,18 +2428,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#instrumental-variables-iv" class="md-nav__link">
+  <a href="#fundamental-assumption-gene-environment-equivalence" class="md-nav__link">
     <span class="md-ellipsis">
-      Instrumental Variables (IV)
+      Fundamental assumption: gene-environment equivalence
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#assumptions" class="md-nav__link">
+  <a href="#methods-instrumental-variables-iv" class="md-nav__link">
     <span class="md-ellipsis">
-      Assumptions
+      Methods: Instrumental Variables (IV)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV Assumptions
     </span>
   </a>
   
@@ -2671,18 +2689,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
+  <a href="#strobe-mr" class="md-nav__link">
     <span class="md-ellipsis">
-      Reference
+      STROBE-MR
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#hemani-g-zheng-j-elsworth-b-wade-k-h-haberland-v-baird-d-haycock-p-c-2018-the-mr-base-platform-supports-systematic-causal-inference-across-the-human-phenome-elife-7-e34408" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
-      Hemani, G., Zheng, J., Elsworth, B., Wade, K. H., Haberland, V., Baird, D., ... &amp; Haycock, P. C. (2018). The MR-Base platform supports systematic causal inference across the human phenome. elife, 7, e34408.
+      References
     </span>
   </a>
   
@@ -2709,13 +2727,31 @@
 <p class="admonition-title">Comparison between RCT and MR</p>
 <p><img width="636" alt="image" src="https://user-images.githubusercontent.com/40289485/219572347-1ebc2f0a-3c9a-49a0-a058-638e4973873e.png"></p>
 </div>
-<h2 id="instrumental-variables-iv">Instrumental Variables (IV)</h2>
+<h2 id="fundamental-assumption-gene-environment-equivalence">Fundamental assumption: gene-environment equivalence</h2>
+<p>(cited from George Davey Smith Mendelian Randomization - 25th April 2024)</p>
+<p>The fundamental assumption of mendelian randomization (MR) is of <strong>gene-environment equivalence</strong>. MR reflects the phenocopy/ genocopy dialectic (Goldschmidt, Schmalhausen). The idea here is that all environmental effects can be mimicked by one or several mutations. (Zuckerkandl and Villet, PNAS 1988)</p>
+<p>Gene-environment equivalence</p>
+<ul>
+<li>Requires justifying in all situations</li>
+<li>Relates to biological processes that are influenced by genetic variations</li>
+</ul>
+<p>If we consider BMI as the outcome, let's think about whether genetic variants related to the following exposures meet the gene-environment equivalence assumption:</p>
+<ul>
+<li>Higher calorie intake: Yes</li>
+<li>Physical activity level: Yes</li>
+<li>Losing a leg (which dramatically affects BMI): No</li>
+<li>Smoking:? Maybe. Complicated.</li>
+</ul>
+<h2 id="methods-instrumental-variables-iv">Methods: Instrumental Variables (IV)</h2>
 <p>Instrumental variable (IV) can be defined as a variable  that is correlated with the exposure X and uncorrelated with the error <span class="arithmatex">\(\epsilon\)</span> in the following regression: </p>
 <div class="arithmatex">\[ Y = X\beta + \epsilon \]</div>
 <ul>
 <li><span class="arithmatex">\(Y\)</span> is the outcome</li>
+<li><span class="arithmatex">\(X\)</span> is the exposure</li>
+<li><span class="arithmatex">\(C\)</span> is the confounders</li>
 </ul>
-<h2 id="assumptions">Assumptions</h2>
+<p><img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/63c25ce6-e086-4010-86bf-212818f2ac64"></p>
+<h2 id="iv-assumptions">IV Assumptions</h2>
 <div class="admonition danger">
 <p class="admonition-title">Key Assumptions</p>
 <table>
@@ -2728,15 +2764,15 @@
 <tbody>
 <tr>
 <td><strong>Relevance</strong></td>
-<td>Instrumental variables are strongly associated with the exposure.</td>
+<td>Instrumental variables are strongly associated with the exposure.(IVs are not independent of X)</td>
 </tr>
 <tr>
 <td><strong>Exclusion restriction</strong></td>
-<td>Instrumental variables do not affect the outcome except through the exposure.</td>
+<td>Instrumental variables do not affect the outcome except through the exposure.(IV is independent of Y, conditional on X and C)</td>
 </tr>
 <tr>
 <td><strong>Independence</strong></td>
-<td>There are no confounders of the instrumental variables and the outcome.</td>
+<td>There are no confounders of the instrumental variables and the outcome.(IV is independent of C)</td>
 </tr>
 <tr>
 <td>Monotonicity</td>
@@ -3012,12 +3048,17 @@ rvi6Om  ETcv15  BMI T2D 0.02125453  0.005496427 TRUE    NA
 <p>Reference: Hemani, G., Tilling, K., &amp; Davey Smith, G. (2017). Orienting the causal relationship between imprecisely measured traits using GWAS summary data. PLoS genetics, 13(11), e1007081.</p>
 <h2 id="mr-base-web-app">MR-Base (web app)</h2>
 <p><a href="https://app.mrbase.org/">MR-Base web app</a></p>
-<h2 id="reference">Reference</h2>
+<h2 id="strobe-mr">STROBE-MR</h2>
+<p>Before reporting any MR results, please check the STROBE-MR Checklist first, which consists of 20 things that should be addressed when reporting a mendelian randomization study.</p>
+<ul>
+<li>Skrivankova, V. W., Richmond, R. C., Woolf, B. A., Yarmolinsky, J., Davies, N. M., Swanson, S. A., ... &amp; Richards, J. B. (2021). Strengthening the reporting of observational studies in epidemiology using Mendelian randomization: the STROBE-MR statement. Jama, 326(16), 1614-1621.</li>
+</ul>
+<h2 id="references">References</h2>
 <ul>
 <li>Sanderson, E., Glymour, M. M., Holmes, M. V., Kang, H., Morrison, J., Munafò, M. R., ... &amp; Davey Smith, G. (2022). Mendelian randomization. Nature Reviews Methods Primers, 2(1), 1-21.</li>
-<li>
-<h2 id="hemani-g-zheng-j-elsworth-b-wade-k-h-haberland-v-baird-d-haycock-p-c-2018-the-mr-base-platform-supports-systematic-causal-inference-across-the-human-phenome-elife-7-e34408">Hemani, G., Zheng, J., Elsworth, B., Wade, K. H., Haberland, V., Baird, D., ... &amp; Haycock, P. C. (2018). The MR-Base platform supports systematic causal inference across the human phenome. elife, 7, e34408.</h2>
-</li>
+<li>Hemani, G., Zheng, J., Elsworth, B., Wade, K. H., Haberland, V., Baird, D., ... &amp; Haycock, P. C. (2018). The MR-Base platform supports systematic causal inference across the human phenome. elife, 7, e34408.</li>
+<li>Zuckerkandl, E., &amp; Villet, R. (1988). Concentration-affinity equivalence in gene regulation: convergence of genetic and environmental effects. Proceedings of the National Academy of Sciences, 85(13), 4784-4788.</li>
+<li>Skrivankova, V. W., Richmond, R. C., Woolf, B. A., Yarmolinsky, J., Davies, N. M., Swanson, S. A., ... &amp; Richards, J. B. (2021). Strengthening the reporting of observational studies in epidemiology using Mendelian randomization: the STROBE-MR statement. Jama, 326(16), 1614-1621.</li>
 </ul>
 
 
