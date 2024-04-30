@@ -219,6 +219,13 @@ $$
 Ratio = {{intercept-1}\over{mean(\chi^2)-1}}
 $$
 
+## Distribution of h2 and intercept across traits in UKB
+
+The Neale Lab estimated SNP heritability using LDSC across more than 4,000 primary GWAS in UKB. You can check the distributions of SNP heritability and intercept estimates using the following link to get the idea of what you can expect from LD score regresion:
+
+https://nealelab.github.io/UKBB_ldsc/viz_h2.html
+
+
 ## Cross-trait LD score regression
 
 Cross-trait LD score regression is employed to estimate the genetic correlation between a pair of traits.
