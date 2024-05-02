@@ -72,6 +72,7 @@ One of the first things to do when you plan to perform any type of MR is to chec
  
 The most commonly used method here is the **F-statistic**, which tests the association of instrumental variables with the exposure.
 
+
 ## Practice
 
 In this tutorial, we will walk you through how to perform a minimal TwoSampleMR analysis. We will use the R package [TwoSampleMR](https://mrcieu.github.io/TwoSampleMR/index.html), which provides easy-to-use functions for formatting, clumping and harmonizing GWAS summary statistics. 
@@ -119,6 +120,22 @@ This package integrates a variety of commonly used MR methods for analysis, incl
 17                                     Sign concordance test
 18                                     Unweighted regression
 ```
+
+### Inverse variance weighted (fixed effects)
+
+Assumption: the underlying 'true' effect is fixed across variants
+
+Weight for the effect of ith variant:
+
+$$W_i = {1 \over Var(\beta_i)}$$
+
+Effect size:
+
+$$\beta = {{\sum_{i=1}^N{w_i \beta_i}}\over{\sum_{i=1}^Nw_i}}$$
+
+SE:
+
+$$SE = {\sqrt{{1}\over{\sum_{i=1}^Nw_i}}}$$
 
 ### File Preparation
 
@@ -218,6 +235,8 @@ id.exposure	id.outcome	outcome	exposure	method	nsnp	b	se	pval
 ## Sensitivity analysis
 
 ### Heterogeneity 
+
+Test if there is heterogeneity among the causal effect of x on y estimated from each variants.
 
 ```R
 mr_heterogeneity(harmonized_data)
@@ -368,6 +387,8 @@ p4[[1]]
 ## MR Steiger directionality test
 
 MR Steiger directionality test is a method to test the causal direction.
+
+Steiger test: test whether the SNP-outcome correlation is greater than the SNP-exposure correlation.
 
 ```
 harmonized_data$"r.outcome" <- get_r_from_lor(
