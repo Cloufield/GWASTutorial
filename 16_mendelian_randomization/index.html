@@ -1808,6 +1808,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#inverse-variance-weighted-fixed-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inverse variance weighted (fixed effects)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#file-preparation" class="md-nav__link">
     <span class="md-ellipsis">
       File Preparation
@@ -2492,6 +2501,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#inverse-variance-weighted-fixed-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inverse variance weighted (fixed effects)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#file-preparation" class="md-nav__link">
     <span class="md-ellipsis">
       File Preparation
@@ -2844,6 +2862,14 @@
 17                                     Sign concordance test
 18                                     Unweighted regression
 </code></pre></div></p>
+<h3 id="inverse-variance-weighted-fixed-effects">Inverse variance weighted (fixed effects)</h3>
+<p>Assumption: the underlying 'true' effect is fixed across variants</p>
+<p>Weight for the effect of ith variant:</p>
+<div class="arithmatex">\[W_i = {1 \over Var(\beta_i)}\]</div>
+<p>Effect size:</p>
+<div class="arithmatex">\[\beta = {{\sum_{i=1}^N{w_i \beta_i}}\over{\sum_{i=1}^Nw_i}}\]</div>
+<p>SE:</p>
+<div class="arithmatex">\[SE = {\sqrt{{1}\over{\sum_{i=1}^Nw_i}}}\]</div>
 <h3 id="file-preparation">File Preparation</h3>
 <p>To perform two-sample MR analysis, we need summary statistics for exposure and outcome generated from independent populations with the same ancestry.</p>
 <p>In this tutorial, we will use sumstats from <a href="https://pheweb.jp/">Biobank Japan pheweb</a> and <a href="https://koges.leelabsg.org/">KoGES pheweb</a>.</p>
@@ -2912,6 +2938,7 @@ To install the package, run:</p>
 </code></pre></div>
 <h2 id="sensitivity-analysis">Sensitivity analysis</h2>
 <h3 id="heterogeneity">Heterogeneity</h3>
+<p>Test if there is heterogeneity among the causal effect of x on y estimated from each variants.</p>
 <div class="highlight"><pre><span></span><code><span class="nf">mr_heterogeneity</span><span class="p">(</span><span class="n">harmonized_data</span><span class="p">)</span>
 
 <span class="n">id.exposure</span><span class="w"> </span><span class="n">id.outcome</span><span class="w">  </span><span class="n">outcome</span><span class="w"> </span><span class="n">exposure</span><span class="w">    </span><span class="n">method</span><span class="w">  </span><span class="n">Q</span><span class="w">   </span><span class="n">Q_df</span><span class="w">    </span><span class="n">Q_pval</span>
@@ -3028,6 +3055,7 @@ p4[[1]]
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/214480351-86288d44-52fb-416a-bdf4-2a4f4804e744.png" /></p>
 <h2 id="mr-steiger-directionality-test">MR Steiger directionality test</h2>
 <p>MR Steiger directionality test is a method to test the causal direction.</p>
+<p>Steiger test: test whether the SNP-outcome correlation is greater than the SNP-exposure correlation.</p>
 <div class="highlight"><pre><span></span><code>harmonized_data$&quot;r.outcome&quot; &lt;- get_r_from_lor(
   harmonized_data$&quot;beta.outcome&quot;,
   harmonized_data$&quot;eaf.outcome&quot;,
