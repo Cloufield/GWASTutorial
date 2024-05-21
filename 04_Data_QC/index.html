@@ -3093,13 +3093,15 @@ Under HWE, the <strong>exact probability</strong> of observing <span class="arit
 <h3 id="ld-pruning">LD Pruning</h3>
 <p>There is often strong Linkage disequilibrium(LD) among SNPs, for some analysis we don't need all SNPs and we need to remove the redundant SNPs to avoid bias in genetic estimations. For example, for relatedness estimation, we will use only LD-Pruned SNP set. </p>
 <p>We can use <code>--indep-pairwise 50 5 0.2</code> to filter out those in strong LD and keep only the independent SNPs.</p>
-<p>!!! info Meaning of <code>--indep-pairwise x y z</code></p>
-<pre><code>- consider a window of `x` SNPs
-- calculate LD between each pair of SNPs in the window and remove one of a pair of SNPs if the LD is greater than `z`
-- shift the window `y` SNPs forward and repeat the procedure.
-
-Please check https://www.cog-genomics.org/plink/1.9/ld#indep for details.
-</code></pre>
+<div class="admonition info">
+<p class="admonition-title">Meaning of <code>--indep-pairwise x y z</code></p>
+<ul>
+<li>consider a window of <code>x</code> SNPs</li>
+<li>calculate LD between each pair of SNPs in the window and remove one of a pair of SNPs if the LD is greater than <code>z</code></li>
+<li>shift the window <code>y</code> SNPs forward and repeat the procedure.</li>
+</ul>
+<p>Please check https://www.cog-genomics.org/plink/1.9/ld#indep for details.</p>
+</div>
 <p>Combined with the filters we just introduced, we can run:</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
