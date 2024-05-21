@@ -530,7 +530,15 @@ We will apply these filters in the following example if LD-pruning.
 There is often strong Linkage disequilibrium(LD) among SNPs, for some analysis we don't need all SNPs and we need to remove the redundant SNPs to avoid bias in genetic estimations. For example, for relatedness estimation, we will use only LD-Pruned SNP set. 
 
 We can use `--indep-pairwise 50 5 0.2` to filter out those in strong LD and keep only the independent SNPs.
-Please check https://www.cog-genomics.org/plink/1.9/ld#indep for the meaning of each parameter.
+
+!!! info Meaning of `--indep-pairwise x y z`
+
+    - consider a window of `x` SNPs
+    - calculate LD between each pair of SNPs in the window and remove one of a pair of SNPs if the LD is greater than `z`
+    - shift the window `y` SNPs forward and repeat the procedure.
+    
+    Please check https://www.cog-genomics.org/plink/1.9/ld#indep for details.
+
 Combined with the filters we just introduced, we can run:
 
 !!! example 
