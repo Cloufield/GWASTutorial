@@ -443,10 +443,55 @@ The following command can calculate the Hardy-Weinberg equilibrium exact test st
 
     Reference : Wigginton, J. E., Cutler, D. J., & Abecasis, G. R. (2005). A note on exact tests of Hardy-Weinberg equilibrium. The American Journal of Human Genetics, 76(5), 887-893. [Link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1199378/)
 
+!!! example "Calculate the Hardy-Weinberg equilibrium exact test statistics for a single SNP using Python"
+
+    This code is converted from [here](https://github.com/jeremymcrae/snphwe/blob/master/src/snp_hwe.cpp) (Jeremy McRae) to python. Orginal citation: Wigginton, JE, Cutler, DJ, and Abecasis, GR (2005) A Note on Exact Tests of Hardy-Weinberg Equilibrium. AJHG 76: 887-893
+    ```
+    def snphwe(obs_hets, obs_hom1, obs_hom2):
+        obs_homr = min(obs_hom1, obs_hom2)
+        obs_homc = max(obs_hom1, obs_hom2)
+        
+        rare = 2 * obs_homr + obs_hets
+        genotypes = obs_hets + obs_homc + obs_homr
+        
+        probs = [0.0 for i in range(rare +1)]
+        
+        mid = rare * (2 * genotypes - rare) // (2 * genotypes)
+        if mid % 2 != rare%2:
+            mid += 1
+            
+        probs[mid] = 1.0
+        sum_p = 1 #probs[mid]
+
+        curr_homr = (rare - mid) // 2
+        curr_homc = genotypes - mid - curr_homr
+        
+        for curr_hets in range(mid, 1, -2):
+            probs[curr_hets - 2] = probs[curr_hets] * curr_hets * (curr_hets - 1.0)/ (4.0 * (curr_homr + 1.0) * (curr_homc + 1.0))
+            sum_p+= probs[curr_hets - 2]
+            curr_homr += 1
+            curr_homc += 1
+        
+        curr_homr = (rare - mid) // 2
+        curr_homc = genotypes - mid - curr_homr
+        
+        for curr_hets in range(mid, rare-1, 2):
+            probs[curr_hets + 2] = probs[curr_hets] * 4.0 * curr_homr * curr_homc/ ((curr_hets + 2.0) * (curr_hets + 1.0))
+            sum_p += probs[curr_hets + 2]
+            curr_homr -= 1
+            curr_homc -= 1
+        
+        target = probs[obs_hets]
+        p_hwe = 0.0
+        for p in probs:
+            if p <= target :
+                p_hwe += p / sum_p  
+        
+        return min(p_hwe,1)
+    ```
 
 
-
-!!! example "Calculate the Hardy-Weinberg equilibrium exact test statistics"
+!!! example "Calculate the Hardy-Weinberg equilibrium exact test statistics using PLINK"
     ```bash
     plink \
     	--bfile ${genotypeFile} \
