@@ -531,7 +531,7 @@ There is often strong Linkage disequilibrium(LD) among SNPs, for some analysis w
 
 We can use `--indep-pairwise 50 5 0.2` to filter out those in strong LD and keep only the independent SNPs.
 
-!!! info Meaning of `--indep-pairwise x y z`
+!!! info "Meaning of `--indep-pairwise x y z`"
 
     - consider a window of `x` SNPs
     - calculate LD between each pair of SNPs in the window and remove one of a pair of SNPs if the LD is greater than `z`
