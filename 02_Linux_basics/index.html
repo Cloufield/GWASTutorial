@@ -2563,11 +2563,11 @@
 
 <h1 id="introduction">Introduction</h1>
 <p>This section is intended to provide a minimum introduction of the command line in Linux system for handling genomic data.  (If you are alreay familiar with Linux commands, it is completely ok to skip this section.)</p>
-<p>If you are a beginner with no background in programming, it would be helpful if you could learn some basic commands first before any analysis. 
-In this section, we will introduce the most basic commands which enable you to handle genomic files in the terminal using command lines in a linux system. </p>
+<p>If you are a beginner with no background in programming, it would be helpful if you could learn some basic commands first before any analysis.
+In this section, we will introduce the most basic commands which enable you to handle genomic files in the terminal using command lines in a linux system.</p>
 <div class="admonition note">
 <p class="admonition-title">For <strong>Mac</strong> users</p>
-<p>This tutorial will probably work with no problems. Just simply open your terminal and follow the tutorial.</p>
+<p>This tutorial will probably work with no problems. Just simply open your terminal and follow the tutorial. (Note: A few commands might be different on MacOS.)</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">For <strong>Windows</strong> users</p>
@@ -2804,8 +2804,9 @@ DESCRIPTION
 <h2 id="commands">Commands</h2>
 <h3 id="directories">Directories</h3>
 <p>The first set of commands are: <code>pwd</code> , <code>cd</code> , <code>ls</code>, <code>mkdir</code> and <code>rmdir</code>, which are related to directories (like the folders in a Windows system).</p>
+<hr />
 <h4 id="pwd"><code>pwd</code></h4>
-<p><code>pwd</code> : Print working directory, which means print the path of the current directory (working directory)</p>
+<p><code>pwd</code> : Print working directory, which means printing the path of the current directory (working directory)</p>
 <div class="admonition example">
 <p class="admonition-title">Use <code>pwd</code> to print the current directory you are in</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">pwd</span>
@@ -2845,8 +2846,9 @@ DESCRIPTION
 /home/he/work/GWASTutorial/02_Linux_basics/README.md
 </code></pre></div>
 </div>
+<hr />
 <h4 id="cd"><code>cd</code></h4>
-<p><code>cd</code>: Change the current working directory </p>
+<p><code>cd</code>: Change the current working directory.</p>
 <div class="admonition example">
 <p class="admonition-title">Use <code>cd</code> to change directory to <code>02_Linux_basics</code> and then print the current directory</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>02_Linux_basics
@@ -2854,8 +2856,9 @@ $<span class="w"> </span><span class="nb">pwd</span>
 /home/he/work/GWASTutorial/02_Linux_basics
 </code></pre></div>
 </div>
-<h4 id="ls"><code>ls</code> :</h4>
-<p><code>ls</code> : List the files in the directory</p>
+<hr />
+<h4 id="ls"><code>ls</code></h4>
+<p><code>ls</code> : List the contents in the working directory</p>
 <p>Some frequently used options for <code>ls</code> :</p>
 <ul>
 <li><code>-l</code>: in a list-like format</li>
@@ -2888,7 +2891,8 @@ drwxr-xr-x  17 he  staff   544B Dec 23 12:13 ..
 0 directories, 2 files
 </code></pre></div>
 </div>
-<h4 id="mkdir-rmdir"><code>mkdir</code> &amp; <code>rmdir</code> :</h4>
+<hr />
+<h4 id="mkdir-rmdir"><code>mkdir</code> &amp; <code>rmdir</code></h4>
 <ul>
 <li><code>mkdir</code> : Create a new empty directory</li>
 <li><code>rmdir</code>: Delete an empty directory</li>
@@ -2905,6 +2909,7 @@ README.md<span class="w">  </span>sumstats.txt
 </div>
 <h3 id="manipulating-files">Manipulating files</h3>
 <p>This set of commands includes: <code>touch</code>, <code>mv</code> , <code>rm</code> and <code>cp</code></p>
+<hr />
 <h4 id="touch"><code>touch</code></h4>
 <p><code>touch</code> command is used to create a new empty file.</p>
 <div class="admonition example">
@@ -2924,6 +2929,7 @@ total<span class="w"> </span><span class="m">64048</span>
 -rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>he<span class="w">  </span>staff<span class="w">  </span><span class="m">32790417</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">14</span>:07<span class="w"> </span>sumstats.txt
 </code></pre></div>
 </div>
+<hr />
 <h4 id="mv"><code>mv</code></h4>
 <p><code>mv</code> has two functions:</p>
 <ul>
@@ -2955,6 +2961,7 @@ You can also use <code>mv</code> to rename a file:
 <span class="nv">$mv</span><span class="w"> </span>sumstats.txt<span class="w"> </span>sumstats_new.txt<span class="w"> </span>
 </code></pre></div></p>
 </div>
+<hr />
 <h4 id="rm"><code>rm</code></h4>
 <p><code>rm</code> : Remove files or diretories</p>
 <div class="admonition example">
@@ -2970,6 +2977,7 @@ You can also use <code>mv</code> to rename a file:
 <p class="admonition-title">There is no trash can in Linux command-line interface</p>
 <p>If you delete a file with <code>rm</code> , it will be very difficult to restore it. Please be careful wehn using <code>rm</code>. </p>
 </div>
+<hr />
 <h4 id="cp"><code>cp</code></h4>
 <p><code>cp</code> command is used to copy files or diretories.</p>
 <div class="admonition example">
@@ -3062,6 +3070,7 @@ $<span class="w"> </span>ls<span class="w"> </span>-lh
 </div>
 <h3 id="read-and-check-files">Read and check files</h3>
 <p>We have a group of handy commands to check part of or the entire file, including <code>cat</code>, <code>zcat</code>, <code>less</code>, <code>head</code>, <code>tail</code>, <code>wc</code></p>
+<hr />
 <h4 id="cat"><code>cat</code></h4>
 <p><code>cat</code> command can print the contents of files or concatenate the files.</p>
 <div class="admonition example">
@@ -3081,6 +3090,7 @@ drwxr-x---<span class="w"> </span><span class="m">29</span><span class="w"> </sp
 <p>Be careful not to <code>cat</code> a text file with a huge number of lines. You can try to <code>cat sumstats.txt</code> and see what happends.</p>
 </div>
 <p>By the way, <code>&gt; a_text_file.txt</code> here means redirect the output to file <code>a_text_file.txt</code>.</p>
+<hr />
 <h4 id="zcat"><code>zcat</code></h4>
 <p><code>zcat</code> is similar to <code>cat</code>, but can only applied to compressed files.</p>
 <div class="admonition example">
@@ -3105,6 +3115,7 @@ drwxr-x---<span class="w"> </span><span class="m">29</span><span class="w"> </sp
 <p class="admonition-title">gzcat</p>
 <p>Use <code>gzcat</code> instead of <code>zcat</code> if your device is running MacOS. </p>
 </div>
+<hr />
 <h4 id="head"><code>head</code></h4>
 <p><code>head</code>: Print the first 10 lines.</p>
 <p><code>-n</code>: option to change the number of lines.</p>
@@ -3126,6 +3137,7 @@ $<span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><
 CHROM<span class="w">   </span>POS<span class="w"> </span>ID<span class="w">  </span>REF<span class="w"> </span>ALT<span class="w"> </span>A1<span class="w">  </span>TEST<span class="w">    </span>OBS_CT<span class="w">  </span>OR<span class="w">  </span>LOG<span class="o">(</span>OR<span class="o">)</span>_SE<span class="w">  </span>Z_STAT<span class="w">  </span>P<span class="w">   </span>ERRCODE
 </code></pre></div>
 </div>
+<hr />
 <h4 id="tail"><code>tail</code></h4>
 <p>Similar to <code>head</code>, you can use <code>tail</code> ro check the last 10 lines. <code>-n</code> works in the same way.</p>
 <div class="admonition example">
@@ -3143,6 +3155,7 @@ CHROM<span class="w">   </span>POS<span class="w"> </span>ID<span class="w">  </
 <span class="m">22</span><span class="w">  </span><span class="m">99999382</span><span class="w">    </span><span class="m">9960164</span><span class="w"> </span><span class="m">2</span><span class="w">   </span><span class="m">1</span><span class="w">   </span><span class="m">1</span><span class="w">   </span>ADD<span class="w"> </span><span class="m">10000</span><span class="w">   </span><span class="m">0</span>.970509<span class="w">    </span><span class="m">0</span>.033978<span class="w">    </span>-0.881014<span class="w">   </span><span class="m">0</span>.37831<span class="w"> </span>.
 </code></pre></div>
 </div>
+<hr />
 <h4 id="wc"><code>wc</code></h4>
 <p><code>wc</code>: short for word count, which count the lines, words, and characters in a file.</p>
 <p>For example, </p>
@@ -3154,15 +3167,23 @@ CHROM<span class="w">   </span>POS<span class="w"> </span>ID<span class="w">  </
 This means that <code>sumstats.txt</code> has 445933 lines, 5797129 words, and 32790417 characters. </p>
 </div>
 <h3 id="edit-files">Edit files</h3>
-<p><strong>Vim</strong> is a handy text editor in command line.</p>
-<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>README.md
-</code></pre></div>
+<p><strong>Vim</strong> is a handy text editor for command line.</p>
 <div class="admonition example">
 <p class="admonition-title">Vim - text editor</p>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>README.md
+</code></pre></div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/40289485/210224368-f29809e0-d72f-4a82-95ce-abfce59fa7d7.png" /></p>
 </div>
-<p>Press <code>i</code> to enter insert mode, and then you can edit the file as you want.
-When finished, just pres <code>Esc</code> to escape insert mode, and then press <code>shift + :</code> , then <code>wq</code> to quit and also save the file.</p>
+<div class="admonition example">
+<p class="admonition-title">Simple workflow using Vim</p>
+<ol>
+<li><code>vim file_to_edit.txt</code> </li>
+<li>Press <code>i</code> to enter the INSERT mode.</li>
+<li>Edit the file.</li>
+<li>When finished, just press <code>Esc</code> key to escape the INSERT mode.</li>
+<li>Then enter <code>:wq</code> to quit and also save the file.</li>
+</ol>
+</div>
 <p>Vim is a little bit hard to learn for beginners, but when you get familiar with it, it will be a mighty and convenient tool.
 For more detailed tutorials on Vim, you can check: https://github.com/iggredible/Learn-Vim</p>
 <div class="admonition info">
