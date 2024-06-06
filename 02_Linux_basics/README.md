@@ -677,7 +677,7 @@ A simple example of bash scripts:
     echo "Hello, world2"
     ```
 
-`#!` is called shebang, which tells the system which interpreter to use to excute the shell script.
+`#!` is called shebang, which tells the system which interpreter to use to execute the shell script.
 
 Then use `chmod` to give it permission to execute.
 
