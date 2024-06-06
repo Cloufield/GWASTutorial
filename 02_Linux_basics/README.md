@@ -2,11 +2,11 @@
 
 This section is intended to provide a minimum introduction of the command line in Linux system for handling genomic data.  (If you are alreay familiar with Linux commands, it is completely ok to skip this section.)
 
-If you are a beginner with no background in programming, it would be helpful if you could learn some basic commands first before any analysis. 
-In this section, we will introduce the most basic commands which enable you to handle genomic files in the terminal using command lines in a linux system. 
+If you are a beginner with no background in programming, it would be helpful if you could learn some basic commands first before any analysis.
+In this section, we will introduce the most basic commands which enable you to handle genomic files in the terminal using command lines in a linux system.
 
 !!! note "For **Mac** users"
-    This tutorial will probably work with no problems. Just simply open your terminal and follow the tutorial.
+    This tutorial will probably work with no problems. Just simply open your terminal and follow the tutorial. (Note: A few commands might be different on MacOS.)
 
 !!! note "For **Windows** users"
     You can simply insall WSL to get a linux environment. Please check [here](https://cloufield.github.io/GWASTutorial/82_windows_linux_subsystem/) for how to install WSL.
@@ -154,9 +154,11 @@ For example, we want to check the usage of `pwd`:
 
 The first set of commands are: `pwd` , `cd` , `ls`, `mkdir` and `rmdir`, which are related to directories (like the folders in a Windows system).
 
+---
+
 #### `pwd`
 
-`pwd` : Print working directory, which means print the path of the current directory (working directory)
+`pwd` : Print working directory, which means printing the path of the current directory (working directory)
 
 !!! example "Use `pwd` to print the current directory you are in"
     ```Bash
@@ -182,9 +184,11 @@ This command prints the absolute path.
     /home/he/work/GWASTutorial/02_Linux_basics/README.md
     ```
 
+---
+
 #### `cd` 
 
-`cd`: Change the current working directory 
+`cd`: Change the current working directory.
 
 !!! example "Use `cd` to change directory to `02_Linux_basics` and then print the current directory"
     ```Bash
@@ -193,9 +197,11 @@ This command prints the absolute path.
     /home/he/work/GWASTutorial/02_Linux_basics
     ```
 
-#### `ls` : 
+---
 
-`ls` : List the files in the directory
+#### `ls` 
+
+`ls` : List the contents in the working directory
 
 Some frequently used options for `ls` :
 
@@ -231,7 +237,9 @@ Some frequently used options for `ls` :
     0 directories, 2 files
     ```
 
-#### `mkdir` & `rmdir` :
+---
+
+#### `mkdir` & `rmdir` 
 
 - `mkdir` : Create a new empty directory
 - `rmdir`: Delete an empty directory
@@ -249,6 +257,8 @@ Some frequently used options for `ls` :
 ### Manipulating files
 
 This set of commands includes: `touch`, `mv` , `rm` and `cp`
+
+---
 
 #### `touch`
 `touch` command is used to create a new empty file.
@@ -270,6 +280,8 @@ This set of commands includes: `touch`, `mv` , `rm` and `cp`
     -rw-r--r--  1 he  staff         0 Dec 23 14:14 newfile.txt
     -rw-r--r--  1 he  staff  32790417 Dec 23 14:07 sumstats.txt
     ```
+
+---
 
 #### `mv`
 `mv` has two functions:
@@ -305,6 +317,8 @@ Now, let's move it back to the current directory and rename it to `sumstats_new.
     $mv sumstats.txt sumstats_new.txt 
     ```
 
+---
+
 #### `rm`
 
 `rm` : Remove files or diretories
@@ -320,6 +334,8 @@ Now, let's move it back to the current directory and rename it to `sumstats_new.
 
 !!! warning "There is no trash can in Linux command-line interface"
     If you delete a file with `rm` , it will be very difficult to restore it. Please be careful wehn using `rm`. 
+
+---
 
 #### `cp` 
 
@@ -396,6 +412,8 @@ Commoly used commands for archiving and compression:
 ### Read and check files
 We have a group of handy commands to check part of or the entire file, including `cat`, `zcat`, `less`, `head`, `tail`, `wc`
 
+---
+
 #### `cat`
 
 `cat` command can print the contents of files or concatenate the files.
@@ -416,6 +434,8 @@ We have a group of handy commands to check part of or the entire file, including
     Be careful not to `cat` a text file with a huge number of lines. You can try to `cat sumstats.txt` and see what happends.
 
 By the way, `> a_text_file.txt` here means redirect the output to file ` a_text_file.txt`.
+
+---
 
 #### `zcat` 
 
@@ -442,6 +462,7 @@ By the way, `> a_text_file.txt` here means redirect the output to file ` a_text_
 !!! info "gzcat"
     Use `gzcat` instead of `zcat` if your device is running MacOS. 
 
+---
 
 #### `head`
 
@@ -467,6 +488,8 @@ By the way, `> a_text_file.txt` here means redirect the output to file ` a_text_
     CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	OR	LOG(OR)_SE	Z_STAT	P	ERRCODE
     ```
 
+---
+
 #### `tail`
 
 Similar to `head`, you can use `tail` ro check the last 10 lines. `-n` works in the same way.
@@ -486,6 +509,8 @@ Similar to `head`, you can use `tail` ro check the last 10 lines. `-n` works in 
     22	99999382	9960164	2	1	1	ADD	10000	0.970509	0.033978	-0.881014	0.37831	.
     ```
 
+---
+
 #### `wc`
 
 `wc`: short for word count, which count the lines, words, and characters in a file.
@@ -501,16 +526,23 @@ For example,
 
 ### Edit files
 
-**Vim** is a handy text editor in command line.
+**Vim** is a handy text editor for command line.
 
-```Bash
-vim README.md
-```
 !!! example "Vim - text editor"
+
+    ```bash
+    vim README.md
+    ```
+
     ![image](https://user-images.githubusercontent.com/40289485/210224368-f29809e0-d72f-4a82-95ce-abfce59fa7d7.png)
 
-Press `i` to enter insert mode, and then you can edit the file as you want.
-When finished, just pres `Esc` to escape insert mode, and then press `shift + :` , then `wq` to quit and also save the file.
+
+!!! example "Simple workflow using Vim"
+    1. `vim file_to_edit.txt` 
+    2. Press `i` to enter the INSERT mode.
+    3. Edit the file.
+    4. When finished, just press `Esc` key to escape the INSERT mode.
+    5. Then enter `:wq` to quit and also save the file.
 
 Vim is a little bit hard to learn for beginners, but when you get familiar with it, it will be a mighty and convenient tool.
 For more detailed tutorials on Vim, you can check: https://github.com/iggredible/Learn-Vim
