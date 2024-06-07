@@ -2331,6 +2331,10 @@ Price, A., Patterson, N., Plenge, R. et al. Principal components analysis correc
 <li><a href="#pca-umap">PCA-UMAP</a></li>
 <li><a href="#references">References</a></li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">PCA workflow</p>
+<p><img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/6a5880c7-10bd-4fac-a364-12ab14171f72"></p>
+</div>
 <h2 id="preparation">Preparation</h2>
 <h3 id="exclude-snps-in-high-ld-or-hla-regions">Exclude SNPs in high-LD or HLA regions</h3>
 <p>For PCA, we first exclude SNPs in high-LD or HLA regions from the genotype data. </p>
@@ -2375,7 +2379,7 @@ Price, A., Patterson, N., Plenge, R. et al. Principal components analysis correc
 </code></pre></div>
 </div>
 <h3 id="create-a-list-of-snps-in-high-ld-or-hla-regions">Create a list of SNPs in high-LD or HLA regions</h3>
-<p>Next, use <code>high-ld.txt</code> to extract all SNPs which are located in the regions described in the file using the code as follows:</p>
+<p>Next, use <code>high-ld.txt</code> to extract all SNPs that are located in the regions described in the file using the code as follows:</p>
 <div class="highlight"><pre><span></span><code>plink --file ${plinkFile} --make-set high-ld.txt --write-set --out hild
 </code></pre></div>
 <div class="admonition example">
