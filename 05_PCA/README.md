@@ -36,6 +36,9 @@ So before association analysis, we will learn how to run PCA analysis first.
 - [PCA-UMAP](#pca-umap)
 - [References](#references)
 
+!!! info "PCA workflow"
+    <img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/6a5880c7-10bd-4fac-a364-12ab14171f72">
+
 
 ## Preparation
 
@@ -84,7 +87,7 @@ You can simply copy the list of high-LD or HLA regions in Genome build version(.
 
 ### Create a list of SNPs in high-LD or HLA regions
 
-Next, use `high-ld.txt` to extract all SNPs which are located in the regions described in the file using the code as follows:
+Next, use `high-ld.txt` to extract all SNPs that are located in the regions described in the file using the code as follows:
     
 
 ```
