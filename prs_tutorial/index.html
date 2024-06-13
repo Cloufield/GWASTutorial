@@ -2521,20 +2521,16 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">"/home/yunye/work/github_projects/PRSlink/src"</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">prslink</span> <span class="k">as</span> <span class="nn">pl</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">prslink</span> <span class="k">as</span> <span class="nn">pl</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-1">import sys
-sys.path.insert(0,"/home/yunye/work/github_projects/PRSlink/src")
-import prslink as pl</div>
+<div class="clipboard-copy-txt" id="cell-1">import prslink as pl</div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=14674699">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=14674699">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2555,6 +2551,20 @@ import prslink as pl</div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">a</span><span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">PRS</span><span class="p">()</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-2">a= pl.PRS()</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Thu Jun 13 12:28:18 2024 PRSLink v0.0.1 
+Thu Jun 13 12:28:18 2024 (C) 2023-2024, Yunye He, Kamatani Lab, MIT License, gwaslab@gmail.com
+</pre>
 </div>
 </div>
 </div>
@@ -2605,84 +2615,84 @@ a.add_score("./1kgeas.pT0.001.sscore","#IID",["SCORE1_AVG"],["pT0.01"],sep="\s+"
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Wed Jun 12 18:04:01 2024 Start loading datasets...
-Wed Jun 12 18:04:01 2024 - Dataset shape before loading : (0, 1)
-Wed Jun 12 18:04:01 2024 - Loading score data from file: ./1kgeas.pT0.1.sscore
-Wed Jun 12 18:04:01 2024   - Setting ID:#IID
-Wed Jun 12 18:04:01 2024   - Loading score:SCORE1_AVG
-Wed Jun 12 18:04:01 2024   - Loaded columns: pT0.1
-Wed Jun 12 18:04:01 2024   - Overlapping IDs:0
-Wed Jun 12 18:04:01 2024   - Merging to main dataset...
-Wed Jun 12 18:04:01 2024   - Added new IDs : 500
-Wed Jun 12 18:04:01 2024 - Loading finished successfully!
-Wed Jun 12 18:04:01 2024 - Dataset shape after loading : (500, 2)
-Wed Jun 12 18:04:01 2024 Finished loading datasets...
-Wed Jun 12 18:04:01 2024 Start loading datasets...
-Wed Jun 12 18:04:01 2024 - Dataset shape before loading : (500, 2)
-Wed Jun 12 18:04:01 2024 - Loading score data from file: ./1kgeas.pT0.05.sscore
-Wed Jun 12 18:04:01 2024   - Setting ID:#IID
-Wed Jun 12 18:04:01 2024   - Loading score:SCORE1_AVG
-Wed Jun 12 18:04:01 2024   - Loaded columns: pT0.05
-Wed Jun 12 18:04:01 2024   - Overlapping IDs:500
-Wed Jun 12 18:04:01 2024   - Merging to main dataset...
-Wed Jun 12 18:04:01 2024 - Loading finished successfully!
-Wed Jun 12 18:04:01 2024 - Dataset shape after loading : (500, 3)
-Wed Jun 12 18:04:01 2024 Finished loading datasets...
-Wed Jun 12 18:04:01 2024 Start loading datasets...
-Wed Jun 12 18:04:01 2024 - Dataset shape before loading : (500, 3)
-Wed Jun 12 18:04:01 2024 - Loading score data from file: ./1kgeas.pT0.2.sscore
-Wed Jun 12 18:04:01 2024   - Setting ID:#IID
-Wed Jun 12 18:04:01 2024   - Loading score:SCORE1_AVG
-Wed Jun 12 18:04:01 2024   - Loaded columns: pT0.2
-Wed Jun 12 18:04:01 2024   - Overlapping IDs:500
-Wed Jun 12 18:04:01 2024   - Merging to main dataset...
-Wed Jun 12 18:04:01 2024 - Loading finished successfully!
-Wed Jun 12 18:04:01 2024 - Dataset shape after loading : (500, 4)
-Wed Jun 12 18:04:01 2024 Finished loading datasets...
-Wed Jun 12 18:04:01 2024 Start loading datasets...
-Wed Jun 12 18:04:01 2024 - Dataset shape before loading : (500, 4)
-Wed Jun 12 18:04:01 2024 - Loading score data from file: ./1kgeas.pT0.3.sscore
-Wed Jun 12 18:04:01 2024   - Setting ID:#IID
-Wed Jun 12 18:04:01 2024   - Loading score:SCORE1_AVG
-Wed Jun 12 18:04:01 2024   - Loaded columns: pT0.3
-Wed Jun 12 18:04:01 2024   - Overlapping IDs:500
-Wed Jun 12 18:04:01 2024   - Merging to main dataset...
-Wed Jun 12 18:04:01 2024 - Loading finished successfully!
-Wed Jun 12 18:04:01 2024 - Dataset shape after loading : (500, 5)
-Wed Jun 12 18:04:01 2024 Finished loading datasets...
-Wed Jun 12 18:04:01 2024 Start loading datasets...
-Wed Jun 12 18:04:01 2024 - Dataset shape before loading : (500, 5)
-Wed Jun 12 18:04:01 2024 - Loading score data from file: ./1kgeas.pT0.4.sscore
-Wed Jun 12 18:04:01 2024   - Setting ID:#IID
-Wed Jun 12 18:04:01 2024   - Loading score:SCORE1_AVG
-Wed Jun 12 18:04:01 2024   - Loaded columns: pT0.4
-Wed Jun 12 18:04:01 2024   - Overlapping IDs:500
-Wed Jun 12 18:04:01 2024   - Merging to main dataset...
-Wed Jun 12 18:04:01 2024 - Loading finished successfully!
-Wed Jun 12 18:04:01 2024 - Dataset shape after loading : (500, 6)
-Wed Jun 12 18:04:01 2024 Finished loading datasets...
-Wed Jun 12 18:04:01 2024 Start loading datasets...
-Wed Jun 12 18:04:01 2024 - Dataset shape before loading : (500, 6)
-Wed Jun 12 18:04:01 2024 - Loading score data from file: ./1kgeas.pT0.5.sscore
-Wed Jun 12 18:04:01 2024   - Setting ID:#IID
-Wed Jun 12 18:04:01 2024   - Loading score:SCORE1_AVG
-Wed Jun 12 18:04:01 2024   - Loaded columns: pT0.5
-Wed Jun 12 18:04:01 2024   - Overlapping IDs:500
-Wed Jun 12 18:04:01 2024   - Merging to main dataset...
-Wed Jun 12 18:04:01 2024 - Loading finished successfully!
-Wed Jun 12 18:04:01 2024 - Dataset shape after loading : (500, 7)
-Wed Jun 12 18:04:01 2024 Finished loading datasets...
-Wed Jun 12 18:04:01 2024 Start loading datasets...
-Wed Jun 12 18:04:01 2024 - Dataset shape before loading : (500, 7)
-Wed Jun 12 18:04:01 2024 - Loading score data from file: ./1kgeas.pT0.001.sscore
-Wed Jun 12 18:04:01 2024   - Setting ID:#IID
-Wed Jun 12 18:04:01 2024   - Loading score:SCORE1_AVG
-Wed Jun 12 18:04:01 2024   - Loaded columns: pT0.01
-Wed Jun 12 18:04:01 2024   - Overlapping IDs:500
-Wed Jun 12 18:04:01 2024   - Merging to main dataset...
-Wed Jun 12 18:04:01 2024 - Loading finished successfully!
-Wed Jun 12 18:04:01 2024 - Dataset shape after loading : (500, 8)
-Wed Jun 12 18:04:01 2024 Finished loading datasets...
+<pre>Thu Jun 13 12:28:18 2024 Start loading datasets...
+Thu Jun 13 12:28:18 2024 - Dataset shape before loading : (0, 1)
+Thu Jun 13 12:28:18 2024 - Loading score data from file: ./1kgeas.pT0.1.sscore
+Thu Jun 13 12:28:18 2024   - Setting ID:#IID
+Thu Jun 13 12:28:18 2024   - Loading score:SCORE1_AVG
+Thu Jun 13 12:28:18 2024   - Loaded columns: pT0.1
+Thu Jun 13 12:28:18 2024   - Overlapping IDs:0
+Thu Jun 13 12:28:18 2024   - Merging to main dataset...
+Thu Jun 13 12:28:18 2024   - Added new IDs : 500
+Thu Jun 13 12:28:18 2024 - Loading finished successfully!
+Thu Jun 13 12:28:18 2024 - Dataset shape after loading : (500, 2)
+Thu Jun 13 12:28:18 2024 Finished loading datasets...
+Thu Jun 13 12:28:18 2024 Start loading datasets...
+Thu Jun 13 12:28:18 2024 - Dataset shape before loading : (500, 2)
+Thu Jun 13 12:28:18 2024 - Loading score data from file: ./1kgeas.pT0.05.sscore
+Thu Jun 13 12:28:18 2024   - Setting ID:#IID
+Thu Jun 13 12:28:18 2024   - Loading score:SCORE1_AVG
+Thu Jun 13 12:28:18 2024   - Loaded columns: pT0.05
+Thu Jun 13 12:28:18 2024   - Overlapping IDs:500
+Thu Jun 13 12:28:18 2024   - Merging to main dataset...
+Thu Jun 13 12:28:18 2024 - Loading finished successfully!
+Thu Jun 13 12:28:18 2024 - Dataset shape after loading : (500, 3)
+Thu Jun 13 12:28:18 2024 Finished loading datasets...
+Thu Jun 13 12:28:18 2024 Start loading datasets...
+Thu Jun 13 12:28:18 2024 - Dataset shape before loading : (500, 3)
+Thu Jun 13 12:28:18 2024 - Loading score data from file: ./1kgeas.pT0.2.sscore
+Thu Jun 13 12:28:18 2024   - Setting ID:#IID
+Thu Jun 13 12:28:18 2024   - Loading score:SCORE1_AVG
+Thu Jun 13 12:28:18 2024   - Loaded columns: pT0.2
+Thu Jun 13 12:28:18 2024   - Overlapping IDs:500
+Thu Jun 13 12:28:18 2024   - Merging to main dataset...
+Thu Jun 13 12:28:18 2024 - Loading finished successfully!
+Thu Jun 13 12:28:18 2024 - Dataset shape after loading : (500, 4)
+Thu Jun 13 12:28:18 2024 Finished loading datasets...
+Thu Jun 13 12:28:18 2024 Start loading datasets...
+Thu Jun 13 12:28:18 2024 - Dataset shape before loading : (500, 4)
+Thu Jun 13 12:28:18 2024 - Loading score data from file: ./1kgeas.pT0.3.sscore
+Thu Jun 13 12:28:18 2024   - Setting ID:#IID
+Thu Jun 13 12:28:18 2024   - Loading score:SCORE1_AVG
+Thu Jun 13 12:28:18 2024   - Loaded columns: pT0.3
+Thu Jun 13 12:28:18 2024   - Overlapping IDs:500
+Thu Jun 13 12:28:18 2024   - Merging to main dataset...
+Thu Jun 13 12:28:18 2024 - Loading finished successfully!
+Thu Jun 13 12:28:18 2024 - Dataset shape after loading : (500, 5)
+Thu Jun 13 12:28:18 2024 Finished loading datasets...
+Thu Jun 13 12:28:18 2024 Start loading datasets...
+Thu Jun 13 12:28:18 2024 - Dataset shape before loading : (500, 5)
+Thu Jun 13 12:28:18 2024 - Loading score data from file: ./1kgeas.pT0.4.sscore
+Thu Jun 13 12:28:18 2024   - Setting ID:#IID
+Thu Jun 13 12:28:18 2024   - Loading score:SCORE1_AVG
+Thu Jun 13 12:28:18 2024   - Loaded columns: pT0.4
+Thu Jun 13 12:28:18 2024   - Overlapping IDs:500
+Thu Jun 13 12:28:18 2024   - Merging to main dataset...
+Thu Jun 13 12:28:18 2024 - Loading finished successfully!
+Thu Jun 13 12:28:18 2024 - Dataset shape after loading : (500, 6)
+Thu Jun 13 12:28:18 2024 Finished loading datasets...
+Thu Jun 13 12:28:18 2024 Start loading datasets...
+Thu Jun 13 12:28:18 2024 - Dataset shape before loading : (500, 6)
+Thu Jun 13 12:28:18 2024 - Loading score data from file: ./1kgeas.pT0.5.sscore
+Thu Jun 13 12:28:18 2024   - Setting ID:#IID
+Thu Jun 13 12:28:18 2024   - Loading score:SCORE1_AVG
+Thu Jun 13 12:28:18 2024   - Loaded columns: pT0.5
+Thu Jun 13 12:28:18 2024   - Overlapping IDs:500
+Thu Jun 13 12:28:18 2024   - Merging to main dataset...
+Thu Jun 13 12:28:18 2024 - Loading finished successfully!
+Thu Jun 13 12:28:18 2024 - Dataset shape after loading : (500, 7)
+Thu Jun 13 12:28:18 2024 Finished loading datasets...
+Thu Jun 13 12:28:18 2024 Start loading datasets...
+Thu Jun 13 12:28:18 2024 - Dataset shape before loading : (500, 7)
+Thu Jun 13 12:28:18 2024 - Loading score data from file: ./1kgeas.pT0.001.sscore
+Thu Jun 13 12:28:18 2024   - Setting ID:#IID
+Thu Jun 13 12:28:18 2024   - Loading score:SCORE1_AVG
+Thu Jun 13 12:28:18 2024   - Loaded columns: pT0.01
+Thu Jun 13 12:28:18 2024   - Overlapping IDs:500
+Thu Jun 13 12:28:18 2024   - Merging to main dataset...
+Thu Jun 13 12:28:18 2024 - Loading finished successfully!
+Thu Jun 13 12:28:18 2024 - Dataset shape after loading : (500, 8)
+Thu Jun 13 12:28:18 2024 Finished loading datasets...
 </pre>
 </div>
 </div>
@@ -2722,18 +2732,18 @@ Wed Jun 12 18:04:01 2024 Finished loading datasets...
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Wed Jun 12 18:04:01 2024 Start loading datasets...
-Wed Jun 12 18:04:01 2024 - Dataset shape before loading : (500, 8)
-Wed Jun 12 18:04:01 2024 - Loading pheno data from file: ../01_Dataset/t2d/1kgeas_t2d.txt
-Wed Jun 12 18:04:01 2024   - Setting ID:IID
-Wed Jun 12 18:04:01 2024   - Loading pheno:T2D
-Wed Jun 12 18:04:01 2024   - Loaded columns: T2D
-Wed Jun 12 18:04:01 2024   - Overlapping IDs:500
-Wed Jun 12 18:04:01 2024   - Merging to main dataset...
-Wed Jun 12 18:04:01 2024   - Added new IDs : 4
-Wed Jun 12 18:04:01 2024 - Loading finished successfully!
-Wed Jun 12 18:04:01 2024 - Dataset shape after loading : (504, 9)
-Wed Jun 12 18:04:01 2024 Finished loading datasets...
+<pre>Thu Jun 13 12:28:19 2024 Start loading datasets...
+Thu Jun 13 12:28:19 2024 - Dataset shape before loading : (500, 8)
+Thu Jun 13 12:28:19 2024 - Loading pheno data from file: ../01_Dataset/t2d/1kgeas_t2d.txt
+Thu Jun 13 12:28:19 2024   - Setting ID:IID
+Thu Jun 13 12:28:19 2024   - Loading pheno:T2D
+Thu Jun 13 12:28:19 2024   - Loaded columns: T2D
+Thu Jun 13 12:28:19 2024   - Overlapping IDs:500
+Thu Jun 13 12:28:19 2024   - Merging to main dataset...
+Thu Jun 13 12:28:19 2024   - Added new IDs : 4
+Thu Jun 13 12:28:19 2024 - Loading finished successfully!
+Thu Jun 13 12:28:19 2024 - Dataset shape after loading : (504, 9)
+Thu Jun 13 12:28:19 2024 Finished loading datasets...
 </pre>
 </div>
 </div>
@@ -2773,17 +2783,17 @@ Wed Jun 12 18:04:01 2024 Finished loading datasets...
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Wed Jun 12 18:04:01 2024 Start loading datasets...
-Wed Jun 12 18:04:01 2024 - Dataset shape before loading : (504, 9)
-Wed Jun 12 18:04:01 2024 - Loading covar data from file: ./1kgeas.eigenvec
-Wed Jun 12 18:04:01 2024   - Setting ID:IID
-Wed Jun 12 18:04:01 2024   - Loading covar:PC1 PC2 PC3 PC4 PC5
-Wed Jun 12 18:04:01 2024   - Loaded columns: PC1 PC2 PC3 PC4 PC5
-Wed Jun 12 18:04:01 2024   - Overlapping IDs:500
-Wed Jun 12 18:04:01 2024   - Merging to main dataset...
-Wed Jun 12 18:04:01 2024 - Loading finished successfully!
-Wed Jun 12 18:04:01 2024 - Dataset shape after loading : (504, 14)
-Wed Jun 12 18:04:01 2024 Finished loading datasets...
+<pre>Thu Jun 13 12:28:19 2024 Start loading datasets...
+Thu Jun 13 12:28:19 2024 - Dataset shape before loading : (504, 9)
+Thu Jun 13 12:28:19 2024 - Loading covar data from file: ./1kgeas.eigenvec
+Thu Jun 13 12:28:19 2024   - Setting ID:IID
+Thu Jun 13 12:28:19 2024   - Loading covar:PC1 PC2 PC3 PC4 PC5
+Thu Jun 13 12:28:19 2024   - Loaded columns: PC1 PC2 PC3 PC4 PC5
+Thu Jun 13 12:28:19 2024   - Overlapping IDs:500
+Thu Jun 13 12:28:19 2024   - Merging to main dataset...
+Thu Jun 13 12:28:19 2024 - Loading finished successfully!
+Thu Jun 13 12:28:19 2024 - Dataset shape after loading : (504, 14)
+Thu Jun 13 12:28:19 2024 Finished loading datasets...
 </pre>
 </div>
 </div>
@@ -3180,54 +3190,58 @@ a.set_k({"T2D":0.2})</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Optimization terminated successfully.
+<pre>Thu Jun 13 12:28:24 2024 Strat to evaluate PRS performance...
+Optimization terminated successfully.
          Current function value: 0.665421
          Iterations 5
-Wed Jun 12 18:04:02 2024  - Fitting Null Logistic: T2D~PC1+PC2+PC3+PC4+PC5
-Wed Jun 12 18:04:02 2024  - Fitting Full Logistic : T2D~pT0.1+PC1+PC2+PC3+PC4+PC5
+Thu Jun 13 12:28:24 2024  - Fitting Null Logistic: T2D~PC1+PC2+PC3+PC4+PC5
+Thu Jun 13 12:28:24 2024  - Fitting Full Logistic : T2D~pT0.1+PC1+PC2+PC3+PC4+PC5
 Optimization terminated successfully.
          Current function value: 0.659809
          Iterations 5
-Wed Jun 12 18:04:02 2024  - Population prevalence for T2D : 0.2
-Wed Jun 12 18:04:02 2024  - Fitting Full Logistic : T2D~pT0.05+PC1+PC2+PC3+PC4+PC5
+Thu Jun 13 12:28:24 2024  - Population prevalence for T2D : 0.2
+Thu Jun 13 12:28:24 2024  - Fitting Full Logistic : T2D~pT0.05+PC1+PC2+PC3+PC4+PC5
 Optimization terminated successfully.
          Current function value: 0.657462
          Iterations 5
-Wed Jun 12 18:04:02 2024  - Population prevalence for T2D : 0.2
-Wed Jun 12 18:04:02 2024  - Fitting Full Logistic : T2D~pT0.2+PC1+PC2+PC3+PC4+PC5
+Thu Jun 13 12:28:24 2024  - Population prevalence for T2D : 0.2
+Thu Jun 13 12:28:24 2024  - Fitting Full Logistic : T2D~pT0.2+PC1+PC2+PC3+PC4+PC5
 Optimization terminated successfully.
          Current function value: 0.658569
          Iterations 5
-Wed Jun 12 18:04:02 2024  - Population prevalence for T2D : 0.2
-Wed Jun 12 18:04:02 2024  - Fitting Full Logistic : T2D~pT0.3+PC1+PC2+PC3+PC4+PC5
+Thu Jun 13 12:28:24 2024  - Population prevalence for T2D : 0.2
+Thu Jun 13 12:28:24 2024  - Fitting Full Logistic : T2D~pT0.3+PC1+PC2+PC3+PC4+PC5
 Optimization terminated successfully.
          Current function value: 0.657275
          Iterations 5
-Wed Jun 12 18:04:02 2024  - Population prevalence for T2D : 0.2
-Wed Jun 12 18:04:02 2024  - Fitting Full Logistic : T2D~pT0.4+PC1+PC2+PC3+PC4+PC5
+Thu Jun 13 12:28:25 2024  - Population prevalence for T2D : 0.2
+Thu Jun 13 12:28:25 2024  - Fitting Full Logistic : T2D~pT0.4+PC1+PC2+PC3+PC4+PC5
 Optimization terminated successfully.
          Current function value: 0.656994
          Iterations 5
-Wed Jun 12 18:04:02 2024  - Population prevalence for T2D : 0.2
-Wed Jun 12 18:04:02 2024  - Fitting Full Logistic : T2D~pT0.5+PC1+PC2+PC3+PC4+PC5
+Thu Jun 13 12:28:25 2024  - Population prevalence for T2D : 0.2
+Thu Jun 13 12:28:25 2024  - Fitting Full Logistic : T2D~pT0.5+PC1+PC2+PC3+PC4+PC5
 Optimization terminated successfully.
          Current function value: 0.657091
          Iterations 5
-Wed Jun 12 18:04:02 2024  - Population prevalence for T2D : 0.2
-Wed Jun 12 18:04:02 2024  - Fitting Full Logistic : T2D~pT0.01+PC1+PC2+PC3+PC4+PC5
+Thu Jun 13 12:28:25 2024  - Population prevalence for T2D : 0.2
+Thu Jun 13 12:28:25 2024  - Fitting Full Logistic : T2D~pT0.01+PC1+PC2+PC3+PC4+PC5
 Optimization terminated successfully.
          Current function value: 0.660222
          Iterations 5
-Wed Jun 12 18:04:02 2024  - Population prevalence for T2D : 0.2
+Thu Jun 13 12:28:25 2024  - Population prevalence for T2D : 0.2
+Thu Jun 13 12:28:25 2024  - Fitted models have been stored into .bmodels and .qmodels
+Thu Jun 13 12:28:25 2024  - Results have been stored into .bresults and .qresults
+Thu Jun 13 12:28:25 2024 Finished evaluating PRS performance...
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>/home/yunye/work/github_projects/PRSlink/src/prslink/model_evaluate.py:422: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+<pre>/home/yunye/anaconda3/envs/gwaslab_py39/lib/python3.9/site-packages/prslink/model_evaluate.py:424: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
   bresults = pd.concat([bresults, row],ignore_index=True)
-/home/yunye/work/github_projects/PRSlink/src/prslink/g_PRS_object.py:151: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+/home/yunye/anaconda3/envs/gwaslab_py39/lib/python3.9/site-packages/prslink/g_PRS_object.py:157: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
   return pd.concat([bresults,qresults],ignore_index=True)
 </pre>
 </div>
@@ -3487,10 +3501,10 @@ Wed Jun 12 18:04:02 2024  - Population prevalence for T2D : 0.2
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Wed Jun 12 18:04:02 2024  -Color map: tab10
-Wed Jun 12 18:04:02 2024  -Color number: 7 (head: 0; tail: 0)
-Wed Jun 12 18:04:02 2024  -Color map norm: range(0, 7)
-Wed Jun 12 18:04:02 2024  -Color to use: ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2']
+<pre>Thu Jun 13 12:28:25 2024  -Color map: tab10
+Thu Jun 13 12:28:25 2024  -Color number: 7 (head: 0; tail: 0)
+Thu Jun 13 12:28:25 2024  -Color map norm: range(0, 7)
+Thu Jun 13 12:28:25 2024  -Color to use: ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2']
 Optimization terminated successfully.
          Current function value: 0.665421
          Iterations 5
@@ -3539,12 +3553,12 @@ Optimization terminated successfully.
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Wed Jun 12 18:04:02 2024  -Plot args: {}
-Wed Jun 12 18:04:02 2024  -Figure args: {'figsize': (10, 5)}
-Wed Jun 12 18:04:02 2024  -Color map: coolwarm
-Wed Jun 12 18:04:02 2024  -Color number: 2 (head: 0; tail: 0)
-Wed Jun 12 18:04:02 2024  -Color map norm: [0.0, 1.0]
-Wed Jun 12 18:04:02 2024  -Color to use: ['#3b4cc0', '#b40426']
+<pre>Thu Jun 13 12:28:26 2024  -Plot args: {}
+Thu Jun 13 12:28:26 2024  -Figure args: {'figsize': (10, 5)}
+Thu Jun 13 12:28:26 2024  -Color map: coolwarm
+Thu Jun 13 12:28:26 2024  -Color number: 2 (head: 0; tail: 0)
+Thu Jun 13 12:28:26 2024  -Color map norm: [0.0, 1.0]
+Thu Jun 13 12:28:26 2024  -Color to use: ['#3b4cc0', '#b40426']
 </pre>
 </div>
 </div>
@@ -3626,12 +3640,12 @@ Wed Jun 12 18:04:02 2024  -Color to use: ['#3b4cc0', '#b40426']
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Wed Jun 12 18:04:03 2024  -Plot args: {}
-Wed Jun 12 18:04:03 2024  -Figure args: {'figsize': (10, 5)}
-Wed Jun 12 18:04:03 2024  -Color map: coolwarm
-Wed Jun 12 18:04:03 2024  -Color number: 2 (head: 0; tail: 0)
-Wed Jun 12 18:04:03 2024  -Color map norm: [0.0, 1.0]
-Wed Jun 12 18:04:03 2024  -Color to use: ['#3b4cc0', '#b40426']
+<pre>Thu Jun 13 12:28:27 2024  -Plot args: {}
+Thu Jun 13 12:28:27 2024  -Figure args: {'figsize': (10, 5)}
+Thu Jun 13 12:28:27 2024  -Color map: coolwarm
+Thu Jun 13 12:28:27 2024  -Color number: 2 (head: 0; tail: 0)
+Thu Jun 13 12:28:27 2024  -Color map norm: [0.0, 1.0]
+Thu Jun 13 12:28:27 2024  -Color to use: ['#3b4cc0', '#b40426']
 </pre>
 </div>
 </div>
