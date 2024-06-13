@@ -1,18 +1,4 @@
 #!/bin/bash
-
-plinkFile=../04_Data_QC/sample_data.clean
-sumStats=../06_Association_tests/1kgeas.B1.glm.firth
-#
-plink \
-    --bfile ${plinkFile} \
-    --clump-p1 0.0001 \
-    --clump-r2 0.1 \
-    --clump-kb 250 \
-    --clump ${sumStats} \
-    --clump-snp-field ID \
-    --clump-field P \
-    --out 1kg_eas
-
 plinkFile=../04_Data_QC/sample_data.clean
 sumStats=./t2d_plink_reduced.txt
 
