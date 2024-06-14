@@ -2519,8 +2519,13 @@ plink2 \
 </div>
 <p>After step 3, the <code>allele-wts 10</code> modifier requests an additional one-line-per-allele <code>.eigenvec.allele</code> file with the first <code>10 PCs</code> expressed as allele weights instead of sample weights.</p>
 <p>We will get the <code>plink_results.eigenvec.allele</code> file, which will be used to project onto all samples along with an allele count <code>plink_results.acount</code> file.</p>
-<p>In the projection, <code>score ${outPrefix}.eigenvec.allele 2 5</code> sets the <code>ID</code> (2nd column) and <code>A1</code> (5th column), <code>score-col-nums 6-15</code> sets the first 10 PCs to be projected.</p>
-<p>Please check https://www.cog-genomics.org/plink/2.0/score#pca_project for more details on the projection.</p>
+<p>In the projection, <code>score ${outPrefix}.eigenvec.allele 2 5</code> sets the <code>ID</code> (2nd column) and <code>A1</code> (5th column), <code>score-col-nums 6-15</code> sets the first 10 PCs to be projected. Please check https://www.cog-genomics.org/plink/2.0/score#pca_project for more details on the projection.</p>
+<div class="admonition warning">
+<p class="admonition-title">Please check the content of your <code>.eigenvec.allele</code> file</p>
+<p>Using recent plink2 versions, there are some minor changes in the output format. 
+<code>A1</code> is the 6th column, and the <code>score-col-nums</code> should be <code>7-16</code>
+Please adjust the column number in your script accordingly. </p>
+</div>
 <div class="admonition example">
 <p class="admonition-title">Allele weight and count files</p>
 <div class="highlight"><span class="filename">plink_results.eigenvec.allele</span><pre><span></span><code>#CHROM  ID      REF     ALT     PROVISIONAL_REF?        A1      PC1     PC2     PC3     PC4     PC5     PC6     PC7PC8      PC9     PC10
