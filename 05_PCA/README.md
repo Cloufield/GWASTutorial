@@ -1,13 +1,11 @@
 # Principle component analysis (PCA)
 
-PCA aims to find the **orthogonal directions of maximum variance** and project the data onto a new subspace with equal or fewer dimensions than the original one. Simply speaking, **GRM (genetic relationship matrix; covariance matrix)** is first estimated and then PCA is applied to this matrix to generate **eigenvectors** and **eigenvalues**. Finally, the $k$ eigenvectors with the largest eigenvalues are used to transform the genotypes to a new feature subspace.
+PCA aims to find the **orthogonal directions of maximum variance** and project the data onto a new subspace with equal or fewer dimensions than the original one. 
 
-!!! info "Genetic relationship matrix (GRM)"
-    <img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/767d940c-0ade-47b9-b53e-8e55cc3e0591">
-    
-    Citation: Yang, J., Lee, S. H., Goddard, M. E., & Visscher, P. M. (2011). GCTA: a tool for genome-wide complex trait analysis. The American Journal of Human Genetics, 88(1), 76-82.
-    
-!!! example "A simple PCA"
+!!! info "Steps of PCA"
+    <img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/ee6bccfd-cf65-4126-88b1-047fc835b69b">
+
+!!! example "A simple illustration of PCA"
     
     Source data:
     ```
@@ -22,7 +20,22 @@ PCA aims to find the **orthogonal directions of maximum variance** and project t
 !!! info "Interpretation of PCs" 
     **The first principal component** of a set of p variables, presumed to be jointly normally distributed, is the derived variable formed as a linear combination of the original variables that **explains the most variance**. The second principal component explains the most variance in what is left once the effect of the first component is removed, and we may proceed through p iterations until all the variance is explained.
 
-PCA is by far the most commonly used dimension reduction approach used in population genetics which could identify the difference in ancestry among the sample individuals. The population outliers could be excluded from the main cluster. For GWAS we also need to include top PCs to adjust for the population stratification.
+
+## Genotype PCA
+
+Genotype PCs are often included in the association tests to correct for population stratification. 
+Here, usually, the data we use is the genotype matrix from the SNP array, and the covariance matrix used in PCA calculation is called **genetic relationship matrix (GRM)**.
+GRM is first estimated using independent common SNPs and then PCA calculation is applied to this matrix to generate **eigenvectors** and **eigenvalues**. 
+Finally, the top $k$ eigenvectors with the largest eigenvalues are used to project the original genotypes into a new feature subspace, which has much fewer dimensions than the original one (dimension reduction).
+
+!!! info "Genetic relationship matrix (GRM)"
+    <img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/767d940c-0ade-47b9-b53e-8e55cc3e0591">
+    
+    Citation: Yang, J., Lee, S. H., Goddard, M. E., & Visscher, P. M. (2011). GCTA: a tool for genome-wide complex trait analysis. The American Journal of Human Genetics, 88(1), 76-82.
+    
+PCA is by far the most commonly used dimension reduction approach used in population genetics which could identify the difference in ancestry among the sample individuals. 
+The population outliers should be excluded from the samples used in GWAS to avoid bias caused by population stratification. 
+For GWAS, we also need to include top PCs to adjust for the population stratification.
 
 Please read the following paper on how we apply PCA to genetic data:
 Price, A., Patterson, N., Plenge, R. et al. Principal components analysis corrects for stratification in genome-wide association studies. Nat Genet 38, 904–909 (2006). https://doi.org/10.1038/ng1847 https://www.nature.com/articles/ng1847
@@ -36,7 +49,7 @@ So before association analysis, we will learn how to run PCA analysis first.
 - [PCA-UMAP](#pca-umap)
 - [References](#references)
 
-!!! info "PCA workflow"
+!!! info "Genotype PCA workflow"
     <img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/6a5880c7-10bd-4fac-a364-12ab14171f72">
 
 
@@ -51,7 +64,7 @@ For PCA, we first exclude SNPs in high-LD or HLA regions from the genotype data.
 
 ### Download BED-like files for high-LD or HLA regions
 
-You can simply copy the list of high-LD or HLA regions in Genome build version(.bed format) to a text file `high-ld.txt`. 
+You can simply copy the list of high-LD or HLA regions in genome build version(.bed format) to a text file `high-ld.txt`. 
 
 !!! quote "High LD regions were obtained from" 
     [https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD)](https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD))
