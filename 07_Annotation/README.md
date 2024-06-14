@@ -3,6 +3,9 @@
 - [ANNOVAR](#annovar)
 - [VEP](#vep)
 
+!!! info "Annotation"
+    <img width="700" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/980697e6-e2ae-40f6-821f-dca190e568d5">
+
 ## ANNOVAR
 
 [ANNOVAR](https://annovar.openbioinformatics.org/en/latest/) is a simple and efficient command line tool for variant annotation. 
