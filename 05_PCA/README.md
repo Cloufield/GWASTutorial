@@ -204,9 +204,12 @@ After step 3, the `allele-wts 10` modifier requests an additional one-line-per-a
 
 We will get the `plink_results.eigenvec.allele` file, which will be used to project onto all samples along with an allele count `plink_results.acount` file.
 
-In the projection, `score ${outPrefix}.eigenvec.allele 2 5` sets the `ID` (2nd column) and `A1` (5th column), `score-col-nums 6-15` sets the first 10 PCs to be projected.
+In the projection, `score ${outPrefix}.eigenvec.allele 2 5` sets the `ID` (2nd column) and `A1` (5th column), `score-col-nums 6-15` sets the first 10 PCs to be projected. Please check https://www.cog-genomics.org/plink/2.0/score#pca_project for more details on the projection.
 
-Please check https://www.cog-genomics.org/plink/2.0/score#pca_project for more details on the projection.
+!!! warning "Please check the content of your `.eigenvec.allele` file" 
+    Using recent plink2 versions, there are some minor changes in the output format. 
+    `A1` is the 6th column, and the `score-col-nums` should be `7-16`
+    Please adjust the column number in your script accordingly. 
 
 !!! example "Allele weight and count files"
     ```txt title="plink_results.eigenvec.allele"
