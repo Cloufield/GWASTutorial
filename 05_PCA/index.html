@@ -1134,6 +1134,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#genotype-pca" class="md-nav__link">
+    <span class="md-ellipsis">
+      Genotype PCA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#preparation" class="md-nav__link">
     <span class="md-ellipsis">
       Preparation
@@ -2207,6 +2216,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#genotype-pca" class="md-nav__link">
+    <span class="md-ellipsis">
+      Genotype PCA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#preparation" class="md-nav__link">
     <span class="md-ellipsis">
       Preparation
@@ -2300,14 +2318,13 @@
 
 
 <h1 id="principle-component-analysis-pca">Principle component analysis (PCA)</h1>
-<p>PCA aims to find the <strong>orthogonal directions of maximum variance</strong> and project the data onto a new subspace with equal or fewer dimensions than the original one. Simply speaking, <strong>GRM (genetic relationship matrix; covariance matrix)</strong> is first estimated and then PCA is applied to this matrix to generate <strong>eigenvectors</strong> and <strong>eigenvalues</strong>. Finally, the <span class="arithmatex">\(k\)</span> eigenvectors with the largest eigenvalues are used to transform the genotypes to a new feature subspace.</p>
+<p>PCA aims to find the <strong>orthogonal directions of maximum variance</strong> and project the data onto a new subspace with equal or fewer dimensions than the original one. </p>
 <div class="admonition info">
-<p class="admonition-title">Genetic relationship matrix (GRM)</p>
-<p><img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/767d940c-0ade-47b9-b53e-8e55cc3e0591"></p>
-<p>Citation: Yang, J., Lee, S. H., Goddard, M. E., &amp; Visscher, P. M. (2011). GCTA: a tool for genome-wide complex trait analysis. The American Journal of Human Genetics, 88(1), 76-82.</p>
+<p class="admonition-title">Steps of PCA</p>
+<p><img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/ee6bccfd-cf65-4126-88b1-047fc835b69b"></p>
 </div>
 <div class="admonition example">
-<p class="admonition-title">A simple PCA</p>
+<p class="admonition-title">A simple illustration of PCA</p>
 <p>Source data:
 <div class="highlight"><pre><span></span><code>cov = np.array([[6, -3], [-3, 3.5]])
 pts = np.random.multivariate_normal([0, 0], cov, size=800)
@@ -2319,7 +2336,19 @@ pts = np.random.multivariate_normal([0, 0], cov, size=800)
 <p class="admonition-title">Interpretation of PCs</p>
 <p><strong>The first principal component</strong> of a set of p variables, presumed to be jointly normally distributed, is the derived variable formed as a linear combination of the original variables that <strong>explains the most variance</strong>. The second principal component explains the most variance in what is left once the effect of the first component is removed, and we may proceed through p iterations until all the variance is explained.</p>
 </div>
-<p>PCA is by far the most commonly used dimension reduction approach used in population genetics which could identify the difference in ancestry among the sample individuals. The population outliers could be excluded from the main cluster. For GWAS we also need to include top PCs to adjust for the population stratification.</p>
+<h2 id="genotype-pca">Genotype PCA</h2>
+<p>Genotype PCs are often included in the association tests to correct for population stratification. 
+Here, usually, the data we use is the genotype matrix from the SNP array, and the covariance matrix used in PCA calculation is called <strong>genetic relationship matrix (GRM)</strong>.
+GRM is first estimated using independent common SNPs and then PCA calculation is applied to this matrix to generate <strong>eigenvectors</strong> and <strong>eigenvalues</strong>. 
+Finally, the top <span class="arithmatex">\(k\)</span> eigenvectors with the largest eigenvalues are used to project the original genotypes into a new feature subspace, which has much fewer dimensions than the original one (dimension reduction).</p>
+<div class="admonition info">
+<p class="admonition-title">Genetic relationship matrix (GRM)</p>
+<p><img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/767d940c-0ade-47b9-b53e-8e55cc3e0591"></p>
+<p>Citation: Yang, J., Lee, S. H., Goddard, M. E., &amp; Visscher, P. M. (2011). GCTA: a tool for genome-wide complex trait analysis. The American Journal of Human Genetics, 88(1), 76-82.</p>
+</div>
+<p>PCA is by far the most commonly used dimension reduction approach used in population genetics which could identify the difference in ancestry among the sample individuals. 
+The population outliers should be excluded from the samples used in GWAS to avoid bias caused by population stratification. 
+For GWAS, we also need to include top PCs to adjust for the population stratification.</p>
 <p>Please read the following paper on how we apply PCA to genetic data:
 Price, A., Patterson, N., Plenge, R. et al. Principal components analysis corrects for stratification in genome-wide association studies. Nat Genet 38, 904–909 (2006). https://doi.org/10.1038/ng1847 https://www.nature.com/articles/ng1847</p>
 <p>So before association analysis, we will learn how to run PCA analysis first.</p>
@@ -2332,7 +2361,7 @@ Price, A., Patterson, N., Plenge, R. et al. Principal components analysis correc
 <li><a href="#references">References</a></li>
 </ul>
 <div class="admonition info">
-<p class="admonition-title">PCA workflow</p>
+<p class="admonition-title">Genotype PCA workflow</p>
 <p><img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/6a5880c7-10bd-4fac-a364-12ab14171f72"></p>
 </div>
 <h2 id="preparation">Preparation</h2>
@@ -2345,7 +2374,7 @@ Price, A., Patterson, N., Plenge, R. et al. Principal components analysis correc
 </ul>
 </div>
 <h3 id="download-bed-like-files-for-high-ld-or-hla-regions">Download BED-like files for high-LD or HLA regions</h3>
-<p>You can simply copy the list of high-LD or HLA regions in Genome build version(.bed format) to a text file <code>high-ld.txt</code>. </p>
+<p>You can simply copy the list of high-LD or HLA regions in genome build version(.bed format) to a text file <code>high-ld.txt</code>. </p>
 <div class="admonition quote">
 <p class="admonition-title">High LD regions were obtained from</p>
 <p><a href="https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD)">https://genome.sph.umich.edu/wiki/Regions_of_high_linkage_disequilibrium_(LD)</a></p>
