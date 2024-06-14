@@ -13,7 +13,11 @@
 
 ### MAGMA Introduction
 
-MAGMA is one the most commonly used tools for gene-based and gene-set analysis. 
+MAGMA is one of the most commonly used tools for gene-based and gene-set analysis. 
+
+!!! info "Overview of MAGMA"
+    <img width="700" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/3b0c887b-ead4-4146-ad01-c3693b9cff2f">
+
 
 **Gene-level analysis** in MAGMA uses two models:
 
@@ -31,7 +35,7 @@ $$
 - $W$ : covariate matrix
 - $\beta_g$ : effects of covariates 
 
-$X_g$ is obtained by first projecting the variant matrix of a gene onto its PC, and removing PCs with samll eigenvalues.
+$X_g$ is obtained by first projecting the variant matrix of a gene onto its PC, and removing PCs with small eigenvalues.
 
 !!! note
     The linear principal components regression model requires raw genotype data.
@@ -55,10 +59,10 @@ Z = \beta_{0,S} + S_S \beta_S + \epsilon
 $$
 
 - $S_S$ : indicator (if the gene is in a specified gene set)
-- $\beta_S$ : difference in effects between genes in the specified set and genes ouside the set.
+- $\beta_S$ : difference in effects between genes in the specified set and genes outside the set.
 
 ### Install MAGMA
-Dowload MAGMA for your operating system from the following url:
+Download MAGMA for your operating system from the following URL:
 
 MAGMA: https://ctg.cncr.nl/software/magma
 
@@ -80,7 +84,7 @@ MAGMA version: v1.10 (linux)
 
 ### Download reference files
 
-We nedd the following reference files:
+We need the following reference files:
 
 - gene location files
 - LD reference panel
@@ -90,7 +94,7 @@ The gene location files and LD reference panel can be downloaded from magma webs
 
 -> https://ctg.cncr.nl/software/magma
 
-The third one can be downloaded form MsigDB. 
+The third one can be downloaded from MsigDB. 
 
 -> https://www.gsea-msigdb.org/gsea/msigdb/
 
@@ -112,7 +116,7 @@ magma --annotate \
 ```
 
 !!! tip
-    Usually to capture the variants in the regulatory regions, we will add windows upstream and downstream of the genes with `--annotate window`. 
+    Usually, to capture the variants in the regulatory regions, we will add windows upstream and downstream of the genes with `--annotate window`. 
     
     For example, `--annotate window=35,10` set a 35 kilobase pair(kb) upstream and 10kb downstream window.
 
