@@ -33,11 +33,11 @@ The allele frequencies are:
 |Allele|Frequency|
 |-|-|
 |A|$p_A=p_{AB}+p_{Ab}$|
-|a|$p_A=p_{aB}+p_{ab}$|
-|B|$p_A=p_{AB}+p_{aB}$|
-|b|$p_A=p_{Ab}+p_{ab}$|
+|a|$p_a=p_{aB}+p_{ab}$|
+|B|$p_B=p_{AB}+p_{aB}$|
+|b|$p_b=p_{Ab}+p_{ab}$|
 
-D : the level of LD between A and B can be estimated using **coefficient of linkage disequilibrium (D)**, which is defined as:
+D: the level of LD between A and B can be estimated using **coefficient of linkage disequilibrium (D)**, which is defined as:
 
 $$D_{AB} = p_{AB} - p_Ap_B$$
 
