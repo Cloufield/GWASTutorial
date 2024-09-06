@@ -3008,7 +3008,7 @@ head<span class="w"> </span>plink_results.afreq
 <p class="admonition-title">Info</p>
 <p>Suppose we have N unrelated samples (2N alleles).
 Under HWE, the <strong>exact probability</strong> of observing <span class="arithmatex">\(n_{AB}\)</span> sample with genotype AB in N samples is:</p>
-<div class="arithmatex">\[P(N_{AB} = n_{AB} | N, n_A) = {{2^{n_{AB}}}N!\over{n_{AA}!n_{AB}!n_{BB}!}} \times {{n_A!n_B!}\over{n_A!n_B!}} \]</div>
+<div class="arithmatex">\[P(N_{AB} = n_{AB} | N, n_A) = {{2^{n_{AB}}}N!\over{n_{AA}!n_{AB}!n_{BB}!}} \times {{n_A!n_B!}\over{(2N)!}} \]</div>
 <p>To compute the Hardy-Weinberg equilibrium exact test statistics, we will sum up the probabilities of all configurations with probability equal to or less than the observed configuration :</p>
 <div class="arithmatex">\[P_{HWE} = \sum_{n^{*}_AB} I[P(N_{AB} = n_{AB} | N, n_A) \geqq P(N_{AB} = n^{*}_{AB} | N, n_A)] \times P(N_{AB} = n^{*}_{AB} | N, n_A)\]</div>
 <p><span class="arithmatex">\(I(x)\)</span> is the indicator function. If x is true, <span class="arithmatex">\(I(x) = 1\)</span>; otherwise, <span class="arithmatex">\(I(x) = 0\)</span>.</p>
