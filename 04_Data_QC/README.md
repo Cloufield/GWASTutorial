@@ -433,7 +433,7 @@ The following command can calculate the Hardy-Weinberg equilibrium exact test st
     Suppose we have N unrelated samples (2N alleles).
     Under HWE, the **exact probability** of observing $n_{AB}$ sample with genotype AB in N samples is:
 
-    $$P(N_{AB} = n_{AB} | N, n_A) = {{2^{n_{AB}}}N!\over{n_{AA}!n_{AB}!n_{BB}!}} \times {{n_A!n_B!}\over{n_A!n_B!}} $$
+    $$P(N_{AB} = n_{AB} | N, n_A) = {{2^{n_{AB}}}N!\over{n_{AA}!n_{AB}!n_{BB}!}} \times {{n_A!n_B!}\over{(2N)!}} $$
     
     To compute the Hardy-Weinberg equilibrium exact test statistics, we will sum up the probabilities of all configurations with probability equal to or less than the observed configuration :
 
