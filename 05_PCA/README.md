@@ -192,8 +192,8 @@ For downstream analysis, we can exclude these SNPs using `--exclude hild.set`.
             --bfile ${plinkFile} \
     	    --threads ${threadnum} \
             --read-freq ${outPrefix}.acount \
-    	    --score ${outPrefix}.eigenvec.allele 2 5 header-read no-mean-imputation variance-standardize \
-            --score-col-nums 6-15 \
+    	    --score ${outPrefix}.eigenvec.allele 2 6 header-read no-mean-imputation variance-standardize \
+            --score-col-nums 7-16 \
             --out ${outPrefix}_projected
     ```
 
