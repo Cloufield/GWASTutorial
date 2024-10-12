@@ -8,7 +8,7 @@ Analysis started at 15:16:23 JST on Mon Jan 23 2023.
 Hostname: HEs-MacBook-Air.local
 
 Accepted options:
---bfile ../1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020
+--bfile ../1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing
 --simu-cc 200 304
 --simu-causal-loci t2d_casual.txt
 --simu-hsq 0.2
@@ -17,12 +17,12 @@ Accepted options:
 --out 1kgeas_t2d
 
 
-Reading PLINK FAM file from [../1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam].
-504 individuals to be included from [../1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam].
-Reading PLINK BIM file from [../1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim].
-1122299 SNPs to be included from [../1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim].
-Reading PLINK BED file from [../1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed] in SNP-major format ...
-Genotype data for 504 individuals and 1122299 SNPs to be included from [../1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed].
+Reading PLINK FAM file from [../1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.fam].
+504 individuals to be included from [../1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.fam].
+Reading PLINK BIM file from [../1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bim].
+1122299 SNPs to be included from [../1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bim].
+Reading PLINK BED file from [../1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bed] in SNP-major format ...
+Genotype data for 504 individuals and 1122299 SNPs to be included from [../1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bed].
 Simulation parameters:
 Number of simulation replicate(s) = 1 (Default = 1)
 Heritability of liability = 0.2 (Default = 0.1)

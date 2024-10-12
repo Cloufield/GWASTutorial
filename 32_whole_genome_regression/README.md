@@ -25,7 +25,7 @@ Please check [here](https://rgcgithub.github.io/regenie/install/)
 
 !!! example "Sample codes for running step 1"
     ```
-    plinkFile=../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020
+    plinkFile=../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing
     phenoFile=../01_Dataset/1kgeas_binary_regenie.txt
     covarFile=../05_PCA/plink_results_projected.sscore
     covarList="PC1_AVG,PC2_AVG,PC3_AVG,PC4_AVG,PC5_AVG,PC6_AVG,PC7_AVG,PC8_AVG,PC9_AVG,PC10_AVG"
@@ -54,7 +54,7 @@ Please check [here](https://rgcgithub.github.io/regenie/install/)
 
 !!! example "Sample codes for running step 2"
     ```
-    plinkFile=../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020
+    plinkFile=../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing
     phenoFile=../01_Dataset/1kgeas_binary_regenie.txt
     covarFile=../05_PCA/plink_results_projected.sscore
     covarList="PC1_AVG,PC2_AVG,PC3_AVG,PC4_AVG,PC5_AVG,PC6_AVG,PC7_AVG,PC8_AVG,PC9_AVG,PC10_AVG"
