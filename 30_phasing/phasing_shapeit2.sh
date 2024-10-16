@@ -13,10 +13,11 @@ plink2 \
 
 geneticmap=~/tools/shapeit2/shapeit.v2.904.3.10.0-693.11.6.el7.x86_64/reference/ALL.integrated_phase1_SHAPEIT_16-06-14.nomono/genetic_map_chr22_combined_b37.txt
 
-outputhaps=./1KG.EAS.chr22.phased.haps
-outputsample=./1KG.EAS.chr22.phased.sample
-outputlog=./1KG.EAS.chr22.phased.log
-outputlogcheck=./1KG.EAS.chr22.check
+out=./1KG.JPT.chr22.phased.shapeit2.reference_based
+outputhaps=${out}.haps
+outputsample=${out}.sample
+outputlog=${out}
+outputlogcheck=${out}.check
 
 
 inputrefhap=~/tools/shapeit2/shapeit.v2.904.3.10.0-693.11.6.el7.x86_64/reference/ALL.integrated_phase1_SHAPEIT_16-06-14.nomono/ALL.chr22.integrated_phase1_v3.20101123.snps_indels_svs.genotypes.nomono.haplotypes.gz
@@ -45,7 +46,7 @@ shapeit --input-bed ${inputbedchr22} \
 	--states 200 \
 	--window 2
 
-outputvcf=./1KG.EAS.chr22.phased.vcf
+outputvcf=${out}.vcf
 shapeit \
     -convert \
 	--input-haps ${outputhaps} ${outputsample} \
