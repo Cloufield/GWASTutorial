@@ -134,7 +134,7 @@ awk '{print $1,$2,$5,$6,$7,$8,$9}' ../05_PCA/plink_results_projected.sscore > 5P
 
 gcta \
   --grm ${GRM} \
-  --pheno ${phenotypeFIile} \
+  --pheno ${phenotypeFile} \
   --prevalence ${prevalence} \
   --qcovar  5PCs.txt \
   --reml \
