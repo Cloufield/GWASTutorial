@@ -58,7 +58,7 @@ Download the version of GCTA for your system from : https://yanglab.westlake.edu
 
 ## Make GRM
 
-We use the QCed genotypes from previous sections. Additionally, we include LD-pruned SNP with MAF>0.01.
+We use the QCed genotypes from previous sections. Additionally, we include only LD-pruned SNPs with MAF>0.01.
 
 ```bash
 #!/bin/bash
@@ -141,7 +141,7 @@ prevalence=0.5
 # use 5PCs as covariates 
 awk '{print $1,$2,$5,$6,$7,$8,$9}' ../05_PCA/plink_results_projected.sscore > 5PCs.txt
 
-gcta \
+gcta64 \
   --grm ${GRM} \
   --pheno ${phenotypeFile} \
   --prevalence ${prevalence} \
