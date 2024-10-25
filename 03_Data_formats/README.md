@@ -180,7 +180,7 @@ Original standard text format for sample pedigree information and genotype calls
 !!! example "`.ped`"
     ```
     # check the first 16 rows and 16 columns of the ped file
-    cut -d " " -f 1-16 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.ped | head
+    cut -d " " -f 1-16 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.ped | head
     0 HG00403 0 0 0 -9 G G T T A A G A C C
     0 HG00404 0 0 0 -9 G G T T A A G A T C
     0 HG00406 0 0 0 -9 G G T T A A G A T C
@@ -210,7 +210,7 @@ Variant information file accompanying a .ped text pedigree + genotype table. A t
 
 !!! example "`.map`"
     ```
-    head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.map
+    head 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.map
     1       1:13273:G:C     0       13273
     1       1:14599:T:A     0       14599
     1       1:14604:A:G     0       14604
@@ -230,16 +230,16 @@ bed/fam/bim formats are the binary implementation of ped/map formats.
 bed/bim/fam files contain the same information as ped/map but are much smaller in size.
 
 ```
--rw-r----- 1 yunye yunye 135M Dec 23 11:45 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed
--rw-r----- 1 yunye yunye  36M Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
--rw-r----- 1 yunye yunye 9.4K Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
--rw-r--r-- 1 yunye yunye  32M Dec 27 17:51 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.map
--rw-r--r-- 1 yunye yunye 2.2G Dec 27 17:51 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.ped
+-rw-r----- 1 yunye yunye 135M Dec 23 11:45 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bed
+-rw-r----- 1 yunye yunye  36M Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bim
+-rw-r----- 1 yunye yunye 9.4K Dec 23 11:46 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.fam
+-rw-r--r-- 1 yunye yunye  32M Dec 27 17:51 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.map
+-rw-r--r-- 1 yunye yunye 2.2G Dec 27 17:51 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.ped
 ```
 
 !!! example "`.fam`"
     ```
-    head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.fam
+    head 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.fam
     0 HG00403 0 0 0 -9
     0 HG00404 0 0 0 -9
     0 HG00406 0 0 0 -9
@@ -254,7 +254,7 @@ bed/bim/fam files contain the same information as ped/map but are much smaller i
 
 !!! example "`.bim`"
     ```
-    head 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bim
+    head 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bim
     1       1:13273:G:C     0       13273   C       G
     1       1:14599:T:A     0       14599   A       T
     1       1:14604:A:G     0       14604   G       A
@@ -272,7 +272,7 @@ bed/bim/fam files contain the same information as ped/map but are much smaller i
     The first three bytes should be 0x6c, 0x1b, and 0x01 in that order.
     The rest of the file is a sequence of V blocks of N/4 (rounded up) bytes each, where V is the number of variants and N is the number of samples. The first block corresponds to the first marker in the .bim file, etc."
     ```
-    hexdump -C 1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020.bed | head
+    hexdump -C 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bed | head
     00000000  6c 1b 01 ff ff bf bf ff  ff ff ef fb ff ff ff fe  |l...............|
     00000010  ff ff ff ff fb ff bb ff  ff fb af ff ff fe fb ff  |................|
     00000020  ff ff ff fe ff ff ff ff  ff bf ff ff ef ff ff ef  |................|

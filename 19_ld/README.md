@@ -33,11 +33,11 @@ The allele frequencies are:
 |Allele|Frequency|
 |-|-|
 |A|$p_A=p_{AB}+p_{Ab}$|
-|a|$p_A=p_{aB}+p_{ab}$|
-|B|$p_A=p_{AB}+p_{aB}$|
-|b|$p_A=p_{Ab}+p_{ab}$|
+|a|$p_a=p_{aB}+p_{ab}$|
+|B|$p_B=p_{AB}+p_{aB}$|
+|b|$p_b=p_{Ab}+p_{ab}$|
 
-D : the level of LD between A and B can be estimated using **coefficient of linkage disequilibrium (D)**, which is defined as:
+D: the level of LD between A and B can be estimated using **coefficient of linkage disequilibrium (D)**, which is defined as:
 
 $$D_{AB} = p_{AB} - p_Ap_B$$
 
@@ -56,7 +56,7 @@ So we can simply denote $D = D_{AB}$, and the relationship between haplotype fre
 |Allele|A|a|Total|
 |-|-|-|-|
 |B|$p_{AB}=p_Ap_B+D$|$p_{aB}=p_ap_B-D$|$p_B$|
-|b|$p_{AB}=p_Ap_b-D$|$p_{AB}=p_ap_b+D$|$p_b$|
+|b|$p_{Ab}=p_Ap_b-D$|$p_{ab}=p_ap_b+D$|$p_b$|
 |Total|$p_A$|$p_a$|1|
 
 !!! warning "The range of possible values of D depends on the allele frequencies, which is not suitable for comparison between different pairs of alleles."

@@ -61,7 +61,7 @@ Download the version of GCTA for your system from : https://yanglab.westlake.edu
 
 ```bash
 #!/bin/bash
-plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.maf005.thinp020"
+plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing"
 gcta \
   --bfile ${plinkFile} \
   --autosome \
@@ -134,7 +134,7 @@ awk '{print $1,$2,$5,$6,$7,$8,$9}' ../05_PCA/plink_results_projected.sscore > 5P
 
 gcta \
   --grm ${GRM} \
-  --pheno ${phenotypeFIile} \
+  --pheno ${phenotypeFile} \
   --prevalence ${prevalence} \
   --qcovar  5PCs.txt \
   --reml \

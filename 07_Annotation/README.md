@@ -32,7 +32,7 @@ We will only use the first 100000 variants as an example.
 
 !!! example "annovar_input"
     ```bash
-    awk 'NR>1 && NR<100000 {print $1,$2,$2,$4,$5}' ../06_Association_tests/1kgeas.B1.glm.logistic.    hybrid > annovar_input.txt
+    awk 'NR>1 && NR<100000 {print $1,$2,$2,$4,$5}' ../06_Association_tests/1kgeas.B1.glm.firth > annovar_input.txt
     ```
     
     ```
