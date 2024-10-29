@@ -2335,7 +2335,7 @@
 <p>We will only use the first 100000 variants as an example.</p>
 <div class="admonition example">
 <p class="admonition-title">annovar_input</p>
-<div class="highlight"><pre><span></span><code>awk<span class="w"> </span><span class="s1">&#39;NR&gt;1 &amp;&amp; NR&lt;100000 {print $1,$2,$2,$4,$5}&#39;</span><span class="w"> </span>../06_Association_tests/1kgeas.B1.glm.logistic.<span class="w">    </span>hybrid<span class="w"> </span>&gt;<span class="w"> </span>annovar_input.txt
+<div class="highlight"><pre><span></span><code>awk<span class="w"> </span><span class="s1">&#39;NR&gt;1 &amp;&amp; NR&lt;100000 {print $1,$2,$2,$4,$5}&#39;</span><span class="w"> </span>../06_Association_tests/1kgeas.B1.glm.firth<span class="w"> </span>&gt;<span class="w"> </span>annovar_input.txt
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>head annovar_input.txt 
 1 13273 13273 G C
