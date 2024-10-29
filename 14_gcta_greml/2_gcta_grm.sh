@@ -3,7 +3,7 @@
 plinkFile="../04_Data_QC/sample_data.clean"
 prunedSNP="../04_Data_QC/plink_results.prune.in"
 
-gcta64 \
+gcta \
   --bfile ${plinkFile} \
   --extract ${prunedSNP} \
   --autosome \

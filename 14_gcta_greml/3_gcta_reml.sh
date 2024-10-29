@@ -12,7 +12,7 @@ prevalence=0.5
 # use 5PCs as covariates 
 awk '{print $1,$2,$5,$6,$7,$8,$9}' ../05_PCA/plink_results_projected.sscore > 5PCs.txt
 
-gcta64 \
+gcta \
   --grm ${GRM} \
   --pheno ${phenotypeFile} \
   --prevalence ${prevalence} \

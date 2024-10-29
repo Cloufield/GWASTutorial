@@ -54,7 +54,7 @@ Download the version of GCTA for your system from : https://yanglab.westlake.edu
     ```
 
 !!! tip 
-    Add GCTA to your environment
+    Add GCTA to the path where you have added to your environment like `ln -s /home/yunye/tools/gcta/gcta-1.94.1-linux-kernel-3-x86_64 /home/yunye/tools/bin/gcta`.
 
 ## Make GRM
 
@@ -65,7 +65,7 @@ We use the QCed genotypes from previous sections. Additionally, we include only 
 plinkFile="../04_Data_QC/sample_data.clean"
 prunedSNP="../04_Data_QC/plink_results.prune.in"
 
-gcta64 \
+gcta \
   --bfile ${plinkFile} \
   --extract ${prunedSNP} \
   --autosome \
@@ -141,7 +141,7 @@ prevalence=0.5
 # use 5PCs as covariates 
 awk '{print $1,$2,$5,$6,$7,$8,$9}' ../05_PCA/plink_results_projected.sscore > 5PCs.txt
 
-gcta64 \
+gcta \
   --grm ${GRM} \
   --pheno ${phenotypeFile} \
   --prevalence ${prevalence} \
