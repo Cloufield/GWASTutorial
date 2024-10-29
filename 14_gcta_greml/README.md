@@ -236,6 +236,11 @@ Analysis finished at 10:30:39 JST on Fri Oct 25 2024
 Overall computational time: 0.08 sec.
 ```
 
+!!! warning
+    We only included a limited number of samples (<500) in this analysis, which is insufficient.
+
+It is helpful to check the [FAQ section of GCTA](https://yanglab.westlake.edu.cn/software/gcta/#FAQ) if you encounter any errors. 
+
 ## Reference
 
 - Yang, J., Lee, S. H., Goddard, M. E., & Visscher, P. M. (2011). GCTA: a tool for genome-wide complex trait analysis. The American Journal of Human Genetics, 88(1), 76-82.
