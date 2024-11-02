@@ -101,6 +101,9 @@ cd ~/tools/ldsc
 mkdir resource
 cd ./resource
 
+# snplist
+gsutil -u <project_name> cp gs://broad-alkesgroup-public-requester-pays/LDSCORE/w_hm3.snplist.bz2 .
+
 # EAS ld score files
 gsutil -u <project_name> cp gs://broad-alkesgroup-public-requester-pays/LDSCORE/eas_ldscores.tar.bz2 .
 
