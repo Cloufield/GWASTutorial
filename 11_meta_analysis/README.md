@@ -77,27 +77,9 @@ METAL is one of the most commonly used tools for GWA meta-analysis. Its official
 
 !!! example "A minimal example of meta-analysis using the IVW method" 
     
-    ```txt title="metal_script.txt"
-    # classical approach, uses effect size estimates and standard errors
-    SCHEME STDERR  
-    
-    # === DESCRIBE AND PROCESS THE FIRST INPUT FILE ===
-    MARKER SNP
-    ALLELE REF_ALLELE OTHER_ALLELE
-    EFFECT BETA
-    PVALUE PVALUE 
-    STDERR SE 
-    PROCESS inputfile1.txt
-    
-    # === THE SECOND INPUT FILE HAS THE SAME FORMAT AND CAN BE PROCESSED IMMEDIATELY ===
-    PROCESS inputfile2.txt
-    
-    ANALYZE
-    ```
-
-    Then, just run the following command to execute the metal script.
-    
     ```bash
+    cd 11_meta_analysis/GlucoseExample
+
     metal meta_input.txt
     ```
 
