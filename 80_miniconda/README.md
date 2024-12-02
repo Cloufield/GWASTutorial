@@ -6,35 +6,54 @@ It is a very handy tool when you need to manage python packages.
 
 # Download
 
-https://www.anaconda.com/products/distribution
+!!! warning
+    Due to Anaconda 2024 licensing changes, you may have to obtain licenses first. Please check the [terms of service](https://legal.anaconda.com/policies/en?name=terms-of-service#anaconda-terms-of-service) and [FAQ](https://www.anaconda.com/pricing/terms-of-service-faqs). However, using miniconda and packages from conda-forge channel is still free.
+
+
 
 For example, download the latest linux version:
 
 ```
-wget https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
 ```
-
-![image](https://user-images.githubusercontent.com/40289485/161550000-43448964-fdd6-4f76-bd63-51e108c4c0e7.png)
 
 
 # Install
 ```
 # give it permission to execute
-chmod +x Anaconda3-2021.11-Linux-x86_64.sh 
+chmod ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 
 # install
-bash ./Anaconda3-2021.11-Linux-x86_64.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+
+# remove the installer if miniconda is installed successfully
+rm ~/miniconda3/miniconda.sh
+
+# initialize conda
+conda init --all
 ```
 
 Follow the instructions on :
-https://docs.anaconda.com/anaconda/install/linux/
-
-
+https://docs.anaconda.com/miniconda/install/#quick-command-line-install
 
 If everything goes well, then you can see the `(base)` before the prompt, which indicate the base environment:
 ```
 (base) [heyunye@gc019 ~]$
 ```
+
+# Set channels
+
+create/revise the file `~/.condarc`
+
+```
+channels:
+  - conda-forge
+```
+
+and then run `conda update --all`
+
+# Conda User guide
 
 For how to use conda, please check :
 https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html
