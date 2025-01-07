@@ -233,8 +233,8 @@ All sample codes and results for this module are available in `./04_data_QC`
 !!! info "QC Step Summary"
     |QC step|Option in PLINK|Commonly used threshold to exclude|
     |-|-|-|
-    |Sample missing rate| `--geno`,  `--missing` | missing rate > 0.01 (0.02, or 0.05) |
-    |SNP missing rate| `--mind`, `--missing` | missing rate > 0.01 (0.02, or 0.05) |
+    |SNP missing rate| `--geno`,  `--missing` | missing rate > 0.01 (0.02, or 0.05) |
+    |Sample missing rate| `--mind`, `--missing` | missing rate > 0.01 (0.02, or 0.05) |
     |Minor allele frequency| `--freq`, `--maf` |maf < 0.01|
     |Sample Relatedness| `--genome` |pi_hat > 0.2 to exclude second-degree relatives|
     |Hardy-Weinberg equilibrium| `--hwe`,`--hardy`|hwe < 1e-6|
