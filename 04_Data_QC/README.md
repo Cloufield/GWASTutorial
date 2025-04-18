@@ -114,7 +114,7 @@ All done. Let's test if we installed PLINK successfully or not.
 !!! example "Check if PLINK is installed successfully."
 
     ```bash
-    ./plink
+    plink
     PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
     (C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
 
@@ -134,7 +134,7 @@ All done. Let's test if we installed PLINK successfully or not.
     ```
     
     ```bash
-    ./plink2
+    plink2
     PLINK v2.00a5.9LM AVX2 AMD (12 Dec 2023)       www.cog-genomics.org/plink/2.0/
     (C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
 
