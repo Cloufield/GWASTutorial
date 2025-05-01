@@ -33,6 +33,28 @@ We will show two examples:
 - Reference-based phasing using SHAPEIT2
 - Cohort-based phasing using Eagle2
 
+## Prepare for phasing
+
+Before phasing, we need to align input file to 1KG reference panel.
+
+```
+before_alignment_bfile="../04_Data_QC/sample_data.clean"
+foralignment="./1KG_foralignment.tsv"
+
+awk -F'\t' '{
+  split($2, arr, ":");
+  print $2 "\t" arr[3] "\t" arr[4]
+}' ${before_alignment_bfile}.bim > ${foralignment}
+
+after_alignment_bfile="./sample_data.clean.alignment"
+
+plink \
+	--bfile ${before_alignment_bfile} \
+	--a1-allele ${foralignment} 2 \
+	--make-bed \
+	--out ${after_alignment_bfile}
+```
+
 ## Phasing using SHAPEIT2
 
 Here, we show an example using SHAPEIT2, which is another commonly used tool for haplotype phasing. SHAPEIT2 is usually used for small cohorts.
@@ -50,7 +72,7 @@ First, download SHPAEIT2 from [SHPAEIT2 website](https://mathgen.stats.ox.ac.uk/
 Next, for simplicity, we extract only JPT samples and common variants on chr22 from the clean datasets obtained in the previous section.
 
 ```
-inputbed=../04_Data_QC/sample_data.clean
+inputbed=./sample_data.clean.alignment
 jptsample=../01_Dataset/JPT.sample
 inputbedchr22=./sample_data.chr22.clean
 
