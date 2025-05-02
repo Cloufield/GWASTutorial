@@ -1216,6 +1216,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#prepare-for-phasing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prepare for phasing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#phasing-using-shapeit2" class="md-nav__link">
     <span class="md-ellipsis">
       Phasing using SHAPEIT2
@@ -2248,6 +2257,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#prepare-for-phasing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prepare for phasing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#phasing-using-shapeit2" class="md-nav__link">
     <span class="md-ellipsis">
       Phasing using SHAPEIT2
@@ -2309,6 +2327,24 @@ You could read the following methods if you are interested.</p>
 <li>Reference-based phasing using SHAPEIT2</li>
 <li>Cohort-based phasing using Eagle2</li>
 </ul>
+<h2 id="prepare-for-phasing">Prepare for phasing</h2>
+<p>Before phasing, we need to align input file to 1KG reference panel.</p>
+<div class="highlight"><pre><span></span><code>before_alignment_bfile=&quot;../04_Data_QC/sample_data.clean&quot;
+foralignment=&quot;./1KG_foralignment.tsv&quot;
+
+awk -F&#39;\t&#39; &#39;{
+  split($2, arr, &quot;:&quot;);
+  print $2 &quot;\t&quot; arr[3] &quot;\t&quot; arr[4]
+}&#39; ${before_alignment_bfile}.bim &gt; ${foralignment}
+
+after_alignment_bfile=&quot;./sample_data.clean.alignment&quot;
+
+plink \
+    --bfile ${before_alignment_bfile} \
+    --a1-allele ${foralignment} 2 \
+    --make-bed \
+    --out ${after_alignment_bfile}
+</code></pre></div>
 <h2 id="phasing-using-shapeit2">Phasing using SHAPEIT2</h2>
 <p>Here, we show an example using SHAPEIT2, which is another commonly used tool for haplotype phasing. SHAPEIT2 is usually used for small cohorts.</p>
 <div class="admonition note">
@@ -2322,7 +2358,7 @@ You could read the following methods if you are interested.</p>
 <p>We will conduct a reference-based phasing using SHAPEIT2 for chromosome 22.</p>
 <p>First, download SHPAEIT2 from <a href="https://mathgen.stats.ox.ac.uk/genetics_software/shapeit/shapeit.html#download">SHPAEIT2 website</a>. Unzip and add it to your environment. We also need reference files (1000 Genomes Phase I integrated haplotypes (produced using SHAPEIT2) b37 June 2014) and genetic maps, which are also available on <a href="https://mathgen.stats.ox.ac.uk/impute/impute_v2.html#reference">SHPAEIT2 website</a></p>
 <p>Next, for simplicity, we extract only JPT samples and common variants on chr22 from the clean datasets obtained in the previous section.</p>
-<div class="highlight"><pre><span></span><code>inputbed=../04_Data_QC/sample_data.clean
+<div class="highlight"><pre><span></span><code>inputbed=./sample_data.clean.alignment
 jptsample=../01_Dataset/JPT.sample
 inputbedchr22=./sample_data.chr22.clean
 
