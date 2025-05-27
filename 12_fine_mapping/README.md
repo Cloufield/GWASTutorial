@@ -151,7 +151,7 @@ For fine-mapping with summary statistics using Susie (SuSiE-RSS), IBSS was modif
     ```
     #!/bin/bash
     
-    plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing"
+    plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing"
     
     # LD r matrix
     plink \
