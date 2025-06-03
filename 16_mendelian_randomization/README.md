@@ -137,6 +137,16 @@ SE:
 
 $$SE = {\sqrt{{1}\over{\sum_{i=1}^Nw_i}}}$$
 
+### OPENGWAS API
+As of May 1, 2024, most OpenGWAS API queries require user authentication. To use the API:
+1.  Log in at [OPENGWAS API](https://api.opengwas.io/profile/) and generate a token.
+2.  Add the token to your .Renviron file as: `OPENGWAS_JWT=<your_token>`
+3.  Restart your R session.
+4.  To confirm authentication, run `ieugwasr::get_opengwas_jwt()` — if it returns a token, you’re authenticated.
+5.  To check the token is working, run `user()` — it should return your profile info.
+
+This token acts like a password. Keep it secure and do not share it. Please check [ieugwasr guide](https://mrcieu.github.io/ieugwasr/articles/guide.html#authentication) for more details.
+
 ### File Preparation
 
 To perform two-sample MR analysis, we need summary statistics for exposure and outcome generated from independent populations with the same ancestry.
