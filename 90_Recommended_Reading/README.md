@@ -32,6 +32,12 @@
 |-|-|-|
 |2008|Slatkin, M. (2008). Linkage disequilibrium—understanding the evolutionary past and mapping the medical future. Nature Reviews Genetics, 9(6), 477-485.|Pubmed|
 
+### Phasing
+
+|Year| Reference | Link|
+|-|-|-|
+|2011|Sharon R. Browning & Brian L. Browning. (2011). Haplotype phasing: existing methods and new developments, Nat Rev Genet, 12(10), 703–714.|Pubmed|
+
 ### Imputation
 
 |Year| Reference | Link|
