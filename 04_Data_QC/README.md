@@ -114,7 +114,7 @@ All done. Let's test if we installed PLINK successfully or not.
 !!! example "Check if PLINK is installed successfully."
 
     ```bash
-    ./plink
+    plink
     PLINK v1.90b7.2 64-bit (11 Dec 2023)           www.cog-genomics.org/plink/1.9/
     (C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
 
@@ -134,7 +134,7 @@ All done. Let's test if we installed PLINK successfully or not.
     ```
     
     ```bash
-    ./plink2
+    plink2
     PLINK v2.00a5.9LM AVX2 AMD (12 Dec 2023)       www.cog-genomics.org/plink/2.0/
     (C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
 
@@ -233,8 +233,8 @@ All sample codes and results for this module are available in `./04_data_QC`
 !!! info "QC Step Summary"
     |QC step|Option in PLINK|Commonly used threshold to exclude|
     |-|-|-|
-    |Sample missing rate| `--geno`,  `--missing` | missing rate > 0.01 (0.02, or 0.05) |
-    |SNP missing rate| `--mind`, `--missing` | missing rate > 0.01 (0.02, or 0.05) |
+    |SNP missing rate| `--geno`,  `--missing` | missing rate > 0.01 (0.02, or 0.05) |
+    |Sample missing rate| `--mind`, `--missing` | missing rate > 0.01 (0.02, or 0.05) |
     |Minor allele frequency| `--freq`, `--maf` |maf < 0.01|
     |Sample Relatedness| `--genome` |pi_hat > 0.2 to exclude second-degree relatives|
     |Hardy-Weinberg equilibrium| `--hwe`,`--hardy`|hwe < 1e-6|

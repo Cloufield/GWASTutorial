@@ -1,5 +1,5 @@
 #!/bin/bash 
-inputbed=../04_Data_QC/sample_data.clean
+inputbed=./sample_data.clean.alignment
 jptsample=../01_Dataset/JPT.sample
 inputbedchr22=./sample_data.chr22.clean
 

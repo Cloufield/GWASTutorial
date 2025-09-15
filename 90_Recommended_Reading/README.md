@@ -32,6 +32,12 @@
 |-|-|-|
 |2008|Slatkin, M. (2008). Linkage disequilibrium—understanding the evolutionary past and mapping the medical future. Nature Reviews Genetics, 9(6), 477-485.|Pubmed|
 
+### Phasing
+
+|Year| Reference | Link|
+|-|-|-|
+|2011|Sharon R. Browning & Brian L. Browning. (2011). Haplotype phasing: existing methods and new developments, Nat Rev Genet, 12(10), 703–714.|Pubmed|
+
 ### Imputation
 
 |Year| Reference | Link|
@@ -58,6 +64,8 @@
 |-|-|-|
 |2019|Schaid, D. J., Chen, W., & Larson, N. B. (2018). From genome-wide associations to candidate causal variants by statistical fine-mapping. Nature Reviews Genetics, 19(8), 491-504.|Pubmed|
 |2023|王 青波, ゲノムワイド関連解析のその先へ：統計的fine-mappingの基礎と発展, JSBi Bioinformatics Review, 2023, 4 巻, 1 号, p. 35-51|[J-STAGE](https://www.jstage.jst.go.jp/article/jsbibr/4/1/4_jsbibr.2023.primer4/_html/-char/ja)|
+|2025|Li, Z., & Zhou, X. (2025). Towards improved fine-mapping of candidate causal variants. Nature Reviews Genetics. Advance online publication. https://doi.org/10.1038/s41576-025-00869-4|PubMed|
+
 ### Polygenic risk scores
 
 |Year| Reference | Link|
