@@ -1,0 +1,14 @@
+File Homo_sapiens.gene_info.gz obtained from ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/GENE_INFO/Mammalia/ on 29/04/2015
+File seq_gene.md.gz obtained from ftp://ftp.ncbi.nlm.nih.gov/genomes/Homo_sapiens/ARCHIVE/ANNOTATION_RELEASE.105/mapview/ on 25/05/2016
+
+Process:
+- extracted all entries from seq_gene.md file on GRCh Primary Assembly with feature type GENE
+- extracted all entries from gene_info file with type 'protein-coding' and chromosome 1-22, X, Y
+- merged resulting files on gene ID
+- discarded all genes with multiple entries (likely misassembly)
+- discarded all genes with mismatching chromosome codes in the two files
+
+Output .gene.loc file contains columns: entrez ID, chromosome, start position, end position, strand, gene symbol (taken from symbol column in gene_info file)
+Discarded/missing genes reported in REPORT file
+
+

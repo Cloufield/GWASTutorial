@@ -1,13 +1,23 @@
 # LD score regression
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Install LDSC](#install-ldsc)
-- [Data Preparation](#data-preparation)
 - [LD score regression](#ld-score-regression)
-- [Cross-trait LD score regression](#cross-trait-ld-score-regression)
-- [Partitioned LD regression](#partitioned-ld-regression)
-- [Celltype specificity LD regression](#celltype-specificity-ld-regression)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+    - [LD: Linkage disequilibrium](#ld-linkage-disequilibrium)
+    - [LD score](#ld-score)
+    - [LD score regression](#ld-score-regression-1)
+  - [Install LDSC](#install-ldsc)
+  - [Data Preparation](#data-preparation)
+    - [Download sample summary statistics](#download-sample-summary-statistics)
+    - [Download reference files](#download-reference-files)
+  - [Munge sumstats](#munge-sumstats)
+  - [LD score regression](#ld-score-regression-2)
+  - [Distribution of h2 and intercept across traits in UKB](#distribution-of-h2-and-intercept-across-traits-in-ukb)
+  - [Cross-trait LD score regression](#cross-trait-ld-score-regression)
+  - [Partitioned LD regression](#partitioned-ld-regression)
+  - [Celltype specificity LD regression](#celltype-specificity-ld-regression)
+  - [Reference](#reference)
 
 ## Introduction
 
@@ -92,22 +102,22 @@ mkdir resource
 cd ./resource
 
 # snplist
-wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/w_hm3.snplist.bz2
+gsutil -u <project_name> cp gs://broad-alkesgroup-public-requester-pays/LDSCORE/w_hm3.snplist.bz2 .
 
 # EAS ld score files
-wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/eas_ldscores.tar.bz2
+gsutil -u <project_name> cp gs://broad-alkesgroup-public-requester-pays/LDSCORE/eas_ldscores.tar.bz2 .
 
 # EAS weight
-wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/1000G_Phase3_EAS_weights_hm3_no_MHC.tgz
+gsutil -u <project_name> cp gs://broad-alkesgroup-public-requester-pays/LDSCORE/1000G_Phase3_EAS_weights_hm3_no_MHC.tgz .
 
 # EAS frequency
-wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/1000G_Phase3_EAS_plinkfiles.tgz
+gsutil -u <project_name> cp gs://broad-alkesgroup-public-requester-pays/LDSCORE/1000G_Phase3_EAS_plinkfiles.tgz .
 
 # EAS baseline model
-wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/1000G_Phase3_EAS_baseline_v1.2_ldscores.tgz
+gsutil -u <project_name> cp gs://broad-alkesgroup-public-requester-pays/LDSCORE/1000G_Phase3_EAS_baseline_v1.2_ldscores.tgz .
 
 # Cell type ld score files
-wget https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/LDSC_SEG_ldscores/Cahoy_EAS_1000Gv3_ldscores.tar.gz
+gsutil -u <project_name> cp gs://broad-alkesgroup-public-requester-pays/LDSCORE/LDSC_SEG_ldscores/Cahoy_EAS_1000Gv3_ldscores.tar.gz .
 
 ```
 You can then decompress the files and organize them.
