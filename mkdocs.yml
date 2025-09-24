@@ -96,6 +96,7 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
   - tables
+  - pymdownx.magiclink
 
 extra_javascript:
   - javascripts/mathjax.js
