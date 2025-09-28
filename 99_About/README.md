@@ -14,7 +14,7 @@ This tutorial is provided by the [Laboratory of Complex Trait Genomics (Kamatani
 ## Contact Us
 This repository is currently maintained by [Yunye He](https://github.com/Cloufield). 
 
-If you have any questions or suggestions, please feel free to contact [gwaslab@gmail.com](gwaslab@gmail.com).
+If you have any questions or suggestions, please feel free to contact [gwaslab@gmail.com](mailto:gwaslab@gmail.com).
 
 Enjoy this real "Manhattan plot"!
 
