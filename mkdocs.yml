@@ -22,8 +22,12 @@ theme:
 nav:
     - Home: 
       - "Tutorial guide" : index.md
+      - "Introduction" : 00_Introduction.md
+      - "Overview" : 39_overview.md
       - "About" : 99_About.md
+      - "Update Log" : 98_updatelog.md
     - "Command Line" :
+       - "Programming for GWAS" : 89_programming.md
        - "Linux" : 
           - "Linux Basics" : 02_Linux_basics.md
           - "Windows Linux Subsystem" : 82_windows_linux_subsystem.md
@@ -43,47 +47,56 @@ nav:
        - "Other tools" :
           - "Git and github" : 83_git_and_github.md
     - "Pre-GWAS" :
+       - "1000 Genomes Project" : 40_1000_genome_project.md
        - "Sample Dataset" : 01_Dataset.md
        - "Data Formats" : 03_Data_formats.md
        - "Genotype Data QC" : 04_Data_QC.md
        - "Sample PCA" : 05_PCA.md
-       - "Plot PCA" : plot_PCA.ipynb
+       - "PCA Visualization" : plot_PCA.md
        - "Phasing" : Phasing.md
        - "Imputation": Imputation.md
     - "GWAS" : 
        - "Association tests by PLINK": 06_Association_tests.md
-       - "Visualization by gwaslab": Visualization.ipynb
+       - "Visualization by gwaslab": Visualization.md
        - "Linear mixed model (LMM)" : 33_linear_mixed_model.md
+       - "Saddlepoint approximation by SAIGE" : 35_saddlepoint_approximation.md
        - "Whole genome regression by REGENIE" : 32_whole_genome_regression.md
+       - "Rare variant association tests" : 34_rare_variant.md
+
     - "Post-GWAS" :
+       - "Post-GWAS Analysis Overview" : 29_postgwas.md
        - "Annotation by ANNOVAR & VEP" : 07_Annotation.md
        - "SNP-heritability estimation by GREML" : 14_gcta_greml.md
        - "LD score regression by LDSC" : 08_LDSC.md
        - "Gene/Gene-set tests by MAGMA" : 09_Gene_based_analysis.md
        - "Fine-mapping by susieR" : 
           - "Fine-mapping Basics" : 12_fine_mapping.md
-          - "SuSIE Fine-mapping Tutorial" : finemapping_susie.ipynb
+          - "SuSIE Fine-mapping Tutorial" : finemapping_susie.md
        - "Meta-analysis" : 11_meta_analysis.md
        - "Polygenic Risk Score" : 
           - "PRS Basics" : 10_PRS.md
           - "PRS evaluation" : PRS_evaluation.md
-          - "PRS Tutorial" : prs_tutorial.ipynb
        - "Mendelian randomization": 
           - "MR Basics" : 16_mendelian_randomization.md
-          - "TwoSampleMR Tutorial" : TwoSampleMR.ipynb
+          - "TwoSampleMR Tutorial" : TwoSampleMR.md
        - "Conditional analysis" : 18_Conditioning_analysis.md
        - "Colocalization" : 17_colocalization.md
        - "TWAS (using FUSION)": 21_twas.md
+       - "Single-cell genomics integration": 25_singlecell.md
     - Topics :
+       - "Allele" : 36_alleles.md
        - "Linkage Disequilibrium (LD)" : 19_ld.md
        - "Heritability Concepts" : 13_heritability.md
        - "Statistical power" : 20_power_analysis.md
        - "Winner's curse" : 15_winners_curse.md
+       - "Bias" : 22_bias.md
+       - "Relatedness and sample structure" : 28_relatedness.md
+       - "Phenotype normalization" : 26_normalization.md
        - "Measure of effect" : 55_measure_of_effect.md
-       - "Recommended reading" : 90_Recommended_Reading.md
     - "Assignments" :
        - "Assignment - 1KG PCA" : 95_Assignment.md
        - "Assignment - Presentation" : 96_Assignment2.md
+    - "Recommended reading" : 90_Recommended_Reading.md      
 
 markdown_extensions:
   - toc:

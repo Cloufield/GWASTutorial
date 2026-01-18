@@ -1,6 +1,6 @@
 #/bin/bash
 mkdir -p docs
-for dir in 55_measure_of_effect 21_twas 20_power_analysis 17_colocalization 18_Conditioning_analysis 19_ld 76_R_resources 75_R_basics 16_mendelian_randomization 11_meta_analysis 15_winners_curse 71_python_resources 70_python_basics 14_gcta_greml 12_fine_mapping 96_Assignment2 95_Assignment 33_linear_mixed_model 32_whole_genome_regression 99_About 69_resources 13_heritability 85_job_scheduler 84_ssh 90_Recommended_Reading 01_Dataset 02_Linux_basics 03_Data_formats 04_Data_QC 05_PCA 06_Association_tests 07_Annotation 08_LDSC 09_Gene_based_analysis 10_PRS 60_awk 61_sed 80_miniconda 81_jupyter_notebook 82_windows_linux_subsystem 83_git_and_github
+for dir in 00_Introduction 89_programming 36_alleles 28_relatedness 39_overview 29_postgwas 26_normalization 25_singlecell 22_bias 55_measure_of_effect 21_twas 20_power_analysis 17_colocalization 18_Conditioning_analysis 19_ld 76_R_resources 75_R_basics 16_mendelian_randomization 11_meta_analysis 15_winners_curse 71_python_resources 70_python_basics 14_gcta_greml 12_fine_mapping 96_Assignment2 95_Assignment 33_linear_mixed_model 32_whole_genome_regression 34_rare_variant 35_saddlepoint_approximation 98_updatelog 99_About 69_resources 13_heritability 85_job_scheduler 84_ssh 90_Recommended_Reading 01_Dataset 02_Linux_basics 03_Data_formats 04_Data_QC 05_PCA 06_Association_tests 07_Annotation 08_LDSC 09_Gene_based_analysis 10_PRS 40_1000_genome_project 60_awk 61_sed 80_miniconda 81_jupyter_notebook 82_windows_linux_subsystem 83_git_and_github
 do
 cp ${dir}/README.md docs/${dir}.md
 done
@@ -14,4 +14,5 @@ cp 16_mendelian_randomization/TwoSampleMR.ipynb docs/TwoSampleMR.ipynb
 cp 05_PCA/plot_PCA.ipynb docs/plot_PCA.ipynb
 cp 06_Association_tests/Visualization.ipynb docs/Visualization.ipynb
 cp README.md docs/index.md
-mkdocs gh-deploy
+zensical serve -a 127.0.0.1:9999
+#mkdocs gh-deploy

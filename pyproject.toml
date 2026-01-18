@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gwastutorial"
+version = "0.0.0"
+description = "GWAS tutorial documentation tooling"
+requires-python = ">=3.9"
+dependencies = [
+  "mkdocs>=1.5",
+  "mkdocs-material>=9.0",
+  "mkdocs-jupyter>=0.24",
+  "pymdown-extensions>=10.0",
+  "nbformat>=5.7",
+  "nbconvert>=7.0",
+]

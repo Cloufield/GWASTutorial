@@ -1,6 +1,9 @@
 img{
 max-width:700px;
 height: auto;
+display: block;
+margin-left: auto;
+margin-right: auto;
 }
 
 .md-typeset {
@@ -17,6 +20,13 @@ height: auto;
 .md-typeset table:not([class]) td {
     border-top: 0.05rem solid var(--md-typeset-table-color);
     padding: 0.3em 0.4em;
+    vertical-align: top;
+}
+
+.md-typeset table:not([class]) th {
+    border-bottom: 0.1rem solid var(--md-typeset-table-color);
+    padding: 0.3em 0.4em;
+    font-weight: 600;
     vertical-align: top;
 }
 
@@ -80,6 +90,17 @@ height: auto;
 
 .md-typeset table:not([class]) {
     display: table;
-    font-size: px2rem(11px);
-    border-spacing:  px2em(1px);
+    font-size: 0.69rem;
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+}
+
+.md-typeset table:not([class]) tr {
+    border-bottom: 0.05rem solid var(--md-typeset-table-color);
+}
+
+.md-typeset table:not([class]) tr:last-child {
+    border-bottom: none;
 }
