@@ -13,6 +13,9 @@ Statistical genetics is a field that combines **genetics**, **statistics**, and 
 - Understand the **genetic architecture** of **complex traits**
 - Predict disease risk based on **genetic information**
 
+
+![Satistical genetics](images/statistical_genetics.jpg)
+
 !!! info "Key concepts in statistical genetics"
 
     - **Genetic variation**: Differences in DNA sequences among individuals

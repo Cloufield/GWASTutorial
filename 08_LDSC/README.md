@@ -48,6 +48,8 @@ $$
 - $h^2$ : observed-scale heritability
 - $a$ : the effect of confounding factors, including cryptic relatedness and population stratification.
 
+![LD Score Regression Example](images/ld_score_example.jpg)
+
 For more details of LD score regression, please refer to :
 - Bulik-Sullivan, Brendan K., et al. "LD Score regression distinguishes confounding from polygenicity in genome-wide association studies." Nature genetics 47.3 (2015): 291-295.
 
