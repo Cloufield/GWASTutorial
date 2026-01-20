@@ -111,6 +111,10 @@ Understanding the distinction between **Mendelian traits** and **complex traits*
 
 ### Types of traits suitable for GWAS
 
+![Trait 1](images/trait1.jpg)
+
+![Trait 2](images/trait2.jpg)
+
 GWAS is most effective for complex traits. The following trait types are commonly studied:
 
 #### Traditional phenotypic traits
