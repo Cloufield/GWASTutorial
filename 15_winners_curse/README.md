@@ -16,6 +16,7 @@ When we select variants based on significance thresholds (e.g., $p < 5 \times 10
     - Göring, H. H., Terwilliger, J. D., & Blangero, J. (2001). Large upward bias in estimation of locus-specific effects from genomewide scans. The American Journal of Human Genetics, 69(6), 1357-1369.
 
 !!! note "Why does winner's curse matter?"
+
     - **Effect size estimation**: Inflated effect sizes can mislead downstream analyses such as polygenic risk scores (PRS) or Mendelian randomization
     - **Replication studies**: Overestimated effects can lead to failed replications in independent cohorts
     - **Biological interpretation**: Accurate effect sizes are crucial for understanding the true magnitude of genetic associations
@@ -23,9 +24,9 @@ When we select variants based on significance thresholds (e.g., $p < 5 \times 10
 
 ## Mathematical framework
 
-### Asymptotic distribution
+### Asymptotic distribution (unconditional)
 
-The asymptotic distribution of $\beta_{Observed}$ is:
+The unconditional asymptotic distribution of $\beta_{Observed}$ (before selection) is:
 
 $$\beta_{Observed} \sim N(\beta_{True},\sigma^2)$$
 
@@ -44,11 +45,13 @@ $${{\beta_{Observed} - \beta_{True}}\over{\sigma}} \sim N(0,1)$$
 !!! info "An example of distribution of ${{\beta_{Observed} - \beta_{True}}\over{\sigma}}$"
     ![image](https://user-images.githubusercontent.com/40289485/219680536-eb20ae9c-2220-450a-95b1-9b4b6a7c91ce.png)
 
-### Truncated normal distribution
+### Selection-conditional distribution (two-sided truncated normal)
 
-We can obtain the asymptotic sampling distribution (which is a [truncated normal distribution](https://en.wikipedia.org/wiki/Truncated_normal_distribution)) for $\beta_{Observed}$ by:
+When we condition on selection (i.e., variants that passed the significance threshold), the distribution of $\beta_{Observed}$ becomes a **two-sided truncated normal distribution** (also called a selection-conditional normal distribution). This is a mixture of two tails: the upper tail for positive effects and the lower tail for negative effects.
 
-$$f(x,\beta_{True}) ={{1}\over{\sigma}} {{\phi({{{x - \beta_{True}}\over{\sigma}}})} \over {\Phi({{{\beta_{True}}\over{\sigma}}-c}) + \Phi({{{-\beta_{True}}\over{\sigma}}-c})}}$$
+The conditional distribution of $\beta_{Observed}$ given selection (i.e., $|\beta_{Observed}/\sigma| \geq c$) is:
+
+$$f(x|\text{selected}, \beta_{True}) ={{1}\over{\sigma}} {{\phi({{{x - \beta_{True}}\over{\sigma}}})} \over {\Phi({{{\beta_{True}}\over{\sigma}}-c}) + \Phi({{{-\beta_{True}}\over{\sigma}}-c})}}$$
 
 when
 
@@ -57,10 +60,11 @@ $$|{{x}\over{\sigma}}|\geq c$$
 where:
 - $\phi(x)$: standard normal density function
 - $\Phi(x)$: standard normal cumulative density function
+- The denominator $\Phi({{{\beta_{True}}\over{\sigma}}-c}) + \Phi({{{-\beta_{True}}\over{\sigma}}-c})$ represents the probability of selection (the sum of probabilities in both tails)
 
 ### Expected bias
 
-From the asymptotic sampling distribution, the expectation of effect sizes for the selected variants can then be approximated by: 
+From the selection-conditional distribution, the expectation of effect sizes for the selected variants (i.e., $E[\beta_{Observed} | \text{selected}, \beta_{True}]$) can then be approximated by: 
 
 $$ E(\beta_{Observed}; \beta_{True}) = \beta_{True} + \sigma {{\phi({{{\beta_{True}}\over{\sigma}}-c}) - \phi({{{-\beta_{True}}\over{\sigma}}-c})} \over {\Phi({{{\beta_{True}}\over{\sigma}}-c}) + \Phi({{{-\beta_{True}}\over{\sigma}}-c})}}$$
 
@@ -74,11 +78,16 @@ Key observations:
 
 ## Winner's curse correction
 
-To correct for winner's curse, we need to solve for $\beta_{True}$ given the observed $\beta_{Observed}$ and standard error $\sigma$. This is done by finding the value of $\beta_{True}$ that satisfies:
+!!! warning "Important: Only apply to selected variants"
+    **This correction is intended only for selected hits (those satisfying the significance threshold).** 
+    
+    The correction uses the selection-conditional distribution (two-sided truncated normal), which only applies when variants have been selected based on passing a significance threshold. Without selection, there is no conditioning/truncation, and the unconditional distribution $N(\beta_{True}, \sigma^2)$ applies. Applying the correction to non-selected variants would be mathematically incorrect and could introduce bias.
 
-$$E(\beta_{Observed}; \beta_{True}) = \beta_{Observed}$$
+To correct for winner's curse, we need to solve for $\beta_{True}$ given the observed $\beta_{Observed}$ and standard error $\sigma$, conditional on the variant being selected. This is done by finding the value of $\beta_{True}$ that satisfies:
 
-This requires solving a nonlinear equation, typically using numerical methods.
+$$E[\beta_{Observed} | \text{selected}, \beta_{True}] = \beta_{Observed}$$
+
+where the expectation is taken over the selection-conditional distribution. This requires solving a nonlinear equation, typically using numerical methods.
 
 ### Implementation in Python
 
@@ -163,7 +172,7 @@ This requires solving a nonlinear equation, typically using numerical methods.
         z <- betaTrue / se
         num <- dnorm(z - c) - dnorm(-z - c)
         den <- pnorm(z - c) + pnorm(-z - c)
-        return(betaObs - betaTrue + se * num / den)
+        return(betaObs - betaTrue - se * num / den)
       }
       
       # Solve for true beta
@@ -204,10 +213,12 @@ This requires solving a nonlinear equation, typically using numerical methods.
     # Load GWAS summary statistics
     sumstats = pd.read_csv("gwas_results.tsv", sep="\t")
     
-    # Filter for significant variants
+    # IMPORTANT: Filter for significant variants BEFORE applying correction
+    # The correction uses the selection-conditional distribution, which only
+    # applies to variants that passed the significance threshold
     significant = sumstats[sumstats["P"] < 5e-8].copy()
     
-    # Apply winner's curse correction
+    # Apply winner's curse correction (only to selected variants)
     significant["BETA_corrected"] = wc_correct(
         significant["BETA"].values,
         significant["SE"].values,
@@ -232,16 +243,19 @@ This requires solving a nonlinear equation, typically using numerical methods.
 Several tools and packages are available for winner's curse correction:
 
 !!! note "R packages"
+
     - **winnerscurse**: R package providing multiple methods for winner's curse correction
       - Installation: `install.packages("winnerscurse")`
       - Documentation: https://amandaforde.github.io/winnerscurse/
       - Methods include: conditional likelihood, FDR inverse quantile transformation, and bootstrap-based methods
 
 !!! note "Python packages"
+
     - Custom implementation (as shown above) using `scipy`
     - The `winnerscurse` R package can also be used via `rpy2` in Python
 
 !!! tip "Comparison of methods"
+
     Different methods for winner's curse correction have been developed:
     - **Conditional likelihood approach**: Used in the examples above (Zhong & Prentice, 2008; Ghosh et al., 2008)
     - **FDR inverse quantile transformation**: Alternative approach that may be more robust
@@ -252,6 +266,7 @@ Several tools and packages are available for winner's curse correction:
 ## Limitations and considerations
 
 !!! warning "Important considerations"
+
     - **Assumptions**: The correction assumes that the asymptotic normal distribution holds and that variants are independent
     - **LD structure**: The correction may not fully account for linkage disequilibrium (LD) between variants
     - **Multiple testing**: The correction is typically applied per-variant; accounting for multiple testing may require additional considerations
@@ -259,7 +274,8 @@ Several tools and packages are available for winner's curse correction:
     - **Small effects**: For very small true effects, the correction may be less reliable
 
 !!! tip "Best practices"
-    - Apply correction only to variants that passed the significance threshold
+
+    - **Apply correction only to variants that passed the significance threshold**: The correction uses the selection-conditional distribution, which only applies to selected variants. Without selection, there is no truncation/conditioning, so the correction should not be applied.
     - Use the same significance threshold for correction as was used for selection
     - Consider the standard error when interpreting corrected effects
     - Validate corrected effects in independent replication cohorts when possible
