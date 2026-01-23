@@ -1,0 +1,208 @@
+================================================================================
+LIFTOVER ANALYSIS FROM REAL DATA
+Using chr1 positions from 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.bim
+================================================================================
+
+Total positions tested: 1,151
+Successful: 1,121 (97.4%)
+Failed: 30 (2.6%)
+
+
+ISSUE #2: Centromere and gap redefinition in hg38
+--------------------------------------------------------------------------------
+Found 11 centromere region failures:
+
+Chain record before: chain 7406387 chr1 249250621 + 103785265 103863906 chr1 248956422 + 103382376 103461016 877
+Chain record after: chain 2247 chr1 249250621 + 120681253 120681278 chr1 248956422 + 148754254 148754279 2163699
+  Examples (5 positions):
+    - hg19 chr1:120,641,301 (SNP: 1:120641301:C:A, distance: ~894,133 bp) → FAILED (deleted)
+    - hg19 chr1:120,648,690 (SNP: 1:120648690:T:C, distance: ~886,744 bp) → FAILED (deleted)
+    - hg19 chr1:120,659,447 (SNP: 1:120659447:A:G, distance: ~875,987 bp) → FAILED (deleted)
+    - hg19 chr1:120,659,468 (SNP: 1:120659468:G:T, distance: ~875,966 bp) → FAILED (deleted)
+    - hg19 chr1:120,680,117 (SNP: 1:120680117:T:A, distance: ~855,317 bp) → FAILED (deleted)
+
+Chain record before: chain 2247 chr1 249250621 + 120681253 120681278 chr1 248956422 + 148754254 148754279 2163699
+Chain record after: chain 1967132 chr1 249250621 + 120747156 120917612 chr1 248956422 - 127680242 127850752 350
+  Examples (1 positions):
+    - hg19 chr1:120,685,773 (SNP: 1:120685773:T:C, distance: ~849,661 bp) → FAILED (deleted)
+
+Chain record before: chain 2247 chr1 249250621 + 120681253 120681278 chr1 248956422 + 148754254 148754279 2163699
+Chain record after: chain 18966774 chr1 249250621 + 142535434 143239339 chr4_GL000008v2_random 209709 + 0 207491 319
+  Examples (3 positions):
+    - hg19 chr1:120,832,318 (SNP: 1:120832318:T:C, distance: ~703,116 bp) → FAILED (deleted)
+    - hg19 chr1:120,894,947 (SNP: 1:120894947:T:C, distance: ~640,487 bp) → FAILED (deleted)
+    - hg19 chr1:120,901,374 (SNP: 1:120901374:G:T, distance: ~634,060 bp) → FAILED (deleted)
+
+Chain record before: chain 1967132 chr1 249250621 + 120747156 120917612 chr1 248956422 - 127680242 127850752 350
+Chain record after: chain 18966774 chr1 249250621 + 142535434 143239339 chr4_GL000008v2_random 209709 + 0 207491 319
+  Examples (2 positions):
+    - hg19 chr1:120,918,861 (SNP: 1:120918861:C:T, distance: ~616,573 bp) → FAILED (deleted)
+    - hg19 chr1:120,934,063 (SNP: 1:120934063:T:C, distance: ~601,371 bp) → FAILED (deleted)
+
+
+
+ISSUE #3: Ambiguous mapping (Segmental duplications)
+--------------------------------------------------------------------------------
+Found 2 failures in segmental duplication regions:
+
+Chain record before: chain 50767 chr1 249250621 + 1582861 1584456 chr1 248956422 + 1714655 1716246 1032141
+Chain record after: chain 13696 chr1 249250621 + 12822162 12822307 chr1 248956422 + 12762227 12762372 5498870
+  Examples (2 positions):
+    - hg19 chr1:1,590,526 (SNP: 1:1590526:G:C) → FAILED (deleted)
+    - hg19 chr1:1,590,575 (SNP: 1:1590575:G:A) → FAILED (deleted)
+
+
+
+MANY-TO-ONE MAPPINGS
+--------------------------------------------------------------------------------
+Multiple hg19 positions that map to the same hg38 position
+
+Found 1 hg38 positions with multiple hg19 mappings:
+
+Example 1:
+  hg38 chr1:149,077,786 ← 2 hg19 positions:
+    No chain found:
+      - chr1:144,619,516 (SNP: 1:144619516:G:A)
+      - chr1:148,342,373 (SNP: 1:148342373:C:T)
+  hg38 position chain record(s):
+    chain 20851231461 chr1 249250621 + 10000 249240621 chr1 248956422 + 10000 248946422 2
+    chain 4430836 chr1 249250621 + 143644525 144223871 chr1 248956422 + 148359880 149554357 487
+
+
+
+CROSS-CHROMOSOME MAPPINGS
+--------------------------------------------------------------------------------
+Found 155 cross-chromosome mappings:
+
+chr1 → chr12: 1 examples
+  Chain record: chain 2149 chr1 249250621 + 249058895 249058951 chr12 133275309 - 75188 75244 4960107
+    Examples (1 positions):
+      - hg19 chr1:249,058,896 (SNP: 1:249058896:T:C) → hg38 chr12:133,200,121
+
+
+chr1 → chr14_GL000009v2_random: 27 examples
+  Chain record: chain 19082683 chr1 249250621 + 143342816 143544525 chr14_GL000009v2_random 201709 + 0 201709 318
+    Examples (20 positions):
+      - hg19 chr1:143,346,163 (SNP: 1:143346163:G:A) → hg38 chr14_GL000009v2_random:3,347
+      - hg19 chr1:143,392,899 (SNP: 1:143392899:A:G) → hg38 chr14_GL000009v2_random:50,083
+      - hg19 chr1:143,394,413 (SNP: 1:143394413:C:T) → hg38 chr14_GL000009v2_random:51,597
+      - hg19 chr1:143,395,636 (SNP: 1:143395636:C:T) → hg38 chr14_GL000009v2_random:52,820
+      - hg19 chr1:143,401,221 (SNP: 1:143401221:C:T) → hg38 chr14_GL000009v2_random:58,405
+      - hg19 chr1:143,404,684 (SNP: 1:143404684:C:A) → hg38 chr14_GL000009v2_random:61,868
+      - hg19 chr1:143,405,783 (SNP: 1:143405783:G:A) → hg38 chr14_GL000009v2_random:62,967
+      - hg19 chr1:143,409,549 (SNP: 1:143409549:C:A) → hg38 chr14_GL000009v2_random:66,733
+      - hg19 chr1:143,415,017 (SNP: 1:143415017:T:G) → hg38 chr14_GL000009v2_random:72,201
+      - hg19 chr1:143,418,633 (SNP: 1:143418633:G:A) → hg38 chr14_GL000009v2_random:75,817
+      ... and 10 more
+
+  ... and 7 more examples not shown
+
+chr1 → chr1_KI270706v1_random: 37 examples
+  Chain record: chain 9964536 chr1 249250621 + 143117761 143292816 chr1_KI270706v1_random 175055 + 0 175055 394
+    Examples (20 positions):
+      - hg19 chr1:143,118,800 (SNP: 1:143118800:G:A) → hg38 chr1_KI270706v1_random:1,039
+      - hg19 chr1:143,119,490 (SNP: 1:143119490:C:T) → hg38 chr1_KI270706v1_random:1,729
+      - hg19 chr1:143,125,071 (SNP: 1:143125071:T:C) → hg38 chr1_KI270706v1_random:7,310
+      - hg19 chr1:143,125,367 (SNP: 1:143125367:G:T) → hg38 chr1_KI270706v1_random:7,606
+      - hg19 chr1:143,126,941 (SNP: 1:143126941:C:G) → hg38 chr1_KI270706v1_random:9,180
+      - hg19 chr1:143,130,747 (SNP: 1:143130747:G:C) → hg38 chr1_KI270706v1_random:12,986
+      - hg19 chr1:143,131,192 (SNP: 1:143131192:C:A) → hg38 chr1_KI270706v1_random:13,431
+      - hg19 chr1:143,131,385 (SNP: 1:143131385:C:G) → hg38 chr1_KI270706v1_random:13,624
+      - hg19 chr1:143,134,624 (SNP: 1:143134624:G:C) → hg38 chr1_KI270706v1_random:16,863
+      - hg19 chr1:143,138,226 (SNP: 1:143138226:G:A) → hg38 chr1_KI270706v1_random:20,465
+      ... and 10 more
+
+  ... and 17 more examples not shown
+
+chr1 → chr1_KI270711v1_random: 1 examples
+  Chain record: chain 9935 chr1 249250621 + 148741670 148747635 chr1_KI270711v1_random 42210 - 21032 27015 3915
+    Examples (1 positions):
+      - hg19 chr1:148,741,671 (SNP: 1:148741671:C:T) → hg38 chr1_KI270711v1_random:21,178
+
+
+chr1 → chr1_KI270766v1_alt: 17 examples
+  Chain record: chain 1455478 chr1 249250621 + 13121929 13332327 chr1_KI270766v1_alt 256271 + 0 170233 339
+    Examples (17 positions):
+      - hg19 chr1:13,125,260 (SNP: 1:13125260:C:T) → hg38 chr1_KI270766v1_alt:3,331
+      - hg19 chr1:13,125,362 (SNP: 1:13125362:C:T) → hg38 chr1_KI270766v1_alt:3,433
+      - hg19 chr1:13,125,945 (SNP: 1:13125945:G:A) → hg38 chr1_KI270766v1_alt:4,016
+      - hg19 chr1:13,126,045 (SNP: 1:13126045:C:A) → hg38 chr1_KI270766v1_alt:4,116
+      - hg19 chr1:13,126,190 (SNP: 1:13126190:G:T) → hg38 chr1_KI270766v1_alt:4,261
+      - hg19 chr1:13,126,211 (SNP: 1:13126211:A:G) → hg38 chr1_KI270766v1_alt:4,282
+      - hg19 chr1:13,126,295 (SNP: 1:13126295:C:T) → hg38 chr1_KI270766v1_alt:4,366
+      - hg19 chr1:13,128,429 (SNP: 1:13128429:G:A) → hg38 chr1_KI270766v1_alt:6,500
+      - hg19 chr1:13,128,691 (SNP: 1:13128691:A:G) → hg38 chr1_KI270766v1_alt:6,762
+      - hg19 chr1:13,129,354 (SNP: 1:13129354:A:G) → hg38 chr1_KI270766v1_alt:7,425
+      ... and 7 more
+
+
+chr1 → chr21: 23 examples
+  No chain found (20 positions):
+    - hg19 chr1:143,151,447 (SNP: 1:143151447:T:G) → hg38 chr21:9,101,366
+    - hg19 chr1:143,203,859 (SNP: 1:143203859:C:A) → hg38 chr21:8,886,511
+    - hg19 chr1:143,204,534 (SNP: 1:143204534:C:T) → hg38 chr21:8,885,836
+    - hg19 chr1:143,210,222 (SNP: 1:143210222:A:G) → hg38 chr21:8,880,140
+    - hg19 chr1:143,212,225 (SNP: 1:143212225:A:C) → hg38 chr21:8,878,144
+    - hg19 chr1:143,216,818 (SNP: 1:143216818:G:A) → hg38 chr21:8,873,578
+    - hg19 chr1:143,261,110 (SNP: 1:143261110:A:G) → hg38 chr21:8,829,420
+    - hg19 chr1:143,263,268 (SNP: 1:143263268:A:G) → hg38 chr21:8,827,273
+    - hg19 chr1:143,265,372 (SNP: 1:143265372:G:A) → hg38 chr21:8,825,175
+    - hg19 chr1:143,269,246 (SNP: 1:143269246:T:C) → hg38 chr21:8,821,311
+    ... and 10 more
+
+  ... and 3 more examples not shown
+
+chr1 → chr4_GL000008v2_random: 29 examples
+  Chain record: chain 18966774 chr1 249250621 + 142535434 143239339 chr4_GL000008v2_random 209709 + 0 207491 319
+    Examples (20 positions):
+      - hg19 chr1:142,539,933 (SNP: 1:142539933:G:T) → hg38 chr4_GL000008v2_random:4,499
+      - hg19 chr1:142,539,936 (SNP: 1:142539936:T:A) → hg38 chr4_GL000008v2_random:4,502
+      - hg19 chr1:142,541,627 (SNP: 1:142541627:C:T) → hg38 chr4_GL000008v2_random:6,193
+      - hg19 chr1:142,542,976 (SNP: 1:142542976:T:G) → hg38 chr4_GL000008v2_random:7,542
+      - hg19 chr1:142,550,049 (SNP: 1:142550049:G:T) → hg38 chr4_GL000008v2_random:14,615
+      - hg19 chr1:142,551,107 (SNP: 1:142551107:A:T) → hg38 chr4_GL000008v2_random:15,673
+      - hg19 chr1:142,553,456 (SNP: 1:142553456:A:G) → hg38 chr4_GL000008v2_random:18,022
+      - hg19 chr1:142,554,158 (SNP: 1:142554158:C:T) → hg38 chr4_GL000008v2_random:18,724
+      - hg19 chr1:142,556,261 (SNP: 1:142556261:C:G) → hg38 chr4_GL000008v2_random:20,827
+      - hg19 chr1:142,560,386 (SNP: 1:142560386:C:T) → hg38 chr4_GL000008v2_random:24,952
+      ... and 10 more
+
+  ... and 9 more examples not shown
+
+chr1 → chr9: 4 examples
+  Chain record: chain 2102392 chr1 249250621 + 223725664 223747846 chr9 138394717 + 136033381 136055496 2043
+    Examples (2 positions):
+      - hg19 chr1:223,725,711 (SNP: 1:223725711:G:A) → hg38 chr9:136,033,428
+      - hg19 chr1:223,727,833 (SNP: 1:223727833:A:G) → hg38 chr9:136,035,550
+
+  No chain found (2 positions):
+    - hg19 chr1:223,741,478 (SNP: 1:223741478:G:C) → hg38 chr9:136,049,137
+    - hg19 chr1:223,745,876 (SNP: 1:223745876:C:T) → hg38 chr9:136,053,526
+
+
+chr1 → chrUn_KI270742v1: 16 examples
+  Chain record: chain 17644093 chr1 249250621 + 142781022 142967761 chrUn_KI270742v1 186739 + 0 186739 358
+    Examples (16 positions):
+      - hg19 chr1:142,786,185 (SNP: 1:142786185:G:A) → hg38 chrUn_KI270742v1:5,163
+      - hg19 chr1:142,794,193 (SNP: 1:142794193:T:G) → hg38 chrUn_KI270742v1:13,171
+      - hg19 chr1:142,794,818 (SNP: 1:142794818:C:T) → hg38 chrUn_KI270742v1:13,796
+      - hg19 chr1:142,797,359 (SNP: 1:142797359:A:T) → hg38 chrUn_KI270742v1:16,337
+      - hg19 chr1:142,798,736 (SNP: 1:142798736:G:A) → hg38 chrUn_KI270742v1:17,714
+      - hg19 chr1:142,801,140 (SNP: 1:142801140:A:C) → hg38 chrUn_KI270742v1:20,118
+      - hg19 chr1:142,802,525 (SNP: 1:142802525:A:T) → hg38 chrUn_KI270742v1:21,503
+      - hg19 chr1:142,803,401 (SNP: 1:142803401:C:A) → hg38 chrUn_KI270742v1:22,379
+      - hg19 chr1:142,808,396 (SNP: 1:142808396:T:C) → hg38 chrUn_KI270742v1:27,374
+      - hg19 chr1:142,817,537 (SNP: 1:142817537:A:T) → hg38 chrUn_KI270742v1:36,515
+      ... and 6 more
+
+
+
+
+================================================================================
+SUMMARY
+================================================================================
+Issue #2 (Centromeres): 11 failures
+Issue #3 (Segmental duplications): 2 failures
+Other failures: 17 failures
+Many-to-one mappings: 1 found
+Cross-chromosome mappings: 155 found

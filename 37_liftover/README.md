@@ -18,6 +18,7 @@ This tutorial explains the basics of **liftover** and how to liftover **summary 
 - [Liftover sumstats](#liftover-sumstats)
 - [Scores](#scores)
 - [Common reasons for liftover failures](#common-reasons-for-liftover-failures)
+- [UCSC liftOver vs NCBI Genome Remapping](#ucsc-liftover-vs-ncbi-genome-remapping)
 - [Why multiple hg19 positions liftover to the same hg38 position](#why-multiple-hg19-positions-liftover-to-the-same-hg38-position)
 - [References](#references)
 
@@ -407,6 +408,22 @@ Tools that require high fraction mapping (e.g., `minMatch=0.95`) may **drop**
 the whole interval because only 50/100 bp could be mapped contiguously.
 
 **Result:** interval liftover failure due to boundary semantics + chain breakpoint.
+
+---
+
+## UCSC liftOver vs NCBI Genome Remapping
+
+**(1) Different approach:** UCSC liftOver performs chain-based coordinate projection using precomputed genome-to-genome alignment chains. NCBI Genome Remapping (ReMap) projects features between assemblies using NCBI genomic alignments (and dbSNP remapping has also used flanking-sequence context in the GRCh37→GRCh38 transition).
+
+**(2) Why liftover results may differ:** UCSC liftOver is conservative by default (e.g., same-species defaults require high match and a single mapping), often dropping ambiguous or non-unique mappings to keep clean 1-to-1 coordinates. In contrast, ALT-aware remapping workflows (including those used in GRCh38 contexts) may retain multiple/ALT placements and represent ambiguity explicitly, which helps explain why a variant can fail UCSC liftOver yet still appear in dbSNP with a GRCh38 placement.
+
+### Key references
+
+4. **NCBI Insights: NCBI Remap** — Remapping “uses genomic alignments to project features from one sequence to the other.”  
+   https://ncbiinsights.ncbi.nlm.nih.gov/2014/01/16/ncbis-genome-remapping-service-assists-in-the-transition-to-the-new-human-genome-reference-assembly-grch38/ :contentReference[oaicite:3]{index=3}
+
+5. **Ensembl blog (dbSNP/GRCh38 context)** — Variants with multiple mappings were remapped using **flanking sequence information submitted to dbSNP** (GRCh37→GRCh38 transition).  
+   https://www.ensembl.info/2014/07/30/variation-annotation-for-grch38/ :contentReference[oaicite:4]{index=4}
 
 ---
 
