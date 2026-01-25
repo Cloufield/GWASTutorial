@@ -93,6 +93,10 @@ nav:
        - "Relatedness and sample structure" : 28_relatedness.md
        - "Phenotype normalization" : 26_normalization.md
        - "Measure of effect" : 55_measure_of_effect.md
+       - LiftOver:
+         - "Coordinate Systems" : 38_coordinate_system.md
+         - "Liftover" : 37_liftover.md
+         - "UCSC LiftOver Tool" : LiftOver.md
     - "Assignments" :
        - "Assignment - 1KG PCA" : 95_Assignment.md
        - "Assignment - Presentation" : 96_Assignment2.md
