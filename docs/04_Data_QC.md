@@ -368,7 +368,7 @@ Usually, variants can be categorized into 3 groups based on their Minor Allele F
 
 !!! info "How to calculate Minor Allele Frequency (MAF)"
     
-    Suppose the reference allele(REF) is A and the alternative allele(ALT) is B for a certain SNP. The posible genotypes are AA, AB and BB.  In a population of N samples (2N alleles), $N = N_{AA} + 2 \times N_{AB} + N_{BB}$ :
+    Suppose the reference allele(REF) is A and the alternative allele(ALT) is B for a certain SNP. The possible genotypes are AA, AB and BB. In a population of N samples (2N alleles), $N = N_{AA} + N_{AB} + N_{BB}$:
     
     - the number of A alleles:  $N_A = 2 \times N_{AA} + N_{AB}$
     - the number of B alleles:  $N_B = 2 \times N_{BB} + N_{AB}$
