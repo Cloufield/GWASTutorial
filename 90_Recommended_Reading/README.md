@@ -34,19 +34,14 @@
 |2008|Slatkin, M. (2008). *Linkage disequilibrium—understanding the evolutionary past and mapping the medical future*. **Nature Reviews Genetics**, 9(6), 477–485.|[PubMed](https://pubmed.ncbi.nlm.nih.gov/18427557/)|
 
 
-### Phasing
+### Phasing and Imputation
 
 |Year| Reference | Link|
 |-|-|-|
 |2011|Browning, S. R., & Browning, B. L. (2011). *Haplotype phasing: existing methods and new developments*. **Nature Reviews Genetics**, 12(10), 703–714.|[PubMed](https://pubmed.ncbi.nlm.nih.gov/21921926/)|
-
-
-### Imputation
-
-|Year| Reference | Link|
-|-|-|-|
 |2010|Marchini, J., & Howie, B. (2010). *Genotype imputation for genome-wide association studies*. **Nature Reviews Genetics**, 11(7), 499–511.|[PubMed](https://pubmed.ncbi.nlm.nih.gov/20517342/)|
 |2018|Das, S., Abecasis, G. R., & Browning, B. L. (2018). *Genotype imputation from large reference panels*. **Annual Review of Genomics and Human Genetics**, 19, 73–96.|[Journal](https://www.annualreviews.org/doi/10.1146/annurev-genom-083117-021602)|
+|2026|Sun, Q., & Li, Y. (2026). *Advances in haplotype phasing and genotype imputation*. **Nature Reviews Genetics**, 27, 155–169.|[Journal](https://www.nature.com/articles/s41576-025-00895-2)|
 
 
 ### Heritability
