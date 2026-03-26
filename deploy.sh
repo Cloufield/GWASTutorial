@@ -8,6 +8,7 @@ done
 cp 31_imputation/Imputation.md docs/Imputation.md
 cp 30_phasing/Phasing.md docs/Phasing.md
 cp 37_liftover/LiftOver.md docs/LiftOver.md
+cp 90_Recommended_Reading/basics.md docs/basics.md
 cp 10_PRS/prs_tutorial.ipynb docs/prs_tutorial.ipynb
 cp 10_PRS/PRS_evaluation.md docs/PRS_evaluation.md
 cp 12_fine_mapping/finemapping_susie.ipynb docs/finemapping_susie.ipynb

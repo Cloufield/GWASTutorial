@@ -22,6 +22,7 @@ theme:
 nav:
     - Home: 
       - "Tutorial guide" : index.md
+      - "Prerequisite Knowledge" : basics.md
       - "Introduction" : 00_Introduction.md
       - "Overview" : 39_overview.md
       - "About" : 99_About.md
@@ -100,7 +101,8 @@ nav:
     - "Assignments" :
        - "Assignment - 1KG PCA" : 95_Assignment.md
        - "Assignment - Presentation" : 96_Assignment2.md
-    - "Recommended reading" : 90_Recommended_Reading.md      
+    - "Recommended reading" :
+       - "Overview" : 90_Recommended_Reading.md
 
 markdown_extensions:
   - toc:
