@@ -6,6 +6,7 @@ edit_uri: ""
 copyright: "GWASTutorial is licensed under the MIT license"
 theme:
   name: material
+  custom_dir: overrides
   features:
     - navigation.tabs
     - navigation.top

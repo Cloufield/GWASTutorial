@@ -16,6 +16,9 @@ Readers who are new to human genetics, population genetics, genomics, or statist
 - **A Primer of Population Genetics and Genomics** (Daniel L. Hartl)  
   A concise and accessible introduction to population genetics, covering core concepts such as allele frequencies, Hardy–Weinberg equilibrium, genetic drift, selection, and population structure. It is especially useful for learners preparing for GWAS, where understanding allele frequency, LD, and population stratification is essential.
 
+- **[EPI 511, Advanced Population and Medical Genetics](https://alkesgroup.broadinstitute.org/EPI511)** (Alkes Price, Harvard School of Public Health)  
+  A graduate-level course with lectures and materials on population genetics, statistical genetics, and related topics in human disease genetics.
+
 ### Statistics
 - **Penn State STAT 501 course notes**  
   A free and practical introduction to regression and statistical inference. For many learners, this is sufficient background before beginning GWAS-focused study.
@@ -25,25 +28,119 @@ Readers who are new to human genetics, population genetics, genomics, or statist
 
 ## Minimal Topics to Know Before Learning GWAS
 
-Before starting GWASTutorial, readers should be familiar with the following basic topics.
+Before starting GWASTutorial, readers should be familiar with the following core topics.
 
 ### 1. Molecular and genome basics
-Basic structure and organization of genetic material, including DNA, genes, genomes, chromosomes, and genomic locations.
+Basic concepts in molecular biology and genome organization, including:
+- DNA
+- RNA
+- gene
+- genome
+- chromosome
+- autosome
+- sex chromosome
+- X chromosome
+- Y chromosome
+- mitochondrial DNA
+- genomic region
+- locus
+- genomic position
 
 ### 2. Genetic variation
-Common types of genetic variation and how variants are described, including SNPs, alleles, reference/alternate alleles, and variant identifiers such as rsIDs.
+Basic forms of genetic variation and how they are described, including:
+- variant
+- polymorphism
+- SNP
+- SNV
+- indel
+- structural variant
+- mutation
+- allele
+- reference allele
+- alternate allele
+- rsID
 
 ### 3. Genotypes and inheritance
-How genetic variants are carried and inherited, including genotypes, haplotypes, ploidy, zygosity, recombination, and linkage.
+Basic concepts of genotype structure and inheritance, including:
+- genotype
+- haplotype
+- diploid
+- haploid
+- homozygous
+- heterozygous
+- hemizygous
+- recombination
+- linkage
 
 ### 4. Traits and population genetics
-How traits are defined and how genetic variation is distributed in populations, including allele frequency, HWE, ancestry, population stratification, and relatedness.
+Basic concepts for understanding how traits and variants behave in populations, including:
+- phenotype
+- trait
+- binary trait
+- quantitative trait
+- allele frequency
+- genotype frequency
+- Hardy–Weinberg equilibrium (HWE)
+- heritability
+- penetrance
+- ancestry
+- population stratification
+- relatedness
+- principal component analysis (PCA)
 
 ### 5. Statistics and association analysis
-Basic statistical concepts used in GWAS, including distributions, regression, effect sizes, uncertainty, hypothesis testing, p-values, confidence intervals, and multiple testing.
+Basic statistical concepts commonly used in GWAS, including:
+- mean
+- variance
+- standard deviation
+- probability distribution
+- correlation
+- linear regression
+- logistic regression
+- effect size
+- standard error
+- confidence interval
+- hypothesis testing
+- p-value
+- multiple testing correction
 
-### 6. Study design and data handling
-Basic concepts in cohort design and data analysis, including samples, case-control studies, covariates, confounding, bias, missing data, and tabular data formats.
+For current standard GWAS and post-GWAS analysis, it is also helpful to have basic familiarity with:
+- linear mixed models (LMM)
+- generalized linear mixed models (GLMM)
+- random effects
+- variance components
+- Bayesian statistics
+- posterior probability
+- credible sets
+- fine-mapping concepts
 
-### 7. Genomic references and genome builds
-The role of reference genomes and genome builds in defining genomic coordinates and interpreting genetic variants.
+### 6. Genotyping and sequencing technologies
+Basic understanding of how genetic data are generated, including:
+- SNP array
+- genotyping
+- imputation
+- next-generation sequencing (NGS)
+- whole-genome sequencing (WGS)
+- whole-exome sequencing (WES)
+
+### 7. Study design and data handling
+Basic knowledge of how GWAS data are organized and analyzed, including:
+- sample
+- variant-level data
+- covariate
+- case-control study
+- quantitative trait study
+- quality control (QC)
+- missingness
+- minor allele frequency (MAF)
+- genome build
+- reference genome
+
+### 8. Genomic references and historical resources
+Basic awareness of major reference resources used in human genetics, including:
+- HapMap
+- 1000 Genomes Project (1KG)
+- linkage disequilibrium (LD)
+- reference panel
+
+UMAP or other low-dimensional visualization methods may be useful in some contexts, but they are not essential prerequisite knowledge for learning standard GWAS.

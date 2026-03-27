@@ -21,7 +21,7 @@ After identifying genome-wide significant associations, **post-GWAS analyses** a
 - **What proportion of trait variation is genetic?** SNP heritability estimation  
 - **What are the causal variants?** Fine-mapping and colocalization  
 - **Which genes and pathways are involved?** Functional annotation and pathway enrichment  
-- **How do variants affect molecular function?** Regulatory annotation and QTL integration  
+- **How do variants affect molecular function?** Regulatory annotation, colocalization, and xQTL integration (SMR, COLOC)  
 - **Where do genetic effects act?** Tissue- and cell-type enrichment  
 - **Are traits genetically related?** Genetic correlation and shared architecture  
 - **What are the causal relationships?** Mendelian randomization  
@@ -83,20 +83,21 @@ After identifying genome-wide significant associations, **post-GWAS analyses** a
 
 ---
 
-## [Colocalization analysis](../17_colocalization/)
+## Colocalization and xQTL integration
 
 **Biological questions answered:**
 
 - Do GWAS and molecular QTL signals share a causal variant?
 - Which genes or proteins mediate trait associations?
+- Is the association due to pleiotropy (shared variant) or linkage (distinct variants in LD)?
 - In which tissues or cell types do these effects occur?
 
 **Common approaches:**
 
-- eQTL and sQTL colocalization (GTEx, eQTLGen)
-- pQTL and metabolite QTL colocalization
+- [Colocalization analysis](../17_colocalization/) — Bayesian tests for shared causal variants (COLOC, eCAVIAR, HyPrColoc)
+- [SMR & HEIDI](../45_functional_interpretation/SMR.md) — MR-based test for pleiotropic association between xQTL and trait, with a heterogeneity test to distinguish pleiotropy from linkage
+- eQTL, sQTL, pQTL, and mQTL colocalization (GTEx, eQTLGen)
 - Chromatin interaction data (Hi-C, promoter capture Hi-C)
-- Statistical tests (COLOC, eCAVIAR, HyPrColoc)
 
 ---
 
