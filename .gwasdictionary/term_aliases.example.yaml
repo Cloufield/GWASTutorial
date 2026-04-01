@@ -1,0 +1,9 @@
+# Optional: copy to term_aliases.yaml and map free-text tokens to dictionary slugs
+# (case-insensitive keys). Slugs match the last path segment, e.g.
+#   https://cloufield.github.io/GWASDictionary/terms/g/gwas/  ->  gwas
+#
+# aliases:
+#   "my wording": gwas
+#   "C+T": prs-clumping-and-thresholding
+
+aliases: {}

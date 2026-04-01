@@ -89,6 +89,10 @@ The 1000 Genomes Project (1KG) remains one of the most widely used reference pan
 - **Quality control**: Using population frequencies to filter variants and assess data quality
 - **Ancestry analysis**: Estimating genetic ancestry and population admixture
 
+## Key Terms
+
+hapmap, 1000 genomes project, ancestry
+
 ## References
 
 ### HapMap Project

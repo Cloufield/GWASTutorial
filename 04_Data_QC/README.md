@@ -19,6 +19,7 @@ In this module, we will learn the basics of genotype data QC using PLINK, which 
 	- [Data management (make-bed/recode)](#data-management-make-bedrecode)
     - [Apply all the filters to obtain a clean dataset](#apply-all-the-filters-to-obtain-a-clean-dataset)
     - [Other common QC steps not included in this tutorial](#other-common-qc-steps-not-included-in-this-tutorial)
+- [Key terms](#key-terms)
 - [Exercise](#exercise)
 - [Additional resources](#additional-resources)
 - [References](#references)
@@ -855,6 +856,10 @@ plink \
 
 - check-sex: compares sex assignments in the input dataset with those imputed from X chromosome inbreeding coefficients [https://www.cog-genomics.org/plink/1.9/basic_stats#check_sex](https://www.cog-genomics.org/plink/1.9/basic_stats#check_sex)
 - case/control nonrandom missingness test:  detect platform/batch differences between case and control genotype data by performing Fisher's exact test on case/control missing call counts at each variant. [https://www.cog-genomics.org/plink/1.9/assoc#test_missing](https://www.cog-genomics.org/plink/1.9/assoc#test_missing)
+
+## Key terms
+
+QC, call rate, HWE, MAF, genotype missing rate, sample missing rate, heterozygosity, LD pruning, IBD, PI_HAT, kinship coefficient
 
 ## Exercise
 - [x] Follow this tutorial and type in the commands:

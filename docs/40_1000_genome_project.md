@@ -89,6 +89,12 @@ The 1000 Genomes Project (1KG) remains one of the most widely used reference pan
 - **Quality control**: Using population frequencies to filter variants and assess data quality
 - **Ancestry analysis**: Estimating genetic ancestry and population admixture
 
+## Key Terms
+
+- **[HapMap Project](https://cloufield.github.io/GWASDictionary/terms/h/hapmap-project/ "The International HapMap Project cataloged common human genetic variation and linkage disequilibrium patterns across populations, providing an early reference for tag SNP selection and imputation.")**
+- **[1000 Genomes Project](https://cloufield.github.io/GWASDictionary/terms/t/thousand-genomes-project/ "The 1000 Genomes Project produced a public catalog of human genetic variation from diverse populations, including phased haplotypes and population allele frequencies, widely used as an imputation reference, allele-frequency panel, and ancestry benchmark before larger resources (e.g. TOPMed, gnomAD).")**
+- **[Ancestry](https://cloufield.github.io/GWASDictionary/terms/a/ancestry/ "Genetic ancestry describes the proportion of an individual’s genome inherited from specified source populations (e.g. European, African, East Asian) or along continuous axes of variation. It is inferred from genotypes via PCA, supervised assignment, or local ancestry along the chromosome.")**
+
 ## References
 
 ### HapMap Project
