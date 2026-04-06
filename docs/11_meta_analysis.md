@@ -48,29 +48,29 @@ To address these problems, meta-analysis is a powerful approach to integrate mul
 Before performing any type of meta-analysis, we need to make sure our datasets contain sufficient information and the datasets are QCed and harmonized. It is important to perform this step to avoid any unexpected errors and heterogeneity.
 
 !!! info "Key points for Dataset selection"
-    - [] **Minimal requirements for data** (CHR,POS,BETA,SE,P,N,EA,NEA,EAF... )
-    - [] **Phenotype definition** 
-    - [] Study design 
-    - [] **Sample overlap** (independent population)
-    - [] Proper citations (we can obtain sufficient information on study design, phenotype definition and QC)
-    - [] Data integrity (md5sum check)
-    - [] Ancestry (population with the same ancestry)
-    - [] Downloading from the source (preferably not second-hand datasets)
+    - [x] **Minimal requirements for data** (CHR,POS,BETA,SE,P,N,EA,NEA,EAF... )
+    - [x] **Phenotype definition** 
+    - [x] Study design 
+    - [x] **Sample overlap** (independent population)
+    - [x] Proper citations (we can obtain sufficient information on study design, phenotype definition and QC)
+    - [x] Data integrity (md5sum check)
+    - [x] Ancestry (population with the same ancestry)
+    - [x] Downloading from the source (preferably not second-hand datasets)
 
 !!! info "Key points for Quality control"
-    - [] Remove variants with minor allele frequency being too low
-    - [] Remove Multi-allelic Variants
-    - [] Remove Duplicated variants
-    - [] Remove Copy number variation
-    - [] Normalize Indels
-    - [] Standardize notations
-    - [] Removed variants with extreme effect sizes
-    - [] Filter out variants with low imputation accuracy
+    - [x] Remove variants with minor allele frequency being too low
+    - [x] Remove Multi-allelic Variants
+    - [x] Remove Duplicated variants
+    - [x] Remove Copy number variation
+    - [x] Normalize Indels
+    - [x] Standardize notations
+    - [x] Removed variants with extreme effect sizes
+    - [x] Filter out variants with low imputation accuracy
 
 !!! info "Key points for Harmonization"
-    - [] On the genomic coordinate 
-    - [] On the same strand (mostly forward)
-    - [] Be cautious for palindromic SNPs
+    - [x] On the genomic coordinate 
+    - [x] On the same strand (mostly forward)
+    - [x] Be cautious for palindromic SNPs
 
 ---
 
@@ -310,7 +310,11 @@ Other software and pipelines (for example **seqMeta** in R) follow similar **sco
 
 ### Other rare-variant score-meta tools (Meta-SAIGE, MetaSKAT, MetaSTAAR)
 
-[**Meta-SAIGE**](https://www.nature.com/articles/s41588-025-02403-y) extends **SAIGE-GENE+** to pooled **summary statistics**: cohorts contribute per-variant **scores**, variances, and **sparse LD** for gene/set **burden**, **SKAT**, and **SKAT-O**, with ultrarare collapsing, **Cauchy** combination across masks, **SPA** for imbalanced binary traits, and per-cohort LD reusable across phenotypes. **MetaSKAT** meta-analyzes study-level **SKAT** summaries; **MetaSTAAR** supports rare-variant meta with **functional** annotations.
+[**Meta-SAIGE**](https://www.nature.com/articles/s41588-025-02403-y) extends **SAIGE-GENE+** to pooled **summary statistics**: cohorts contribute per-variant **scores**, variances, and **sparse LD** for gene/set **burden**, **SKAT**, and **SKAT-O**, with ultrarare collapsing, **Cauchy** combination across masks, **SPA** for imbalanced binary traits, and per-cohort LD reusable across phenotypes.
+
+[**MetaSKAT**](https://doi.org/10.1016/j.ajhg.2013.05.010), via the **MetaSKAT** **R** package, is an earlier **general framework** for rare-variant **gene/set** meta-analysis on **sequencing** studies: each cohort exports variant-level **score statistics** and the **covariance of scores within the tested set**, which are combined for meta **burden**, **SKAT**, and **SKAT-O** without individual-level genotypes.
+
+[**MetaSTAAR**](https://www.nature.com/articles/s41588-022-01225-6) is geared to **biobank-scale WGS/WES** meta-analysis, storing study summaries in **sparse** form for scalable cross-cohort combination and using **multiple functional annotations** to weight variants in **coding** and **noncoding** masks; it accommodates **relatedness**, **population structure**, and **quantitative** or **binary** traits.
 
 ---
 
@@ -354,5 +358,7 @@ For more details, you can check [here](https://www.globalbiobankmeta.org/).
 - **rare-variant meta (framework)** : Liu, D. J., Peloso, G. M., Zhan, X., Holmen, O. L., Zawistowski, M., ... & Abecasis, G. R. (2014). Meta-analysis of gene-level tests for rare variant association. *Nature Genetics*, 46(2), 155–165.
 - **raremetal** : Feng, S., Liu, D., Zhan, X., Wing, M. K., & Abecasis, G. R. (2014). RAREMETAL: fast and powerful meta-analysis of rare variants. *Bioinformatics*, 30(19), 2828–2829.
 - **meta-saige** : Park, E., Nam, K., Jeong, S., ... Zhou, W., & Lee, S. (2025). Scalable and accurate rare variant meta-analysis with Meta-SAIGE. *Nature Genetics*, 57, 3185–3192. [https://doi.org/10.1038/s41588-025-02403-y](https://www.nature.com/articles/s41588-025-02403-y)
+- **metaskat** : Lee, S., Teslovich, T. M., Boehnke, M., & Lin, X. (2013). General framework for meta-analysis of rare variants in sequencing association studies. *American Journal of Human Genetics*, 93(1), 42–53. [https://doi.org/10.1016/j.ajhg.2013.05.010](https://doi.org/10.1016/j.ajhg.2013.05.010)
+- **metastaar** : Li, X., Quick, C., Zhou, H., Gaynor, S., Liu, Y., Chen, H., ... & Lin, X. (2022). Powerful, scalable and resource-efficient meta-analysis of rare variant associations in large whole genome sequencing studies. *Nature Genetics*, 55(1), 154–164. [https://doi.org/10.1038/s41588-022-01225-6](https://www.nature.com/articles/s41588-022-01225-6)
 - **cauchy-combination** : Liu, Y., & Xie, J. (2020). Cauchy combination test: a powerful test with analytic p-value calculation under arbitrary dependency structures. *Journal of the American Statistical Association*, 115(529), 393–402.
 - **skat-o** : Lee, S., Wu, M. C., & Lin, X. (2012). Optimal unified approach for rare-variant association testing with application to small-sample case-control whole-exome sequencing studies. *American Journal of Human Genetics*, 91(2), 224–237.
