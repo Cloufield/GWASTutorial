@@ -1,0 +1,2 @@
+# Pin for reproducible GitHub Pages builds (match locally: pip install -r requirements-docs.txt)
+zensical==0.0.31

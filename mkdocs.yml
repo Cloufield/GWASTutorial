@@ -1,5 +1,7 @@
 site_name: GWASTutorial
 site_author: HE Yunye
+# Canonical URL for GitHub Pages (project site). Change if you use a fork or custom domain.
+site_url: https://cloufield.github.io/GWASTutorial/
 repo_name: 'GitHub'
 repo_url: https://github.com/Cloufield/GWASTutorial
 edit_uri: ""
