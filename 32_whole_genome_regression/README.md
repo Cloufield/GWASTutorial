@@ -2,7 +2,20 @@
 
 # Whole-genome regression : REGENIE
 
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Concepts
+
+---
+
 
 ### Overview
 
@@ -10,6 +23,9 @@
     REGENIE is a computationally efficient C++ program for whole-genome regression modeling of large genome-wide association studies. It is designed to handle quantitative and binary traits, including binary traits with unbalanced case-control ratios. REGENIE can process multiple phenotypes efficiently, handle population structure and relatedness, and perform various gene/region-based tests. The method uses a two-step approach: Step 1 fits a whole-genome regression model to capture polygenic effects, and Step 2 performs single-variant association tests using predictions from Step 1 to adjust for polygenic background.
     
     Reference: https://rgcgithub.github.io/regenie/overview/
+
+---
+
 
 ### Whole genome model
 
@@ -70,6 +86,9 @@ REGENIE uses a whole-genome regression approach to model polygenic effects acros
 !!! info "Why whole-genome regression?"
     Traditional GWAS methods test each variant independently, which can lead to false positives due to population structure and cryptic relatedness. By first fitting a whole-genome model that captures **polygenic background effects**, REGENIE can better control for these confounders and improve the accuracy of association tests.
 
+---
+
+
 ### Comparison: Linear Mixed Models vs. Whole Genome Regression
 
 Both Linear Mixed Models (LMM) and Whole Genome Regression (WGR) are methods designed to account for polygenic background effects in GWAS, but they differ in their modeling approaches.
@@ -84,6 +103,9 @@ Both Linear Mixed Models (LMM) and Whole Genome Regression (WGR) are methods des
 | **Handling relatedness** | Explicitly models genetic relationships via GRM | Implicitly accounts for relatedness through polygenic predictions |
     
     Reference: https://rgcgithub.github.io/regenie/faq/
+
+---
+
 
 ### Stacked regressions
 
@@ -125,6 +147,9 @@ This stacking approach allows REGENIE to:
 !!! note "Memory efficiency"
     The `--lowmem` option in Step 1 writes Level 0 predictions to disk, allowing REGENIE to process very large datasets without excessive memory usage.
 
+---
+
+
 ### Firth correction
 
 For binary traits, especially those with unbalanced case-control ratios or when testing rare variants, standard logistic regression can produce biased effect estimates and inflated test statistics. **Firth correction** is a penalized likelihood method that addresses this issue.
@@ -143,11 +168,20 @@ In REGENIE Step 2, Firth correction can be applied using the `--firth` flag:
     
     The correction adds a penalty term to the likelihood function, which prevents the estimates from becoming infinite and produces more reliable p-values.
 
+---
+
+
 ## Tutorial
+
+---
+
 
 ### Installation
 
 Please check [here](https://rgcgithub.github.io/regenie/install/)
+
+---
+
 
 ### Step1
 
@@ -181,6 +215,9 @@ In Step 1, REGENIE fits a whole-genome regression model to capture polygenic bac
       --lowmem-prefix tmpdir/regenie_tmp_preds \
       --out 1kg_eas_step1_BT
     ```
+
+---
+
 
 
 ### Step2
@@ -243,9 +280,15 @@ After running REGENIE Step 2, you will obtain summary statistics files (typicall
     - `P`: P-value
     - Additional columns for Firth correction if used (e.g., `EXTRA`)
 
+---
+
+
 ## Other Applications
 
 Beyond single-variant association testing, REGENIE supports several advanced analyses that extend its functionality:
+
+---
+
 
 ### Gene-based and region-based tests
 
@@ -264,6 +307,9 @@ REGENIE can perform gene/region-based association tests that aggregate informati
     3. Running Step 2 with `--anno-file`, `--set-list`, and test-specific options (e.g., `--burden`, `--skat`, `--acat`)
     
     Reference: https://rgcgithub.github.io/regenie/options/#gene-based-testing
+
+---
+
 
 ### Interaction testing
 
@@ -286,6 +332,9 @@ REGENIE supports testing for gene-environment (G×E) and gene-gene (G×G) intera
     
     This tests whether genetic effects differ across BMI categories.
 
+---
+
+
 ### Conditional analyses
 
 Starting from REGENIE v3.0, you can perform conditional analyses by specifying variants to include as covariates. This is useful for:
@@ -297,6 +346,9 @@ Starting from REGENIE v3.0, you can perform conditional analyses by specifying v
     Use `--condition-list` to specify variants to condition on. REGENIE will automatically exclude these variants from the analysis and include them as covariates in the association model.
     
     Reference: https://rgcgithub.github.io/regenie/options/#conditional-analyses
+
+---
+
 
 ### Survival/time-to-event analyses
 
@@ -321,6 +373,16 @@ Starting from REGENIE v4.0, survival analysis for time-to-event data is supporte
 
 
 For detailed documentation on all REGENIE features and options, see: https://rgcgithub.github.io/regenie/options/
+
+---
+
+
+## Key terms
+
+REGENIE, whole-genome regression, polygenic background, ridge regression, stacked regression, leave-one-chromosome-out (LOCO), linear mixed model (LMM), genetic relatedness matrix (GRM), infinitesimal model, Firth correction, single-variant association test, gene-based test, burden test, SKAT, SKAT-O, ACAT, G×E interaction, conditional analysis, Cox proportional hazards model
+
+---
+
 
 ## References
 - Mbatchou, J., Barnard, L., Backman, J., Marcketta, A., Kosmicki, J. A., Ziyatdinov, A., ... & Marchini, J. (2021). Computationally efficient whole-genome regression for quantitative and binary traits. Nature genetics, 53(7), 1097-1103.

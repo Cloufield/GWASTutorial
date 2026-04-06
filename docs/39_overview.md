@@ -2,6 +2,9 @@
 
 This section provides a comprehensive overview of the complete GWAS workflow, from study design and sample collection to functional validation.
 
+---
+
+
 ## Complete GWAS Workflow
 
 The following diagram illustrates the full workflow of a genome-wide association study, from study design and sample collection through data generation, quality control, association testing, post-GWAS analysis, and functional validation.
@@ -114,6 +117,9 @@ The following diagram illustrates the full workflow of a genome-wide association
     - Drug Target Validation (Therapeutic Development)
     
     Experimental validation of GWAS findings: functional genomics studies (eQTL analysis, CRISPR editing, epigenomic profiling), in vitro validation using cell culture models, in vivo studies using animal models, and drug target validation for therapeutic development.
+
+---
+
 
 ## Key Considerations
 

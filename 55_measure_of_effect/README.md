@@ -1,6 +1,12 @@
 
 # Concepts
 
+---
+
+**On this page**
+
+[TOC]
+
 ### Risk
 
 Risk: the probability that a subject within a population will develop a given disease, or other health outcome, over a specified follow-up period.
@@ -12,6 +18,9 @@ $$
 - E (Event): number of individuals with events
 - N (Non-event): number of individuals without events
 
+---
+
+
 ### Odds 
 
 Odds: the likelihood of a new event occurring rather than not occurring. It is the probability that an event will occur divided by the probability that the event will not occur.
@@ -19,6 +28,9 @@ Odds: the likelihood of a new event occurring rather than not occurring. It is t
 $$
 Odds = {E \over N }
 $$
+
+---
+
 
 ### Hazard
 
@@ -30,14 +42,23 @@ $$
 
 *T* is a discrete random variable indicating the time of occurrence of the event.
 
+---
+
+
 
 ## Relative risk (RR) and Odds ratio (OR)
+
+---
+
 ### 2×2 Contingency Table
 
 |  | Intervention I | Control C |
 | --- | --- | --- |
 | Events E | IE | CE |
 | Non-events N | IN | CN |
+
+---
+
 
 
 ### Relative risk (RR)
@@ -47,6 +68,9 @@ $$
 RR = {{R_{Intervention}}\over{R_{control}}}={{IE/(IE+IN)}\over{CE/(CE+CN)}}
 $$
 
+---
+
+
 ### Odds ratio (OR)
 OR: usually used in case control studies.
 
@@ -55,6 +79,9 @@ OR = {{Odds_{Intervention}}\over{Odds_{control}}}={{IE/IN}\over{CE/CN}} = {{IE *
 $$
 
 When the event occurs in less than 10% of the unexposed population, the OR provides a reasonable approximation of the RR.
+
+---
+
 
 ## Hazard ratios (HR)
 Hazard ratios (relative hazard) are usually estimated from Cox proportional hazards model:

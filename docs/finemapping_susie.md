@@ -1,5 +1,15 @@
 # Finemapping using susieR
 
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Data preparation
 
 
@@ -14,6 +24,9 @@ import matplotlib.pyplot as plt
 import gc
 
 ```
+
+---
+
 
 ### Load sumstats
 
@@ -211,6 +224,9 @@ sumstats.memory_usage()
 
 ```
 
+---
+
+
 ### Data standardization and sanity check
 
 
@@ -286,6 +302,9 @@ Fri Apr 19 20:14:09 2024 Finished sorting columns successfully!
 
 Note: 220793 variants were removed due to na Z values.This is due to FIRTH_CONVERGE_FAIL when performing GWAS using PLINK2.
 
+---
+
+
 ### Extract lead variants
 
 
@@ -313,6 +332,9 @@ Fri Apr 19 20:14:09 2024 Finished extracting lead variants successfully!
 | 2:55513738:C:T | 2 | 55513738 | C | T | 0.376008 | 0.153159 | -7.96244 | 1.686760e-15 | 0.295373 | 496 | 9960099 | C | T |
 | 7:134368632:T:G | 7 | 134368632 | G | T | 0.138105 | 0.225526 | 6.89025 | 5.569440e-12 | 4.730010 | 496 | 9960099 | T | G |
 | 20:42758834:T:C | 20 | 42758834 | T | C | 0.227273 | 0.184323 | -7.76902 | 7.909780e-15 | 0.238829 | 495 | 9960099 | T | C |
+
+---
+
 
 ### Create manhattan plot for checking
 
@@ -361,6 +383,9 @@ Fri Apr 19 20:15:06 2024  -Skip saving figures!
 
 ![Output image](images/notebooks/finemapping_susie_img_0.png)
 
+---
+
+
 ### Extract the variants around 2:55513738:C:T for finemapping
 
 
@@ -377,6 +402,9 @@ Fri Apr 19 20:15:18 2024  -Removing 907560 variants not meeting the conditions: 
 Fri Apr 19 20:15:18 2024 Finished filtering values.
 
 ```
+
+---
+
 
 ### Convert OR to BETA
 
@@ -423,6 +451,9 @@ locus.data
 | 2:56008984:C:G | 2 | 56008984 | G | C | 0.013185 | 0.205883 | 0.547226 | 0.376227 | 0.706748 | 1.228610 | 493 | 9960099 | C | G |
 | 2:56009480:A:T | 2 | 56009480 | A | T | 0.157258 | 0.135667 | 0.177621 | 0.763784 | 0.444996 | 1.145300 | 496 | 9960099 | A | T |
 | 2:56010434:C:T | 2 | 56010434 | T | C | 0.017172 | 0.300305 | 0.491815 | 0.610604 | 0.541462 | 1.350270 | 495 | 9960099 | C | T |
+
+---
+
 
 ### Align NEA with reference sequence
 
@@ -492,6 +523,9 @@ locus.data
 | 2:56009480:A:T | 2 | 56009480 | T | A | 0.842742 | -0.135667 | 0.177621 | 0.763784 | 0.444996 | 0.873134 | 496 | 9960019 | A | T |
 | 2:56010434:C:T | 2 | 56010434 | T | C | 0.017172 | 0.300305 | 0.491815 | 0.610604 | 0.541462 | 1.350270 | 495 | 9960009 | C | T |
 
+---
+
+
 ### Output the sumstats of this locus
 
 
@@ -500,6 +534,9 @@ locus.data.to_csv("sig_locus.tsv",sep="\t",index=None)
 locus.data["SNPID"].to_csv("sig_locus.snplist",sep="\t",index=None,header=None)
 
 ```
+
+---
+
 
 ### Run PLINK to get LD matrix for this locus
 
@@ -571,6 +608,9 @@ Note: No phenotypes present.
 
 ```
 
+---
+
+
 ## Finemapping
 
 
@@ -595,6 +635,9 @@ INFO:rpy2.rinterface_lib.embedded:R is already initialized. No need to initializ
 
 ```
 
+---
+
+
 ### Load locus sumstats
 
 
@@ -618,6 +661,9 @@ df
 | 2:56009480:A:T | 2 | 56009480 | T | A | 0.842742 | -0.135667 | 0.177621 | 0.763784 | 0.444996 | 0.873134 | 496 | 9960019 | A | T |
 | 2:56010434:C:T | 2 | 56010434 | T | C | 0.017172 | 0.300305 | 0.491815 | 0.610604 | 0.541462 | 1.350270 | 495 | 9960009 | C | T |
 
+---
+
+
 ### Import sumsieR
 
 
@@ -626,6 +672,9 @@ df
 susieR = importr('susieR')
 
 ```
+
+---
+
 
 ### Load LD matrix
 
@@ -663,6 +712,9 @@ array([[ 1.00000e+00,  9.58562e-01, -3.08678e-01, ...,  1.96204e-02,
 
 ```
 
+---
+
+
 ### Visualize the LD structure of this locus
 
 
@@ -692,6 +744,9 @@ Text(0.5, 1.0, 'LD r2 matrix')
 
 https://stephenslab.github.io/susieR/articles/finemapping_summary_statistics.html#fine-mapping-with-susier-using-summary-statistics
 
+---
+
+
 ### Run finemapping use susieR
 
 
@@ -706,6 +761,9 @@ fit = susieR.susie_rss(
 )
 
 ```
+
+---
+
 
 ### Extract credible sets and PIP
 
@@ -737,6 +795,9 @@ for i in range(n_cs):
 df["pip"] = np.array(susieR.susie_get_pip(fit))
 
 ```
+
+---
+
 
 ### Create regional plot
 
@@ -788,6 +849,9 @@ axes[1].legend()
 
 ![Output image](images/notebooks/finemapping_susie_img_2.png)
 
+---
+
+
 ### Pitfalls
 
 The causal variant we used to simulate is actually 2:55620927:G:A, which was filtered out during data preparation due to FIRTH_CONVERGE_FAIL. So the credible set we identified does not really include the bona fide causal variant.
@@ -806,6 +870,9 @@ df.loc[np.array(cs_index)-1,:]
 | 2:55605943:A:G | 2 | 55605943 | G | A | 0.685484 | 1.321987 | 0.166688 | -7.93089 | 2.175840e-15 | 3.750868 | 496 | 9960019 | A | G | 1 | 0.267953 | 14.662373 |
 | 2:55612986:G:C | 2 | 55612986 | C | G | 0.685223 | 1.302133 | 0.166154 | -7.83691 | 4.617840e-15 | 3.677133 | 494 | 9960019 | G | C | 1 | 0.150449 | 14.335561 |
 | 2:55622624:G:A | 2 | 55622624 | A | G | 0.688508 | 1.324109 | 0.167119 | -7.92315 | 2.315640e-15 | 3.758833 | 496 | 9960019 | G | A | 1 | 0.255448 | 14.635329 |
+
+---
+
 
 ### Check LD of the causal variant and variants in the credible set
 
@@ -882,6 +949,9 @@ Note: No phenotypes present.
 --r2 square to credible_r2.ld ... 0% [processingwriting]          done.
 
 ```
+
+---
+
 
 ### Load LD and plot
 

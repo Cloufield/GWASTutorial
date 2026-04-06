@@ -1,6 +1,19 @@
 # 1000 Genomes Project
 
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## History
+
+---
+
 
 ### HapMap Project
 
@@ -19,6 +32,9 @@ The HapMap project was instrumental in:
 - Understanding patterns of linkage disequilibrium across populations
 - Providing reference data for imputation methods
 - Establishing the foundation for population genetics research
+
+---
+
 
 ### 1000 Genomes Project
 
@@ -48,14 +64,23 @@ Both projects have been fundamental resources for GWAS, providing reference data
 - Perform fine-mapping and functional annotation
 - Study population structure and genetic diversity
 
+---
+
+
 ## Why Use 1000 Genomes Project?
 
 The 1000 Genomes Project (1KG) remains one of the most widely used reference panels in genetic research for several key reasons:
+
+---
+
 
 ### 1. **Comprehensive Variant Catalog**
 - Contains over **88 million genetic variants** (84.7M SNPs, 3.6M indels, 60K structural variants)
 - Captures both common (≥1% frequency) and rare variants (0.1-0.5% in coding regions)
 - Provides the most complete catalog of human genetic variation across diverse populations
+
+---
+
 
 ### 2. **High-Quality Imputation Reference**
 - **Phased haplotype data** enables accurate imputation of untyped variants in GWAS studies
@@ -63,11 +88,17 @@ The 1000 Genomes Project (1KG) remains one of the most widely used reference pan
 - Widely supported by imputation software (e.g., IMPUTE2, Minimac, Beagle)
 - Better imputation accuracy compared to earlier HapMap panels due to larger sample size and sequencing-based data
 
+---
+
+
 ### 3. **Population Diversity**
 - Includes **26 populations** from 5 major continental groups (Africa, Americas, East Asia, Europe, South Asia)
 - Enables population-specific allele frequency estimation
 - Supports studies of population structure and admixture
 - Allows for population-stratified analyses and ancestry-specific variant discovery
+
+---
+
 
 ### 4. **Publicly Available and Well-Documented**
 - **Free and open access** - no restrictions on data usage
@@ -75,10 +106,16 @@ The 1000 Genomes Project (1KG) remains one of the most widely used reference pan
 - Comprehensive documentation and metadata
 - Active community support and regular updates
 
+---
+
+
 ### 5. **Integration with Other Resources**
 - Compatible with major databases (dbSNP, ClinVar, gnomAD)
 - Used as reference in many population genetics databases
 - Integrates well with functional genomics datasets (ENCODE, Roadmap Epigenomics)
+
+---
+
 
 ### Common Use Cases:
 
@@ -89,11 +126,43 @@ The 1000 Genomes Project (1KG) remains one of the most widely used reference pan
 - **Quality control**: Using population frequencies to filter variants and assess data quality
 - **Ancestry analysis**: Estimating genetic ancestry and population admixture
 
-## Key Terms
+---
 
-hapmap, 1000 genomes project, ancestry
+
+## Key terms
+
+HapMap, 1000 Genomes Project (1KG), Ancestry
+
+---
+
+
+## Download data
+
+---
+
+
+### HapMap Phase 3
+
+- **NCBI FTP (all HapMap releases):** [https://ftp.ncbi.nlm.nih.gov/hapmap/](https://ftp.ncbi.nlm.nih.gov/hapmap/)
+- **Phase III genotypes (2010-05 release):** [https://ftp.ncbi.nlm.nih.gov/hapmap/genotypes/2010-05_phaseIII/](https://ftp.ncbi.nlm.nih.gov/hapmap/genotypes/2010-05_phaseIII/)
+- **Overview and documentation:** [NCBI dbGaP / HapMap](https://www.ncbi.nlm.nih.gov/variation/research/hapmap/)
+
+---
+
+
+### 1000 Genomes Project (1KG)
+
+- **IGSR — browse samples and data:** [https://www.internationalgenome.org/data](https://www.internationalgenome.org/data)
+- **EBI FTP (project files, VCFs, panels):** [https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/)
+- **NCBI FTP mirror:** [https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/](https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/)
+
+---
+
 
 ## References
+
+---
+
 
 ### HapMap Project
 
@@ -102,6 +171,9 @@ hapmap, 1000 genomes project, ancestry
 2. **International HapMap Consortium.** A second generation human haplotype map of over 3.1 million SNPs. *Nature* **449**, 851-861 (2007). [doi:10.1038/nature06258](https://doi.org/10.1038/nature06258)
 
 3. **International HapMap 3 Consortium.** Integrating common and rare genetic variation in diverse human populations. *Nature* **467**, 52-58 (2010). [doi:10.1038/nature09298](https://doi.org/10.1038/nature09298)
+
+---
+
 
 ### 1000 Genomes Project
 

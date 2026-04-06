@@ -2,6 +2,16 @@
 
 This tutorial demonstrates how to estimate SNP-based heritability using GCTA-GREML (Genome-wide Complex Trait Analysis - Genome-based Restricted Maximum Likelihood).
 
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Introduction
 
 The basic model behind GCTA-GREML is the linear mixed model (LMM):
@@ -28,6 +38,15 @@ $$ Var(y) = V = A\delta^2_g + I \delta^2_e$$
 
 !!! quote GCTA-GREML
     For details, please check Yang, J., Lee, S. H., Goddard, M. E., & Visscher, P. M. (2011). GCTA: a tool for genome-wide complex trait analysis. The American Journal of Human Genetics, 88(1), 76-82. [link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3014363/).
+
+!!! note "Required data and tools"
+
+    - **GCTA** — install and add to `PATH` ([Download](#download)).
+    - **PLINK binary genotype** and an **LD-pruned SNP list** — tutorial paths: [04_Data_QC/sample_data.clean](../04_Data_QC/README.md), `plink_results.prune.in` from pruning ([Make GRM](#make-grm)).
+    - **Phenotype file** — e.g. [01_Dataset/1kgeas_binary.txt](../01_Dataset/README.md) ([Estimation](#estimation)).
+
+---
+
 
 ## Download
 
@@ -57,6 +76,9 @@ Download the version of GCTA for your system from : https://yanglab.westlake.edu
 
 !!! tip 
     Add GCTA to the path where you have added to your environment like `ln -s /home/yunye/tools/gcta/gcta-1.94.1-linux-kernel-3-x86_64 /home/yunye/tools/bin/gcta`.
+
+---
+
 
 ## Make GRM
 
@@ -126,6 +148,9 @@ Overall computational time: 2.31 sec.
 
 ```
 
+---
+
+
 ## Estimation
 
 ```
@@ -152,6 +177,9 @@ gcta \
   --out 1kg_eas
 
 ```
+
+---
+
 
 ## Results
 
@@ -242,6 +270,9 @@ Overall computational time: 0.08 sec.
     We only included a limited number of samples (<500) in this analysis, which is insufficient.
 
 It is helpful to check the [FAQ section of GCTA](https://yanglab.westlake.edu.cn/software/gcta/#FAQ) if you encounter any errors. 
+
+---
+
 
 ## References
 

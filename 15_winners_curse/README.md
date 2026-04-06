@@ -1,5 +1,11 @@
 # Winner's curse
 
+---
+
+**On this page**
+
+[TOC]
+
 ## Introduction
 
 Winner's curse refers to the phenomenon that genetic effects are systematically overestimated by thresholding or selection process in genetic association studies. 
@@ -22,7 +28,13 @@ When we select variants based on significance thresholds (e.g., $p < 5 \times 10
     - **Biological interpretation**: Accurate effect sizes are crucial for understanding the true magnitude of genetic associations
     - **Power calculations**: Biased effect estimates can affect power calculations for future studies
 
+---
+
+
 ## Mathematical framework
+
+---
+
 
 ### Asymptotic distribution (unconditional)
 
@@ -45,6 +57,9 @@ $${{\beta_{Observed} - \beta_{True}}\over{\sigma}} \sim N(0,1)$$
 !!! info "An example of distribution of ${{\beta_{Observed} - \beta_{True}}\over{\sigma}}$"
     ![image](https://user-images.githubusercontent.com/40289485/219680536-eb20ae9c-2220-450a-95b1-9b4b6a7c91ce.png)
 
+---
+
+
 ### Selection-conditional distribution (two-sided truncated normal)
 
 When we condition on selection (i.e., variants that passed the significance threshold), the distribution of $\beta_{Observed}$ becomes a **two-sided truncated normal distribution** (also called a selection-conditional normal distribution). This is a mixture of two tails: the upper tail for positive effects and the lower tail for negative effects.
@@ -62,6 +77,9 @@ where:
 - $\Phi(x)$: standard normal cumulative density function
 - The denominator $\Phi({{{\beta_{True}}\over{\sigma}}-c}) + \Phi({{{-\beta_{True}}\over{\sigma}}-c})$ represents the probability of selection (the sum of probabilities in both tails)
 
+---
+
+
 ### Expected bias
 
 From the selection-conditional distribution, the expectation of effect sizes for the selected variants (i.e., $E[\beta_{Observed} | \text{selected}, \beta_{True}]$) can then be approximated by: 
@@ -76,6 +94,9 @@ Key observations:
 !!! tip "Derivation of this equation"
     The derivation of this equation can be found in the Appendix A of Ghosh, A., Zou, F., & Wright, F. A. (2008). Estimating odds ratios in genome scans: an approximate conditional likelihood approach. The American Journal of Human Genetics, 82(5), 1064-1074.
 
+---
+
+
 ## Winner's curse correction
 
 !!! warning "Important: Only apply to selected variants"
@@ -88,6 +109,9 @@ To correct for winner's curse, we need to solve for $\beta_{True}$ given the obs
 $$E[\beta_{Observed} | \text{selected}, \beta_{True}] = \beta_{Observed}$$
 
 where the expectation is taken over the selection-conditional distribution. This requires solving a nonlinear equation, typically using numerical methods.
+
+---
+
 
 ### Implementation in Python
 
@@ -155,6 +179,9 @@ where the expectation is taken over the selection-conditional distribution. This
     print(f"Bias: {beta_obs - beta_corrected:.4f}")
     ```
 
+---
+
+
 ### Implementation in R
 
 !!! example "Winner's curse correction function in R"
@@ -204,6 +231,9 @@ where the expectation is taken over the selection-conditional distribution. This
     cat("Bias:", beta_obs - beta_corrected, "\n")
     ```
 
+---
+
+
 ### Applying correction to GWAS summary statistics
 
 !!! example "Correcting multiple variants from GWAS summary statistics"
@@ -238,6 +268,9 @@ where the expectation is taken over the selection-conditional distribution. This
     - **Before Mendelian randomization**: Corrected effect sizes improve MR estimates
     - **For meta-analysis**: Correct effect sizes from discovery studies before meta-analysis
 
+---
+
+
 ## Available tools and packages
 
 Several tools and packages are available for winner's curse correction:
@@ -263,6 +296,9 @@ Several tools and packages are available for winner's curse correction:
     
     For a comprehensive comparison, see: https://amandaforde.github.io/winnerscurse/articles/winners_curse_methods.html
 
+---
+
+
 ## Limitations and considerations
 
 !!! warning "Important considerations"
@@ -280,7 +316,13 @@ Several tools and packages are available for winner's curse correction:
     - Consider the standard error when interpreting corrected effects
     - Validate corrected effects in independent replication cohorts when possible
 
+---
+
+
 ## References
+
+---
+
 
 ### Methodological papers
 
@@ -288,9 +330,15 @@ Several tools and packages are available for winner's curse correction:
 
 - **Ghosh, A., Zou, F., & Wright, F. A.** (2008). Estimating odds ratios in genome scans: an approximate conditional likelihood approach. *The American Journal of Human Genetics*, 82(5), 1064-1074. https://doi.org/10.1016/j.ajhg.2008.03.002
 
+---
+
+
 ### Review and comparison papers
 
 - **Forde, A., & Wade, K. H.** (2022). Winner's Curse Correction and Variable Thresholding Improve Performance of Polygenic Risk Modeling Based on Genome-Wide Association Study Summary-Level Data. *PLoS Genetics*, 18(6), e1010173. https://doi.org/10.1371/journal.pgen.1010173
+
+---
+
 
 ### Software and resources
 

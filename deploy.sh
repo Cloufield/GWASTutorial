@@ -16,5 +16,8 @@ cp 16_mendelian_randomization/TwoSampleMR.ipynb docs/TwoSampleMR.ipynb
 cp 05_PCA/plot_PCA.ipynb docs/plot_PCA.ipynb
 cp 06_Association_tests/Visualization.ipynb docs/Visualization.ipynb
 cp README.md docs/index.md
+# Temporarily disabled: links Key terms to GWAS Dictionary URLs in docs/**/*.md
+# python3 .gwasdictionary/expand_key_terms.py
+python3 scripts/check_crosslinks.py || exit 1
 zensical serve -a 127.0.0.1:9999
 #mkdocs gh-deploy

@@ -1,6 +1,12 @@
 
 # Linkage disequilibrium(LD)
 
+---
+
+**On this page**
+
+[TOC]
+
 ## LD Definition
 
 In meiosis, homologous chromosomes are recombined. Recombination rates at different DNA regions are not equal. 
@@ -14,6 +20,9 @@ The fragments can be detected after tens of generations, causing **Linkage diseq
     - Genetic drift
     - Population subdivision and bottlenecks
     - Inbreeding 
+
+---
+
 
 ## LD Estimation
 
@@ -84,16 +93,28 @@ $$
 
 Reference: Slatkin, M. (2008). Linkage disequilibrium—understanding the evolutionary past and mapping the medical future. Nature Reviews Genetics, 9(6), 477-485.
 
+---
+
+
 ## LD Calculation using software
+
+---
+
 
 ### LDstore2
 LDstore2: http://www.christianbenner.com/#
 
 Reference: Benner, C. et al. Prospects of fine-papping trait-associated genomic regions by using summary statistics from genome-wide association studies. Am. J. Hum. Genet. (2017).
 
+---
+
+
 ### PLINK LD
 
 Please check [Calculate LD using PLINK](https://cloufield.github.io/GWASTutorial/04_Data_QC/#ld-calculation).
+
+---
+
 
 ## LD Lookup using LDlink
 
@@ -106,14 +127,23 @@ Please check [Calculate LD using PLINK](https://cloufield.github.io/GWASTutorial
 
 LDlink is a very useful tool for quick lookups of any information related to LD. 
 
+---
+
+
 ### LDlink-LDpair
 !!! example "LDpair"
     ![image](https://user-images.githubusercontent.com/40289485/218093225-91f3f59c-654f-4ba0-a869-2fb67aa91913.png)
+
+---
+
 
 
 ### LDlink-LDproxy
 !!! example "LDproxy for rs671"
     ![image](https://user-images.githubusercontent.com/40289485/218092256-f3750a19-307a-4559-9544-f0431c83d9bd.png)
+
+---
+
 
 
 ### Query in batch using LDlink API
@@ -127,6 +157,9 @@ LDlink provides API for queries using command line.
     ```
     curl -k -X GET 'https://ldlink.nci.nih.gov/LDlinkRest/ldproxy?var=rs3&pop=MXL&r2_d=r2&window=500000&genome_build=grch37&token=faketoken123'
     ```
+
+---
+
 
 ### LDlinkR
 
@@ -148,17 +181,29 @@ my_proxies <- LDproxy(snp = "rs671",
 
 Reference: Myers, T. A., Chanock, S. J., & Machiela, M. J. (2020). LDlinkR: an R package for rapidly calculating linkage disequilibrium statistics in diverse populations. Frontiers in genetics, 11, 157.
 
+---
+
+
 ## LD-pruning
 
 Please check [LD-pruning](https://cloufield.github.io/GWASTutorial/04_Data_QC/#ld-pruning)
+
+---
+
 
 ## LD-clumping
 
 Please check [LD-clumping](https://cloufield.github.io/GWASTutorial/10_PRS/#ctpt-using-plink)
 
+---
+
+
 ## LD score
 
 Definition: https://cloufield.github.io/GWASTutorial/08_LDSC/#ld-score
+
+---
+
 
 ### LDSC
 
@@ -174,6 +219,9 @@ python ldsc.py \
 ```
 
 Check [here](https://github.com/bulik/ldsc/wiki/LD-Score-Estimation-Tutorial) for details.
+
+---
+
 
 ### GCTA
 
@@ -192,9 +240,15 @@ gcta64 \
 
 Check [here](https://yanglab.westlake.edu.cn/software/gcta/#ComputingLDscores) for details.
 
+---
+
+
 ## LD score regression
 
 Please check [LD score regression](https://cloufield.github.io/GWASTutorial/08_LDSC/)
+
+---
+
 
 ## References
 

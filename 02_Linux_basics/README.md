@@ -11,27 +11,20 @@ In this section, we will introduce the most basic commands which enable you to h
 !!! note "For **Windows** users"
     You can simply install WSL to get a linux environment. Please check [here](https://cloufield.github.io/GWASTutorial/82_windows_linux_subsystem/) for how to install WSL.
 
-## Table of Contents
+---
 
-- [Linux introduction](#linux-system-introduction)
-- [Overview and checking the manual pages](#overview-of-the-basic-commands-in-linux)
-- [Handling directories](#directories)
-- [Manipulating files](#manipulating-files)
-- [Finding files](#finding-files)
-- [Symbolic link](#links)
-- [Archiving and Compression](#archive-and-compression)
-- [Checking files](#read-and-check-files)
-- [Editing files in terminal](#edit-files)
-- [Permissions](#permission)
-- [Disk space management](#disk-space-management)
-- [Process management](#process-management)
-- [Other useful commands](#others)
-- [Bash scripts](#bash-scripts)
-- [Advanced text editing](#advanced-text-editing)
-- [Git and Github](#git-and-github)
-- [Download](#download)
+
+**On this page**
+
+[TOC]
+
+---
+
 
 ## Linux System Introduction
+
+---
+
 
 ### What is Linux?
 
@@ -60,6 +53,9 @@ In this section, we will introduce the most basic commands which enable you to h
 
 Reference: [https://en.wikipedia.org/wiki/Linux](https://en.wikipedia.org/wiki/Linux)
 
+---
+
+
 ### How do we interact with computers?
 
 - Graphical User Interface (GUI): allows users to interact with computers through graphical icons 
@@ -74,6 +70,9 @@ Reference: [https://en.wikipedia.org/wiki/Linux](https://en.wikipedia.org/wiki/L
     - Different shells might use other signs for the prompt. For example, the defaul zsh in Mac uses `%` , and C shell uses `>` as the prompt sign.
     - There are multiple available shells which differ in their features. For a typical linux system, the default shell is `bash`.  
 
+---
+
+
 ### A general comparison between CUI and GUI
 
 ||GUI|CUI|
@@ -87,6 +86,9 @@ Reference: [https://en.wikipedia.org/wiki/Linux](https://en.wikipedia.org/wiki/L
 
 !!! tip
     The reason why we want to use CUI for large-scale data analysis is that CUI is better in term of precision, memory usage and processing speed.
+
+---
+
 
 ## Overview of the basic commands in Linux
 
@@ -109,6 +111,9 @@ Here is a list of the basic commands we are going to cover in this brief tutoria
     | Links| `ln` | Commands for creating symbolic and hard links|
     | Pipe, redirect and others| pipe, `>`,`>>`,`*`,`.`,`..` | A group of miscellaneous commands |
     | Advance text editing| `awk`, `sed` | Commands for more complicated text manipulation and editing |
+
+---
+
 
 ### How to check the usage of a command using `man`: 
 
@@ -157,8 +162,14 @@ For example, we want to check the usage of `pwd`:
     
     LLMs can provide explanations, examples, and even help troubleshoot command errors. However, always verify LLM responses, especially for critical operations, as they may occasionally provide incorrect or outdated information.
 
+---
+
+
 
 ## Commands
+
+---
+
 ### Directories
 
 The first set of commands are: `pwd` , `cd` , `ls`, `mkdir` and `rmdir`, which are related to directories (like the folders in a Windows system).
@@ -263,6 +274,9 @@ Some frequently used options for `ls` :
     README.md  sumstats.txt
     ```
 
+---
+
+
 ### Manipulating files
 
 This set of commands includes: `touch`, `mv` , `rm` and `cp`
@@ -359,6 +373,9 @@ Now, let's move it back to the current directory and rename it to `sumstats_new.
     $ cp -r directory1/ directory2/
     ```
 
+---
+
+
 ### Finding files
 
 #### `find`
@@ -412,6 +429,9 @@ Common options:
     - `locate`: uses a database, faster but may be outdated
     Use `find` when you need current results, especially for recently created files.
 
+---
+
+
 ### Links  
 
 Symbolic link is like a shortcut on window system, which is a special type of file that points to another file.
@@ -435,6 +455,9 @@ You can use `ln -s pathA pathB` to create such a link.
     ls -lha
     lrwxr-xr-x  1 he  staff    27B Aug 30 11:30 plink -> /home/he/tools/plink/plink
     ```
+
+---
+
 
 ### Archiving and Compression
 
@@ -496,6 +519,9 @@ Commonly used commands for archiving and compression:
     - `-f`: specify filename
     - `-z`: use gzip compression
     - `-t`: list contents
+
+---
+
 
 ### Read and check files
 We have a group of handy commands to check part of or the entire file, including `cat`, `zcat`, `less`, `more`, `head`, `tail`, `wc`, `grep`
@@ -694,6 +720,9 @@ Common options:
     $ grep -E "^1\t" sumstats.txt | head
     ```
 
+---
+
+
 ### Edit files
 
 **Vim** is a handy text editor for command line.
@@ -720,6 +749,9 @@ For more detailed tutorials on Vim, you can check: [Learn-Vim](https://github.co
 !!! info "Other common command line text editors"
     - [nano](https://www.nano-editor.org/)
     - [emacs](https://www.gnu.org/software/emacs/)
+
+---
+
 
 ### Permission
 
@@ -782,6 +814,9 @@ chmod [3-digit Binary notation] [path]
 !!! warning
     Please always be cautious when handling human genomic data.
 
+---
+
+
 ### Disk space management
 
 Genomic files can be very large, so it's important to monitor disk space usage. Two essential commands for this are `df` and `du`.
@@ -833,6 +868,9 @@ Common options:
 
 !!! tip "Managing large genomic files"
     Regularly check disk space with `df -h` and identify large directories with `du -sh *` to avoid running out of space during analysis.
+
+---
+
 
 ### Process management
 
@@ -913,6 +951,9 @@ For long-running analyses, you can run processes in the background.
     - Redirect output to log files: `nohup command > output.log 2>&1 &`
     - Check process status periodically with `ps` or `top`
     - Monitor disk space to ensure you have enough storage
+
+---
+
 
 ### Others
 
@@ -1032,6 +1073,9 @@ Common checksum commands:
 
 !!! warning
     Be extremely careful when you use rm and *. It is disastrous when you mistakenly type `rm *`
+
+---
+
  
 ## Bash scripts
 
@@ -1064,6 +1108,9 @@ Now we can run the script by `./hello.sh`:
 "Hello, world2" 
 ```
 
+---
+
+
 ## Advanced text editing 
 
 (optional: awk, sed, cut, sort, join, uniq)
@@ -1077,6 +1124,9 @@ Advanced commands:
 
 - `awk` : [https://cloufield.github.io/GWASTutorial/60_awk/](https://cloufield.github.io/GWASTutorial/60_awk/)
 - `sed` : [https://cloufield.github.io/GWASTutorial/61_sed/](https://cloufield.github.io/GWASTutorial/61_sed/)
+
+---
+
 
 ## Git and Github
 
@@ -1093,6 +1143,9 @@ You can also check [here](https://cloufield.github.io/GWASTutorial/83_git_and_gi
     - Git Reference: [https://git-scm.com/doc](https://git-scm.com/doc)
     - Cheatsheet: [https://training.github.com/downloads/github-git-cheat-sheet/](https://training.github.com/downloads/github-git-cheat-sheet/)
 
+---
+
+
 ## Download
 
 We can use `wget [option] [url]` command to download files to local machine.
@@ -1108,77 +1161,9 @@ We can use `wget [option] [url]` command to download files to local machine.
     wget -O my_refgenome.fa.gz https://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/hg19.fa.gz
     ```
 
+---
 
-## Exercise
 
-The questions are generated by Microsoft Bing!
+## Key terms
 
-What is the command to list all files and directories in your current working directory?
-
-- A) `ls`
-- B) `cd`
-- C) `pwd`
-- D) `mkdir`
-
-What is the command to create a new directory named “test”?
-
-- A) `cd test`
-- B) `pwd test`
-- C) `mkdir test`
-- D) `ls test`
-
-What is the command to copy a file named “data.txt” from your current working directory to another directory named “backup”?
-
-- A) `cp data.txt backup/`
-- B) `mv data.txt backup/`
-- C) `rm data.txt backup/`
-- D) `cat data.txt backup/`
-
-What is the command to display the first 10 lines of a file named “results.csv”?
-
-- A) `head results.csv`
-- B) `tail results.csv`
-- C) `less results.csv`
-- D) `more results.csv`
-
-What is the command to count the number of lines, words, and characters in a file named “report.txt”?
-
-- A) `wc report.txt`
-- B) `count report.txt`
-- C) `size report.txt`
-- D) `stat report.txt`
-
-What is the command to search for a pattern in a file named “log.txt” and print only the matching lines?
-
-- A) `grep pattern log.txt`
-- B) `find pattern log.txt`
-- C) `locate pattern log.txt`
-- D) `search pattern log.txt`
-
-What is the command to sort the contents of a file named “names.txt” in alphabetical order and save the output to a new file named “sorted_names.txt”?
-
-- A) `sort names.txt > sorted_names.txt`
-- B) `sort names.txt < sorted_names.txt`
-- C) `sort names.txt >> sorted_names.txt`
-- D) `sort names.txt << sorted_names.txt`
-
-What is the command to display the difference between two files named “old_version.py” and “new_version.py”?
-
-- A) `diff old_version.py new_version.py`
-- B) `cmp old_version.py new_version.py`
-- C) `diffy old_version.py new_version.py`
-- D) `compare old_version.py new_version.py`
-
-What is the command to change the permissions of a file named “script.sh” to make it executable by everyone?
-
-- A) `chmod +x script.sh`
-- B) `chmod 777 script.sh`
-- C) `chmod ugo+x script.sh`
-- D) `All of the above`
-
-What is the command to run a program named “program.exe” in the background and redirect its output to a file named “output.log”?
-
-- A) `program.exe & > output.log`
-- B) `program.exe > output.log &`
-- C) `program.exe < output.log &`
-- D) `program.exe & < output.log`
+Linux kernel, Linux distribution, GUI, CLI, Git, GitHub, Docker, Conda, Slurm

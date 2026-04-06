@@ -1,8 +1,16 @@
+---
+
 ## Recommended Prerequisite Knowledge
+
+---
+
 
 ## Suggested Background Reading
 
 Readers who are new to human genetics, population genetics, genomics, or statistics may benefit from reviewing some introductory materials before starting GWASTutorial.
+
+---
+
 
 ### Human genetics and genomics
 
@@ -12,12 +20,18 @@ Readers who are new to human genetics, population genetics, genomics, or statist
 - **Human Molecular Genetics** (Strachan et al.)  
   A more advanced textbook that provides deeper coverage of genes, genomes, genetic variation, and molecular mechanisms. It is best suited for readers who already know the basics and want a stronger conceptual foundation.
 
+---
+
+
 ### Population genetics
 - **A Primer of Population Genetics and Genomics** (Daniel L. Hartl)  
   A concise and accessible introduction to population genetics, covering core concepts such as allele frequencies, Hardy–Weinberg equilibrium, genetic drift, selection, and population structure. It is especially useful for learners preparing for GWAS, where understanding allele frequency, LD, and population stratification is essential.
 
 - **[EPI 511, Advanced Population and Medical Genetics](https://alkesgroup.broadinstitute.org/EPI511)** (Alkes Price, Harvard School of Public Health)  
   A graduate-level course with lectures and materials on population genetics, statistical genetics, and related topics in human disease genetics.
+
+---
+
 
 ### Statistics
 - **Penn State STAT 501 course notes**  
@@ -26,9 +40,15 @@ Readers who are new to human genetics, population genetics, genomics, or statist
 - **StatQuest**  
   A beginner-friendly video resource that explains core statistical concepts with clear visual and intuitive examples. It is particularly useful for readers who need a more accessible introduction to topics that frequently appear in GWAS, such as linear regression, logistic regression, p-values, multiple testing, and principal component analysis. StatQuest is not a substitute for formal statistical training, but it is an excellent supplementary resource for building intuition before starting GWAS analysis.
 
+---
+
+
 ## Minimal Topics to Know Before Learning GWAS
 
 Before starting GWASTutorial, readers should be familiar with the following core topics.
+
+---
+
 
 ### 1. Molecular and genome basics
 Basic concepts in molecular biology and genome organization, including:
@@ -46,6 +66,9 @@ Basic concepts in molecular biology and genome organization, including:
 - locus
 - genomic position
 
+---
+
+
 ### 2. Genetic variation
 Basic forms of genetic variation and how they are described, including:
 - variant
@@ -60,6 +83,9 @@ Basic forms of genetic variation and how they are described, including:
 - alternate allele
 - rsID
 
+---
+
+
 ### 3. Genotypes and inheritance
 Basic concepts of genotype structure and inheritance, including:
 - genotype
@@ -71,6 +97,9 @@ Basic concepts of genotype structure and inheritance, including:
 - hemizygous
 - recombination
 - linkage
+
+---
+
 
 ### 4. Traits and population genetics
 Basic concepts for understanding how traits and variants behave in populations, including:
@@ -87,6 +116,9 @@ Basic concepts for understanding how traits and variants behave in populations, 
 - population stratification
 - relatedness
 - principal component analysis (PCA)
+
+---
+
 
 ### 5. Statistics and association analysis
 Basic statistical concepts commonly used in GWAS, including:
@@ -114,6 +146,9 @@ For current standard GWAS and post-GWAS analysis, it is also helpful to have bas
 - credible sets
 - fine-mapping concepts
 
+---
+
+
 ### 6. Genotyping and sequencing technologies
 Basic understanding of how genetic data are generated, including:
 - SNP array
@@ -122,6 +157,9 @@ Basic understanding of how genetic data are generated, including:
 - next-generation sequencing (NGS)
 - whole-genome sequencing (WGS)
 - whole-exome sequencing (WES)
+
+---
+
 
 ### 7. Study design and data handling
 Basic knowledge of how GWAS data are organized and analyzed, including:
@@ -135,6 +173,9 @@ Basic knowledge of how GWAS data are organized and analyzed, including:
 - minor allele frequency (MAF)
 - genome build
 - reference genome
+
+---
+
 
 ### 8. Genomic references and historical resources
 Basic awareness of major reference resources used in human genetics, including:

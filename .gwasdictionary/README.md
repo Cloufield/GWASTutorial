@@ -1,6 +1,6 @@
 # GWAS Dictionary tooling
 
-Automate **Key terms** sections in tutorial Markdown using definitions and URLs from the [GWAS Dictionary](https://cloufield.github.io/GWASDictionary/) [raw terms](https://cloufield.github.io/GWASDictionary/raw-terms/) table.
+Automate **`## Key terms`** sections in tutorial Markdown using definitions and URLs from the [GWAS Dictionary](https://cloufield.github.io/GWASDictionary/) [raw terms](https://cloufield.github.io/GWASDictionary/raw-terms/) table.
 
 ## Workflow
 

@@ -2,6 +2,12 @@
 
 UCSC `liftOver` is a command-line tool for converting genomic coordinates between different genome assemblies using chain files.
 
+---
+
+**On this page**
+
+[TOC]
+
 ## Online Version
 
 UCSC also provides a **web-based liftOver tool** for quick conversions without installation:
@@ -12,6 +18,9 @@ UCSC also provides a **web-based liftOver tool** for quick conversions without i
 - Download results immediately
 
 The online tool is convenient for small-scale conversions, while the command-line tool is recommended for batch processing and automation.
+
+---
+
 
 ## Installation
 
@@ -24,6 +33,9 @@ Make it executable:
 ```bash
 chmod +x liftOver
 ```
+
+---
+
 
 ## Download Chain Files
 
@@ -39,6 +51,9 @@ Common chain files:
 - `hg38ToHg19.over.chain.gz` (hg38 → hg19)
 - `hg18ToHg19.over.chain.gz` (hg18 → hg19)
 
+---
+
+
 ## Basic Usage
 
 ```bash
@@ -51,6 +66,9 @@ liftOver input.bed chain_file.chain.gz output.bed unmapped.bed
 - `chain_file.chain.gz`: Chain file for the conversion
 - `output.bed`: Successfully lifted coordinates
 - `unmapped.bed`: Failed coordinates with failure reasons
+
+---
+
 
 ## Input Format (BED)
 
@@ -71,6 +89,9 @@ Columns:
 !!! warning "Coordinate System"
     BED format is **0-based**. If your coordinates are **1-based** (e.g., from VCF or sumstats), convert them first:
     - 1-based position `N` → BED start: `N-1`, BED end: `N`
+
+---
+
 
 ## Common Options
 
@@ -188,10 +209,16 @@ liftOver -minMatch=0.95 input.bed chain_file.chain.gz output.bed unmapped.bed
 
     See `liftover_chr1_example.sh` for a complete script that performs this conversion.
 
+---
+
+
 ## Output Files
 
 - **`output.bed`**: Contains successfully lifted coordinates in the target assembly
 - **`unmapped.bed`**: Contains failed coordinates with reasons (e.g., "No chain found", "Multiple mappings")
+
+---
+
 
 ## Tips
 
@@ -199,6 +226,9 @@ liftOver -minMatch=0.95 input.bed chain_file.chain.gz output.bed unmapped.bed
 - For sumstats, convert 1-based positions to 0-based BED format before liftover
 - After liftover, convert back to 1-based if needed for downstream analysis
 - Some positions may fail due to assembly differences (centromeres, gaps, duplications) — this is expected
+
+---
+
 
 ## References
 

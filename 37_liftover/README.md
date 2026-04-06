@@ -7,17 +7,11 @@ This tutorial explains the basics of **liftover** and how to liftover **summary 
 
     See [Coordinate Systems](../38_coordinate_system/) for detailed explanations and conversion rules.
 
-## Table of Contents
+---
 
-- [Liftover](#liftover)
-- [Chain file](#chain-file)
-- [How liftover is performed](#how-liftover-is-performed)
-- [Scores](#scores)
-- [Common reasons for liftover failures](#common-reasons-for-liftover-failures)
-- [UCSC liftOver vs NCBI Genome Remapping](#ucsc-liftover-vs-ncbi-genome-remapping)
-- [Why multiple hg19 positions liftover to the same hg38 position](#why-multiple-hg19-positions-liftover-to-the-same-hg38-position)
-- [UCSC LiftOver tool](#ucsc-liftover-tool) (see [LiftOver.md](LiftOver.md) for details)
-- [References](#references)
+**On this page**
+
+[TOC]
 
 ---
 
@@ -65,6 +59,9 @@ A **chain file** encodes how two genome assemblies align to each other and is th
 
     Chain files encode **sequence correspondence only**, not genes, SNP IDs, or annotations.
 
+---
+
+
 ### Format
 
 - File extension: `.chain` or `.chain.gz`
@@ -75,6 +72,9 @@ Each chain contains:
 
 - A header line describing the source and target regions
 - Multiple block lines describing aligned segments and gaps
+
+---
+
 
 ## Example of a chain file (simplified)
 
@@ -88,6 +88,9 @@ chain 123456 chr1 249250621 + 100000 100615 chr1 248956422 + 100200 100815 950
 | `chain` | `123456` | `chr1` | `249250621` | `+` | `100000` | `100615` | `chr1` | `248956422` | `+` | `100200` | `100815` | `950` |
 | ------- | -------- | ------ | ----------- | --- | -------- | -------- | ------ | ----------- | --- | -------- | -------- | ----- |
 | Record type | Chain ID | Source chromosome | Source chromosome length | Source strand | Source start (0-based) | Source end | Target chromosome | Target chromosome length | Target strand | Target start (0-based) | Target end | Chain score |
+
+---
+
 
 ### Block lines
 
@@ -226,6 +229,9 @@ Target: chr1:100200 ──300bp── gap15 ──200bp── gap0 ──100bp�
     - UCSC Genome Browser Wiki: **BlatJob.csh** (BLAT job execution script)
       https://genomewiki.ucsc.edu/images/f/fa/BlatJob.csh.txt
 
+---
+
+
 ## How liftover is performed
 
 Given:
@@ -312,6 +318,9 @@ Below are the most common hg19 → hg38-specific causes, especially relevant for
 **(1) Different approach:** UCSC liftOver performs chain-based coordinate projection using precomputed genome-to-genome alignment chains. NCBI Genome Remapping (ReMap) projects features between assemblies using NCBI genomic alignments (and dbSNP remapping has also used flanking-sequence context in the GRCh37→GRCh38 transition).
 
 **(2) Why liftover results may differ:** UCSC liftOver is conservative by default (e.g., same-species defaults require high match and a single mapping), often dropping ambiguous or non-unique mappings to keep clean 1-to-1 coordinates. In contrast, ALT-aware remapping workflows (including those used in GRCh38 contexts) may retain multiple/ALT placements and represent ambiguity explicitly, which helps explain why a variant can fail UCSC liftOver yet still appear in dbSNP with a GRCh38 placement.
+
+---
+
 
 ### Key references
 
@@ -461,6 +470,9 @@ This looks like “two hg19 positions → one hg38 position”, but the real cau
 ## UCSC LiftOver Tool
 
 For detailed information about the UCSC LiftOver tool, including installation, usage, and examples, see [LiftOver.md](LiftOver.md).
+
+---
+
 
 ## References
 

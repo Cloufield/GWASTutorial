@@ -53,6 +53,9 @@ Together, these components form the foundation for discovering and understanding
 
 The human **genome** consists of approximately **3 billion base** pairs of DNA, organized into 23 pairs of **chromosomes**. Modern **sequencing technologies** have enabled comprehensive characterization of **genetic variation** across the **genome**.
 
+---
+
+
 ### Sequencing technologies
 
 **Sequencing technologies** are methods used to determine the order of nucleotides (A, T, G, C) in DNA. Different technologies have been developed over time, each with specific advantages for GWAS applications:
@@ -70,6 +73,9 @@ The human **genome** consists of approximately **3 billion base** pairs of DNA, 
 
 !!! tip "Imputation in GWAS"
     Most GWAS use **genotyping arrays** that measure 500K-5M variants, then use **imputation** to infer millions of additional variants based on **linkage disequilibrium (LD)** patterns from reference panels (e.g., 1000 Genomes Project, TOPMed). This approach balances cost and genome-wide coverage.
+
+---
+
 
 ### Types of genetic variants
 
@@ -91,6 +97,9 @@ The human **genome** consists of approximately **3 billion base** pairs of DNA, 
 
 Understanding the distinction between **Mendelian traits** and **complex traits** is fundamental to GWAS.
 
+---
+
+
 ### Mendelian vs. Complex traits
 
 Understanding the distinction between **Mendelian traits** and **complex traits** is fundamental to GWAS:
@@ -108,6 +117,9 @@ Understanding the distinction between **Mendelian traits** and **complex traits*
 
 !!! tip "The polygenic nature of complex traits"
     Most human traits and diseases are complex traits. Even diseases with known Mendelian forms (e.g., breast cancer) often have complex forms influenced by many genetic and environmental factors.
+
+---
+
 
 ### Types of traits suitable for GWAS
 
@@ -190,6 +202,9 @@ Several large-scale cohorts have been instrumental in advancing GWAS research:
 
 A **Genome-Wide Association Study (GWAS)** is a research approach that investigates the association between **genetic variants** (typically **SNPs**) and **traits** across the entire **genome**. GWAS represents a powerful hypothesis-free method for discovering genetic factors that contribute to complex traits and diseases. Unlike candidate gene studies that focus on specific genes, GWAS systematically scans the entire genome without prior assumptions about which variants might be important.
 
+---
+
+
 ### Description of GWAS
 
 GWAS is a **population-based** study design that examines **genetic variation** across the genome to identify **loci** (genomic regions) associated with **phenotypes** of interest. The fundamental principle is to compare the **allele frequencies** of **genetic variants** between individuals with different **phenotypic** values (e.g., cases vs. controls, or high vs. low trait values). 
@@ -209,6 +224,9 @@ The typical GWAS workflow involves:
 4. Applying **multiple testing correction** to account for the millions of tests performed
 5. Identifying **genome-wide significant** associations that pass stringent significance thresholds
 6. Replicating findings in independent **cohorts** to validate associations
+
+---
+
 
 ### What GWAS does
 
@@ -232,6 +250,9 @@ GWAS systematically tests millions of **genetic variants** to identify those ass
     Associated Variants
     ```
 
+---
+
+
 ### Key concepts in GWAS
 
 | Concept | Description | Details |
@@ -254,6 +275,9 @@ GWAS systematically tests millions of **genetic variants** to identify those ass
     - Identify the **causal variant** when multiple **variants** are in **LD**
     - Explain the **biological mechanism** (requires functional studies)
     - Account for all **genetic contribution** (**missing heritability**)
+
+---
+
 
 ### Applications of GWAS
 
@@ -279,6 +303,9 @@ To successfully conduct and interpret GWAS, you will benefit from knowledge and 
 | **Biology & Medicine** | Molecular biology, genetics, genomics, disease biology, functional genomics | Essential for understanding biological context | Throughout tutorial |
 | **Statistics** | Regression analysis, hypothesis testing, multiple testing correction, population genetics, heritability, meta-analysis | Core to GWAS methodology | Throughout tutorial |
 | **Programming** | Command line (Linux/Unix), Python, R, Bash, data manipulation, version control (Git) | Essential for data analysis | [Section 02](https://cloufield.github.io/GWASTutorial/02_Linux_basics/), [70](https://cloufield.github.io/GWASTutorial/70_python_basics/), [75](https://cloufield.github.io/GWASTutorial/75_R_basics/) |
+
+---
+
 
 ### Detailed skill breakdown
 
@@ -321,6 +348,9 @@ To successfully conduct and interpret GWAS, you will benefit from knowledge and 
     1. [Linux basics](https://cloufield.github.io/GWASTutorial/02_Linux_basics/) (if needed)
     2. [Data formats](https://cloufield.github.io/GWASTutorial/03_Data_formats/)
     3. [Data QC](https://cloufield.github.io/GWASTutorial/04_Data_QC/)
+
+---
+
 
 ### Recommended reading
 

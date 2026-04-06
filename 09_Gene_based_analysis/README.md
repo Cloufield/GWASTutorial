@@ -1,15 +1,20 @@
 # Gene and gene-set analysis
 
-## Table of Contents
+---
 
-- [MAGMA Introduction](#magma-introduction)
-- [Install MAGMA](#install-magma)
-- [Download reference files](#download-reference-files)
-- [Format input files](#format-input-files)
-- [Annotate SNPs](#annotate-snps)
-- [Gene-based analysis](#gene-based-analysis)
-- [Gene-set level analysis](#gene-set-level-analysis)
-- [References](#references)
+
+**On this page**
+
+[TOC]
+
+!!! note "Required data and tools"
+
+    - **MAGMA** — install the binary and add it to your `PATH` ([Install MAGMA](#install-magma)).
+    - **Reference data** — gene locations, LD reference panel, and optional MSigDB gene sets ([Download reference files](#download-reference-files)).
+    - **GWAS summary statistics** — formatted SNP locations and *p*-values per chromosome (example uses BBJ HDL-C from [08_LDSC](../08_LDSC/README.md)).
+
+---
+
 
 ### MAGMA Introduction
 
@@ -61,6 +66,9 @@ $$
 - $S_S$ : indicator (if the gene is in a specified gene set)
 - $\beta_S$ : difference in effects between genes in the specified set and genes outside the set.
 
+---
+
+
 ### Install MAGMA
 Download MAGMA for your operating system from the following URL:
 
@@ -82,6 +90,9 @@ $ magma --version
 MAGMA version: v1.10 (linux)
 ```
 
+---
+
+
 ### Download reference files
 
 We need the following reference files:
@@ -98,12 +109,18 @@ The third one can be downloaded from MsigDB.
 
 -> https://www.gsea-msigdb.org/gsea/msigdb/
 
+---
+
+
 ### Format input files
 ```
 zcat ../08_LDSC/BBJ_HDLC.txt.gz | awk 'NR>1 && $2==3 {print $1,$2,$3}' > HDLC_chr3.magma.input.snp.chr.pos.txt
 zcat ../08_LDSC/BBJ_HDLC.txt.gz | awk 'NR>1 && $2==3 {print $1,10^(-$11)}' >  HDLC_chr3.magma.input.p.txt
 
 ```
+
+---
+
 ### Annotate SNPs
 
 ```
@@ -120,6 +137,9 @@ magma --annotate \
     
     For example, `--annotate window=35,10` set a 35 kilobase pair(kb) upstream and 10kb downstream window.
 
+---
+
+
 
 ### Gene-based analysis
 ```
@@ -131,6 +151,9 @@ magma \
 	--out HDLC_chr3
 
 ```
+
+---
+
 ### Gene-set level analysis
 
 ```

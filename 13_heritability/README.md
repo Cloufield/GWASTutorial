@@ -8,6 +8,13 @@ $$
 Var(P) = Var(G) + Var(E)
 $$
 
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Broad-sense Heritability
 
 The **broad-sense heritability** $H^2_{broad-sense}$ is mathematically defined as :
@@ -15,6 +22,9 @@ The **broad-sense heritability** $H^2_{broad-sense}$ is mathematically defined a
 $$
 H^2_{broad-sense} = {Var(G)\over{Var(P)}}
 $$
+
+---
+
 
 
 ## Narrow-sense Heritability
@@ -27,6 +37,9 @@ $$
 h^2_{narrow-sense} = {Var(A)\over{Var(P)}}
 $$
 
+---
+
+
 ## SNP Heritability
 
 **SNP heritability $h^2_{SNP}$** : the proportion of phenotypic variance explained by tested SNPs in a GWAS.
@@ -35,6 +48,9 @@ Common methods to estimate SNP heritability include:
 
 - GCTA-GREML  (based on Genome-based  Restricted  Maximum  Likelihood)
 - LDSC (based on LD score regression)
+
+---
+
 
 
 ## Missing heritability 
@@ -49,6 +65,9 @@ For many complex traits, GWAS-identified variants explain only a fraction of the
 - **Incomplete LD**: Some causal variants may not be in strong linkage disequilibrium with genotyped SNPs
 - **Inflation of heritability estimates**: Family-based estimates may be inflated by shared environmental factors
 
+---
+
+
 ## Liability and Threshold model
 
 The **liability threshold model** is a conceptual framework used to model binary traits (e.g., disease status) by assuming an underlying continuous **liability** distribution. 
@@ -62,6 +81,9 @@ In this model:
 This model allows us to translate heritability estimates from the observed binary scale (0/1) to a more interpretable continuous liability scale, which is important for comparing heritability estimates across traits with different prevalences.
 
 <img width="1004" alt="image" src="https://user-images.githubusercontent.com/40289485/211184406-be57ac1b-8074-4098-bdff-2eb55dd91b30.png">
+
+---
+
 
 ## Observed-scale heritability and liability-scaled heritability
 
@@ -83,6 +105,9 @@ $$
 - $P$ : Sample disease prevalence.
 - $Z$ : The height of the standard normal probability density function at threshold T. `scipy.stats.norm.pdf(T, loc=0, scale=1)`.
 - $T$ : The threshold. `scipy.stats.norm.ppf(1 - K, loc=0, scale=1)` or `scipy.stats.norm.isf(K)`.
+
+---
+
 
 
 ## Further Reading 

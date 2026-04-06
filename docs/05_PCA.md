@@ -7,18 +7,32 @@ PCA aims to find the **orthogonal directions of maximum variance** and project t
 
 !!! example "A simple illustration of PCA"
     
-    Source data:
-    ```
-    cov = np.array([[6, -3], [-3, 3.5]])
-    pts = np.random.multivariate_normal([0, 0], cov, size=800)
+    Source data (same as the interactive figure below):
+    ```python
+    import numpy as np
+    np.random.seed(7)
+    mean = [0, 0]
+    cov = [[6.5, -3.8], [-3.8, 3.5]]
+    pts = np.random.multivariate_normal(mean, cov, size=550)
     ```
 
     The red arrow shows the first principal component axis (PC1) and the blue arrow shows the second principal component axis (PC2). The two axes are orthogonal.
-    
-    <img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/124b8c3d-0f83-4936-ab08-342efd29660a">
+
+    Interactive version (pan/zoom): regenerate with `python3 plot_pca_interactive.py` in the `05_PCA` folder.
+
+    <iframe src="../assets/plots/05_pca/pca_illustration.html" width="100%" height="500" style="border:0;" title="PCA illustration (PC1 and PC2)"></iframe>
 
 !!! info "Interpretation of PCs" 
     **The first principal component** of a set of p variables, presumed to be jointly normally distributed, is the derived variable formed as a linear combination of the original variables that **explains the most variance**. The second principal component explains the most variance in what is left once the effect of the first component is removed, and we may proceed through p iterations until all the variance is explained.
+
+---
+
+
+**On this page**
+
+[TOC]
+
+---
 
 
 ## Genotype PCA
@@ -47,13 +61,28 @@ So before association analysis, we will learn how to run PCA analysis first.
 - [Sample codes](#sample-codes)
 - [Plotting the PCs](#plotting-the-pcs)
 - [PCA-UMAP](#pca-umap)
+- [Key terms](#key-terms)
 - [References](#references)
 
 !!! info "Genotype PCA workflow"
     <img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/6a5880c7-10bd-4fac-a364-12ab14171f72">
 
+---
+
+
 
 ## Preparation
+
+!!! note "Required data and tools"
+
+    - **Genotype data (PLINK binary)** — a `.bed`/`.bim`/`.fam` set (e.g. `sample_data.clean` from [04_Data_QC](../04_Data_QC/README.md) after QC). The genome build must match your high-LD region file; the lists below use **hg19/GRCh37** coordinates.
+    - **High-LD / HLA region list (BED-style)** — for hg19, use [high-ld-hg19.txt](high-ld-hg19.txt) in this folder (or copy it to `high-ld.txt` if you prefer). For other genome builds or custom regions, see [Download BED-like files for high-LD or HLA regions](#download-bed-like-files-for-high-ld-or-hla-regions).
+    - **PLINK 1.9** (`plink`) — to build the high-LD / HLA SNP set with `--make-set` and `--write-set` (see below).
+    - **PLINK 2** (`plink2`) — for LD pruning, KING cutoff, PCA, and projection in the [sample codes](#sample-codes).
+
+    For installing PLINK 1.9 and 2 and obtaining the tutorial genotype data, follow [04_Data_QC — Preparation](../04_Data_QC/README.md#preparation).
+
+---
 
 ### Exclude SNPs in high-LD or HLA regions
 For PCA, we first exclude SNPs in high-LD or HLA regions from the genotype data. 
@@ -61,6 +90,7 @@ For PCA, we first exclude SNPs in high-LD or HLA regions from the genotype data.
 !!! quote "The reason why we want to exclude such high-LD or HLA regions"
     - Price, A. L., Weale, M. E., Patterson, N., Myers, S. R., Need, A. C., Shianna, K. V., Ge, D., Rotter, J. I., Torres, E., Taylor, K. D., Goldstein, D. B., & Reich, D. (2008). Long-range LD can confound genome scans in admixed populations. American journal of human genetics, 83(1), 132–139. https://doi.org/10.1016/j.ajhg.2008.06.005 
 
+---
 
 ### Download BED-like files for high-LD or HLA regions
 
@@ -97,6 +127,9 @@ You can simply copy the list of high-LD or HLA regions in genome build version(.
     12	109500000	112000000	highld
     20	32000000	34500000	highld
     ```
+
+---
+
 
 ### Create a list of SNPs in high-LD or HLA regions
 
@@ -138,19 +171,25 @@ plink --file ${plinkFile} --make-set high-ld.txt --write-set --out hild
 For downstream analysis, we can exclude these SNPs using `--exclude hild.set`.
 
 ---------
+
+---
+
 ## PCA steps
 
 !!! info "Steps to perform a typical genomic PCA analysis"
 
-    - 1. LD-Pruning (https://www.cog-genomics.org/plink/2.0/ld#indep)
-    - 2. Removing relatives from calculating PCs (usually 2-degree) (https://www.cog-genomics.org/plink/2.0/distance#king_cutoff)
-    - 3. Running PCA using un-related samples and independent SNPs (https://www.cog-genomics.org/plink/2.0/strat#pca)
-    - 4. Projecting to all samples (https://www.cog-genomics.org/plink/2.0/score#pca_project)
+    1. LD-Pruning (https://www.cog-genomics.org/plink/2.0/ld#indep)
+    2. Removing relatives from calculating PCs (usually 2-degree) (https://www.cog-genomics.org/plink/2.0/distance#king_cutoff)
+    3. Running PCA using un-related samples and independent SNPs (https://www.cog-genomics.org/plink/2.0/strat#pca)
+    4. Projecting to all samples (https://www.cog-genomics.org/plink/2.0/score#pca_project)
 
 !!! info "MAF filter for LD-pruning and PCA"
     For LD-pruning and PCA, we usually only use variants with MAF > 0.01 or MAF>0.05 ( `--maf 0.01` or `--maf 0.05`) for robust estimation.
 
 ---------
+
+---
+
 ## Sample codes
 
 !!! example "Sample codes for performing PCA"
@@ -254,6 +293,9 @@ Eventually, we will get the PCA results for all samples.
     HG00422 HG00422 387466  387466  0.00439167      -0.0332386      0.000741526     0.0124843       -0.00362248     -0.00343393 -0.00735112     0.00944759      -0.0107516      0.00376537
     ```
 
+---
+
+
 ## Plotting the PCs 
 You can now create scatterplots of the PCs using R or Python.
 
@@ -261,13 +303,20 @@ For plotting using Python:
 [plot_PCA.ipynb](https://github.com/Cloufield/GWASTutorial/blob/main/05_PCA/plot_PCA.ipynb)
 
 !!! example "Scatter plot of PC1 and PC2 using 1KG EAS individuals"
-    <img width="500" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/f4cfc158-9db7-4b87-af13-041a954fc1fa">
+
+    Interactive plot (pan/zoom, hover sample ID): same setup as [plot_PCA.ipynb](https://github.com/Cloufield/GWASTutorial/blob/main/05_PCA/plot_PCA.ipynb) — projected **`PC1_AVG`** / **`PC2_AVG`** from `plink_results_projected.sscore`, merged with `01_Dataset/integrated_call_samples_v3.20130502.ALL.panel`, **EAS** only, colored by **`pop`**. Regenerate with `python3 plot_pca_interactive.py` in the `05_PCA` folder.
+
+    <iframe src="../assets/plots/05_pca/pc1_pc2_eas.html" width="100%" height="580" style="border:0;" title="PC1 vs PC2 (1KG EAS)"></iframe>
 
     Note : We only used a small proportion of all available variants. This figure only very roughly shows the population structure in East Asia.
  
 Requirements:
 - python>3
 - numpy,pandas,seaborn,matplotlib
+- plotly (to regenerate the interactive figure above)
+
+---
+
 
 ## PCA-UMAP
 (optional) 
@@ -282,6 +331,13 @@ For more details, please check:
 
 !!! example "An example of PCA and PCA-UMAP for population genetics"
     Sakaue, S., Hirata, J., Kanai, M., Suzuki, K., Akiyama, M., Lai Too, C., ... & Okada, Y. (2020). Dimensionality reduction reveals fine-scale structure in the Japanese population with consequences for polygenic risk prediction. Nature communications, 11(1), 1-11.
+
+---
+
+
+## Key terms
+
+Principal component analysis (PCA), principal component, genetic relationship matrix (GRM), eigenvector, eigenvalue, dimension reduction, population stratification, ancestry, linkage disequilibrium (LD), LD pruning, high-LD region, HLA, KING cutoff, relatedness, PCA projection, allele weight, MAF, UMAP
 
 # References
 - (**PCA**) Price, A., Patterson, N., Plenge, R. et al. Principal components analysis corrects for stratification in genome-wide association studies. Nat Genet 38, 904–909 (2006). https://doi.org/10.1038/ng1847 https://www.nature.com/articles/ng1847

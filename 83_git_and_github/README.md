@@ -1,20 +1,32 @@
 # Git and GitHub
 
+---
+
+
 ## Git 
 Git is very powerful version control software. Git can track the changes in all the files of your projects and allow collaboration of multiple contributors.  
 
 For details, please check: [https://git-scm.com/](https://git-scm.com/)
+
+---
+
 
 ## GitHub
 GitHub is an online platform, offering a cloud-based Git repository.
 
 [https://github.com/](https://github.com/)
 
+---
+
+
 ### Create a new ID
 
 GitHub signup page:
 
 [https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home)
+
+---
+
 
 ### Clone a repository
 
@@ -27,14 +39,23 @@ Syntax:
 Example:
 `git clone https://github.com/Cloufield/GWASTutorial.git`
 
+---
+
+
 ### Update the current repository
 `git pull`
+
+---
+
 
 ### git setup
 ```
 $ git config --global user.name "myusername"
 $ git config --global user.email myusername@myemail.com
 ```
+
+---
+
 
 ### Create access tokens
 

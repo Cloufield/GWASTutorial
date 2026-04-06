@@ -12,6 +12,16 @@ Url: [http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/](http://ftp.10
 
 Genome build:  human_g1k_v37.fasta (hg19)
 
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Genotype Data Processing
 
 - Selected only autosomal variants
@@ -23,6 +33,9 @@ Genome build:  human_g1k_v37.fasta (hg19)
 - Selected 15% common SNPs (`plink --maf 0.01 --thin 0.15`)
 - Converted to plink bed format and merged to a single file  
 - Randomly added some missing data points
+
+---
+
 
 ## Download
 
@@ -47,9 +60,15 @@ Unzip the dataset `unzip -j 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.
 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.fam
 ```
 
+---
+
+
 ## Phenotype Simulation
 
 Phenotypes were simulated using GCTA with the 1KG EAS dataset. GCTA provides a function to simulate GWAS data based on observed genotype data.
+
+---
+
 
 ### Quantitative Trait Model
 
@@ -74,6 +93,9 @@ where:
    - $\sigma^2_g$ is the empirical variance of $Wu$ (genetic variance)
    - $h^2$ is the user-specified heritability
 
+---
+
+
 ### Case-Control Study Model
 
 For a case-control study, GCTA assumes a **threshold-liability model**:
@@ -83,6 +105,9 @@ For a case-control study, GCTA assumes a **threshold-liability model**:
 2. Any individual with disease liability exceeding a certain threshold $T$ is assigned as a case, and a control otherwise
 
 3. The threshold $T$ is determined from the normal distribution truncating the proportion $K$ (disease prevalence)
+
+---
+
 
 ### Example Command
 
@@ -112,6 +137,16 @@ $ cat causal.snplist
     Allele frequency and Effect size
 
     <img width="700" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/d5133405-290c-4436-b61e-60f8a750f194">
+
+---
+
+
+
+## Key terms
+
+1000 Genomes Project (1KG), EAS, GRCh37, autosomal SNP, multi-allelic variant, variant normalization, PLINK, BED/BIM/FAM, SNP, MAF, MAC, genotype missingness, GCTA, additive genetic model, heritability, causal variant, case-control study, threshold-liability model, disease prevalence
+
+---
 
 
 ## References

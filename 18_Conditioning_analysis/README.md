@@ -3,6 +3,22 @@
 Multiple association signals could exist in one locus, especially when observing complex LD structures in the regional plot.
 Conditioning on one signal allows the separation of independent signals.
 
+!!! note "Required data and tools"
+
+    - **PLINK 2** (`plink2`) — export dosages/genotypes to use a lead variant as a covariate in re-association ([Adding the lead variant to the covariates](#adding-the-lead-variant-to-the-covariates)).
+    - **GCTA** — **COJO** for stepwise conditioning from **summary statistics** + external **LD** ([GCTA-COJO](#gcta-cojo)).
+    - **Individual-level** genotype/phenotype **or** **GWAS sumstats + LD reference**, depending on the workflow.
+
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Statistical Model
 
 In a standard GWAS association test, we model the phenotype $Y$ as:
@@ -21,6 +37,9 @@ Several ways to perform the conditioning analysis:
 
 - Adding the lead variant to the covariates step-wisely and rerun the association test.
 - [Conditional & joint association analysis using GWAS summary statistics (GCTA-COJO)](https://www.nature.com/articles/ng.2213).
+
+---
+
 
 ## Adding the lead variant to the covariates
 
@@ -44,6 +63,9 @@ Then just paste it to the covariates table and run the association test.
 
 !!! note
     Some association test software will also provide options for condition analysis. For example, in PLINK, you can use `--condition <variant ID> ` for condition analysis. You can simply provide a list of variant IDs to run the condition analysis.
+
+---
+
 
 ## GCTA-COJO
 
@@ -75,6 +97,9 @@ Here `A1` is the effect allele.
 
 Then `--cojo-cond` could be used to generate new sumstats conditioned on the above-selected variant(s).
 
+---
+
+
 
 ## Conditional Analysis vs. Fine-mapping
 
@@ -93,6 +118,9 @@ While both conditional analysis and fine-mapping are used to dissect association
     - **Conditional analysis** is often used as a first step to identify how many independent signals exist in a region
     - **Fine-mapping** is then applied to each independent signal to identify the causal variant(s) within that signal
     - Together, they provide a comprehensive understanding of the genetic architecture of a locus
+
+---
+
 
 
 

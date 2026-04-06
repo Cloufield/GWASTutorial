@@ -2,13 +2,22 @@
 
 `sed` is also one of the most commonly used text-editing command in Linux, which is short for **s**tream **ed**itor. `sed` command edits the text from standard input in a line-by-line approach. 
 
+---
+
+
 ## sed syntax
 
 ```bash
 sed [OPTIONS] PROCESS [FILENAME]
 ```
 
+---
+
+
 ## Examples
+
+---
+
 
 ### sample input 
 ```bash
@@ -25,6 +34,9 @@ head ../02_Linux_basics/sumstats.txt
 1	135163	1:135163:C:T	C	T	T	ADD	503	0.6766660.242611	-1.60989	0.107422	.
 
 ```
+
+---
+
 
 ### Example 1: Replacing strings
 
@@ -47,6 +59,9 @@ head ../02_Linux_basics/sumstats.txt
     1	135163	1_135163_C_T	C	T	T	ADD	503	0.6766660.242611	-1.60989	0.107422	.
     
     ```
+
+---
+
 
 ### Example 2: Delete header(the first line)
 

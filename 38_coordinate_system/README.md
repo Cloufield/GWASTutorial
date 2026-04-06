@@ -9,6 +9,10 @@ This guide explains:
 - where each system is used  
 - how to **convert safely** between them  
 
+**On this page**
+
+[TOC]
+
 ---
 
 ## What are Genomic Coordinates?
@@ -25,6 +29,9 @@ Genomic coordinates are typically specified as a set of:
 
     - For **forward-strand features**: start is the 5' end, end is the 3' end
     - For **reverse-strand features**: start is actually the 3' end (leftmost on the chromosome), end is the 5' end (rightmost on the chromosome)
+
+---
+
 
 
 ## 1-based Coordinates (Human-friendly)
@@ -213,6 +220,9 @@ The following table summarizes the key differences between 1-based and 0-based c
 - A single-base interval `N-N` (1-based) corresponds to `(N-1, N)` in 0-based.
 - Both systems describe the same biological locations using different counting conventions.
 
+---
+
+
 ## Conversion Rules
 
 !!! warning "Always Check Format Documentation"
@@ -232,6 +242,9 @@ Notes:
 - For most intervals, **only the start changes**; insertions are the exception (start stays the same, end shifts).
 - 1-based intervals are inclusive; 0-based intervals are half-open.
 - For insertions, BED cannot represent inserted sequence; it can only mark the insertion point.
+
+---
+
 
 ## References
 

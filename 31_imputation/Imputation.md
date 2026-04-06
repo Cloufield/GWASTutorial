@@ -33,7 +33,20 @@ Genotype imputation is a statistical method used to infer unobserved genotypes i
     
     In practice, the algorithm considers all possible paths through reference haplotypes, accounts for recombination events, and provides probability-weighted imputations rather than hard calls.
 
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Concepts
+
+---
+
 
 ### Why HMM-based methods?
 
@@ -49,6 +62,9 @@ Given these properties, hidden Markov model (HMM) based methods usually outperfo
     Li, N., & Stephens, M. (2003). Modeling linkage disequilibrium and identifying recombination hotspots using single-nucleotide polymorphism data. Genetics, 165(4), 2213-2233.
     
     The HMM framework for genotype imputation was first described in this foundational paper.
+
+---
+
 
 ### Hidden Markov Model formulation
 
@@ -94,12 +110,18 @@ where:
 
 The forward-backward algorithm is used to efficiently compute the posterior probabilities $P(z_l = k | h, H)$ for all positions and reference haplotypes, which are then used to impute missing genotypes as probability-weighted averages.
 
+---
+
+
 ### Minimac
 
 [Minimac](https://www.nature.com/articles/ng.3656) is a widely used imputation tool that implements the Li & Stephens HMM model. It is computationally efficient and can handle large reference panels.
 
 !!! quote
     Das, S., et al. (2016). Next-generation genotype imputation service and methods. Nature genetics, 48(10), 1284-1287.
+
+---
+
 
 ## Figure illustration
 
@@ -121,7 +143,13 @@ The imputation process works as follows:
 !!! example "Example calculation"
     In the figure, paths chained by dark blue match 2 of the 4 genotyped markers. These paths have equal probability. For the left three circles (missing markers), two paths are cyan and one path is orange, so the imputation result will be 1/3 orange and 2/3 cyan.
 
+---
+
+
 ## How to do imputation
+
+---
+
 
 ### Option 1: Imputation servers
 
@@ -146,6 +174,9 @@ The simplest way is to use public imputation servers if you don't have access to
     - **Liftover**: Convert between hg19 and hg38, properly flip alleles, and exclude ambiguous variants (A/T and G/C SNPs)
     - **Phasing**: Phase your data locally and store it. Phased data can be reused for imputation against any reference panel
     - **Ancestry matching**: Check ancestry information and select the proper reference panel that matches your study population
+
+---
+
 
 ### Option 2: Local imputation
 
@@ -201,7 +232,13 @@ minimac4 \
 
     See the [Minimac4 documentation](https://genome.sph.umich.edu/wiki/Minimac4_Documentation) for details on all options.
 
+---
+
+
 ## After imputation
+
+---
+
 
 ### Quality control
 
@@ -231,6 +268,9 @@ The output is a VCF file containing imputed genotypes. Before using imputed data
     
     For detailed discussion, see: [A comprehensive evaluation of imputation quality](https://www.biorxiv.org/content/10.1101/2023.05.30.542466v1)
 
+---
+
+
 ### Filtering imputed variants
 
 After quality assessment, filter variants based on quality metrics:
@@ -240,7 +280,13 @@ After quality assessment, filter variants based on quality metrics:
 bcftools filter -i 'INFO/R2>=0.7' imputed.vcf.gz -Oz -o imputed.filtered.vcf.gz
 ```
 
+---
+
+
 ## Before GWAS
+
+---
+
 
 ### Genotype representations
 
@@ -266,6 +312,9 @@ Three types of genotype representations are widely used in GWAS:
         - Rare variant analysis where uncertainty is important
         - Fine-mapping applications
 
+---
+
+
 ### Converting to PLINK format
 
 If you need to convert imputed VCF to PLINK format for association testing:
@@ -288,9 +337,15 @@ plink2 \
 !!! note
     When using dosage, PLINK2 will create a `.pgen` file with dosage values. Some older software may require hard calls, but dosage is generally preferred for better statistical power.
 
+---
+
+
 ## Specialized imputation applications
 
 While standard genome-wide imputation is primarily used for GWAS, imputation methods have been adapted for specialized applications that require different approaches or reference panels.
+
+---
+
 
 ### HLA imputation
 
@@ -324,6 +379,9 @@ Specialized HLA imputation tools use HLA-specific reference panels and methods:
     3. Run HLA-specific imputation software
     4. Validate imputed HLA types against known types when available
     5. Report HLA alleles at 2-field (e.g., HLA-B*57:01) or 4-field resolution
+
+---
+
 
 ### Ancient genome imputation
 
@@ -366,6 +424,9 @@ Imputing genotypes in ancient DNA (aDNA) samples presents unique challenges due 
     - **Validation**: Always validate imputed results when possible (e.g., compare to gold-standard typing)
     - **Quality metrics**: Use application-specific quality metrics (e.g., HLA imputation confidence scores)
     - **Population matching**: Population ancestry matching is even more critical for specialized applications
+
+---
+
 
 ## References
 

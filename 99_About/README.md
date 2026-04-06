@@ -5,6 +5,9 @@ This tutorial is provided by the [Laboratory of Complex Trait Genomics (Kamatani
 **Starting from 2026, this repository actively integrates LLM (Large Language Models) for tasks such as formatting, language, and grammar corrections, followed by human curation.**
 
  ![image](https://user-images.githubusercontent.com/40289485/211962816-5f367b28-f136-468f-8d41-0bffff54481f.png)
+
+---
+
  
 ## Main Contributors
 - @kamatani-lab : https://github.com/kamatani-lab
@@ -12,6 +15,9 @@ This tutorial is provided by the [Laboratory of Complex Trait Genomics (Kamatani
 - @shimaomao26 : https://github.com/shimaomao26
 - @Cloufield : https://github.com/Cloufield
 - @TakeuchiYohei : https://github.com/TakeuchiYohei
+
+---
+
 
 ## Contact Us
 This repository is currently maintained by [Yunye He](https://github.com/Cloufield). 

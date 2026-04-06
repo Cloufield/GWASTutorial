@@ -1,36 +1,19 @@
 # SMR: Summary-data-based Mendelian Randomization
 
-## Table of Contents
+---
 
-- [Introduction](#introduction)
-    - [SMR & HEIDI overview](#smr--heidi-overview)
-    - [Key concepts](#key-concepts)
-- [Workflow](#workflow)
-- [Installation](#installation)
-- [Data preparation](#data-preparation)
-    - [GWAS summary statistics](#gwas-summary-statistics)
-    - [eQTL summary data in BESD format](#eqtl-summary-data-in-besd-format)
-    - [LD reference panel](#ld-reference-panel)
-- [SMR & HEIDI analysis](#smr--heidi-analysis)
-    - [Run SMR and HEIDI test](#run-smr-and-heidi-test)
-    - [Interpret the results](#interpret-the-results)
-    - [Key parameters](#key-parameters)
-- [Multi-SNP-based SMR test](#multi-snp-based-smr-test)
-- [SMR in trans regions](#smr-in-trans-regions)
-- [SMR analysis of two molecular traits](#smr-analysis-of-two-molecular-traits)
-- [Data management](#data-management)
-    - [BESD format](#besd-format)
-    - [Make a BESD file from eQTL summary data](#make-a-besd-file-from-eqtl-summary-data)
-    - [Query eQTL results](#query-eqtl-results)
-- [SMR locus plot](#smr-locus-plot)
-- [SMR Portal](#smr-portal)
-- [Available xQTL data resources](#available-xqtl-data-resources)
-    - [eQTL data](#eqtl-data)
-    - [mQTL data](#mqtl-data)
-    - [sQTL data](#sqtl-data)
-- [References](#references)
+
+**On this page**
+
+[TOC]
+
+---
+
 
 ## Introduction
+
+---
+
 
 ### SMR & HEIDI overview
 
@@ -60,6 +43,9 @@ Although the method is named after eQTLs, it works with any type of molecular QT
     - **Pleiotropy**: SNP $\rightarrow$ gene expression *and* SNP $\rightarrow$ trait (the SNP affects both independently)
 
     Both look identical in summary statistics. Zhu et al. (2016) confirmed this by simulation. For this reason, the authors use the term **"pleiotropic association"** broadly to cover both possibilities, and SMR results should not be interpreted as proof of causality.
+
+---
+
 
 ### Key concepts
 
@@ -104,6 +90,9 @@ If pleiotropy is true, all $d_i$ should be close to zero. HEIDI combines these d
     | Significant | Significant ($< 0.05$) | Likely due to linkage (two distinct causal variants) |
     | Not significant | — | No association detected |
 
+---
+
+
 ## Workflow
 
 1. **Prepare input data**: GWAS summary statistics (GCTA-COJO format), xQTL summary data (BESD format), and an LD reference panel (PLINK binary format).
@@ -112,9 +101,15 @@ If pleiotropy is true, all $d_i$ should be close to zero. HEIDI combines these d
 4. **Filter results**: Select genes passing the SMR significance threshold ($p_{SMR} < 0.05/n_{probes}$) and not rejected by HEIDI ($p_{HEIDI} \geq 0.05$).
 5. **Visualize**: Generate SMR locus plots or explore results via the SMR Portal.
 
+---
+
+
 ## Installation
 
 SMR can be downloaded from the Yang Lab website: [https://yanglab.westlake.edu.cn/software/smr/](https://yanglab.westlake.edu.cn/software/smr/)
+
+---
+
 
 ## Data preparation
 
@@ -123,6 +118,9 @@ Three types of input data are required for SMR analysis:
 1. **GWAS summary statistics** in GCTA-COJO format
 2. **eQTL (or other xQTL) summary data** in BESD format
 3. **LD reference panel** in PLINK binary format (for LD estimation in the HEIDI test)
+
+---
+
 
 ### GWAS summary statistics
 
@@ -154,6 +152,9 @@ The columns are:
     - For case-control studies, the effect size should be $\log(\text{OR})$.
     - The allele frequency information is used in a QC step to remove SNPs with discrepant allele frequencies between datasets.
 
+---
+
+
 ### eQTL summary data in BESD format
 
 SMR reads eQTL summary data in its own efficient binary format called **BESD** (Binary Effect Size Distribution). The data are stored in three files:
@@ -166,11 +167,20 @@ Pre-compiled eQTL/xQTL datasets in BESD format are available for download (see [
 
 If your eQTL data are in other formats (e.g. Matrix eQTL, FastQTL, QTLtools, PLINK, GEMMA, BOLT-LMM), you can convert them to BESD format using SMR's data management options (see [Data management](#data-management)).
 
+---
+
+
 ### LD reference panel
 
 A reference panel in PLINK binary format (`.bed`, `.bim`, `.fam`) is required for LD estimation in the HEIDI test. The reference sample should be from the same ancestry as the GWAS and eQTL studies.
 
+---
+
+
 ## SMR & HEIDI analysis
+
+---
+
 
 ### Run SMR and HEIDI test
 
@@ -191,6 +201,9 @@ A reference panel in PLINK binary format (`.bed`, `.bim`, `.fam`) is required fo
 - `--beqtl-summary` reads xQTL summary data in BESD format.
 - `--out` specifies the output filename prefix.
 - `--thread-num` specifies the number of threads for parallel computing (default: 1).
+
+---
+
 
 ### Interpret the results
 
@@ -221,6 +234,9 @@ ProbeID  Probe_Chr  Gene  Probe_bp  SNP  SNP_Chr  SNP_bp  A1  A2  Freq  b_GWAS  
     1. Select probes with $p_{SMR}$ below a Bonferroni-corrected threshold (e.g. $0.05 / n_{probes}$).
     2. Among these, retain probes with $p_{HEIDI} \geq 0.05$ (not rejected by the HEIDI test), indicating pleiotropy rather than linkage.
     3. Probes with `NA` for `p_HEIDI` indicate too few SNPs for the HEIDI test; interpret with caution.
+
+---
+
 
 ### Key parameters
 
@@ -276,6 +292,9 @@ ProbeID  Probe_Chr  Gene  Probe_bp  SNP  SNP_Chr  SNP_bp  A1  A2  Freq  b_GWAS  
         --out mysmr
     ```
 
+---
+
+
 ## Multi-SNP-based SMR test
 
 The multi-SNP-based SMR test combines information from all cis-SNPs passing a p-value threshold (default: `5e-8`) to increase statistical power (Wu et al. 2018 Nature Communications). SNPs are pruned for LD using a weighted vertex coverage algorithm.
@@ -296,6 +315,9 @@ The multi-SNP-based SMR test combines information from all cis-SNPs passing a p-
 | `--set-wind` | all cis | Window (Kb) around top cis-eQTL for SNP selection |
 | `--ld-multi-snp` | `0.1` | LD $r^2$ threshold for pruning SNPs in multi-SNP SMR |
 
+---
+
+
 ## SMR in trans regions
 
 Trans-eQTLs are defined as eQTLs more than 5 Mb away from the probe. SMR and HEIDI tests can also be applied in trans regions.
@@ -313,6 +335,9 @@ Trans-eQTLs are defined as eQTLs more than 5 Mb away from the probe. SMR and HEI
 
 - `--trans` turns on SMR/HEIDI tests in trans regions.
 - `--trans-wind` defines the window size (Kb) around the top trans-eQTL (default: 1000 Kb, i.e. a whole region of 2000 Kb).
+
+---
+
 
 ## SMR analysis of two molecular traits
 
@@ -340,7 +365,13 @@ Useful flags for subsetting probes:
 | `--extract-single-exposure-probe` | Extract a single exposure probe |
 | `--extract-single-outcome-probe` | Extract a single outcome probe |
 
+---
+
+
 ## Data management
+
+---
+
 
 ### BESD format
 
@@ -366,6 +397,9 @@ The `.besd` file stores the summary statistics (effect size and SE) in binary fo
 
 !!! info "Sparse BESD format"
     By default, SMR uses the **sparse BESD format**, which only stores data for SNPs within 2 Mb of a probe, SNPs within 1 Mb of any trans-eQTL, and SNPs with $p < 10^{-5}$ elsewhere. This dramatically reduces file size compared to the dense format.
+
+---
+
 
 ### Make a BESD file from eQTL summary data
 
@@ -437,6 +471,9 @@ SMR supports conversion from multiple formats:
         --out mybesd
     ```
 
+---
+
+
 ### Query eQTL results
 
 Since the eQTL data are stored in binary format, SMR provides options to query subsets of the data.
@@ -469,6 +506,9 @@ Since the eQTL data are stored in binary format, SMR provides options to query s
     # All probes on a chromosome
     smr --beqtl-summary myeqtl --query 5.0e-8 --probe-chr 1 --out myquery
     ```
+
+---
+
 
 ## SMR locus plot
 
@@ -511,6 +551,9 @@ SMR provides an R script to visualize results in a locus plot. First, generate t
     SMREffectPlot(data = SMRData, trait_name = "BMI")
     ```
 
+---
+
+
 ## SMR Portal
 
 The [SMR Portal](https://yanglab.westlake.edu.cn/smr-portal/) is an online platform that allows users to explore SMR results without running the software locally (Guo et al. 2025 *Nature Methods*).
@@ -520,9 +563,15 @@ The [SMR Portal](https://yanglab.westlake.edu.cn/smr-portal/) is an online platf
 - **Interactive locus plots** for visualizing SMR and HEIDI results alongside GWAS signals, eQTL associations, and gene annotations in a genomic region.
 - **Cross-omics integration** to explore how genetic variants affect multiple molecular layers (expression, methylation, splicing, protein levels) and their downstream effects on complex traits.
 
+---
+
+
 ## Available xQTL data resources
 
 Pre-compiled xQTL datasets in BESD format are available for download from the [SMR website](https://yanglab.westlake.edu.cn/software/smr/#DataResource):
+
+---
+
 
 ### eQTL data
 
@@ -533,12 +582,18 @@ Pre-compiled xQTL datasets in BESD format are available for download from the [S
 - PsychENCODE (Wang et al. 2018) — prefrontal cortex, n = 1,387, hg19, 33–65 MB
 - Geuvadis (Lappalainen et al. 2013) — lymphoblastoid cell lines, n = 373 EUR, hg19, 650.5 MB
 
+---
+
+
 ### mQTL data
 
 - Hatton et al. (2024) EAS — blood, n = 2,099, 2.5 GB
 - Hatton et al. (2024) EUR — blood, n = 3,701, 3.7 GB
 - McRae et al. (2018) — blood, n = 1,980, hg19, 7.5 GB
 - Brain-mMeta (Qi et al. 2018) — brain, n ≈ 1,160, hg19, 893 MB
+
+---
+
 
 ### sQTL data
 
@@ -547,6 +602,9 @@ Pre-compiled xQTL datasets in BESD format are available for download from the [S
 
 !!! note "Lite versions"
     For many datasets, lite versions (containing only SNPs with $p < 10^{-5}$) are available, which are much smaller and sufficient for most SMR analyses.
+
+---
+
 
 ## References
 

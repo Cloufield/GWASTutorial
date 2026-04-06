@@ -1,3 +1,37 @@
+/*
+ * In-page outline: use **On this page** + [TOC] in chapter README / docs.
+ * Renders as .md-typeset > div.toc (MkDocs toc extension). Material’s right
+ * sidebar TOC is separate.
+ */
+.md-typeset p:has(+ div.toc) {
+  margin: 0.6rem 0 0.2rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--md-default-fg-color--light);
+}
+
+.md-typeset > div.toc {
+  margin: 0.75rem 0 1.25rem;
+  padding: 0.6rem 0.85rem 0.5rem;
+  border: 1px solid var(--md-typeset-table-color);
+  border-radius: 0.4rem;
+  background-color: color-mix(in srgb, var(--md-primary-fg-color) 6%, transparent);
+}
+
+.md-typeset > div.toc > ul {
+  margin: 0.35em 0 0;
+}
+
+.md-typeset > div.toc ul {
+  list-style: none;
+  padding-left: 0.6em;
+}
+
+.md-typeset > div.toc li {
+  margin-bottom: 0.25em;
+}
+
 img{
 max-width:700px;
 height: auto;
@@ -6,28 +40,102 @@ margin-left: auto;
 margin-right: auto;
 }
 
+/* Table theming (header tint, zebra rows); no outer “card” — sits flush on page */
+:root {
+    --gwt-table-header-bg: #e8efff;
+    --gwt-table-zebra: rgba(37, 99, 235, 0.04);
+}
+
+[data-md-color-scheme="default"] {
+    --md-typeset-table-color: rgba(37, 99, 235, 0.12);
+}
+
+[data-md-color-scheme="slate"] {
+    --md-typeset-table-color: rgba(124, 140, 255, 0.14);
+    --gwt-table-header-bg: rgba(99, 102, 241, 0.18);
+    --gwt-table-zebra: rgba(124, 158, 255, 0.06);
+}
+
 .md-typeset {
     font-size: .7rem;
     line-height: 1.3;
 }
 
+/* Same outer radius as Material admonitions: .md-typeset .admonition { border-radius: .4rem } */
+.md-typeset .md-typeset__scrollwrap {
+    border-radius: 0.4rem;
+}
+
+/* Scrollwrap uses negative side margins; Material pads .md-typeset__table so cell edges
+   line up with paragraphs and admonitions. Do not zero padding or tables look wider. */
 .md-typeset__table {
-   min-width: 100%;
-   margin-bottom: 0.2em;
-   padding: 0 0.3rem;
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 0.2em;
+    padding: 0 0.8rem;
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 
-.md-typeset table:not([class]) td {
-    border-top: 0.05rem solid var(--md-typeset-table-color);
-    padding: 0.3em 0.4em;
-    vertical-align: top;
+@media screen and (max-width: 76.1875em) {
+    .md-typeset__table {
+        padding: 0 0.6rem;
+    }
 }
 
-.md-typeset table:not([class]) th {
-    border-bottom: 0.1rem solid var(--md-typeset-table-color);
-    padding: 0.3em 0.4em;
+.md-typeset table:not([class]) {
+    display: table;
+    /* auto: column widths follow content; fixed + width:100% made many columns equally wide */
+    width: auto;
+    max-width: 100%;
+    table-layout: auto;
+    font-size: clamp(0.65rem, 0.45vw + 0.6rem, 0.78rem);
+    letter-spacing: -0.01em;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+.md-typeset table:not([class]) thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     font-weight: 600;
+    background-color: var(--gwt-table-header-bg);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.md-typeset table:not([class]) thead th:hover {
+    background-color: color-mix(in srgb, var(--gwt-table-header-bg) 72%, var(--md-typeset-a-color) 28%);
+}
+
+.md-typeset table:not([class]) tbody tr:nth-child(even) {
+    background-color: var(--gwt-table-zebra);
+}
+
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+    border-top: 1px solid var(--md-typeset-table-color);
+    padding: 0.45em 0.5em;
     vertical-align: top;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: manual;
+}
+
+.md-typeset table:not([class]) thead th[aria-sort="ascending"],
+.md-typeset table:not([class]) thead th[aria-sort="descending"] {
+    background-color: color-mix(in srgb, var(--gwt-table-header-bg) 60%, var(--md-typeset-a-color) 40%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .md-typeset table:not([class]) thead th {
+        transition: none;
+    }
 }
 
 .md-typeset h1 {
@@ -86,23 +194,6 @@ margin-right: auto;
 
 .md-typeset h4 > code {
     color: #E33D70;
-}
-
-.md-typeset table:not([class]) {
-    display: table;
-    font-size: 0.69rem;
-    border-spacing: 0;
-    border-collapse: collapse;
-    width: 100%;
-    margin: 1em 0;
-}
-
-.md-typeset table:not([class]) tr {
-    border-bottom: 0.05rem solid var(--md-typeset-table-color);
-}
-
-.md-typeset table:not([class]) tr:last-child {
-    border-bottom: none;
 }
 
 .keyterm-link {

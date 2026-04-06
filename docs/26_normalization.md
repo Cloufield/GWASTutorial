@@ -2,6 +2,10 @@
 
 Phenotype normalization is a critical preprocessing step in GWAS to ensure valid statistical inference, numerical stability, and comparability across cohorts.
 
+**On this page**
+
+[TOC]
+
 ---
 
 ## Raw measures
@@ -112,6 +116,9 @@ where
 - Residual → Z (well-behaved quantitative traits)
 - Residual → INT (highly skewed traits)
 - Medication correction → Residual → Z / INT (clinical traits)
+
+---
+
 
 ## References
 

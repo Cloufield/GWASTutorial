@@ -2,6 +2,9 @@
 
 Variant databases are essential resources for GWAS and genetic research, providing comprehensive information about genetic variants, their frequencies, functional consequences, and associations with traits and diseases. This document provides an overview of major variant databases commonly used in GWAS and post-GWAS analyses.
 
+---
+
+
 ## dbSNP
 
 **Website**: https://www.ncbi.nlm.nih.gov/snp/
@@ -9,6 +12,9 @@ Variant databases are essential resources for GWAS and genetic research, providi
 **Full name**: Database of Single Nucleotide Polymorphisms
 
 dbSNP is the National Center for Biotechnology Information (NCBI)'s database of genetic variation, primarily focusing on single nucleotide polymorphisms (SNPs) but also including other types of genetic variants such as insertions, deletions, and microsatellites.
+
+---
+
 
 ### Key Features
 
@@ -19,12 +25,18 @@ dbSNP is the National Center for Biotechnology Information (NCBI)'s database of 
 - **Clinical associations**: Integrates with ClinVar for clinical significance information
 - **Validation status**: Indicates whether variants have been validated by multiple independent studies
 
+---
+
+
 ### Common Uses in GWAS
 
 - **Variant identification**: Looking up rs IDs for variants identified in GWAS
 - **Frequency lookup**: Checking population frequencies of variants
 - **Annotation**: Obtaining basic functional information about variants
 - **Data integration**: Standardizing variant identifiers across different datasets
+
+---
+
 
 ### Access Methods
 
@@ -36,6 +48,9 @@ dbSNP is the National Center for Biotechnology Information (NCBI)'s database of 
 !!! info "dbSNP versions"
     dbSNP is regularly updated with new variants and annotations. Different builds correspond to different reference genome assemblies (e.g., dbSNP build 151 for GRCh37/hg19, build 155 for GRCh38/hg38).
 
+---
+
+
 ## GWAS Catalog
 
 **Website**: https://www.ebi.ac.uk/gwas/
@@ -43,6 +58,9 @@ dbSNP is the National Center for Biotechnology Information (NCBI)'s database of 
 **Full name**: The NHGRI-EBI GWAS Catalog
 
 The GWAS Catalog is a curated database of published genome-wide association studies, providing standardized information about trait-variant associations from GWAS publications.
+
+---
+
 
 ### Key Features
 
@@ -53,6 +71,9 @@ The GWAS Catalog is a curated database of published genome-wide association stud
 - **Effect sizes and p-values**: Provides beta coefficients, odds ratios, and p-values for associations
 - **Population information**: Includes ancestry and sample size information for each study
 
+---
+
+
 ### Common Uses in GWAS
 
 - **Literature review**: Finding previously reported associations for a trait of interest
@@ -60,6 +81,9 @@ The GWAS Catalog is a curated database of published genome-wide association stud
 - **Pleiotropy analysis**: Identifying variants associated with multiple traits
 - **Prioritization**: Using known associations to prioritize variants for follow-up
 - **Meta-analysis**: Gathering data from multiple studies for meta-analysis
+
+---
+
 
 ### Access Methods
 
@@ -74,6 +98,9 @@ The GWAS Catalog is a curated database of published genome-wide association stud
     - Use genomic region search to find all associations in a locus of interest
     - Export results in various formats (TSV, JSON, VCF)
 
+---
+
+
 ## Open Targets
 
 **Website**: https://www.opentargets.org/
@@ -81,6 +108,9 @@ The GWAS Catalog is a curated database of published genome-wide association stud
 **Full name**: Open Targets Platform
 
 Open Targets is a platform that integrates evidence from multiple sources to identify and prioritize drug targets associated with diseases. While not exclusively a variant database, it integrates GWAS data with other evidence types to support target identification.
+
+---
+
 
 ### Key Features
 
@@ -91,12 +121,18 @@ Open Targets is a platform that integrates evidence from multiple sources to ide
 - **Visualization tools**: Interactive visualizations of target-disease networks
 - **API access**: RESTful API for programmatic access
 
+---
+
+
 ### Common Uses in GWAS
 
 - **Target identification**: Identifying potential drug targets from GWAS findings
 - **Evidence integration**: Combining GWAS signals with other functional evidence
 - **Disease mechanism**: Understanding how genetic associations relate to disease mechanisms
 - **Drug discovery**: Prioritizing targets for drug development
+
+---
+
 
 ### Evidence Types
 
@@ -112,6 +148,9 @@ Open Targets integrates multiple evidence types:
 !!! note "Open Targets vs. GWAS Catalog"
     While GWAS Catalog focuses on variant-trait associations, Open Targets focuses on target-disease relationships, integrating GWAS data with other evidence types to support drug target identification.
 
+---
+
+
 ## gnomAD
 
 **Website**: https://gnomad.broadinstitute.org/
@@ -119,6 +158,9 @@ Open Targets integrates multiple evidence types:
 **Full name**: Genome Aggregation Database
 
 gnomAD is a resource developed by the Broad Institute that aggregates and harmonizes exome and genome sequencing data from large-scale sequencing projects, providing comprehensive allele frequency data across diverse populations.
+
+---
+
 
 ### Key Features
 
@@ -129,6 +171,9 @@ gnomAD is a resource developed by the Broad Institute that aggregates and harmon
 - **Constraint scores**: Includes metrics of mutational constraint (pLI, LOEUF) to identify genes under selection
 - **Allele frequency spectra**: Detailed frequency distributions across populations
 
+---
+
+
 ### Common Uses in GWAS
 
 - **Frequency lookup**: Checking population frequencies of variants, especially rare variants
@@ -136,6 +181,9 @@ gnomAD is a resource developed by the Broad Institute that aggregates and harmon
 - **Rare variant analysis**: Identifying rare variants for association testing
 - **Population-specific analysis**: Comparing frequencies across different populations
 - **Constraint analysis**: Using constraint scores to prioritize functional variants
+
+---
+
 
 ### Key Metrics
 
@@ -154,7 +202,13 @@ gnomAD is a resource developed by the Broad Institute that aggregates and harmon
     - Use population-matched frequencies when available
     - Consider using gnomAD's quality filters (PASS variants) for high-confidence variants
 
+---
+
+
 ## Other Notable Variant Databases
+
+---
+
 
 ### ClinVar
 
@@ -162,11 +216,17 @@ gnomAD is a resource developed by the Broad Institute that aggregates and harmon
 
 ClinVar aggregates information about genetic variants and their relationships to human health, providing clinical significance classifications (pathogenic, benign, uncertain significance, etc.).
 
+---
+
+
 ### ExAC
 
 **Website**: https://exac.broadinstitute.org/
 
 The Exome Aggregation Consortium (ExAC) was the predecessor to gnomAD, providing exome sequencing data from ~60,000 individuals. Now superseded by gnomAD but still useful for historical reference.
+
+---
+
 
 ### 1000 Genomes Project
 
@@ -174,11 +234,17 @@ The Exome Aggregation Consortium (ExAC) was the predecessor to gnomAD, providing
 
 Provides comprehensive catalog of human genetic variation from ~2,500 individuals across 26 populations. Useful for population genetics and as a reference panel for imputation.
 
+---
+
+
 ### TOPMed
 
 **Website**: https://www.nhlbiwgs.org/
 
 The Trans-Omics for Precision Medicine (TOPMed) program provides whole-genome sequencing data from diverse populations, useful for rare variant analysis and as an imputation reference panel.
+
+---
+
 
 ## Choosing the Right Database
 
@@ -192,7 +258,13 @@ Different databases serve different purposes in GWAS research:
 | **Open Targets** | Target identification | Drug discovery, integrating multiple evidence types |
 | **ClinVar** | Clinical significance | Interpreting variants in clinical context |
 
+---
+
+
 ## References
+
+---
+
 
 ### dbSNP
 
@@ -200,11 +272,17 @@ Different databases serve different purposes in GWAS research:
 
 - **Sayers, E. W., et al.** (2022). Database resources of the National Center for Biotechnology Information. *Nucleic Acids Research*, 50(D1), D20-D26. doi: [10.1093/nar/gkab1112](https://doi.org/10.1093/nar/gkab1112)
 
+---
+
+
 ### GWAS Catalog
 
 - **Buniello, A., et al.** (2019). The NHGRI-EBI GWAS Catalog of published genome-wide association studies, targeted arrays and summary statistics 2019. *Nucleic Acids Research*, 47(D1), D1005-D1012. doi: [10.1093/nar/gky1120](https://doi.org/10.1093/nar/gky1120)
 
 - **Sollis, E., et al.** (2023). The NHGRI-EBI GWAS Catalog: knowledgebase and deposition resource. *Nucleic Acids Research*, 51(D1), D977-D985. doi: [10.1093/nar/gkac1010](https://doi.org/10.1093/nar/gkac1010)
+
+---
+
 
 ### Open Targets
 
@@ -212,11 +290,17 @@ Different databases serve different purposes in GWAS research:
 
 - **Ochoa, D., et al.** (2021). Open Targets Platform: supporting systematic drug-target identification and prioritisation. *Nucleic Acids Research*, 49(D1), D1302-D1310. doi: [10.1093/nar/gkaa1027](https://doi.org/10.1093/nar/gkaa1027)
 
+---
+
+
 ### gnomAD
 
 - **Karczewski, K. J., et al.** (2020). The mutational constraint spectrum quantified from variation in 141,456 humans. *Nature*, 581(7809), 434-443. doi: [10.1038/s41586-020-2308-7](https://doi.org/10.1038/s41586-020-2308-7)
 
 - **Chen, S., et al.** (2023). A genomic mutational constraint map using variation in 76,156 human genomes. *Nature*, 625(7993), 92-100. doi: [10.1038/s41586-023-06045-0](https://doi.org/10.1038/s41586-023-06045-0)
+
+---
+
 
 ### Other Resources
 

@@ -1,6 +1,16 @@
 
 # TWAS
 
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Background
 
 Most variants identified in GWAS are located in regulatory regions, and these genetic variants could potentially affect complex traits through gene expression. 
@@ -12,6 +22,9 @@ To address these issues, alternative approaches have been proposed and **transcr
 !!! info "GWAS and TWAS"
     <img width="800" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/37ab9489-50bc-41f3-8a82-341a291b428e">
 
+---
+
+
 ## Definition
 
 TWAS is a method to identify significant expression-trait associations using expression imputation from genetic data or summary statistics. 
@@ -21,6 +34,9 @@ TWAS is a method to identify significant expression-trait associations using exp
 
 !!! info "Individual-level and summary-level TWAS"
     <img width="800" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/0880f9b0-4c22-48b2-86ac-2a78b8c4b41d">
+
+---
+
 
 
 ## FUSION
@@ -33,6 +49,15 @@ FUSION trains predictive models of the genetic component of a functional/molecul
 
 !!! quote
     Gusev, A., Ko, A., Shi, H., Bhatia, G., Chung, W., Penninx, B. W., ... & Pasaniuc, B. (2016). Integrative approaches for large-scale transcriptome-wide association studies. Nature genetics, 48(3), 245-252.
+
+!!! note "Required data and tools"
+
+    - **FUSION** pipeline — scripts, **1000G LDREF**, **R** (≥ 4.0) with `optparse`, `RColorBrewer`, and **plink2R** ([Installation](#installation)).
+    - **GWAS summary statistics** in **LDSC / FUSION** format (rsID, alleles, Z or beta/SE) ([Example](#example)).
+    - **Pre-computed gene expression weights** from the [FUSION resource page](http://gusevlab.org/projects/fusion/) for your tissue/cohort of interest.
+
+---
+
 
 ### Algorithm for imputing expression into GWAS summary statistics
 
@@ -73,6 +98,9 @@ ImpG-Summary algorithm was extended to impute the Z scores for the cis genetic c
 !!! quote "ImpG-Summary algorithm"
     Pasaniuc, B., Zaitlen, N., Shi, H., Bhatia, G., Gusev, A., Pickrell, J., ... & Price, A. L. (2014). Fast and accurate imputation of summary statistics enhances evidence of functional enrichment. Bioinformatics, 30(20), 2906-2914.
 
+---
+
+
 
 ### Installation
 
@@ -104,6 +132,9 @@ R
 install.packages(c('optparse','RColorBrewer'))
 install.packages('plink2R-master/plink2R/',repos=NULL)
 ```
+
+---
+
 
 ### Example
 
@@ -207,6 +238,9 @@ Descriptions of the output (cited from http://gusevlab.org/projects/fusion/ )
 |17	|TWAS.Z	|5.1100	|TWAS Z-score (our primary statistic of interest)|
 |18	|TWAS.P	|3.22e-07	|TWAS P-value|
 
+---
+
+
 
 ## Limitations
 
@@ -220,6 +254,9 @@ Descriptions of the output (cited from http://gusevlab.org/projects/fusion/ )
 
 5. Other factors. For example, the window size for selecting variants may affect association results.
 
+---
+
+
 ## Criticism
 
 TWAS aims to test the relationship of the phenotype with the genetic component of the gene expression. But under current framework, TWAS only test the relationship of the phenotype with the **predicted** gene expression without accounting for the uncertainty in that prediction. The key point here is that the current framework omits the fact that the gene expression data is also the result of a sampling process from the analysis.
@@ -228,6 +265,9 @@ TWAS aims to test the relationship of the phenotype with the genetic component o
 
 !!! quote
     de Leeuw, C., Werme, J., Savage, J. E., Peyrot, W. J., & Posthuma, D. (2021). On the interpretation of transcriptome-wide association studies. bioRxiv, 2021-08.
+
+---
+
 
 ## References
 

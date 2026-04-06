@@ -9,7 +9,18 @@ and spatial contexts.
 This section presents a refined framework for GWAS–single-cell integration, organized
 by the *biological question being asked* and the *resolution of inference*.
 
+!!! note "Required data and tools"
+
+    Needs depend on the method (see [Approaches](#approaches)). Typically you need **GWAS summary statistics** (and often **LD scores** or a **reference panel**), plus **method-specific software** — e.g. [LDSC](../08_LDSC/README.md), [MAGMA](../09_Gene_based_analysis/README.md), or single-cell atlases and integration tools cited in each subsection.
+
 ---
+
+**On this page**
+
+[TOC]
+
+---
+
 
 ## Why Integrate GWAS with Single-Cell Data?
 
@@ -33,12 +44,18 @@ Single-cell datasets address these gaps by enabling:
 
 Methods can be organized along two orthogonal axes:
 
+---
+
+
 ### Genetic abstraction level
 
 - Variant / heritability-based
 - Gene-based
 - Cell-based
 - Spatial / tissue-context-based
+
+---
+
 
 ### Biological resolution
 
@@ -50,6 +67,9 @@ Methods can be organized along two orthogonal axes:
 ---
 
 ## Approaches
+
+---
+
 
 ### 1. Cell-type heritability and gene-set enrichment
 *(Variant-level or gene-level; population-wide signal)*
@@ -266,9 +286,15 @@ Spatial Transcriptomics Data (Expression + Coordinates)
 
 ## References
 
+---
+
+
 ### Review papers
 
 - **Cuomo, A. S. E., Nathan, A., Raychaudhuri, S., MacArthur, D. G., & Powell, J. E.** (2023). Single-cell genomics meets human genetics. *Nature Reviews Genetics*, 24(8), 535–549. https://doi.org/10.1038/s41576-023-00598-6
+
+---
+
 
 ### Method papers
 

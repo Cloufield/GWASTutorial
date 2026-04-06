@@ -1,5 +1,11 @@
 # Plotting PCA
 
+---
+
+
+**On this page**
+
+[TOC]
 
 ```python
 import pandas as pd

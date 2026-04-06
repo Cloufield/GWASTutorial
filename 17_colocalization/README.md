@@ -2,6 +2,22 @@
 
 Colocalization analysis aims to determine whether two traits share the same causal variant(s) in a genomic region. This is particularly useful for understanding the relationship between molecular traits (e.g., gene expression, protein levels) and complex diseases.
 
+!!! note "Required data and tools"
+
+    - **R** with **`coloc`** (and companion packages for SuSiE-/COJO-based extensions linked below).
+    - **Summary statistics** for **two traits** in the same region — SNP IDs, effect estimates, and variances; quantitative traits need trait SD (`sdY`) ([Datasets used](#datasets-used)).
+    - **LD matrix** for those SNPs from a reference panel matched to **ancestry** ([Datasets used](#datasets-used)).
+
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Coloc assuming a single causal variant
 
 [`Coloc`](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1004383) uses the assumption of 0 or 1 causal variant in each trait, and tests for whether they share the same causal variant.
@@ -9,10 +25,16 @@ Colocalization analysis aims to determine whether two traits share the same caus
 !!! note "Colocalization vs. Fine-mapping"
     The assumption in colocalization is different from fine-mapping. In fine-mapping, the aim is to find the putative causal variants, which are determined at birth. In colocalization, the aim is to find the "signal overlapping" to support the causality inference, like eQTL → A trait. It is possible that the causal variants are different in two traits.
 
+---
+
+
 ### Datasets used
 
 * For binary traits, `coloc` requires "beta", "varbeta", and "snp". For quantitative traits, the trait standard deviation "sdY" is required to estimate the scale of estimated beta.
 * LD matrix will be a square numeric matrix of dimension equal to the number of SNPs, with dimnames corresponding to the SNP ids.
+
+---
+
 
 ### Result interpretation
 
@@ -42,6 +64,9 @@ Then based on `H4` being true, a 95% credible set could be constructed (as a sha
     my.res$results[o,][1:w,]$snp
     ```
 
+---
+
+
 ## Coloc assuming multiple causal variants or multiple signals
 
 When the single-causal variant assumption is violated, several ways could be used to relieve it.
@@ -52,12 +77,18 @@ When the single-causal variant assumption is violated, several ways could be use
 2. **Conditioning analysis** using [GCTA-COJO-Coloc pipeline](https://www.biorxiv.org/content/10.1101/2022.08.08.503158v1.abstract).
    In this pipeline, signals are segregated, then passed to the coloc engine.
 
+---
+
+
 ## Other pipelines
 
 Many other strategies and pipelines are available for colocalization and prioritize the variants/genes/traits. For example:
 
 * [HyPrColoc](https://www.nature.com/articles/s41467-020-20885-8): Hypothesis prioritization for colocalization analysis
 * [OpenTargets](https://www.nature.com/articles/s41588-021-00945-5): Systematic integration of genomic data for target identification
+
+---
+
 
 ## References
 

@@ -1,5 +1,10 @@
 # Power analysis for GWAS
 
+---
+
+**On this page**
+
+[TOC]
 
 ## Type I, type II errors and Statistical power
 
@@ -28,6 +33,9 @@ $Power = Pr ( Reject\ | H_0\ is\ False) = 1 -  \beta$
     - Risk allele frequency
     - Significance threshold
 
+---
+
+
 ## Non-centrality parameter
 
 NCP describes the degree of difference between the alternative hypothesis $H_1$ and the null hypothesis $H_0$ values.
@@ -55,6 +63,9 @@ So the Non-centrality parameter(NCP) $\lambda$ for $\chi^2$ distribution with de
 
 $$ \lambda = ({{\beta}\over{SE_{\beta}}})^2$$
 
+---
+
+
 ### Power for quantitative traits
 
 $$ \lambda = ({{\beta}\over{SE_{\beta}}})^2 \thickapprox N \times {{Var(x)\beta^2}\over{\sigma^2}} \thickapprox N \times {{2f(1-f) \beta^2 }\over {Var(y)}}  $$
@@ -68,6 +79,9 @@ $$ Power = Pr(X > C ) = 1 - CDF_{\chi^2}(C, ncp = \lambda,df=1) $$
 where $X \sim \chi^2(df=1, ncp=\lambda)$ is the test statistic under the alternative hypothesis. 
 
 - $CDF_{\chi^2}(x, ncp= \lambda)$ : is the cumulative distribution function for non-central $\chi^2$ distribution with non-centrality parameter $\lambda$.
+
+---
+
 
 ## Power for large-scale case-control genome-wide association studies
 
@@ -94,6 +108,9 @@ $$ Power = Pr(|Z|>C) = 1 - \Phi(C-\mu) + \Phi(-C-\mu)$$
     GAS power calculator implemented this method, and you can easily calculate the power using their [website](https://csg.sph.umich.edu/abecasis/cats/gas_power_calculator/index.html)
     
     ![image](https://user-images.githubusercontent.com/40289485/218300614-cc36e850-e5ee-4ec8-aa41-b75d5002518a.png)
+
+---
+
 
 
 ## References

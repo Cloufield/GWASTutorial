@@ -2,29 +2,25 @@
 
 In this module, we will learn the basics of genotype data QC using PLINK, which is one of the most commonly used software in complex trait genomics. (Huge thanks to the developers: [PLINK1.9](https://www.cog-genomics.org/plink/1.9/credits) and [PLINK2](https://www.cog-genomics.org/plink/2.0/credits))
 
-## Table of Contents
-- [Preparation](#preparation)
-	- [PLINK 1.9 & 2 installation](#plink-192-installation)
-	- [Download genotype data](#download-genotype-data)
-- [PLINK tutorial](#plink-tutorial)
-	- [Calculate the missing rate and call rate](#missing-rate-call-rate)
-	- [Calculate allele frequency](#allele-frequency)
-	- [Hardy-Weinberg equilibrium exact test](#hardy-weinberg-equilibrium-exact-test)
-	- [Applying filters](#applying-filters)
-	- [LD-Pruning](#LD-pruning)
-    - [Calculate the inbreeding F coefficient ](#inbreeding-f-coefficient)
-	- [Sample & SNP filtering (extract/exclude/keep/remove)](#sample--snp-filtering-extractexcludekeepremove)
-	- [LD calculation](#ld-calculation)
-	- [Estimate IBD / PI_HAT](#ibd--pi_hat--kinship-coefficient)
-	- [Data management (make-bed/recode)](#data-management-make-bedrecode)
-    - [Apply all the filters to obtain a clean dataset](#apply-all-the-filters-to-obtain-a-clean-dataset)
-    - [Other common QC steps not included in this tutorial](#other-common-qc-steps-not-included-in-this-tutorial)
-- [Key terms](#key-terms)
-- [Exercise](#exercise)
-- [Additional resources](#additional-resources)
-- [References](#references)
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
 
 ## Preparation
+
+!!! note "Required data and tools"
+
+    - **PLINK 1.9** (`plink`) and **PLINK 2** (`plink2`) — install and add to your `PATH` ([PLINK 1.9 & 2 installation](#plink-192-installation)).
+    - **Tutorial genotype data (PLINK binary)** — ~1M variants, 504 EAS samples (1000 Genomes Phase 3); download from [01_Dataset](../01_Dataset/README.md) with `download_sampledata.sh` ([Download genotype data](#download-genotype-data)).
+
+---
+
 
 ### PLINK 1.9&2 installation
 
@@ -49,6 +45,8 @@ You can download each tool into its corresponding directories.
 The `bin` directory here is for keeping all the symbolic links to the executable files of each tool. 
 
 In this way, it is much easier to manage and organize the paths and tools. We will only add the `bin` directory here to the environment path.
+
+---
 
 ### Download PLINK1.9 and PLINK2 and then unzip
 Next, go to the Plink webpage to download the software. We will need both PLINK1.9 and PLINK2.
@@ -103,6 +101,8 @@ Then do the same for PLINK1.9
     - Use PLINK 1.9 for compatibility with existing workflows and extensive documentation
     - Use PLINK 2 for faster processing of large datasets and when working with multiallelic variants
 
+---
+
 ### Create symbolic links
 
 After downloading and unzipping, we will create symbolic links for the plink binary files, and then move the link to `~/tools/bin/`.
@@ -113,6 +113,8 @@ After downloading and unzipping, we will create symbolic links for the plink bin
     ln -s ~/tools/plink2/plink2 ~/tools/bin/plink2
     ln -s ~/tools/plink/plink ~/tools/bin/plink
     ```
+
+---
 
 ### Add paths to the environment path
 
@@ -177,6 +179,7 @@ All done. Let's test if we installed PLINK successfully or not.
     
 Well done. We have successfully installed plink1.9 and plink2.
 
+---
 
 ### Download genotype data
 
@@ -233,6 +236,9 @@ Simply run `download_sampledata.sh` in 01_Dataset to download this dataset (from
     HG00428 HG00428 0 0 0 -9
     ```
 
+---
+
+
 ## PLINK tutorial
 
 Detailed descriptions can be found on plink's website: [PLINK1.9](https://www.cog-genomics.org/plink/1.9/) and [PLINK2](https://www.cog-genomics.org/plink/2.0/).
@@ -252,6 +258,8 @@ The functions we will learn in this tutorial:
 
 All sample codes and results for this module are available in `./04_Data_QC`
 
+---
+
 ### QC Step Summary
 
 !!! info "QC Step Summary"
@@ -265,6 +273,8 @@ All sample codes and results for this module are available in `./04_Data_QC`
     |Inbreeding F coefficient|`--het`|outside of 3 SD from the mean|
 
 First, we can calculate some basic statistics of our simulated data:
+
+---
 
 ### Missing rate (call rate)
 
@@ -286,6 +296,8 @@ The first thing we want to know is the missing rate of our data. Usually, we nee
     $$SNP\ Missing\ Rate_{i} = {{N_{missing\ samples\ at\ i}}\over{N}} = 1 - Call\ Rate_{SNP, i}$$
 
 The input is PLINK bed/bim/fam file. Usually, they have the same prefix, and we just need to pass the prefix to `--bfile` option.
+
+---
 
 ### PLINK syntax
 
@@ -346,16 +358,14 @@ head plink_results.lmiss
     
     Note: The missing values were simulated based on normal distributions for each individual.  
     
-    Sample missing rate
-    
-    ![image](https://github.com/Cloufield/GWASTutorial/assets/40289485/ec776c99-d73f-4cc7-b1e4-d4566acc83df)
+    Interactive plots (pan/zoom, hover counts): sample missing rate (top) and SNP missing rate (bottom). Regenerate with `python3 plot_missing_rate_interactive.py` in this folder (after `plink --missing`; the same script also builds the [F_het figure](#inbreeding-f-coefficient) and the [LD r² heatmap](#ld-calculation) when the corresponding PLINK outputs exist).
 
-    SNP missing rate
-    
-    ![image](https://github.com/Cloufield/GWASTutorial/assets/40289485/30a11f16-d43e-4e1f-a281-90cf02947916)
+    <iframe src="../assets/plots/04_data_qc/missing_rate_distributions.html" width="100%" height="740" style="border:0;" title="Missing rate distributions"></iframe>
 
 
 For the meaning of headers, please refer to [PLINK documents](https://www.cog-genomics.org/plink/1.9/formats).
+
+---
 
 ### Allele Frequency
 
@@ -442,8 +452,7 @@ In PLINK1.9, the concept here is minor (A1) and major(A2) allele, while in PLINK
 - **Major / Minor**: Major allele and minor allele are defined as the allele with the highest and lower(or the second highest for multiallelic variants) allele in a given population, respectively. So major and minor alleles for a certain SNP might be different in two independent populations. The range for MAF(minor allele frequencies) is [0,0.5].
 - **Ref / Alt**: The reference (REF) and alternative (ALT) alleles are simply determined by the allele on a reference genome. If we use the same reference genome, the reference(REF) and alternative(ALT) alleles will be the same across populations. The reference allele could be major or minor in different populations. The range for alternative allele frequency is [0,1], since it could be the major allele or the minor allele in a given population.
 
-
-
+---
 
 ### Hardy-Weinberg equilibrium exact test
 
@@ -557,6 +566,8 @@ The following command can calculate the Hardy-Weinberg equilibrium exact test st
     1     1:125271:C:T  ALL(NP)    C    T             1/29/472  0.05777  0.05985       0.3798
     ```
 
+---
+
 ### Applying filters
 
 Previously we calculated the basic statistics using PLINK. But when performing certain analyses, we just want to exclude the bad-quality samples or SNPs instead of calculating the statistics for all samples and SNPs.
@@ -569,6 +580,8 @@ In this case we can apply the following filters for example:
 - `--hwe 1e-6` : filters out all variants which have Hardy-Weinberg equilibrium exact test p-value below the provided threshold. NOTE: With case/control data, cases and missing phenotypes are normally ignored. (see https://www.cog-genomics.org/plink/1.9/filter#hwe)
 
 We will apply these filters in the following example if LD-pruning.
+
+---
 
 ### LD Pruning
 
@@ -626,6 +639,8 @@ Combined with the filters we just introduced, we can run:
     1:567092:T:C
     ```
 
+---
+
 ### Inbreeding F coefficient 
 
 Next, we can check the heterozygosity F of samples (https://www.cog-genomics.org/plink/1.9/basic_stats#ibc) : 
@@ -680,7 +695,9 @@ We can plot the distribution of F:
 
 !!! example "Distribution of $F_{het}$ in sample data"
     
-    ![image](https://github.com/Cloufield/GWASTutorial/assets/40289485/6dec3e49-fe35-45ee-9337-d788ef3d51cd)
+    Interactive histogram (pan/zoom, hover counts). Dashed lines: ±0.1 threshold used below. Regenerate with `python3 plot_missing_rate_interactive.py` in this folder (after `plink --het`).
+
+    <iframe src="../assets/plots/04_data_qc/f_het_distribution.html" width="100%" height="540" style="border:0;" title="F heterozygosity distribution"></iframe>
     
 
 Here we use +-0.1 as the $F_{het}$ threshold for convenience. 
@@ -691,6 +708,7 @@ Here we use +-0.1 as the $F_{het}$ threshold for convenience.
     awk 'NR>1 && $6>0.1 || $6<-0.1 {print $1,$2}' plink_results.het > high_het.sample
     ```
 
+---
 
 ### Sample & SNP filtering (extract/exclude/keep/remove)
 Sometimes we will use only a subset of samples or SNPs included the original dataset. 
@@ -713,11 +731,50 @@ head plink_results.prune.in
 1:567092:T:C
 ```
 
-### IBD / PI_HAT / kinship coefficient
-`--genome` will estimate IBS/IBD. Usually, for this analysis, we need to prune our data first since the strong LD will cause bias in the results.
-(This step is computationally intensive)
+---
 
-Combined with the `--extract`, we can run:
+### IBD / PI_HAT / kinship coefficient
+
+Relatedness QC is based on **identity by descent (IBD)**. **PLINK 1** summarizes pairs with **PI_HAT** from **`--genome`**; **PLINK 2** uses other machinery—especially **KING-robust kinship** (`--make-king`) and **`--king-cutoff`** for pruning—documented under [sample-distance and relationship matrices](https://www.cog-genomics.org/plink/2.0/distance).
+
+!!! note "IBS vs IBD"
+
+    *Identity by state* (IBS) means two alleles *look the same* at a marker (same nucleotide), which can happen either because they were inherited from a common ancestor or simply because that allele is frequent in the population.     *Identity by descent* (IBD) means the alleles are *the same physical copy* from a shared ancestor—genealogical relatedness.
+
+!!! note "Kinship (φ), relationship (r), PI_HAT, and inbreeding (f)"
+
+    These differ in **who** is involved and **what** is randomized:
+
+    | Quantity | Symbol | Who | What it measures |
+    |----------|--------|-----|------------------|
+    | **Coefficient of kinship** (Malécot) | φ | **Two** people *A*, *B* | Probability that one random allele from *A* and one random allele from *B* (same autosomal locus) are **IBD**. The **KING kinship** column in the next table uses this scale (duplicates **≈ 0.5**). |
+    | **Coefficient of relationship** | *r* | **Two** people | **Fraction** of segregating genetic material in one person expected to be IBD with the other. For **outbred, non-inbred** pairs, **r = 2φ** (e.g. PO / full sibs **r ≈ 0.5**, **φ ≈ 0.25**; first cousins **r ≈ 0.125**, **φ ≈ 0.0625**). |
+    | **PI_HAT** (PLINK 1 `--genome`) | *π̂* | **Two** people | **P(Z1)/2 + P(Z2)** from `--genome`; **PI_HAT ≈ *r*** on ideal outbred pedigrees—same as the **PI_HAT** column below. |
+    | **Coefficient of inbreeding** | *f*, *F* | **One** person | Probability that its **two alleles at a locus** are IBD **with each other** (homozygosity by descent through the pedigree). **f = 0** if parents are unrelated and non-inbred; consanguinity raises *f* (e.g. child of first cousins often **f ≈ 1/16**). Alters *r* / φ for some pairs; many GWAS pipelines assume **f ≈ 0**. |
+
+!!! note "Pedigree expectations (autosomal, no inbreeding)"
+
+    Ideal **outbred** pairs; real GWAS estimates scatter around these values.
+
+    | Relationship | Degree | PI_HAT | KING kinship |
+    |--------------|--------|--------|--------------|
+    | Unrelated | — | 0 | 0 |
+    | Parent–offspring | 1st | 0.5 | 0.25 |
+    | Full siblings | 1st | 0.5 | 0.25 |
+    | Half-siblings | 2nd | 0.25 | 0.125 |
+    | Grandparent–grandchild | 2nd | 0.25 | 0.125 |
+    | Uncle/aunt–niece/nephew | 2nd | 0.25 | 0.125 |
+    | First cousins | 3rd | 0.125 | 0.0625 |
+    | Identical (MZ) twins (or duplicate DNA sample) | — | 1 | 0.5 |
+
+**Reading the two columns:** **KING kinship** is on the Malécot **φ** scale (duplicate **0.5**, then halving by degree). **PI_HAT ≈ *r*** and **r = 2φ**, so **PI_HAT ≈ 2 × KING kinship** on these ideals—real SNP estimates won’t match exactly.
+
+
+---
+
+#### PLINK 1: `--genome` and PI_HAT
+
+**PI_HAT** is the estimated **fraction of alleles** two individuals share IBD (0–1), from **`P(Z1)/2 + P(Z2)`** (Z0, Z1, Z2 in `.genome`). Unrelated pairs are near 0; QC uses it to detect cryptic relatives.
 
 !!! info "How PLINK estimates IBD"
     
@@ -733,8 +790,9 @@ Combined with the `--extract`, we can run:
     
     $$\hat{\pi} = {{P(Z=1)}\over{2}} + P(Z=2)$$
 
+`--genome` combines genome-wide IBS with allele frequencies (IBS alone is not IBD). **LD-prune first**—strong LD can bias results. With **`--extract`** from your pruned SNP list:
 
-!!! example "Estimate IBD" 
+!!! example "Estimate IBD (PLINK 1 `--genome`)"
     ```bash
     plink \
         --bfile ${genotypeFile} \
@@ -743,7 +801,7 @@ Combined with the `--extract`, we can run:
         --out plink_results
     ```
     
-    PI_HAT is the IBD estimation. Please check https://www.cog-genomics.org/plink/1.9/ibd for more details.
+    For full column definitions, see the PLINK IBD documentation: https://www.cog-genomics.org/plink/1.9/ibd
     ```bash
     head plink_results.genome
         FID1     IID1     FID2     IID2 RT    EZ      Z0      Z1      Z2  PI_HAT PHE       DST     PPC   RATIO
@@ -758,13 +816,46 @@ Combined with the `--extract`, we can run:
     HG00403  HG00403  HG00428  HG00428 UN    NA  0.9801  0.0069  0.0130  0.0164  -1  0.858162  0.9812  2.1471
     ```
 
+---
+
+#### PLINK 2: KING kinship and `--king-cutoff`
+
+**PLINK 2** does not reimplement **`--genome`**. It offers **`--make-rel`** / GRM-style output and **KING-robust** **`--make-king`** / **`--make-king-table`** (the usual substitute for **`--genome`**) plus **`--king-cutoff`** for pruning—see [distance matrices](https://www.cog-genomics.org/plink/2.0/distance).
+
+The **KING-robust** estimator (Manichaikul et al., 2010) is **less sensitive to population stratification** than naïve IBS-only relatedness, which matters in multi-ancestry cohorts. PLINK 2’s relationship pruner is built on it. Full flags: [KING-robust kinship (`--make-king`)](https://www.cog-genomics.org/plink/2.0/distance#make_king).
+
 !!! info "KING-robust kinship estimator"
     
-    PLINK2 uses KING-robust kinship estimator, which is more robust in the presence of population substructure. See [here](https://www.cog-genomics.org/plink/2.0/distance#make_king).
-
     Manichaikul, A., Mychaleckyj, J. C., Rich, S. S., Daly, K., Sale, M., & Chen, W. M. (2010). Robust relationship inference in genome-wide association studies. Bioinformatics, 26(22), 2867-2873.
 
-Since the samples are unrelated, we do not need to remove any samples at this step. But remember to check this for your dataset.
+**`--king-cutoff`** uses the same **KING kinship** scale (φ) as in the **Pedigree expectations** note: for threshold *t*, **one sample from each pair with kinship > *t*** is removed (greedy approximation to a [maximum independent set](https://en.wikipedia.org/wiki/Independent_set_%28graph_theory%29)). Alone, it writes sample lists such as **`king_pruned.king.cutoff.in.id`** (keep) and **`king_pruned.king.cutoff.out.id`** (removed) when you pass **`--out king_pruned`**. You can feed a precomputed **`--make-king`** binary prefix or **`--king-cutoff-table`** with a **`.kin0`** from **`--make-king-table`** to rescan thresholds without recomputing all pairs. Reference: [`--king-cutoff`](https://www.cog-genomics.org/plink/2.0/distance#king_cutoff).
+
+!!! example "Prune with PLINK 2 `--king-cutoff`"
+    ```bash
+    plink2 \
+        --bfile ${genotypeFile} \
+        --king-cutoff 0.0884 \
+        --out king_pruned
+    # king_pruned.king.cutoff.in.id  → samples to keep
+    # king_pruned.king.cutoff.out.id → samples removed
+    ```
+
+!!! example "Typical KING cutoffs when choosing `--king-cutoff`"
+
+    Pick a maximum allowed kinship, then **prune** so **no retained pair** is above it (**`--king-cutoff`** drops one sample per offending pair). Each value below is ≈ √(product of two adjacent expected kinships); **lower** *t* = **stricter**. Noise and population structure still matter.
+
+    | Prune if KING > … | √(product) | Typical meaning: exclude pairs at least this closely related | ≈ PI_HAT* |
+    |-------------------|------------|----------------------------------------------------------------|-----------|
+    | ~0.354 | 0.5 × 0.25 | Duplicate / MZ | ~0.708 |
+    | ~0.177 | 0.25 × 0.125 | Within 1st degree (and closer) | ~0.354 |
+    | ~0.0884 | 0.125 × 0.0625 | Within 2nd degree (and closer) | ~0.177 |
+    | ~0.0442 | 0.0625 × 0.03125 | Within 3rd degree (and closer, e.g. first cousins) | ~0.088 |
+
+    \*Illustrative **2 × KING** on pedigree expectations only; `--genome` vs KING differ in practice.
+
+Since the samples are unrelated in our tutorial dataset, we do not need to remove any samples at this step. But remember to check this for your dataset.
+
+---
 
 ### LD calculation
 
@@ -799,6 +890,14 @@ To calculate LD r2 for SNPs on chr22 , we can run:
     22     16149743   22:16149743:T:A     22     16212542   22:16212542:C:T     0.442424
     ```
 
+!!! example "LD r² heatmap (first 10 SNPs by genomic position)"
+
+    From `plink_results.ld`: pairwise r² for the 10 variants with the smallest base positions among SNPs appearing in the file (ordered by chromosome, then BP). Cells with no value are pairs not reported in this `.ld` output for the chosen SNP set. Regenerate with `python3 plot_missing_rate_interactive.py` when `plink_results.ld` is present.
+
+    <iframe src="../assets/plots/04_data_qc/ld_r2_first10_heatmap.html" width="100%" height="660" style="border:0;" title="LD r² heatmap (first 10 SNPs)"></iframe>
+
+---
+
 ### Data management (make-bed/recode)
 
 By far the input data we use is in binary form, but sometimes we may want the text version.
@@ -824,6 +923,9 @@ To convert the formats, we can run:
             --recode \
             --out plink_1000_pruned
     ```
+
+---
+
 
 ## Apply all the filters to obtain a clean dataset
 
@@ -852,14 +954,23 @@ plink \
 -rw-r--r--  1 yunye yunye  13K Dec 26 15:40 sample_data.clean.fam
 ```
 
+---
+
+
 ## Other common QC steps not included in this tutorial
 
 - check-sex: compares sex assignments in the input dataset with those imputed from X chromosome inbreeding coefficients [https://www.cog-genomics.org/plink/1.9/basic_stats#check_sex](https://www.cog-genomics.org/plink/1.9/basic_stats#check_sex)
 - case/control nonrandom missingness test:  detect platform/batch differences between case and control genotype data by performing Fisher's exact test on case/control missing call counts at each variant. [https://www.cog-genomics.org/plink/1.9/assoc#test_missing](https://www.cog-genomics.org/plink/1.9/assoc#test_missing)
 
+---
+
+
 ## Key terms
 
 QC, call rate, HWE, MAF, genotype missing rate, sample missing rate, heterozygosity, LD pruning, IBD, PI_HAT, kinship coefficient
+
+---
+
 
 ## Exercise
 - [x] Follow this tutorial and type in the commands:
@@ -871,8 +982,14 @@ QC, call rate, HWE, MAF, genotype missing rate, sample missing rate, heterozygos
   - [x] Draw the distribution of het.(histogram)
   - [x] Try to briefly explain what you observe
 
+---
+
+
 ## Additional resources
 - Marees, A. T., de Kluiver, H., Stringer, S., Vorspan, F., Curis, E., Marie‐Claire, C., & Derks, E. M. (2018). A tutorial on conducting genome‐wide association studies: Quality control and statistical analysis. International journal of methods in psychiatric research, 27(2), e1608.
+
+---
+
 
 ## References
 - Purcell, S., Neale, B., Todd-Brown, K., Thomas, L., Ferreira, M. A., Bender, D., ... & Sham, P. C. (2007). PLINK: a tool set for whole-genome association and population-based linkage analyses. The American journal of human genetics, 81(3), 559-575.

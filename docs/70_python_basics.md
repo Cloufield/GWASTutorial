@@ -1,5 +1,8 @@
 # Python Basics
 
+---
+
+
 ## Introduction
 
 This section provides a minimum introduction to Python programming for handling genomic data and conducting GWAS analyses. Python is a versatile, high-level programming language that is widely used in bioinformatics, data science, and statistical genetics.
@@ -16,28 +19,20 @@ If you are a beginner with no background in programming, this tutorial will help
     - **Integration**: Works well with command-line tools and other languages
     - **Community**: Large community and extensive documentation
 
-## Table of Contents
+---
 
-- [Getting Started](#getting-started)
-    - Installation and setup
-    - Running Python code
-- [Basic Data Types](#basic-data-types)
-    - Numbers, strings, booleans
-- [Variables and Operators](#variables-and-operators)
-- [Data Structures](#data-structures)
-    - Lists, dictionaries, tuples, sets
-- [Control Flow](#control-flow)
-    - Conditional statements, loops
-- [Functions](#functions)
-    - Defining and using functions
-- [File Input/Output](#file-inputoutput)
-    - Reading and writing files
-- [Working with Libraries](#working-with-libraries)
-    - NumPy, pandas basics
-- [Examples for Genomics](#examples-for-genomics)
-    - Practical genomics examples
+
+**On this page**
+
+[TOC]
+
+---
+
 
 ## Getting Started
+
+---
+
 
 ### Installation
 
@@ -55,6 +50,9 @@ Python is typically pre-installed on Linux and Mac systems. You can check if Pyt
 
 !!! tip "Python 2 vs Python 3"
     Python 2 is deprecated. Always use Python 3 (3.9 or higher recommended). Most systems use `python3` command for Python 3.
+
+---
+
 
 ### Running Python Code
 
@@ -87,6 +85,9 @@ There are several ways to run Python code:
     Hello, World!
     ```
 
+---
+
+
 ### Comments
 
 Comments help document your code. Use `#` for single-line comments:
@@ -102,9 +103,15 @@ Comments help document your code. Use `#` for single-line comments:
     """
     ```
 
+---
+
+
 ## Basic Data Types
 
 Python has several built-in data types. The most common ones are:
+
+---
+
 
 ### Numbers
 
@@ -128,6 +135,9 @@ Python supports integers and floating-point numbers:
     remainder = 10 % 3         # 1 (modulo)
     power = 2 ** 3             # 8 (2 to the power of 3)
     ```
+
+---
+
 
 ### Strings
 
@@ -172,6 +182,9 @@ Strings are sequences of characters, enclosed in single or double quotes:
     reverse_complement = complement.upper()[::-1]
     ```
 
+---
+
+
 ### Booleans
 
 Booleans represent truth values: `True` or `False`:
@@ -191,7 +204,13 @@ Booleans represent truth values: `True` or `False`:
     is_significant = p_value < 0.05  # True
     ```
 
+---
+
+
 ## Variables and Operators
+
+---
+
 
 ### Variables
 
@@ -216,6 +235,9 @@ Variables store values. In Python, you don't need to declare variable types:
     - Use lowercase with underscores: `variant_id`, `p_value`
     - Be descriptive: `chr` is better than `c`, `p_value` is better than `p`
     - Avoid Python keywords: `if`, `for`, `def`, `class`, etc.
+
+---
+
 
 ### Operators
 
@@ -259,9 +281,15 @@ Python supports various operators:
     is_gws = p_value < 5e-8  # True
     ```
 
+---
+
+
 ## Data Structures
 
 Python provides several built-in data structures for organizing data:
+
+---
+
 
 ### Lists
 
@@ -314,6 +342,9 @@ Lists are ordered, mutable sequences of items:
     # Get significant variant IDs
     sig_variants = [variant_ids[i] for i in significant_indices]
     ```
+
+---
+
 
 ### Dictionaries
 
@@ -371,6 +402,9 @@ Dictionaries store key-value pairs. They're very useful for organizing data:
     rs123_p = variants["rs123456"]["p"]            # 1e-8
     ```
 
+---
+
+
 ### Tuples
 
 Tuples are ordered, immutable sequences. Use them when you need a fixed collection:
@@ -395,6 +429,9 @@ Tuples are ordered, immutable sequences. Use them when you need a fixed collecti
 !!! tip "When to use tuples vs lists"
     - **Tuples**: Use when the collection shouldn't change (e.g., coordinates, fixed parameters)
     - **Lists**: Use when you need to modify the collection (e.g., adding/removing variants)
+
+---
+
 
 ### Sets
 
@@ -427,9 +464,15 @@ Sets are unordered collections of unique elements:
     unique_list = list(unique_variants)            # Convert back to list
     ```
 
+---
+
+
 ## Control Flow
 
 Control flow statements allow you to execute code conditionally or repeatedly.
+
+---
+
 
 ### Conditional Statements
 
@@ -472,6 +515,9 @@ Use `if`, `elif`, and `else` for conditional execution:
     
     print(significant_variants)  # ["rs123", "rs789"]
     ```
+
+---
+
 
 ### Loops
 
@@ -563,6 +609,9 @@ Loops allow you to repeat code. Python has `for` and `while` loops:
     print(chr_counts)  # {1: 1}
     ```
 
+---
+
+
 ## Functions
 
 Functions allow you to organize code into reusable blocks:
@@ -628,6 +677,9 @@ Functions allow you to organize code into reusable blocks:
     filtered = filter_variants(variants, min_maf=0.01, max_p=0.05)
     print([v["rsid"] for v in filtered])  # ["rs123"]
     ```
+
+---
+
 
 ## File Input/Output
 
@@ -711,9 +763,15 @@ Reading from and writing to files is essential for working with genomic data:
     - `"a"`: Append mode (adds to end of file)
     - `"r+"`: Read and write mode
 
+---
+
+
 ## Working with Libraries
 
 Python's power comes from its extensive library ecosystem. For genomics and data analysis, key libraries include:
+
+---
+
 
 ### NumPy
 
@@ -740,6 +798,9 @@ NumPy provides arrays and numerical operations:
     first_three = p_values[0:3]            # [0.1, 0.05, 0.01]
     significant_p = p_values[significant]   # Get only significant p-values
     ```
+
+---
+
 
 ### Pandas
 
@@ -819,6 +880,9 @@ Pandas provides DataFrames for working with tabular data (like Excel spreadsheet
     # or
     pip3 install numpy pandas
     ```
+
+---
+
 
 ## Examples for Genomics
 
@@ -952,6 +1016,9 @@ Here are some practical examples combining the concepts above:
     convert_sumstats_to_bed("sumstats.txt", "variants.bed")
     ```
 
+---
+
+
 ## Best Practices
 
 !!! tip "Code organization"
@@ -976,6 +1043,9 @@ Here are some practical examples combining the concepts above:
     - Keep lines under 79-99 characters
     - Use descriptive function and variable names
 
+---
+
+
 ## Next Steps
 
 Now that you understand Python basics, you can:
@@ -985,6 +1055,9 @@ Now that you understand Python basics, you can:
 3. **Practice with real data**: Work with actual GWAS summary statistics
 4. **Learn visualization**: Matplotlib, seaborn for plotting
 5. **Advanced topics**: Object-oriented programming, modules, packages
+
+---
+
 
 ## References
 

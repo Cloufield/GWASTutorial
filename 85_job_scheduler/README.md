@@ -9,6 +9,9 @@ Job scheduling systems (also called workload managers or batch systems) are esse
     - Requiring specific resources (CPU cores, memory, GPUs)
     - Running multiple jobs in parallel
 
+---
+
+
 ## Common Job Scheduling Systems
 
 Two of the most commonly used job scheduling systems:
@@ -16,7 +19,13 @@ Two of the most commonly used job scheduling systems:
 - **[Slurm Workload Manager](https://slurm.schedmd.com/documentation.html)**: Widely used in academic and research computing environments
 - **[Univa Grid Engine (UGE)](https://en.wikipedia.org/wiki/Univa_Grid_Engine)**: Also known as Sun Grid Engine (SGE), commonly used in various HPC environments
 
+---
+
+
 ## Slurm Workload Manager
+
+---
+
 
 ### Basic Commands
 
@@ -37,6 +46,9 @@ Two of the most commonly used job scheduling systems:
     # View detailed information
     $ squeue -l
     ```
+
+---
+
 
 ### Slurm Job Script Example
 
@@ -66,6 +78,9 @@ Submit the job:
 $ sbatch my_job.sh
 ```
 
+---
+
+
 ### Common Slurm Directives
 
 - `#SBATCH --job-name=<name>`: Set job name
@@ -78,7 +93,13 @@ $ sbatch my_job.sh
 - `#SBATCH --mem=<size>`: Memory requirement (e.g., 8G, 16G)
 - `#SBATCH --partition=<name>`: Specify partition/queue
 
+---
+
+
 ## Univa Grid Engine (UGE)
+
+---
+
 
 ### Basic Commands
 
@@ -98,6 +119,9 @@ $ sbatch my_job.sh
     # View detailed information
     $ qstat -f <job_id>
     ```
+
+---
+
 
 ### UGE Job Script Example
 
@@ -127,6 +151,9 @@ Submit the job:
 $ qsub my_job.sh
 ```
 
+---
+
+
 ### Common UGE Directives
 
 - `#$ -S /bin/bash`: Specify shell
@@ -153,6 +180,9 @@ $ qsub my_job.sh
     # Your commands here
     ```
 
+---
+
+
 ## Best Practices
 
 !!! tip "Job submission tips"
@@ -168,7 +198,10 @@ $ qsub my_job.sh
     - Requesting too many resources may delay job start time
     - Check your cluster's documentation for default limits
 
-## Additional Resources
+---
+
+
+## Additional resources
 
 - **Slurm**: [Official Documentation](https://slurm.schedmd.com/documentation.html)
 - **UGE**: [Wikipedia - Univa Grid Engine](https://en.wikipedia.org/wiki/Univa_Grid_Engine)

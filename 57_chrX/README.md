@@ -4,18 +4,21 @@
 
 Sex chromosomes require special handling in GWAS because **ploidy differs by sex and by genomic region**. This section summarizes notation, PAR regions, sex checks, and dosage scaling, with a focus on PLINK / regenie workflows.
 
-## Table of Contents
+---
 
-- [PAR and Non-PAR](#par-and-non-par)
-- [Chromosome encoding](#chromosome-encoding)
-- [Check sex by X chromosome inbreeding coefficients](#check-sex-by-x-chromosome-inbreeding-coefficients)
-- [Dosage rescaling for GWAS](#dosage-rescaling-for-gwas)
+
+**On this page**
+
+[TOC]
 
 ---
 
 
 
 ## PAR and Non-PAR
+
+---
+
 
 ### What is PAR?
 
@@ -108,6 +111,9 @@ It is important to distinguish **GWAS summary statistics conventions** from **PL
 | PAR (X/Y regions)  | 23 or 24  | 25 or XY  |
 | MT                 | 25        | 26 or MT  |
 
+---
+
+
 ### Explanation
 
 - **GWAS-SSF**
@@ -156,10 +162,16 @@ This command selects:
 - Pseudo-autosomal regions (`XY`)
 - Mitochondrial DNA (`MT`)
 
+---
+
+
 
 ## Check sex by X chromosome inbreeding coefficients
 
 Sex inference is typically done via **X-chromosome heterozygosity**.
+
+---
+
 
 ### plink --check-sex
 
@@ -190,6 +202,9 @@ plink --bfile data --impute-sex
 ---
 
 ## Dosage rescaling for GWAS
+
+---
+
 
 ### Core question
 

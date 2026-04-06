@@ -1,5 +1,15 @@
 # Linear Mixed Models in GWAS
 
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Introduction
 
 Linear Mixed Models (LMM) are a powerful statistical framework used in genome-wide association studies (GWAS) to account for population structure, cryptic relatedness, and other sources of confounding that can lead to spurious associations.
@@ -23,3 +33,10 @@ where:
 - $Z$ is the design matrix for random effects
 - $u \sim N(0, \sigma_g^2 K)$ represents random effects with covariance matrix $K$ (kinship/genetic relationship matrix)
 - $\epsilon \sim N(0, \sigma_e^2 I)$ is the residual error
+
+---
+
+
+## Key terms
+
+Linear mixed model (LMM), fixed effect, random effect, kinship matrix, genetic relationship matrix (GRM), population stratification, cryptic relatedness, variance component, GWAS

@@ -2,11 +2,16 @@
 
 Programming skills are essential for conducting genome-wide association studies (GWAS). While many GWAS tools have graphical interfaces, the vast majority of GWAS workflows require command-line proficiency and scripting capabilities to handle large-scale genomic data, automate repetitive tasks, and perform custom analyses.
 
+**Suggestion:** If you use AI coding assistants, learn the basics in this tutorial first—the shell, genomic file formats, and enough Python or R to read and run small scripts yourself. That groundwork makes it much easier to judge suggestions, catch mistakes, and debug when outputs look wrong; without it, generated code can appear plausible while mishandling data or misinterpreting results.
+
 ---
 
 ## Summary
 
 GWAS programming requires proficiency in multiple complementary tools and languages, each serving different purposes in the analysis pipeline:
+
+---
+
 
 ### Core Programming Skills
 
@@ -17,6 +22,9 @@ GWAS programming requires proficiency in multiple complementary tools and langua
 | **Python** | Data manipulation, visualization, downstream analysis | Processing sumstats, plotting, custom analyses |
 | **R** | Statistical analysis, visualization, specialized genetics packages | Statistical modeling, visualization, post-GWAS analysis |
 | **Version Control (Git)** | Managing code, collaboration, reproducibility | All stages - tracking analysis scripts |
+
+---
+
 
 ### Essential Concepts
 
@@ -34,6 +42,9 @@ Beyond specific languages, you need to understand:
 
 The following roadmap provides a structured learning path for acquiring programming skills for GWAS, from absolute beginner to proficient analyst:
 
+---
+
+
 ### Phase 1: Foundation (Essential for Everyone)
 
 **Goal**: Get comfortable with the command line and basic file operations
@@ -46,6 +57,9 @@ The following roadmap provides a structured learning path for acquiring programm
 - **File Formats** ([Section 03](../03_Data_formats/))
     - Understand VCF, PLINK formats
     - Learn to inspect and validate genomic data files
+
+---
+
 
 ### Phase 2: Data Analysis (Choose Based on Needs)
 
@@ -78,6 +92,9 @@ The following roadmap provides a structured learning path for acquiring programm
 - Learn both Python and R
 - Use Python for data processing, R for statistical analysis
 
+---
+
+
 ### Others
 
 - **Bash Scripting** ([Section 02 - Bash Scripts](../02_Linux_basics/))
@@ -104,6 +121,7 @@ The following roadmap provides a structured learning path for acquiring programm
 
 !!! tip "Learning Strategy"
 
+    - **Learn basics before leaning on AI**: Use the roadmap below to build command-line and scripting skills first; AI tools are most helpful when you can verify their output.
     - **Practice regularly**: Work with real or example datasets
     - **Start simple**: Master basics before moving to advanced topics
     - **Build incrementally**: Each skill builds on previous ones

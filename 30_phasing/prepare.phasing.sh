@@ -1,18 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Align alleles to the reference FASTA (PLINK 2 --ref-from-fa). Run from 30_phasing/.
+set -euo pipefail
 
-before_alignment_bfile="../04_Data_QC/sample_data.clean"
-foralignment="./1KG_foralignment.tsv"
+# --- configure (override with env vars if needed) ---
+REF_FASTA="${REF_FASTA:-${HOME}/refs/human_g1k_v37.fasta}"
+CLEAN_BFILE="../04_Data_QC/sample_data.clean"
+ALIGNED_BFILE="./sample_data.clean.alignment"
 
-awk -F'\t' '{
-  split($2, arr, ":");
-  print $2 "\t" arr[3] "\t" arr[4]
-}' ${before_alignment_bfile}.bim > ${foralignment}
-
-after_alignment_bfile="./sample_data.clean.alignment"
-
-plink \
-	--bfile ${before_alignment_bfile} \
-	--a1-allele ${foralignment} 2 \
+plink2 \
+	--bfile "${CLEAN_BFILE}" \
+	--fa "${REF_FASTA}" \
+	--ref-from-fa \
 	--make-bed \
-	--out ${after_alignment_bfile}
-
+	--out "${ALIGNED_BFILE}"

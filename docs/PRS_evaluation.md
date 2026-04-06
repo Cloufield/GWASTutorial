@@ -1,5 +1,15 @@
 # Polygenic risk scores evaluation
 
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Regressions for evaluation of PRS
 
 $$Phenotype \sim PRS_{phenotype} + Covariates$$
@@ -8,7 +18,13 @@ $$logit(P) \sim PRS_{phenotype} + Covariates$$
 
 Covariates usually include sex, age and top 10 PCs.
 
+---
+
+
 ## Evaluation
+
+---
+
 
 ### ROC, AIC, AUC, and C-index
 
@@ -41,6 +57,9 @@ Covariates usually include sex, age and top 10 PCs.
 
     - Reference: Longato, E., Vettoretti, M., & Di Camillo, B. (2020). A practical perspective on the concordance index for the evaluation and selection of prognostic time-to-event models. Journal of Biomedical Informatics, 108, 103496.
 
+---
+
+
 ### R2 and pseudo-R2
 
 !!! info "Coefficient of determination"
@@ -63,6 +82,9 @@ Covariates usually include sex, age and top 10 PCs.
 
     - $L_0$ : Likelihood of the null model
     - $L_{full}$ : Likelihood of the full model
+
+---
+
 
 ### R2 on the liability scale (Lee)
 
@@ -119,6 +141,9 @@ Covariates usually include sex, age and top 10 PCs.
     R2 = R2O*cv/(1+R2O*theta*cv)
     ```
 
+---
+
+
 ## Bootstrap Confidence Interval Methods for R2
 
 Bootstrap is a commonly used resampling method to generate a sampling distribution from the known sample dataset. It repeatedly takes random samples with replacement from the known sample dataset.
@@ -130,6 +155,9 @@ Steps:
 - Obtain the approximate distribution of the parameter.
 
 The percentile bootstrap interval is then defined as the interval between $100 \times \alpha /2$ and $100 \times (1 - \alpha /2)$ percentiles of the parameters estimated by bootstrapping. We can use this method to estimate the  bootstrap interval for $R^2$.
+
+---
+
 
 ## References
 

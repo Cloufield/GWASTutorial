@@ -6,6 +6,9 @@ Think of SSH as a secure way to remotely access and control another computer ove
 
 ![image](https://user-images.githubusercontent.com/40289485/210223930-1138fb9f-5230-415d-a595-3239113372c8.png)
 
+---
+
+
 ## Login to Remote Server
 
 ```Bash
@@ -14,7 +17,13 @@ ssh <username>@<host>
 
 Before you log in, you need to generate keys for SSH connection.
 
+---
+
+
 ## SSH Keys
+
+---
+
 
 ### Generate SSH Keys
 
@@ -30,6 +39,9 @@ You will get two keys, a public one and a private one:
 !!! warning 
     Don't share your private key with others.    
 
+---
+
+
 ### Copy Public Key to Remote Server
 
 What you need to do is add your local public key to `~/.ssh/authorized_keys` on the host server.
@@ -42,15 +54,24 @@ ssh-copy-id <username>@<host>
 
 This command will automatically copy your public key to the remote server's `~/.ssh/authorized_keys` file.
 
+---
+
+
 ## File Transfer
 
 Suppose you are using a local machine:
+
+---
+
 
 ### Download Files from Remote Host to Local Machine
 
 ```Bash
 scp <username>@<host>:remote_path local_path
 ```
+
+---
+
 
 ### Upload Files from Local Machine to Remote Host
 
@@ -67,8 +88,14 @@ scp local_path <username>@<host>:remote_path
     ```Bash
     scp -r /home/gwaslab/work gwaslab@remote.com:/home/gwaslab 
     ```
+
+---
+
     
 ## SSH Tunneling
+
+---
+
 
 ### Local Port Forwarding
 
@@ -88,6 +115,9 @@ ssh -L [local_IP:]local_PORT:destination:destination_PORT <username>@<host>
     ```
     Then you can access the remote server's port 80 by visiting `localhost:8080` on your local machine.
 
+---
+
+
 ### Remote Port Forwarding
 
 `-R`: Remote port forwarding (reverse tunneling)
@@ -97,6 +127,9 @@ ssh -R [remote_IP:]remote_PORT:destination:destination_PORT <username>@<host>
 ```
 
 This allows the remote server to access services on your local machine.
+
+---
+
 
 ## Other SSH Options
 

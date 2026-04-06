@@ -1,5 +1,15 @@
 # SAIGE: Saddlepoint Approximation for Accurate P-values
 
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Introduction
 
 SAIGE (Scalable and Accurate Implementation of Generalized mixed model) is an R package developed for genome-wide association studies (GWAS) in large-scale datasets and biobanks. SAIGE addresses two critical challenges in GWAS:
@@ -14,7 +24,13 @@ SAIGE uses **saddlepoint approximation (SPA)** to accurately calculate p-values 
     
     Reference: [SAIGE Documentation](https://saigegit.github.io/SAIGE-doc/)
 
+---
+
+
 ## Case-control imbalance
+
+---
+
 
 ### The problem
 
@@ -40,6 +56,9 @@ In case-control GWAS, standard logistic regression assumes that the test statist
     - Expected number of minor alleles in cases: ~2 (1,000 × 0.001 × 2)
     - Expected number of minor alleles in controls: ~20 (10,000 × 0.001 × 2)
     - Standard logistic regression may fail or produce unreliable p-values due to the small number of carriers in cases
+
+---
+
 
 ### Why standard methods fail
 
@@ -69,7 +88,13 @@ However, when these conditions are violated, the normal approximation becomes in
     
     When case-control ratios are unbalanced and variants are rare, the denominator can be very small, and the distribution of $S$ may not be well-approximated by a normal distribution.
 
+---
+
+
 ## Saddlepoint approximation (SPA)
+
+---
+
 
 ### Overview
 
@@ -85,6 +110,9 @@ SAIGE uses SPA to calculate accurate p-values for the score test statistic in lo
     - Rare variants (MAF < 0.01)
     - Unbalanced case-control ratios
     - Small effective sample sizes
+
+---
+
 
 ### Mathematical foundation
 
@@ -122,6 +150,9 @@ The saddlepoint approximation method works as follows:
 !!! note "Why it's called 'saddlepoint'"
     The method is named "saddlepoint" because the point $\hat{t}$ where $K'_X(\hat{t}) = x$ corresponds to a saddle point in the complex plane when extending the CGF to complex values. This point provides the best approximation for the tail probability.
 
+---
+
+
 ### Application to GWAS
 
 In the context of GWAS with logistic regression, SAIGE applies SPA to the score test statistic:
@@ -133,6 +164,9 @@ The key steps are:
 1. **Compute the CGF**: For the score statistic $S$, compute its cumulant-generating function under the null hypothesis
 2. **Find the saddlepoint**: Solve the saddlepoint equation for the observed test statistic value
 3. **Calculate p-value**: Use the saddlepoint approximation to compute the tail probability
+
+---
+
 
 ### Handling relatedness
 
@@ -151,6 +185,9 @@ where $\mathbf{K}$ is the $N \times N$ genetic relationship matrix (GRM). This c
     3. Setting small entries to zero (sparsification)
     
     This reduces memory usage while maintaining accuracy for accounting for relatedness.
+
+---
+
 
 
 ### Output interpretation
@@ -176,7 +213,13 @@ SAIGE Step 2 output typically includes:
     - Check `Is.converge` to ensure SPA calculations converged
     - For rare variants, `p.value` (SPA) is typically more accurate than `p.value.NA`
 
+---
+
+
 ## References
+
+---
+
 
 ### SAIGE method papers
 
@@ -186,6 +229,9 @@ SAIGE Step 2 output typically includes:
 
 - **SAIGE-GENE+ (enhanced set-based tests)**: Wei Zhou*, Wenjian Bi*, Zhangchen Zhao*, Kushal K. Dey, Karthik A. Jagadeesh, Konrad J. Karczewski, Mark J. Daly, Benjamin M. Neale, Seunggeun Lee. Set-based rare variant association tests for biobank scale sequencing data sets. *medRxiv* 2021.07.12.21260400. doi: [10.1101/2021.07.12.21260400](https://doi.org/10.1101/2021.07.12.21260400).
 
+---
+
+
 ### Saddlepoint approximation
 
 - **Classical reference**: Daniels HE. Saddlepoint approximations in statistics. *The Annals of Mathematical Statistics*. 1954;25(4):631-650.
@@ -194,11 +240,17 @@ SAIGE Step 2 output typically includes:
 
 - **Saddlepoint approximation in genetics**: Dey R, Schmidt EM, Abecasis GR, Lee S. A fast and accurate algorithm to test for binary phenotypes and its application to PheWAS. *The American Journal of Human Genetics*. 2017;101(1):37-49. doi: [10.1016/j.ajhg.2017.05.014](https://doi.org/10.1016/j.ajhg.2017.05.014).
 
+---
+
+
 ### Case-control imbalance and rare variants
 
 - **Firth correction**: Firth D. Bias reduction of maximum likelihood estimates. *Biometrika*. 1993;80(1):27-38. doi: [10.1093/biomet/80.1.27](https://doi.org/10.1093/biomet/80.1.27).
 
 - **Rare variant testing**: Lee S, Abecasis GR, Boehnke M, Lin X. Rare-variant association analysis: study designs and statistical tests. *The American Journal of Human Genetics*. 2014;95(1):5-23. doi: [10.1016/j.ajhg.2014.06.009](https://doi.org/10.1016/j.ajhg.2014.06.009).
+
+---
+
 
 ### Software and documentation
 

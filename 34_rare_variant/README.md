@@ -1,6 +1,16 @@
 
 # Rare-variant association tests
 
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Introduction
 
 Traditional genome-wide association studies (GWAS) focus on common variants (typically with minor allele frequency, MAF > 0.05). However, rare variants (MAF < 0.01 or 0.005) may also contribute to disease risk, especially for complex traits. Single-variant association tests have limited power to detect rare variant associations due to:
@@ -30,6 +40,9 @@ Rare-variant association tests address these challenges by aggregating informati
     - **REGENIE**: Supports burden, SKAT, and ACAT tests
     - **MAGMA**: Gene-based analysis from GWAS summary statistics
     - **ACAT/ACAT-O**: Aggregated Cauchy Association Test
+
+---
+
 
 ## Burden test
 
@@ -67,9 +80,15 @@ Burden tests collapse multiple rare variants into a single genetic score, typica
     - Morgenthaler, S., & Thilly, W. G. (2007). A strategy to discover genes that carry rare but relevant variants in disease association studies. *American journal of human genetics*, 80(4), 703-714.
     - Li, B., & Leal, S. M. (2008). Methods for detecting associations with rare variants for common diseases: application to analysis of sequence data. *The American Journal of Human Genetics*, 83(3), 311-321.
 
+---
+
+
 ## SKAT and SKAT-O
 
 The Sequence Kernel Association Test (SKAT) is a variance component test that tests the variance of genetic effects rather than the mean. Unlike burden tests, SKAT allows for both protective and risk variants in the same region, making it more flexible when the direction of effects is unknown.
+
+---
+
 
 ### SKAT (Sequence Kernel Association Test)
 
@@ -96,6 +115,9 @@ SKAT models the genetic effects as random effects and tests whether the variance
     - **MAF-based**: $w_j = 1/\sqrt{MAF_j(1-MAF_j)}$
     - **Functional weights**: Higher weights for predicted deleterious variants
 
+---
+
+
 ### SKAT-O (Optimal SKAT)
 
 SKAT-O is an optimal test that combines burden and variance component tests. It searches over a range of correlation parameters $\rho$ (from 0 to 1) to find the optimal combination:
@@ -121,6 +143,9 @@ SKAT-O is an optimal test that combines burden and variance component tests. It 
 
     - Wu, M. C., Lee, S., Cai, T., Li, Y., Boehnke, M., & Lin, X. (2011). Rare-variant association testing for sequencing data with the sequence kernel association test. *The American Journal of Human Genetics*, 89(1), 82-93.
     - Lee, S., Emond, M. J., Bamshad, M. J., Barnes, K. C., Rieder, M. J., Nickerson, D. A., ... & Lin, X. (2012). Optimal unified approach for rare-variant association testing with application to small-sample case-control whole-exome sequencing studies. *The American Journal of Human Genetics*, 91(2), 224-237.
+
+---
+
 
 ## ACAT: Aggregated Cauchy Association Test
 
@@ -155,7 +180,13 @@ ACAT (Aggregated Cauchy Association Test) is a fast and powerful p-value combina
     
     Liu, Y., Chen, S., Li, Z., Morrison, A. C., Boerwinkle, E., & Lin, X. (2019). ACAT: a fast and powerful p value combination method for rare-variant analysis in sequencing studies. *The American Journal of Human Genetics*, 104(3), 410-421.
 
+---
+
+
 ## Practical considerations
+
+---
+
 
 ### Variant selection and annotation
 
@@ -182,6 +213,9 @@ Before performing rare-variant tests, you need to:
     - **Low-frequency**: MAF < 0.01
     - **Including low-frequency**: MAF < 0.05
 
+---
+
+
 ### Multiple testing correction
 
 When testing multiple genes or regions, you need to correct for multiple testing:
@@ -189,6 +223,9 @@ When testing multiple genes or regions, you need to correct for multiple testing
 - **Bonferroni correction**: Divide significance threshold by number of tests
 - **False discovery rate (FDR)**: Control the expected proportion of false discoveries
 - **Permutation-based**: Empirical p-values from permuted data
+
+---
+
 
 ### Software tools
 
@@ -199,19 +236,41 @@ When testing multiple genes or regions, you need to correct for multiple testing
     - **MAGMA**: Gene-based analysis from GWAS summary statistics
     - **ACAT R package**: `ACAT` function for p-value combination
 
+---
+
+
+## Key terms
+
+Rare variant, minor allele frequency (MAF), burden test, SKAT, SKAT-O, variance component test, omnibus test, kernel matrix, ACAT, gene-based analysis, functional annotation, loss-of-function variant, variant weight, multiple testing correction, Bonferroni correction, false discovery rate (FDR), whole-exome sequencing, whole-genome sequencing
+
+---
+
+
 ## References
+
+---
+
 
 ### General rare-variant analysis
 - Lee, S., Abecasis, G. R., Boehnke, M., & Lin, X. (2014). Rare-variant association analysis: study designs and statistical tests. *The American Journal of Human Genetics*, 95(1), 5-23.
 - Auer, P. L., & Lettre, G. (2015). Rare variant association studies: considerations, challenges and opportunities. *Genome medicine*, 7(1), 1-11.
 
+---
+
+
 ### Burden tests
 - Morgenthaler, S., & Thilly, W. G. (2007). A strategy to discover genes that carry rare but relevant variants in disease association studies. *American journal of human genetics*, 80(4), 703-714.
 - Li, B., & Leal, S. M. (2008). Methods for detecting associations with rare variants for common diseases: application to analysis of sequence data. *The American Journal of Human Genetics*, 83(3), 311-321.
 
+---
+
+
 ### SKAT and SKAT-O
 - Wu, M. C., Lee, S., Cai, T., Li, Y., Boehnke, M., & Lin, X. (2011). Rare-variant association testing for sequencing data with the sequence kernel association test. *The American Journal of Human Genetics*, 89(1), 82-93.
 - Lee, S., Emond, M. J., Bamshad, M. J., Barnes, K. C., Rieder, M. J., Nickerson, D. A., ... & Lin, X. (2012). Optimal unified approach for rare-variant association testing with application to small-sample case-control whole-exome sequencing studies. *The American Journal of Human Genetics*, 91(2), 224-237.
+
+---
+
 
 ### ACAT
 - Liu, Y., Chen, S., Li, Z., Morrison, A. C., Boerwinkle, E., & Lin, X. (2019). ACAT: a fast and powerful p value combination method for rare-variant analysis in sequencing studies. *The American Journal of Human Genetics*, 104(3), 410-421.

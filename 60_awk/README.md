@@ -1,7 +1,13 @@
 # AWK
 
+---
+
+
 ## AWK Introduction
 'awk' is one of the most powerful text processing tools for tabular text files.
+
+---
+
 
 ## AWK syntax
 
@@ -14,6 +20,9 @@ Some special variables in awk:
 - `$0` : all columns
 - `$n` : column n. For example, $1 means the first column. $4 means column 4.
 - `NR` : Row number.
+
+---
+
 
 ## Examples
 
@@ -33,6 +42,9 @@ head ../02_Linux_basics/sumstats.txt
 1	122872	1:122872:T:G	T	G	G	ADD	503	1.048280.182036	0.259034	0.795609	.
 1	135163	1:135163:C:T	C	T	T	ADD	503	0.6766660.242611	-1.60989	0.107422	.
 ```
+
+---
+
 
 ### Example 1
 
@@ -54,6 +66,9 @@ head ../02_Linux_basics/sumstats.txt
 
 The `NR` here means row number. The condition here `NR==1 || $1==2` means if it is the first row or the first column is equal to 2, conduct the process `print $0`, which mean print all columns. 
 
+---
+
+
 ### Example 2
 
 !!! example "Select all genome-wide significant variants (p<5e-8)"
@@ -73,6 +88,9 @@ The `NR` here means row number. The condition here `NR==1 || $1==2` means if it 
     
     ```
 
+---
+
+
 ### Example 3
 
 !!! example "Create a bed-like format for annotation"
@@ -91,12 +109,18 @@ The `NR` here means row number. The condition here `NR==1 || $1==2` means if it 
     1 233473 233473 C G
     ```
 
+---
+
+
 ## AWK workflow
 
 The workflow of awk can be summarized in the following figure: 
 
 !!! info "awk workflow"
     ![image](https://user-images.githubusercontent.com/40289485/217223344-233fd8fc-d734-4559-b32b-ce94acab37b9.png)
+
+---
+
 
 ## AWK variables
 
@@ -185,6 +209,9 @@ The workflow of awk can be summarized in the following figure:
     0.155079 .
     ```
 
+---
+
+
 ## AWK operators
 
 !!! info "Arithmetic Operators"
@@ -203,6 +230,9 @@ The workflow of awk can be summarized in the following figure:
     |`\|\|`|or|
     |`&&`|and|
     |`!`|not|
+
+---
+
 
 ## AWK functions
 
@@ -236,6 +266,9 @@ The workflow of awk can be summarized in the following figure:
     - substr(string, start [, length ])
     - tolower(string)
     - toupper(string)
+
+---
+
 
 ## AWK options
 
@@ -282,6 +315,9 @@ Examples:
         gawk '{ sum += $1 }; END { print sum }' file
         gawk -F: '{ print $1 }' /etc/passwd
 ```
+
+---
+
 
 ## References
 - https://www.gnu.org/software/gawk/manual/gawk.html

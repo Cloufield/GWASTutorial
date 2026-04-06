@@ -106,6 +106,9 @@ See `26_normalization` for recommended workflows.
 - Record all phenotype QC filters
 - Confirm that missingness is not trait-dependent
 
+---
+
+
 ## References
 
 - Pirastu, N., et al. (2021). Genetic analyses identify widespread sex-differential participation bias. *Nature Genetics*, 53, 663-671. https://doi.org/10.1038/s41588-021-00846-7

@@ -1,5 +1,8 @@
 # Self training
 
+---
+
+
 ## PCA using 1000 Genome Project Dataset
 
 In this self-learning module, we would like you to put your hands on the 1000 Genome Project data and apply the skills you have learned to this mini-project.
@@ -21,6 +24,9 @@ The ultimate goal of this assignment is simple, which is to help you get familia
 
 !!! tip
     Please pay attention to the details of each step. Understanding why and how we do certain steps is much more important than running the sample code itself. 
+
+---
+
 
 ## 1. Download the publicly available 1000 Genome VCF 
 
@@ -57,6 +63,9 @@ Download the files we need from 1000 Genomes Project FTP site:
     wget https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/release/20130502/supporting/accessible_genome_masks/20141020.strict_mask.whole_genome.bed
     ```
 
+---
+
+
 ## 2. Re-align, normalize and remove duplication
 
 We need to use bcftools to process the raw vcf files. 
@@ -84,6 +93,9 @@ Since the variants are not normalized and also have many duplications, we need t
     done
     ```
 
+---
+
+
 ## 3. Convert VCF files to plink binary format
 
 !!! example    
@@ -103,6 +115,9 @@ Since the variants are not normalized and also have many duplications, we need t
     done
     ```
 
+---
+
+
 ## 4. Using SNPs only in strict masks
 
 Strict masks are [in this directory](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/accessible_genome_masks/).
@@ -114,6 +129,9 @@ Strict masks are [in this directory](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/
 !!! tip
     Use `plink --make-set` option with the `BED` files to extract SNPs in the strict mask.
 
+---
+
+
 ## 5. QC it and prune it to ~ 100K variants.
 
 !!! tip
@@ -123,10 +141,16 @@ Strict masks are [in this directory](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/
 
     Pruning: `plink --indep-pairwise`
 
+---
+
+
 ## 6. Perform PCA 
 
 !!! tip
     `plink --pca`
+
+---
+
 
 ## 7. Visualization and interpretation.
 
@@ -137,10 +161,16 @@ Draw PC1 - PC2 plot and color each individual by ancestry information (from ALL.
     
     (If you are having trouble performing any of the steps, you can also refer to: https://www.biostars.org/p/335605/.)
 
+---
+
+
 ## Checklist 
 - [x] What does variant normalization mean and What are the two principles for variant normalization?
 - [x] For chromosome 1, what is the proportion of common variants(MAF >5%) / low-frequency-variants(1<=MAF <5%) / and rare variants(MAF <1%) ? If possible, please draw a figure showing the distribution of MAF. (plink --freq)
 - [x] What pattern did you observe from the 1KG PCA plot? 
+
+---
+
 
 ## References
 

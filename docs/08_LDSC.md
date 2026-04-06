@@ -1,31 +1,28 @@
 # LD score regression
 
-## Table of Contents
-- [LD score regression](#ld-score-regression)
-  - [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
-    - [LD: Linkage disequilibrium](#ld-linkage-disequilibrium)
-    - [LD score](#ld-score)
-    - [LD score regression](#ld-score-regression-1)
-  - [Install LDSC](#install-ldsc)
-  - [Data Preparation](#data-preparation)
-    - [Download sample summary statistics](#download-sample-summary-statistics)
-    - [Download reference files](#download-reference-files)
-  - [Munge sumstats](#munge-sumstats)
-  - [LD score regression](#ld-score-regression-2)
-  - [Distribution of h2 and intercept across traits in UKB](#distribution-of-h2-and-intercept-across-traits-in-ukb)
-  - [Cross-trait LD score regression](#cross-trait-ld-score-regression)
-  - [Partitioned LD regression](#partitioned-ld-regression)
-  - [Celltype specificity LD regression](#celltype-specificity-ld-regression)
-  - [References](#references)
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
 
 ## Introduction
 
 LDSC is one of the most commonly used command-line tools to estimate inflation, heritability, genetic correlation and cell/tissue type specificity from GWAS summary statistics. 
 
+---
+
+
 ### LD: Linkage disequilibrium
 
 Linkage disequilibrium (LD) :  non-random association of alleles at different loci in a given population. ([Wiki](https://en.wikipedia.org/wiki/Linkage_disequilibrium))
+
+---
+
 
 ### LD score
 
@@ -34,6 +31,9 @@ LD score $l_j$ for a SNP $j$ is defined as the sum of $r^2$ for the SNP and othe
 $$
 l_j= \Sigma_k{r^2_{j,k}}
 $$
+
+---
+
 
 ### LD score regression
 
@@ -52,6 +52,9 @@ $$
 
 For more details of LD score regression, please refer to :
 - Bulik-Sullivan, Brendan K., et al. "LD Score regression distinguishes confounding from polygenicity in genome-wide association studies." Nature genetics 47.3 (2015): 291-295.
+
+---
+
 
 
 ## Install LDSC
@@ -77,8 +80,17 @@ conda env create --file environment.yml
 conda activate ldsc
 ```
 
+---
 
-## Data Preparation 
+
+
+## Data preparation
+
+!!! note "Required data and tools"
+
+    - **LDSC** — clone repo, Python 2 **conda** env ([Install LDSC](#install-ldsc)); [Anaconda/Miniconda](https://cloufield.github.io/GWASTutorial/80_anaconda/) if needed.
+    - **Reference files** — EAS weights, frequency/plink reference, and partitioned baseline LD scores are on **Zenodo** ([S-LDSC reference files](https://zenodo.org/records/10515792), DOI [10.5281/zenodo.10515792](https://doi.org/10.5281/zenodo.10515792)). **Google Cloud** with `gsutil` and a billing-enabled project is still needed for **EAS genome-wide LD scores** (`eas_ldscores`) and **LDSC-SEG** cell-type scores (not included in that Zenodo deposit).
+    - **GWAS summary statistics** — this tutorial uses BBJ HDL-C / LDL-C (Jenger); you can substitute your own sumstats after munging ([Munge sumstats](#munge-sumstats)).
 
 In this tutorial, we will use sample summary statistics for HDLC and LDLC from Jenger. 
 - Kanai, Masahiro, et al. "Genetic analysis of quantitative traits in the Japanese population links cell types to complex human diseases." Nature genetics 50.3 (2018): 390-400.
@@ -86,6 +98,9 @@ In this tutorial, we will use sample summary statistics for HDLC and LDLC from J
 The Miami plot for the two traits:
 
 <img width="682" alt="image" src="https://user-images.githubusercontent.com/40289485/209749071-171c150a-19aa-41f0-b6e6-2ef5fa87370d.png">
+
+---
+
 
 ### Download sample summary statistics
 
@@ -95,34 +110,55 @@ wget -O BBJ_LDLC.txt.gz http://jenger.riken.jp/61analysisresult_qtl_download/
 wget -O BBJ_HDLC.txt.gz http://jenger.riken.jp/47analysisresult_qtl_download/
 ```
 
+---
+
+
 ### Download reference files
 
+Precomputed LD-score resources for **S-LDSC** (standard LD scores, baseline and baseline-LD models, weights, 1000 Genomes Phase 3 plink/frequency files, HapMap3 SNP lists, example sumstats, and GRCh38-related bundles) are distributed on Zenodo as **S-LDSC reference files** ([record 10515792](https://zenodo.org/records/10515792); DOI [10.5281/zenodo.10515792](https://doi.org/10.5281/zenodo.10515792); Steven Gazal; CC BY 4.0). See the record description for the full file list (EUR and EAS), `readme_baseline_versions.txt`, and the **107 independent** GWAS sumstats archive `sumstats_indep107.tgz`.
+
+For **this tutorial** (EAS BBJ traits), download and unpack the EAS archives from Zenodo, plus the HapMap3 allele list used by `munge_sumstats.py` (see note below). **EAS genome-wide LD scores** for univariate `--h2` / `--rg` and **LDSC-SEG** Cahoy scores are **not** in record 10515792; those still come from the Broad **requester-pays** bucket via `gsutil`.
+
 ```Bash
-# change to your ldsc directory
+# Zenodo: S-LDSC reference files (v4)
+ZENODO=https://zenodo.org/records/10515792/files
+
 cd ~/tools/ldsc
-mkdir resource
-cd ./resource
+mkdir -p resource
+cd resource
 
-# snplist
-gsutil -u <project_name> cp gs://broad-alkesgroup-public-requester-pays/LDSCORE/w_hm3.snplist.bz2 .
+# EAS weights, plink reference, and baseline LD scores (partitioned heritability)
+wget -c "${ZENODO}/1000G_Phase3_EAS_weights_hm3_no_MHC.tgz?download=1"
+wget -c "${ZENODO}/1000G_Phase3_EAS_plinkfiles.tgz?download=1"
+wget -c "${ZENODO}/1000G_Phase3_EAS_baseline_v1.2_ldscores.tgz?download=1"
+tar -xzf 1000G_Phase3_EAS_weights_hm3_no_MHC.tgz
+tar -xzf 1000G_Phase3_EAS_plinkfiles.tgz
+# Baseline archive unpacks baseline.* files at the top level; keep the layout expected by partitioned LDSC below
+mkdir -p 1000G_Phase3_EAS_baseline_v1_2_ldscores
+tar -xzf 1000G_Phase3_EAS_baseline_v1.2_ldscores.tgz -C 1000G_Phase3_EAS_baseline_v1_2_ldscores
 
-# EAS ld score files
+# Optional on the same record: EAS baselineLD v2.2 (newer baseline-LD annotation set)
+# wget -c "${ZENODO}/1000G_Phase3_EAS_baselineLD_v2.2_ldscores.tgz?download=1"
+# tar -xzf 1000G_Phase3_EAS_baselineLD_v2.2_ldscores.tgz
+
+# HapMap3 SNP list with reference alleles for --merge-alleles (required by munge_sumstats below).
+# Zenodo 10515792 provides hm3_no_MHC.list.txt (rsIDs only); for allele alignment use w_hm3.snplist, e.g.:
+wget -c "https://zenodo.org/records/7773502/files/w_hm3.snplist.gz?download=1"
+gunzip -f w_hm3.snplist.gz
+
+# EAS LD scores for standard --h2 / --rg (Google Cloud, requester-pays — not on Zenodo 10515792)
 gsutil -u <project_name> cp gs://broad-alkesgroup-public-requester-pays/LDSCORE/eas_ldscores.tar.bz2 .
+tar -xjf eas_ldscores.tar.bz2
 
-# EAS weight
-gsutil -u <project_name> cp gs://broad-alkesgroup-public-requester-pays/LDSCORE/1000G_Phase3_EAS_weights_hm3_no_MHC.tgz .
-
-# EAS frequency
-gsutil -u <project_name> cp gs://broad-alkesgroup-public-requester-pays/LDSCORE/1000G_Phase3_EAS_plinkfiles.tgz .
-
-# EAS baseline model
-gsutil -u <project_name> cp gs://broad-alkesgroup-public-requester-pays/LDSCORE/1000G_Phase3_EAS_baseline_v1.2_ldscores.tgz .
-
-# Cell type ld score files
+# Cell-type LDSC-SEG scores (Google Cloud, requester-pays)
 gsutil -u <project_name> cp gs://broad-alkesgroup-public-requester-pays/LDSCORE/LDSC_SEG_ldscores/Cahoy_EAS_1000Gv3_ldscores.tar.gz .
-
+tar -xzf Cahoy_EAS_1000Gv3_ldscores.tar.gz
 ```
-You can then decompress the files and organize them.
+
+**EUR analyses** can take `1000G_Phase3_ldscores.tgz`, `1000G_Phase3_weights_hm3_no_MHC.tgz`, `1000G_Phase3_plinkfiles.tgz`, and the EUR baseline / baselineLD archives from the [same Zenodo record](https://zenodo.org/records/10515792) instead of the EAS filenames above.
+
+---
+
 
 ## Munge sumstats
 
@@ -156,6 +192,9 @@ BBJ_HDLC.sumstats.gz
 BBJ_LDLC.sumstats.gz
 ```
 And these are the files we will use to run LD score regression.
+
+---
+
 
 ## LD score regression
 
@@ -231,11 +270,17 @@ $$
 Ratio = {{intercept-1}\over{mean(\chi^2)-1}}
 $$
 
+---
+
+
 ## Distribution of h2 and intercept across traits in UKB
 
 The Neale Lab estimated SNP heritability using LDSC across more than 4,000 primary GWAS in UKB. You can check the distributions of SNP heritability and intercept estimates using the following link to get the idea of what you can expect from LD score regresion:
 
 https://nealelab.github.io/UKBB_ldsc/viz_h2.html
+
+---
+
 
 
 ## Cross-trait LD score regression
@@ -341,6 +386,9 @@ Analysis finished at Thu Dec 29 21:02:47 2022
 Total time elapsed: 10.39s
 ```
 
+---
+
+
 
 ## Partitioned LD regression
 
@@ -368,6 +416,9 @@ ldsc.py \
 
 ```
 
+---
+
+
 ## Celltype specificity LD regression 
 
 LDSC-SEG :  LD score regression applied to specifically expressed genes
@@ -385,7 +436,11 @@ ldsc.py \
   --out BBJ_HDLC_baseline_cts
 ```
 
+---
+
+
 ## References
+- Gazal, S. S-LDSC reference files (1000 Genomes Phase 3 LD scores, baseline/baseline-LD models, weights, plink/frequency files, HapMap3 lists, example sumstats). Zenodo (2024). https://doi.org/10.5281/zenodo.10515792
 - Bulik-Sullivan, Brendan K., et al. "LD Score regression distinguishes confounding from polygenicity in genome-wide association studies." Nature genetics 47.3 (2015): 291-295.
 - Bulik-Sullivan, Brendan, et al. "An atlas of genetic correlations across human diseases and traits." Nature genetics 47.11 (2015): 1236-1241.
 - Finucane, Hilary K., et al. "Partitioning heritability by functional annotation using genome-wide association summary statistics." Nature genetics 47.11 (2015): 1228-1235.

@@ -1,5 +1,8 @@
 # R Basics
 
+---
+
+
 ## Introduction
 
 This section provides a minimum introduction to R programming for handling genomic data and conducting GWAS analyses. R is a powerful statistical programming language that is widely used in bioinformatics, statistical genetics, and data analysis.
@@ -17,32 +20,20 @@ If you are a beginner with no background in programming, this tutorial will help
     - **Community**: Large bioinformatics and statistics community
     - **GWAS tools**: Many GWAS-specific packages available
 
-## Table of Contents
+---
 
-- [Getting Started](#getting-started)
-    - Installation and setup
-    - Running R code
-- [Basic Data Types](#basic-data-types)
-    - Numbers, strings, logicals
-- [Variables and Operators](#variables-and-operators)
-- [Data Structures](#data-structures)
-    - Vectors, matrices, lists, data frames
-- [Subsetting](#subsetting)
-    - Accessing elements from data structures
-- [Control Flow](#control-flow)
-    - Conditional statements, loops
-- [Functions](#functions)
-    - Defining and using functions
-- [File Input/Output](#file-inputoutput)
-    - Reading and writing files
-- [Working with Packages](#working-with-packages)
-    - Installing and using R packages
-- [Examples for Genomics](#examples-for-genomics)
-    - Practical genomics examples
-- [Statistical Functions](#statistical-functions)
-    - Common statistical operations
+
+**On this page**
+
+[TOC]
+
+---
+
 
 ## Getting Started
+
+---
+
 
 ### Installation
 
@@ -57,6 +48,9 @@ R can be installed from CRAN (The Comprehensive R Archive Network) or using pack
     [1] "R version 4.3.0 (2023-04-21)"
     ```
 
+---
+
+
 ### Install R using conda
 
 It is convenient to use conda to manage your R environment.
@@ -65,6 +59,9 @@ It is convenient to use conda to manage your R environment.
     ```bash
     conda install -c conda-forge r-base=4.x.x
     ```
+
+---
+
 
 ### IDE for R: Posit (RStudio)
 
@@ -80,6 +77,9 @@ RStudio provides:
 - R Markdown support
 - Debugging tools
 - Git integration
+
+---
+
 
 ### Running R Code
 
@@ -116,6 +116,9 @@ There are several ways to run R code:
     [1] "Hello, World!"
     ```
 
+---
+
+
 ### Comments
 
 Comments help document your code. Use `#` for single-line comments:
@@ -130,9 +133,15 @@ Comments help document your code. Use `#` for single-line comments:
     # This is line 2 of a comment
     ```
 
+---
+
+
 ## Basic Data Types
 
 R has several atomic (basic) data types. The most common ones are:
+
+---
+
 
 ### Numbers
 
@@ -156,6 +165,9 @@ R supports integers and floating-point numbers (numeric):
     remainder <- 10 %% 3        # 1 (modulo)
     integer_division <- 10 %/% 3 # 3
     ```
+
+---
+
 
 ### Strings (Characters)
 
@@ -206,6 +218,9 @@ Strings are sequences of characters, enclosed in single or double quotes:
     # gc_count <- str_count(sequence, "[GC]")
     ```
 
+---
+
+
 ### Logical (Booleans)
 
 Logicals represent truth values: `TRUE` or `FALSE` (can be abbreviated as `T` or `F`):
@@ -228,7 +243,13 @@ Logicals represent truth values: `TRUE` or `FALSE` (can be abbreviated as `T` or
 !!! tip "TRUE/FALSE vs T/F"
     While `T` and `F` can be used as abbreviations, it's better practice to use `TRUE` and `FALSE` because `T` and `F` can be overwritten as variables.
 
+---
+
+
 ## Variables and Operators
+
+---
+
 
 ### Variables
 
@@ -258,6 +279,9 @@ Variables store values. In R, use `<-` or `=` for assignment (though `<-` is pre
     - Use lowercase with dots or underscores: `variant_id`, `p.value`
     - Be descriptive: `chr` is better than `c`, `p_value` is better than `p`
     - Avoid R keywords: `if`, `for`, `function`, `TRUE`, `FALSE`, etc.
+
+---
+
 
 ### Operators
 
@@ -301,9 +325,15 @@ R supports various operators:
     is_gws <- p_value < 5e-8  # TRUE
     ```
 
+---
+
+
 ## Data Structures
 
 R provides several data structures for organizing data:
+
+---
+
 
 ### Vectors
 
@@ -350,6 +380,9 @@ Vectors are one-dimensional arrays that can hold numeric, character, or logical 
     sum(is_significant)  # 1
     ```
 
+---
+
+
 ### Matrices
 
 Matrices are two-dimensional arrays with rows and columns. All elements must be of the same type:
@@ -385,6 +418,9 @@ Matrices are two-dimensional arrays with rows and columns. All elements must be 
     # Calculate allele frequencies
     colMeans(genotypes) / 2  # Allele frequency for alternate allele
     ```
+
+---
+
 
 ### Lists
 
@@ -425,6 +461,9 @@ Lists are special vectors that can contain elements of different types, includin
     variants$rs123456$chr  # 1
     variants$rs123456$p    # 1e-8
     ```
+
+---
+
 
 ### Data Frames
 
@@ -480,9 +519,15 @@ Data frames are like tables (similar to Excel spreadsheets). They are lists of v
     significant <- gwas_results[gwas_results$p < 5e-8, ]
     ```
 
+---
+
+
 ## Subsetting
 
 Subsetting allows you to access specific elements from data structures:
+
+---
+
 
 ### Vector Subsetting
 
@@ -501,6 +546,9 @@ Subsetting allows you to access specific elements from data structures:
     myvector[myvector %% 2 == 0]  # 2 4 (even numbers)
     ```
 
+---
+
+
 ### Matrix Subsetting
 
 !!! example "Matrix subsetting"
@@ -516,6 +564,9 @@ Subsetting allows you to access specific elements from data structures:
     mymatrix[1:2, 2:3] # Submatrix
     mymatrix[, -1]     # All rows, exclude first column
     ```
+
+---
+
 
 ### Data Frame Subsetting
 
@@ -569,9 +620,15 @@ Subsetting allows you to access specific elements from data structures:
     top10 <- head(df_ordered, 10)
     ```
 
+---
+
+
 ## Control Flow
 
 Control flow statements allow you to execute code conditionally or repeatedly.
+
+---
+
 
 ### Conditional Statements
 
@@ -609,6 +666,9 @@ Use `if`, `else if`, and `else` for conditional execution:
                           ifelse(p_values < 0.05, "Nominal", "NS"))
     # "NS" "Nominal" "GWS" "Nominal"
     ```
+
+---
+
 
 ### Loops
 
@@ -669,6 +729,9 @@ Loops allow you to repeat code. R has `for` and `while` loops:
     # Do this (fast):
     result <- -log10(p_values)
     ```
+
+---
+
 
 ## Functions
 
@@ -737,6 +800,9 @@ Functions allow you to organize code into reusable blocks:
     print(filtered$rsid)  # "rs123"
     ```
 
+---
+
+
 ## File Input/Output
 
 Reading from and writing to files is essential for working with genomic data:
@@ -801,9 +867,15 @@ Reading from and writing to files is essential for working with genomic data:
     - `readr::read_tsv()` - Part of tidyverse, faster than base R
     - Reading in chunks if memory is limited
 
+---
+
+
 ## Working with Packages
 
 R's power comes from its extensive package ecosystem. For genomics, key packages include:
+
+---
+
 
 ### Installing Packages
 
@@ -822,6 +894,9 @@ R's power comes from its extensive package ecosystem. For genomics, key packages
     # devtools::install_github("user/package")
     ```
 
+---
+
+
 ### Loading Packages
 
 !!! example "Loading packages"
@@ -832,6 +907,9 @@ R's power comes from its extensive package ecosystem. For genomics, key packages
     # Or use package::function() without loading
     ggplot2::ggplot(data, aes(x = x, y = y))
     ```
+
+---
+
 
 ### Useful Packages for Genomics
 
@@ -869,6 +947,9 @@ R's power comes from its extensive package ecosystem. For genomics, key packages
             mean_p = mean(P)
         )
     ```
+
+---
+
 
 ## Examples for Genomics
 
@@ -956,9 +1037,15 @@ Here are some practical examples combining the concepts above:
     }
     ```
 
+---
+
+
 ## Statistical Functions
 
 R has extensive built-in statistical functions:
+
+---
+
 
 ### Normal Distribution
 
@@ -978,6 +1065,9 @@ R has extensive built-in statistical functions:
     rnorm(10, mean = 0, sd = 1)
     ```
 
+---
+
+
 ### Chi-square Distribution
 
 !!! example "Chi-square distribution functions"
@@ -994,6 +1084,9 @@ R has extensive built-in statistical functions:
     # Generate random values
     rchisq(10, df = 3)
     ```
+
+---
+
 
 ### Regression
 
@@ -1041,6 +1134,9 @@ R has extensive built-in statistical functions:
     }
     ```
 
+---
+
+
 ## Best Practices
 
 !!! tip "Code organization"
@@ -1073,6 +1169,9 @@ R has extensive built-in statistical functions:
     })
     ```
 
+---
+
+
 ## Next Steps
 
 Now that you understand R basics, you can:
@@ -1082,6 +1181,9 @@ Now that you understand R basics, you can:
 3. **Practice with real data**: Work with actual GWAS summary statistics
 4. **Learn visualization**: ggplot2 for publication-quality plots
 5. **Advanced topics**: Object-oriented programming, package development, Shiny apps
+
+---
+
 
 ## References
 

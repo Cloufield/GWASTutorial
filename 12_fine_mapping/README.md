@@ -1,5 +1,15 @@
 # Fine-mapping
 
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Introduction
 
 Fine-mapping aims to identify the causal variant(s) within a locus for a disease, given the evidence of the significant association of the locus (or genomic region) in GWAS of a disease.
@@ -81,6 +91,9 @@ Fine-mapping using Bayesian methods aims to estimate the **PIP (posterior inclus
 
 In this tutorial, we will introduce **SuSiE** as an example. SuSiE stands for "Sum of Single Effects" model.
 
+---
+
+
 ### SuSiE model
 
 The key idea behind SuSiE is to decompose the genetic effect vector as a sum of single effects:
@@ -98,6 +111,9 @@ where:
     - Account for LD between variants
     - Provide PIPs and credible sets for each causal variant
 
+---
+
+
 ### SuSiE-RSS (Summary Statistics)
 
 For fine-mapping with summary statistics using SuSiE (SuSiE-RSS), IBSS was modified (IBSS-ss) to take sufficient statistics as input. SuSiE-RSS approximates the sufficient statistics from summary statistics (effect sizes, standard errors, and LD matrix) to perform fine-mapping without requiring individual-level data. 
@@ -109,15 +125,19 @@ For fine-mapping with summary statistics using SuSiE (SuSiE-RSS), IBSS was modif
     
     - **SuSiE-RSS (summary statistics)**: Zou, Y., Carbonetto, P., Wang, G., & Stephens, M. (2022). Fine-mapping from summary data with the "Sum of Single Effects" model. *PLoS Genetics*, 18(7), e1010299. [Link](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1010299)
 
+---
+
+
 
 
 ## File Preparation
 
-Before performing fine-mapping, you need to prepare:
+!!! note "Required data and tools"
 
-1. **Summary statistics for the locus**: GWAS summary statistics (effect sizes, standard errors, p-values) for variants in the region of interest
-2. **SNP list for calculating LD matrix**: List of variant IDs to extract from reference panel for LD calculation
-3. **Reference panel**: Genotype data (e.g., 1000 Genomes) for calculating LD matrix
+    - **Summary statistics for the locus** — effect sizes, SEs, and *p*-values (e.g. [06_Association_tests](../06_Association_tests/README.md) PLINK2 output; extract a region around a lead SNP).
+    - **SNP list** — variant IDs to match the reference panel for **LD** calculation ([LD matrix calculation](#ld-matrix-calculation)).
+    - **Reference panel** — PLINK-binary genotype data (e.g. 1000 Genomes) matched to study **ancestry**.
+    - **PLINK** (1.9/2) for LD; **Python** + **gwaslab** optional for locus extraction (example block below); **R** + **susieR** for SuSiE-RSS ([Fine-mapping with summary statistics using SuSiE-R](#fine-mapping-with-summary-statistics-using-susie-r)).
 
 !!! tip "Locus selection"
     Typically, you would:
@@ -204,6 +224,9 @@ Before performing fine-mapping, you need to prepare:
     2:54546032:C:G
     ```
 
+---
+
+
 ## LD Matrix Calculation
 
 The LD (linkage disequilibrium) matrix is essential for fine-mapping, as it captures the correlation structure between variants in the region. Fine-mapping methods use the LD matrix to distinguish between causal variants and variants that are associated only due to LD.
@@ -272,7 +295,13 @@ The LD (linkage disequilibrium) matrix is essential for fine-mapping, as it capt
     
     ![LD matrix heatmap](https://user-images.githubusercontent.com/40289485/212523500-6ec7cfb9-eda6-4ee0-9dce-463772821ca2.png)
 
+---
+
+
 ## Fine-mapping with summary statistics using SuSiE-R
+
+---
+
 
 ### Installation
 
@@ -285,6 +314,9 @@ The LD (linkage disequilibrium) matrix is essential for fine-mapping, as it capt
     # install.packages("devtools")
     # devtools::install_github("stephenslab/susieR")
     ```
+
+---
+
 
 ### Running SuSiE-RSS
 
@@ -328,6 +360,9 @@ The LD (linkage disequilibrium) matrix is essential for fine-mapping, as it capt
             fitted_rss <- susie_rss(z = z, R = R, n = n, L = 10)
             ```
 
+---
+
+
 ### Interpreting SuSiE results
 
 !!! info "Key outputs from SuSiE"
@@ -361,8 +396,14 @@ Example output visualization:
 
 <img width="770" alt="SuSiE fine-mapping results" src="https://user-images.githubusercontent.com/40289485/212628837-d20c0a59-9a6a-46a5-8c2d-a12fd427c794.png">
 
+---
+
+
 
 ## References
+
+---
+
 
 ### SuSiE method papers
 
@@ -370,9 +411,15 @@ Example output visualization:
 
 - **SuSiE-RSS (summary statistics)**: Zou, Y., Carbonetto, P., Wang, G., & Stephens, M. (2022). Fine-mapping from summary data with the "Sum of Single Effects" model. *PLoS Genetics*, 18(7), e1010299. https://doi.org/10.1371/journal.pgen.1010299
 
+---
+
+
 ### Fine-mapping reviews
 
 - Schaid, D. J., Chen, W., & Larson, N. B. (2018). From genome-wide associations to candidate causal variants by statistical fine-mapping. *Nature Reviews Genetics*, 19(8), 491-504. https://doi.org/10.1038/s41576-018-0016-z
+
+---
+
 
 ### Software and tools
 

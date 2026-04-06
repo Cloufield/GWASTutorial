@@ -1,9 +1,22 @@
 # Mendelian randomization
 
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Mendelian randomization introduction
 
 !!! tip "Comparison between RCT and MR"
     <img width="636" alt="image" src="https://user-images.githubusercontent.com/40289485/219572347-1ebc2f0a-3c9a-49a0-a058-638e4973873e.png">
+
+---
+
 
 ## Fundamental assumption: gene-environment equivalence
 
@@ -28,6 +41,9 @@ If we consider BMI as the outcome, let's think about whether genetic variants re
     
     References: Lawlor et al. (2016) [IJE](https://academic.oup.com/ije/article/45/6/1866/2930550); Munafò & Davey Smith (2018) [Nature](https://www.nature.com/articles/d41586-018-01023-3).
 
+---
+
+
 ## Methods: Instrumental Variables (IV)
 
 Instrumental variable (IV) can be defined as a variable  that is correlated with the exposure X and uncorrelated with the error $\epsilon$ in the following regression: 
@@ -40,6 +56,9 @@ $$ Y = X\beta + \epsilon $$
 
 <img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/63c25ce6-e086-4010-86bf-212818f2ac64">
 
+---
+
+
 ## IV Assumptions
 
 !!! danger "Key Assumptions"
@@ -51,11 +70,17 @@ $$ Y = X\beta + \epsilon $$
     |Monotonicity| Variants affect the exposure in the same direction for all individuals|
     |No assortative mating|Assortative mating might cause bias in MR|
 
+---
+
+
 ## Two-stage least-squares (2SLS)
 
 $$ X = \mu_1 + \beta_{IV} IV + \epsilon_1  $$
 
 $$ Y = \mu_2 + \beta_{2SLS} \hat{X} + \epsilon_2 $$
+
+---
+
 
 ## Two-sample MR
 
@@ -70,15 +95,27 @@ $$ \hat{\beta}_{X,Y} = {{\hat{\beta}_{IV,Y}}\over{\hat{\beta}_{IV,X}}} $$
 
     Therefore, for two-sample MR, we usually use datasets from similar non-overlapping populations in terms of not only ancestry but also contextual factors. 
 
+---
+
+
 ## IV selection
 
 One of the first things to do when you plan to perform any type of MR is to check the associations of instrumental variables with the exposure to avoid bias caused by weak IVs.
  
 The most commonly used method here is the **F-statistic**, which tests the association of instrumental variables with the exposure.
 
+---
+
+
 
 
 ## Practice
+
+!!! note "Required data and tools"
+
+    - **R** (≥ 4.1) — **TwoSampleMR** and dependencies (`remotes::install_github("MRCIEU/TwoSampleMR")`; [R package TwoSampleMR](#r-package-twosamplemr)).
+    - **GWAS summary statistics** for **exposure** and **outcome** from non-overlapping or appropriately handled samples; tutorial downloads from BBJ / KoGES ([File Preparation](#file-preparation)).
+    - **OpenGWAS API token** — required for most `ieugwasr` queries since May 2024 ([OPENGWAS API](#opengwas-api)).
 
 In this tutorial, we will walk you through how to perform a minimal TwoSampleMR analysis. We will use the R package [TwoSampleMR](https://mrcieu.github.io/TwoSampleMR/index.html), which provides easy-to-use functions for formatting, clumping and harmonizing GWAS summary statistics. 
 
@@ -126,6 +163,9 @@ This package integrates a variety of commonly used MR methods for analysis, incl
 18                                     Unweighted regression
 ```
 
+---
+
+
 ### Inverse variance weighted (fixed effects)
 
 Assumption: the underlying 'true' effect is fixed across variants
@@ -142,6 +182,9 @@ SE:
 
 $$SE = {\sqrt{{1}\over{\sum_{i=1}^Nw_i}}}$$
 
+---
+
+
 ### OPENGWAS API
 As of May 1, 2024, most OpenGWAS API queries require user authentication. To use the API:
 1.  Log in at [OPENGWAS API](https://api.opengwas.io/profile/) and generate a token.
@@ -152,6 +195,9 @@ As of May 1, 2024, most OpenGWAS API queries require user authentication. To use
 
 This token acts like a password. Keep it secure and do not share it. Please check [ieugwasr guide](https://mrcieu.github.io/ieugwasr/articles/guide.html#authentication) for more details.
 
+---
+
+
 ### File Preparation
 
 To perform two-sample MR analysis, we need summary statistics for exposure and outcome generated from independent populations with the same ancestry.
@@ -160,6 +206,9 @@ In this tutorial, we will use sumstats from [Biobank Japan pheweb](https://phewe
 
 - Type 2 diabetes sumstats from BBJ : `wget -O bbj_t2d.zip https://pheweb.jp/download/T2D`
 - BMI sumstats from KoGES :  `wget -O koges_bmi.txt.gz https://koges.leelabsg.org/download/KoGES_BMI`
+
+---
+
 
 ### R package TwoSampleMR
 
@@ -171,11 +220,17 @@ library(remotes)
 install_github("MRCIEU/TwoSampleMR")
 ```
 
+---
+
+
 ### Loading package
 
 ```R
 library(TwoSampleMR)
 ```
+
+---
+
 
 ### Reading exposure sumstats
 
@@ -185,6 +240,9 @@ library(TwoSampleMR)
 exp_raw <- fread("koges_bmi.txt.gz")
 
 ```
+
+---
+
 
 ### Extracting instrumental variables
 
@@ -204,11 +262,17 @@ exp_dat <- format_data( exp_raw,
 )
 ```
 
+---
+
+
 ### Clumping exposure variables
 
 ```R
 clumped_exp <- clump_data(exp_dat,clump_r2=0.01,pop="EAS") 
 ```
+
+---
+
 
 ### outcome
 
@@ -226,11 +290,17 @@ out_dat <- format_data( out_raw,
 )
 ```
 
+---
+
+
 ### Harmonizing data
 
 ```R
 harmonized_data <- harmonise_data(clumped_exp,out_dat,action=1)
 ```
+
+---
+
 
 ### Perform MR analysis
 
@@ -246,8 +316,14 @@ id.exposure	id.outcome	outcome	exposure	method	nsnp	b	se	pval
 9J8pv4	IyUv6b	outcome	exposure	Weighted mode	28	0.5946778	0.12820220	8.044488e-05
 ```
 
+---
+
+
 
 ## Sensitivity analysis
+
+---
+
 
 ### Heterogeneity 
 
@@ -262,6 +338,9 @@ id.exposure	id.outcome	outcome	exposure	method	Q	Q_df	Q_pval
 9J8pv4	IyUv6b	outcome	exposure	Inverse variance weighted	706.6579	27	1.534239e-131
 ```
 
+---
+
+
 ### Horizontal Pleiotropy 
 
 Intercept in MR-Egger
@@ -273,6 +352,9 @@ id.exposure	id.outcome	outcome	exposure	egger_intercept	se	pval
 <chr>	<chr>	<chr>	<chr>	<dbl>	<dbl>	<dbl>
 9J8pv4	IyUv6b	outcome	exposure	-0.03603697	0.0305241	0.2484472
 ```
+
+---
+
 
 ### Single SNP MR and leave-one-out MR
 
@@ -355,7 +437,13 @@ exposure	outcome	id.exposure	id.outcome	samplesize	SNP	b	se	p
 29	exposure	outcome	9J8pv4	IyUv6b	NA	All	0.5598956	0.2322581	1.592361e-02
 ```
 
+---
+
+
 ## Visualization
+
+---
+
 
 ### Scatter plot
 
@@ -368,6 +456,9 @@ p1[[1]]
 ```
 
 ![image](https://user-images.githubusercontent.com/40289485/214480227-396f816f-e1e6-49a1-9f3e-2e43a9d03abf.png)
+
+---
+
 
 
 ### Single SNP 
@@ -382,6 +473,9 @@ p2[[1]]
 
 ![image](https://user-images.githubusercontent.com/40289485/214480253-6de266cf-2737-4d4f-b7fb-e889fea3ea4e.png)
 
+---
+
+
 ### Leave-one-out
 
 Forest plot showing the MR estimate when each variant is removed in turn to assess the influence of individual variants.
@@ -393,6 +487,9 @@ p3[[1]]
 ```
 
 ![image](https://user-images.githubusercontent.com/40289485/214480292-5bc318a3-1d74-4f09-8b07-b8a3cc62d2e0.png)
+
+---
+
 
 
 ### Funnel plot
@@ -406,6 +503,9 @@ p4[[1]]
 ```
 
 ![image](https://user-images.githubusercontent.com/40289485/214480351-86288d44-52fb-416a-bdf4-2a4f4804e744.png)
+
+---
+
 
 
 ## MR Steiger directionality test
@@ -435,19 +535,31 @@ rvi6Om	ETcv15	BMI	T2D	0.02125453	0.005496427	TRUE	NA
 
 Reference: Hemani, G., Tilling, K., & Davey Smith, G. (2017). Orienting the causal relationship between imprecisely measured traits using GWAS summary data. PLoS genetics, 13(11), e1007081.
 
+---
+
+
 ## MR-Base (web app)
 
 [MR-Base web app](https://app.mrbase.org/)
 
+---
+
+
 ## MR Dictionary
 
 The [MR Dictionary](https://mr-dictionary.mrcieu.ac.uk/) is a comprehensive resource providing definitions and explanations of key terms used in Mendelian randomization research. It covers genetic terms, MR methods (one-sample and two-sample), biases and limitations, heterogeneity detection, and related software resources. This dictionary is an invaluable reference for understanding MR terminology and concepts.
+
+---
+
 
 ## STROBE-MR
 
 Before reporting any MR results, please check the STROBE-MR Checklist first, which consists of 20 things that should be addressed when reporting a mendelian randomization study.
 
 - Skrivankova, V. W., Richmond, R. C., Woolf, B. A., Yarmolinsky, J., Davies, N. M., Swanson, S. A., ... & Richards, J. B. (2021). Strengthening the reporting of observational studies in epidemiology using Mendelian randomization: the STROBE-MR statement. Jama, 326(16), 1614-1621.
+
+---
+
 
 ## References
 

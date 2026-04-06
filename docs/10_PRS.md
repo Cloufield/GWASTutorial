@@ -1,5 +1,15 @@
 # Polygenic risk scores
 
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Definition
 
 **Polygenic risk score(PRS)**, as known as **polygenic score (PGS)** or **genetic risk score (GRS)**, is a score that summarizes the effect sizes of genetic variants on a certain disease or trait (weighted sum of disease/trait-associated alleles).
@@ -12,11 +22,17 @@ $$PRS_j = \sum_{i=0}^{i=M} x_{i,j} \beta_{i}$$
 - $x_{i,j}$ : the effect allele count for sample $j$ at variant $i$
 - $M$ : the number of variants
 
+---
+
+
 ## PRS Analysis Workflow
 
 1. **Developing PRS model** using base data
 2. Performing **validation** to obtain best-fit parameters
 3. **Evaluation** in an independent population
+
+---
+
 
 ## Methods
 
@@ -26,6 +42,16 @@ $$PRS_j = \sum_{i=0}^{i=M} x_{i,j} \beta_{i}$$
 |Beta shrinkage| genome-wide PRS model |LDpred, PRS-CS|
 
 In this tutorial, we will first briefly introduce how to develop PRS model using the sample data and then demonstrate how we can download PRS models from PGS Catalog and apply to our sample genotype data. 
+
+!!! note "Required data and tools"
+
+    - **Genotype data (PLINK binary)** — e.g. [04_Data_QC/sample_data.clean](../04_Data_QC/README.md) (`.bed`/`.bim`/`.fam`).
+    - **GWAS summary statistics** — for C+T clumping / weights, e.g. [06_Association_tests/1kgeas.B1.glm.firth](../06_Association_tests/README.md).
+    - **PLINK 1.9** (`plink`) — clumping and `--score` ([04_Data_QC — Preparation](../04_Data_QC/README.md#preparation)); **PLINK 2** if you extend workflows to `plink2` syntax.
+    - **PGS Catalog** (optional) — published score files for [Calculate PRS using PLINK](#calculate-prs-using-plink).
+
+---
+
 
 ## C+T/P+T using PLINK
 
@@ -73,11 +99,17 @@ P+T stands for Pruning + Thresholding, also known as Clumping and Thresholding(C
     2    1   2:55513738:C:T   55513738   1.69e-15       52      0      3      1      6     42 2:55305475:A:T(1),2:55338196:T:C(1),2:55347135:G:A(1),2:55351853:A:G(1),2:55363460:G:A(1),2:55395372:A:G(1),2:55395578:G:A(1),2:55395807:C:T(1),2:55405847:C:A(1),2:55408556:C:A(1),2:55410835:C:T(1),2:55413644:C:G(1),2:55435439:C:T(1),2:55449464:T:C(1),2:55469819:A:T(1),2:55492154:G:A(1),2:55500529:A:G(1),2:55502651:A:G(1),2:55508333:G:C(1),2:55563020:A:G(1),2:55572944:T:C(1),2:55585915:A:G(1),2:55599810:C:T(1),2:55605943:A:G(1),2:55611766:T:C(1),2:55612986:G:C(1),2:55619923:C:T(1),2:55622624:G:A(1),2:55624520:C:T(1),2:55628936:G:C(1),2:55638830:T:C(1),2:55639023:A:T(1),2:55639980:C:T(1),2:55640649:G:A(1),2:55641045:G:A(1),2:55642887:C:T(1),2:55647729:A:G(1),2:55650512:G:A(1),2:55659155:A:G(1),2:55665620:A:G(1),2:55667476:G:T(1),2:55670729:A:G(1),2:55676257:C:T(1),2:55685927:C:A(1),2:55689569:A:T(1),2:55689913:T:C(1),2:55693097:C:G(1),2:55707583:T:C(1),2:55720135:C:G(1)
     ```
 
+---
+
+
 ## Beta shrinkage using PRS-CS
 
 $$ \beta_j | \Phi_j \sim N(0,\phi\Phi_j) ,  \Phi_j \sim g $$
 
 Reference: Ge, T., Chen, C. Y., Ni, Y., Feng, Y. C. A., & Smoller, J. W. (2019). Polygenic prediction via Bayesian regression and continuous shrinkage priors. Nature communications, 10(1), 1-10.
+
+---
+
 
 ## Parameter tuning
 
@@ -86,6 +118,9 @@ Reference: Ge, T., Chen, C. Y., Ni, Y., Feng, Y. C. A., & Smoller, J. W. (2019).
 |Cross-validation| 10-fold cross validation. This method usually requires large-scale genotype dataset.|
 |Independent population| Perform validation in an independent population of the same ancestry. |
 |Pseudo-validation|A few methods can estimate a single optimal shrinkage parameter using only the base GWAS summary statistics.|
+
+---
+
 
 ## PGS Catalog
 
@@ -96,6 +131,9 @@ URL: http://www.pgscatalog.org/
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/40289485/213737219-efe31848-ab72-4962-9045-2203a0733728.png">
 
 Reference: Lambert, S. A., Gil, L., Jupp, S., Ritchie, S. C., Xu, Y., Buniello, A., ... & Inouye, M. (2021). The Polygenic Score Catalog as an open database for reproducibility and systematic evaluation. Nature Genetics, 53(4), 420-425.
+
+---
+
 
 ## Calculate PRS using PLINK
 
@@ -190,6 +228,9 @@ The options we use:
     HG00422 54102   54976   5.28824e-05     2.90726
     ```
 
+---
+
+
 ## Meta-scoring methods for PRS
 
 It has been shown recently that the PRS models generated from multiple traits using a meta-scoring method potentially outperforms PRS models generated from a single trait.
@@ -213,6 +254,9 @@ Inouye et al. first used this approach for generating a PRS model for CAD from m
     $$PRS_{meta} = {w_1}PRS_{Trait1} + {w_2}PRS_{Trait2} + {w_3}PRS_{Trait3} + ... $$
 
     An example: Abraham, G., Malik, R., Yonova-Doing, E., Salim, A., Wang, T., Danesh, J., ... & Dichgans, M. (2019). Genomic risk score offers predictive performance comparable to clinical risk factors for ischaemic stroke. Nature communications, 10(1), 1-10.
+
+---
+
 
 
 ## References

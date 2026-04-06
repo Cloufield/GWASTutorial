@@ -2,6 +2,10 @@
 
 Relatedness and sample structure can inflate test statistics and bias effect estimates if not handled properly. Proper identification and handling of related individuals is crucial for valid GWAS inference.
 
+**On this page**
+
+[TOC]
+
 ---
 
 ## Why it matters
@@ -15,6 +19,9 @@ Relatedness and sample structure can inflate test statistics and bias effect est
 ---
 
 ## Key concepts
+
+---
+
 
 ### Kinship coefficient
 
@@ -30,6 +37,9 @@ where:
 - $\mathbb{P}(\text{IBD}_1)$: probability of sharing 1 allele IBD  
 - $\mathbb{P}(\text{IBD}_2)$: probability of sharing 2 alleles IBD
 
+---
+
+
 ### Relatedness coefficient
 
 The **relatedness coefficient** ($r$) is a scaled version of kinship:
@@ -37,6 +47,9 @@ The **relatedness coefficient** ($r$) is a scaled version of kinship:
 $$r_{ij} = 2\phi_{ij}$$
 
 It is often used as an intuitive measure of how closely related two individuals are (e.g., $r \approx 0.5$ for first-degree relatives).
+
+---
+
 
 ### Inbreeding coefficient
 
@@ -53,6 +66,9 @@ where $\phi_{ii}$ is the diagonal of the kinship matrix (self-kinship).
 
 For an outbred individual, $\phi_{ii} \approx 0.5$, so $F \approx 0$. As inbreeding increases, $\phi_{ii}$ exceeds 0.5 and $F$ becomes positive, linking inbreeding directly to elevated self-kinship.
 
+---
+
+
 ### Identity by Descent (IBD)
 
 **Identity by Descent (IBD)** refers to alleles that are identical because they were inherited from a common ancestor. Two alleles can be:
@@ -60,6 +76,9 @@ For an outbred individual, $\phi_{ii} \approx 0.5$, so $F \approx 0$. As inbreed
 - **IBD = 0**: No alleles shared IBD
 - **IBD = 1**: One allele shared IBD
 - **IBD = 2**: Both alleles shared IBD (homozygous for the same allele from common ancestor)
+
+---
+
 
 ### IBD vs IBS
 
@@ -71,6 +90,9 @@ For an outbred individual, $\phi_{ii} \approx 0.5$, so $F \approx 0$. As inbreed
 - **IBS**: same in observed state, ancestry may be unrelated
 - **Use in practice**: IBS is observed directly; IBD is inferred from IBS patterns across many markers
 
+---
+
+
 ### Genetic relationship matrix (GRM)
 
 The **genetic relationship matrix** (also called kinship matrix) is an $n \times n$ symmetric matrix where element $(i,j)$ contains the kinship coefficient between individuals $i$ and $j$. The diagonal elements represent self-kinship (typically $0.5 + F_i/2$).
@@ -78,6 +100,9 @@ The **genetic relationship matrix** (also called kinship matrix) is an $n \times
 ---
 
 ## Interpreting coefficients
+
+---
+
 
 ### Typical kinship thresholds
 
@@ -114,6 +139,9 @@ Duplicate samples (same individual genotyped multiple times) and monozygotic (MZ
 !!! note "MZ twins vs duplicates"
     MZ twins are genetically identical and should be treated similarly to duplicates in population-based GWAS. However, they are different individuals and may be intentionally included in family-based designs. DZ twins are first-degree relatives and should be handled according to your relatedness filtering strategy.
 
+---
+
+
 ### Detection
 
 - **General tools**: Kinship coefficient > 0.45 (or relatedness > 0.9)
@@ -124,6 +152,9 @@ Duplicate samples (same individual genotyped multiple times) and monozygotic (MZ
 ---
 
 ## Handling related individuals
+
+---
+
 
 ### Population GWAS (unrelated samples)
 
@@ -145,6 +176,9 @@ Duplicate samples (same individual genotyped multiple times) and monozygotic (MZ
 
 - Analyze related and unrelated samples separately
 - Combine results using meta-analysis
+
+---
+
 
 ### Family-based GWAS
 

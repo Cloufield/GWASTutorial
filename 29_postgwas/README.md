@@ -14,6 +14,13 @@ Post-GWAS analyses address these limitations by prioritizing likely causal varia
 
 ---
 
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Overview
 
 After identifying genome-wide significant associations, **post-GWAS analyses** address key biological and translational questions by leveraging GWAS summary statistics and integrating them with functional and multi-omic data:
@@ -28,6 +35,10 @@ After identifying genome-wide significant associations, **post-GWAS analyses** a
 - **Can we predict disease risk?** Polygenic risk scores  
 - **Are effects shared across traits?** Pleiotropy and cross-trait analysis  
 - **How can findings be translated?** Drug target identification and prioritization  
+
+!!! note "Required data and tools"
+
+    Post-GWAS chapters assume you already have **GWAS summary statistics** (and sometimes individual-level genotypes). Each linked tutorial lists its own software and reference files; start from **genome build–matched** sumstats and follow the **Required data and tools** (or **Data preparation**) note in that chapter.
 
 ---
 

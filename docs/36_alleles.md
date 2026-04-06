@@ -1,5 +1,11 @@
 # Allele 
 
+---
+
+**On this page**
+
+[TOC]
+
 ## Definition
 
 An **allele** is one of the alternative forms of a genetic variant (e.g., SNP) at a specific genomic position. For a bi-allelic variant, there are two possible alleles (e.g., A or G). Each individual carries two alleles at each autosomal position (one from each parent), which together form their genotype (e.g., AA, AG, or GG).
@@ -12,6 +18,9 @@ In GWAS and genetic analysis, alleles are the fundamental units used to:
 - Estimate effect sizes and odds ratios
 
 The specific nucleotide or sequence variant at a position represents an allele, and different alleles can have different effects on phenotypes, disease risk, or other traits of interest.
+
+---
+
 
 ## Related concepts
 
@@ -31,7 +40,13 @@ Understanding allele terminology is crucial in GWAS analysis. These concepts are
     
     This inconsistency is a common source of errors in GWAS analysis, so extra caution is essential.
 
+---
+
+
 ## Three Groups of Allele Concepts
+
+---
+
 
 ### First Group: Major and Minor Allele (Frequency-based)
 
@@ -93,6 +108,9 @@ This concept changes again. When "reference allele" is used alongside "risk/effe
 
 ## Additional Allele Naming Conventions
 
+---
+
+
 ### Allele0 and Allele1
 
 **Allele0** and **Allele1** use 0-indexed numbering:
@@ -107,6 +125,9 @@ This concept changes again. When "reference allele" is used alongside "risk/effe
 - This convention does not indicate frequency - Allele0 may be major or minor depending on the population
 - Always verify what Allele0 and Allele1 represent in your specific dataset or software
 
+---
+
+
 ### Allele1 and Allele2 (A1/A2)
 
 **A1** and **A2** are numeric designations for the two alleles at a bi-allelic site:
@@ -120,6 +141,9 @@ This concept changes again. When "reference allele" is used alongside "risk/effe
 - Some software may automatically reorder alleles based on frequency, so A1/A2 do not necessarily correspond to reference/alternative alleles in the reference genome
 - The meaning of A1/A2 can vary between software and datasets - always check the documentation or frequency information to understand which is which
 - A1 is not always the minor allele - it depends on the convention used by the specific software or dataset
+
+---
+
 
 ### Derived Allele
 

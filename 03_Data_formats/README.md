@@ -1,5 +1,8 @@
 # Data format
 
+---
+
+
 ## Overview
 
 This section provides a brief guide to the most commonly used data formats in complex trait genomic analysis and genome-wide association studies (GWAS). Understanding these formats is essential for working with genomic data, as different stages of the analysis pipeline require different file formats, each optimized for specific purposes.
@@ -14,26 +17,20 @@ The data formats covered here span the entire workflow from raw sequencing data 
 
 Each format serves a specific role in the genomic data processing pipeline, from initial sequencing through variant calling, quality control, and statistical analysis. This guide includes examples and references to help you understand the structure and usage of each format. 
 
-## Table of Contents
-- [Data formats for general purposes](#data-formats-for-general-purposes)
-    - [txt](#txt)
-    - [tsv](#tsv)
-    - [csv](#csv)
-- [Data formats in bioinformatics](#data-formats-in-bioinformatics)
-    - [Sequence](#sequence)
-        - FASTA
-        - FASTQ
-    - [Alignment](#alignment)
-        - SAM/BAM
-    - [Variant and genotype](#variant-and-genotype)
-        - VCF/BCF
-        - ped/map
-        - bed/fam/bim
-    - [Imputation dosage](#imputation-dosage)
-        - bgen
-        - pgen
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
 
 ## Data formats for general purposes
+
+---
+
 
 ### txt
 Plain text files are the most basic format for storing unstructured data. In genomic analysis, they are commonly used for storing notes, documentation, log files, or any text-based information that doesn't require a specific structure. While simple, text files are human-readable and can be easily processed with standard command-line tools.
@@ -44,6 +41,9 @@ Plain text files are the most basic format for storing unstructured data. In gen
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut sem congue, tristique tortor et, ullamcorper elit. Nulla elementum, erat ac fringilla mattis, nisi tellus euismod dui, interdum laoreet orci velit vel leo. Vestibulum neque mi, pharetra in tempor id, malesuada at ipsum. Duis tellus enim, suscipit sit amet vestibulum in, ultricies vitae erat. Proin consequat id quam sed sodales. Ut a magna non tellus dictum aliquet vitae nec mi. Suspendisse potenti. Vestibulum mauris sem, viverra ac metus sed, scelerisque ornare arcu. Vivamus consequat, libero vitae aliquet tempor, lorem leo mattis arcu, et viverra erat ligula sit amet tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent ut massa ac tortor lobortis placerat. Pellentesque aliquam tortor augue, at rutrum magna molestie et. Etiam congue nulla in venenatis congue. Nunc ac felis pharetra, cursus leo et, finibus eros.
     ```
     Random texts are generated using - https://www.lipsum.com/
+
+---
+
 
 ### tsv
 Tab-separated values (TSV) is a tabular data format where columns are separated by tab characters. TSV files are commonly used in bioinformatics because tabs are less likely to appear in genomic data compared to commas, making them more reliable for data that may contain commas. TSV files are particularly useful for storing variant annotation data, association test results, and other structured genomic datasets. They can be easily read by spreadsheet applications and processed with command-line tools like `awk` and `cut`. 
@@ -64,6 +64,9 @@ Tab-separated values (TSV) is a tabular data format where columns are separated 
     1	135163	1:135163:C:T	C	T	T	N	ADD	503	0.711822	0.23908	-1.42182	0.155079	.
     ```
 
+---
+
+
 ### csv
 Comma-separated values (CSV) is a widely-used tabular data format where columns are separated by commas. CSV files are standard in many data analysis workflows and are easily imported into spreadsheet applications and statistical software. In genomic analysis, CSV files are often used for storing summary statistics, phenotype data, and analysis results. Note that CSV files may require special handling when data values themselves contain commas, which is why TSV is sometimes preferred for genomic data. 
 
@@ -82,6 +85,9 @@ Comma-separated values (CSV) is a widely-used tabular data format where columns 
     1,122872,1:122872:T:G,T,G,G,N,ADD,503,1.07113,0.180776,0.380121,0.703856,.
     1,135163,1:135163:C:T,C,T,T,N,ADD,503,0.711822,0.23908,-1.42182,0.155079,.
     ```
+
+---
+
     
 ## Data formats in bioinformatics
 
@@ -89,7 +95,13 @@ A typical workflow for generating genotype data for genome-wide association anal
 
 <img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/42c1f84a-ccc4-4fbe-96ab-366127fa5059">
 
+---
+
+
 ## Sequence
+
+---
+
 
 ### fasta
 FASTA is a text-based format for representing biological sequences, including nucleotide sequences (DNA/RNA) or amino acid sequences (proteins). Each sequence entry consists of a header line starting with `>` followed by a sequence identifier and optional description, and one or more lines containing the sequence itself. FASTA files are fundamental in genomics as they store reference genomes, gene sequences, and assembled contigs. The format is simple, human-readable, and widely supported by bioinformatics tools.
@@ -98,6 +110,9 @@ FASTA is a text-based format for representing biological sequences, including nu
    >SEQ_ID
    GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
    ```
+
+---
+
    
 ### fastq
 FASTQ is a text-based format that stores both nucleotide sequences and their corresponding per-base quality scores. Each sequence entry consists of four lines: (1) a sequence identifier starting with `@`, (2) the nucleotide sequence, (3) a separator line starting with `+` (optionally followed by the identifier), and (4) quality scores encoded as ASCII characters. FASTQ files are the standard output format from sequencing instruments and are essential for quality control, read filtering, and downstream alignment. The quality scores allow researchers to assess the reliability of each base call in the sequence.
@@ -111,7 +126,13 @@ FASTQ is a text-based format that stores both nucleotide sequences and their cor
     ```    
     Reference: https://en.wikipedia.org/wiki/FASTQ_format
 
+---
+
+
 ## Alignment
+
+---
+
 
 ### SAM/BAM
 SAM (Sequence Alignment/Map) is a TAB-delimited text format for storing sequence alignments against a reference genome. It consists of a header section (metadata about the reference, read groups, and program information) and an alignment section (one line per read alignment with information about mapping position, CIGAR string, quality scores, and optional tags). BAM is the binary, compressed version of SAM that is more storage-efficient and faster to process. SAM/BAM files are the standard output from read alignment tools (e.g., BWA, Bowtie2) and are used for variant calling, coverage analysis, and visualization. The BAM format is typically preferred for large-scale analyses due to its smaller file size and faster I/O operations.
@@ -129,7 +150,13 @@ SAM (Sequence Alignment/Map) is a TAB-delimited text format for storing sequence
     ```
     Reference : https://samtools.github.io/hts-specs/SAMv1.pdf
 
+---
+
+
 ## Variant and genotype
+
+---
+
 
 ### vcf / vcf.gz / vcf.gz.tbi
 VCF (Variant Call Format) is a text file format for storing genetic variants and their associated genotype information. A VCF file consists of: (1) meta-information lines (starting with `##`) that describe the file format, reference genome, and field definitions, (2) a header line (starting with `#CHROM`) that lists column names, and (3) data lines containing variant information including chromosome, position, reference and alternate alleles, quality metrics, and genotype calls for each sample. VCF files are the standard format for variant calling pipelines and are used by most downstream analysis tools. VCF files are often compressed as `.vcf.gz` (gzip-compressed) to save space, and `.tbi` (tabix index) files enable fast random access to specific genomic regions without reading the entire file. 
@@ -163,6 +190,9 @@ VCF (Variant Call Format) is a text file format for storing genetic variants and
     ```
     Reference : https://samtools.github.io/hts-specs/VCFv4.2.pdf 
 
+---
+
+
 ### PLINK format
 
 PLINK is a widely-used software package for genome-wide association studies (GWAS) and population genetics analyses. PLINK genotype data consists of three essential components:
@@ -181,6 +211,9 @@ The figure below illustrates how these three components are organized in PLINK f
 
 
 <img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/70dc5c9c-5096-41af-95ee-4f925483a93c">
+
+---
+
 
 
 
@@ -239,6 +272,9 @@ The MAP file provides the genomic coordinates and identifiers for each variant, 
     ```
 
 Reference: [https://www.cog-genomics.org/plink/1.9/formats](https://www.cog-genomics.org/plink/1.9/formats)
+
+---
+
 ### bed / fam / bim
 
 The BED/FAM/BIM format set is the binary implementation of the PED/MAP format, providing the same information in a more storage-efficient and faster-to-process format. These three files work together to store genotype data:
@@ -306,13 +342,22 @@ The BED format is the standard format for PLINK 1.9 analyses due to its signific
     ```
 
 Reference: [https://www.cog-genomics.org/plink/1.9/formats](https://www.cog-genomics.org/plink/1.9/formats)
+
+---
+
 ## Imputation dosage
+
+---
+
 
 ### bgen / bgi
 
 BGEN (Binary GENotype) is a binary format designed for storing imputed genotype data with full probability information. It can store genotype probabilities (probabilities for the three possible genotypes: homozygous reference, heterozygous, and homozygous alternate) or allele dosages (expected number of alternate alleles, ranging from 0 to 2). BGEN files are commonly used for storing imputation results from reference panels (e.g., 1000 Genomes, UK Biobank imputation). The format supports both phased and unphased data and can efficiently store large-scale imputed datasets. The `.bgi` file is the index file that enables fast random access to specific genomic regions in the BGEN file.
 
 Reference: [https://www.well.ox.ac.uk/~gav/bgen_format/](https://www.well.ox.ac.uk/~gav/bgen_format/)
+
+---
+
 
 ### pgen / psam / pvar
 
@@ -325,6 +370,16 @@ The PGEN/PSAM/PVAR format set is PLINK 2.0's native format for storing genotype 
 **Important note**: When storing imputed data, `pgen` only saves the dosage value (a scalar ranging from 0 to 2) for each individual. Unlike BGEN, it cannot store the full genotype probability distribution (a vector of length 3) or allele probability matrix (2 x 2). Therefore, `pgen` files cannot be converted back to the full probability information that is stored in `bgen` files. If you need to preserve full probability information, BGEN is the preferred format.
 
 Reference: [https://www.cog-genomics.org/plink/2.0/formats#pgen](https://www.cog-genomics.org/plink/2.0/formats#pgen)
+
+---
+
+
+## Key terms
+
+VCF, PLINK, FASTA, FASTQ, BAM, BGEN, Genotype Imputation, Genotype Dosage, GWAS Summary Statistics
+
+---
+
 
 ## Summary
 

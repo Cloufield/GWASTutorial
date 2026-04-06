@@ -5,17 +5,26 @@
 
 This tutorial provides hands-on training in Complex Trait Genomics for the course `Basic Seminar II` at [The Laboratory of Complex Trait Genomics](https://sites.google.com/edu.k.u-tokyo.ac.jp/kamatanilab/), University of Tokyo. See [About](https://cloufield.github.io/GWASTutorial/99_About/) for details. Questions or suggestions? Please use the [Issue section](https://github.com/Cloufield/GWASTutorial/issues).
 
+---
+
+
 ## What is GWAS?
 
 <img width="755" alt="Word Cloud" src="images/wordcloud.png">
 
 A Genome-Wide Association Study (GWAS) is a research approach that investigates the **association** between **genetic variants** (typically SNPs) and **traits** across the entire genome to discover genetic factors that contribute to complex traits and diseases.
 
+---
+
+
 ## Why Study GWAS and Statistical Genetics?
 
 GWAS and statistical genetics are revolutionizing our understanding of human biology and medicine. These fields are fundamental to modern genetics research, enabling the discovery of genetic risk factors for common diseases, uncovering biological mechanisms, advancing personalized medicine through polygenic risk prediction, and identifying novel drug targets. 
 
 As genetic datasets grow exponentially and precision medicine gains widespread adoption, expertise in GWAS and statistical genetics is increasingly essential for researchers across genomics, medicine, public health, and biotechnology.
+
+---
+
 
 ## Study Aim
 
@@ -26,6 +35,9 @@ This tutorial aims to provide comprehensive, hands-on training in genome-wide as
 - Interpret and visualize GWAS results
 - Apply post-GWAS analyses including heritability estimation, fine-mapping, and polygenic risk scoring
 - Develop proficiency in the computational tools and statistical methods essential for modern genetic research
+
+---
+
 
 ## Contents
 

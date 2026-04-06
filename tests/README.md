@@ -2,6 +2,9 @@
 
 This directory contains test cases for each module in the GWASTutorial project.
 
+---
+
+
 ## Test Structure
 
 Tests are organized by module:
@@ -14,7 +17,13 @@ Tests are organized by module:
 - `test_15_winners_curse.py` - Tests for winner's curse correction
 - `test_50_step_by_step.py` - Tests for step-by-step genetic statistics
 
+---
+
+
 ## Running Tests
+
+---
+
 
 ### Install Dependencies
 
@@ -22,11 +31,17 @@ Tests are organized by module:
 pip install -r tests/requirements.txt
 ```
 
+---
+
+
 ### Run All Tests
 
 ```bash
 pytest tests/
 ```
+
+---
+
 
 ### Run Specific Test Module
 
@@ -34,17 +49,26 @@ pytest tests/
 pytest tests/test_10_prs_extract.py
 ```
 
+---
+
+
 ### Run with Verbose Output
 
 ```bash
 pytest tests/ -v
 ```
 
+---
+
+
 ### Run with Coverage
 
 ```bash
 pytest tests/ --cov=. --cov-report=html
 ```
+
+---
+
 
 ## Test Fixtures
 
@@ -53,6 +77,9 @@ The `conftest.py` file provides shared fixtures:
 - `sample_plink_data` - Sample PLINK data files
 - `sample_gwas_data` - Sample GWAS summary statistics
 - `sample_genotype_data` - Sample genotype data
+
+---
+
 
 ## Adding New Tests
 

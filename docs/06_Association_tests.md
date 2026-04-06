@@ -1,8 +1,21 @@
 # Association test
 
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Overview
 
 <img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/1e4ab229-6f5a-44a0-9850-81244944b969">
+
+---
+
 
 ## Genetic models
 
@@ -32,6 +45,9 @@ There are three basic genetic models:
     
     <img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/f2b0f941-9405-4ebe-8e89-aef608eb9bb1">
 
+---
+
+
 ## Association testing basics
 
 For quantitative traits, we can employ a simple linear regression model to test associations:
@@ -58,13 +74,19 @@ $$
 !!! info "Linear regression and logistic regression"
     <img width="900" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/1b902ad6-db06-44f7-9215-43b13a1a4fea">
 
+---
+
+
 ## File Preparation
 
-To perform genome-wide association tests, usually, we need the following files:
+!!! note "Required data and tools"
 
-- **Genotype file** (or dosage file) : usually in PLINK format, VCF format, or BGEN format.
-- **Phenotype file** : plain text file.
-- **Covariate file** (optional): plain text file. Commonly used covariates include age, sex, and top Principal Components. 
+    For genome-wide association tests you typically need genotype data, a phenotype file, and optionally covariates. This tutorial uses:
+
+    - **Genotype file (PLINK binary)** — e.g. `sample_data.clean` from [04_Data_QC](../04_Data_QC/README.md) after QC (other common inputs include VCF or BGEN for `plink2`).
+    - **Phenotype file** — plain text with `FID`, `IID`, and trait column(s); tutorial example: `01_Dataset/1kgeas_binary.txt` (see [01_Dataset](../01_Dataset/README.md)).
+    - **Covariate file (optional)** — plain text; often age, sex, and top PCs. Here: projected PCs in `plink_results_projected.sscore` from [05_PCA](../05_PCA/README.md).
+    - **PLINK 2** (`plink2`) — for `--glm` tests; install via [04_Data_QC — Preparation](../04_Data_QC/README.md#preparation).
 
 !!! example "Phenotype and covariate files"
 
@@ -379,3 +401,19 @@ For details, please check:
 
 - [https://github.com/EBISPOT/gwas-summary-statistics-standard](https://github.com/EBISPOT/gwas-summary-statistics-standard)
 - [https://www.ebi.ac.uk/gwas/docs/summary-statistics-format](https://www.ebi.ac.uk/gwas/docs/summary-statistics-format)
+
+## Key terms
+
+Genetic model, additive model, dominant model, recessive model, linear regression, logistic regression, covariate, principal component, PLINK 2, Firth correction, unrelated sample, kinship, MAF, genomic control, lambda GC, genome-wide significance, Bonferroni correction, family-wise error rate (FWER), false discovery rate (FDR), multiple testing, Manhattan plot, quantile-quantile plot, regional plot, GWAS summary statistics, GWAS-SSF, linkage disequilibrium (LD), odds ratio, effect allele
+
+---
+
+## References
+
+- (**PLINK / PLINK 2**) Chang, C. C., Chow, C. C., Tellier, L. C., Vattikuti, S., Purcell, S. M., & Lee, J. J. (2015). Second-generation PLINK: rising to the challenge of larger and richer datasets. *GigaScience*, 4, s13742-015-0047-8. https://doi.org/10.1186/s13742-015-0047-8 — software and association testing options: https://www.cog-genomics.org/plink/2.0/
+- (**Cochran–Armitage trend test**) Armitage, P. (1955). Tests for linear trends in proportions and frequencies. *Biometrics*, 11(3), 375–386. https://doi.org/10.2307/3001775
+- (**Firth logistic regression**) Firth, D. (1993). Bias reduction of maximum likelihood estimates. *Biometrika*, 80(1), 27–38. https://doi.org/10.1093/biomet/80.1.27
+- (**Genomic control**) Devlin, B., & Roeder, K. (1999). Genomic control for association studies. *Biometrics*, 55(4), 997–1004. https://doi.org/10.1111/j.0006-341X.1999.00997.x
+- (**Multiple testing burden / effective number of tests**) Pe'er, I., Yelensky, R., Altshuler, D., & Daly, M. J. (2008). Estimation of the multiple testing burden for genomewide association studies of nearly all common variants. *Genetic Epidemiology*, 32(4), 381–385. https://doi.org/10.1002/gepi.20303
+- (**False discovery rate**) Benjamini, Y., & Hochberg, Y. (1995). Controlling the false discovery rate: a practical and powerful approach to multiple testing. *Journal of the Royal Statistical Society: Series B (Methodological)*, 57(1), 289–300. https://doi.org/10.1111/j.2517-6161.1995.tb02031.x
+- (**GWAS-SSF**) Hayhurst, J. D., Buniello, A., Harris, L. W., Mosaku, A., Chang, C., Gignoux, C. R., … Barroso, I. (2022). A community driven GWAS summary statistics standard. *bioRxiv*. https://doi.org/10.1101/2022.07.15.500230 — specification: https://github.com/EBISPOT/gwas-summary-statistics-standard

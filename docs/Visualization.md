@@ -1,5 +1,15 @@
 # Visualization by gwaslab
 
+---
+
+
+**On this page**
+
+[TOC]
+
+---
+
+
 ## Import gwaslab package
 
 
@@ -7,6 +17,9 @@
 import gwaslab as gl
 
 ```
+
+---
+
 
 ## Load sumstats
 
@@ -69,6 +82,9 @@ sumstats.data
 | 22:51222100:G:T | 22 | 51222100 | T | G | 0.039157 | NaN | NaN | NaN | NaN | 498 | 9999999 | G | T |
 | 22:51239678:G:T | 22 | 51239678 | T | G | 0.034137 | NaN | NaN | NaN | NaN | 498 | 9999999 | G | T |
 
+---
+
+
 ## Check the lead variants in significant loci
 
 
@@ -96,6 +112,9 @@ Tue Dec 26 15:56:51 2023 Finished extracting lead variants successfully!
 | 2:55513738:C:T | 2 | 55513738 | C | T | 0.376008 | 0.153159 | -7.96244 | 1.686760e-15 | 0.295373 | 496 | 9999999 | C | T |
 | 7:134368632:T:G | 7 | 134368632 | G | T | 0.138105 | 0.225526 | 6.89025 | 5.569440e-12 | 4.730010 | 496 | 9999999 | T | G |
 | 20:42758834:T:C | 20 | 42758834 | T | C | 0.227273 | 0.184323 | -7.76902 | 7.909780e-15 | 0.238829 | 495 | 9999999 | T | C |
+
+---
+
 
 ## Create mahattan plot
 
@@ -144,6 +163,9 @@ Tue Dec 26 15:59:17 2023  -Skip saving figures!
 ```
 
 ![Output image](images/notebooks/Visualization_img_0.png)
+
+---
+
 
 ## QC check
 
@@ -199,6 +221,9 @@ Tue Dec 27 23:08:29 2022  -No available variants to normalize..
 Tue Dec 27 23:08:29 2022 Finished normalizing variants successfully!
 
 ```
+
+---
+
 
 ## Create regional plot
 
@@ -263,6 +288,9 @@ Tue Dec 26 15:58:40 2023  -Skip saving figures!
 ```
 
 ![Output image](images/notebooks/Visualization_img_1.png)
+
+---
+
 
 ## Create regional plot with LD information
 

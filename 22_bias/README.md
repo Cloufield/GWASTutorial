@@ -12,6 +12,10 @@ where:
 - $T$: statistic used to estimate $\theta$
 - $E(T)$: expected value of $T$
 
+**On this page**
+
+[TOC]
+
 ---
 
 ## Conceptual classification of bias
@@ -29,6 +33,9 @@ In genetic epidemiology and GWAS, biases can be broadly grouped into:
 
 Confounding occurs when an exposure and outcome share a **common cause**, creating a non-causal association.
 
+---
+
+
 ### Common confounders in GWAS
 
 - **Population structure**: Systematic differences in allele frequencies across subpopulations that can induce spurious genotype–phenotype associations.
@@ -45,6 +52,9 @@ Confounding occurs when an exposure and outcome share a **common cause**, creati
 
 Measurement (information) bias arises from **errors in measuring exposures, outcomes, or covariates**.
 
+---
+
+
 ### Examples in GWAS
 
 - **Phenotype misclassification** (e.g. ICD codes, self-reported traits)
@@ -57,6 +67,9 @@ Measurement (information) bias arises from **errors in measuring exposures, outc
 
 Selection bias occurs when inclusion in the study depends on factors related to the exposure, outcome, or their causes, making the analyzed sample **non-representative** of the target population.
 
+---
+
+
 ### 3.1 Collider bias
 
 Collider bias arises when both the exposure and outcome affect a **common variable** and that variable is conditioned on (e.g. adjusted for or used as a selection criterion).
@@ -64,6 +77,9 @@ Collider bias arises when both the exposure and outcome affect a **common variab
 In other words, **conditioning on a collider can induce a spurious association** between exposure and outcome.
 
 <img width="700" alt="collider bias diagram" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/c763e7d1-de0f-4f3e-a56d-acd5eb12c019">
+
+---
+
 
 ### 3.2 Participation (ascertainment) bias
 
@@ -80,6 +96,9 @@ In biobank-scale GWAS, this can:
 
 These biases arise **after data collection**, due to modeling assumptions or statistical procedures.
 
+---
+
+
 ### 4.1 Model misspecification bias
 
 Model misspecification bias occurs when the assumed statistical model does not match the true data-generating process.
@@ -88,6 +107,9 @@ Examples in GWAS include:
 - Ignoring non-additive genetic effects (dominance, epistasis)
 - Using linear models for binary traits without appropriate correction
 - Incorrect variance assumptions in mixed models
+
+---
+
 
 ### 4.2 Winner’s curse
 
