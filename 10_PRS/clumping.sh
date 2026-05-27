@@ -1,4 +1,10 @@
 #!/bin/bash
+# Module: 10_PRS | Script: clumping.sh
+# Step: clumping
+
+set -euo pipefail
+cd "$(dirname "$0")"
+
 plinkFile=../04_Data_QC/sample_data.clean
 sumStats=./t2d_plink_reduced.txt
 

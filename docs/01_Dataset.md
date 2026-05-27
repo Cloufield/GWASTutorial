@@ -1,3 +1,18 @@
+---
+module_id: 01_Dataset
+type: resource
+title: Sample Dataset
+prerequisites: []
+produces:
+  - 1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing
+  - 1kgeas_binary.txt
+primary_script: download_sampledata.sh
+tools: [gcta, plink]
+concepts:
+  - 1000 Genomes Project
+  - genotype simulation
+---
+
 # Sample Dataset
 
 504 EAS individuals from 1000 Genomes Project Phase 3 version 5
@@ -21,6 +36,15 @@ Genome build:  human_g1k_v37.fasta (hg19)
 
 ---
 
+## Preparation
+
+!!! note "Required data and tools"
+
+    - **Data: 1KG EAS PLINK binary** — included in the repo or via `download_sampledata.sh` (see [Sample script](#sample-script)).
+    - **Software: PLINK** (`plink`) — processing and format conversion in this module.
+    - **Software: GCTA** (`gcta64`) — phenotype simulation ([Phenotype Simulation](#phenotype-simulation)).
+
+---
 
 ## Genotype Data Processing
 
@@ -42,11 +66,7 @@ Genome build:  human_g1k_v37.fasta (hg19)
 !!! note 
     The sample dataset `1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing.zip` has been included in `01_Dataset` when you clone the repository. There is no need to download it again if you clone this repository.
 
-You can also simply run `download_sampledata.sh` in `01_Dataset` and the dataset will be downloaded and decompressed.
-
-```
-./download_sampledata.sh
-```
+See [Sample script](#sample-script) for `download_sampledata.sh`.
 
 !!! warning "Sample dataset is currently hosted on Dropbox which may not be accessible for users in certain regions."
 
@@ -140,7 +160,25 @@ $ cat causal.snplist
 
 ---
 
+## Sample script
 
+From the `01_Dataset` folder:
+
+!!! example "Download tutorial genotype data"
+    ```bash
+    cd 01_Dataset
+    ./download_sampledata.sh
+    ```
+
+!!! example "Simulate binary phenotype (GCTA)"
+    ```bash
+    cd 01_Dataset
+    ./simulate.sh
+    ```
+
+Other helpers: `recode.sh`, `add_missing.sh`, `helper/merge_to_one.sh`.
+
+---
 
 ## Key terms
 

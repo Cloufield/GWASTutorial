@@ -10,7 +10,7 @@ import argparse
 import sys
 from pathlib import Path
 
-SKIP_DIR_PARTS = frozenset({"site", ".gwasdictionary", "__pycache__", ".git"})
+SKIP_DIR_PARTS = frozenset({"site", ".development", "dictionary", "__pycache__", ".git"})
 
 
 def _is_h2_or_h3(line: str) -> bool:
@@ -74,8 +74,8 @@ def main() -> int:
     ap.add_argument(
         "--root",
         type=Path,
-        default=Path(__file__).resolve().parent.parent,
-        help="Repository root",
+        default=None,
+        help="Repository root (default: parent of .development/)",
     )
     ap.add_argument(
         "--check",
@@ -83,7 +83,12 @@ def main() -> int:
         help="Exit 1 if any file would change (no writes)",
     )
     args = ap.parse_args()
-    root = args.root.resolve()
+    if args.root is None:
+        from _repo_paths import REPO_ROOT
+
+        root = REPO_ROOT
+    else:
+        root = args.root.resolve()
     changed = 0
     for path in iter_markdown_files(root):
         raw = path.read_text(encoding="utf-8")

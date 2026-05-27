@@ -1,15 +1,20 @@
+---
+module_id: 17_colocalization
+type: hands_on
+title: Colocalization
+prerequisites: [06_Association_tests]
+tools: [coloc]
+concepts:
+  - colocalization
+  - posterior probability
+  - linkage disequilibrium
+---
+
 # Colocalization
 
 Colocalization analysis aims to determine whether two traits share the same causal variant(s) in a genomic region. This is particularly useful for understanding the relationship between molecular traits (e.g., gene expression, protein levels) and complex diseases.
 
-!!! note "Required data and tools"
-
-    - **R** with **`coloc`** (and companion packages for SuSiE-/COJO-based extensions linked below).
-    - **Summary statistics** for **two traits** in the same region — SNP IDs, effect estimates, and variances; quantitative traits need trait SD (`sdY`) ([Datasets used](#datasets-used)).
-    - **LD matrix** for those SNPs from a reference panel matched to **ancestry** ([Datasets used](#datasets-used)).
-
 ---
-
 
 **On this page**
 
@@ -17,6 +22,15 @@ Colocalization analysis aims to determine whether two traits share the same caus
 
 ---
 
+## Preparation
+
+!!! note "Required data and tools"
+
+    - **Software: R** with **`coloc`** (and companion packages for SuSiE-/COJO-based extensions linked below).
+    - **Data: Summary statistics** for **two traits** in the same region — SNP IDs, effect estimates, and variances; quantitative traits need trait SD (`sdY`) ([Datasets used](#datasets-used)).
+    - **Reference: LD matrix** for those SNPs from a reference panel matched to **ancestry** ([Datasets used](#datasets-used)).
+
+---
 
 ## Coloc assuming a single causal variant
 
@@ -89,6 +103,11 @@ Many other strategies and pipelines are available for colocalization and priorit
 
 ---
 
+## Key terms
+
+colocalization, COLOC, posterior probability, credible set, SuSiE-Coloc, pleiotropy, eQTL, linkage disequilibrium
+
+---
 
 ## References
 

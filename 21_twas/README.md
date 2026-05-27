@@ -1,3 +1,14 @@
+---
+module_id: 21_twas
+type: hands_on
+title: TWAS
+prerequisites: [06_Association_tests]
+tools: [fusion]
+concepts:
+  - transcriptome-wide association study
+  - gene expression imputation
+  - FUSION
+---
 
 # TWAS
 
@@ -37,7 +48,15 @@ TWAS is a method to identify significant expression-trait associations using exp
 
 ---
 
+## Preparation
 
+!!! note "Required data and tools"
+
+    - **Software: FUSION** — scripts, **1000G LDREF**, **R** (≥ 4.0) with `optparse`, `RColorBrewer`, and **plink2R** ([Installation](#installation)).
+    - **Data: GWAS summary statistics** in **LDSC / FUSION** format (rsID, alleles, Z or beta/SE) ([Example](#example)).
+    - **Reference: Pre-computed expression weights** from the [FUSION resource page](http://gusevlab.org/projects/fusion/) for your tissue/cohort of interest.
+
+---
 
 ## FUSION
 
@@ -49,12 +68,6 @@ FUSION trains predictive models of the genetic component of a functional/molecul
 
 !!! quote
     Gusev, A., Ko, A., Shi, H., Bhatia, G., Chung, W., Penninx, B. W., ... & Pasaniuc, B. (2016). Integrative approaches for large-scale transcriptome-wide association studies. Nature genetics, 48(3), 245-252.
-
-!!! note "Required data and tools"
-
-    - **FUSION** pipeline — scripts, **1000G LDREF**, **R** (≥ 4.0) with `optparse`, `RColorBrewer`, and **plink2R** ([Installation](#installation)).
-    - **GWAS summary statistics** in **LDSC / FUSION** format (rsID, alleles, Z or beta/SE) ([Example](#example)).
-    - **Pre-computed gene expression weights** from the [FUSION resource page](http://gusevlab.org/projects/fusion/) for your tissue/cohort of interest.
 
 ---
 
@@ -268,6 +281,14 @@ TWAS aims to test the relationship of the phenotype with the genetic component o
 
 ---
 
+
+---
+
+## Key terms
+
+transcriptome-wide association study, TWAS, FUSION, expression imputation, eQTL, PrediXcan, summary-level TWAS
+
+---
 
 ## References
 

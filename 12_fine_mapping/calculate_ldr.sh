@@ -1,4 +1,9 @@
 #!/bin/bash
+# Module: 12_fine_mapping | Script: calculate_ldr.sh
+# Step: calculate_ld
+
+set -euo pipefail
+cd "$(dirname "$0")"
 
 plinkFile="../01_Dataset/1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing"
 

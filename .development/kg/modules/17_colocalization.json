@@ -1,0 +1,94 @@
+{
+  "module_id": "17_colocalization",
+  "title": "Colocalization",
+  "type": "hands_on",
+  "source_readme": "17_colocalization/README.md",
+  "primary_script": null,
+  "prerequisites": [
+    "06_Association_tests"
+  ],
+  "produces": [],
+  "tools": [
+    "coloc"
+  ],
+  "concepts": [
+    "colocalization",
+    "posterior probability",
+    "linkage disequilibrium"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "17_colocalization",
+      "kind": "Module",
+      "label": "Colocalization"
+    },
+    {
+      "id": "tool_coloc",
+      "kind": "Tool",
+      "label": "coloc"
+    },
+    {
+      "id": "concept_colocalization",
+      "kind": "Concept",
+      "label": "colocalization"
+    },
+    {
+      "id": "concept_posterior_probability",
+      "kind": "Concept",
+      "label": "posterior probability"
+    },
+    {
+      "id": "concept_linkage_disequilibrium",
+      "kind": "Concept",
+      "label": "linkage disequilibrium"
+    },
+    {
+      "id": "17_colocalization.step_datasets_used",
+      "kind": "Step",
+      "label": "Datasets used"
+    },
+    {
+      "id": "17_colocalization.step_result_interpretation",
+      "kind": "Step",
+      "label": "Result interpretation"
+    }
+  ],
+  "edges": [
+    {
+      "from": "17_colocalization",
+      "to": "06_Association_tests",
+      "type": "requires"
+    },
+    {
+      "from": "17_colocalization",
+      "to": "tool_coloc",
+      "type": "uses_tool"
+    },
+    {
+      "from": "17_colocalization",
+      "to": "concept_colocalization",
+      "type": "defines_concept"
+    },
+    {
+      "from": "17_colocalization",
+      "to": "concept_posterior_probability",
+      "type": "defines_concept"
+    },
+    {
+      "from": "17_colocalization",
+      "to": "concept_linkage_disequilibrium",
+      "type": "defines_concept"
+    },
+    {
+      "from": "17_colocalization",
+      "to": "17_colocalization.step_datasets_used",
+      "type": "documents_step"
+    },
+    {
+      "from": "17_colocalization.step_datasets_used",
+      "to": "17_colocalization.step_result_interpretation",
+      "type": "documents_step"
+    }
+  ]
+}

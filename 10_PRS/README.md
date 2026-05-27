@@ -1,3 +1,16 @@
+---
+module_id: 10_PRS
+type: hands_on
+title: Polygenic risk scores
+prerequisites: [04_Data_QC, 06_Association_tests]
+produces: [1kgeas.clumped]
+primary_script: run_prs.sh
+tools: [plink]
+concepts:
+  - polygenic risk score
+  - clumping and thresholding
+---
+
 # Polygenic risk scores
 
 ---
@@ -43,15 +56,30 @@ $$PRS_j = \sum_{i=0}^{i=M} x_{i,j} \beta_{i}$$
 
 In this tutorial, we will first briefly introduce how to develop PRS model using the sample data and then demonstrate how we can download PRS models from PGS Catalog and apply to our sample genotype data. 
 
+---
+
+## Preparation
+
 !!! note "Required data and tools"
 
-    - **Genotype data (PLINK binary)** — e.g. [04_Data_QC/sample_data.clean](../04_Data_QC/README.md) (`.bed`/`.bim`/`.fam`).
-    - **GWAS summary statistics** — for C+T clumping / weights, e.g. [06_Association_tests/1kgeas.B1.glm.firth](../06_Association_tests/README.md).
-    - **PLINK 1.9** (`plink`) — clumping and `--score` ([04_Data_QC — Preparation](../04_Data_QC/README.md#preparation)); **PLINK 2** if you extend workflows to `plink2` syntax.
-    - **PGS Catalog** (optional) — published score files for [Calculate PRS using PLINK](#calculate-prs-using-plink).
+    - **Data: Genotype (PLINK binary)** — [04_Data_QC/sample_data.clean](../04_Data_QC/README.md).
+    - **Data: GWAS summary statistics** — [06_Association_tests/1kgeas.B1.glm.firth](../06_Association_tests/1kgeas.B1.glm.firth).
+    - **Software: PLINK 1.9** (`plink`) — clumping and `--score` ([04_Data_QC — Preparation](../04_Data_QC/README.md#preparation)).
+    - **Reference: PGS Catalog** (optional) — published scores for [Calculate PRS using PLINK](#calculate-prs-using-plink).
 
 ---
 
+## Sample script
+
+!!! example "Run C+T helpers"
+    ```bash
+    cd 10_PRS
+    ./run_prs.sh
+    ```
+
+Scripts: `clumping.sh`, `extract.sh`.
+
+---
 
 ## C+T/P+T using PLINK
 
@@ -258,6 +286,12 @@ Inouye et al. first used this approach for generating a PRS model for CAD from m
 ---
 
 
+
+## Key terms
+
+polygenic risk score, polygenic score, clumping and thresholding, LDpred, PRS-CS, PGS Catalog
+
+---
 
 ## References
 

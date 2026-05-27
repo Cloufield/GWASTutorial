@@ -104,8 +104,8 @@ def main() -> int:
     p.add_argument(
         "--repo",
         type=Path,
-        default=Path(__file__).resolve().parent.parent,
-        help="Repository root (default: parent of scripts/)",
+        default=None,
+        help="Repository root (default: repo root, parent of .development/)",
     )
     p.add_argument(
         "--docs",
@@ -114,7 +114,12 @@ def main() -> int:
         help="Docs directory (default: <repo>/docs)",
     )
     args = p.parse_args()
-    repo = args.repo.resolve()
+    if args.repo is None:
+        from _repo_paths import REPO_ROOT
+
+        repo = REPO_ROOT
+    else:
+        repo = args.repo.resolve()
     docs_dir = (args.docs or repo / "docs").resolve()
     if not docs_dir.is_dir():
         print(f"error: docs directory not found: {docs_dir}", file=sys.stderr)

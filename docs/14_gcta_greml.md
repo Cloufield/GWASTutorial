@@ -1,3 +1,17 @@
+---
+module_id: 14_gcta_greml
+type: hands_on
+title: SNP-Heritability estimation by GCTA-GREML
+prerequisites: [04_Data_QC, 01_Dataset, 05_PCA]
+produces: [1kg_eas.hsq]
+primary_script: run_greml.sh
+tools: [gcta, plink]
+concepts:
+  - SNP heritability
+  - GREML
+  - genetic relationship matrix
+---
+
 # SNP-Heritability estimation by GCTA-GREML
 
 This tutorial demonstrates how to estimate SNP-based heritability using GCTA-GREML (Genome-wide Complex Trait Analysis - Genome-based Restricted Maximum Likelihood).
@@ -39,14 +53,18 @@ $$ Var(y) = V = A\delta^2_g + I \delta^2_e$$
 !!! quote GCTA-GREML
     For details, please check Yang, J., Lee, S. H., Goddard, M. E., & Visscher, P. M. (2011). GCTA: a tool for genome-wide complex trait analysis. The American Journal of Human Genetics, 88(1), 76-82. [link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3014363/).
 
-!!! note "Required data and tools"
-
-    - **GCTA** — install and add to `PATH` ([Download](#download)).
-    - **PLINK binary genotype** and an **LD-pruned SNP list** — tutorial paths: [04_Data_QC/sample_data.clean](../04_Data_QC/README.md), `plink_results.prune.in` from pruning ([Make GRM](#make-grm)).
-    - **Phenotype file** — e.g. [01_Dataset/1kgeas_binary.txt](../01_Dataset/README.md) ([Estimation](#estimation)).
-
 ---
 
+## Preparation
+
+!!! note "Required data and tools"
+
+    - **Software: GCTA** (`gcta64`) — install and add to `PATH` ([Download](#download)).
+    - **Data: PLINK binary genotype** — [04_Data_QC/sample_data.clean](../04_Data_QC/README.md) and `plink_results.prune.in` ([Make GRM](#make-grm)).
+    - **Data: Phenotype** — [01_Dataset/1kgeas_binary.txt](../01_Dataset/README.md) ([Estimation](#estimation)).
+    - **Data: Covariates** — projected PCs from [05_PCA](../05_PCA/README.md) (`plink_results_projected.sscore`).
+
+---
 
 ## Download
 
@@ -273,6 +291,25 @@ It is helpful to check the [FAQ section of GCTA](https://yanglab.westlake.edu.cn
 
 ---
 
+## Sample script
+
+From the `14_gcta_greml` folder (after [04_Data_QC](../04_Data_QC/README.md) and [05_PCA](../05_PCA/README.md)):
+
+!!! example "Run the full pipeline"
+    ```bash
+    cd 14_gcta_greml
+    ./run_greml.sh
+    ```
+
+Scripts: `2_gcta_grm.sh` (GRM), `3_gcta_reml.sh` (REML).
+
+---
+
+## Key terms
+
+SNP heritability, GREML, GCTA, genetic relationship matrix, REML, liability-scale heritability, observed-scale heritability
+
+---
 
 ## References
 

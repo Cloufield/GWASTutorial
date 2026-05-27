@@ -21,8 +21,19 @@ Use these **exact spellings and casing** for shared sections so pages and TOCs s
 | `## Overview` | — (high-level summary section when the word fits; keep page-specific titles like “Overview of …” when needed) |
 | `## Exercise` | `Exercises` unless there are multiple called out |
 | `## Summary` | — (optional closing recap; do not use as a synonym for **Key terms**) |
+| `## Sample script` | `Sample codes`, `Sample Codes` (hands-on: one section linking `run_*.sh`) |
+| `## Outputs and checks` | — (optional: expected files after the pipeline) |
 
 **Admonition titles** (not headings, but normalize casing): prefer `!!! note "Required data and tools"` for the standard checklist callout on hands-on pages.
+
+**Required tools bullet format** (hands-on):
+
+```markdown
+- **Software: PLINK 2** (`plink2`) — role. See [04_Data_QC — Preparation](../04_Data_QC/README.md#preparation).
+- **Data: Genotype (PLINK binary)** (`sample_data.clean`) — from [04_Data_QC](../04_Data_QC/README.md).
+```
+
+Kinds: `Software`, `Data`, `Reference`, `Environment`. Tool ids are listed in [kg/tools.yaml](../kg/tools.yaml).
 
 ---
 
@@ -88,6 +99,47 @@ Pattern: **motivation → requirements → ordered steps → wrap-up**. Examples
 | **References** | Papers and software manuals. |
 
 **Scripts**: Link to `*.sh` in the module folder or show representative fragments; keep paths consistent with the rest of the tutorial.
+
+### Hands-on fixed section order (core pipeline)
+
+```markdown
+---
+module_id: NN_topic
+type: hands_on
+prerequisites: [04_Data_QC]
+produces: [output.prefix]
+primary_script: run_topic.sh
+---
+
+# Title
+…
+## Overview                    # optional
+## Preparation
+!!! note "Required data and tools"
+## Data preparation            # optional
+### Step …
+## Sample script
+!!! example "Run the full pipeline"
+    ./run_topic.sh
+## Outputs and checks          # optional
+## Key terms
+## References
+```
+
+### Shell script header (companion to README)
+
+```bash
+#!/bin/bash
+# Module: 05_PCA | Script: run_pca.sh
+# Prerequisites: 04_Data_QC/sample_data.clean.{bed,bim,fam}
+# Steps: exclude_hild | prune | king | pca | project
+
+set -euo pipefail
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+# Step: prune
+```
+
+Machine-readable copies: [kg/modules/](../kg/modules/), [kg/pipeline_core.json](../kg/pipeline_core.json). Regenerate with `python3 .development/scripts/extract_kg.py` from the repo root.
 
 ---
 

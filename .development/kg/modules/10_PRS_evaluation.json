@@ -1,0 +1,97 @@
+{
+  "module_id": "10_PRS_evaluation",
+  "title": "Polygenic risk scores evaluation",
+  "type": "hands_on",
+  "source_readme": "10_PRS/PRS_evaluation.md",
+  "primary_script": null,
+  "prerequisites": [
+    "10_PRS"
+  ],
+  "produces": [],
+  "tools": [],
+  "concepts": [
+    "polygenic risk score",
+    "AUC",
+    "R-squared"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "10_PRS_evaluation",
+      "kind": "Module",
+      "label": "Polygenic risk scores evaluation"
+    },
+    {
+      "id": "concept_polygenic_risk_score",
+      "kind": "Concept",
+      "label": "polygenic risk score"
+    },
+    {
+      "id": "concept_auc",
+      "kind": "Concept",
+      "label": "AUC"
+    },
+    {
+      "id": "concept_r_squared",
+      "kind": "Concept",
+      "label": "R-squared"
+    },
+    {
+      "id": "10_PRS_evaluation.step_roc_aic_auc_and_c_index",
+      "kind": "Step",
+      "label": "ROC, AIC, AUC, and C-index"
+    },
+    {
+      "id": "10_PRS_evaluation.step_r2_and_pseudo_r2",
+      "kind": "Step",
+      "label": "R2 and pseudo-R2"
+    },
+    {
+      "id": "10_PRS_evaluation.step_r2_on_the_liability_scale_lee",
+      "kind": "Step",
+      "label": "R2 on the liability scale (Lee)"
+    }
+  ],
+  "edges": [
+    {
+      "from": "10_PRS_evaluation",
+      "to": "10_PRS",
+      "type": "requires"
+    },
+    {
+      "from": "10_PRS_evaluation",
+      "to": "10_PRS",
+      "type": "requires"
+    },
+    {
+      "from": "10_PRS_evaluation",
+      "to": "concept_polygenic_risk_score",
+      "type": "defines_concept"
+    },
+    {
+      "from": "10_PRS_evaluation",
+      "to": "concept_auc",
+      "type": "defines_concept"
+    },
+    {
+      "from": "10_PRS_evaluation",
+      "to": "concept_r_squared",
+      "type": "defines_concept"
+    },
+    {
+      "from": "10_PRS_evaluation",
+      "to": "10_PRS_evaluation.step_roc_aic_auc_and_c_index",
+      "type": "documents_step"
+    },
+    {
+      "from": "10_PRS_evaluation.step_roc_aic_auc_and_c_index",
+      "to": "10_PRS_evaluation.step_r2_and_pseudo_r2",
+      "type": "documents_step"
+    },
+    {
+      "from": "10_PRS_evaluation.step_r2_and_pseudo_r2",
+      "to": "10_PRS_evaluation.step_r2_on_the_liability_scale_lee",
+      "type": "documents_step"
+    }
+  ]
+}

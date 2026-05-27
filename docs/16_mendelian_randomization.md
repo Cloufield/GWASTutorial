@@ -1,3 +1,17 @@
+---
+module_id: 16_mendelian_randomization
+type: hands_on
+title: Mendelian randomization
+prerequisites: [06_Association_tests]
+produces: [bbj_t2d.sumstats, koges_bmi.txt.gz]
+primary_script: run_mr.sh
+tools: [twosamplemr]
+concepts:
+  - Mendelian randomization
+  - instrumental variable
+  - two-sample MR
+---
+
 # Mendelian randomization
 
 ---
@@ -106,16 +120,31 @@ The most commonly used method here is the **F-statistic**, which tests the assoc
 
 ---
 
-
-
-
-## Practice
+## Preparation
 
 !!! note "Required data and tools"
 
-    - **R** (≥ 4.1) — **TwoSampleMR** and dependencies (`remotes::install_github("MRCIEU/TwoSampleMR")`; [R package TwoSampleMR](#r-package-twosamplemr)).
-    - **GWAS summary statistics** for **exposure** and **outcome** from non-overlapping or appropriately handled samples; tutorial downloads from BBJ / KoGES ([File Preparation](#file-preparation)).
-    - **OpenGWAS API token** — required for most `ieugwasr` queries since May 2024 ([OPENGWAS API](#opengwas-api)).
+    - **Software: R** (≥ 4.1) — **TwoSampleMR** (`remotes::install_github("MRCIEU/TwoSampleMR")`; [R package TwoSampleMR](#r-package-twosamplemr)).
+    - **Data: GWAS summary statistics** — exposure and outcome from non-overlapping samples; tutorial uses BBJ / KoGES ([GWAS summary statistics](#gwas-summary-statistics)).
+    - **Environment: OpenGWAS API token** — required for most `ieugwasr` queries ([OPENGWAS API](#opengwas-api)).
+
+---
+
+## Sample script
+
+Download tutorial exposure/outcome summary statistics:
+
+!!! example "Download sumstats"
+    ```bash
+    cd 16_mendelian_randomization
+    ./run_mr.sh
+    ```
+
+Follow [Practice](#practice) for TwoSampleMR analysis in R ([TwoSampleMR.ipynb](TwoSampleMR.ipynb)).
+
+---
+
+## Practice
 
 In this tutorial, we will walk you through how to perform a minimal TwoSampleMR analysis. We will use the R package [TwoSampleMR](https://mrcieu.github.io/TwoSampleMR/index.html), which provides easy-to-use functions for formatting, clumping and harmonizing GWAS summary statistics. 
 
@@ -198,7 +227,7 @@ This token acts like a password. Keep it secure and do not share it. Please chec
 ---
 
 
-### File Preparation
+### GWAS summary statistics
 
 To perform two-sample MR analysis, we need summary statistics for exposure and outcome generated from independent populations with the same ancestry.
 
@@ -560,6 +589,11 @@ Before reporting any MR results, please check the STROBE-MR Checklist first, whi
 
 ---
 
+## Key terms
+
+Mendelian randomization, instrumental variable, two-sample MR, TwoSampleMR, pleiotropy, MR-Egger, Wald ratio, F-statistic, OpenGWAS, STROBE-MR
+
+---
 
 ## References
 

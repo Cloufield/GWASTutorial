@@ -1,3 +1,21 @@
+---
+module_id: 05_PCA
+type: hands_on
+title: Principal component analysis (PCA)
+prerequisites: [04_Data_QC]
+produces:
+  - plink_results.eigenvec
+  - plink_results.eigenvec.allele
+  - plink_results_projected.sscore
+primary_script: run_pca.sh
+tools: [plink, plink2]
+concepts:
+  - principal component analysis
+  - genetic relationship matrix
+  - population stratification
+  - linkage disequilibrium
+---
+
 # Principal component analysis (PCA)
 
 PCA aims to find the **orthogonal directions of maximum variance** and project the data onto a new subspace with equal or fewer dimensions than the original one. 
@@ -56,14 +74,6 @@ Price, A., Patterson, N., Plenge, R. et al. Principal components analysis correc
 
 So before association analysis, we will learn how to run PCA analysis first.
 
-- [Preparation](#preparation)
-- [PCA steps](#pca-steps)
-- [Sample codes](#sample-codes)
-- [Plotting the PCs](#plotting-the-pcs)
-- [PCA-UMAP](#pca-umap)
-- [Key terms](#key-terms)
-- [References](#references)
-
 !!! info "Genotype PCA workflow"
     <img width="600" alt="image" src="https://github.com/Cloufield/GWASTutorial/assets/40289485/6a5880c7-10bd-4fac-a364-12ab14171f72">
 
@@ -75,12 +85,12 @@ So before association analysis, we will learn how to run PCA analysis first.
 
 !!! note "Required data and tools"
 
-    - **Genotype data (PLINK binary)** — a `.bed`/`.bim`/`.fam` set (e.g. `sample_data.clean` from [04_Data_QC](../04_Data_QC/README.md) after QC). The genome build must match your high-LD region file; the lists below use **hg19/GRCh37** coordinates.
-    - **High-LD / HLA region list (BED-style)** — for hg19, use [high-ld-hg19.txt](high-ld-hg19.txt) in this folder (or copy it to `high-ld.txt` if you prefer). For other genome builds or custom regions, see [Download BED-like files for high-LD or HLA regions](#download-bed-like-files-for-high-ld-or-hla-regions).
-    - **PLINK 1.9** (`plink`) — to build the high-LD / HLA SNP set with `--make-set` and `--write-set` (see below).
-    - **PLINK 2** (`plink2`) — for LD pruning, KING cutoff, PCA, and projection in the [sample codes](#sample-codes).
+    - **Data: Genotype (PLINK binary)** (`sample_data.clean`) — from [04_Data_QC](../04_Data_QC/README.md) after QC; genome build must match the high-LD list (**hg19/GRCh37** below).
+    - **Reference: High-LD / HLA regions** (`high-ld-hg19.txt`) — BED-style list in this folder; see [Download BED-like files for high-LD or HLA regions](#download-bed-like-files-for-high-ld-or-hla-regions).
+    - **Software: PLINK 1.9** (`plink`) — build the high-LD / HLA SNP set with `--make-set` and `--write-set`.
+    - **Software: PLINK 2** (`plink2`) — LD pruning, KING cutoff, PCA, and projection; see [Sample script](#sample-script).
 
-    For installing PLINK 1.9 and 2 and obtaining the tutorial genotype data, follow [04_Data_QC — Preparation](../04_Data_QC/README.md#preparation).
+    Install PLINK and obtain tutorial data via [04_Data_QC — Preparation](../04_Data_QC/README.md#preparation).
 
 ---
 
@@ -190,9 +200,19 @@ For downstream analysis, we can exclude these SNPs using `--exclude hild.set`.
 
 ---
 
-## Sample codes
+## Sample script
 
-!!! example "Sample codes for performing PCA"
+From the `05_PCA` folder, run the full pipeline (after [04_Data_QC](../04_Data_QC/README.md)):
+
+!!! example "Run the full pipeline"
+    ```bash
+    cd 05_PCA
+    ./run_pca.sh
+    ```
+
+Helper script for high-LD SNP extraction only: [extract_highld.sh](extract_highld.sh).
+
+!!! example "Step-by-step commands (same as run_pca.sh)"
     ```
     plinkFile="" #please set this to your own path
     outPrefix="plink_results"
@@ -295,6 +315,17 @@ Eventually, we will get the PCA results for all samples.
 
 ---
 
+## Outputs and checks
+
+After `run_pca.sh`, expect at least:
+
+- `hild.set` — SNPs in high-LD / HLA regions (excluded from pruning)
+- `plink_results.prune.in` — independent SNP list
+- `plink_results.king.cutoff.in.id` — unrelated individuals for PCA fitting
+- `plink_results.eigenvec`, `plink_results.eigenvec.allele`, `plink_results.acount`
+- `plink_results_projected.sscore` — projected PCs for **all** samples (used in [06_Association_tests](../06_Association_tests/README.md))
+
+---
 
 ## Plotting the PCs 
 You can now create scatterplots of the PCs using R or Python.
@@ -339,7 +370,8 @@ For more details, please check:
 
 Principal component analysis (PCA), principal component, genetic relationship matrix (GRM), eigenvector, eigenvalue, dimension reduction, population stratification, ancestry, linkage disequilibrium (LD), LD pruning, high-LD region, HLA, KING cutoff, relatedness, PCA projection, allele weight, MAF, UMAP
 
-# References
+## References
+
 - (**PCA**) Price, A., Patterson, N., Plenge, R. et al. Principal components analysis corrects for stratification in genome-wide association studies. Nat Genet 38, 904–909 (2006). https://doi.org/10.1038/ng1847 https://www.nature.com/articles/ng1847
 - (**why removing high-LD regions**) Price, A. L., Weale, M. E., Patterson, N., Myers, S. R., Need, A. C., Shianna, K. V., Ge, D., Rotter, J. I., Torres, E., Taylor, K. D., Goldstein, D. B., & Reich, D. (2008). Long-range LD can confound genome scans in admixed populations. American journal of human genetics, 83(1), 132–139. https://doi.org/10.1016/j.ajhg.2008.06.005 
 - (**UMAP**) McInnes, L., Healy, J., & Melville, J. (2018). Umap: Uniform manifold approximation and projection for dimension reduction. arXiv preprint arXiv:1802.03426.

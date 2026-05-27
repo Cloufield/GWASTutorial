@@ -188,6 +188,8 @@ Several large-scale cohorts have been instrumental in advancing GWAS research:
 | **All of Us** | 1M+ (target) | Multi-ancestry | Diverse US population, comprehensive health data, precision medicine focus |
 | **Estonian Biobank** | ~200,000 | Estonian | Population-based, extensive health records, longitudinal data |
 | **deCODE** | ~300,000 | Icelandic | Population isolate, extensive genealogical records, high-quality data |
+| **BBJ (BioBank Japan)** | ~200,000 | Japanese | Large hospital-based biobank, rich disease endpoints, major East Asian GWAS resource |
+| **CKB (China Kadoorie Biobank)** | ~500,000 | Chinese | Prospective cohort, extensive epidemiological data, linked long-term health outcomes |
 
 !!! success "Meta-analysis and consortium studies"
     Many GWAS combine data from multiple cohorts through meta-analysis or consortium efforts, which:

@@ -1,3 +1,17 @@
+---
+module_id: 09_Gene_based_analysis
+type: hands_on
+title: Gene and gene-set analysis
+prerequisites: [08_LDSC]
+produces: [HDLC_chr3.magma.input.p.txt]
+primary_script: run_gene_analysis.sh
+tools: [magma]
+concepts:
+  - gene-based test
+  - gene-set analysis
+  - MAGMA
+---
+
 # Gene and gene-set analysis
 
 ---
@@ -7,11 +21,15 @@
 
 [TOC]
 
+---
+
+## Preparation
+
 !!! note "Required data and tools"
 
-    - **MAGMA** — install the binary and add it to your `PATH` ([Install MAGMA](#install-magma)).
-    - **Reference data** — gene locations, LD reference panel, and optional MSigDB gene sets ([Download reference files](#download-reference-files)).
-    - **GWAS summary statistics** — formatted SNP locations and *p*-values per chromosome (example uses BBJ HDL-C from [08_LDSC](../08_LDSC/README.md)).
+    - **Software: MAGMA** — install the binary and add to `PATH` ([Install MAGMA](#install-magma)).
+    - **Reference: MAGMA resources** — gene locations, LD reference, optional MSigDB sets ([Download reference files](#download-reference-files)).
+    - **Data: GWAS summary statistics** — per-chromosome SNP *p*-values (example: BBJ HDL-C from [08_LDSC](../08_LDSC/README.md)).
 
 ---
 
@@ -164,5 +182,26 @@ magma \
 	--out HDLC_chr3
 ```
 
-# Reference
+---
+
+## Sample script
+
+!!! example "Run MAGMA pipeline (after installing MAGMA and references)"
+    ```bash
+    cd 09_Gene_based_analysis
+    ./run_gene_analysis.sh
+    ```
+
+Scripts: `0_format.sh`, `1_annotation.sh`, `2_gene_based_tests.sh`, `3_gene_set_tests.sh`.
+
+---
+
+## Key terms
+
+MAGMA, gene-based test, gene-set analysis, MSigDB
+
+---
+
+## References
+
 - de Leeuw, Christiaan A., et al. "MAGMA: generalized gene-set analysis of GWAS data." PLoS computational biology 11.4 (2015): e1004219.

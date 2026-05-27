@@ -1,0 +1,85 @@
+{
+  "module_id": "18_Conditioning_analysis",
+  "title": "Conditioning analysis",
+  "type": "hands_on",
+  "source_readme": "18_Conditioning_analysis/README.md",
+  "primary_script": null,
+  "prerequisites": [
+    "06_Association_tests"
+  ],
+  "produces": [],
+  "tools": [
+    "plink2",
+    "gcta"
+  ],
+  "concepts": [
+    "conditional analysis",
+    "GCTA-COJO",
+    "independent signals"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "18_Conditioning_analysis",
+      "kind": "Module",
+      "label": "Conditioning analysis"
+    },
+    {
+      "id": "tool_plink2",
+      "kind": "Tool",
+      "label": "plink2"
+    },
+    {
+      "id": "tool_gcta",
+      "kind": "Tool",
+      "label": "gcta"
+    },
+    {
+      "id": "concept_conditional_analysis",
+      "kind": "Concept",
+      "label": "conditional analysis"
+    },
+    {
+      "id": "concept_gcta_cojo",
+      "kind": "Concept",
+      "label": "GCTA-COJO"
+    },
+    {
+      "id": "concept_independent_signals",
+      "kind": "Concept",
+      "label": "independent signals"
+    }
+  ],
+  "edges": [
+    {
+      "from": "18_Conditioning_analysis",
+      "to": "06_Association_tests",
+      "type": "requires"
+    },
+    {
+      "from": "18_Conditioning_analysis",
+      "to": "tool_plink2",
+      "type": "uses_tool"
+    },
+    {
+      "from": "18_Conditioning_analysis",
+      "to": "tool_gcta",
+      "type": "uses_tool"
+    },
+    {
+      "from": "18_Conditioning_analysis",
+      "to": "concept_conditional_analysis",
+      "type": "defines_concept"
+    },
+    {
+      "from": "18_Conditioning_analysis",
+      "to": "concept_gcta_cojo",
+      "type": "defines_concept"
+    },
+    {
+      "from": "18_Conditioning_analysis",
+      "to": "concept_independent_signals",
+      "type": "defines_concept"
+    }
+  ]
+}

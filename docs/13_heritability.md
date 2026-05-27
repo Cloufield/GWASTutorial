@@ -1,3 +1,16 @@
+---
+module_id: 13_heritability
+type: concept
+title: Heritability Concepts
+prerequisites: []
+related_modules: [08_LDSC, 14_gcta_greml]
+concepts:
+  - heritability
+  - SNP heritability
+  - liability threshold model
+  - missing heritability
+---
+
 # Heritability
 
 Heritability is a term used in genetics to describe how much phenotypic variation can be explained by genetic variation.
@@ -108,9 +121,13 @@ $$
 
 ---
 
+## Key terms
 
+heritability, broad-sense heritability, narrow-sense heritability, SNP heritability, missing heritability, liability-scale heritability, observed-scale heritability
 
-## Further Reading 
+---
+
+## References
 
 - (Blog by Neale Lab) http://www.nealelab.is/blog/2017/9/13/heritability-101-what-is-heritability
 - Manolio, T. A., Collins, F. S., Cox, N. J., Goldstein, D. B., Hindorff, L. A., Hunter, D. J., ... & Visscher, P. M. (2009). Finding the missing heritability of complex diseases. Nature, 461(7265), 747-753.

@@ -1,0 +1,104 @@
+{
+  "module_id": "21_twas",
+  "title": "TWAS",
+  "type": "hands_on",
+  "source_readme": "21_twas/README.md",
+  "primary_script": null,
+  "prerequisites": [
+    "06_Association_tests"
+  ],
+  "produces": [],
+  "tools": [
+    "fusion"
+  ],
+  "concepts": [
+    "transcriptome-wide association study",
+    "gene expression imputation",
+    "FUSION"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "21_twas",
+      "kind": "Module",
+      "label": "TWAS"
+    },
+    {
+      "id": "tool_fusion",
+      "kind": "Tool",
+      "label": "fusion"
+    },
+    {
+      "id": "concept_transcriptome_wide_association_study",
+      "kind": "Concept",
+      "label": "transcriptome-wide association study"
+    },
+    {
+      "id": "concept_gene_expression_imputation",
+      "kind": "Concept",
+      "label": "gene expression imputation"
+    },
+    {
+      "id": "concept_fusion",
+      "kind": "Concept",
+      "label": "FUSION"
+    },
+    {
+      "id": "21_twas.step_algorithm_for_imputing_expression_into_gwas_summary_statistics",
+      "kind": "Step",
+      "label": "Algorithm for imputing expression into GWAS summary statistics"
+    },
+    {
+      "id": "21_twas.step_installation",
+      "kind": "Step",
+      "label": "Installation"
+    },
+    {
+      "id": "21_twas.step_example",
+      "kind": "Step",
+      "label": "Example"
+    }
+  ],
+  "edges": [
+    {
+      "from": "21_twas",
+      "to": "06_Association_tests",
+      "type": "requires"
+    },
+    {
+      "from": "21_twas",
+      "to": "tool_fusion",
+      "type": "uses_tool"
+    },
+    {
+      "from": "21_twas",
+      "to": "concept_transcriptome_wide_association_study",
+      "type": "defines_concept"
+    },
+    {
+      "from": "21_twas",
+      "to": "concept_gene_expression_imputation",
+      "type": "defines_concept"
+    },
+    {
+      "from": "21_twas",
+      "to": "concept_fusion",
+      "type": "defines_concept"
+    },
+    {
+      "from": "21_twas",
+      "to": "21_twas.step_algorithm_for_imputing_expression_into_gwas_summary_statistics",
+      "type": "documents_step"
+    },
+    {
+      "from": "21_twas.step_algorithm_for_imputing_expression_into_gwas_summary_statistics",
+      "to": "21_twas.step_installation",
+      "type": "documents_step"
+    },
+    {
+      "from": "21_twas.step_installation",
+      "to": "21_twas.step_example",
+      "type": "documents_step"
+    }
+  ]
+}

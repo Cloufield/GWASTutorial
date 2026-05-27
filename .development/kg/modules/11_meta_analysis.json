@@ -1,0 +1,174 @@
+{
+  "module_id": "11_meta_analysis",
+  "title": "Meta-analysis",
+  "type": "hands_on",
+  "source_readme": "11_meta_analysis/README.md",
+  "primary_script": "run_meta_workflow.sh",
+  "prerequisites": [
+    "06_Association_tests"
+  ],
+  "produces": [],
+  "tools": [
+    "metal"
+  ],
+  "concepts": [
+    "meta-analysis",
+    "fixed effects",
+    "random effects"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "11_meta_analysis",
+      "kind": "Module",
+      "label": "Meta-analysis"
+    },
+    {
+      "id": "tool_metal",
+      "kind": "Tool",
+      "label": "metal"
+    },
+    {
+      "id": "concept_meta_analysis",
+      "kind": "Concept",
+      "label": "meta-analysis"
+    },
+    {
+      "id": "concept_fixed_effects",
+      "kind": "Concept",
+      "label": "fixed effects"
+    },
+    {
+      "id": "concept_random_effects",
+      "kind": "Concept",
+      "label": "random effects"
+    },
+    {
+      "id": "11_meta_analysis.step_heterogeneity_test",
+      "kind": "Step",
+      "label": "Heterogeneity test"
+    },
+    {
+      "id": "11_meta_analysis.step_metal",
+      "kind": "Step",
+      "label": "METAL"
+    },
+    {
+      "id": "11_meta_analysis.step_gwama",
+      "kind": "Step",
+      "label": "GWAMA"
+    },
+    {
+      "id": "11_meta_analysis.step_manual_calculation_in_python_ivw_fixed_and_dl_random_effects",
+      "kind": "Step",
+      "label": "Manual calculation in Python (IVW fixed and DL random effects)"
+    },
+    {
+      "id": "11_meta_analysis.step_mantra",
+      "kind": "Step",
+      "label": "MANTRA"
+    },
+    {
+      "id": "11_meta_analysis.step_mr_mega",
+      "kind": "Step",
+      "label": "MR-MEGA"
+    },
+    {
+      "id": "11_meta_analysis.step_how_it_differs_from_common_variant_snp_meta_analysis",
+      "kind": "Step",
+      "label": "How it differs from common-variant SNP meta-analysis"
+    },
+    {
+      "id": "11_meta_analysis.step_score_based_meta_analysis_raremetal",
+      "kind": "Step",
+      "label": "Score-based meta-analysis (RAREMETAL)"
+    },
+    {
+      "id": "11_meta_analysis.step_other_rare_variant_score_meta_tools_meta_saige_metaskat_metastaar",
+      "kind": "Step",
+      "label": "Other rare-variant score-meta tools (Meta-SAIGE, MetaSKAT, MetaSTAAR)"
+    },
+    {
+      "id": "11_meta_analysis.step_inverse_variance_meta_of_harmonized_burden_summaries",
+      "kind": "Step",
+      "label": "Inverse-variance meta of harmonized burden summaries"
+    }
+  ],
+  "edges": [
+    {
+      "from": "11_meta_analysis",
+      "to": "06_Association_tests",
+      "type": "requires"
+    },
+    {
+      "from": "11_meta_analysis",
+      "to": "tool_metal",
+      "type": "uses_tool"
+    },
+    {
+      "from": "11_meta_analysis",
+      "to": "concept_meta_analysis",
+      "type": "defines_concept"
+    },
+    {
+      "from": "11_meta_analysis",
+      "to": "concept_fixed_effects",
+      "type": "defines_concept"
+    },
+    {
+      "from": "11_meta_analysis",
+      "to": "concept_random_effects",
+      "type": "defines_concept"
+    },
+    {
+      "from": "11_meta_analysis",
+      "to": "11_meta_analysis.step_heterogeneity_test",
+      "type": "documents_step"
+    },
+    {
+      "from": "11_meta_analysis.step_heterogeneity_test",
+      "to": "11_meta_analysis.step_metal",
+      "type": "documents_step"
+    },
+    {
+      "from": "11_meta_analysis.step_metal",
+      "to": "11_meta_analysis.step_gwama",
+      "type": "documents_step"
+    },
+    {
+      "from": "11_meta_analysis.step_gwama",
+      "to": "11_meta_analysis.step_manual_calculation_in_python_ivw_fixed_and_dl_random_effects",
+      "type": "documents_step"
+    },
+    {
+      "from": "11_meta_analysis.step_manual_calculation_in_python_ivw_fixed_and_dl_random_effects",
+      "to": "11_meta_analysis.step_mantra",
+      "type": "documents_step"
+    },
+    {
+      "from": "11_meta_analysis.step_mantra",
+      "to": "11_meta_analysis.step_mr_mega",
+      "type": "documents_step"
+    },
+    {
+      "from": "11_meta_analysis.step_mr_mega",
+      "to": "11_meta_analysis.step_how_it_differs_from_common_variant_snp_meta_analysis",
+      "type": "documents_step"
+    },
+    {
+      "from": "11_meta_analysis.step_how_it_differs_from_common_variant_snp_meta_analysis",
+      "to": "11_meta_analysis.step_score_based_meta_analysis_raremetal",
+      "type": "documents_step"
+    },
+    {
+      "from": "11_meta_analysis.step_score_based_meta_analysis_raremetal",
+      "to": "11_meta_analysis.step_other_rare_variant_score_meta_tools_meta_saige_metaskat_metastaar",
+      "type": "documents_step"
+    },
+    {
+      "from": "11_meta_analysis.step_other_rare_variant_score_meta_tools_meta_saige_metaskat_metastaar",
+      "to": "11_meta_analysis.step_inverse_variance_meta_of_harmonized_burden_summaries",
+      "type": "documents_step"
+    }
+  ]
+}

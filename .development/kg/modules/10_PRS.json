@@ -1,0 +1,81 @@
+{
+  "module_id": "10_PRS",
+  "title": "Polygenic risk scores",
+  "type": "hands_on",
+  "source_readme": "10_PRS/README.md",
+  "primary_script": "run_prs.sh",
+  "prerequisites": [
+    "04_Data_QC",
+    "06_Association_tests"
+  ],
+  "produces": [
+    "1kgeas.clumped"
+  ],
+  "tools": [
+    "plink"
+  ],
+  "concepts": [
+    "polygenic risk score",
+    "clumping and thresholding"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "10_PRS",
+      "kind": "Module",
+      "label": "Polygenic risk scores"
+    },
+    {
+      "id": "tool_plink",
+      "kind": "Tool",
+      "label": "plink"
+    },
+    {
+      "id": "out_1kgeas_clumped",
+      "kind": "Output",
+      "label": "1kgeas.clumped"
+    },
+    {
+      "id": "concept_polygenic_risk_score",
+      "kind": "Concept",
+      "label": "polygenic risk score"
+    },
+    {
+      "id": "concept_clumping_and_thresholding",
+      "kind": "Concept",
+      "label": "clumping and thresholding"
+    }
+  ],
+  "edges": [
+    {
+      "from": "10_PRS",
+      "to": "04_Data_QC",
+      "type": "requires"
+    },
+    {
+      "from": "10_PRS",
+      "to": "06_Association_tests",
+      "type": "requires"
+    },
+    {
+      "from": "10_PRS",
+      "to": "tool_plink",
+      "type": "uses_tool"
+    },
+    {
+      "from": "10_PRS",
+      "to": "out_1kgeas_clumped",
+      "type": "produces"
+    },
+    {
+      "from": "10_PRS",
+      "to": "concept_polygenic_risk_score",
+      "type": "defines_concept"
+    },
+    {
+      "from": "10_PRS",
+      "to": "concept_clumping_and_thresholding",
+      "type": "defines_concept"
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "module_id": "14_gcta_greml",
+  "title": "SNP-Heritability estimation by GCTA-GREML",
+  "type": "hands_on",
+  "source_readme": "14_gcta_greml/README.md",
+  "primary_script": "run_greml.sh",
+  "prerequisites": [
+    "04_Data_QC",
+    "01_Dataset",
+    "05_PCA"
+  ],
+  "produces": [
+    "1kg_eas.hsq"
+  ],
+  "tools": [
+    "gcta",
+    "plink"
+  ],
+  "concepts": [
+    "SNP heritability",
+    "GREML",
+    "genetic relationship matrix"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "14_gcta_greml",
+      "kind": "Module",
+      "label": "SNP-Heritability estimation by GCTA-GREML"
+    },
+    {
+      "id": "tool_gcta",
+      "kind": "Tool",
+      "label": "gcta"
+    },
+    {
+      "id": "tool_plink",
+      "kind": "Tool",
+      "label": "plink"
+    },
+    {
+      "id": "out_1kg_eas_hsq",
+      "kind": "Output",
+      "label": "1kg_eas.hsq"
+    },
+    {
+      "id": "concept_snp_heritability",
+      "kind": "Concept",
+      "label": "SNP heritability"
+    },
+    {
+      "id": "concept_greml",
+      "kind": "Concept",
+      "label": "GREML"
+    },
+    {
+      "id": "concept_genetic_relationship_matrix",
+      "kind": "Concept",
+      "label": "genetic relationship matrix"
+    }
+  ],
+  "edges": [
+    {
+      "from": "14_gcta_greml",
+      "to": "04_Data_QC",
+      "type": "requires"
+    },
+    {
+      "from": "14_gcta_greml",
+      "to": "01_Dataset",
+      "type": "requires"
+    },
+    {
+      "from": "14_gcta_greml",
+      "to": "05_PCA",
+      "type": "requires"
+    },
+    {
+      "from": "14_gcta_greml",
+      "to": "tool_gcta",
+      "type": "uses_tool"
+    },
+    {
+      "from": "14_gcta_greml",
+      "to": "tool_plink",
+      "type": "uses_tool"
+    },
+    {
+      "from": "14_gcta_greml",
+      "to": "out_1kg_eas_hsq",
+      "type": "produces"
+    },
+    {
+      "from": "14_gcta_greml",
+      "to": "concept_snp_heritability",
+      "type": "defines_concept"
+    },
+    {
+      "from": "14_gcta_greml",
+      "to": "concept_greml",
+      "type": "defines_concept"
+    },
+    {
+      "from": "14_gcta_greml",
+      "to": "concept_genetic_relationship_matrix",
+      "type": "defines_concept"
+    }
+  ]
+}

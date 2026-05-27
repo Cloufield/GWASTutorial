@@ -1,0 +1,79 @@
+{
+  "module_id": "13_heritability",
+  "title": "Heritability Concepts",
+  "type": "concept",
+  "source_readme": "13_heritability/README.md",
+  "primary_script": null,
+  "prerequisites": [],
+  "produces": [],
+  "tools": [],
+  "concepts": [
+    "heritability",
+    "SNP heritability",
+    "liability threshold model",
+    "missing heritability"
+  ],
+  "related_modules": [
+    "08_LDSC",
+    "14_gcta_greml"
+  ],
+  "nodes": [
+    {
+      "id": "13_heritability",
+      "kind": "Module",
+      "label": "Heritability Concepts"
+    },
+    {
+      "id": "concept_heritability",
+      "kind": "Concept",
+      "label": "heritability"
+    },
+    {
+      "id": "concept_snp_heritability",
+      "kind": "Concept",
+      "label": "SNP heritability"
+    },
+    {
+      "id": "concept_liability_threshold_model",
+      "kind": "Concept",
+      "label": "liability threshold model"
+    },
+    {
+      "id": "concept_missing_heritability",
+      "kind": "Concept",
+      "label": "missing heritability"
+    }
+  ],
+  "edges": [
+    {
+      "from": "13_heritability",
+      "to": "08_LDSC",
+      "type": "related_module"
+    },
+    {
+      "from": "13_heritability",
+      "to": "14_gcta_greml",
+      "type": "related_module"
+    },
+    {
+      "from": "13_heritability",
+      "to": "concept_heritability",
+      "type": "defines_concept"
+    },
+    {
+      "from": "13_heritability",
+      "to": "concept_snp_heritability",
+      "type": "defines_concept"
+    },
+    {
+      "from": "13_heritability",
+      "to": "concept_liability_threshold_model",
+      "type": "defines_concept"
+    },
+    {
+      "from": "13_heritability",
+      "to": "concept_missing_heritability",
+      "type": "defines_concept"
+    }
+  ]
+}

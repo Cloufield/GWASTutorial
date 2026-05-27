@@ -1,3 +1,17 @@
+---
+module_id: 06_Association_tests
+type: hands_on
+title: Association test
+prerequisites: [04_Data_QC, 05_PCA, 01_Dataset]
+produces: [1kgeas.B1.glm.firth]
+primary_script: run_association_test.sh
+tools: [plink2]
+concepts:
+  - genome-wide association study
+  - logistic regression
+  - genomic control
+---
+
 # Association test
 
 ---
@@ -77,16 +91,14 @@ $$
 ---
 
 
-## File Preparation
+## Preparation
 
 !!! note "Required data and tools"
 
-    For genome-wide association tests you typically need genotype data, a phenotype file, and optionally covariates. This tutorial uses:
-
-    - **Genotype file (PLINK binary)** — e.g. `sample_data.clean` from [04_Data_QC](../04_Data_QC/README.md) after QC (other common inputs include VCF or BGEN for `plink2`).
-    - **Phenotype file** — plain text with `FID`, `IID`, and trait column(s); tutorial example: `01_Dataset/1kgeas_binary.txt` (see [01_Dataset](../01_Dataset/README.md)).
-    - **Covariate file (optional)** — plain text; often age, sex, and top PCs. Here: projected PCs in `plink_results_projected.sscore` from [05_PCA](../05_PCA/README.md).
-    - **PLINK 2** (`plink2`) — for `--glm` tests; install via [04_Data_QC — Preparation](../04_Data_QC/README.md#preparation).
+    - **Data: Genotype (PLINK binary)** (`sample_data.clean`) — from [04_Data_QC](../04_Data_QC/README.md).
+    - **Data: Phenotype** (`01_Dataset/1kgeas_binary.txt`) — `FID`, `IID`, trait column `B1`; see [01_Dataset](../01_Dataset/README.md).
+    - **Data: Covariates** (`05_PCA/plink_results_projected.sscore`) — projected PCs from [05_PCA](../05_PCA/README.md).
+    - **Software: PLINK 2** (`plink2`) — `--glm` association tests; install via [04_Data_QC — Preparation](../04_Data_QC/README.md#preparation).
 
 !!! example "Phenotype and covariate files"
 
@@ -119,6 +131,41 @@ $$
     HG00422 HG00422 387466  387466  0.00439167      -0.0332386      -0.000741482    0.0124843       -0.00362885     0.00342491      -0.0073205      -0.00939123     0.010718        0.00360906
     ```
 
+---
+
+## Sample script
+
+From the `06_Association_tests` folder:
+
+!!! example "Run the full pipeline"
+    ```bash
+    cd 06_Association_tests
+    ./run_association_test.sh
+    ```
+
+!!! example "Step: glm_binary (same as run_association_test.sh)"
+    ```bash
+    genotypeFile="../04_Data_QC/sample_data.clean"
+    phenotypeFile="../01_Dataset/1kgeas_binary.txt"
+    covariateFile="../05_PCA/plink_results_projected.sscore"
+    covariateCols=6-10
+    colName="B1"
+    threadnum=2
+
+    plink2 \
+        --bfile ${genotypeFile} \
+        --pheno ${phenotypeFile} \
+        --pheno-name ${colName} \
+        --maf 0.01 \
+        --covar ${covariateFile} \
+        --covar-col-nums ${covariateCols} \
+        --glm hide-covar firth firth-residualize single-prec-cc \
+        --threads ${threadnum} \
+        --out 1kgeas
+    ```
+
+---
+
 ## Association tests using PLINK
 
 Please check https://www.cog-genomics.org/plink/2.0/assoc for more details.
@@ -145,27 +192,6 @@ We will perform logistic regression with firth correction for a simulated binary
     For quantitative traits, linear regressions will be performed and in this case, we do not need to add `firth` (since Firth correction is not applicable). 
 
 
-!!! example "Sample codes for association test using plink for binary traits"
-    ```
-    genotypeFile="../04_Data_QC/sample_data.clean" # the clean dataset we generated in previous section
-    phenotypeFile="../01_Dataset/1kgeas_binary.txt" # the phenotype file
-    covariateFile="../05_PCA/plink_results_projected.sscore" # the PC score file
-    
-    covariateCols=6-10
-    colName="B1"
-    threadnum=2
-    
-    plink2 \
-    	--bfile ${genotypeFile} \
-    	--pheno ${phenotypeFile} \
-    	--pheno-name ${colName} \
-    	--maf 0.01 \
-    	--covar ${covariateFile} \
-    	--covar-col-nums ${covariateCols} \
-    	--glm hide-covar firth  firth-residualize single-prec-cc \
-    	--threads ${threadnum} \
-    	--out 1kgeas
-    ```
 !!! note
     Using the latest version of PLINK2, you need to add `firth-residualize single-prec-cc` to generate the results. (The algorithm and precision have been changed since 2023 for firth regression)
 

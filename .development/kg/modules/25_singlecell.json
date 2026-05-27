@@ -1,0 +1,155 @@
+{
+  "module_id": "25_singlecell",
+  "title": "Beyond Genomics - Single-Cell Genomics",
+  "type": "concept",
+  "source_readme": "25_singlecell/README.md",
+  "primary_script": null,
+  "prerequisites": [
+    "06_Association_tests"
+  ],
+  "produces": [],
+  "tools": [],
+  "concepts": [
+    "single-cell genomics",
+    "cell-type enrichment",
+    "scDRS"
+  ],
+  "related_modules": [
+    "08_LDSC",
+    "09_Gene_based_analysis"
+  ],
+  "nodes": [
+    {
+      "id": "25_singlecell",
+      "kind": "Module",
+      "label": "Beyond Genomics - Single-Cell Genomics"
+    },
+    {
+      "id": "concept_single_cell_genomics",
+      "kind": "Concept",
+      "label": "single-cell genomics"
+    },
+    {
+      "id": "concept_cell_type_enrichment",
+      "kind": "Concept",
+      "label": "cell-type enrichment"
+    },
+    {
+      "id": "concept_scdrs",
+      "kind": "Concept",
+      "label": "scDRS"
+    },
+    {
+      "id": "25_singlecell.step_genetic_abstraction_level",
+      "kind": "Step",
+      "label": "Genetic abstraction level"
+    },
+    {
+      "id": "25_singlecell.step_biological_resolution",
+      "kind": "Step",
+      "label": "Biological resolution"
+    },
+    {
+      "id": "25_singlecell.step_1_cell_type_heritability_and_gene_set_enrichment",
+      "kind": "Step",
+      "label": "1. Cell-type heritability and gene-set enrichment"
+    },
+    {
+      "id": "25_singlecell.step_2_per_cell_and_per_state_disease_relevance_scoring",
+      "kind": "Step",
+      "label": "2. Per-cell and per-state disease relevance scoring"
+    },
+    {
+      "id": "25_singlecell.step_3_variant_to_gene_to_cell_type_linking",
+      "kind": "Step",
+      "label": "3. Variant-to-gene-to-cell-type linking"
+    },
+    {
+      "id": "25_singlecell.step_4_spatial_mapping_of_genetic_risk",
+      "kind": "Step",
+      "label": "4. Spatial mapping of genetic risk"
+    },
+    {
+      "id": "25_singlecell.step_review_papers",
+      "kind": "Step",
+      "label": "Review papers"
+    },
+    {
+      "id": "25_singlecell.step_method_papers",
+      "kind": "Step",
+      "label": "Method papers"
+    }
+  ],
+  "edges": [
+    {
+      "from": "25_singlecell",
+      "to": "06_Association_tests",
+      "type": "requires"
+    },
+    {
+      "from": "25_singlecell",
+      "to": "08_LDSC",
+      "type": "related_module"
+    },
+    {
+      "from": "25_singlecell",
+      "to": "09_Gene_based_analysis",
+      "type": "related_module"
+    },
+    {
+      "from": "25_singlecell",
+      "to": "concept_single_cell_genomics",
+      "type": "defines_concept"
+    },
+    {
+      "from": "25_singlecell",
+      "to": "concept_cell_type_enrichment",
+      "type": "defines_concept"
+    },
+    {
+      "from": "25_singlecell",
+      "to": "concept_scdrs",
+      "type": "defines_concept"
+    },
+    {
+      "from": "25_singlecell",
+      "to": "25_singlecell.step_genetic_abstraction_level",
+      "type": "documents_step"
+    },
+    {
+      "from": "25_singlecell.step_genetic_abstraction_level",
+      "to": "25_singlecell.step_biological_resolution",
+      "type": "documents_step"
+    },
+    {
+      "from": "25_singlecell.step_biological_resolution",
+      "to": "25_singlecell.step_1_cell_type_heritability_and_gene_set_enrichment",
+      "type": "documents_step"
+    },
+    {
+      "from": "25_singlecell.step_1_cell_type_heritability_and_gene_set_enrichment",
+      "to": "25_singlecell.step_2_per_cell_and_per_state_disease_relevance_scoring",
+      "type": "documents_step"
+    },
+    {
+      "from": "25_singlecell.step_2_per_cell_and_per_state_disease_relevance_scoring",
+      "to": "25_singlecell.step_3_variant_to_gene_to_cell_type_linking",
+      "type": "documents_step"
+    },
+    {
+      "from": "25_singlecell.step_3_variant_to_gene_to_cell_type_linking",
+      "to": "25_singlecell.step_4_spatial_mapping_of_genetic_risk",
+      "type": "documents_step"
+    },
+    {
+      "from": "25_singlecell.step_4_spatial_mapping_of_genetic_risk",
+      "to": "25_singlecell.step_review_papers",
+      "type": "documents_step"
+    },
+    {
+      "from": "25_singlecell.step_review_papers",
+      "to": "25_singlecell.step_method_papers",
+      "type": "documents_step"
+    }
+  ]
+}

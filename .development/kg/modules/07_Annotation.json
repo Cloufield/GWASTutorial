@@ -1,0 +1,186 @@
+{
+  "module_id": "07_Annotation",
+  "title": "Variant Annotation",
+  "type": "hands_on",
+  "source_readme": "07_Annotation/README.md",
+  "primary_script": "run_annotation.sh",
+  "prerequisites": [
+    "06_Association_tests"
+  ],
+  "produces": [
+    "annovar_input.txt"
+  ],
+  "tools": [
+    "annovar",
+    "vep"
+  ],
+  "concepts": [
+    "variant annotation",
+    "functional consequence"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "07_Annotation",
+      "kind": "Module",
+      "label": "Variant Annotation"
+    },
+    {
+      "id": "tool_annovar",
+      "kind": "Tool",
+      "label": "annovar"
+    },
+    {
+      "id": "tool_vep",
+      "kind": "Tool",
+      "label": "vep"
+    },
+    {
+      "id": "out_annovar_input_txt",
+      "kind": "Output",
+      "label": "annovar_input.txt"
+    },
+    {
+      "id": "concept_variant_annotation",
+      "kind": "Concept",
+      "label": "variant annotation"
+    },
+    {
+      "id": "concept_functional_consequence",
+      "kind": "Concept",
+      "label": "functional consequence"
+    },
+    {
+      "id": "07_Annotation.step_install",
+      "kind": "Step",
+      "label": "Install"
+    },
+    {
+      "id": "07_Annotation.step_format_input_file",
+      "kind": "Step",
+      "label": "Format input file"
+    },
+    {
+      "id": "07_Annotation.step_annotation",
+      "kind": "Step",
+      "label": "Annotation"
+    },
+    {
+      "id": "07_Annotation.step_additional_databases",
+      "kind": "Step",
+      "label": "Additional databases"
+    },
+    {
+      "id": "07_Annotation.step_quick_setup_docker_image_cache",
+      "kind": "Step",
+      "label": "Quick setup (Docker image + cache)"
+    },
+    {
+      "id": "07_Annotation.step_run_the_tutorial_script",
+      "kind": "Step",
+      "label": "Run the tutorial script"
+    },
+    {
+      "id": "07_Annotation.step_larger_vcfs_from_your_data",
+      "kind": "Step",
+      "label": "Larger VCFs from your data"
+    },
+    {
+      "id": "07_Annotation.step_annovar",
+      "kind": "Step",
+      "label": "ANNOVAR"
+    },
+    {
+      "id": "07_Annotation.step_vep_variant_effect_predictor",
+      "kind": "Step",
+      "label": "VEP (Variant Effect Predictor)"
+    },
+    {
+      "id": "07_Annotation.step_general_annotation_resources",
+      "kind": "Step",
+      "label": "General annotation resources"
+    }
+  ],
+  "edges": [
+    {
+      "from": "07_Annotation",
+      "to": "06_Association_tests",
+      "type": "requires"
+    },
+    {
+      "from": "07_Annotation",
+      "to": "tool_annovar",
+      "type": "uses_tool"
+    },
+    {
+      "from": "07_Annotation",
+      "to": "tool_vep",
+      "type": "uses_tool"
+    },
+    {
+      "from": "07_Annotation",
+      "to": "out_annovar_input_txt",
+      "type": "produces"
+    },
+    {
+      "from": "07_Annotation",
+      "to": "concept_variant_annotation",
+      "type": "defines_concept"
+    },
+    {
+      "from": "07_Annotation",
+      "to": "concept_functional_consequence",
+      "type": "defines_concept"
+    },
+    {
+      "from": "07_Annotation",
+      "to": "07_Annotation.step_install",
+      "type": "documents_step"
+    },
+    {
+      "from": "07_Annotation.step_install",
+      "to": "07_Annotation.step_format_input_file",
+      "type": "documents_step"
+    },
+    {
+      "from": "07_Annotation.step_format_input_file",
+      "to": "07_Annotation.step_annotation",
+      "type": "documents_step"
+    },
+    {
+      "from": "07_Annotation.step_annotation",
+      "to": "07_Annotation.step_additional_databases",
+      "type": "documents_step"
+    },
+    {
+      "from": "07_Annotation.step_additional_databases",
+      "to": "07_Annotation.step_quick_setup_docker_image_cache",
+      "type": "documents_step"
+    },
+    {
+      "from": "07_Annotation.step_quick_setup_docker_image_cache",
+      "to": "07_Annotation.step_run_the_tutorial_script",
+      "type": "documents_step"
+    },
+    {
+      "from": "07_Annotation.step_run_the_tutorial_script",
+      "to": "07_Annotation.step_larger_vcfs_from_your_data",
+      "type": "documents_step"
+    },
+    {
+      "from": "07_Annotation.step_larger_vcfs_from_your_data",
+      "to": "07_Annotation.step_annovar",
+      "type": "documents_step"
+    },
+    {
+      "from": "07_Annotation.step_annovar",
+      "to": "07_Annotation.step_vep_variant_effect_predictor",
+      "type": "documents_step"
+    },
+    {
+      "from": "07_Annotation.step_vep_variant_effect_predictor",
+      "to": "07_Annotation.step_general_annotation_resources",
+      "type": "documents_step"
+    }
+  ]
+}

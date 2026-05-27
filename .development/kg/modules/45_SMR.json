@@ -1,0 +1,220 @@
+{
+  "module_id": "45_SMR",
+  "title": "SMR - Summary-data-based Mendelian Randomization",
+  "type": "hands_on",
+  "source_readme": "45_functional_interpretation/SMR.md",
+  "primary_script": null,
+  "prerequisites": [
+    "06_Association_tests",
+    "08_LDSC"
+  ],
+  "produces": [],
+  "tools": [
+    "smr"
+  ],
+  "concepts": [
+    "summary-data-based Mendelian randomization",
+    "eQTL",
+    "HEIDI"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "45_SMR",
+      "kind": "Module",
+      "label": "SMR - Summary-data-based Mendelian Randomization"
+    },
+    {
+      "id": "tool_smr",
+      "kind": "Tool",
+      "label": "smr"
+    },
+    {
+      "id": "concept_summary_data_based_mendelian_randomization",
+      "kind": "Concept",
+      "label": "summary-data-based Mendelian randomization"
+    },
+    {
+      "id": "concept_eqtl",
+      "kind": "Concept",
+      "label": "eQTL"
+    },
+    {
+      "id": "concept_heidi",
+      "kind": "Concept",
+      "label": "HEIDI"
+    },
+    {
+      "id": "45_SMR.step_smr_heidi_overview",
+      "kind": "Step",
+      "label": "SMR & HEIDI overview"
+    },
+    {
+      "id": "45_SMR.step_key_concepts",
+      "kind": "Step",
+      "label": "Key concepts"
+    },
+    {
+      "id": "45_SMR.step_gwas_summary_statistics",
+      "kind": "Step",
+      "label": "GWAS summary statistics"
+    },
+    {
+      "id": "45_SMR.step_eqtl_summary_data_in_besd_format",
+      "kind": "Step",
+      "label": "eQTL summary data in BESD format"
+    },
+    {
+      "id": "45_SMR.step_ld_reference_panel",
+      "kind": "Step",
+      "label": "LD reference panel"
+    },
+    {
+      "id": "45_SMR.step_run_smr_and_heidi_test",
+      "kind": "Step",
+      "label": "Run SMR and HEIDI test"
+    },
+    {
+      "id": "45_SMR.step_interpret_the_results",
+      "kind": "Step",
+      "label": "Interpret the results"
+    },
+    {
+      "id": "45_SMR.step_key_parameters",
+      "kind": "Step",
+      "label": "Key parameters"
+    },
+    {
+      "id": "45_SMR.step_besd_format",
+      "kind": "Step",
+      "label": "BESD format"
+    },
+    {
+      "id": "45_SMR.step_make_a_besd_file_from_eqtl_summary_data",
+      "kind": "Step",
+      "label": "Make a BESD file from eQTL summary data"
+    },
+    {
+      "id": "45_SMR.step_query_eqtl_results",
+      "kind": "Step",
+      "label": "Query eQTL results"
+    },
+    {
+      "id": "45_SMR.step_eqtl_data",
+      "kind": "Step",
+      "label": "eQTL data"
+    },
+    {
+      "id": "45_SMR.step_mqtl_data",
+      "kind": "Step",
+      "label": "mQTL data"
+    },
+    {
+      "id": "45_SMR.step_sqtl_data",
+      "kind": "Step",
+      "label": "sQTL data"
+    }
+  ],
+  "edges": [
+    {
+      "from": "45_SMR",
+      "to": "06_Association_tests",
+      "type": "requires"
+    },
+    {
+      "from": "45_SMR",
+      "to": "08_LDSC",
+      "type": "requires"
+    },
+    {
+      "from": "45_SMR",
+      "to": "tool_smr",
+      "type": "uses_tool"
+    },
+    {
+      "from": "45_SMR",
+      "to": "concept_summary_data_based_mendelian_randomization",
+      "type": "defines_concept"
+    },
+    {
+      "from": "45_SMR",
+      "to": "concept_eqtl",
+      "type": "defines_concept"
+    },
+    {
+      "from": "45_SMR",
+      "to": "concept_heidi",
+      "type": "defines_concept"
+    },
+    {
+      "from": "45_SMR",
+      "to": "45_SMR.step_smr_heidi_overview",
+      "type": "documents_step"
+    },
+    {
+      "from": "45_SMR.step_smr_heidi_overview",
+      "to": "45_SMR.step_key_concepts",
+      "type": "documents_step"
+    },
+    {
+      "from": "45_SMR.step_key_concepts",
+      "to": "45_SMR.step_gwas_summary_statistics",
+      "type": "documents_step"
+    },
+    {
+      "from": "45_SMR.step_gwas_summary_statistics",
+      "to": "45_SMR.step_eqtl_summary_data_in_besd_format",
+      "type": "documents_step"
+    },
+    {
+      "from": "45_SMR.step_eqtl_summary_data_in_besd_format",
+      "to": "45_SMR.step_ld_reference_panel",
+      "type": "documents_step"
+    },
+    {
+      "from": "45_SMR.step_ld_reference_panel",
+      "to": "45_SMR.step_run_smr_and_heidi_test",
+      "type": "documents_step"
+    },
+    {
+      "from": "45_SMR.step_run_smr_and_heidi_test",
+      "to": "45_SMR.step_interpret_the_results",
+      "type": "documents_step"
+    },
+    {
+      "from": "45_SMR.step_interpret_the_results",
+      "to": "45_SMR.step_key_parameters",
+      "type": "documents_step"
+    },
+    {
+      "from": "45_SMR.step_key_parameters",
+      "to": "45_SMR.step_besd_format",
+      "type": "documents_step"
+    },
+    {
+      "from": "45_SMR.step_besd_format",
+      "to": "45_SMR.step_make_a_besd_file_from_eqtl_summary_data",
+      "type": "documents_step"
+    },
+    {
+      "from": "45_SMR.step_make_a_besd_file_from_eqtl_summary_data",
+      "to": "45_SMR.step_query_eqtl_results",
+      "type": "documents_step"
+    },
+    {
+      "from": "45_SMR.step_query_eqtl_results",
+      "to": "45_SMR.step_eqtl_data",
+      "type": "documents_step"
+    },
+    {
+      "from": "45_SMR.step_eqtl_data",
+      "to": "45_SMR.step_mqtl_data",
+      "type": "documents_step"
+    },
+    {
+      "from": "45_SMR.step_mqtl_data",
+      "to": "45_SMR.step_sqtl_data",
+      "type": "documents_step"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "module_id": "08_LDSC",
+  "title": "LD score regression",
+  "type": "hands_on",
+  "source_readme": "08_LDSC/README.md",
+  "primary_script": "run_ldsc.sh",
+  "prerequisites": [
+    "06_Association_tests"
+  ],
+  "produces": [
+    "BBJ_HDLC.sumstats.gz"
+  ],
+  "tools": [
+    "ldsc"
+  ],
+  "concepts": [
+    "LD score regression",
+    "SNP heritability",
+    "genetic correlation"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "08_LDSC",
+      "kind": "Module",
+      "label": "LD score regression"
+    },
+    {
+      "id": "tool_ldsc",
+      "kind": "Tool",
+      "label": "ldsc"
+    },
+    {
+      "id": "out_bbj_hdlc_sumstats_gz",
+      "kind": "Output",
+      "label": "BBJ_HDLC.sumstats.gz"
+    },
+    {
+      "id": "concept_ld_score_regression",
+      "kind": "Concept",
+      "label": "LD score regression"
+    },
+    {
+      "id": "concept_snp_heritability",
+      "kind": "Concept",
+      "label": "SNP heritability"
+    },
+    {
+      "id": "concept_genetic_correlation",
+      "kind": "Concept",
+      "label": "genetic correlation"
+    },
+    {
+      "id": "08_LDSC.step_ld_linkage_disequilibrium",
+      "kind": "Step",
+      "label": "LD: Linkage disequilibrium"
+    },
+    {
+      "id": "08_LDSC.step_ld_score",
+      "kind": "Step",
+      "label": "LD score"
+    },
+    {
+      "id": "08_LDSC.step_ld_score_regression",
+      "kind": "Step",
+      "label": "LD score regression"
+    },
+    {
+      "id": "08_LDSC.step_install_ldsc",
+      "kind": "Step",
+      "label": "Install LDSC"
+    },
+    {
+      "id": "08_LDSC.step_download_sample_summary_statistics",
+      "kind": "Step",
+      "label": "Download sample summary statistics"
+    },
+    {
+      "id": "08_LDSC.step_download_reference_files",
+      "kind": "Step",
+      "label": "Download reference files"
+    }
+  ],
+  "edges": [
+    {
+      "from": "08_LDSC",
+      "to": "06_Association_tests",
+      "type": "requires"
+    },
+    {
+      "from": "08_LDSC",
+      "to": "tool_ldsc",
+      "type": "uses_tool"
+    },
+    {
+      "from": "08_LDSC",
+      "to": "out_bbj_hdlc_sumstats_gz",
+      "type": "produces"
+    },
+    {
+      "from": "08_LDSC",
+      "to": "concept_ld_score_regression",
+      "type": "defines_concept"
+    },
+    {
+      "from": "08_LDSC",
+      "to": "concept_snp_heritability",
+      "type": "defines_concept"
+    },
+    {
+      "from": "08_LDSC",
+      "to": "concept_genetic_correlation",
+      "type": "defines_concept"
+    },
+    {
+      "from": "08_LDSC",
+      "to": "08_LDSC.step_ld_linkage_disequilibrium",
+      "type": "documents_step"
+    },
+    {
+      "from": "08_LDSC.step_ld_linkage_disequilibrium",
+      "to": "08_LDSC.step_ld_score",
+      "type": "documents_step"
+    },
+    {
+      "from": "08_LDSC.step_ld_score",
+      "to": "08_LDSC.step_ld_score_regression",
+      "type": "documents_step"
+    },
+    {
+      "from": "08_LDSC.step_ld_score_regression",
+      "to": "08_LDSC.step_install_ldsc",
+      "type": "documents_step"
+    },
+    {
+      "from": "08_LDSC.step_install_ldsc",
+      "to": "08_LDSC.step_download_sample_summary_statistics",
+      "type": "documents_step"
+    },
+    {
+      "from": "08_LDSC.step_download_sample_summary_statistics",
+      "to": "08_LDSC.step_download_reference_files",
+      "type": "documents_step"
+    }
+  ]
+}

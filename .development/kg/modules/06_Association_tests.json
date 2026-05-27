@@ -1,0 +1,148 @@
+{
+  "module_id": "06_Association_tests",
+  "title": "Association test",
+  "type": "hands_on",
+  "source_readme": "06_Association_tests/README.md",
+  "primary_script": "run_association_test.sh",
+  "prerequisites": [
+    "04_Data_QC",
+    "05_PCA",
+    "01_Dataset"
+  ],
+  "produces": [
+    "1kgeas.B1.glm.firth"
+  ],
+  "tools": [
+    "plink2"
+  ],
+  "concepts": [
+    "genome-wide association study",
+    "logistic regression",
+    "genomic control"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "06_Association_tests",
+      "kind": "Module",
+      "label": "Association test"
+    },
+    {
+      "id": "tool_plink2",
+      "kind": "Tool",
+      "label": "plink2"
+    },
+    {
+      "id": "out_1kgeas_b1_glm_firth",
+      "kind": "Output",
+      "label": "1kgeas.B1.glm.firth"
+    },
+    {
+      "id": "concept_genome_wide_association_study",
+      "kind": "Concept",
+      "label": "genome-wide association study"
+    },
+    {
+      "id": "concept_logistic_regression",
+      "kind": "Concept",
+      "label": "logistic regression"
+    },
+    {
+      "id": "concept_genomic_control",
+      "kind": "Concept",
+      "label": "genomic control"
+    },
+    {
+      "id": "06_Association_tests.step_manhattan_plot",
+      "kind": "Step",
+      "label": "Manhattan plot"
+    },
+    {
+      "id": "06_Association_tests.step_quantile_quantile_plot",
+      "kind": "Step",
+      "label": "Quantile-quantile plot"
+    },
+    {
+      "id": "06_Association_tests.step_regional_plot",
+      "kind": "Step",
+      "label": "Regional plot"
+    },
+    {
+      "id": "06_Association_tests.step_gwas_ssf",
+      "kind": "Step",
+      "label": "GWAS-SSF"
+    },
+    {
+      "id": "06_Association_tests.step_glm_binary",
+      "kind": "Step",
+      "label": "glm_binary"
+    }
+  ],
+  "edges": [
+    {
+      "from": "06_Association_tests",
+      "to": "04_Data_QC",
+      "type": "requires"
+    },
+    {
+      "from": "06_Association_tests",
+      "to": "05_PCA",
+      "type": "requires"
+    },
+    {
+      "from": "06_Association_tests",
+      "to": "01_Dataset",
+      "type": "requires"
+    },
+    {
+      "from": "06_Association_tests",
+      "to": "tool_plink2",
+      "type": "uses_tool"
+    },
+    {
+      "from": "06_Association_tests",
+      "to": "out_1kgeas_b1_glm_firth",
+      "type": "produces"
+    },
+    {
+      "from": "06_Association_tests",
+      "to": "concept_genome_wide_association_study",
+      "type": "defines_concept"
+    },
+    {
+      "from": "06_Association_tests",
+      "to": "concept_logistic_regression",
+      "type": "defines_concept"
+    },
+    {
+      "from": "06_Association_tests",
+      "to": "concept_genomic_control",
+      "type": "defines_concept"
+    },
+    {
+      "from": "06_Association_tests",
+      "to": "06_Association_tests.step_manhattan_plot",
+      "type": "documents_step"
+    },
+    {
+      "from": "06_Association_tests.step_manhattan_plot",
+      "to": "06_Association_tests.step_quantile_quantile_plot",
+      "type": "documents_step"
+    },
+    {
+      "from": "06_Association_tests.step_quantile_quantile_plot",
+      "to": "06_Association_tests.step_regional_plot",
+      "type": "documents_step"
+    },
+    {
+      "from": "06_Association_tests.step_regional_plot",
+      "to": "06_Association_tests.step_gwas_ssf",
+      "type": "documents_step"
+    },
+    {
+      "from": "06_Association_tests.step_gwas_ssf",
+      "to": "06_Association_tests.step_glm_binary",
+      "type": "documents_step"
+    }
+  ]
+}

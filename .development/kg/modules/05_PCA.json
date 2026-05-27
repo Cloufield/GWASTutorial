@@ -1,0 +1,210 @@
+{
+  "module_id": "05_PCA",
+  "title": "Principal component analysis (PCA)",
+  "type": "hands_on",
+  "source_readme": "05_PCA/README.md",
+  "primary_script": "run_pca.sh",
+  "prerequisites": [
+    "04_Data_QC"
+  ],
+  "produces": [
+    "plink_results.eigenvec",
+    "plink_results.eigenvec.allele",
+    "plink_results_projected.sscore"
+  ],
+  "tools": [
+    "plink",
+    "plink2"
+  ],
+  "concepts": [
+    "principal component analysis",
+    "genetic relationship matrix",
+    "population stratification",
+    "linkage disequilibrium"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "05_PCA",
+      "kind": "Module",
+      "label": "Principal component analysis (PCA)"
+    },
+    {
+      "id": "tool_plink",
+      "kind": "Tool",
+      "label": "plink"
+    },
+    {
+      "id": "tool_plink2",
+      "kind": "Tool",
+      "label": "plink2"
+    },
+    {
+      "id": "out_plink_results_eigenvec",
+      "kind": "Output",
+      "label": "plink_results.eigenvec"
+    },
+    {
+      "id": "out_plink_results_eigenvec_allele",
+      "kind": "Output",
+      "label": "plink_results.eigenvec.allele"
+    },
+    {
+      "id": "out_plink_results_projected_sscore",
+      "kind": "Output",
+      "label": "plink_results_projected.sscore"
+    },
+    {
+      "id": "concept_principal_component_analysis",
+      "kind": "Concept",
+      "label": "principal component analysis"
+    },
+    {
+      "id": "concept_genetic_relationship_matrix",
+      "kind": "Concept",
+      "label": "genetic relationship matrix"
+    },
+    {
+      "id": "concept_population_stratification",
+      "kind": "Concept",
+      "label": "population stratification"
+    },
+    {
+      "id": "concept_linkage_disequilibrium",
+      "kind": "Concept",
+      "label": "linkage disequilibrium"
+    },
+    {
+      "id": "05_PCA.step_exclude_snps_in_high_ld_or_hla_regions",
+      "kind": "Step",
+      "label": "Exclude SNPs in high-LD or HLA regions"
+    },
+    {
+      "id": "05_PCA.step_download_bed_like_files_for_high_ld_or_hla_regions",
+      "kind": "Step",
+      "label": "Download BED-like files for high-LD or HLA regions"
+    },
+    {
+      "id": "05_PCA.step_create_a_list_of_snps_in_high_ld_or_hla_regions",
+      "kind": "Step",
+      "label": "Create a list of SNPs in high-LD or HLA regions"
+    },
+    {
+      "id": "05_PCA.step_exclude_hild",
+      "kind": "Step",
+      "label": "exclude_hild"
+    },
+    {
+      "id": "05_PCA.step_prune",
+      "kind": "Step",
+      "label": "prune"
+    },
+    {
+      "id": "05_PCA.step_king",
+      "kind": "Step",
+      "label": "king"
+    },
+    {
+      "id": "05_PCA.step_pca",
+      "kind": "Step",
+      "label": "pca"
+    },
+    {
+      "id": "05_PCA.step_project",
+      "kind": "Step",
+      "label": "project"
+    }
+  ],
+  "edges": [
+    {
+      "from": "05_PCA",
+      "to": "04_Data_QC",
+      "type": "requires"
+    },
+    {
+      "from": "05_PCA",
+      "to": "tool_plink",
+      "type": "uses_tool"
+    },
+    {
+      "from": "05_PCA",
+      "to": "tool_plink2",
+      "type": "uses_tool"
+    },
+    {
+      "from": "05_PCA",
+      "to": "out_plink_results_eigenvec",
+      "type": "produces"
+    },
+    {
+      "from": "05_PCA",
+      "to": "out_plink_results_eigenvec_allele",
+      "type": "produces"
+    },
+    {
+      "from": "05_PCA",
+      "to": "out_plink_results_projected_sscore",
+      "type": "produces"
+    },
+    {
+      "from": "05_PCA",
+      "to": "concept_principal_component_analysis",
+      "type": "defines_concept"
+    },
+    {
+      "from": "05_PCA",
+      "to": "concept_genetic_relationship_matrix",
+      "type": "defines_concept"
+    },
+    {
+      "from": "05_PCA",
+      "to": "concept_population_stratification",
+      "type": "defines_concept"
+    },
+    {
+      "from": "05_PCA",
+      "to": "concept_linkage_disequilibrium",
+      "type": "defines_concept"
+    },
+    {
+      "from": "05_PCA",
+      "to": "05_PCA.step_exclude_snps_in_high_ld_or_hla_regions",
+      "type": "documents_step"
+    },
+    {
+      "from": "05_PCA.step_exclude_snps_in_high_ld_or_hla_regions",
+      "to": "05_PCA.step_download_bed_like_files_for_high_ld_or_hla_regions",
+      "type": "documents_step"
+    },
+    {
+      "from": "05_PCA.step_download_bed_like_files_for_high_ld_or_hla_regions",
+      "to": "05_PCA.step_create_a_list_of_snps_in_high_ld_or_hla_regions",
+      "type": "documents_step"
+    },
+    {
+      "from": "05_PCA.step_create_a_list_of_snps_in_high_ld_or_hla_regions",
+      "to": "05_PCA.step_exclude_hild",
+      "type": "documents_step"
+    },
+    {
+      "from": "05_PCA.step_exclude_hild",
+      "to": "05_PCA.step_prune",
+      "type": "documents_step"
+    },
+    {
+      "from": "05_PCA.step_prune",
+      "to": "05_PCA.step_king",
+      "type": "documents_step"
+    },
+    {
+      "from": "05_PCA.step_king",
+      "to": "05_PCA.step_pca",
+      "type": "documents_step"
+    },
+    {
+      "from": "05_PCA.step_pca",
+      "to": "05_PCA.step_project",
+      "type": "documents_step"
+    }
+  ]
+}

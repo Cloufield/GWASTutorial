@@ -1,3 +1,30 @@
+---
+module_id: 29_postgwas
+type: hub
+title: Post-GWAS analysis
+prerequisites: [06_Association_tests]
+related_modules:
+  - 07_Annotation
+  - 08_LDSC
+  - 09_Gene_based_analysis
+  - 10_PRS
+  - 11_meta_analysis
+  - 12_fine_mapping
+  - 13_heritability
+  - 14_gcta_greml
+  - 16_mendelian_randomization
+  - 17_colocalization
+  - 18_Conditioning_analysis
+  - 21_twas
+  - 25_singlecell
+  - 45_SMR
+concepts:
+  - post-GWAS
+  - fine-mapping
+  - polygenic risk score
+  - Mendelian randomization
+---
+
 # Post-GWAS analysis
 
 Post-GWAS analyses are a set of computational and statistical approaches that use summary statistics from GWAS, which capture variant–trait associations, to **move beyond association mapping** and translate statistical signals into **biological interpretation** by identifying causal variants, genes, tissues, pathways, and underlying disease mechanisms.
@@ -227,3 +254,16 @@ After identifying genome-wide significant associations, **post-GWAS analyses** a
 - Target prioritization using genetic evidence
 - Pathway-based drug repurposing
 - Clinical trial and pharmacogenomic evidence integration
+
+---
+
+## Key terms
+
+post-GWAS, fine-mapping, colocalization, SNP heritability, polygenic risk score, Mendelian randomization, gene-set analysis, meta-analysis, functional annotation
+
+---
+
+## References
+
+- Bulik-Sullivan, B. K., et al. (2015). LD Score regression distinguishes confounding from polygenicity in genome-wide association studies. *Nature Genetics*, 47(3), 291–295.
+- Yang, J., et al. (2011). GCTA: a tool for genome-wide complex trait analysis. *AJHG*, 88(1), 76–82.

@@ -1,0 +1,188 @@
+{
+  "module_id": "12_fine_mapping",
+  "title": "Fine-mapping",
+  "type": "hands_on",
+  "source_readme": "12_fine_mapping/README.md",
+  "primary_script": "run_fine_mapping.sh",
+  "prerequisites": [
+    "06_Association_tests"
+  ],
+  "produces": [
+    "sig_locus_mt.ld"
+  ],
+  "tools": [
+    "plink",
+    "susie"
+  ],
+  "concepts": [
+    "fine-mapping",
+    "posterior inclusion probability",
+    "credible set",
+    "SuSiE"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "12_fine_mapping",
+      "kind": "Module",
+      "label": "Fine-mapping"
+    },
+    {
+      "id": "tool_plink",
+      "kind": "Tool",
+      "label": "plink"
+    },
+    {
+      "id": "tool_susie",
+      "kind": "Tool",
+      "label": "susie"
+    },
+    {
+      "id": "out_sig_locus_mt_ld",
+      "kind": "Output",
+      "label": "sig_locus_mt.ld"
+    },
+    {
+      "id": "concept_fine_mapping",
+      "kind": "Concept",
+      "label": "fine-mapping"
+    },
+    {
+      "id": "concept_posterior_inclusion_probability",
+      "kind": "Concept",
+      "label": "posterior inclusion probability"
+    },
+    {
+      "id": "concept_credible_set",
+      "kind": "Concept",
+      "label": "credible set"
+    },
+    {
+      "id": "concept_susie",
+      "kind": "Concept",
+      "label": "SuSiE"
+    },
+    {
+      "id": "12_fine_mapping.step_susie_model",
+      "kind": "Step",
+      "label": "SuSiE model"
+    },
+    {
+      "id": "12_fine_mapping.step_susie_rss_summary_statistics",
+      "kind": "Step",
+      "label": "SuSiE-RSS (Summary Statistics)"
+    },
+    {
+      "id": "12_fine_mapping.step_installation",
+      "kind": "Step",
+      "label": "Installation"
+    },
+    {
+      "id": "12_fine_mapping.step_running_susie_rss",
+      "kind": "Step",
+      "label": "Running SuSiE-RSS"
+    },
+    {
+      "id": "12_fine_mapping.step_interpreting_susie_results",
+      "kind": "Step",
+      "label": "Interpreting SuSiE results"
+    },
+    {
+      "id": "12_fine_mapping.step_susie_method_papers",
+      "kind": "Step",
+      "label": "SuSiE method papers"
+    },
+    {
+      "id": "12_fine_mapping.step_fine_mapping_reviews",
+      "kind": "Step",
+      "label": "Fine-mapping reviews"
+    },
+    {
+      "id": "12_fine_mapping.step_software_and_tools",
+      "kind": "Step",
+      "label": "Software and tools"
+    }
+  ],
+  "edges": [
+    {
+      "from": "12_fine_mapping",
+      "to": "06_Association_tests",
+      "type": "requires"
+    },
+    {
+      "from": "12_fine_mapping",
+      "to": "tool_plink",
+      "type": "uses_tool"
+    },
+    {
+      "from": "12_fine_mapping",
+      "to": "tool_susie",
+      "type": "uses_tool"
+    },
+    {
+      "from": "12_fine_mapping",
+      "to": "out_sig_locus_mt_ld",
+      "type": "produces"
+    },
+    {
+      "from": "12_fine_mapping",
+      "to": "concept_fine_mapping",
+      "type": "defines_concept"
+    },
+    {
+      "from": "12_fine_mapping",
+      "to": "concept_posterior_inclusion_probability",
+      "type": "defines_concept"
+    },
+    {
+      "from": "12_fine_mapping",
+      "to": "concept_credible_set",
+      "type": "defines_concept"
+    },
+    {
+      "from": "12_fine_mapping",
+      "to": "concept_susie",
+      "type": "defines_concept"
+    },
+    {
+      "from": "12_fine_mapping",
+      "to": "12_fine_mapping.step_susie_model",
+      "type": "documents_step"
+    },
+    {
+      "from": "12_fine_mapping.step_susie_model",
+      "to": "12_fine_mapping.step_susie_rss_summary_statistics",
+      "type": "documents_step"
+    },
+    {
+      "from": "12_fine_mapping.step_susie_rss_summary_statistics",
+      "to": "12_fine_mapping.step_installation",
+      "type": "documents_step"
+    },
+    {
+      "from": "12_fine_mapping.step_installation",
+      "to": "12_fine_mapping.step_running_susie_rss",
+      "type": "documents_step"
+    },
+    {
+      "from": "12_fine_mapping.step_running_susie_rss",
+      "to": "12_fine_mapping.step_interpreting_susie_results",
+      "type": "documents_step"
+    },
+    {
+      "from": "12_fine_mapping.step_interpreting_susie_results",
+      "to": "12_fine_mapping.step_susie_method_papers",
+      "type": "documents_step"
+    },
+    {
+      "from": "12_fine_mapping.step_susie_method_papers",
+      "to": "12_fine_mapping.step_fine_mapping_reviews",
+      "type": "documents_step"
+    },
+    {
+      "from": "12_fine_mapping.step_fine_mapping_reviews",
+      "to": "12_fine_mapping.step_software_and_tools",
+      "type": "documents_step"
+    }
+  ]
+}

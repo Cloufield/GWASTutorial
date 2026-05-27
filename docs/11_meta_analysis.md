@@ -1,3 +1,17 @@
+---
+module_id: 11_meta_analysis
+type: hands_on
+title: Meta-analysis
+prerequisites: [06_Association_tests]
+produces: []
+primary_script: run_meta_workflow.sh
+tools: [metal]
+concepts:
+  - meta-analysis
+  - fixed effects
+  - random effects
+---
+
 # Meta-analysis
 
 ---
@@ -31,14 +45,18 @@ To address these problems, meta-analysis is a powerful approach to integrate mul
 ---
 
 
-## A typical workflow of meta-analysis
-
-<img width="450" alt="image" src="https://user-images.githubusercontent.com/40289485/218293217-d6a50f73-98f7-4957-82a3-d10a85bed8dc.png">
+## Preparation
 
 !!! note "Required data and tools"
 
-    - **GWAS summary statistics** from each cohort — harmonized fields (CHR, POS, BETA, SE, P, N, effect/other allele, EAF, …); see [Harmonization and QC for GWA meta-analysis](#harmonization-and-qc-for-gwa-meta-analysis).
-    - **Meta-analysis software** — e.g. **METAL** for the worked example ([METAL](#metal)); other sections mention R/`metafor` for random-effects models.
+    - **Data: GWAS summary statistics** — harmonized per cohort (CHR, POS, BETA, SE, P, N, alleles, EAF); see [Harmonization and QC](#harmonization-and-qc-for-gwa-meta-analysis).
+    - **Software: METAL** — fixed-effects example ([METAL](#metal)); R/`metafor` for random-effects sections.
+
+---
+
+## A typical workflow of meta-analysis
+
+<img width="450" alt="image" src="https://user-images.githubusercontent.com/40289485/218293217-d6a50f73-98f7-4957-82a3-d10a85bed8dc.png">
 
 ---
 
@@ -345,6 +363,24 @@ For more details, you can check [here](https://www.globalbiobankmeta.org/).
 
 ---
 
+
+## Sample script
+
+!!! example "Workflow overview"
+    ```bash
+    cd 11_meta_analysis
+    ./run_meta_workflow.sh
+    ```
+
+Follow README sections for harmonization, METAL, and random-effects meta-analysis commands.
+
+---
+
+## Key terms
+
+meta-analysis, fixed effects, random effects, heterogeneity, METAL, genome-wide association study
+
+---
 
 ## References
 

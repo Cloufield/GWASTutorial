@@ -1,3 +1,17 @@
+---
+module_id: 08_LDSC
+type: hands_on
+title: LD score regression
+prerequisites: [06_Association_tests]
+produces: [BBJ_HDLC.sumstats.gz]
+primary_script: run_ldsc.sh
+tools: [ldsc]
+concepts:
+  - LD score regression
+  - SNP heritability
+  - genetic correlation
+---
+
 # LD score regression
 
 ---
@@ -57,7 +71,17 @@ For more details of LD score regression, please refer to :
 
 
 
-## Install LDSC
+## Preparation
+
+!!! note "Required data and tools"
+
+    - **Environment: LDSC** — Python 2 **conda** env ([Install LDSC](#install-ldsc)); [Miniconda](https://cloufield.github.io/GWASTutorial/80_miniconda/) if needed.
+    - **Reference: LDSC resources** — EAS weights and partitioned scores on [Zenodo](https://zenodo.org/records/10515792); **EAS genome-wide LD scores** via Google Cloud (`gsutil`) for some tutorials.
+    - **Data: GWAS summary statistics** — BBJ HDL-C / LDL-C examples ([Munge sumstats](#munge-sumstats)).
+
+---
+
+### Install LDSC
 
 LDSC can be downloaded from github (GPL-3.0 license):
 [https://github.com/bulik/ldsc](https://github.com/bulik/ldsc)
@@ -85,12 +109,6 @@ conda activate ldsc
 
 
 ## Data preparation
-
-!!! note "Required data and tools"
-
-    - **LDSC** — clone repo, Python 2 **conda** env ([Install LDSC](#install-ldsc)); [Anaconda/Miniconda](https://cloufield.github.io/GWASTutorial/80_anaconda/) if needed.
-    - **Reference files** — EAS weights, frequency/plink reference, and partitioned baseline LD scores are on **Zenodo** ([S-LDSC reference files](https://zenodo.org/records/10515792), DOI [10.5281/zenodo.10515792](https://doi.org/10.5281/zenodo.10515792)). **Google Cloud** with `gsutil` and a billing-enabled project is still needed for **EAS genome-wide LD scores** (`eas_ldscores`) and **LDSC-SEG** cell-type scores (not included in that Zenodo deposit).
-    - **GWAS summary statistics** — this tutorial uses BBJ HDL-C / LDL-C (Jenger); you can substitute your own sumstats after munging ([Munge sumstats](#munge-sumstats)).
 
 In this tutorial, we will use sample summary statistics for HDLC and LDLC from Jenger. 
 - Kanai, Masahiro, et al. "Genetic analysis of quantitative traits in the Japanese population links cell types to complex human diseases." Nature genetics 50.3 (2018): 390-400.
@@ -438,6 +456,26 @@ ldsc.py \
 
 ---
 
+## Sample script
+
+From the `08_LDSC` folder (after [Install LDSC](#install-ldsc) and downloading reference data):
+
+!!! example "Run the full pipeline"
+    ```bash
+    cd 08_LDSC
+    conda activate ldsc
+    ./run_ldsc.sh
+    ```
+
+Numbered helpers: `0_munge.sh`, `1_ldsc_h2.sh`, `2_ldsc_rg.sh`, `3_ldsc_partitioned.sh`, `4_ldsc_seg.sh`, `download_data.sh`.
+
+---
+
+## Key terms
+
+LD score regression, LDSC, SNP heritability, genetic correlation, partitioned heritability, LDSC-SEG, summary statistics munging
+
+---
 
 ## References
 - Gazal, S. S-LDSC reference files (1000 Genomes Phase 3 LD scores, baseline/baseline-LD models, weights, plink/frequency files, HapMap3 lists, example sumstats). Zenodo (2024). https://doi.org/10.5281/zenodo.10515792

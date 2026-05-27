@@ -14,7 +14,7 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+from _repo_paths import REPO_ROOT as ROOT
 
 # Mirrors deploy.sh (line 3) — chapter README sources copied to docs/*.md
 DEPLOY_DIRS = """

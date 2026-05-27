@@ -1,3 +1,18 @@
+---
+module_id: 04_Data_QC
+type: hands_on
+title: PLINK basics
+prerequisites: [01_Dataset, 03_Data_formats]
+produces: [sample_data.clean]
+primary_script: run_QC.sh
+tools: [plink, plink2]
+concepts:
+  - quality control
+  - minor allele frequency
+  - Hardy-Weinberg equilibrium
+  - linkage disequilibrium
+---
+
 # PLINK basics
 
 In this module, we will learn the basics of genotype data QC using PLINK, which is one of the most commonly used software in complex trait genomics. (Huge thanks to the developers: [PLINK1.9](https://www.cog-genomics.org/plink/1.9/credits) and [PLINK2](https://www.cog-genomics.org/plink/2.0/credits))
@@ -16,8 +31,8 @@ In this module, we will learn the basics of genotype data QC using PLINK, which 
 
 !!! note "Required data and tools"
 
-    - **PLINK 1.9** (`plink`) and **PLINK 2** (`plink2`) — install and add to your `PATH` ([PLINK 1.9 & 2 installation](#plink-192-installation)).
-    - **Tutorial genotype data (PLINK binary)** — ~1M variants, 504 EAS samples (1000 Genomes Phase 3); download from [01_Dataset](../01_Dataset/README.md) with `download_sampledata.sh` ([Download genotype data](#download-genotype-data)).
+    - **Software: PLINK 1.9** (`plink`) and **PLINK 2** (`plink2`) — install and add to your `PATH` ([PLINK 1.9 & 2 installation](#plink-192-installation)).
+    - **Data: Tutorial genotype (PLINK binary)** — ~1M variants, 504 EAS samples; from [01_Dataset](../01_Dataset/README.md) via `download_sampledata.sh` ([Download genotype data](#download-genotype-data)).
 
 ---
 
@@ -956,6 +971,27 @@ plink \
 
 ---
 
+## Sample script
+
+From the `04_Data_QC` folder, run the QC pipeline that produces `sample_data.clean` (used in [05_PCA](../05_PCA/README.md)):
+
+!!! example "Run the full pipeline"
+    ```bash
+    cd 04_Data_QC
+    ./run_QC.sh
+    ```
+
+The script mirrors the tutorial steps: basic statistics, LD pruning, heterozygosity, IBD/LD examples, and final filtering to `sample_data.clean.{bed,bim,fam}`.
+
+---
+
+## Outputs and checks
+
+- `sample_data.clean.*` — QC-filtered PLINK binary set for downstream modules
+- `high_het.sample` — samples removed for extreme heterozygosity
+- Intermediate `plink_results.*` — MAF, missingness, HWE, prune lists
+
+---
 
 ## Other common QC steps not included in this tutorial
 

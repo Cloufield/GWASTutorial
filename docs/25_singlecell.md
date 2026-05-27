@@ -1,3 +1,15 @@
+---
+module_id: 25_singlecell
+type: concept
+title: Beyond Genomics - Single-Cell Genomics
+prerequisites: [06_Association_tests]
+related_modules: [08_LDSC, 09_Gene_based_analysis]
+concepts:
+  - single-cell genomics
+  - cell-type enrichment
+  - scDRS
+---
+
 # Beyond Genomics: Single-Cell Genomics
 
 Single-cell genomics (scRNA-seq, scATAC-seq, spatial transcriptomics, and multiome assays)
@@ -281,6 +293,12 @@ Spatial Transcriptomics Data (Expression + Coordinates)
 | scDRS | Individual cells | Which cells or states matter? |
 | sc-linker | Gene + cell type | Which genes mediate risk? |
 | gsMap | Spatial regions | Where does risk manifest? |
+
+---
+
+## Key terms
+
+single-cell genomics, scRNA-seq, LDSC-SEG, MAGMA, scDRS, sc-linker, gsMap, cell-type enrichment, spatial transcriptomics
 
 ---
 

@@ -1,16 +1,21 @@
+---
+module_id: 18_Conditioning_analysis
+type: hands_on
+title: Conditioning analysis
+prerequisites: [06_Association_tests]
+tools: [plink2, gcta]
+concepts:
+  - conditional analysis
+  - GCTA-COJO
+  - independent signals
+---
+
 # Conditioning analysis
 
 Multiple association signals could exist in one locus, especially when observing complex LD structures in the regional plot.
 Conditioning on one signal allows the separation of independent signals.
 
-!!! note "Required data and tools"
-
-    - **PLINK 2** (`plink2`) — export dosages/genotypes to use a lead variant as a covariate in re-association ([Adding the lead variant to the covariates](#adding-the-lead-variant-to-the-covariates)).
-    - **GCTA** — **COJO** for stepwise conditioning from **summary statistics** + external **LD** ([GCTA-COJO](#gcta-cojo)).
-    - **Individual-level** genotype/phenotype **or** **GWAS sumstats + LD reference**, depending on the workflow.
-
 ---
-
 
 **On this page**
 
@@ -18,6 +23,15 @@ Conditioning on one signal allows the separation of independent signals.
 
 ---
 
+## Preparation
+
+!!! note "Required data and tools"
+
+    - **Software: PLINK 2** (`plink2`) — export dosages/genotypes to use a lead variant as a covariate ([Adding the lead variant to the covariates](#adding-the-lead-variant-to-the-covariates)).
+    - **Software: GCTA** — **COJO** for stepwise conditioning from **summary statistics** + external **LD** ([GCTA-COJO](#gcta-cojo)).
+    - **Data:** individual-level genotype/phenotype **or** GWAS sumstats + LD reference, depending on the workflow.
+
+---
 
 ## Statistical Model
 
@@ -121,8 +135,11 @@ While both conditional analysis and fine-mapping are used to dissect association
 
 ---
 
+## Key terms
 
+conditional analysis, GCTA-COJO, independent signal, fine-mapping, lead variant, linkage disequilibrium
 
+---
 
 ## References
 

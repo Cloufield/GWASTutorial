@@ -1,0 +1,186 @@
+{
+  "module_id": "03_Data_formats",
+  "title": "Data format",
+  "type": "concept",
+  "source_readme": "03_Data_formats/README.md",
+  "primary_script": null,
+  "prerequisites": [],
+  "produces": [],
+  "tools": [],
+  "concepts": [
+    "VCF",
+    "PLINK",
+    "BGEN",
+    "genotype imputation"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "03_Data_formats",
+      "kind": "Module",
+      "label": "Data format"
+    },
+    {
+      "id": "concept_vcf",
+      "kind": "Concept",
+      "label": "VCF"
+    },
+    {
+      "id": "concept_plink",
+      "kind": "Concept",
+      "label": "PLINK"
+    },
+    {
+      "id": "concept_bgen",
+      "kind": "Concept",
+      "label": "BGEN"
+    },
+    {
+      "id": "concept_genotype_imputation",
+      "kind": "Concept",
+      "label": "genotype imputation"
+    },
+    {
+      "id": "03_Data_formats.step_txt",
+      "kind": "Step",
+      "label": "txt"
+    },
+    {
+      "id": "03_Data_formats.step_tsv",
+      "kind": "Step",
+      "label": "tsv"
+    },
+    {
+      "id": "03_Data_formats.step_csv",
+      "kind": "Step",
+      "label": "csv"
+    },
+    {
+      "id": "03_Data_formats.step_fasta",
+      "kind": "Step",
+      "label": "fasta"
+    },
+    {
+      "id": "03_Data_formats.step_fastq",
+      "kind": "Step",
+      "label": "fastq"
+    },
+    {
+      "id": "03_Data_formats.step_sam_bam",
+      "kind": "Step",
+      "label": "SAM/BAM"
+    },
+    {
+      "id": "03_Data_formats.step_vcf_vcf_gz_vcf_gz_tbi",
+      "kind": "Step",
+      "label": "vcf / vcf.gz / vcf.gz.tbi"
+    },
+    {
+      "id": "03_Data_formats.step_plink_format",
+      "kind": "Step",
+      "label": "PLINK format"
+    },
+    {
+      "id": "03_Data_formats.step_ped_map",
+      "kind": "Step",
+      "label": "ped / map"
+    },
+    {
+      "id": "03_Data_formats.step_bed_fam_bim",
+      "kind": "Step",
+      "label": "bed / fam / bim"
+    },
+    {
+      "id": "03_Data_formats.step_bgen_bgi",
+      "kind": "Step",
+      "label": "bgen / bgi"
+    },
+    {
+      "id": "03_Data_formats.step_pgen_psam_pvar",
+      "kind": "Step",
+      "label": "pgen / psam / pvar"
+    }
+  ],
+  "edges": [
+    {
+      "from": "03_Data_formats",
+      "to": "concept_vcf",
+      "type": "defines_concept"
+    },
+    {
+      "from": "03_Data_formats",
+      "to": "concept_plink",
+      "type": "defines_concept"
+    },
+    {
+      "from": "03_Data_formats",
+      "to": "concept_bgen",
+      "type": "defines_concept"
+    },
+    {
+      "from": "03_Data_formats",
+      "to": "concept_genotype_imputation",
+      "type": "defines_concept"
+    },
+    {
+      "from": "03_Data_formats",
+      "to": "03_Data_formats.step_txt",
+      "type": "documents_step"
+    },
+    {
+      "from": "03_Data_formats.step_txt",
+      "to": "03_Data_formats.step_tsv",
+      "type": "documents_step"
+    },
+    {
+      "from": "03_Data_formats.step_tsv",
+      "to": "03_Data_formats.step_csv",
+      "type": "documents_step"
+    },
+    {
+      "from": "03_Data_formats.step_csv",
+      "to": "03_Data_formats.step_fasta",
+      "type": "documents_step"
+    },
+    {
+      "from": "03_Data_formats.step_fasta",
+      "to": "03_Data_formats.step_fastq",
+      "type": "documents_step"
+    },
+    {
+      "from": "03_Data_formats.step_fastq",
+      "to": "03_Data_formats.step_sam_bam",
+      "type": "documents_step"
+    },
+    {
+      "from": "03_Data_formats.step_sam_bam",
+      "to": "03_Data_formats.step_vcf_vcf_gz_vcf_gz_tbi",
+      "type": "documents_step"
+    },
+    {
+      "from": "03_Data_formats.step_vcf_vcf_gz_vcf_gz_tbi",
+      "to": "03_Data_formats.step_plink_format",
+      "type": "documents_step"
+    },
+    {
+      "from": "03_Data_formats.step_plink_format",
+      "to": "03_Data_formats.step_ped_map",
+      "type": "documents_step"
+    },
+    {
+      "from": "03_Data_formats.step_ped_map",
+      "to": "03_Data_formats.step_bed_fam_bim",
+      "type": "documents_step"
+    },
+    {
+      "from": "03_Data_formats.step_bed_fam_bim",
+      "to": "03_Data_formats.step_bgen_bgi",
+      "type": "documents_step"
+    },
+    {
+      "from": "03_Data_formats.step_bgen_bgi",
+      "to": "03_Data_formats.step_pgen_psam_pvar",
+      "type": "documents_step"
+    }
+  ]
+}

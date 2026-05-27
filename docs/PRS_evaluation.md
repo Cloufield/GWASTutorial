@@ -1,3 +1,15 @@
+---
+module_id: 10_PRS_evaluation
+type: hands_on
+title: Polygenic risk scores evaluation
+parent: 10_PRS
+prerequisites: [10_PRS]
+concepts:
+  - polygenic risk score
+  - AUC
+  - R-squared
+---
+
 # Polygenic risk scores evaluation
 
 ---
@@ -158,6 +170,11 @@ The percentile bootstrap interval is then defined as the interval between $100 \
 
 ---
 
+## Key terms
+
+polygenic risk score, AUC, R-squared, Nagelkerke R2, C-index, ROC, calibration, liability scale
+
+---
 
 ## References
 

@@ -1,3 +1,16 @@
+---
+module_id: 07_Annotation
+type: hands_on
+title: Variant Annotation
+prerequisites: [06_Association_tests]
+produces: [annovar_input.txt]
+primary_script: run_annotation.sh
+tools: [annovar, vep]
+concepts:
+  - variant annotation
+  - functional consequence
+---
+
 # Variant Annotation
 
 Variant annotation is the process of adding functional and biological information to genetic variants identified in genome-wide association studies (GWAS). After identifying variants associated with a trait, annotation helps researchers understand the potential biological consequences of these variants by providing information such as:
@@ -22,17 +35,21 @@ This information is crucial for prioritizing variants for follow-up studies, und
 
 ---
 
+## Preparation
+
+!!! note "Required data and tools"
+
+    - **Software: ANNOVAR** — download and unpack ([Install](#install)); **hg19** `humandb` for the `refGene` example.
+    - **Software: VEP** (optional) — [VEP](#vep) section; Docker or local install.
+    - **Data: GWAS summary statistics** — e.g. [06_Association_tests/1kgeas.B1.glm.firth](../06_Association_tests/1kgeas.B1.glm.firth) ([Format input file](#format-input-file)).
+
+---
 
 ## ANNOVAR
 
 [ANNOVAR](https://annovar.openbioinformatics.org/en/latest/) is a simple and efficient command line tool for variant annotation. 
 
 In this tutorial, we will use ANNOVAR to annotate the variants in our summary statistics (hg19).
-
-!!! note "Required data and tools"
-
-    - **ANNOVAR** — download and unpack the package ([Install](#install)); for the minimal `refGene` example you need an **hg19** `humandb` (see ANNOVAR docs for extra annotation databases).
-    - **GWAS summary statistics** — PLINK2-style association output to build the coordinate input, e.g. [06_Association_tests/1kgeas.B1.glm.firth](../06_Association_tests/README.md) ([Format input file](#format-input-file)).
 
 ---
 
@@ -264,11 +281,27 @@ Annotated VCFs carry consequences in **`INFO`** (e.g. **`CSQ`**). More options: 
 
 ---
 
+## Sample script
 
-## References
+From the `07_Annotation` folder (requires ANNOVAR/VEP installed separately):
+
+!!! example "Run the full pipeline"
+    ```bash
+    cd 07_Annotation
+    ./run_annotation.sh
+    ```
+
+Helper scripts: `0_format_sumstats.sh`, `1_annovar.sh`, `2_vep.sh`.
 
 ---
 
+## Key terms
+
+variant annotation, ANNOVAR, VEP, refGene, functional consequence, GWAS summary statistics
+
+---
+
+## References
 
 ### ANNOVAR
 

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Cloufield/GWASTutorial/.development/kg/module.schema.json",
+  "title": "GWASTutorial module knowledge graph",
+  "type": "object",
+  "required": ["module_id", "type", "nodes", "edges"],
+  "properties": {
+    "module_id": { "type": "string", "pattern": "^[0-9]{2}_[A-Za-z0-9_]+$" },
+    "title": { "type": "string" },
+    "type": { "enum": ["hands_on", "concept", "resource", "hub"] },
+    "source_readme": { "type": "string" },
+    "primary_script": { "type": "string" },
+    "prerequisites": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "produces": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "tools": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "concepts": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind"],
+        "properties": {
+          "id": { "type": "string" },
+          "kind": {
+            "enum": ["Module", "Step", "Tool", "Input", "Output", "Command", "Concept"]
+          },
+          "label": { "type": "string" },
+          "anchor": { "type": "string" },
+          "script_line": { "type": "integer" }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "type"],
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "type": {
+            "enum": [
+              "requires",
+              "produces",
+              "uses_tool",
+              "precedes",
+              "defines_concept",
+              "documents_step",
+              "related_module"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

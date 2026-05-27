@@ -1,0 +1,120 @@
+{
+  "module_id": "01_Dataset",
+  "title": "Sample Dataset",
+  "type": "resource",
+  "source_readme": "01_Dataset/README.md",
+  "primary_script": "download_sampledata.sh",
+  "prerequisites": [],
+  "produces": [
+    "1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing",
+    "1kgeas_binary.txt"
+  ],
+  "tools": [
+    "gcta",
+    "plink"
+  ],
+  "concepts": [
+    "1000 Genomes Project",
+    "genotype simulation"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "01_Dataset",
+      "kind": "Module",
+      "label": "Sample Dataset"
+    },
+    {
+      "id": "tool_gcta",
+      "kind": "Tool",
+      "label": "gcta"
+    },
+    {
+      "id": "tool_plink",
+      "kind": "Tool",
+      "label": "plink"
+    },
+    {
+      "id": "out_1kg_eas_auto_snp_norm_nodup_split_rare002_common015_missing",
+      "kind": "Output",
+      "label": "1KG.EAS.auto.snp.norm.nodup.split.rare002.common015.missing"
+    },
+    {
+      "id": "out_1kgeas_binary_txt",
+      "kind": "Output",
+      "label": "1kgeas_binary.txt"
+    },
+    {
+      "id": "concept_1000_genomes_project",
+      "kind": "Concept",
+      "label": "1000 Genomes Project"
+    },
+    {
+      "id": "concept_genotype_simulation",
+      "kind": "Concept",
+      "label": "genotype simulation"
+    },
+    {
+      "id": "01_Dataset.step_quantitative_trait_model",
+      "kind": "Step",
+      "label": "Quantitative Trait Model"
+    },
+    {
+      "id": "01_Dataset.step_case_control_study_model",
+      "kind": "Step",
+      "label": "Case-Control Study Model"
+    },
+    {
+      "id": "01_Dataset.step_example_command",
+      "kind": "Step",
+      "label": "Example Command"
+    }
+  ],
+  "edges": [
+    {
+      "from": "01_Dataset",
+      "to": "tool_gcta",
+      "type": "uses_tool"
+    },
+    {
+      "from": "01_Dataset",
+      "to": "tool_plink",
+      "type": "uses_tool"
+    },
+    {
+      "from": "01_Dataset",
+      "to": "out_1kg_eas_auto_snp_norm_nodup_split_rare002_common015_missing",
+      "type": "produces"
+    },
+    {
+      "from": "01_Dataset",
+      "to": "out_1kgeas_binary_txt",
+      "type": "produces"
+    },
+    {
+      "from": "01_Dataset",
+      "to": "concept_1000_genomes_project",
+      "type": "defines_concept"
+    },
+    {
+      "from": "01_Dataset",
+      "to": "concept_genotype_simulation",
+      "type": "defines_concept"
+    },
+    {
+      "from": "01_Dataset",
+      "to": "01_Dataset.step_quantitative_trait_model",
+      "type": "documents_step"
+    },
+    {
+      "from": "01_Dataset.step_quantitative_trait_model",
+      "to": "01_Dataset.step_case_control_study_model",
+      "type": "documents_step"
+    },
+    {
+      "from": "01_Dataset.step_case_control_study_model",
+      "to": "01_Dataset.step_example_command",
+      "type": "documents_step"
+    }
+  ]
+}

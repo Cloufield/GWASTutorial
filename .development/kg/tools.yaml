@@ -1,0 +1,68 @@
+# Canonical tool registry for core pipeline modules (kg/modules/*.json reference tool ids here)
+tools:
+  plink:
+    name: PLINK 1.9
+    binaries: [plink]
+    doc_url: https://www.cog-genomics.org/plink/1.9/
+    install_module: 04_Data_QC
+  plink2:
+    name: PLINK 2
+    binaries: [plink2]
+    doc_url: https://www.cog-genomics.org/plink/2.0/
+    install_module: 04_Data_QC
+  gcta:
+    name: GCTA
+    binaries: [gcta64, gcta]
+    doc_url: https://yanglab.westlake.edu.cn/software/gcta/
+    install_module: 01_Dataset
+  annovar:
+    name: ANNOVAR
+    binaries: [annotate_variation.pl, table_annovar.pl]
+    doc_url: https://annovar.openbioinformatics.org/
+    install_module: 07_Annotation
+  vep:
+    name: Ensembl VEP
+    binaries: [vep]
+    doc_url: https://www.ensembl.org/info/docs/tools/vep/
+    install_module: 07_Annotation
+  ldsc:
+    name: LDSC
+    binaries: [munge_sumstats.py, ldsc.py]
+    doc_url: https://github.com/bulik/ldsc
+    install_module: 08_LDSC
+    environment: ldsc
+  magma:
+    name: MAGMA
+    binaries: [magma]
+    doc_url: https://ctg.cncr.nl/software/magma
+    install_module: 09_Gene_based_analysis
+  metal:
+    name: METAL
+    binaries: [metal]
+    doc_url: https://genome.sph.umich.edu/wiki/METAL
+    install_module: 11_meta_analysis
+  susie:
+    name: SuSiE
+    binaries: []
+    doc_url: https://stephenslab.github.io/susieR/
+    install_module: 12_fine_mapping
+  twosamplemr:
+    name: TwoSampleMR
+    binaries: []
+    doc_url: https://mrcieu.github.io/TwoSampleMR/
+    install_module: 16_mendelian_randomization
+  coloc:
+    name: coloc
+    binaries: []
+    doc_url: https://chr1swallace.github.io/coloc/
+    install_module: 17_colocalization
+  fusion:
+    name: FUSION
+    binaries: [FUSION.assoc_test.R]
+    doc_url: http://gusevlab.org/projects/fusion/
+    install_module: 21_twas
+  smr:
+    name: SMR
+    binaries: [smr, heidi]
+    doc_url: https://yanglab.westlake.edu.cn/software/smr/
+    install_module: 45_functional_interpretation

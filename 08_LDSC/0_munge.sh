@@ -1,4 +1,10 @@
 #!/bin/bash
+# Module: 08_LDSC | Script: 0_munge.sh
+# Step: munge
+
+set -euo pipefail
+cd "$(dirname "$0")"
+
 LDSC_PATH=~/tools/ldsc
 LDSC_RESOURCE=~/tools/ldsc/resource
 snplist=${LDSC_RESOURCE}/w_hm3.snplist

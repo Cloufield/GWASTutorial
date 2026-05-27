@@ -1,0 +1,334 @@
+{
+  "module_id": "04_Data_QC",
+  "title": "PLINK basics",
+  "type": "hands_on",
+  "source_readme": "04_Data_QC/README.md",
+  "primary_script": "run_QC.sh",
+  "prerequisites": [
+    "01_Dataset",
+    "03_Data_formats"
+  ],
+  "produces": [
+    "sample_data.clean"
+  ],
+  "tools": [
+    "plink",
+    "plink2"
+  ],
+  "concepts": [
+    "quality control",
+    "minor allele frequency",
+    "Hardy-Weinberg equilibrium",
+    "linkage disequilibrium"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "04_Data_QC",
+      "kind": "Module",
+      "label": "PLINK basics"
+    },
+    {
+      "id": "tool_plink",
+      "kind": "Tool",
+      "label": "plink"
+    },
+    {
+      "id": "tool_plink2",
+      "kind": "Tool",
+      "label": "plink2"
+    },
+    {
+      "id": "out_sample_data_clean",
+      "kind": "Output",
+      "label": "sample_data.clean"
+    },
+    {
+      "id": "concept_quality_control",
+      "kind": "Concept",
+      "label": "quality control"
+    },
+    {
+      "id": "concept_minor_allele_frequency",
+      "kind": "Concept",
+      "label": "minor allele frequency"
+    },
+    {
+      "id": "concept_hardy_weinberg_equilibrium",
+      "kind": "Concept",
+      "label": "Hardy-Weinberg equilibrium"
+    },
+    {
+      "id": "concept_linkage_disequilibrium",
+      "kind": "Concept",
+      "label": "linkage disequilibrium"
+    },
+    {
+      "id": "04_Data_QC.step_plink_1_9_2_installation",
+      "kind": "Step",
+      "label": "PLINK 1.9&2 installation"
+    },
+    {
+      "id": "04_Data_QC.step_download_plink1_9_and_plink2_and_then_unzip",
+      "kind": "Step",
+      "label": "Download PLINK1.9 and PLINK2 and then unzip"
+    },
+    {
+      "id": "04_Data_QC.step_create_symbolic_links",
+      "kind": "Step",
+      "label": "Create symbolic links"
+    },
+    {
+      "id": "04_Data_QC.step_add_paths_to_the_environment_path",
+      "kind": "Step",
+      "label": "Add paths to the environment path"
+    },
+    {
+      "id": "04_Data_QC.step_download_genotype_data",
+      "kind": "Step",
+      "label": "Download genotype data"
+    },
+    {
+      "id": "04_Data_QC.step_qc_step_summary",
+      "kind": "Step",
+      "label": "QC Step Summary"
+    },
+    {
+      "id": "04_Data_QC.step_missing_rate_call_rate",
+      "kind": "Step",
+      "label": "Missing rate (call rate)"
+    },
+    {
+      "id": "04_Data_QC.step_plink_syntax",
+      "kind": "Step",
+      "label": "PLINK syntax"
+    },
+    {
+      "id": "04_Data_QC.step_allele_frequency",
+      "kind": "Step",
+      "label": "Allele Frequency"
+    },
+    {
+      "id": "04_Data_QC.step_hardy_weinberg_equilibrium_exact_test",
+      "kind": "Step",
+      "label": "Hardy-Weinberg equilibrium exact test"
+    },
+    {
+      "id": "04_Data_QC.step_applying_filters",
+      "kind": "Step",
+      "label": "Applying filters"
+    },
+    {
+      "id": "04_Data_QC.step_ld_pruning",
+      "kind": "Step",
+      "label": "LD Pruning"
+    },
+    {
+      "id": "04_Data_QC.step_inbreeding_f_coefficient",
+      "kind": "Step",
+      "label": "Inbreeding F coefficient"
+    },
+    {
+      "id": "04_Data_QC.step_sample_snp_filtering_extract_exclude_keep_remove",
+      "kind": "Step",
+      "label": "Sample & SNP filtering (extract/exclude/keep/remove)"
+    },
+    {
+      "id": "04_Data_QC.step_ibd_pi_hat_kinship_coefficient",
+      "kind": "Step",
+      "label": "IBD / PI_HAT / kinship coefficient"
+    },
+    {
+      "id": "04_Data_QC.step_ld_calculation",
+      "kind": "Step",
+      "label": "LD calculation"
+    },
+    {
+      "id": "04_Data_QC.step_data_management_make_bed_recode",
+      "kind": "Step",
+      "label": "Data management (make-bed/recode)"
+    },
+    {
+      "id": "04_Data_QC.step_basic_stats",
+      "kind": "Step",
+      "label": "basic_stats"
+    },
+    {
+      "id": "04_Data_QC.step_filter_prune",
+      "kind": "Step",
+      "label": "filter_prune"
+    },
+    {
+      "id": "04_Data_QC.step_het",
+      "kind": "Step",
+      "label": "het"
+    },
+    {
+      "id": "04_Data_QC.step_ibd_ld",
+      "kind": "Step",
+      "label": "ibd_ld"
+    },
+    {
+      "id": "04_Data_QC.step_make_clean",
+      "kind": "Step",
+      "label": "make_clean"
+    }
+  ],
+  "edges": [
+    {
+      "from": "04_Data_QC",
+      "to": "01_Dataset",
+      "type": "requires"
+    },
+    {
+      "from": "04_Data_QC",
+      "to": "03_Data_formats",
+      "type": "requires"
+    },
+    {
+      "from": "04_Data_QC",
+      "to": "tool_plink",
+      "type": "uses_tool"
+    },
+    {
+      "from": "04_Data_QC",
+      "to": "tool_plink2",
+      "type": "uses_tool"
+    },
+    {
+      "from": "04_Data_QC",
+      "to": "out_sample_data_clean",
+      "type": "produces"
+    },
+    {
+      "from": "04_Data_QC",
+      "to": "concept_quality_control",
+      "type": "defines_concept"
+    },
+    {
+      "from": "04_Data_QC",
+      "to": "concept_minor_allele_frequency",
+      "type": "defines_concept"
+    },
+    {
+      "from": "04_Data_QC",
+      "to": "concept_hardy_weinberg_equilibrium",
+      "type": "defines_concept"
+    },
+    {
+      "from": "04_Data_QC",
+      "to": "concept_linkage_disequilibrium",
+      "type": "defines_concept"
+    },
+    {
+      "from": "04_Data_QC",
+      "to": "04_Data_QC.step_plink_1_9_2_installation",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_plink_1_9_2_installation",
+      "to": "04_Data_QC.step_download_plink1_9_and_plink2_and_then_unzip",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_download_plink1_9_and_plink2_and_then_unzip",
+      "to": "04_Data_QC.step_create_symbolic_links",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_create_symbolic_links",
+      "to": "04_Data_QC.step_add_paths_to_the_environment_path",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_add_paths_to_the_environment_path",
+      "to": "04_Data_QC.step_download_genotype_data",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_download_genotype_data",
+      "to": "04_Data_QC.step_qc_step_summary",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_qc_step_summary",
+      "to": "04_Data_QC.step_missing_rate_call_rate",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_missing_rate_call_rate",
+      "to": "04_Data_QC.step_plink_syntax",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_plink_syntax",
+      "to": "04_Data_QC.step_allele_frequency",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_allele_frequency",
+      "to": "04_Data_QC.step_hardy_weinberg_equilibrium_exact_test",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_hardy_weinberg_equilibrium_exact_test",
+      "to": "04_Data_QC.step_applying_filters",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_applying_filters",
+      "to": "04_Data_QC.step_ld_pruning",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_ld_pruning",
+      "to": "04_Data_QC.step_inbreeding_f_coefficient",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_inbreeding_f_coefficient",
+      "to": "04_Data_QC.step_sample_snp_filtering_extract_exclude_keep_remove",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_sample_snp_filtering_extract_exclude_keep_remove",
+      "to": "04_Data_QC.step_ibd_pi_hat_kinship_coefficient",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_ibd_pi_hat_kinship_coefficient",
+      "to": "04_Data_QC.step_ld_calculation",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_ld_calculation",
+      "to": "04_Data_QC.step_data_management_make_bed_recode",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_data_management_make_bed_recode",
+      "to": "04_Data_QC.step_basic_stats",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_basic_stats",
+      "to": "04_Data_QC.step_filter_prune",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_filter_prune",
+      "to": "04_Data_QC.step_het",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_het",
+      "to": "04_Data_QC.step_ibd_ld",
+      "type": "documents_step"
+    },
+    {
+      "from": "04_Data_QC.step_ibd_ld",
+      "to": "04_Data_QC.step_make_clean",
+      "type": "documents_step"
+    }
+  ]
+}

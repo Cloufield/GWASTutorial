@@ -1,0 +1,277 @@
+{
+  "module_id": "16_mendelian_randomization",
+  "title": "Mendelian randomization",
+  "type": "hands_on",
+  "source_readme": "16_mendelian_randomization/README.md",
+  "primary_script": "run_mr.sh",
+  "prerequisites": [
+    "06_Association_tests"
+  ],
+  "produces": [
+    "bbj_t2d.sumstats",
+    "koges_bmi.txt.gz"
+  ],
+  "tools": [
+    "twosamplemr"
+  ],
+  "concepts": [
+    "Mendelian randomization",
+    "instrumental variable",
+    "two-sample MR"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "16_mendelian_randomization",
+      "kind": "Module",
+      "label": "Mendelian randomization"
+    },
+    {
+      "id": "tool_twosamplemr",
+      "kind": "Tool",
+      "label": "twosamplemr"
+    },
+    {
+      "id": "out_bbj_t2d_sumstats",
+      "kind": "Output",
+      "label": "bbj_t2d.sumstats"
+    },
+    {
+      "id": "out_koges_bmi_txt_gz",
+      "kind": "Output",
+      "label": "koges_bmi.txt.gz"
+    },
+    {
+      "id": "concept_mendelian_randomization",
+      "kind": "Concept",
+      "label": "Mendelian randomization"
+    },
+    {
+      "id": "concept_instrumental_variable",
+      "kind": "Concept",
+      "label": "instrumental variable"
+    },
+    {
+      "id": "concept_two_sample_mr",
+      "kind": "Concept",
+      "label": "two-sample MR"
+    },
+    {
+      "id": "16_mendelian_randomization.step_inverse_variance_weighted_fixed_effects",
+      "kind": "Step",
+      "label": "Inverse variance weighted (fixed effects)"
+    },
+    {
+      "id": "16_mendelian_randomization.step_opengwas_api",
+      "kind": "Step",
+      "label": "OPENGWAS API"
+    },
+    {
+      "id": "16_mendelian_randomization.step_gwas_summary_statistics",
+      "kind": "Step",
+      "label": "GWAS summary statistics"
+    },
+    {
+      "id": "16_mendelian_randomization.step_r_package_twosamplemr",
+      "kind": "Step",
+      "label": "R package TwoSampleMR"
+    },
+    {
+      "id": "16_mendelian_randomization.step_loading_package",
+      "kind": "Step",
+      "label": "Loading package"
+    },
+    {
+      "id": "16_mendelian_randomization.step_reading_exposure_sumstats",
+      "kind": "Step",
+      "label": "Reading exposure sumstats"
+    },
+    {
+      "id": "16_mendelian_randomization.step_extracting_instrumental_variables",
+      "kind": "Step",
+      "label": "Extracting instrumental variables"
+    },
+    {
+      "id": "16_mendelian_randomization.step_clumping_exposure_variables",
+      "kind": "Step",
+      "label": "Clumping exposure variables"
+    },
+    {
+      "id": "16_mendelian_randomization.step_outcome",
+      "kind": "Step",
+      "label": "outcome"
+    },
+    {
+      "id": "16_mendelian_randomization.step_harmonizing_data",
+      "kind": "Step",
+      "label": "Harmonizing data"
+    },
+    {
+      "id": "16_mendelian_randomization.step_perform_mr_analysis",
+      "kind": "Step",
+      "label": "Perform MR analysis"
+    },
+    {
+      "id": "16_mendelian_randomization.step_heterogeneity",
+      "kind": "Step",
+      "label": "Heterogeneity"
+    },
+    {
+      "id": "16_mendelian_randomization.step_horizontal_pleiotropy",
+      "kind": "Step",
+      "label": "Horizontal Pleiotropy"
+    },
+    {
+      "id": "16_mendelian_randomization.step_single_snp_mr_and_leave_one_out_mr",
+      "kind": "Step",
+      "label": "Single SNP MR and leave-one-out MR"
+    },
+    {
+      "id": "16_mendelian_randomization.step_scatter_plot",
+      "kind": "Step",
+      "label": "Scatter plot"
+    },
+    {
+      "id": "16_mendelian_randomization.step_single_snp",
+      "kind": "Step",
+      "label": "Single SNP"
+    },
+    {
+      "id": "16_mendelian_randomization.step_leave_one_out",
+      "kind": "Step",
+      "label": "Leave-one-out"
+    },
+    {
+      "id": "16_mendelian_randomization.step_funnel_plot",
+      "kind": "Step",
+      "label": "Funnel plot"
+    }
+  ],
+  "edges": [
+    {
+      "from": "16_mendelian_randomization",
+      "to": "06_Association_tests",
+      "type": "requires"
+    },
+    {
+      "from": "16_mendelian_randomization",
+      "to": "tool_twosamplemr",
+      "type": "uses_tool"
+    },
+    {
+      "from": "16_mendelian_randomization",
+      "to": "out_bbj_t2d_sumstats",
+      "type": "produces"
+    },
+    {
+      "from": "16_mendelian_randomization",
+      "to": "out_koges_bmi_txt_gz",
+      "type": "produces"
+    },
+    {
+      "from": "16_mendelian_randomization",
+      "to": "concept_mendelian_randomization",
+      "type": "defines_concept"
+    },
+    {
+      "from": "16_mendelian_randomization",
+      "to": "concept_instrumental_variable",
+      "type": "defines_concept"
+    },
+    {
+      "from": "16_mendelian_randomization",
+      "to": "concept_two_sample_mr",
+      "type": "defines_concept"
+    },
+    {
+      "from": "16_mendelian_randomization",
+      "to": "16_mendelian_randomization.step_inverse_variance_weighted_fixed_effects",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_inverse_variance_weighted_fixed_effects",
+      "to": "16_mendelian_randomization.step_opengwas_api",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_opengwas_api",
+      "to": "16_mendelian_randomization.step_gwas_summary_statistics",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_gwas_summary_statistics",
+      "to": "16_mendelian_randomization.step_r_package_twosamplemr",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_r_package_twosamplemr",
+      "to": "16_mendelian_randomization.step_loading_package",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_loading_package",
+      "to": "16_mendelian_randomization.step_reading_exposure_sumstats",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_reading_exposure_sumstats",
+      "to": "16_mendelian_randomization.step_extracting_instrumental_variables",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_extracting_instrumental_variables",
+      "to": "16_mendelian_randomization.step_clumping_exposure_variables",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_clumping_exposure_variables",
+      "to": "16_mendelian_randomization.step_outcome",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_outcome",
+      "to": "16_mendelian_randomization.step_harmonizing_data",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_harmonizing_data",
+      "to": "16_mendelian_randomization.step_perform_mr_analysis",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_perform_mr_analysis",
+      "to": "16_mendelian_randomization.step_heterogeneity",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_heterogeneity",
+      "to": "16_mendelian_randomization.step_horizontal_pleiotropy",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_horizontal_pleiotropy",
+      "to": "16_mendelian_randomization.step_single_snp_mr_and_leave_one_out_mr",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_single_snp_mr_and_leave_one_out_mr",
+      "to": "16_mendelian_randomization.step_scatter_plot",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_scatter_plot",
+      "to": "16_mendelian_randomization.step_single_snp",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_single_snp",
+      "to": "16_mendelian_randomization.step_leave_one_out",
+      "type": "documents_step"
+    },
+    {
+      "from": "16_mendelian_randomization.step_leave_one_out",
+      "to": "16_mendelian_randomization.step_funnel_plot",
+      "type": "documents_step"
+    }
+  ]
+}

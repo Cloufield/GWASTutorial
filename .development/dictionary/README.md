@@ -17,13 +17,13 @@ Automate **`## Key terms`** sections in tutorial Markdown using definitions and 
 2. From the **repository root**, refresh the dictionary cache and expand all `docs/*.md` Markdown files:
 
    ```bash
-   python3 .gwasdictionary/expand_key_terms.py
+   python3 .development/dictionary/expand_key_terms.py
    ```
 
    Or target specific files:
 
    ```bash
-   python3 .gwasdictionary/expand_key_terms.py docs/00_Introduction.md
+   python3 .development/dictionary/expand_key_terms.py docs/00_Introduction.md
    ```
 
 3. The script **rewrites in place** each `## Key terms` body (until the next `##` heading) into bullets:
@@ -34,17 +34,17 @@ Automate **`## Key terms`** sections in tutorial Markdown using definitions and 
 
 | Flag | Meaning |
 |------|--------|
-| `--offline` | Use `.gwasdictionary/cache/gwas_dictionary_by_slug.json` only (no network). |
+| `--offline` | Use `.development/dictionary/cache/gwas_dictionary_by_slug.json` only (no network). |
 | `--dry-run` | Print which files would change; do not write. |
 | `--refresh` | If the section is **already** a bullet list with dictionary links, re-fetch definitions from the URL slugs and rewrite bullets. |
-| `--repo-root PATH` | Default: parent of `.gwasdictionary/`. |
+| `--repo-root PATH` | Default: repository root (parent of `.development/`). |
 | `--aliases-yaml` / `--aliases-json` | Optional maps from keyword → slug (see `term_aliases.example.yaml`). |
 
 **Idempotency:** If the first non-empty line under `## Key terms` already starts with `- ` (expanded list), the file is **skipped** unless you pass `--refresh` or replace the section with keywords again.
 
 ### Unmatched keywords
 
-If a token does not resolve to a dictionary row, the script still emits a bullet, prints a **stderr** warning, and suggests `term_aliases.yaml`. Add a file `.gwasdictionary/term_aliases.yaml` (see `term_aliases.example.yaml`):
+If a token does not resolve to a dictionary row, the script still emits a bullet, prints a **stderr** warning, and suggests `term_aliases.yaml`. Add a file `.development/dictionary/term_aliases.yaml` (see `term_aliases.example.yaml`):
 
 ```yaml
 aliases:

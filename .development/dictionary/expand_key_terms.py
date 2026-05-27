@@ -21,7 +21,7 @@ import re
 import sys
 from pathlib import Path
 
-# Same directory imports (run as python3 .gwasdictionary/expand_key_terms.py from repo root)
+# Same directory imports (run as python3 .development/dictionary/expand_key_terms.py from repo root)
 _ROOT = Path(__file__).resolve().parent
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
@@ -217,8 +217,8 @@ def main() -> int:
     ap.add_argument(
         "--repo-root",
         type=Path,
-        default=Path(__file__).resolve().parent.parent,
-        help="Repository root (default: parent of .gwasdictionary/)",
+        default=Path(__file__).resolve().parent.parent.parent,
+        help="Repository root (default: parent of .development/)",
     )
     ap.add_argument("--offline", action="store_true", help="Use cache only (no network).")
     ap.add_argument("--dry-run", action="store_true", help="Print actions without writing files.")

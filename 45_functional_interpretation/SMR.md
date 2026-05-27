@@ -1,3 +1,15 @@
+---
+module_id: 45_SMR
+type: hands_on
+title: SMR - Summary-data-based Mendelian Randomization
+prerequisites: [06_Association_tests, 08_LDSC]
+tools: [smr]
+concepts:
+  - summary-data-based Mendelian randomization
+  - eQTL
+  - HEIDI
+---
+
 # SMR: Summary-data-based Mendelian Randomization
 
 ---
@@ -605,6 +617,11 @@ Pre-compiled xQTL datasets in BESD format are available for download from the [S
 
 ---
 
+## Key terms
+
+SMR, HEIDI, eQTL, mQTL, sQTL, summary-data-based Mendelian randomization, pleiotropy, colocalization
+
+---
 
 ## References
 

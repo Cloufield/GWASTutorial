@@ -1,3 +1,18 @@
+---
+module_id: 12_fine_mapping
+type: hands_on
+title: Fine-mapping
+prerequisites: [06_Association_tests]
+produces: [sig_locus_mt.ld]
+primary_script: run_fine_mapping.sh
+tools: [plink, susie]
+concepts:
+  - fine-mapping
+  - posterior inclusion probability
+  - credible set
+  - SuSiE
+---
+
 # Fine-mapping
 
 ---
@@ -130,14 +145,14 @@ For fine-mapping with summary statistics using SuSiE (SuSiE-RSS), IBSS was modif
 
 
 
-## File Preparation
+## Preparation
 
 !!! note "Required data and tools"
 
-    - **Summary statistics for the locus** — effect sizes, SEs, and *p*-values (e.g. [06_Association_tests](../06_Association_tests/README.md) PLINK2 output; extract a region around a lead SNP).
-    - **SNP list** — variant IDs to match the reference panel for **LD** calculation ([LD matrix calculation](#ld-matrix-calculation)).
-    - **Reference panel** — PLINK-binary genotype data (e.g. 1000 Genomes) matched to study **ancestry**.
-    - **PLINK** (1.9/2) for LD; **Python** + **gwaslab** optional for locus extraction (example block below); **R** + **susieR** for SuSiE-RSS ([Fine-mapping with summary statistics using SuSiE-R](#fine-mapping-with-summary-statistics-using-susie-r)).
+    - **Data: Locus summary statistics** — from [06_Association_tests](../06_Association_tests/README.md); region around a lead SNP.
+    - **Data: SNP list** (`sig_locus.snplist`) — variants for LD ([LD matrix calculation](#ld-matrix-calculation)).
+    - **Reference: Panel genotypes** — PLINK binary (e.g. 1000 Genomes), matched to study ancestry.
+    - **Software: PLINK** (`plink`) — LD matrices; **R** + **susieR** — SuSiE-RSS ([Fine-mapping with summary statistics using SuSiE-R](#fine-mapping-with-summary-statistics-using-susie-r)).
 
 !!! tip "Locus selection"
     Typically, you would:
@@ -399,6 +414,24 @@ Example output visualization:
 ---
 
 
+
+## Sample script
+
+!!! example "Calculate LD matrix (PLINK)"
+    ```bash
+    cd 12_fine_mapping
+    ./run_fine_mapping.sh
+    ```
+
+SuSiE-RSS analysis is in [finemapping_susie.ipynb](finemapping_susie.ipynb).
+
+---
+
+## Key terms
+
+fine-mapping, posterior inclusion probability, credible set, SuSiE, SuSiE-RSS, linkage disequilibrium matrix
+
+---
 
 ## References
 

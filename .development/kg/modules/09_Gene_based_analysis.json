@@ -1,0 +1,156 @@
+{
+  "module_id": "09_Gene_based_analysis",
+  "title": "Gene and gene-set analysis",
+  "type": "hands_on",
+  "source_readme": "09_Gene_based_analysis/README.md",
+  "primary_script": "run_gene_analysis.sh",
+  "prerequisites": [
+    "08_LDSC"
+  ],
+  "produces": [
+    "HDLC_chr3.magma.input.p.txt"
+  ],
+  "tools": [
+    "magma"
+  ],
+  "concepts": [
+    "gene-based test",
+    "gene-set analysis",
+    "MAGMA"
+  ],
+  "related_modules": [],
+  "nodes": [
+    {
+      "id": "09_Gene_based_analysis",
+      "kind": "Module",
+      "label": "Gene and gene-set analysis"
+    },
+    {
+      "id": "tool_magma",
+      "kind": "Tool",
+      "label": "magma"
+    },
+    {
+      "id": "out_hdlc_chr3_magma_input_p_txt",
+      "kind": "Output",
+      "label": "HDLC_chr3.magma.input.p.txt"
+    },
+    {
+      "id": "concept_gene_based_test",
+      "kind": "Concept",
+      "label": "gene-based test"
+    },
+    {
+      "id": "concept_gene_set_analysis",
+      "kind": "Concept",
+      "label": "gene-set analysis"
+    },
+    {
+      "id": "concept_magma",
+      "kind": "Concept",
+      "label": "MAGMA"
+    },
+    {
+      "id": "09_Gene_based_analysis.step_magma_introduction",
+      "kind": "Step",
+      "label": "MAGMA Introduction"
+    },
+    {
+      "id": "09_Gene_based_analysis.step_install_magma",
+      "kind": "Step",
+      "label": "Install MAGMA"
+    },
+    {
+      "id": "09_Gene_based_analysis.step_download_reference_files",
+      "kind": "Step",
+      "label": "Download reference files"
+    },
+    {
+      "id": "09_Gene_based_analysis.step_format_input_files",
+      "kind": "Step",
+      "label": "Format input files"
+    },
+    {
+      "id": "09_Gene_based_analysis.step_annotate_snps",
+      "kind": "Step",
+      "label": "Annotate SNPs"
+    },
+    {
+      "id": "09_Gene_based_analysis.step_gene_based_analysis",
+      "kind": "Step",
+      "label": "Gene-based analysis"
+    },
+    {
+      "id": "09_Gene_based_analysis.step_gene_set_level_analysis",
+      "kind": "Step",
+      "label": "Gene-set level analysis"
+    }
+  ],
+  "edges": [
+    {
+      "from": "09_Gene_based_analysis",
+      "to": "08_LDSC",
+      "type": "requires"
+    },
+    {
+      "from": "09_Gene_based_analysis",
+      "to": "tool_magma",
+      "type": "uses_tool"
+    },
+    {
+      "from": "09_Gene_based_analysis",
+      "to": "out_hdlc_chr3_magma_input_p_txt",
+      "type": "produces"
+    },
+    {
+      "from": "09_Gene_based_analysis",
+      "to": "concept_gene_based_test",
+      "type": "defines_concept"
+    },
+    {
+      "from": "09_Gene_based_analysis",
+      "to": "concept_gene_set_analysis",
+      "type": "defines_concept"
+    },
+    {
+      "from": "09_Gene_based_analysis",
+      "to": "concept_magma",
+      "type": "defines_concept"
+    },
+    {
+      "from": "09_Gene_based_analysis",
+      "to": "09_Gene_based_analysis.step_magma_introduction",
+      "type": "documents_step"
+    },
+    {
+      "from": "09_Gene_based_analysis.step_magma_introduction",
+      "to": "09_Gene_based_analysis.step_install_magma",
+      "type": "documents_step"
+    },
+    {
+      "from": "09_Gene_based_analysis.step_install_magma",
+      "to": "09_Gene_based_analysis.step_download_reference_files",
+      "type": "documents_step"
+    },
+    {
+      "from": "09_Gene_based_analysis.step_download_reference_files",
+      "to": "09_Gene_based_analysis.step_format_input_files",
+      "type": "documents_step"
+    },
+    {
+      "from": "09_Gene_based_analysis.step_format_input_files",
+      "to": "09_Gene_based_analysis.step_annotate_snps",
+      "type": "documents_step"
+    },
+    {
+      "from": "09_Gene_based_analysis.step_annotate_snps",
+      "to": "09_Gene_based_analysis.step_gene_based_analysis",
+      "type": "documents_step"
+    },
+    {
+      "from": "09_Gene_based_analysis.step_gene_based_analysis",
+      "to": "09_Gene_based_analysis.step_gene_set_level_analysis",
+      "type": "documents_step"
+    }
+  ]
+}

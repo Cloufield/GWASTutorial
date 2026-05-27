@@ -1,3 +1,15 @@
+---
+module_id: 03_Data_formats
+type: concept
+title: Data format
+prerequisites: []
+concepts:
+  - VCF
+  - PLINK
+  - BGEN
+  - genotype imputation
+---
+
 # Data format
 
 ---
@@ -384,3 +396,11 @@ VCF, PLINK, FASTA, FASTQ, BAM, BGEN, Genotype Imputation, Genotype Dosage, GWAS 
 ## Summary
 
 <img width="746" alt="Screen Shot 2022-03-28 at 16 45 56" src="https://user-images.githubusercontent.com/40289485/160350838-63da9633-2c74-49dd-889e-03392735463f.png">
+
+---
+
+## References
+
+- Danecek, P., et al. (2021). Twelve years of SAMtools and BCFtools. *GigaScience*, 10(2), giab008.
+- Purcell, S., et al. (2007). PLINK: a tool set for whole-genome association and population-based linkage analyses. *AJHG*, 81(3), 559-575.
+- Chang, C. C., et al. (2015). Second-generation PLINK. *GigaScience*, 4(1), s13742-015-0047-8.
